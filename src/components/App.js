@@ -1,4 +1,5 @@
 import React from "react";
+import Search from "./Search";
 // import Header from "./Header";
 // import NavBar from "./NavBar";
 // import Main from "./Main";
@@ -8,7 +9,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Hello World</p>
+        <h1>Level Up n00bs!</h1>
+        <br />
+        <br />
+        <Search />
       </div>
     );
   }
