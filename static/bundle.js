@@ -26647,10 +26647,10 @@ exports.default = App;
 
 /***/ }),
 
-/***/ "./src/components/Search.js":
-/*!**********************************!*\
-  !*** ./src/components/Search.js ***!
-  \**********************************/
+/***/ "./src/components/Game.js":
+/*!********************************!*\
+  !*** ./src/components/Game.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26675,10 +26675,78 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import Header from "./Header";
-// import NavBar from "./NavBar";
-// import Main from "./Main";
-// import Footer from "./Footer";
+var Game = function (_React$Component) {
+  _inherits(Game, _React$Component);
+
+  function Game() {
+    _classCallCheck(this, Game);
+
+    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this));
+  }
+
+  _createClass(Game, [{
+    key: "render",
+    value: function render() {
+      var game = this.props.game;
+
+      return _react2.default.createElement(
+        "ul",
+        null,
+        Object.keys(game).map(function (currentItem) {
+          return;
+          //game//[currentItem]
+          currentItem;
+        })
+      );
+    } //
+
+  }]);
+
+  return Game;
+}(_react2.default.Component);
+
+exports.default = Game;
+
+// {this.state.gameInfo.map(game => {
+//   return (
+//     Object.keys(game).map(currentItem => {
+//       return (game[currentItem])
+//     }))
+// })}
+
+/***/ }),
+
+/***/ "./src/components/Search.js":
+/*!**********************************!*\
+  !*** ./src/components/Search.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Game = __webpack_require__(/*! ./Game */ "./src/components/Game.js");
+
+var _Game2 = _interopRequireDefault(_Game);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Search = function (_React$Component) {
   _inherits(Search, _React$Component);
@@ -26686,34 +26754,64 @@ var Search = function (_React$Component) {
   function Search() {
     _classCallCheck(this, Search);
 
-    return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+    var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
+
+    _this.state = {
+      searchGame: "",
+      gameInfo: []
+    };
+
+    _this.getGameData = _this.getGameData.bind(_this);
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
   }
 
   // componentDidMount() {
   //   this.getreviews()
   // }
 
-  // getreviews() {
-  //   fetch("https://api-endpoint.igdb.com/reviews/?fields=title,review_rating,content,positive_points,negative_points", {
-  //     method: 'GET',
-  //     mode: 'cors',
-  //     headers: {
-  //       'user-key': '96651c2677f60060f3a91ef002c2a419 ',
-  //       'Accept': 'application/json'
-
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       console.log('review info ', json)
-  //     })
-
-  // }
-
-
   _createClass(Search, [{
+    key: "getGameData",
+    value: function getGameData() {
+      var _this2 = this;
+
+      var searchPath = "/games/" + this.state.searchGame;
+      fetch(searchPath, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {}
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        console.log('review info ', json.body); //NAUGHTY CONSOLE LOG HERE
+        _this2.setState({ gameInfo: json.body });
+      }).catch(function (error) {
+        console.log("Sorry the following error occurred: ", error);
+        alert("Sorry not found, try again");
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      event.preventDefault();
+      this.setState({
+        searchGame: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.getGameData();
+      this.setState({
+        searchGame: ""
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+
       return _react2.default.createElement(
         "div",
         null,
@@ -26723,7 +26821,47 @@ var Search = function (_React$Component) {
           "Find your Game here"
         ),
         _react2.default.createElement("br", null),
-        _react2.default.createElement("br", null)
+        _react2.default.createElement(
+          "form",
+          { className: "search__form", id: "search__form", onSubmit: this.handleSubmit },
+          _react2.default.createElement("input", {
+            onChange: this.handleChange,
+            type: "text",
+            className: "search__text",
+            id: "search__text",
+            autoComplete: "off",
+            value: this.state.searchGame,
+            placeholder: "Enter game title search"
+          })
+        ),
+        _react2.default.createElement("br", null),
+        "Results:",
+        _react2.default.createElement(
+          "ul",
+          null,
+          this.state.gameInfo.map(function (game) {
+            return _react2.default.createElement(
+              "li",
+              { key: game.id },
+              _react2.default.createElement("img", { src: game.cover.url }),
+              game.id,
+              _react2.default.createElement("br", null),
+              _react2.default.createElement(
+                "h2",
+                null,
+                game.name
+              ),
+              game.summary,
+              _react2.default.createElement("br", null),
+              game.cover.url,
+              _react2.default.createElement("br", null),
+              game.rating,
+              _react2.default.createElement("br", null),
+              game.aggregated_rating,
+              _react2.default.createElement("br", null)
+            );
+          })
+        )
       );
     }
   }]);

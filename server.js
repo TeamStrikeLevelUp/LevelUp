@@ -5,7 +5,8 @@ const cors = require('cors');
 const igdb = require('igdb-api-node').default;
 app.use(bodyParser.json());
 app.use("/static", express.static("static"));
-app.use(cors());
+
+// app.use(cors());
 
 const client = igdb('96651c2677f60060f3a91ef002c2a419')
 
