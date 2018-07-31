@@ -1,6 +1,7 @@
 import React from "react";
+import { Switch, Route } from 'react-router-dom';
 import Search from "./Search";
-// import Header from "./Header";
+import HomeRoute from "../routes/HomeRoute";
 // import NavBar from "./NavBar";
 // import Main from "./Main";
 // import Footer from "./Footer";
@@ -12,9 +13,11 @@ class App extends React.Component {
     return (
       <div>
         <h1>Level Up n00bs!</h1>
-        <br />
-        <br />
-        <Search />
+        <Switch>
+          <Route exact path="/" render={() => <HomeRoute />} />
+          <Route exact path="/search" render={() => <Search />} />
+        </Switch>
+
       </div>
     );
   }
