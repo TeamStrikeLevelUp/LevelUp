@@ -13,9 +13,8 @@ class Game extends React.Component {
     return (
       <ul>
         {Object.keys(game).map(currentItem => {
-          return
+          return currentItem
           //game//[currentItem]
-          currentItem
 
         })}
       </ul>

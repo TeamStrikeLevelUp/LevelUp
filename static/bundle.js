@@ -27291,9 +27291,8 @@ var Game = function (_React$Component) {
         "ul",
         null,
         Object.keys(game).map(function (currentItem) {
-          return;
+          return currentItem;
           //game//[currentItem]
-          currentItem;
         })
       );
     } //
