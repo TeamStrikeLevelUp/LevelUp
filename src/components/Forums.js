@@ -5,7 +5,7 @@ class Forums extends React.Component{
 
     constructor() {
         super();
-        this.state={forums:{}}
+        this.state={forums:[]}
       }
 
       componentDidMount(){

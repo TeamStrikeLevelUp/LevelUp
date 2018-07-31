@@ -38,7 +38,15 @@ app.get("/api/forum", function (req, res) {
 });
 
 app.get("/api/post/:id", function (req, res) {
-  db.any(`SELECT * FROM post WHERE forum_id = $1`, [req.params.id])
+  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/reply/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
       res.json(data)
     })
