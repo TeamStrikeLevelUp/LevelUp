@@ -3,8 +3,32 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const igdb = require('igdb-api-node').default;
+const pgp = require('pg-promise')();
+
+
 app.use(bodyParser.json());
 app.use("/static", express.static("static"));
+
+const db = pgp({
+  host: 'localhost',
+  port: 5432,
+  database: process.env.DATABASE,
+  user: process.env.USERNAME,
+  password: process.env.PASSWORD
+});
+
+// Database connection test starts
+function getUserByUsername(username) {
+  return db.one(`SELECT * FROM gamer WHERE gamer_name = $1`, [username])
+    .then(data => console.log("data from DB", data))
+    .catch(error => console.log(error.message));
+
+}
+
+app.get("/user", function (req, res) {
+  return getUserByUsername("ralph");
+});
+// Database connection test ends
 
 // app.use(cors());
 
@@ -15,7 +39,6 @@ app.set("view engine", "hbs");
 app.get("/", function (req, res) {
   res.render("index");
 });
-
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client.games({
@@ -51,7 +74,6 @@ app.get("/gameid/:id", (req, res) => {
       console.log("You have 2 lives remaining ", error);
     })
 })
-
 app.get("/reviews/:gameId", (req, res) => {
   const gameTitle = req.params.gameId;
   client.reviews({
@@ -72,7 +94,6 @@ app.get("/reviews/:gameId", (req, res) => {
 function displayData(res, data) {
   res.json(data)
 }
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
