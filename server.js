@@ -101,6 +101,10 @@ app.use((req, res, next) => {
   next();
 })
 
+app.get("*", function (req, res) {
+  res.render("index");
+});
+
 const port = process.env.PORT || 8080;
 app.listen(port, function () {
   console.log(`Listening on port number ${port}`);
