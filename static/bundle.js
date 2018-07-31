@@ -27203,6 +27203,10 @@ var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/Ho
 
 var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
 
+var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
+
+var _Forums2 = _interopRequireDefault(_Forums);
+
 __webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27244,6 +27248,9 @@ var App = function (_React$Component) {
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
               return _react2.default.createElement(_Search2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
+              return _react2.default.createElement(_Forums2.default, null);
             } })
         )
       );
@@ -27254,6 +27261,155 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./src/components/Forum.js":
+/*!*********************************!*\
+  !*** ./src/components/Forum.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Forum = function (_React$Component) {
+  _inherits(Forum, _React$Component);
+
+  function Forum() {
+    _classCallCheck(this, Forum);
+
+    return _possibleConstructorReturn(this, (Forum.__proto__ || Object.getPrototypeOf(Forum)).call(this));
+  }
+
+  _createClass(Forum, [{
+    key: "handleClick",
+    value: function handleClick(event) {
+
+      fetch("/api/post/" + this.props.forum.id).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return console.log(json);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "p",
+          { onClick: function onClick() {
+              return _this2.handleClick(_this2.props.forum.id);
+            } },
+          this.props.forum.title
+        )
+      );
+    }
+  }]);
+
+  return Forum;
+}(_react2.default.Component);
+
+exports.default = Forum;
+
+/***/ }),
+
+/***/ "./src/components/Forums.js":
+/*!**********************************!*\
+  !*** ./src/components/Forums.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Forum = __webpack_require__(/*! ./Forum */ "./src/components/Forum.js");
+
+var _Forum2 = _interopRequireDefault(_Forum);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Forums = function (_React$Component) {
+    _inherits(Forums, _React$Component);
+
+    function Forums() {
+        _classCallCheck(this, Forums);
+
+        var _this = _possibleConstructorReturn(this, (Forums.__proto__ || Object.getPrototypeOf(Forums)).call(this));
+
+        _this.state = { forums: {} };
+        return _this;
+    }
+
+    _createClass(Forums, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch("api/forum").then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return _this2.setState({ forums: json });
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            if (!this.state.forums[0]) return null;
+            return _react2.default.createElement(
+                "div",
+                null,
+                this.state.forums.map(function (forum, index) {
+                    return _react2.default.createElement(_Forum2.default, { key: forum.id, forum: forum });
+                })
+            );
+        }
+    }]);
+
+    return Forums;
+}(_react2.default.Component);
+
+exports.default = Forums;
 
 /***/ }),
 

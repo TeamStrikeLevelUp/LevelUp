@@ -26,8 +26,25 @@ function getUserByUsername(username) {
 }
 
 app.get("/user", function (req, res) {
-  return getUserByUsername("ralph");
+  return getUserByUsername("ralph1");
 });
+
+app.get("/api/forum", function (req, res) {
+  db.any(`SELECT * FROM forum`)
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/post/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE forum_id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
 // Database connection test ends
 
 // app.use(cors());
