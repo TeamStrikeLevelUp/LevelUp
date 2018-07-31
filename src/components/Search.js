@@ -74,28 +74,35 @@ class Search extends React.Component {
           />
         </form>
         <br />
-        Results:
 
         <ul>
+
           {this.state.gameInfo.map(game => {
             return (
               <li key={game.id}>
                 <img src={game.cover.url} />
-                {game.id}<br />
+                <br />
                 <h2>{game.name}</h2>
-                {game.summary}<br />
-                {game.cover.url}<br />
-                {game.rating}<br />
-                {game.aggregated_rating}<br />
+                <p>{game.summary}</p>
+                About:
+                <h4>User Rating:         {Math.round(game.rating)}</h4>
+                <h4>Critics Rating:      {Math.round(game.aggregated_rating)}
+                </h4>
+                {/* <p>Alternate name: {game.alternative_names.map(name => name)}</p> */}
+                <p>Genres:{game.genres}</p>
+                <p>Themes: {game.themes}</p>
+                <p>Game Modes: {game.game_modes}</p>
+                {/* Screenshot: {game.screenshots} */}
+
+                <br />
               </li>
             )
-          })}
+          }
+          )}
+
         </ul>
-
-
-
       </div>
-    );
+    )
   }
 }
 

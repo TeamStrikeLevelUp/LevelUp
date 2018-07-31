@@ -26835,7 +26835,6 @@ var Search = function (_React$Component) {
           })
         ),
         _react2.default.createElement("br", null),
-        "Results:",
         _react2.default.createElement(
           "ul",
           null,
@@ -26844,20 +26843,48 @@ var Search = function (_React$Component) {
               "li",
               { key: game.id },
               _react2.default.createElement("img", { src: game.cover.url }),
-              game.id,
               _react2.default.createElement("br", null),
               _react2.default.createElement(
                 "h2",
                 null,
                 game.name
               ),
-              game.summary,
-              _react2.default.createElement("br", null),
-              game.cover.url,
-              _react2.default.createElement("br", null),
-              game.rating,
-              _react2.default.createElement("br", null),
-              game.aggregated_rating,
+              _react2.default.createElement(
+                "p",
+                null,
+                game.summary
+              ),
+              "About:",
+              _react2.default.createElement(
+                "h4",
+                null,
+                "User Rating:         ",
+                Math.round(game.rating)
+              ),
+              _react2.default.createElement(
+                "h4",
+                null,
+                "Critics Rating:      ",
+                Math.round(game.aggregated_rating)
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Genres:",
+                game.genres
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Themes: ",
+                game.themes
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Game Modes: ",
+                game.game_modes
+              ),
               _react2.default.createElement("br", null)
             );
           })

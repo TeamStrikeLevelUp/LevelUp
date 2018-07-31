@@ -20,7 +20,8 @@ app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client.games({
     search: gameTitle,
-    fields: 'id,name,summary,cover.url,rating,aggregated_rating,cover', // Return all fields
+    // fields: 'id,name,summary,cover.url,rating,aggregated_rating,cover', // Return all fields
+    fields: '*',
     limit: 5, // Limit to 5 results
     offset: 15 // Index offset for results
   })
