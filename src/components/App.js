@@ -5,6 +5,8 @@ import Search from "./Search";
 // import Main from "./Main";
 // import Footer from "./Footer";
 
+import '../../static/styles/index.scss';
+
 class App extends React.Component {
   render() {
     return (
