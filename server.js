@@ -62,13 +62,14 @@ app.get("/games/:title", (req, res) => {
       console.log("You have 2 lives remaining ", error);
     });
 });
+
 app.get("/gameid/:id", (req, res) => {
   const gameTitle = req.params.id;
   client
     .games({
       ids: [gameTitle],
       fields: "id,name,summary,cover.url,rating,aggregated_rating,cover", // Return all fields
-      limit: 5, // Limit to 5 results
+      limit: 5, // Currentlyl imited to 5 results
       offset: 15 // Index offset for results
     })
     .then(response => {
@@ -98,6 +99,36 @@ app.get("/reviews/:gameId", (req, res) => {
       console.log("You have 2 lives remaining ", error);
     });
 });
+
+app.get("/themes", (req, res) => {
+  const themeId = req.params.title;
+  client
+    .themes({
+      fields: "id,name"
+    })
+    .then(response => {
+      displayData(res, response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
+app.get("/genres", (req, res) => {
+  client
+    .genres({
+      fields: "id,name" // Return all fields
+    })
+    .then(response => {
+      // response.body contains the parsed JSON response to this query
+
+      displayData(res, response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
 function displayData(res, data) {
   res.json(data);
 }

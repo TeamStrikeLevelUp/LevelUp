@@ -1,43 +1,16 @@
 import React from "react";
-import Game from "./Game";
-
 
 class Search extends React.Component {
-
   constructor() {
     super();
 
     this.state = {
-      searchGame: "",
-      gameInfo: []
+      searchGame: ""
     };
 
-    this.getGameData = this.getGameData.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
 
-  // componentDidMount() {
-  //   this.getreviews()
-  // }
-
-  getGameData() {
-    const searchPath = "/games/" + this.state.searchGame;
-    fetch(searchPath, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-      }
-    })
-      .then(response => response.json())
-      .then(json => {
-        console.log('review info ', json.body) //NAUGHTY CONSOLE LOG HERE
-        this.setState({ gameInfo: json.body });
-
-      }).catch(error => {
-        console.log("Sorry the following error occurred: ", error)
-        alert("Sorry not found, try again")
-      });
   }
 
   handleChange(event) {
@@ -46,9 +19,10 @@ class Search extends React.Component {
       searchGame: event.target.value
     });
   }
+
   handleSubmit(event) {
     event.preventDefault();
-    this.getGameData();
+    this.props.fetchGameInfo("/games/" + this.state.searchGame);
     this.setState({
       searchGame: ""
     })
@@ -56,6 +30,7 @@ class Search extends React.Component {
 
   render() {
 
+    const { gameData } = this.props;
 
     return (
       <div>
@@ -77,28 +52,32 @@ class Search extends React.Component {
 
         <ul>
 
-          {this.state.gameInfo.map(game => {
-            return (
-              <li key={game.id}>
-                <img src={game.cover.url} />
-                <br />
-                <h2>{game.name}</h2>
-                <p>{game.summary}</p>
-                About:
-                <h4>User Rating:         {Math.round(game.rating)}</h4>
-                <h4>Critics Rating:      {Math.round(game.aggregated_rating)}
-                </h4>
-                {/* <p>Alternate name: {game.alternative_names.map(name => name)}</p> */}
-                <p>Genres:{game.genres}</p>
-                <p>Themes: {game.themes}</p>
-                <p>Game Modes: {game.game_modes}</p>
-                {/* Screenshot: {game.screenshots} */}
+          {gameData !== undefined ?
+            gameData.map(game => {
+              return (
+                <li key={game.igdbId}>
+                  <img src={game.cover_img} />
+                  <br />
+                  <h2>{game.name}</h2>
+                  <p>{game.description}</p>
+                  About:
+                <h4>User Rating:         {game.user_rating}</h4>
+                  <h4>Critics Rating:      {game.critic_rating}
+                  </h4>
+                  <h4>Genres:{game.genres}</h4>
+                  <h4>Themes: {game.themes}</h4>
+                  {game.screenshot ? (game.screenshot).map(currentImg => {
 
-                <br />
-              </li>
-            )
-          }
-          )}
+                    return <img src={currentImg} key={currentImg} />
+
+                  }) : null}
+
+
+                  <br />
+                </li>
+              )
+            }
+            ) : null}
 
         </ul>
       </div>
