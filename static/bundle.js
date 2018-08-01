@@ -27429,15 +27429,31 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
-
-var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
-
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
 
 var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
+
+var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
+
+var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+
+var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
+
+var _Forums2 = _interopRequireDefault(_Forums);
+
+var _Posts = __webpack_require__(/*! ./Posts */ "./src/components/Posts.js");
+
+var _Posts2 = _interopRequireDefault(_Posts);
+
+var _ForumLinks = __webpack_require__(/*! ./ForumLinks */ "./src/components/ForumLinks.js");
+
+var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
+
+var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src/routes/DashboardRoute.js");
+
+var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
 
 __webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
 
@@ -27448,8 +27464,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 // import Header from "./Header";
 
+// import NavBar from "./NavBar";
+// import Main from "./Main";
+// import Footer from "./Footer";
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -27474,11 +27494,19 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
               return _react2.default.createElement(_SearchContainer2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
+              return _react2.default.createElement(_DashboardRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _Posts2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
+              return _react2.default.createElement(_ForumLinks2.default, null);
             } })
         )
       );
@@ -27489,6 +27517,396 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./src/components/Dashboard.js":
+/*!*************************************!*\
+  !*** ./src/components/Dashboard.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Dashboard = function (_React$Component) {
+    _inherits(Dashboard, _React$Component);
+
+    function Dashboard(props) {
+        _classCallCheck(this, Dashboard);
+
+        var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
+
+        _this.state = {
+            user: {}
+        };
+        return _this;
+    }
+
+    _createClass(Dashboard, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var userData = JSON.parse(document.querySelector('#data').innerHTML);
+            this.setState({
+                user: userData
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'dashboar-container' },
+                'Hi ',
+                this.state.user.username,
+                ', Dashboard component here.'
+            );
+        }
+    }]);
+
+    return Dashboard;
+}(_react2.default.Component);
+
+exports.default = Dashboard;
+
+/***/ }),
+
+/***/ "./src/components/ForumLinks.js":
+/*!**************************************!*\
+  !*** ./src/components/ForumLinks.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ForumLinks = function (_React$Component) {
+  _inherits(ForumLinks, _React$Component);
+
+  function ForumLinks() {
+    _classCallCheck(this, ForumLinks);
+
+    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
+
+    _this.state = { forums: [] };
+    return _this;
+  }
+
+  _createClass(ForumLinks, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/forum").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ forums: json });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        this.state.forums.map(function (forum, index) {
+          return _react2.default.createElement(
+            "div",
+            { key: forum.id },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: "/forum/" + forum.id },
+              forum.title
+            )
+          );
+        })
+      );
+    }
+  }]);
+
+  return ForumLinks;
+}(_react2.default.Component);
+
+exports.default = ForumLinks;
+
+/***/ }),
+
+/***/ "./src/components/Forums.js":
+/*!**********************************!*\
+  !*** ./src/components/Forums.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Forums = function (_React$Component) {
+  _inherits(Forums, _React$Component);
+
+  function Forums() {
+    _classCallCheck(this, Forums);
+
+    var _this = _possibleConstructorReturn(this, (Forums.__proto__ || Object.getPrototypeOf(Forums)).call(this));
+
+    _this.state = { forum: {}, posts: [] };
+    return _this;
+  }
+
+  _createClass(Forums, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      //   console.log("next",this.props)
+      //   console.log("prev",prevProps)
+
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/forum/" + this.props.match.params.id).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ forum: json });
+      });
+
+      fetch("/api/post/" + this.props.match.params.id).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ posts: json });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+
+      if (!this.state.forum.id) return null;
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "p",
+          null,
+          "Title: ",
+          this.state.forum.title
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          "Category: ",
+          this.state.forum.category
+        ),
+        this.state.posts.map(function (post, index) {
+          return _react2.default.createElement(
+            "div",
+            { key: post.id },
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: "/posts/" + post.id },
+              post.title
+            )
+          );
+        })
+      );
+    }
+  }]);
+
+  return Forums;
+}(_react2.default.Component);
+
+exports.default = Forums;
+
+/***/ }),
+
+/***/ "./src/components/Posts.js":
+/*!*********************************!*\
+  !*** ./src/components/Posts.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Posts = function (_React$Component) {
+  _inherits(Posts, _React$Component);
+
+  function Posts() {
+    _classCallCheck(this, Posts);
+
+    var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
+
+    _this.state = { replies: [], post: {} };
+    return _this;
+  }
+
+  _createClass(Posts, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/reply/" + this.props.match.params.id).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ replies: json });
+      });
+
+      fetch("/api/parentpost/" + this.props.match.params.id).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ post: json });
+      });
+
+      //this.setState({post: json})
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      if (!this.state.post.id) return null;
+
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "h3",
+          null,
+          " Topic: ",
+          this.state.post.title,
+          " "
+        ),
+        _react2.default.createElement(
+          "h3",
+          null,
+          " ",
+          this.state.post.body,
+          " "
+        ),
+        _react2.default.createElement(
+          "h3",
+          null,
+          " Date Posted: ",
+          this.state.post.created,
+          " "
+        ),
+        this.state.replies.map(function (reply) {
+          return _react2.default.createElement(
+            "div",
+            { key: reply.id },
+            _react2.default.createElement(
+              "p",
+              null,
+              "Reply to \"",
+              _this3.state.post.title,
+              "\": "
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Title: ",
+              reply.title
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              reply.body
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Date Posted: ",
+              reply.created
+            )
+          );
+        })
+      );
+    }
+  }]);
+
+  return Posts;
+}(_react2.default.Component);
+
+exports.default = Posts;
 
 /***/ }),
 
@@ -27680,6 +28098,217 @@ var Search = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Search;
+
+/***/ }),
+
+/***/ "./src/components/TwitchContainer.js":
+/*!*******************************************!*\
+  !*** ./src/components/TwitchContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TwitchSearch = __webpack_require__(/*! ./TwitchSearch */ "./src/components/TwitchSearch.js");
+
+var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchContainer = function (_React$Component) {
+  _inherits(TwitchContainer, _React$Component);
+
+  function TwitchContainer() {
+    _classCallCheck(this, TwitchContainer);
+
+    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
+  }
+
+  _createClass(TwitchContainer, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_TwitchSearch2.default, null)
+      );
+    }
+  }]);
+
+  return TwitchContainer;
+}(_react2.default.Component);
+
+exports.default = TwitchContainer;
+
+/***/ }),
+
+/***/ "./src/components/TwitchSearch.js":
+/*!****************************************!*\
+  !*** ./src/components/TwitchSearch.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchSearch = function (_React$Component) {
+  _inherits(TwitchSearch, _React$Component);
+
+  function TwitchSearch() {
+    _classCallCheck(this, TwitchSearch);
+
+    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
+
+    _this.state = {
+      twitchQuery: "",
+      displayVideo: false
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(TwitchSearch, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({
+        twitchQuery: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.setState({
+        displayVideo: true
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.state.twitchQuery);
+      return _react2.default.createElement(
+        "div",
+        { className: "twitch__search" },
+        _react2.default.createElement(
+          "form",
+          {
+            onSubmit: this.handleSubmit,
+            className: "twitch__search--form",
+            id: "twitch__form",
+            action: ""
+          },
+          _react2.default.createElement("input", {
+            onChange: this.handleChange,
+            className: "twitch__search--input",
+            type: "text",
+            name: "twitch__input",
+            id: "twitch__input",
+            placeholder: "Search for a channel..."
+          }),
+          _react2.default.createElement(
+            "button",
+            { id: "twitch__submit", className: "twitch__submit" },
+            "Search"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement("iframe", {
+            className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
+            src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
+            height: "700",
+            width: "800",
+            frameBorder: "2",
+            scrolling: "yes",
+            allowFullScreen: "true"
+          })
+        )
+      );
+    }
+  }]);
+
+  return TwitchSearch;
+}(_react2.default.Component);
+
+exports.default = TwitchSearch;
+
+/***/ }),
+
+/***/ "./src/containers/DashboardContainer.js":
+/*!**********************************************!*\
+  !*** ./src/containers/DashboardContainer.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Dashboard = __webpack_require__(/*! ../components/Dashboard */ "./src/components/Dashboard.js");
+
+var _Dashboard2 = _interopRequireDefault(_Dashboard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+    return {
+        // user: reduxState.user
+    };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        //
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
 
 /***/ }),
 
@@ -27913,6 +28542,42 @@ exports.default = themeInfo;
 
 /***/ }),
 
+/***/ "./src/routes/DashboardRoute.js":
+/*!**************************************!*\
+  !*** ./src/routes/DashboardRoute.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _DashboardContainer = __webpack_require__(/*! ../containers/DashboardContainer */ "./src/containers/DashboardContainer.js");
+
+var _DashboardContainer2 = _interopRequireDefault(_DashboardContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function HomeRoute() {
+    return _react2.default.createElement(
+        'div',
+        { className: 'dashboard' },
+        _react2.default.createElement(_DashboardContainer2.default, null)
+    );
+}
+
+exports.default = HomeRoute;
+
+/***/ }),
+
 /***/ "./src/routes/HomeRoute.js":
 /*!*********************************!*\
   !*** ./src/routes/HomeRoute.js ***!
@@ -27936,6 +28601,14 @@ var _react2 = _interopRequireDefault(_react);
 var _Search = __webpack_require__(/*! ../components/Search */ "./src/components/Search.js");
 
 var _Search2 = _interopRequireDefault(_Search);
+
+var _TwitchContainer = __webpack_require__(/*! ../components/TwitchContainer */ "./src/components/TwitchContainer.js");
+
+var _TwitchContainer2 = _interopRequireDefault(_TwitchContainer);
+
+var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/components/ForumLinks.js");
+
+var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27963,9 +28636,11 @@ var HomeRoute = function (_React$Component) {
         _react2.default.createElement(
           "div",
           null,
-          "Home goes here"
+          "Home route comp here."
         ),
-        _react2.default.createElement(_Search2.default, null)
+        _react2.default.createElement(_Search2.default, null),
+        _react2.default.createElement(_TwitchContainer2.default, null),
+        _react2.default.createElement(_ForumLinks2.default, null)
       );
     }
   }]);
