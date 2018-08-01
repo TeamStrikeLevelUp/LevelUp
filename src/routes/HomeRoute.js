@@ -1,10 +1,14 @@
 import React from 'react';
 
 class HomeRoute extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="home">
-                <div>Home goes here</div>
+                <div>Home route comp here.</div>
             </div>
         );
     }

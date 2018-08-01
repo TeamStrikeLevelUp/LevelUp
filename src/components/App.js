@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from 'react-router-dom';
 import Search from "./Search";
 import HomeRoute from "../routes/HomeRoute";
+import DashboardRoute from "../routes/DashboardRoute";
 // import NavBar from "./NavBar";
 // import Main from "./Main";
 // import Footer from "./Footer";
@@ -16,6 +17,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <HomeRoute />} />
           <Route exact path="/search" render={() => <Search />} />
+          <Route exact path="/dashboard" render={() => <DashboardRoute />} />
         </Switch>
 
       </div>

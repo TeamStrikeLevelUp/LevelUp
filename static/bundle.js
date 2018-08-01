@@ -27203,6 +27203,10 @@ var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/Ho
 
 var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
 
+var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src/routes/DashboardRoute.js");
+
+var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
+
 __webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27244,6 +27248,9 @@ var App = function (_React$Component) {
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
               return _react2.default.createElement(_Search2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
+              return _react2.default.createElement(_DashboardRoute2.default, null);
             } })
         )
       );
@@ -27254,6 +27261,76 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./src/components/Dashboard.js":
+/*!*************************************!*\
+  !*** ./src/components/Dashboard.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Dashboard = function (_React$Component) {
+    _inherits(Dashboard, _React$Component);
+
+    function Dashboard(props) {
+        _classCallCheck(this, Dashboard);
+
+        var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
+
+        _this.state = {
+            user: {}
+        };
+        return _this;
+    }
+
+    _createClass(Dashboard, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var userData = JSON.parse(document.querySelector('#data').innerHTML);
+            this.setState({
+                user: userData
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'dashboar-container' },
+                'Hi ',
+                this.state.user.username,
+                ', Dashboard component here.'
+            );
+        }
+    }]);
+
+    return Dashboard;
+}(_react2.default.Component);
+
+exports.default = Dashboard;
 
 /***/ }),
 
@@ -27509,6 +27586,44 @@ exports.default = Search;
 
 /***/ }),
 
+/***/ "./src/containers/DashboardContainer.js":
+/*!**********************************************!*\
+  !*** ./src/containers/DashboardContainer.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Dashboard = __webpack_require__(/*! ../components/Dashboard */ "./src/components/Dashboard.js");
+
+var _Dashboard2 = _interopRequireDefault(_Dashboard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+    return {
+        // user: reduxState.user
+    };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        //
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -27619,6 +27734,42 @@ exports.default = placeholder;
 
 /***/ }),
 
+/***/ "./src/routes/DashboardRoute.js":
+/*!**************************************!*\
+  !*** ./src/routes/DashboardRoute.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _DashboardContainer = __webpack_require__(/*! ../containers/DashboardContainer */ "./src/containers/DashboardContainer.js");
+
+var _DashboardContainer2 = _interopRequireDefault(_DashboardContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function HomeRoute() {
+    return _react2.default.createElement(
+        'div',
+        { className: 'dashboard' },
+        _react2.default.createElement(_DashboardContainer2.default, null)
+    );
+}
+
+exports.default = HomeRoute;
+
+/***/ }),
+
 /***/ "./src/routes/HomeRoute.js":
 /*!*********************************!*\
   !*** ./src/routes/HomeRoute.js ***!
@@ -27650,10 +27801,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HomeRoute = function (_React$Component) {
     _inherits(HomeRoute, _React$Component);
 
-    function HomeRoute() {
+    function HomeRoute(props) {
         _classCallCheck(this, HomeRoute);
 
-        return _possibleConstructorReturn(this, (HomeRoute.__proto__ || Object.getPrototypeOf(HomeRoute)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (HomeRoute.__proto__ || Object.getPrototypeOf(HomeRoute)).call(this, props));
     }
 
     _createClass(HomeRoute, [{
@@ -27665,7 +27816,7 @@ var HomeRoute = function (_React$Component) {
                 _react2.default.createElement(
                     "div",
                     null,
-                    "Home goes here"
+                    "Home route comp here."
                 )
             );
         }
