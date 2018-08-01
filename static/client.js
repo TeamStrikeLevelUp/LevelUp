@@ -32,13 +32,13 @@ if (signupForm) {
     signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const registrationUsername = document.getElementById('signup-username').value;
-        const registrationPassword = document.getElementById('signup-password').value;
-        const registrationEmail = document.getElementById('signup-email').value;
+        const signupUsername = document.getElementById('signup-username').value;
+        const signupPassword = document.getElementById('signup-password').value;
+        const signupEmail = document.getElementById('signup-email').value;
 
-        fetch('/signin', {
+        fetch('/signup', {
             method: 'POST',
-            body: JSON.stringify({ registrationUsername, registrationPassword, registrationEmail }),
+            body: JSON.stringify({ signupUsername, signupPassword, signupEmail }),
             credentials: 'same-origin',
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ if (signupForm) {
             .then(function (response) {
                 console.log("response", response)
                 if (response.status === 200) {
-                    window.location.pathname = '/profile';
+                    window.location.pathname = '/dashboard';
                 } else {
                     alert('error');
                 }

@@ -154,17 +154,17 @@ app.get('/signup', function (req, res) {
 })
 
 app.post("/signup", (req, res) => {
-  const { registrationUsername, registrationPassword, registrationEmail } = req.body;
-  pass = registrationPassword;
+  const { signupUsername, signupPassword, signupEmail } = req.body;
+  pass = signupPassword;
   bcrypt.genSalt(SALT_ROUNDS)
     .then(salt => {
-      return bcrypt.hash(registrationPassword, salt);
+      return bcrypt.hash(signupPassword, salt);
     })
     .then(hashedPassword => {
       db.one(`
               INSERT INTO gamer (gamer_name, password_hash, email)
               VALUES ($1, $2, $3)
-        `, [registrationUsername, hashedPassword, registrationEmail])
+        `, [signupUsername, hashedPassword, signupEmail])
         .then(data => {
           console.log("data", data);
           // res.json(data)
