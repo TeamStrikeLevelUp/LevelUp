@@ -1,6 +1,10 @@
 import { combineReducers } from "redux";
-import placeholder from "./placeholder";
+import gameInfo from "./gameInfo";
+import themeInfo from "./themeInfo";
+import genreInfo from "./genreInfo";
 
 export default combineReducers({
-  placeholder
+  gameInfo,
+  themeInfo,
+  genreInfo
 });

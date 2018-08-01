@@ -27173,6 +27173,161 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./src/actions/index.js":
+/*!******************************!*\
+  !*** ./src/actions/index.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchReferenceData = fetchReferenceData;
+exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
+exports.receiveGenreData = receiveGenreData;
+exports.receiveThemeData = receiveThemeData;
+exports.setGameData = setGameData;
+exports.receiveGameData = receiveGameData;
+
+// Genre & Themes are retrieved via separate fetches 
+function fetchReferenceData(referenceType) {
+  return function (dispatch, getState) {
+
+    var searchPath = '/' + referenceType;
+
+    fetch(searchPath, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {}
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      if (referenceType === "genres") {
+        dispatch(receiveGenreData(json.body));
+      } else {
+        if (referenceType === "themes") {
+          dispatch(receiveThemeData(json.body));
+        }
+      }
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//Main Game Data fetch - calls helper function to sanitise data
+function fetchGameInfoFromAPI(searchPath) {
+  return function (dispatch, getState) {
+
+    return fetch(searchPath, {
+      method: 'GET',
+      mode: 'cors'
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(setGameData(json.body));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set Genre data in redux.state
+function receiveGenreData(genreData) {
+  console.log("genreData", genreData);
+  return {
+    type: 'RECEIVE_GENREDATA',
+    payload: genreData
+  };
+}
+
+//function to call Reducer and set Theme in redux.state
+function receiveThemeData(themeData) {
+  console.log("themeData", themeData);
+  return {
+    type: 'RECEIVE_THEMEDATA',
+    payload: themeData
+  };
+}
+
+//Picks out data from API and sets it in an app-wide usable format
+//{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
+
+function setGameData(gameData) {
+  return function (dispatch, getState) {
+    console.log("API gameData", gameData);
+
+    var myGameData = [];
+
+    gameData.map(function (gameObject) {
+      var myGameObject = {};
+      var themeArray = [];
+      var screenArray = [];
+      var genreArray = [];
+
+      myGameObject["igdbId"] = gameObject.id;
+      myGameObject["cover_img"] = "//images.igdb.com/igdb/image/upload/t_cover_big/" + gameObject.cover.cloudinary_id;
+      myGameObject["name"] = gameObject.name;
+      myGameObject["description"] = gameObject.summary;
+
+      if (gameObject.genres !== undefined) {
+
+        gameObject.genres.map(function (genre) {
+          getState().genreInfo.map(function (genreObject) {
+            if (genre === genreObject["id"]) {
+
+              genreArray.push(genreObject["name"]);
+            }
+          });
+        });
+      }
+      myGameObject["genres"] = [].concat(genreArray);
+
+      if (gameObject.themes !== undefined) {
+        gameObject.themes.map(function (theme) {
+          getState().themeInfo.map(function (themeObject) {
+            if (themeObject["id"] === theme) {
+              themeArray.push(themeObject["name"]);
+            }
+          });
+        });
+      }
+      myGameObject["themes"] = [].concat(themeArray);
+
+      myGameObject["user_rating"] = gameObject.rating ? Math.round(gameObject.rating) : 'Not available';
+      myGameObject["critic_rating"] = gameObject.aggregated_rating ? Math.round(gameObject.aggregated_rating) : 'Not available';
+
+      if (gameObject.screenshots !== undefined) {
+        gameObject.screenshots.map(function (screenshotObject) {
+          screenArray.push("https://images.igdb.com/igdb/image/upload/t_screenshot_big/" + screenshotObject["cloudinary_id"]);
+        });
+
+        myGameObject["screenshot"] = screenArray;
+      } else {
+        myGameObject["screenshot"] = ["Not available"];
+      }
+
+      myGameData.push(myGameObject);
+    });
+
+    dispatch(receiveGameData(myGameData));
+  };
+}
+
+//function to call Reducer and set game data in redux.state
+function receiveGameData(gameData) {
+  return {
+    type: 'RECEIVE_GAMEDATA',
+    payload: gameData
+  };
+}
+
+/***/ }),
+
 /***/ "./src/components/App.js":
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
@@ -27193,11 +27348,11 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
+
+var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _Search = __webpack_require__(/*! ./Search */ "./src/components/Search.js");
-
-var _Search2 = _interopRequireDefault(_Search);
 
 var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
 
@@ -27216,6 +27371,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import Header from "./Header";
+
 // import NavBar from "./NavBar";
 // import Main from "./Main";
 // import Footer from "./Footer";
@@ -27238,16 +27395,16 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           "h1",
           null,
-          "Level Up n00bs!"
+          "Level Up n00bs !"
         ),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
-              return _react2.default.createElement(_Search2.default, null);
+              return _react2.default.createElement(_SearchContainer2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
               return _react2.default.createElement(_DashboardRoute2.default, null);
@@ -27334,74 +27491,6 @@ exports.default = Dashboard;
 
 /***/ }),
 
-/***/ "./src/components/Game.js":
-/*!********************************!*\
-  !*** ./src/components/Game.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Game = function (_React$Component) {
-  _inherits(Game, _React$Component);
-
-  function Game() {
-    _classCallCheck(this, Game);
-
-    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this));
-  }
-
-  _createClass(Game, [{
-    key: "render",
-    value: function render() {
-      var game = this.props.game;
-
-      return _react2.default.createElement(
-        "ul",
-        null,
-        Object.keys(game).map(function (currentItem) {
-          return currentItem;
-          //game//[currentItem]
-        })
-      );
-    } //
-
-  }]);
-
-  return Game;
-}(_react2.default.Component);
-
-exports.default = Game;
-
-// {this.state.gameInfo.map(game => {
-//   return (
-//     Object.keys(game).map(currentItem => {
-//       return (game[currentItem])
-//     }))
-// })}
-
-/***/ }),
-
 /***/ "./src/components/Search.js":
 /*!**********************************!*\
   !*** ./src/components/Search.js ***!
@@ -27422,10 +27511,6 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Game = __webpack_require__(/*! ./Game */ "./src/components/Game.js");
-
-var _Game2 = _interopRequireDefault(_Game);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27443,41 +27528,16 @@ var Search = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
     _this.state = {
-      searchGame: "",
-      gameInfo: []
+      searchGame: ""
     };
 
-    _this.getGameData = _this.getGameData.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+
     return _this;
   }
 
-  // componentDidMount() {
-  //   this.getreviews()
-  // }
-
   _createClass(Search, [{
-    key: "getGameData",
-    value: function getGameData() {
-      var _this2 = this;
-
-      var searchPath = "/games/" + this.state.searchGame;
-      fetch(searchPath, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {}
-      }).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        console.log('review info ', json.body); //NAUGHTY CONSOLE LOG HERE
-        _this2.setState({ gameInfo: json.body });
-      }).catch(function (error) {
-        console.log("Sorry the following error occurred: ", error);
-        alert("Sorry not found, try again");
-      });
-    }
-  }, {
     key: "handleChange",
     value: function handleChange(event) {
       event.preventDefault();
@@ -27489,7 +27549,7 @@ var Search = function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.getGameData();
+      this.props.fetchGameInfo("/games/" + this.state.searchGame);
       this.setState({
         searchGame: ""
       });
@@ -27497,6 +27557,8 @@ var Search = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var gameData = this.props.gameData;
+
 
       return _react2.default.createElement(
         "div",
@@ -27524,11 +27586,11 @@ var Search = function (_React$Component) {
         _react2.default.createElement(
           "ul",
           null,
-          this.state.gameInfo.map(function (game) {
+          gameData !== undefined ? gameData.map(function (game) {
             return _react2.default.createElement(
               "li",
-              { key: game.id },
-              _react2.default.createElement("img", { src: game.cover.url }),
+              { key: game.igdbId },
+              _react2.default.createElement("img", { src: game.cover_img }),
               _react2.default.createElement("br", null),
               _react2.default.createElement(
                 "h2",
@@ -27538,42 +27600,40 @@ var Search = function (_React$Component) {
               _react2.default.createElement(
                 "p",
                 null,
-                game.summary
+                game.description
               ),
               "About:",
               _react2.default.createElement(
                 "h4",
                 null,
                 "User Rating:         ",
-                Math.round(game.rating)
+                game.user_rating
               ),
               _react2.default.createElement(
                 "h4",
                 null,
                 "Critics Rating:      ",
-                Math.round(game.aggregated_rating)
+                game.critic_rating
               ),
               _react2.default.createElement(
-                "p",
+                "h4",
                 null,
                 "Genres:",
                 game.genres
               ),
               _react2.default.createElement(
-                "p",
+                "h4",
                 null,
                 "Themes: ",
                 game.themes
               ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Game Modes: ",
-                game.game_modes
-              ),
+              game.screenshot ? game.screenshot.map(function (currentImg) {
+
+                return _react2.default.createElement("img", { src: currentImg, key: currentImg });
+              }) : null,
               _react2.default.createElement("br", null)
             );
-          })
+          }) : null
         )
       );
     }
@@ -27621,6 +27681,52 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
+
+/***/ }),
+
+/***/ "./src/containers/SearchContainer.js":
+/*!*******************************************!*\
+  !*** ./src/containers/SearchContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Search = __webpack_require__(/*! ../components/Search */ "./src/components/Search.js");
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  console.log("redux gameData", reduxState.gameInfo);
+  return {
+    gameData: reduxState.gameInfo,
+    themeData: reduxState.themeInfo,
+    genreData: reduxState.genreInfo
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+
+  return {
+    fetchGameInfo: function fetchGameInfo(searchGame) {
+      dispatch((0, _actions.fetchReferenceData)("genres")), dispatch((0, _actions.fetchReferenceData)("themes")), dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Search2.default);
 
 /***/ }),
 
@@ -27676,6 +27782,67 @@ _reactDom2.default.render(_react2.default.createElement(
 
 /***/ }),
 
+/***/ "./src/reducers/gameInfo.js":
+/*!**********************************!*\
+  !*** ./src/reducers/gameInfo.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function gameInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_GAMEDATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = gameInfo;
+
+/***/ }),
+
+/***/ "./src/reducers/genreInfo.js":
+/*!***********************************!*\
+  !*** ./src/reducers/genreInfo.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function genreInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_GENREDATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = genreInfo;
+
+/***/ }),
+
 /***/ "./src/reducers/index.js":
 /*!*******************************!*\
   !*** ./src/reducers/index.js ***!
@@ -27692,22 +27859,32 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
-var _placeholder = __webpack_require__(/*! ./placeholder */ "./src/reducers/placeholder.js");
+var _gameInfo = __webpack_require__(/*! ./gameInfo */ "./src/reducers/gameInfo.js");
 
-var _placeholder2 = _interopRequireDefault(_placeholder);
+var _gameInfo2 = _interopRequireDefault(_gameInfo);
+
+var _themeInfo = __webpack_require__(/*! ./themeInfo */ "./src/reducers/themeInfo.js");
+
+var _themeInfo2 = _interopRequireDefault(_themeInfo);
+
+var _genreInfo = __webpack_require__(/*! ./genreInfo */ "./src/reducers/genreInfo.js");
+
+var _genreInfo2 = _interopRequireDefault(_genreInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  placeholder: _placeholder2.default
+  gameInfo: _gameInfo2.default,
+  themeInfo: _themeInfo2.default,
+  genreInfo: _genreInfo2.default
 });
 
 /***/ }),
 
-/***/ "./src/reducers/placeholder.js":
-/*!*************************************!*\
-  !*** ./src/reducers/placeholder.js ***!
-  \*************************************/
+/***/ "./src/reducers/themeInfo.js":
+/*!***********************************!*\
+  !*** ./src/reducers/themeInfo.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27717,20 +27894,21 @@ exports.default = (0, _redux.combineReducers)({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function placeholder() {
-  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+function themeInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+
   switch (action.type) {
-    case "RECEIVE_PLACEHOLDER":
-      return action.placeholder;
+    case "RECEIVE_THEMEDATA":
+      return action.payload;
 
     default:
       return reduxState;
   }
 }
 
-exports.default = placeholder;
+exports.default = themeInfo;
 
 /***/ }),
 
@@ -27789,6 +27967,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Search = __webpack_require__(/*! ../components/Search */ "./src/components/Search.js");
+
+var _Search2 = _interopRequireDefault(_Search);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
