@@ -27503,6 +27503,179 @@ exports.default = Search;
 
 /***/ }),
 
+/***/ "./src/components/TwitchContainer.js":
+/*!*******************************************!*\
+  !*** ./src/components/TwitchContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TwitchSearch = __webpack_require__(/*! ./TwitchSearch */ "./src/components/TwitchSearch.js");
+
+var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchContainer = function (_React$Component) {
+  _inherits(TwitchContainer, _React$Component);
+
+  function TwitchContainer() {
+    _classCallCheck(this, TwitchContainer);
+
+    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
+  }
+
+  _createClass(TwitchContainer, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_TwitchSearch2.default, null)
+      );
+    }
+  }]);
+
+  return TwitchContainer;
+}(_react2.default.Component);
+
+exports.default = TwitchContainer;
+
+/***/ }),
+
+/***/ "./src/components/TwitchSearch.js":
+/*!****************************************!*\
+  !*** ./src/components/TwitchSearch.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchSearch = function (_React$Component) {
+  _inherits(TwitchSearch, _React$Component);
+
+  function TwitchSearch() {
+    _classCallCheck(this, TwitchSearch);
+
+    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
+
+    _this.state = {
+      twitchQuery: "",
+      displayVideo: false
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(TwitchSearch, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({
+        twitchQuery: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.setState({
+        displayVideo: true
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.state.twitchQuery);
+      return _react2.default.createElement(
+        "div",
+        { className: "twitch__search" },
+        _react2.default.createElement(
+          "form",
+          {
+            onSubmit: this.handleSubmit,
+            className: "twitch__search--form",
+            id: "twitch__form",
+            action: ""
+          },
+          _react2.default.createElement("input", {
+            onChange: this.handleChange,
+            className: "twitch__search--input",
+            type: "text",
+            name: "twitch__input",
+            id: "twitch__input",
+            placeholder: "Search for a channel..."
+          }),
+          _react2.default.createElement(
+            "button",
+            { id: "twitch__submit", className: "twitch__submit" },
+            "Search"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement("iframe", {
+            className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
+            src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
+            height: "700",
+            width: "800",
+            frameBorder: "2",
+            scrolling: "yes",
+            allowFullScreen: "true"
+          })
+        )
+      );
+    }
+  }]);
+
+  return TwitchSearch;
+}(_react2.default.Component);
+
+exports.default = TwitchSearch;
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -27637,6 +27810,10 @@ var _Search = __webpack_require__(/*! ../components/Search */ "./src/components/
 
 var _Search2 = _interopRequireDefault(_Search);
 
+var _TwitchContainer = __webpack_require__(/*! ../components/TwitchContainer */ "./src/components/TwitchContainer.js");
+
+var _TwitchContainer2 = _interopRequireDefault(_TwitchContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27665,7 +27842,8 @@ var HomeRoute = function (_React$Component) {
           null,
           "Home goes here"
         ),
-        _react2.default.createElement(_Search2.default, null)
+        _react2.default.createElement(_Search2.default, null),
+        _react2.default.createElement(_TwitchContainer2.default, null)
       );
     }
   }]);
