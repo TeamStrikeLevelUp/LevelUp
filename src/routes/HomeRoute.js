@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../components/Search";
+import ForumLinks from "../components/ForumLinks";
 
 class HomeRoute extends React.Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class HomeRoute extends React.Component {
         return (
             <div className="home">
                 <div>Home route comp here.</div>
+                <ForumLinks />
             </div>
         );
     }

@@ -1,8 +1,12 @@
 import React from "react";
-import SearchContainer from "../containers/SearchContainer";
-// import Header from "./Header";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from 'react-router-dom';
 import HomeRoute from "../routes/HomeRoute";
+import SearchContainer from "../containers/SearchContainer";
+import Forums from "./Forums";
+import Posts from "./Posts"
+import ForumLinks from "./ForumLinks";
+
+// import Header from "./Header";
 import DashboardRoute from "../routes/DashboardRoute";
 // import NavBar from "./NavBar";
 // import Main from "./Main";
@@ -19,6 +23,9 @@ class App extends React.Component {
           <Route exact path="/homepage" render={() => <HomeRoute />} />
           <Route exact path="/search" render={() => <SearchContainer />} />
           <Route exact path="/dashboard" render={() => <DashboardRoute />} />
+          <Route path="/forum/:id" component={Forums} />
+          <Route path="/posts/:id" component={Posts} />
+          <Route path="/forum" render={() => <ForumLinks  />} />
         </Switch>
       </div>
     );

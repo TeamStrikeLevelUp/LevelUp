@@ -46,6 +46,51 @@ function getUserById(id) {
     .catch(error => console.log(error.message));
 }
 
+///////////////// Ahmed - start //////////////////
+app.get("/api/forum", function (req, res) {
+  db.any(`SELECT * FROM forum`)
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/forum/:id", function (req, res) {
+  db.one(`SELECT * FROM forum WHERE id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/post/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/parentpost/:id", function (req, res) {
+  db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/reply/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+///////////////// Ahmed - end //////////////////
+
+// Database connection test ends
+
 function compare(plainTextPassword, hashedPassword) {
   return bcrypt.compare(plainTextPassword, hashedPassword)
     .then(matches => {
@@ -119,8 +164,6 @@ app.get('/logout', function (req, res) {
 app.get('/dashboard', isLoggedIn, function (req, res) {
   res.render('index', { data: JSON.stringify({ username: req.user.gamer_name }) });
 });
-
-
 
 // app.use(cors());
 
