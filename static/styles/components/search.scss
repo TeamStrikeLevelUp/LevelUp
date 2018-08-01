@@ -52,8 +52,20 @@ body {
   width: auto;
   height: auto;
 }
+.search__box {
+  display: flex;
+  flex-direction: row;
+}
 .search__details {
   flex: 7;
   display: flex;
   flex-direction: column;
+}
+.search__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.search__video {
+  align-self: right; //argh help!
 }

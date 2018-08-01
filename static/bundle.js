@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-color: #132727;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #132727;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto;\n  height: auto; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-color: #132727;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #132727;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto;\n  height: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-self: right; }\n", ""]);
 
 // exports
 
@@ -27382,6 +27382,16 @@ function setGameData(gameData) {
 
         myGameObject["screenshot"] = screenArray;
       }
+
+      //trying out youtube video
+      // if (gameObject.videos) {
+      //   myGameObject["video"] =
+      //     "https://www.youtube.com/watch?v=" + gameObject.videos[0].video_id;
+      // }
+      if (gameObject.videos) {
+        myGameObject["video"] = "https://www.youtube.com/embed/" + gameObject.videos[0].video_id + "?&autoplay=1";
+      }
+
       myGameData.push(myGameObject);
     });
 
@@ -27571,32 +27581,51 @@ var Search = function (_React$Component) {
               null,
               game.description
             ) : null,
-            game.user_rating ? _react2.default.createElement(
-              "header",
-              { className: "search__details--ratings" },
-              "Gamer Rating: ",
-              game.user_rating,
-              "%"
-            ) : null,
-            game.critic_rating ? _react2.default.createElement(
-              "header",
-              { className: "search__details--ratings" },
-              "Critics Rating: ",
-              game.critic_rating,
-              "%"
-            ) : null,
-            game.genres ? _react2.default.createElement(
-              "header",
-              { className: "search__details--ratings" },
-              "Genre: ",
-              game.genres
-            ) : null,
-            game.themes ? _react2.default.createElement(
-              "header",
-              { className: "search__details--ratings" },
-              "Theme: ",
-              game.themes
-            ) : null
+            _react2.default.createElement(
+              "div",
+              { className: "search__box" },
+              _react2.default.createElement(
+                "div",
+                { className: "search__info" },
+                game.user_rating ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Gamer Rating: ",
+                  game.user_rating,
+                  "%"
+                ) : null,
+                game.critic_rating ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Critics Rating: ",
+                  game.critic_rating,
+                  "%"
+                ) : null,
+                game.genres ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Genre: ",
+                  game.genres
+                ) : null,
+                game.themes ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Theme: ",
+                  game.themes
+                ) : null
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "search__video" },
+                game.video ? _react2.default.createElement("iframe", {
+                  width: "560",
+                  height: "315",
+                  src: game.video,
+                  frameBorder: "0",
+                  allowFullScreen: true
+                }) : null
+              )
+            )
           ),
           _react2.default.createElement(
             "div",

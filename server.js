@@ -46,9 +46,11 @@ app.get("/games/:title", (req, res) => {
   client
     .games({
       search: gameTitle,
-      // order: "release_dates.date:desc",
+      fields: "*",
+      order: "popularity:desc"
+      // order: "release_dates.date:desc"
       // fields: 'id,name,summary,cover.url,rating,aggregated_rating,cover', // Return all fields
-      fields: "*"
+
       // limit: 5, // Limit to 5 results
       // offset: 15 // Index offset for results
     })

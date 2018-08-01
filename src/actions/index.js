@@ -146,6 +146,19 @@ export function setGameData(gameData) {
 
         myGameObject["screenshot"] = screenArray;
       }
+
+      //trying out youtube video
+      // if (gameObject.videos) {
+      //   myGameObject["video"] =
+      //     "https://www.youtube.com/watch?v=" + gameObject.videos[0].video_id;
+      // }
+      if (gameObject.videos) {
+        myGameObject["video"] =
+          "https://www.youtube.com/embed/" +
+          gameObject.videos[0].video_id +
+          "?&autoplay=1";
+      }
+
       myGameData.push(myGameObject);
     });
 
