@@ -29,8 +29,17 @@ app.get("/user", function (req, res) {
   return getUserByUsername("ralph1");
 });
 
+///////////////// Ahmed - start //////////////////
 app.get("/api/forum", function (req, res) {
   db.any(`SELECT * FROM forum`)
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/forum/:id", function (req, res) {
+  db.one(`SELECT * FROM forum WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data)
     })
@@ -45,6 +54,14 @@ app.get("/api/post/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.get("/api/parentpost/:id", function (req, res) {
+  db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
+    .then(data => {
+      res.json(data)
+    })
+    .catch(error => console.log(error.message));
+});
+
 app.get("/api/reply/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
@@ -52,6 +69,8 @@ app.get("/api/reply/:id", function (req, res) {
     })
     .catch(error => console.log(error.message));
 });
+
+///////////////// Ahmed - end //////////////////
 
 // Database connection test ends
 
@@ -61,9 +80,7 @@ const client = igdb('96651c2677f60060f3a91ef002c2a419')
 
 app.set("view engine", "hbs");
 
-app.get("/", function (req, res) {
-  res.render("index");
-});
+
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client.games({

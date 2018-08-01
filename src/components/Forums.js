@@ -1,34 +1,52 @@
 import React from "react";
-import Forum from "./Forum";
+import {Link} from 'react-router-dom';
 
-class Forums extends React.Component{
 
-    constructor() {
-        super();
-        this.state={forums:[]}
-      }
+class Forums extends React.Component {
+  constructor() {
+    super();
+    this.state = { forum: {}, posts:[] };
+  }
 
-      componentDidMount(){
+  componentDidUpdate(prevProps){
+    //   console.log("next",this.props)
+    //   console.log("prev",prevProps)
 
-        fetch(`api/forum`)
+  }
+
+  componentDidMount() {
+
+
+    fetch(`/api/forum/${this.props.match.params.id}`)
+      .then(response => response.json())
+      .then(json => this.setState({forum:json}));
+
+
+      fetch(`/api/post/${this.props.match.params.id}`)
         .then(response => response.json())
-        .then(json => this.setState({forums:json}));
+        .then(json => this.setState({posts:json}));
+  }
 
-      }
+  render() {
+     
+    if(!this.state.forum.id) return null
+    return (
+      <div>
+          <p>Title: {this.state.forum.title}</p>
+          <p>Category: {this.state.forum.category}</p>
 
-
-    render(){
-        if (!this.state.forums[0]) return null;
-        return(
-            <div>
-                {this.state.forums.map((forum,index)=>{
-                    return (
-                        <Forum key={forum.id} forum={forum} />
-                    )
-                })}
-            </div>
+          {this.state.posts.map((post, index) => {
+         return (
+         <div key={post.id}>
+             <Link  to={`/posts/${post.id}`}>{post.title}</Link>
+        </div>
+            
         )
-    }
+        })}
+        
+      </div>
+    );
+  }
 }
 
 export default Forums;

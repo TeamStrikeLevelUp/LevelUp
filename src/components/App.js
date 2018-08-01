@@ -1,8 +1,11 @@
 import React from "react";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import Search from "./Search";
 import HomeRoute from "../routes/HomeRoute";
 import Forums from "./Forums";
+import Posts from "./Posts"
+import ForumLinks from "./ForumLinks";
+
 // import NavBar from "./NavBar";
 // import Main from "./Main";
 // import Footer from "./Footer";
@@ -16,10 +19,11 @@ class App extends React.Component {
         <h1>Level Up n00bs!</h1>
         <Switch>
           <Route exact path="/" render={() => <HomeRoute />} />
-          <Route exact path="/search" render={() => <Search />} />
-          <Route  path="/forum" render={() => <Forums />} />
+          <Route path="/search" render={() => <Search />} />
+          <Route path="/forum/:id" component={Forums} />
+          <Route path="/posts/:id" component={Posts} />
+          <Route path="/forum" render={() => <ForumLinks  />} />
         </Switch>
-
       </div>
     );
   }
