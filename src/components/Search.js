@@ -33,7 +33,12 @@ class Search extends React.Component {
     const { gameData } = this.props;
     const gameDisplay = gameData.map(game => {
       return (
-        <li key={game.igdbId} className="search__result">
+        <li
+          key={game.igdbId}
+          className="search__result"
+          img
+          src="/static/images/background2.jpg"
+        >
           <img src={game.cover_img} className="search__img--cover" />
           <div className="search__details">
             <header className="search__details--name">{game.name}</header>

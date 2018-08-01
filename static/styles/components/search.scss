@@ -11,10 +11,10 @@ body {
   margin: 0;
   font-family: "IBM Plex Serif", serif;
   /* background: rgb(36, 36, 77); */
-  // background-image:url("background2.jpg");
-  // background-repeat:no-repeat;
+  background-image: url("/static/images/background2.jpg");
+  background-repeat: no-repeat;
   // background-position: center center;
-  // background-size: cover;
+  background-size: cover;
   background-color: rgb(19, 39, 39);
   color: whitesmoke;
 }
@@ -50,7 +50,7 @@ body {
 .search__img--cover {
   // flex: 5;
   width: auto;
-  height: auto;
+  // height: auto;
 }
 .search__box {
   display: flex;
