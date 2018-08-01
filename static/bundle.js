@@ -86,6 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-color: #132727;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #132727;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto;\n  height: auto; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss":
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss ***!
@@ -98,7 +117,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: tomato; }\n\nbody {\n  background-color: var(--primary-color);\n  font-family: 'Open Sans', sans-serif; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\nbody {\n  background-color: var(--primary-color);\n  font-family: 'Open Sans', sans-serif; }\n", ""]);
 
 // exports
 
@@ -25705,6 +25724,38 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/redux-devtools-extension/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/redux-devtools-extension/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var compose = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js").compose;
+
+exports.__esModule = true;
+exports.composeWithDevTools = (
+  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :
+    function() {
+      if (arguments.length === 0) return undefined;
+      if (typeof arguments[0] === 'object') return compose;
+      return compose.apply(null, arguments);
+    }
+);
+
+exports.devToolsEnhancer = (
+  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION__ :
+    function() { return function(noop) { return noop; } }
+);
+
+
+/***/ }),
+
 /***/ "./node_modules/redux-thunk/es/index.js":
 /*!**********************************************!*\
   !*** ./node_modules/redux-thunk/es/index.js ***!
@@ -27173,6 +27224,181 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./src/actions/index.js":
+/*!******************************!*\
+  !*** ./src/actions/index.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchGenreData = fetchGenreData;
+exports.fetchThemeData = fetchThemeData;
+exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
+exports.receiveGenreData = receiveGenreData;
+exports.receiveThemeData = receiveThemeData;
+exports.setGameData = setGameData;
+exports.receiveGameData = receiveGameData;
+// Genre & Themes are retrieved via separate fetches
+function fetchGenreData() {
+  return function (dispatch, getState) {
+    var searchPath = "/genres/";
+
+    fetch(searchPath, {
+      method: "GET",
+      mode: "cors",
+      headers: {}
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(receiveGenreData(json.body));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+// Genre & Themes are retrieved via separate fetches
+function fetchThemeData() {
+  return function (dispatch, getState) {
+    var searchPath = "/themes/";
+
+    fetch(searchPath, {
+      method: "GET",
+      mode: "cors",
+      headers: {}
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(receiveThemeData(json.body));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+//Main Game Data fetch - calls helper function to sanitise data
+function fetchGameInfoFromAPI(searchPath) {
+  return function (dispatch, getState) {
+    return fetch(searchPath, {
+      method: "GET",
+      mode: "cors"
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(setGameData(json.body));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set Genre data in redux.state
+function receiveGenreData(genreData) {
+  console.log("genreData", genreData);
+  return {
+    type: "RECEIVE_GENREDATA",
+    payload: genreData
+  };
+}
+
+//function to call Reducer and set Theme in redux.state
+function receiveThemeData(themeData) {
+  console.log("themeData", themeData);
+  return {
+    type: "RECEIVE_THEMEDATA",
+    payload: themeData
+  };
+}
+
+//Picks out data from API and sets it in an app-wide usable format
+//{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
+
+function setGameData(gameData) {
+  return function (dispatch, getState) {
+    console.log("API gameData", gameData);
+
+    var myGameData = [];
+
+    gameData.map(function (gameObject) {
+      var myGameObject = {};
+      var themeArray = [];
+      var screenArray = [];
+      var genreArray = [];
+
+      // Only select games which have a description
+      if (!gameObject.summary) {
+        return;
+      }
+
+      myGameObject["igdbId"] = gameObject.id;
+
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      if (gameObject.cover) {
+        myGameObject["cover_img"] = "//images.igdb.com/igdb/image/upload/t_cover_big/" + gameObject.cover.cloudinary_id;
+      }
+
+      myGameObject["name"] = gameObject.name;
+
+      myGameObject["description"] = gameObject.summary;
+
+      if (gameObject.genres) {
+        gameObject.genres.map(function (genre) {
+          getState().genreInfo.map(function (genreObject) {
+            if (genre === genreObject["id"]) {
+              genreArray.push(genreObject["name"] + " ");
+            }
+          });
+        });
+        myGameObject["genres"] = [].concat(genreArray);
+      }
+
+      if (gameObject.themes) {
+        gameObject.themes.map(function (theme) {
+          getState().themeInfo.map(function (themeObject) {
+            if (themeObject["id"] === theme) {
+              themeArray.push(themeObject["name"] + " ");
+            }
+          });
+        });
+        myGameObject["themes"] = [].concat(themeArray);
+      }
+
+      if (gameObject.rating) {
+        myGameObject["user_rating"] = Math.round(gameObject.rating);
+      }
+
+      if (gameObject.aggregated_rating) {
+        myGameObject["critic_rating"] = Math.round(gameObject.aggregated_rating);
+      }
+
+      if (gameObject.screenshots) {
+        gameObject.screenshots.map(function (screenshotObject) {
+          screenArray.push("https://images.igdb.com/igdb/image/upload/t_screenshot_big/" + screenshotObject["cloudinary_id"]);
+        });
+
+        myGameObject["screenshot"] = screenArray;
+      }
+      myGameData.push(myGameObject);
+    });
+
+    dispatch(receiveGameData(myGameData));
+  };
+}
+
+//function to call Reducer and set game data in redux.state
+function receiveGameData(gameData) {
+  return {
+    type: "RECEIVE_GAMEDATA",
+    payload: gameData
+  };
+}
+
+/***/ }),
+
 /***/ "./src/components/App.js":
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
@@ -27193,11 +27419,11 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
+
+var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-
-var _Search = __webpack_require__(/*! ./Search */ "./src/components/Search.js");
-
-var _Search2 = _interopRequireDefault(_Search);
 
 var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
 
@@ -27212,6 +27438,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import Header from "./Header";
+
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -27231,13 +27459,16 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           "h1",
           null,
-          "Level Up n00bs!"
+          "Level Up !"
         ),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
+              return _react2.default.createElement(_SearchContainer2.default, null);
             } })
         )
       );
@@ -27248,74 +27479,6 @@ var App = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = App;
-
-/***/ }),
-
-/***/ "./src/components/Game.js":
-/*!********************************!*\
-  !*** ./src/components/Game.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Game = function (_React$Component) {
-  _inherits(Game, _React$Component);
-
-  function Game() {
-    _classCallCheck(this, Game);
-
-    return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this));
-  }
-
-  _createClass(Game, [{
-    key: "render",
-    value: function render() {
-      var game = this.props.game;
-
-      return _react2.default.createElement(
-        "ul",
-        null,
-        Object.keys(game).map(function (currentItem) {
-          return currentItem;
-          //game//[currentItem]
-        })
-      );
-    } //
-
-  }]);
-
-  return Game;
-}(_react2.default.Component);
-
-exports.default = Game;
-
-// {this.state.gameInfo.map(game => {
-//   return (
-//     Object.keys(game).map(currentItem => {
-//       return (game[currentItem])
-//     }))
-// })}
 
 /***/ }),
 
@@ -27339,9 +27502,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Game = __webpack_require__(/*! ./Game */ "./src/components/Game.js");
+__webpack_require__(/*! ../../static/styles/components/search.scss */ "./static/styles/components/search.scss");
 
-var _Game2 = _interopRequireDefault(_Game);
+__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27360,41 +27523,15 @@ var Search = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
     _this.state = {
-      searchGame: "",
-      gameInfo: []
+      searchGame: ""
     };
 
-    _this.getGameData = _this.getGameData.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
   }
 
-  // componentDidMount() {
-  //   this.getreviews()
-  // }
-
   _createClass(Search, [{
-    key: "getGameData",
-    value: function getGameData() {
-      var _this2 = this;
-
-      var searchPath = "/games/" + this.state.searchGame;
-      fetch(searchPath, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {}
-      }).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        console.log('review info ', json.body); //NAUGHTY CONSOLE LOG HERE
-        _this2.setState({ gameInfo: json.body });
-      }).catch(function (error) {
-        console.log("Sorry the following error occurred: ", error);
-        alert("Sorry not found, try again");
-      });
-    }
-  }, {
     key: "handleChange",
     value: function handleChange(event) {
       event.preventDefault();
@@ -27406,7 +27543,7 @@ var Search = function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.getGameData();
+      this.props.fetchGameInfo("/games/" + this.state.searchGame);
       this.setState({
         searchGame: ""
       });
@@ -27414,83 +27551,92 @@ var Search = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var gameData = this.props.gameData;
+
+      var gameDisplay = gameData.map(function (game) {
+        return _react2.default.createElement(
+          "li",
+          { key: game.igdbId, className: "search__result" },
+          _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
+          _react2.default.createElement(
+            "div",
+            { className: "search__details" },
+            _react2.default.createElement(
+              "header",
+              { className: "search__details--name" },
+              game.name
+            ),
+            game.description !== "" || game.description !== undefined ? _react2.default.createElement(
+              "p",
+              null,
+              game.description
+            ) : null,
+            game.user_rating ? _react2.default.createElement(
+              "header",
+              { className: "search__details--ratings" },
+              "Gamer Rating: ",
+              game.user_rating,
+              "%"
+            ) : null,
+            game.critic_rating ? _react2.default.createElement(
+              "header",
+              { className: "search__details--ratings" },
+              "Critics Rating: ",
+              game.critic_rating,
+              "%"
+            ) : null,
+            game.genres ? _react2.default.createElement(
+              "header",
+              { className: "search__details--ratings" },
+              "Genre: ",
+              game.genres
+            ) : null,
+            game.themes ? _react2.default.createElement(
+              "header",
+              { className: "search__details--ratings" },
+              "Theme: ",
+              game.themes
+            ) : null
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "search__details--screenshots" },
+            game.screenshot ? game.screenshot.map(function (currentImg) {
+              return _react2.default.createElement("img", { src: currentImg, key: currentImg });
+            }) : null
+          ),
+          _react2.default.createElement("br", null)
+        );
+      });
 
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(
-          "h1",
-          null,
-          "Find your Game here"
-        ),
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "form",
-          { className: "search__form", id: "search__form", onSubmit: this.handleSubmit },
+          {
+            className: "search__form",
+            id: "search__form",
+            onSubmit: this.handleSubmit
+          },
           _react2.default.createElement("input", {
             onChange: this.handleChange,
-            type: "text",
-            className: "search__text",
+            type: "search",
+            results: "0",
+            alt: "Search",
+            className: "search__input",
             id: "search__text",
             autoComplete: "off",
             value: this.state.searchGame,
-            placeholder: "Enter game title search"
+            placeholder: "\uD83D\uDD0D Search"
           })
         ),
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "ul",
-          null,
-          this.state.gameInfo.map(function (game) {
-            return _react2.default.createElement(
-              "li",
-              { key: game.id },
-              _react2.default.createElement("img", { src: game.cover.url }),
-              _react2.default.createElement("br", null),
-              _react2.default.createElement(
-                "h2",
-                null,
-                game.name
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                game.summary
-              ),
-              "About:",
-              _react2.default.createElement(
-                "h4",
-                null,
-                "User Rating:         ",
-                Math.round(game.rating)
-              ),
-              _react2.default.createElement(
-                "h4",
-                null,
-                "Critics Rating:      ",
-                Math.round(game.aggregated_rating)
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Genres:",
-                game.genres
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Themes: ",
-                game.themes
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Game Modes: ",
-                game.game_modes
-              ),
-              _react2.default.createElement("br", null)
-            );
-          })
+          { className: "search" },
+          gameDisplay
         )
       );
     }
@@ -27500,6 +27646,51 @@ var Search = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Search;
+
+/***/ }),
+
+/***/ "./src/containers/SearchContainer.js":
+/*!*******************************************!*\
+  !*** ./src/containers/SearchContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Search = __webpack_require__(/*! ../components/Search */ "./src/components/Search.js");
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  console.log("redux gameData", reduxState.gameInfo);
+  return {
+    gameData: reduxState.gameInfo,
+    themeData: reduxState.themeInfo,
+    genreData: reduxState.genreInfo
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchGameInfo: function fetchGameInfo(searchGame) {
+      dispatch((0, _actions.fetchGenreData)()), dispatch((0, _actions.fetchThemeData)()), dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Search2.default);
 
 /***/ }),
 
@@ -27533,6 +27724,8 @@ var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
+var _reduxDevtoolsExtension = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
+
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _reducers = __webpack_require__(/*! ./reducers */ "./src/reducers/index.js");
@@ -27541,7 +27734,8 @@ var _reducers2 = _interopRequireDefault(_reducers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+//Redux chrome ext
+var store = (0, _redux.createStore)(_reducers2.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk2.default))); //Redux chrome extension :)
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
@@ -27552,6 +27746,67 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(_App2.default, null)
   )
 ), document.getElementById("root"));
+
+/***/ }),
+
+/***/ "./src/reducers/gameInfo.js":
+/*!**********************************!*\
+  !*** ./src/reducers/gameInfo.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function gameInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_GAMEDATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = gameInfo;
+
+/***/ }),
+
+/***/ "./src/reducers/genreInfo.js":
+/*!***********************************!*\
+  !*** ./src/reducers/genreInfo.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function genreInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_GENREDATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = genreInfo;
 
 /***/ }),
 
@@ -27571,22 +27826,32 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
-var _placeholder = __webpack_require__(/*! ./placeholder */ "./src/reducers/placeholder.js");
+var _gameInfo = __webpack_require__(/*! ./gameInfo */ "./src/reducers/gameInfo.js");
 
-var _placeholder2 = _interopRequireDefault(_placeholder);
+var _gameInfo2 = _interopRequireDefault(_gameInfo);
+
+var _themeInfo = __webpack_require__(/*! ./themeInfo */ "./src/reducers/themeInfo.js");
+
+var _themeInfo2 = _interopRequireDefault(_themeInfo);
+
+var _genreInfo = __webpack_require__(/*! ./genreInfo */ "./src/reducers/genreInfo.js");
+
+var _genreInfo2 = _interopRequireDefault(_genreInfo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  placeholder: _placeholder2.default
+  gameInfo: _gameInfo2.default,
+  themeInfo: _themeInfo2.default,
+  genreInfo: _genreInfo2.default
 });
 
 /***/ }),
 
-/***/ "./src/reducers/placeholder.js":
-/*!*************************************!*\
-  !*** ./src/reducers/placeholder.js ***!
-  \*************************************/
+/***/ "./src/reducers/themeInfo.js":
+/*!***********************************!*\
+  !*** ./src/reducers/themeInfo.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27596,20 +27861,21 @@ exports.default = (0, _redux.combineReducers)({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function placeholder() {
-  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+function themeInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+
   switch (action.type) {
-    case "RECEIVE_PLACEHOLDER":
-      return action.placeholder;
+    case "RECEIVE_THEMEDATA":
+      return action.payload;
 
     default:
       return reduxState;
   }
 }
 
-exports.default = placeholder;
+exports.default = themeInfo;
 
 /***/ }),
 
@@ -27674,6 +27940,36 @@ var HomeRoute = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = HomeRoute;
+
+/***/ }),
+
+/***/ "./static/styles/components/search.scss":
+/*!**********************************************!*\
+  !*** ./static/styles/components/search.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 

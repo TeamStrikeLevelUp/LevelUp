@@ -1,4 +1,6 @@
 import React from "react";
+import "../../static/styles/components/search.scss";
+import "../../static/styles/index.scss";
 
 class Search extends React.Component {
   constructor() {
@@ -10,7 +12,6 @@ class Search extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleChange(event) {
@@ -25,63 +26,82 @@ class Search extends React.Component {
     this.props.fetchGameInfo("/games/" + this.state.searchGame);
     this.setState({
       searchGame: ""
-    })
+    });
   }
 
   render() {
-
     const { gameData } = this.props;
+    const gameDisplay = gameData.map(game => {
+      return (
+        <li key={game.igdbId} className="search__result">
+          <img src={game.cover_img} className="search__img--cover" />
+          <div className="search__details">
+            <header className="search__details--name">{game.name}</header>
+            {game.description !== "" || game.description !== undefined ? (
+              <p>{game.description}</p>
+            ) : null}
+
+            {game.user_rating ? (
+              <header className="search__details--ratings">
+                Gamer Rating: {game.user_rating}%
+              </header>
+            ) : null}
+
+            {game.critic_rating ? (
+              <header className="search__details--ratings">
+                Critics Rating: {game.critic_rating}%
+              </header>
+            ) : null}
+
+            {game.genres ? (
+              <header className="search__details--ratings">
+                Genre: {game.genres}
+              </header>
+            ) : null}
+
+            {game.themes ? (
+              <header className="search__details--ratings">
+                Theme: {game.themes}
+              </header>
+            ) : null}
+          </div>
+          <div className="search__details--screenshots">
+            {game.screenshot
+              ? game.screenshot.map(currentImg => {
+                  return <img src={currentImg} key={currentImg} />;
+                })
+              : null}
+          </div>
+          <br />
+        </li>
+      );
+    });
 
     return (
       <div>
-        <h1>Find your Game here</h1>
-
         <br />
-        <form className="search__form" id="search__form" onSubmit={this.handleSubmit}>
+        <form
+          className="search__form"
+          id="search__form"
+          onSubmit={this.handleSubmit}
+        >
           <input
             onChange={this.handleChange}
-            type="text"
-            className="search__text"
+            type="search"
+            results="0"
+            alt="Search"
+            className="search__input"
             id="search__text"
             autoComplete="off"
             value={this.state.searchGame}
-            placeholder="Enter game title search"
+            placeholder="🔍 Search"
           />
         </form>
         <br />
 
-        <ul>
-
-          {gameData !== undefined ?
-            gameData.map(game => {
-              return (
-                <li key={game.igdbId}>
-                  <img src={game.cover_img} />
-                  <br />
-                  <h2>{game.name}</h2>
-                  <p>{game.description}</p>
-                  About:
-                <h4>User Rating:         {game.user_rating}</h4>
-                  <h4>Critics Rating:      {game.critic_rating}
-                  </h4>
-                  <h4>Genres:{game.genres}</h4>
-                  <h4>Themes: {game.themes}</h4>
-                  {game.screenshot ? (game.screenshot).map(currentImg => {
-
-                    return <img src={currentImg} key={currentImg} />
-
-                  }) : null}
-
-
-                  <br />
-                </li>
-              )
-            }
-            ) : null}
-
-        </ul>
+        <ul className="search">{gameDisplay}</ul>
       </div>
-    )
+    );
   }
 }
 

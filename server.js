@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const igdb = require("igdb-api-node").default;
 const pgp = require("pg-promise")();
 
@@ -29,8 +28,6 @@ app.get("/user", function(req, res) {
 });
 // Database connection test ends
 
-// app.use(cors());
-
 const client = igdb("96651c2677f60060f3a91ef002c2a419");
 
 app.set("view engine", "hbs");
@@ -43,15 +40,17 @@ app.get("/homepage", function(req, res) {
   res.render("index", {});
 });
 
+//this search is executed when user enters game to search on
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client
     .games({
       search: gameTitle,
+      // order: "release_dates.date:desc",
       // fields: 'id,name,summary,cover.url,rating,aggregated_rating,cover', // Return all fields
-      fields: "*",
-      limit: 5, // Limit to 5 results
-      offset: 15 // Index offset for results
+      fields: "*"
+      // limit: 5, // Limit to 5 results
+      // offset: 15 // Index offset for results
     })
     .then(response => {
       // response.body contains the parsed JSON response to this query
@@ -68,6 +67,7 @@ app.get("/gameid/:id", (req, res) => {
   client
     .games({
       ids: [gameTitle],
+      order: "release_dates.date:asc",
       fields: "id,name,summary,cover.url,rating,aggregated_rating,cover", // Return all fields
       limit: 5, // Currentlyl imited to 5 results
       offset: 15 // Index offset for results
@@ -81,6 +81,7 @@ app.get("/gameid/:id", (req, res) => {
       console.log("You have 2 lives remaining ", error);
     });
 });
+
 app.get("/reviews/:gameId", (req, res) => {
   const gameTitle = req.params.gameId;
   client
@@ -100,11 +101,12 @@ app.get("/reviews/:gameId", (req, res) => {
     });
 });
 
-app.get("/themes", (req, res) => {
+app.get("/themes/", (req, res) => {
   const themeId = req.params.title;
   client
     .themes({
-      fields: "id,name"
+      fields: "id,name",
+      limit: 50 // Limit to 50 results
     })
     .then(response => {
       displayData(res, response);
@@ -114,10 +116,12 @@ app.get("/themes", (req, res) => {
     });
 });
 
-app.get("/genres", (req, res) => {
+app.get("/genres/", (req, res) => {
+  const genreId = req.params.genreId;
   client
     .genres({
-      fields: "id,name" // Return all fields
+      fields: "id,name", // Return all fields
+      limit: 50 // Limit to 50 results
     })
     .then(response => {
       // response.body contains the parsed JSON response to this query
@@ -143,7 +147,7 @@ app.get("*", function(req, res) {
   res.render("index");
 });
 
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 app.listen(port, function() {
   console.log(`Listening on port number ${port}`);
 });
