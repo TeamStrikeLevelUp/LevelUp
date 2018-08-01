@@ -18,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Level Up n00bs !</h1>
+        <h1>Level Up !</h1>
         <Switch>
           <Route exact path="/homepage" render={() => <HomeRoute />} />
           <Route exact path="/search" render={() => <SearchContainer />} />
