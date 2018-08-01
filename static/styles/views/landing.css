@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: beige;
+}
+
+.landing__svg {
+  position: relative;
+  transform: rotate(90deg);
+  width: 100%;
+  height: 100%;
+  top: 150px;
+}
+
+.landing__login {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.7px;
+}
+
+.landing__home {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  font-size: 1.7px;
+}
+
+.landing__signup {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+  font-size: 1.7px;
+}
+
+@media (min-width: 768px) {
+  .landing__svg {
+    transform: rotate(0deg);
+
+    width: 100%;
+
+    top: 0px;
+  }
+}

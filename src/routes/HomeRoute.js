@@ -1,10 +1,16 @@
-import React from 'react';
+import React from "react";
+import ForumLinks from "../components/ForumLinks";
 
 class HomeRoute extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="home">
-                <div>Home goes here</div>
+                <div>Home route comp here.</div>
+                <ForumLinks />
             </div>
         );
     }
