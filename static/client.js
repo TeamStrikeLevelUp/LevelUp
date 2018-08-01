@@ -1,5 +1,5 @@
 const loginForm = document.getElementById('login-form');
-const registrationForm = document.getElementById('registration-form');
+const signupForm = document.getElementById('signup-form');
 
 // Login form handler
 if (loginForm) {
@@ -28,13 +28,13 @@ if (loginForm) {
 }
 
 // Registration form handler
-if (registrationForm) {
-    registrationForm.addEventListener('submit', function (event) {
+if (signupForm) {
+    signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const registrationUsername = document.getElementById('registration-username').value;
-        const registrationPassword = document.getElementById('registration-password').value;
-        const registrationEmail = document.getElementById('registration-email').value;
+        const registrationUsername = document.getElementById('signup-username').value;
+        const registrationPassword = document.getElementById('signup-password').value;
+        const registrationEmail = document.getElementById('signup-email').value;
 
         fetch('/signin', {
             method: 'POST',

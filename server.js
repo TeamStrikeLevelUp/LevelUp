@@ -149,11 +149,11 @@ app.post('/login', passport.authenticate('local', { session: true }), function (
 });
 
 // register page
-app.get('/signin', function (req, res) {
-  res.render('signin', {});
+app.get('/signup', function (req, res) {
+  res.render('signup', {});
 })
 
-app.post("/signin", (req, res) => {
+app.post("/signup", (req, res) => {
   const { registrationUsername, registrationPassword, registrationEmail } = req.body;
   pass = registrationPassword;
   bcrypt.genSalt(SALT_ROUNDS)
