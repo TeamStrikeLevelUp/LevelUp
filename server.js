@@ -66,6 +66,14 @@ app.get("/api/forum/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.get("/api/forum/search/:name", function (req, res) {
+  db.any(`SELECT * FROM forum WHERE title ILIKE \'%$1#%\'`, [req.params.name])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
 app.get("/api/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [
     req.params.id
@@ -87,6 +95,15 @@ app.get("/api/parentpost/:id", function (req, res) {
 app.get("/api/reply/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/reply/:id/search/:name", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id = $1 AND title ILIKE \'%$2#%\' `, [req.params.id, req.params.name])
+    .then(data => {
+      console.log(data);
       res.json(data);
     })
     .catch(error => console.log(error.message));

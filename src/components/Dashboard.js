@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
                             <li className="dashboard__nav--item">Dashboard</li>
                             <li className="dashboard__nav--item">Account</li>
                             <li className="dashboard__nav--item">Forum</li>
-                            <li className="dashboard__nav--item">Settings</li>
+                            <li className="dashboard__nav--item">Favorites</li>
                         </ul>
                     </div>
                     <div className="dashboard-content-wrapper">

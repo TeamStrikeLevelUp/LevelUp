@@ -27508,10 +27508,6 @@ var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
-
-var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
-
 var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
 
 var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
@@ -27531,6 +27527,10 @@ var _ForumsRoute2 = _interopRequireDefault(_ForumsRoute);
 var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src/routes/DashboardRoute.js");
 
 var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
+
+var _PostsContainer = __webpack_require__(/*! ../containers/PostsContainer */ "./src/containers/PostsContainer.js");
+
+var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
@@ -27557,7 +27557,6 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(_HomeNavBar2.default, null),
         _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(
           _reactRouterDom.Switch,
@@ -27575,7 +27574,7 @@ var App = function (_React$Component) {
               return _react2.default.createElement(_TwitchRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _Posts2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _PostsContainer2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
               return _react2.default.createElement(_ForumsRoute2.default, null);
             } })
@@ -27690,7 +27689,7 @@ var Dashboard = function (_React$Component) {
                             _react2.default.createElement(
                                 'li',
                                 { className: 'dashboard__nav--item' },
-                                'Settings'
+                                'Favorites'
                             )
                         )
                     ),
@@ -27870,30 +27869,17 @@ var ForumLinks = function (_React$Component) {
   function ForumLinks() {
     _classCallCheck(this, ForumLinks);
 
-    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
-
-    _this.state = { forums: [] };
-    return _this;
+    return _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
   }
 
   _createClass(ForumLinks, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      fetch("/api/forum").then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({ forums: json });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
+
       return _react2.default.createElement(
         "div",
         null,
-        this.state.forums.map(function (forum, index) {
+        this.props.forums.map(function (forum, index) {
           return _react2.default.createElement(
             "div",
             { key: forum.id },
@@ -27912,42 +27898,6 @@ var ForumLinks = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ForumLinks;
-
-/***/ }),
-
-/***/ "./src/components/ForumSearch.js":
-/*!***************************************!*\
-  !*** ./src/components/ForumSearch.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function ForumSearch() {
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "p",
-      null,
-      "Yo"
-    )
-  );
-}
-
-exports.default = ForumSearch;
 
 /***/ }),
 
@@ -28077,6 +28027,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
+
+var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
+
 __webpack_require__(/*! ../../styles/components/header.scss */ "./styles/components/header.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28092,7 +28046,8 @@ function Header() {
         "h2",
         null,
         "Level Up"
-      )
+      ),
+      _react2.default.createElement(_HomeNavBar2.default, null)
     )
   );
 }
@@ -28232,7 +28187,9 @@ var Posts = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
 
-    _this.state = { replies: [], post: {} };
+    _this.state = { replies: [], post: {}, input: "" };
+    _this.inputHandler = _this.inputHandler.bind(_this);
+    _this.searchHandler = _this.searchHandler.bind(_this);
     return _this;
   }
 
@@ -28252,14 +28209,29 @@ var Posts = function (_React$Component) {
       }).then(function (json) {
         return _this2.setState({ post: json });
       });
+    }
+  }, {
+    key: "inputHandler",
+    value: function inputHandler(event) {
+      this.setState({ input: event.target.value });
+    }
+  }, {
+    key: "searchHandler",
+    value: function searchHandler(event) {
+      event.preventDefault();
 
-      //this.setState({post: json})
+      fetch("/api/reply/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return console.log(json);
+      });
     }
   }, {
     key: "render",
     value: function render() {
       var _this3 = this;
 
+      console.log(this.props.userAuthState);
       if (!this.state.post.id) return null;
 
       return _react2.default.createElement(
@@ -28285,6 +28257,16 @@ var Posts = function (_React$Component) {
           " Date Posted: ",
           this.state.post.created,
           " "
+        ),
+        _react2.default.createElement(
+          "form",
+          null,
+          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.searchHandler },
+            " search "
+          )
         ),
         this.state.replies.map(function (reply) {
           return _react2.default.createElement(
@@ -28671,6 +28653,39 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
+
+/***/ }),
+
+/***/ "./src/containers/PostsContainer.js":
+/*!******************************************!*\
+  !*** ./src/containers/PostsContainer.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Posts = __webpack_require__(/*! ../components/Posts */ "./src/components/Posts.js");
+
+var _Posts2 = _interopRequireDefault(_Posts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState, ownProps) {
+  return {
+    match: ownProps.match,
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Posts2.default);
 
 /***/ }),
 
@@ -29062,10 +29077,6 @@ var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/com
 
 var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
 
-var _ForumSearch = __webpack_require__(/*! ../components/ForumSearch */ "./src/components/ForumSearch.js");
-
-var _ForumSearch2 = _interopRequireDefault(_ForumSearch);
-
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29082,16 +29093,60 @@ var ForumsRoute = function (_React$Component) {
   function ForumsRoute() {
     _classCallCheck(this, ForumsRoute);
 
-    return _possibleConstructorReturn(this, (ForumsRoute.__proto__ || Object.getPrototypeOf(ForumsRoute)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (ForumsRoute.__proto__ || Object.getPrototypeOf(ForumsRoute)).call(this));
+
+    _this.state = { input: "", forums: [] };
+    _this.inputHandler = _this.inputHandler.bind(_this);
+    _this.searchHandler = _this.searchHandler.bind(_this);
+    return _this;
   }
 
   _createClass(ForumsRoute, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/forum").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ forums: json });
+      });
+    }
+  }, {
+    key: "inputHandler",
+    value: function inputHandler(event) {
+      this.setState({ input: event.target.value });
+    }
+  }, {
+    key: "searchHandler",
+    value: function searchHandler(event) {
+      var _this3 = this;
+
+      event.preventDefault();
+
+      fetch("/api/forum/search/" + this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this3.setState({ forums: json });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(_ForumLinks2.default, null)
+        _react2.default.createElement(
+          "form",
+          null,
+          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.searchHandler },
+            " search "
+          )
+        ),
+        _react2.default.createElement(_ForumLinks2.default, { forums: this.state.forums })
       );
     }
   }]);
