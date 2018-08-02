@@ -9,7 +9,8 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        const userData = JSON.parse(document.querySelector('#data').innerHTML);
+        // Get initialUser variable from global scope declared in index.hbs
+        const userData = initialUser; // JSON.parse(document.querySelector('#data').innerHTML);
         this.setState({
             user: userData
         })
