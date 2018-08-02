@@ -54,7 +54,7 @@ class Forums extends React.Component {
 
 
        <form>
-        <input placeholder="search for replies" value={this.state.input} onChange={this.inputHandler} />
+        <input placeholder="search for posts" value={this.state.input} onChange={this.inputHandler} />
        <button onClick={this.searchHandler}> search </button>
         </form>
 
