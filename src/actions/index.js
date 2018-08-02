@@ -257,3 +257,11 @@ function formatDate(date) {
   }
   return `${day}${suffix} ${month} ${year} at ${hours}:${minutes} `;
 }
+
+//function to call Reducer and set auth in redux.state
+export function receiveAuthState(auth) {
+  return {
+    type: "RECEIVE_AUTHSTATE",
+    payload: auth
+  };
+}
