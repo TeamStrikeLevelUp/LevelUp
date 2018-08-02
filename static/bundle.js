@@ -27615,9 +27615,10 @@ var Dashboard = function (_React$Component) {
     }
 
     _createClass(Dashboard, [{
-        key: 'componentDidMount',
+        key: "componentDidMount",
         value: function componentDidMount() {
-            var userData = JSON.parse(document.querySelector('#data').innerHTML);
+            // Get initialUser variable from global scope declared in index.hbs
+            var userData = initialUser; // JSON.parse(document.querySelector('#data').innerHTML);
             this.setState({
                 user: userData
             });
@@ -27626,14 +27627,14 @@ var Dashboard = function (_React$Component) {
             };
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                { className: 'dashboard-container' },
-                'Hi ',
+                "div",
+                { className: "dashboard-container" },
+                "Hi ",
                 this.state.user.username,
-                ', Dashboard component here'
+                ", Dashboard component here"
             );
         }
     }]);
