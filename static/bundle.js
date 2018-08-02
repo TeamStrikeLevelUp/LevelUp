@@ -86,6 +86,44 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/header.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/header.scss ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\n.header {\n  padding: 3px;\n  margin: 0;\n  background-color: cadetblue; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/navbar.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/navbar.scss ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "ul {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss":
 /*!*****************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss ***!
@@ -98,7 +136,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
 
 // exports
 
@@ -117,7 +155,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\nbody {\n  background-color: var(--primary-color);\n  font-family: 'Open Sans', sans-serif; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -27430,14 +27468,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
-var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
-
-var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
-
-var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
-
-var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
-
 var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
 
 var _Forums2 = _interopRequireDefault(_Forums);
@@ -27446,9 +27476,29 @@ var _Posts = __webpack_require__(/*! ./Posts */ "./src/components/Posts.js");
 
 var _Posts2 = _interopRequireDefault(_Posts);
 
-var _ForumLinks = __webpack_require__(/*! ./ForumLinks */ "./src/components/ForumLinks.js");
+var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
 
-var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
+var _Header2 = _interopRequireDefault(_Header);
+
+var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
+
+var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
+
+var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
+
+var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
+
+var _TwitchRoute = __webpack_require__(/*! ../routes/TwitchRoute */ "./src/routes/TwitchRoute.js");
+
+var _TwitchRoute2 = _interopRequireDefault(_TwitchRoute);
+
+var _SearchGamesRoute = __webpack_require__(/*! ../routes/SearchGamesRoute */ "./src/routes/SearchGamesRoute.js");
+
+var _SearchGamesRoute2 = _interopRequireDefault(_SearchGamesRoute);
+
+var _ForumsRoute = __webpack_require__(/*! ../routes/ForumsRoute */ "./src/routes/ForumsRoute.js");
+
+var _ForumsRoute2 = _interopRequireDefault(_ForumsRoute);
 
 var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src/routes/DashboardRoute.js");
 
@@ -27463,12 +27513,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import Header from "./Header";
-
-// import NavBar from "./NavBar";
-// import Main from "./Main";
-// import Footer from "./Footer";
 
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
@@ -27485,27 +27529,27 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(
-          "h1",
-          null,
-          "Level Up !"
-        ),
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_HomeNavBar2.default, null),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
-              return _react2.default.createElement(_SearchContainer2.default, null);
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/search", render: function render() {
+              return _react2.default.createElement(_SearchGamesRoute2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/dashboard", render: function render() {
               return _react2.default.createElement(_DashboardRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/twitch", render: function render() {
+              return _react2.default.createElement(_TwitchRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _Posts2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
-              return _react2.default.createElement(_ForumLinks2.default, null);
+              return _react2.default.createElement(_ForumsRoute2.default, null);
             } })
         )
       );
@@ -27670,6 +27714,42 @@ exports.default = ForumLinks;
 
 /***/ }),
 
+/***/ "./src/components/ForumSearch.js":
+/*!***************************************!*\
+  !*** ./src/components/ForumSearch.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ForumSearch() {
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "p",
+      null,
+      "Yo"
+    )
+  );
+}
+
+exports.default = ForumSearch;
+
+/***/ }),
+
 /***/ "./src/components/Forums.js":
 /*!**********************************!*\
   !*** ./src/components/Forums.js ***!
@@ -27775,6 +27855,145 @@ var Forums = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Forums;
+
+/***/ }),
+
+/***/ "./src/components/Header.js":
+/*!**********************************!*\
+  !*** ./src/components/Header.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../static/styles/components/header.scss */ "./static/styles/components/header.scss");
+
+__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header() {
+  return _react2.default.createElement(
+    "div",
+    { className: "header" },
+    _react2.default.createElement(
+      "div",
+      { className: "header__logo" },
+      _react2.default.createElement(
+        "h2",
+        null,
+        "Level Up"
+      )
+    )
+  );
+}
+
+exports.default = Header;
+
+/***/ }),
+
+/***/ "./src/components/HomeNavBar.js":
+/*!**************************************!*\
+  !*** ./src/components/HomeNavBar.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+__webpack_require__(/*! ../../static/styles/components/navbar.scss */ "./static/styles/components/navbar.scss");
+
+__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function HomeNavBar() {
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "ul",
+      null,
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/homepage" },
+          "Home"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/search" },
+          "Search Games"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/forum" },
+          "Community"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/twitch" },
+          "Twitch Streams"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/dashboard" },
+          "Profile"
+        )
+      ),
+      _react2.default.createElement(
+        "li",
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: "/signup" },
+          "Log In/Sign Up"
+        )
+      )
+    )
+  );
+}
+
+exports.default = HomeNavBar;
 
 /***/ }),
 
@@ -28100,65 +28319,6 @@ exports.default = Search;
 
 /***/ }),
 
-/***/ "./src/components/TwitchContainer.js":
-/*!*******************************************!*\
-  !*** ./src/components/TwitchContainer.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _TwitchSearch = __webpack_require__(/*! ./TwitchSearch */ "./src/components/TwitchSearch.js");
-
-var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TwitchContainer = function (_React$Component) {
-  _inherits(TwitchContainer, _React$Component);
-
-  function TwitchContainer() {
-    _classCallCheck(this, TwitchContainer);
-
-    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
-  }
-
-  _createClass(TwitchContainer, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_TwitchSearch2.default, null)
-      );
-    }
-  }]);
-
-  return TwitchContainer;
-}(_react2.default.Component);
-
-exports.default = TwitchContainer;
-
-/***/ }),
-
 /***/ "./src/components/TwitchSearch.js":
 /*!****************************************!*\
   !*** ./src/components/TwitchSearch.js ***!
@@ -28357,6 +28517,65 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Search2.default);
+
+/***/ }),
+
+/***/ "./src/containers/TwitchContainer.js":
+/*!*******************************************!*\
+  !*** ./src/containers/TwitchContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TwitchSearch = __webpack_require__(/*! ../components/TwitchSearch */ "./src/components/TwitchSearch.js");
+
+var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchContainer = function (_React$Component) {
+  _inherits(TwitchContainer, _React$Component);
+
+  function TwitchContainer() {
+    _classCallCheck(this, TwitchContainer);
+
+    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
+  }
+
+  _createClass(TwitchContainer, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_TwitchSearch2.default, null)
+      );
+    }
+  }]);
+
+  return TwitchContainer;
+}(_react2.default.Component);
+
+exports.default = TwitchContainer;
 
 /***/ }),
 
@@ -28581,6 +28800,71 @@ exports.default = HomeRoute;
 
 /***/ }),
 
+/***/ "./src/routes/ForumsRoute.js":
+/*!***********************************!*\
+  !*** ./src/routes/ForumsRoute.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/components/ForumLinks.js");
+
+var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
+
+var _ForumSearch = __webpack_require__(/*! ../components/ForumSearch */ "./src/components/ForumSearch.js");
+
+var _ForumSearch2 = _interopRequireDefault(_ForumSearch);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ForumsRoute = function (_React$Component) {
+  _inherits(ForumsRoute, _React$Component);
+
+  function ForumsRoute() {
+    _classCallCheck(this, ForumsRoute);
+
+    return _possibleConstructorReturn(this, (ForumsRoute.__proto__ || Object.getPrototypeOf(ForumsRoute)).apply(this, arguments));
+  }
+
+  _createClass(ForumsRoute, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_ForumLinks2.default, null)
+      );
+    }
+  }]);
+
+  return ForumsRoute;
+}(_react2.default.Component);
+
+exports.default = ForumsRoute;
+
+/***/ }),
+
 /***/ "./src/routes/HomeRoute.js":
 /*!*********************************!*\
   !*** ./src/routes/HomeRoute.js ***!
@@ -28601,17 +28885,17 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Search = __webpack_require__(/*! ../components/Search */ "./src/components/Search.js");
-
-var _Search2 = _interopRequireDefault(_Search);
-
-var _TwitchContainer = __webpack_require__(/*! ../components/TwitchContainer */ "./src/components/TwitchContainer.js");
-
-var _TwitchContainer2 = _interopRequireDefault(_TwitchContainer);
-
 var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/components/ForumLinks.js");
 
 var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
+
+var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
+
+var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28633,18 +28917,7 @@ var HomeRoute = function (_React$Component) {
   _createClass(HomeRoute, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: "home" },
-        _react2.default.createElement(
-          "div",
-          null,
-          "Home route comp here."
-        ),
-        _react2.default.createElement(_Search2.default, null),
-        _react2.default.createElement(_TwitchContainer2.default, null),
-        _react2.default.createElement(_ForumLinks2.default, null)
-      );
+      return _react2.default.createElement("div", { className: "home" });
     }
   }]);
 
@@ -28652,6 +28925,184 @@ var HomeRoute = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = HomeRoute;
+
+/***/ }),
+
+/***/ "./src/routes/SearchGamesRoute.js":
+/*!****************************************!*\
+  !*** ./src/routes/SearchGamesRoute.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
+
+var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchGamesRoute = function (_React$Component) {
+  _inherits(SearchGamesRoute, _React$Component);
+
+  function SearchGamesRoute() {
+    _classCallCheck(this, SearchGamesRoute);
+
+    return _possibleConstructorReturn(this, (SearchGamesRoute.__proto__ || Object.getPrototypeOf(SearchGamesRoute)).apply(this, arguments));
+  }
+
+  _createClass(SearchGamesRoute, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_SearchContainer2.default, null)
+      );
+    }
+  }]);
+
+  return SearchGamesRoute;
+}(_react2.default.Component);
+
+exports.default = SearchGamesRoute;
+
+/***/ }),
+
+/***/ "./src/routes/TwitchRoute.js":
+/*!***********************************!*\
+  !*** ./src/routes/TwitchRoute.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TwitchContainer = __webpack_require__(/*! ../containers/TwitchContainer */ "./src/containers/TwitchContainer.js");
+
+var _TwitchContainer2 = _interopRequireDefault(_TwitchContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchRoute = function (_React$Component) {
+  _inherits(TwitchRoute, _React$Component);
+
+  function TwitchRoute() {
+    _classCallCheck(this, TwitchRoute);
+
+    return _possibleConstructorReturn(this, (TwitchRoute.__proto__ || Object.getPrototypeOf(TwitchRoute)).apply(this, arguments));
+  }
+
+  _createClass(TwitchRoute, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_TwitchContainer2.default, null)
+      );
+    }
+  }]);
+
+  return TwitchRoute;
+}(_react2.default.Component);
+
+exports.default = TwitchRoute;
+
+/***/ }),
+
+/***/ "./static/styles/components/header.scss":
+/*!**********************************************!*\
+  !*** ./static/styles/components/header.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/header.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./static/styles/components/navbar.scss":
+/*!**********************************************!*\
+  !*** ./static/styles/components/navbar.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/navbar.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 

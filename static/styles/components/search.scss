@@ -7,6 +7,11 @@ li {
   list-style: none;
 }
 
+.search {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   margin: 0;
   font-family: "IBM Plex Serif", serif;
