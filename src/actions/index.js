@@ -3,11 +3,7 @@ export function fetchGenreData() {
   return function(dispatch, getState) {
     const searchPath = `/genres/`;
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    })
+    fetch(searchPath)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveGenreData(json.body));
@@ -22,11 +18,7 @@ export function fetchThemeData() {
   return function(dispatch, getState) {
     const searchPath = `/themes/`;
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    })
+    fetch(searchPath)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveThemeData(json.body));
@@ -39,10 +31,7 @@ export function fetchThemeData() {
 //Main Game Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
   return function(dispatch, getState) {
-    return fetch(searchPath, {
-      method: "GET",
-      mode: "cors"
-    })
+    return fetch(searchPath)
       .then(response => response.json())
       .then(json => {
         dispatch(setGameData(json.body));
@@ -55,7 +44,6 @@ export function fetchGameInfoFromAPI(searchPath) {
 
 //function to call Reducer and set Genre data in redux.state
 export function receiveGenreData(genreData) {
-  console.log("genreData", genreData);
   return {
     type: "RECEIVE_GENREDATA",
     payload: genreData
@@ -64,7 +52,6 @@ export function receiveGenreData(genreData) {
 
 //function to call Reducer and set Theme in redux.state
 export function receiveThemeData(themeData) {
-  console.log("themeData", themeData);
   return {
     type: "RECEIVE_THEMEDATA",
     payload: themeData
@@ -76,7 +63,6 @@ export function receiveThemeData(themeData) {
 
 export function setGameData(gameData) {
   return function(dispatch, getState) {
-    console.log("API gameData", gameData);
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -160,7 +146,7 @@ export function setGameData(gameData) {
     if (myGameData.length === 0) {
       myGameData = "No results found";
     }
-    console.log("mygamedata", myGameData);
+
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -170,5 +156,56 @@ export function receiveGameData(gameData) {
   return {
     type: "RECEIVE_GAMEDATA",
     payload: gameData
+  };
+}
+
+//Main NEWS Data fetch - calls helper function to sanitise data
+export function fetchNewsInfoFromAPI() {
+  return function(dispatch, getState) {
+    return fetch("/newsApi/")
+      .then(response => response.json())
+      .then(json => {
+        dispatch(setNewsData(json.articles));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
+//function to call Reducer and set news data in redux.state
+export function receiveNewsData(newsData) {
+  return {
+    type: "RECEIVE_NEWSDATA",
+    payload: newsData
+  };
+}
+
+export function setNewsData(newsData) {
+  return function(dispatch, getState) {
+    let myNewsData = [];
+
+    newsData.map(newsObject => {
+      let myNewsObject = {};
+
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      if (newsObject.author) {
+        myNewsObject["author"] = newsObject.author;
+      }
+      myNewsObject["description"] = newsObject.description;
+
+      myNewsObject["date"] = newsObject.publishedAt;
+
+      myNewsObject["title"] = newsObject.title;
+
+      myNewsObject["url"] = newsObject.url;
+
+      if (newsObject.urlToImage) {
+        myNewsObject["image"] = newsObject.urlToImage;
+      }
+      myNewsData.push(myNewsObject);
+    });
+
+    dispatch(receiveNewsData(myNewsData));
   };
 }

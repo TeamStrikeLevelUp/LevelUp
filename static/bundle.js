@@ -86,14 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss":
-/*!*****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss ***!
-  \*****************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
@@ -105,14 +105,33 @@ exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
@@ -27244,16 +27263,15 @@ exports.receiveGenreData = receiveGenreData;
 exports.receiveThemeData = receiveThemeData;
 exports.setGameData = setGameData;
 exports.receiveGameData = receiveGameData;
+exports.fetchNewsInfoFromAPI = fetchNewsInfoFromAPI;
+exports.receiveNewsData = receiveNewsData;
+exports.setNewsData = setNewsData;
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
     var searchPath = "/genres/";
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    }).then(function (response) {
+    fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveGenreData(json.body));
@@ -27267,11 +27285,7 @@ function fetchThemeData() {
   return function (dispatch, getState) {
     var searchPath = "/themes/";
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    }).then(function (response) {
+    fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveThemeData(json.body));
@@ -27283,10 +27297,7 @@ function fetchThemeData() {
 //Main Game Data fetch - calls helper function to sanitise data
 function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
-    return fetch(searchPath, {
-      method: "GET",
-      mode: "cors"
-    }).then(function (response) {
+    return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(setGameData(json.body));
@@ -27298,7 +27309,6 @@ function fetchGameInfoFromAPI(searchPath) {
 
 //function to call Reducer and set Genre data in redux.state
 function receiveGenreData(genreData) {
-  console.log("genreData", genreData);
   return {
     type: "RECEIVE_GENREDATA",
     payload: genreData
@@ -27307,7 +27317,6 @@ function receiveGenreData(genreData) {
 
 //function to call Reducer and set Theme in redux.state
 function receiveThemeData(themeData) {
-  console.log("themeData", themeData);
   return {
     type: "RECEIVE_THEMEDATA",
     payload: themeData
@@ -27319,7 +27328,6 @@ function receiveThemeData(themeData) {
 
 function setGameData(gameData) {
   return function (dispatch, getState) {
-    console.log("API gameData", gameData);
     var myGameData = [];
 
     gameData.map(function (gameObject) {
@@ -27393,7 +27401,7 @@ function setGameData(gameData) {
     if (myGameData.length === 0) {
       myGameData = "No results found";
     }
-    console.log("mygamedata", myGameData);
+
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -27403,6 +27411,56 @@ function receiveGameData(gameData) {
   return {
     type: "RECEIVE_GAMEDATA",
     payload: gameData
+  };
+}
+
+//Main NEWS Data fetch - calls helper function to sanitise data
+function fetchNewsInfoFromAPI() {
+  return function (dispatch, getState) {
+    return fetch("/newsApi/").then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(setNewsData(json.articles));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set news data in redux.state
+function receiveNewsData(newsData) {
+  return {
+    type: "RECEIVE_NEWSDATA",
+    payload: newsData
+  };
+}
+
+function setNewsData(newsData) {
+  return function (dispatch, getState) {
+    var myNewsData = [];
+
+    newsData.map(function (newsObject) {
+      var myNewsObject = {};
+
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      if (newsObject.author) {
+        myNewsObject["author"] = newsObject.author;
+      }
+      myNewsObject["description"] = newsObject.description;
+
+      myNewsObject["date"] = newsObject.publishedAt;
+
+      myNewsObject["title"] = newsObject.title;
+
+      myNewsObject["url"] = newsObject.url;
+
+      if (newsObject.urlToImage) {
+        myNewsObject["image"] = newsObject.urlToImage;
+      }
+      myNewsData.push(myNewsObject);
+    });
+
+    dispatch(receiveNewsData(myNewsData));
   };
 }
 
@@ -27438,6 +27496,10 @@ var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ 
 
 var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
 
+var _NewsContainer = __webpack_require__(/*! ../containers/NewsContainer */ "./src/containers/NewsContainer.js");
+
+var _NewsContainer2 = _interopRequireDefault(_NewsContainer);
+
 var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
 
 var _Forums2 = _interopRequireDefault(_Forums);
@@ -27454,7 +27516,7 @@ var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src
 
 var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
 
-__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27498,6 +27560,9 @@ var App = function (_React$Component) {
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
               return _react2.default.createElement(_SearchContainer2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/news", render: function render() {
+              return _react2.default.createElement(_NewsContainer2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
               return _react2.default.createElement(_DashboardRoute2.default, null);
@@ -27778,6 +27843,121 @@ exports.default = Forums;
 
 /***/ }),
 
+/***/ "./src/components/News.js":
+/*!********************************!*\
+  !*** ./src/components/News.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../styles/components/news.scss */ "./styles/components/news.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var News = function (_React$Component) {
+  _inherits(News, _React$Component);
+
+  function News() {
+    _classCallCheck(this, News);
+
+    var _this = _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).call(this));
+
+    _this.state = {
+      searchNews: ""
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(News, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.fetchNewsData !== undefined) {
+        this.props.fetchNewsData();
+      }
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      event.preventDefault();
+      this.setState({
+        searchNews: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.props.fetchNewsData("/newsApi/:" + this.state.searchNews);
+      this.setState({
+        searchGame: ""
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var newsData = this.props.newsData;
+
+      console.log(newsData);
+
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "form",
+          {
+            className: "search__form",
+            id: "search__form",
+            onSubmit: this.handleSubmit
+          },
+          _react2.default.createElement("input", {
+            onChange: this.handleChange,
+            type: "search",
+            results: "0",
+            alt: "Search",
+            className: "search__input",
+            id: "search__text",
+            autoComplete: "off",
+            value: this.state.searchNews,
+            placeholder: "\uD83D\uDD0D Search"
+          })
+        ),
+        _react2.default.createElement("br", null)
+      );
+    }
+  }]);
+
+  return News;
+}(_react2.default.Component);
+
+exports.default = News;
+
+/***/ }),
+
 /***/ "./src/components/Posts.js":
 /*!*********************************!*\
   !*** ./src/components/Posts.js ***!
@@ -27929,9 +28109,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(/*! ../../static/styles/components/search.scss */ "./static/styles/components/search.scss");
+__webpack_require__(/*! ../../styles/components/search.scss */ "./styles/components/search.scss");
 
-__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28311,6 +28491,49 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
+/***/ "./src/containers/NewsContainer.js":
+/*!*****************************************!*\
+  !*** ./src/containers/NewsContainer.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _News = __webpack_require__(/*! ../components/News */ "./src/components/News.js");
+
+var _News2 = _interopRequireDefault(_News);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  console.log(reduxState.newsData);
+  return {
+    newsData: reduxState.newsInfo
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchNewsData: function fetchNewsData() {
+      dispatch((0, _actions.fetchNewsInfoFromAPI)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_News2.default);
+
+/***/ }),
+
 /***/ "./src/containers/SearchContainer.js":
 /*!*******************************************!*\
   !*** ./src/containers/SearchContainer.js ***!
@@ -28504,13 +28727,47 @@ var _genreInfo = __webpack_require__(/*! ./genreInfo */ "./src/reducers/genreInf
 
 var _genreInfo2 = _interopRequireDefault(_genreInfo);
 
+var _newsInfo = __webpack_require__(/*! ./newsInfo */ "./src/reducers/newsInfo.js");
+
+var _newsInfo2 = _interopRequireDefault(_newsInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
   gameInfo: _gameInfo2.default,
   themeInfo: _themeInfo2.default,
-  genreInfo: _genreInfo2.default
+  genreInfo: _genreInfo2.default,
+  newsInfo: _newsInfo2.default
 });
+
+/***/ }),
+
+/***/ "./src/reducers/newsInfo.js":
+/*!**********************************!*\
+  !*** ./src/reducers/newsInfo.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function newsInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_NEWSDATA":
+      return action.payload;
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = newsInfo;
 
 /***/ }),
 
@@ -28655,45 +28912,15 @@ exports.default = HomeRoute;
 
 /***/ }),
 
-/***/ "./static/styles/components/search.scss":
-/*!**********************************************!*\
-  !*** ./static/styles/components/search.scss ***!
-  \**********************************************/
+/***/ "./styles/components/news.scss":
+/*!*************************************!*\
+  !*** ./styles/components/news.scss ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./static/styles/index.scss":
-/*!**********************************!*\
-  !*** ./static/styles/index.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -28708,6 +28935,66 @@ options.transform = transform
 options.insertInto = undefined;
 
 var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/search.scss":
+/*!***************************************!*\
+  !*** ./styles/components/search.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/index.scss":
+/*!***************************!*\
+  !*** ./styles/index.scss ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
