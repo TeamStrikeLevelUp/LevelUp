@@ -3,7 +3,9 @@ import React from "react";
 class Posts extends React.Component {
   constructor() {
     super();
-   this.state={replies:[],post:{}}
+   this.state={replies:[],post:{}, input:""}
+   this.inputHandler=this.inputHandler.bind(this);
+    this.searchHandler=this.searchHandler.bind(this);
   }
 
   componentDidMount(){
@@ -15,7 +17,21 @@ class Posts extends React.Component {
     .then(response => response.json())
     .then(json => this.setState({post:json}) );
 
-//this.setState({post: json})
+  }
+
+
+  inputHandler(event){
+    this.setState({input:event.target.value})
+  }
+
+  searchHandler(event){
+    event.preventDefault();
+
+    fetch(`/api/reply/${this.props.match.params.id}/search/${this.state.input}`)
+      .then(response => response.json())
+      .then(json => console.log(json));
+
+
   }
 
  
@@ -29,6 +45,13 @@ class Posts extends React.Component {
        <h3> Topic: {this.state.post.title} </h3>
        <h3> {this.state.post.body} </h3>
        <h3> Date Posted: {this.state.post.created} </h3>
+
+      <form>
+        <input placeholder="search for game" value={this.state.input} onChange={this.inputHandler} />
+       <button onClick={this.searchHandler}> search </button>
+        </form>
+
+
       {this.state.replies.map(reply => {
         return (
           <div key={reply.id}>

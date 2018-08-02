@@ -27685,17 +27685,8 @@ var ForumLinks = function (_React$Component) {
   function ForumLinks() {
     _classCallCheck(this, ForumLinks);
 
-    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
-
-    _this.state = { forums: [] };
-    return _this;
+    return _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
   }
-
-  // componentDidMount() {
-  //   fetch(`/api/forum`)
-  //     .then(response => response.json())
-  //     .then(json => this.setState({ forums: json }));
-  // }
 
   _createClass(ForumLinks, [{
     key: "render",
@@ -27723,42 +27714,6 @@ var ForumLinks = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ForumLinks;
-
-/***/ }),
-
-/***/ "./src/components/ForumSearch.js":
-/*!***************************************!*\
-  !*** ./src/components/ForumSearch.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function ForumSearch() {
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "p",
-      null,
-      "Yo"
-    )
-  );
-}
-
-exports.default = ForumSearch;
 
 /***/ }),
 
@@ -28045,7 +28000,9 @@ var Posts = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
 
-    _this.state = { replies: [], post: {} };
+    _this.state = { replies: [], post: {}, input: "" };
+    _this.inputHandler = _this.inputHandler.bind(_this);
+    _this.searchHandler = _this.searchHandler.bind(_this);
     return _this;
   }
 
@@ -28065,8 +28022,22 @@ var Posts = function (_React$Component) {
       }).then(function (json) {
         return _this2.setState({ post: json });
       });
+    }
+  }, {
+    key: "inputHandler",
+    value: function inputHandler(event) {
+      this.setState({ input: event.target.value });
+    }
+  }, {
+    key: "searchHandler",
+    value: function searchHandler(event) {
+      event.preventDefault();
 
-      //this.setState({post: json})
+      fetch("/api/reply/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return console.log(json);
+      });
     }
   }, {
     key: "render",
@@ -28099,6 +28070,16 @@ var Posts = function (_React$Component) {
           " Date Posted: ",
           this.state.post.created,
           " "
+        ),
+        _react2.default.createElement(
+          "form",
+          null,
+          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.searchHandler },
+            " search "
+          )
         ),
         this.state.replies.map(function (reply) {
           return _react2.default.createElement(
@@ -28909,10 +28890,6 @@ var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/com
 
 var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
 
-var _ForumSearch = __webpack_require__(/*! ../components/ForumSearch */ "./src/components/ForumSearch.js");
-
-var _ForumSearch2 = _interopRequireDefault(_ForumSearch);
-
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28933,6 +28910,7 @@ var ForumsRoute = function (_React$Component) {
 
     _this.state = { input: "", forums: [] };
     _this.inputHandler = _this.inputHandler.bind(_this);
+    _this.searchHandler = _this.searchHandler.bind(_this);
     return _this;
   }
 
@@ -28951,12 +28929,19 @@ var ForumsRoute = function (_React$Component) {
     key: "inputHandler",
     value: function inputHandler(event) {
       this.setState({ input: event.target.value });
-      console.log(this.state.input);
     }
   }, {
     key: "searchHandler",
     value: function searchHandler(event) {
+      var _this3 = this;
+
       event.preventDefault();
+
+      fetch("/api/forum/search/" + this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this3.setState({ forums: json });
+      });
     }
   }, {
     key: "render",
@@ -28970,7 +28955,7 @@ var ForumsRoute = function (_React$Component) {
           _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
           _react2.default.createElement(
             "button",
-            null,
+            { onClick: this.searchHandler },
             " search "
           )
         ),
