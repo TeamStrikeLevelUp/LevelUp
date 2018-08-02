@@ -15,7 +15,7 @@ body {
   background-repeat: no-repeat;
   // background-position: center center;
   background-size: cover;
-  background-color: rgb(19, 39, 39);
+  background-color: rgb(13, 27, 27);
   color: whitesmoke;
 }
 
@@ -25,7 +25,7 @@ body {
   height: 40px;
   border-radius: 5%;
   border: 2px solid #ccc;
-  background-color: rgb(19, 39, 39);
+  background-color: rgb(19, 26, 26);
   color: white;
 }
 
@@ -64,8 +64,11 @@ body {
 .search__info {
   display: flex;
   flex-direction: column;
+  // margin: auto;
 }
 
 .search__video {
-  align-self: right; //argh help!
+  align-content: right; //argh help!
+  justify-content: right;
+  margin: auto;
 }

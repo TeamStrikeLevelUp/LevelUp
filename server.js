@@ -229,19 +229,18 @@ app.post("/signup", (req, res) => {
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client
-    .games({
-      search: gameTitle,
-      fields: "*",
-      order: "popularity:desc"
-      // order: "release_dates.date:desc"
-      // fields: 'id,name,summary,cover.url,rating,aggregated_rating,cover', // Return all fields
-
-      // limit: 5, // Limit to 5 results
-      // offset: 15 // Index offset for results
-    })
+    .games(
+      {
+        filters: {
+          "name-in": gameTitle
+        },
+        order: "popularity:desc",
+        search: gameTitle
+      },
+      ["*"]
+    )
     .then(response => {
       // response.body contains the parsed JSON response to this query
-
       displayData(res, response);
     })
     .catch(error => {
@@ -269,6 +268,7 @@ app.get("/gameid/:id", (req, res) => {
     });
 });
 
+//Not used at the moment
 app.get("/reviews/:gameId", (req, res) => {
   const gameTitle = req.params.gameId;
   client
@@ -288,6 +288,7 @@ app.get("/reviews/:gameId", (req, res) => {
     });
 });
 
+//Load themes and genres once on component did mount to speed up search
 app.get("/themes/", (req, res) => {
   const themeId = req.params.title;
   client

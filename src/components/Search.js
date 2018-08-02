@@ -14,6 +14,10 @@ class Search extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchReferenceData();
+  }
+
   handleChange(event) {
     event.preventDefault();
     this.setState({
@@ -31,71 +35,69 @@ class Search extends React.Component {
 
   render() {
     const { gameData } = this.props;
-    const gameDisplay = gameData.map(game => {
-      return (
-        <li
-          key={game.igdbId}
-          className="search__result"
-          img
-          src="/static/images/background2.jpg"
-        >
-          <img src={game.cover_img} className="search__img--cover" />
-          <div className="search__details">
-            <header className="search__details--name">{game.name}</header>
-            {game.description !== "" || game.description !== undefined ? (
-              <p>{game.description}</p>
-            ) : null}
-            <div className="search__box">
-              <div className="search__info">
-                {game.user_rating ? (
-                  <header className="search__details--ratings">
-                    Gamer Rating: {game.user_rating}%
-                  </header>
-                ) : null}
+    const gameDisplay =
+      gameData === "No results found"
+        ? gameData
+        : gameData.map(game => {
+            return (
+              <li key={game.igdbId} className="search__result">
+                <img src={game.cover_img} className="search__img--cover" />
+                <div className="search__details">
+                  <header className="search__details--name">{game.name}</header>
+                  {game.description !== "" || game.description !== undefined ? (
+                    <p>{game.description}</p>
+                  ) : null}
+                  <div className="search__box">
+                    <div className="search__info">
+                      {game.user_rating ? (
+                        <header className="search__details--ratings">
+                          Gamer Rating: {game.user_rating}%
+                        </header>
+                      ) : null}
 
-                {game.critic_rating ? (
-                  <header className="search__details--ratings">
-                    Critics Rating: {game.critic_rating}%
-                  </header>
-                ) : null}
+                      {game.critic_rating ? (
+                        <header className="search__details--ratings">
+                          Critics Rating: {game.critic_rating}%
+                        </header>
+                      ) : null}
 
-                {game.genres ? (
-                  <header className="search__details--ratings">
-                    Genre: {game.genres}
-                  </header>
-                ) : null}
+                      {game.genres ? (
+                        <header className="search__details--ratings">
+                          Genre: {game.genres}
+                        </header>
+                      ) : null}
 
-                {game.themes ? (
-                  <header className="search__details--ratings">
-                    Theme: {game.themes}
-                  </header>
-                ) : null}
-              </div>
+                      {game.themes ? (
+                        <header className="search__details--ratings">
+                          Theme: {game.themes}
+                        </header>
+                      ) : null}
+                    </div>
 
-              <div className="search__video">
-                {game.video ? (
-                  <iframe
-                    width="560"
-                    height="315"
-                    src={game.video}
-                    frameBorder="0"
-                    allowFullScreen
-                  />
-                ) : null}
-              </div>
-            </div>
-          </div>
-          <div className="search__details--screenshots">
-            {game.screenshot
-              ? game.screenshot.map(currentImg => {
-                  return <img src={currentImg} key={currentImg} />;
-                })
-              : null}
-          </div>
-          <br />
-        </li>
-      );
-    });
+                    <div className="search__video">
+                      {game.video ? (
+                        <iframe
+                          width="560"
+                          height="315"
+                          src={game.video}
+                          frameBorder="0"
+                          allowFullScreen
+                        />
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+                <div className="search__details--screenshots">
+                  {game.screenshot
+                    ? game.screenshot.map(currentImg => {
+                        return <img src={currentImg} key={currentImg} />;
+                      })
+                    : null}
+                </div>
+                <br />
+              </li>
+            );
+          });
 
     return (
       <div>
