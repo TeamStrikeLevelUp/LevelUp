@@ -29,7 +29,7 @@ class Posts extends React.Component {
 
     fetch(`/api/reply/${this.props.match.params.id}/search/${this.state.input}`)
       .then(response => response.json())
-      .then(json => console.log(json));
+      .then(json => this.setState({replies:json}));
 
 
   }
@@ -47,7 +47,7 @@ class Posts extends React.Component {
        <h3> Date Posted: {this.state.post.created} </h3>
 
       <form>
-        <input placeholder="search for game" value={this.state.input} onChange={this.inputHandler} />
+        <input placeholder="search for replies" value={this.state.input} onChange={this.inputHandler} />
        <button onClick={this.searchHandler}> search </button>
         </form>
 

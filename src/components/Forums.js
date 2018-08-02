@@ -5,7 +5,9 @@ import {Link} from 'react-router-dom';
 class Forums extends React.Component {
   constructor() {
     super();
-    this.state = { forum: {}, posts:[] };
+    this.state = { forum: {}, posts:[], input:"" };
+    this.inputHandler=this.inputHandler.bind(this);
+    this.searchHandler=this.searchHandler.bind(this);
   }
 
   componentDidUpdate(prevProps){
@@ -27,6 +29,21 @@ class Forums extends React.Component {
         .then(json => this.setState({posts:json}));
   }
 
+  inputHandler(event){
+    this.setState({input:event.target.value})
+  }
+
+  searchHandler(event){
+    event.preventDefault();
+
+    fetch(`/api/post/${this.props.match.params.id}/search/${this.state.input}`)
+      .then(response => response.json())
+      .then(json => this.setState({posts:json}));
+
+
+  }
+
+
   render() {
      
     if(!this.state.forum.id) return null
@@ -34,6 +51,13 @@ class Forums extends React.Component {
       <div>
           <p>Title: {this.state.forum.title}</p>
           <p>Category: {this.state.forum.category}</p>
+
+
+       <form>
+        <input placeholder="search for replies" value={this.state.input} onChange={this.inputHandler} />
+       <button onClick={this.searchHandler}> search </button>
+        </form>
+
 
           {this.state.posts.map((post, index) => {
          return (
