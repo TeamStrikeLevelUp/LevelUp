@@ -1,5 +1,5 @@
 import React from "react";
-import TwitchSearch from "./TwitchSearch";
+import TwitchSearch from "../components/TwitchSearch";
 
 class TwitchContainer extends React.Component {
   constructor() {

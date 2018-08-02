@@ -1,19 +1,12 @@
 import React from "react";
-import SearchContainer from "../containers/SearchContainer";
-import TwitchContainer from "../components/TwitchContainer";
 import ForumLinks from "../components/ForumLinks";
+import Header from "../components/Header";
+import HomeNavBar from "../components/HomeNavBar";
 
 class HomeRoute extends React.Component {
-    render() {
-        return (
-            <div className="home">
-                <div>Home route comp here.</div>
-                <SearchContainer />
-                <TwitchContainer />
-                <ForumLinks />
-            </div>
-        );
-    }
+  render() {
+    return <div className="home" />;
+  }
 }
 
 export default HomeRoute;

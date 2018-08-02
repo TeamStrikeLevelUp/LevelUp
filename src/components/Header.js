@@ -1,13 +1,12 @@
 import React from "react";
+import "../../static/styles/components/header.scss";
+import "../../static/styles/index.scss";
 
 function Header() {
   return (
     <div className="header">
       <div className="header__logo">
-        <img src="/static/images/logo.png" className="header__logo-image" />
-      </div>
-      <div className="header__logo-2">
-        <img src="/static/images/logo2.png" className="header__logo-image-2" />
+        <h2>Level Up</h2>
       </div>
     </div>
   );
