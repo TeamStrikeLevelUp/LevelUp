@@ -1,0 +1,20 @@
+SEARCH ON KEYWORD
+
+https://newsapi.org/v2/everything?q=fifa&sources=ign&apiKey=167aa74e22a045b58d8d8af7cb8effe8
+
+SEARCH FOR LATEST STORIES IN GAMING
+
+https://newsapi.org/v2/top-headlines?sources=ign&apiKey=167aa74e22a045b58d8d8af7cb8effe8
+
+
+GIANT BOMB 
+666b65c562eed6bc098e33ca3d3b0edf6feb33b8 
+
+
+http://www.giantbomb.com/api/search/?api_key=666b65c562eed6bc098e33ca3d3b0edf6feb33b8&format=json&query="zelda"&resources=game
+
+
+https://www.giantbomb.com/api/games?filter=zelda&api_key=666b65c562eed6bc098e33ca3d3b0edf6feb33b8 NO
+
+
+https://www.giantbomb.com/api/accessories/?api_key=666b65c562eed6bc098e33ca3d3b0edf6feb33b8&format=json&filter=original_release_date:1980-1-1%2000:00:00|1990-1-1%2000:00:00&sort=original_release_date:asc

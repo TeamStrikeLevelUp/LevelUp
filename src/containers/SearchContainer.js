@@ -1,9 +1,13 @@
 import { connect } from "react-redux";
 import Search from "../components/Search";
-import { fetchGameInfoFromAPI, fetchReferenceData } from "../actions";
+import {
+  fetchGameInfoFromAPI,
+  fetchGenreData,
+  fetchThemeData
+} from "../actions";
 
-const mapStateToProps = (reduxState) => {
-  console.log("redux gameData", reduxState.gameInfo)
+const mapStateToProps = reduxState => {
+  // console.log("redux gameData", reduxState.gameInfo);
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
@@ -12,14 +16,18 @@ const mapStateToProps = (reduxState) => {
 };
 
 const mapDispatchToProps = dispatch => {
-
   return {
-    fetchGameInfo: (searchGame) => {
-      dispatch(fetchReferenceData(`genres`)),
-        dispatch(fetchReferenceData(`themes`)),
-        dispatch(fetchGameInfoFromAPI(searchGame))
-    }
-  }
-}
+    fetchReferenceData: () => {
+      dispatch(fetchGenreData()), dispatch(fetchThemeData());
+    },
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+    fetchGameInfo: searchGame => {
+      dispatch(fetchGameInfoFromAPI(searchGame));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);

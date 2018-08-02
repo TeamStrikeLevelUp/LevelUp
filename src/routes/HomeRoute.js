@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../components/Search";
+import SearchContainer from "../containers/SearchContainer";
 import TwitchContainer from "../components/TwitchContainer";
 import ForumLinks from "../components/ForumLinks";
 
@@ -8,7 +8,7 @@ class HomeRoute extends React.Component {
         return (
             <div className="home">
                 <div>Home route comp here.</div>
-                <Search />
+                <SearchContainer />
                 <TwitchContainer />
                 <ForumLinks />
             </div>

@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className="dashboar-container">
+            <div className="dashboard-container">
                 Hi {this.state.user.username},
                 Dashboard component here.
             </div>

@@ -86,6 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss":
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss ***!
@@ -98,7 +117,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: tomato; }\n\nbody {\n  background-color: var(--primary-color);\n  font-family: 'Open Sans', sans-serif; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\nbody {\n  background-color: var(--primary-color);\n  font-family: 'Open Sans', sans-serif; }\n", ""]);
 
 // exports
 
@@ -25705,6 +25724,38 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/redux-devtools-extension/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/redux-devtools-extension/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var compose = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js").compose;
+
+exports.__esModule = true;
+exports.composeWithDevTools = (
+  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :
+    function() {
+      if (arguments.length === 0) return undefined;
+      if (typeof arguments[0] === 'object') return compose;
+      return compose.apply(null, arguments);
+    }
+);
+
+exports.devToolsEnhancer = (
+  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION__ :
+    function() { return function(noop) { return noop; } }
+);
+
+
+/***/ }),
+
 /***/ "./node_modules/redux-thunk/es/index.js":
 /*!**********************************************!*\
   !*** ./node_modules/redux-thunk/es/index.js ***!
@@ -27186,46 +27237,55 @@ module.exports = function(originalModule) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchReferenceData = fetchReferenceData;
+exports.fetchGenreData = fetchGenreData;
+exports.fetchThemeData = fetchThemeData;
 exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
 exports.receiveGenreData = receiveGenreData;
 exports.receiveThemeData = receiveThemeData;
 exports.setGameData = setGameData;
 exports.receiveGameData = receiveGameData;
-
-// Genre & Themes are retrieved via separate fetches 
-function fetchReferenceData(referenceType) {
+// Genre & Themes are retrieved via separate fetches
+function fetchGenreData() {
   return function (dispatch, getState) {
-
-    var searchPath = '/' + referenceType;
+    var searchPath = "/genres/";
 
     fetch(searchPath, {
-      method: 'GET',
-      mode: 'cors',
+      method: "GET",
+      mode: "cors",
       headers: {}
     }).then(function (response) {
       return response.json();
     }).then(function (json) {
-      if (referenceType === "genres") {
-        dispatch(receiveGenreData(json.body));
-      } else {
-        if (referenceType === "themes") {
-          dispatch(receiveThemeData(json.body));
-        }
-      }
+      dispatch(receiveGenreData(json.body));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
     });
   };
 }
+// Genre & Themes are retrieved via separate fetches
+function fetchThemeData() {
+  return function (dispatch, getState) {
+    var searchPath = "/themes/";
 
+    fetch(searchPath, {
+      method: "GET",
+      mode: "cors",
+      headers: {}
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(receiveThemeData(json.body));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
 //Main Game Data fetch - calls helper function to sanitise data
 function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
-
     return fetch(searchPath, {
-      method: 'GET',
-      mode: 'cors'
+      method: "GET",
+      mode: "cors"
     }).then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -27240,7 +27300,7 @@ function fetchGameInfoFromAPI(searchPath) {
 function receiveGenreData(genreData) {
   console.log("genreData", genreData);
   return {
-    type: 'RECEIVE_GENREDATA',
+    type: "RECEIVE_GENREDATA",
     payload: genreData
   };
 }
@@ -27249,7 +27309,7 @@ function receiveGenreData(genreData) {
 function receiveThemeData(themeData) {
   console.log("themeData", themeData);
   return {
-    type: 'RECEIVE_THEMEDATA',
+    type: "RECEIVE_THEMEDATA",
     payload: themeData
   };
 }
@@ -27260,7 +27320,6 @@ function receiveThemeData(themeData) {
 function setGameData(gameData) {
   return function (dispatch, getState) {
     console.log("API gameData", gameData);
-
     var myGameData = [];
 
     gameData.map(function (gameObject) {
@@ -27269,51 +27328,72 @@ function setGameData(gameData) {
       var screenArray = [];
       var genreArray = [];
 
+      // Only select games which have a description
+      if (!gameObject.summary) {
+        return;
+      }
+
       myGameObject["igdbId"] = gameObject.id;
-      myGameObject["cover_img"] = "//images.igdb.com/igdb/image/upload/t_cover_big/" + gameObject.cover.cloudinary_id;
+
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      if (gameObject.cover) {
+        myGameObject["cover_img"] = "//images.igdb.com/igdb/image/upload/t_cover_big/" + gameObject.cover.cloudinary_id;
+      }
+
       myGameObject["name"] = gameObject.name;
+
       myGameObject["description"] = gameObject.summary;
 
-      if (gameObject.genres !== undefined) {
-
+      if (gameObject.genres) {
         gameObject.genres.map(function (genre) {
           getState().genreInfo.map(function (genreObject) {
             if (genre === genreObject["id"]) {
-
-              genreArray.push(genreObject["name"]);
+              genreArray.push(genreObject["name"] + " ");
             }
           });
         });
+        myGameObject["genres"] = [].concat(genreArray);
       }
-      myGameObject["genres"] = [].concat(genreArray);
 
-      if (gameObject.themes !== undefined) {
+      if (gameObject.themes) {
         gameObject.themes.map(function (theme) {
           getState().themeInfo.map(function (themeObject) {
             if (themeObject["id"] === theme) {
-              themeArray.push(themeObject["name"]);
+              themeArray.push(themeObject["name"] + " ");
             }
           });
         });
+        myGameObject["themes"] = [].concat(themeArray);
       }
-      myGameObject["themes"] = [].concat(themeArray);
 
-      myGameObject["user_rating"] = gameObject.rating ? Math.round(gameObject.rating) : 'Not available';
-      myGameObject["critic_rating"] = gameObject.aggregated_rating ? Math.round(gameObject.aggregated_rating) : 'Not available';
+      if (gameObject.rating) {
+        myGameObject["user_rating"] = Math.round(gameObject.rating);
+      }
 
-      if (gameObject.screenshots !== undefined) {
+      if (gameObject.aggregated_rating) {
+        myGameObject["critic_rating"] = Math.round(gameObject.aggregated_rating);
+      }
+
+      if (gameObject.screenshots) {
         gameObject.screenshots.map(function (screenshotObject) {
           screenArray.push("https://images.igdb.com/igdb/image/upload/t_screenshot_big/" + screenshotObject["cloudinary_id"]);
         });
 
         myGameObject["screenshot"] = screenArray;
-      } else {
-        myGameObject["screenshot"] = ["Not available"];
+      }
+
+      if (gameObject.videos) {
+        myGameObject["video"] = "https://www.youtube.com/embed/" + gameObject.videos[0].video_id + "?&autoplay=1";
       }
 
       myGameData.push(myGameObject);
     });
 
+    //No results found
+    if (myGameData.length === 0) {
+      myGameData = "No results found";
+    }
+    console.log("mygamedata", myGameData);
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -27321,7 +27401,7 @@ function setGameData(gameData) {
 //function to call Reducer and set game data in redux.state
 function receiveGameData(gameData) {
   return {
-    type: 'RECEIVE_GAMEDATA',
+    type: "RECEIVE_GAMEDATA",
     payload: gameData
   };
 }
@@ -27408,7 +27488,7 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           "h1",
           null,
-          "Level Up n00bs !"
+          "Level Up !"
         ),
         _react2.default.createElement(
           _reactRouterDom.Switch,
@@ -27494,7 +27574,7 @@ var Dashboard = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                { className: 'dashboar-container' },
+                { className: 'dashboard-container' },
                 'Hi ',
                 this.state.user.username,
                 ', Dashboard component here.'
@@ -27849,6 +27929,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../static/styles/components/search.scss */ "./static/styles/components/search.scss");
+
+__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27871,11 +27955,15 @@ var Search = function (_React$Component) {
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
-
     return _this;
   }
 
   _createClass(Search, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchReferenceData();
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(event) {
       event.preventDefault();
@@ -27897,81 +27985,109 @@ var Search = function (_React$Component) {
     value: function render() {
       var gameData = this.props.gameData;
 
+      var gameDisplay = gameData === "No results found" ? gameData : gameData.map(function (game) {
+        return _react2.default.createElement(
+          "li",
+          { key: game.igdbId, className: "search__result" },
+          _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
+          _react2.default.createElement(
+            "div",
+            { className: "search__details" },
+            _react2.default.createElement(
+              "header",
+              { className: "search__details--name" },
+              game.name
+            ),
+            game.description !== "" || game.description !== undefined ? _react2.default.createElement(
+              "p",
+              null,
+              game.description
+            ) : null,
+            _react2.default.createElement(
+              "div",
+              { className: "search__box" },
+              _react2.default.createElement(
+                "div",
+                { className: "search__info" },
+                game.user_rating ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Gamer Rating: ",
+                  game.user_rating,
+                  "%"
+                ) : null,
+                game.critic_rating ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Critics Rating: ",
+                  game.critic_rating,
+                  "%"
+                ) : null,
+                game.genres ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Genre: ",
+                  game.genres
+                ) : null,
+                game.themes ? _react2.default.createElement(
+                  "header",
+                  { className: "search__details--ratings" },
+                  "Theme: ",
+                  game.themes
+                ) : null
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "search__video" },
+                game.video ? _react2.default.createElement("iframe", {
+                  width: "560",
+                  height: "315",
+                  src: game.video,
+                  frameBorder: "0",
+                  allowFullScreen: true
+                }) : null
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "search__details--screenshots" },
+            game.screenshot ? game.screenshot.map(function (currentImg) {
+              return _react2.default.createElement("img", { src: currentImg, key: currentImg });
+            }) : null
+          ),
+          _react2.default.createElement("br", null)
+        );
+      });
 
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(
-          "h1",
-          null,
-          "Find your Game here"
-        ),
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "form",
-          { className: "search__form", id: "search__form", onSubmit: this.handleSubmit },
+          {
+            className: "search__form",
+            id: "search__form",
+            onSubmit: this.handleSubmit
+          },
           _react2.default.createElement("input", {
             onChange: this.handleChange,
-            type: "text",
-            className: "search__text",
+            type: "search",
+            results: "0",
+            alt: "Search",
+            className: "search__input",
             id: "search__text",
             autoComplete: "off",
             value: this.state.searchGame,
-            placeholder: "Enter game title search"
+            placeholder: "\uD83D\uDD0D Search"
           })
         ),
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "ul",
-          null,
-          gameData !== undefined ? gameData.map(function (game) {
-            return _react2.default.createElement(
-              "li",
-              { key: game.igdbId },
-              _react2.default.createElement("img", { src: game.cover_img }),
-              _react2.default.createElement("br", null),
-              _react2.default.createElement(
-                "h2",
-                null,
-                game.name
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                game.description
-              ),
-              "About:",
-              _react2.default.createElement(
-                "h4",
-                null,
-                "User Rating:         ",
-                game.user_rating
-              ),
-              _react2.default.createElement(
-                "h4",
-                null,
-                "Critics Rating:      ",
-                game.critic_rating
-              ),
-              _react2.default.createElement(
-                "h4",
-                null,
-                "Genres:",
-                game.genres
-              ),
-              _react2.default.createElement(
-                "h4",
-                null,
-                "Themes: ",
-                game.themes
-              ),
-              game.screenshot ? game.screenshot.map(function (currentImg) {
-
-                return _react2.default.createElement("img", { src: currentImg, key: currentImg });
-              }) : null,
-              _react2.default.createElement("br", null)
-            );
-          }) : null
+          { className: "search" },
+          gameDisplay
         )
       );
     }
@@ -27981,6 +28097,179 @@ var Search = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Search;
+
+/***/ }),
+
+/***/ "./src/components/TwitchContainer.js":
+/*!*******************************************!*\
+  !*** ./src/components/TwitchContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TwitchSearch = __webpack_require__(/*! ./TwitchSearch */ "./src/components/TwitchSearch.js");
+
+var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchContainer = function (_React$Component) {
+  _inherits(TwitchContainer, _React$Component);
+
+  function TwitchContainer() {
+    _classCallCheck(this, TwitchContainer);
+
+    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
+  }
+
+  _createClass(TwitchContainer, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_TwitchSearch2.default, null)
+      );
+    }
+  }]);
+
+  return TwitchContainer;
+}(_react2.default.Component);
+
+exports.default = TwitchContainer;
+
+/***/ }),
+
+/***/ "./src/components/TwitchSearch.js":
+/*!****************************************!*\
+  !*** ./src/components/TwitchSearch.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TwitchSearch = function (_React$Component) {
+  _inherits(TwitchSearch, _React$Component);
+
+  function TwitchSearch() {
+    _classCallCheck(this, TwitchSearch);
+
+    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
+
+    _this.state = {
+      twitchQuery: "",
+      displayVideo: false
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(TwitchSearch, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({
+        twitchQuery: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.setState({
+        displayVideo: true
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.state.twitchQuery);
+      return _react2.default.createElement(
+        "div",
+        { className: "twitch__search" },
+        _react2.default.createElement(
+          "form",
+          {
+            onSubmit: this.handleSubmit,
+            className: "twitch__search--form",
+            id: "twitch__form",
+            action: ""
+          },
+          _react2.default.createElement("input", {
+            onChange: this.handleChange,
+            className: "twitch__search--input",
+            type: "text",
+            name: "twitch__input",
+            id: "twitch__input",
+            placeholder: "Search for a channel..."
+          }),
+          _react2.default.createElement(
+            "button",
+            { id: "twitch__submit", className: "twitch__submit" },
+            "Search"
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          null,
+          _react2.default.createElement("iframe", {
+            className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
+            src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
+            height: "700",
+            width: "800",
+            frameBorder: "2",
+            scrolling: "yes",
+            allowFullScreen: "true"
+          })
+        )
+      );
+    }
+  }]);
+
+  return TwitchSearch;
+}(_react2.default.Component);
+
+exports.default = TwitchSearch;
 
 /***/ }),
 
@@ -28047,7 +28336,7 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log("redux gameData", reduxState.gameInfo);
+  // console.log("redux gameData", reduxState.gameInfo);
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
@@ -28056,10 +28345,13 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-
   return {
+    fetchReferenceData: function fetchReferenceData() {
+      dispatch((0, _actions.fetchGenreData)()), dispatch((0, _actions.fetchThemeData)());
+    },
+
     fetchGameInfo: function fetchGameInfo(searchGame) {
-      dispatch((0, _actions.fetchReferenceData)("genres")), dispatch((0, _actions.fetchReferenceData)("themes")), dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
+      dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
     }
   };
 };
@@ -28098,6 +28390,8 @@ var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
+var _reduxDevtoolsExtension = __webpack_require__(/*! redux-devtools-extension */ "./node_modules/redux-devtools-extension/index.js");
+
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _reducers = __webpack_require__(/*! ./reducers */ "./src/reducers/index.js");
@@ -28106,7 +28400,8 @@ var _reducers2 = _interopRequireDefault(_reducers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+//Redux chrome ext
+var store = (0, _redux.createStore)(_reducers2.default, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk2.default))); //Redux chrome extension :)
 
 _reactDom2.default.render(_react2.default.createElement(
   _reactRedux.Provider,
@@ -28306,6 +28601,14 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
+
+var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+
+var _TwitchContainer = __webpack_require__(/*! ../components/TwitchContainer */ "./src/components/TwitchContainer.js");
+
+var _TwitchContainer2 = _interopRequireDefault(_TwitchContainer);
+
 var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/components/ForumLinks.js");
 
 var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
@@ -28321,10 +28624,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var HomeRoute = function (_React$Component) {
     _inherits(HomeRoute, _React$Component);
 
-    function HomeRoute(props) {
+    function HomeRoute() {
         _classCallCheck(this, HomeRoute);
 
-        return _possibleConstructorReturn(this, (HomeRoute.__proto__ || Object.getPrototypeOf(HomeRoute)).call(this, props));
+        return _possibleConstructorReturn(this, (HomeRoute.__proto__ || Object.getPrototypeOf(HomeRoute)).apply(this, arguments));
     }
 
     _createClass(HomeRoute, [{
@@ -28336,8 +28639,10 @@ var HomeRoute = function (_React$Component) {
                 _react2.default.createElement(
                     "div",
                     null,
-                    "Home route comp here..."
+                    "Home route comp here."
                 ),
+                _react2.default.createElement(_SearchContainer2.default, null),
+                _react2.default.createElement(_TwitchContainer2.default, null),
                 _react2.default.createElement(_ForumLinks2.default, null)
             );
         }
@@ -28347,6 +28652,36 @@ var HomeRoute = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = HomeRoute;
+
+/***/ }),
+
+/***/ "./static/styles/components/search.scss":
+/*!**********************************************!*\
+  !*** ./static/styles/components/search.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
