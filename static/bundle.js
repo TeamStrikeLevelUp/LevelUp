@@ -27515,6 +27515,10 @@ var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
 
 __webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
 
+var _PostsContainer = __webpack_require__(/*! ../containers/PostsContainer */ "./src/containers/PostsContainer.js");
+
+var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27556,7 +27560,7 @@ var App = function (_React$Component) {
               return _react2.default.createElement(_TwitchRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _Posts2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _PostsContainer2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
               return _react2.default.createElement(_ForumsRoute2.default, null);
             } })
@@ -27687,24 +27691,20 @@ var ForumLinks = function (_React$Component) {
     return _this;
   }
 
-  _createClass(ForumLinks, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
+  // componentDidMount() {
+  //   fetch(`/api/forum`)
+  //     .then(response => response.json())
+  //     .then(json => this.setState({ forums: json }));
+  // }
 
-      fetch("/api/forum").then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({ forums: json });
-      });
-    }
-  }, {
+  _createClass(ForumLinks, [{
     key: "render",
     value: function render() {
+
       return _react2.default.createElement(
         "div",
         null,
-        this.state.forums.map(function (forum, index) {
+        this.props.forums.map(function (forum, index) {
           return _react2.default.createElement(
             "div",
             { key: forum.id },
@@ -28073,6 +28073,7 @@ var Posts = function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      console.log(this.props.userAuthState);
       if (!this.state.post.id) return null;
 
       return _react2.default.createElement(
@@ -28487,6 +28488,39 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
+/***/ "./src/containers/PostsContainer.js":
+/*!******************************************!*\
+  !*** ./src/containers/PostsContainer.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Posts = __webpack_require__(/*! ../components/Posts */ "./src/components/Posts.js");
+
+var _Posts2 = _interopRequireDefault(_Posts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState, ownProps) {
+  return {
+    match: ownProps.match,
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Posts2.default);
+
+/***/ }),
+
 /***/ "./src/containers/SearchContainer.js":
 /*!*******************************************!*\
   !*** ./src/containers/SearchContainer.js ***!
@@ -28895,16 +28929,52 @@ var ForumsRoute = function (_React$Component) {
   function ForumsRoute() {
     _classCallCheck(this, ForumsRoute);
 
-    return _possibleConstructorReturn(this, (ForumsRoute.__proto__ || Object.getPrototypeOf(ForumsRoute)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (ForumsRoute.__proto__ || Object.getPrototypeOf(ForumsRoute)).call(this));
+
+    _this.state = { input: "", forums: [] };
+    _this.inputHandler = _this.inputHandler.bind(_this);
+    return _this;
   }
 
   _createClass(ForumsRoute, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/forum").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ forums: json });
+      });
+    }
+  }, {
+    key: "inputHandler",
+    value: function inputHandler(event) {
+      this.setState({ input: event.target.value });
+      console.log(this.state.input);
+    }
+  }, {
+    key: "searchHandler",
+    value: function searchHandler(event) {
+      event.preventDefault();
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(_ForumLinks2.default, null)
+        _react2.default.createElement(
+          "form",
+          null,
+          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement(
+            "button",
+            null,
+            " search "
+          )
+        ),
+        _react2.default.createElement(_ForumLinks2.default, { forums: this.state.forums })
       );
     }
   }]);

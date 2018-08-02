@@ -7,16 +7,17 @@ class ForumLinks extends React.Component {
     this.state = { forums: [] };
   }
 
-  componentDidMount() {
-    fetch(`/api/forum`)
-      .then(response => response.json())
-      .then(json => this.setState({ forums: json }));
-  }
+  // componentDidMount() {
+  //   fetch(`/api/forum`)
+  //     .then(response => response.json())
+  //     .then(json => this.setState({ forums: json }));
+  // }
 
   render() {
+    
     return (
       <div>
-        {this.state.forums.map((forum, index) => {
+        {this.props.forums.map((forum, index) => {
          return (
          <div key={forum.id}>
              <Link  to={`/forum/${forum.id}`}>{forum.title}</Link>

@@ -21,6 +21,7 @@ class Posts extends React.Component {
  
 
   render() {
+    console.log(this.props.userAuthState)
     if(!this.state.post.id) return null
      
     return (
