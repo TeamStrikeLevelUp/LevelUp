@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #132727;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #132727;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-self: right; }\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
 
 // exports
 
@@ -27320,7 +27320,6 @@ function receiveThemeData(themeData) {
 function setGameData(gameData) {
   return function (dispatch, getState) {
     console.log("API gameData", gameData);
-
     var myGameData = [];
 
     gameData.map(function (gameObject) {
@@ -27383,11 +27382,6 @@ function setGameData(gameData) {
         myGameObject["screenshot"] = screenArray;
       }
 
-      //trying out youtube video
-      // if (gameObject.videos) {
-      //   myGameObject["video"] =
-      //     "https://www.youtube.com/watch?v=" + gameObject.videos[0].video_id;
-      // }
       if (gameObject.videos) {
         myGameObject["video"] = "https://www.youtube.com/embed/" + gameObject.videos[0].video_id + "?&autoplay=1";
       }
@@ -27395,6 +27389,11 @@ function setGameData(gameData) {
       myGameData.push(myGameObject);
     });
 
+    //No results found
+    if (myGameData.length === 0) {
+      myGameData = "No results found";
+    }
+    console.log("mygamedata", myGameData);
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -27960,6 +27959,11 @@ var Search = function (_React$Component) {
   }
 
   _createClass(Search, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchReferenceData();
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(event) {
       event.preventDefault();
@@ -27981,15 +27985,10 @@ var Search = function (_React$Component) {
     value: function render() {
       var gameData = this.props.gameData;
 
-      var gameDisplay = gameData.map(function (game) {
+      var gameDisplay = gameData === "No results found" ? gameData : gameData.map(function (game) {
         return _react2.default.createElement(
           "li",
-          {
-            key: game.igdbId,
-            className: "search__result",
-            img: true,
-            src: "/static/images/background2.jpg"
-          },
+          { key: game.igdbId, className: "search__result" },
           _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
           _react2.default.createElement(
             "div",
@@ -28337,7 +28336,7 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log("redux gameData", reduxState.gameInfo);
+  // console.log("redux gameData", reduxState.gameInfo);
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
@@ -28347,8 +28346,12 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
+    fetchReferenceData: function fetchReferenceData() {
+      dispatch((0, _actions.fetchGenreData)()), dispatch((0, _actions.fetchThemeData)());
+    },
+
     fetchGameInfo: function fetchGameInfo(searchGame) {
-      dispatch((0, _actions.fetchGenreData)()), dispatch((0, _actions.fetchThemeData)()), dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
+      dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
     }
   };
 };

@@ -7,7 +7,7 @@ import {
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-  console.log("redux gameData", reduxState.gameInfo);
+  // console.log("redux gameData", reduxState.gameInfo);
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
@@ -17,10 +17,12 @@ const mapStateToProps = reduxState => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchReferenceData: () => {
+      dispatch(fetchGenreData()), dispatch(fetchThemeData());
+    },
+
     fetchGameInfo: searchGame => {
-      dispatch(fetchGenreData()),
-        dispatch(fetchThemeData()),
-        dispatch(fetchGameInfoFromAPI(searchGame));
+      dispatch(fetchGameInfoFromAPI(searchGame));
     }
   };
 };
