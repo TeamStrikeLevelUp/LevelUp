@@ -50,7 +50,7 @@ function getUserById(id) {
 }
 
 ///////////////// Ahmed - start //////////////////
-app.get("/api/forum", function(req, res) {
+app.get("/api/forum", function (req, res) {
   db.any(`SELECT * FROM forum`)
     .then(data => {
       res.json(data);
@@ -58,7 +58,7 @@ app.get("/api/forum", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/forum/:id", function(req, res) {
+app.get("/api/forum/:id", function (req, res) {
   db.one(`SELECT * FROM forum WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -66,7 +66,7 @@ app.get("/api/forum/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/post/:id", function(req, res) {
+app.get("/api/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [
     req.params.id
   ])
@@ -76,7 +76,7 @@ app.get("/api/post/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/parentpost/:id", function(req, res) {
+app.get("/api/parentpost/:id", function (req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -84,7 +84,7 @@ app.get("/api/parentpost/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/reply/:id", function(req, res) {
+app.get("/api/reply/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -104,13 +104,13 @@ function compare(plainTextPassword, hashedPassword) {
 }
 
 // serialise user into session
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   // console.log('4. Extract user id from user for serialisation');
   done(null, user.id);
 });
 
 // deserialise user from session
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
   // console.log('5. Use user id to load user from DB');
   getUserById(id).then(user => {
     done(null, user);
@@ -120,7 +120,7 @@ passport.deserializeUser(function(id, done) {
 // configure passport to use local strategy
 // that is use locally stored credentials
 passport.use(
-  new LocalStrategy(function(username, password, done) {
+  new LocalStrategy(function (username, password, done) {
     // console.log('1. Receive username and password');
     let _user;
     getUserByUsername(username)
@@ -152,7 +152,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // route to log out users
-app.get("/logout", function(req, res) {
+app.get("/logout", function (req, res) {
   // console.log('7. Log user out');
   // log user out and redirect them to home page
   req.logout();
@@ -162,9 +162,9 @@ app.get("/logout", function(req, res) {
 // Login ends
 
 // only accessible to logged in users
-app.get("/dashboard", isLoggedIn, function(req, res) {
+app.get("/dashboard", isLoggedIn, function (req, res) {
   res.render("index", {
-    data: JSON.stringify({ username: req.user.gamer_name })
+    data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
   });
 });
 
@@ -178,19 +178,19 @@ app.set("view engine", "hbs");
 //   res.render("index", {});
 // });
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.render("landing", {});
 });
 
-app.get("/homepage", function(req, res) {
+app.get("/homepage", function (req, res) {
   res.render("index", {});
 });
 
-app.get("/login", function(req, res) {
+app.get("/login", function (req, res) {
   res.render("login", {});
 });
 // route to accept logins
-app.post("/login", passport.authenticate("local", { session: true }), function(
+app.post("/login", passport.authenticate("local", { session: true }), function (
   req,
   res
 ) {
@@ -198,7 +198,7 @@ app.post("/login", passport.authenticate("local", { session: true }), function(
 });
 
 // register page
-app.get("/signup", function(req, res) {
+app.get("/signup", function (req, res) {
   res.render("signup", {});
 });
 
@@ -331,11 +331,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("*", function(req, res) {
-  res.render("index");
+app.get("*", function (req, res) {
+  res.render("index", {
+    data: req.user ? JSON.stringify({ username: req.user.gamer_name, userId: req.user.id }) : null
+  });
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`Listening on port number ${port}`);
 });
