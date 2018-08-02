@@ -15,7 +15,10 @@ class News extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.fetchNewsData !== undefined) {
+    if (
+      this.props.fetchNewsData !== undefined &&
+      this.props.searchNewsData !== undefined
+    ) {
       this.props.fetchNewsData();
     }
   }
@@ -29,9 +32,9 @@ class News extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.fetchNewsData("/newsApi/:" + this.state.searchNews);
+    this.props.searchNewsData(this.state.searchNews);
     this.setState({
-      searchGame: ""
+      searchNews: ""
     });
   }
 
@@ -39,29 +42,51 @@ class News extends React.Component {
     const { newsData } = this.props;
     console.log(newsData);
 
+    const newsDisplay =
+      newsData === "No results found"
+        ? newsData
+        : newsData.map(news => {
+            return (
+              <div className="news__result" key={news.title}>
+                <li>
+                  <a href={news.url} target="blank">
+                    <img
+                      src={news.image}
+                      className="news__img"
+                      alt={news.title}
+                    />
+                    <header className="news__title">{news.title}</header>
+
+                    <p className="news__desc">{news.description}</p>
+                    <p className="news__desc">{news.author}</p>
+
+                    <p className="news__desc">{news.date}</p>
+                  </a>
+                </li>
+              </div>
+            );
+          });
+
     return (
       <div>
         <br />
-        <form
-          className="search__form"
-          id="search__form"
-          onSubmit={this.handleSubmit}
-        >
+        <form className="news__form" onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
             type="search"
             results="0"
             alt="Search"
-            className="search__input"
-            id="search__text"
+            className="news__input"
             autoComplete="off"
             value={this.state.searchNews}
-            placeholder="🔍 Search"
+            placeholder="🔍 Search news articles"
           />
         </form>
         <br />
-
-        {/* <ul className="search">{newsData}</ul> */}
+        <h1>Latest News</h1>
+        <div className="news">
+          <ul>{newsDisplay}</ul>
+        </div>
       </div>
     );
   }

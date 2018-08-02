@@ -173,6 +173,21 @@ export function fetchNewsInfoFromAPI() {
   };
 }
 
+//search NEWS Data based on User input
+export function searchNewsAPI(searchTerm) {
+  console.log("searchTerm", searchTerm);
+  return function(dispatch, getState) {
+    return fetch(`/searchNews/${searchTerm}`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(setNewsData(json.articles));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
 //function to call Reducer and set news data in redux.state
 export function receiveNewsData(newsData) {
   return {
@@ -183,10 +198,10 @@ export function receiveNewsData(newsData) {
 
 export function setNewsData(newsData) {
   return function(dispatch, getState) {
-    let myNewsData = [];
+    const myNewsData = [];
 
     newsData.map(newsObject => {
-      let myNewsObject = {};
+      const myNewsObject = {};
 
       // API data is very bitty so we need to check if it exists or not so we don't display empty fields
       if (newsObject.author) {
@@ -194,7 +209,7 @@ export function setNewsData(newsData) {
       }
       myNewsObject["description"] = newsObject.description;
 
-      myNewsObject["date"] = newsObject.publishedAt;
+      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
 
       myNewsObject["title"] = newsObject.title;
 
@@ -205,7 +220,40 @@ export function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-
+    // console.log(myNewsData);
     dispatch(receiveNewsData(myNewsData));
   };
+}
+// Makes Dates look presentable
+function formatDate(date) {
+  let myDate = new Date(date);
+
+  const prettyDate = myDate.toDateString().substring(4, myDate.length);
+  const minutes = ("0" + myDate.getMinutes()).slice(-2);
+  const hours = myDate.getHours();
+
+  myDate = prettyDate.split(" ");
+  const month = myDate[0];
+  const day = parseInt(myDate[1]);
+  const year = myDate[2];
+  let suffix = "";
+  switch (day) {
+    case 1:
+    case 21:
+    case 31:
+      suffix = "st";
+      break;
+    case 2:
+    case 22:
+      suffix = "nd";
+      break;
+    case 3:
+    case 23:
+      suffix = "rd";
+      break;
+    default:
+      suffix = "th";
+      break;
+  }
+  return `${day}${suffix} ${month} ${year} at ${hours}:${minutes} `;
 }

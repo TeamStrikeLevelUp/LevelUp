@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import News from "../components/News";
-import { fetchNewsInfoFromAPI } from "../actions";
+import { fetchNewsInfoFromAPI, searchNewsAPI } from "../actions";
 
 const mapStateToProps = reduxState => {
   console.log(reduxState.newsData);
@@ -13,6 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchNewsData: () => {
       dispatch(fetchNewsInfoFromAPI());
+    },
+    searchNewsData: searchTerm => {
+      dispatch(searchNewsAPI(searchTerm));
     }
   };
 };

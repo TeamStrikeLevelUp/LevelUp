@@ -330,10 +330,29 @@ function displayData(res, data) {
   res.json(data);
 }
 
+//General NEWS search for latest Gaming articles
 app.get("/newsApi/", (req, res) => {
   newsapi.v2
     .topHeadlines({
       sources: "ign",
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
+//Specific NEWS search based on user-input
+app.get("/searchNews/:searchTerm", (req, res) => {
+  const search = req.params.searchTerm;
+  newsapi.v2
+    .everything({
+      sources: "ign",
+      q: search,
       language: "en"
     })
     .then(response => {

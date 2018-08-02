@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli,\na {\n  list-style: none;\n  text-decoration: none; }\n\nbody {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  color: whitesmoke; }\n\n.news__form {\n  margin-bottom: 10px; }\n\n.news {\n  display: flex;\n  flex: 12;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin: auto;\n  text-align: center;\n  background-color: #222723;\n  color: white; }\n\n.news__result {\n  display: inline-block;\n  margin: 20px;\n  height: auto;\n  width: calc(100% / 3);\n  font-size: 20px;\n  text-align: left; }\n\n.news__img {\n  width: 100%;\n  height: auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 16px;\n  margin-left: 15px; }\n", ""]);
 
 // exports
 
@@ -27264,6 +27264,7 @@ exports.receiveThemeData = receiveThemeData;
 exports.setGameData = setGameData;
 exports.receiveGameData = receiveGameData;
 exports.fetchNewsInfoFromAPI = fetchNewsInfoFromAPI;
+exports.searchNewsAPI = searchNewsAPI;
 exports.receiveNewsData = receiveNewsData;
 exports.setNewsData = setNewsData;
 // Genre & Themes are retrieved via separate fetches
@@ -27427,6 +27428,20 @@ function fetchNewsInfoFromAPI() {
   };
 }
 
+//search NEWS Data based on User input
+function searchNewsAPI(searchTerm) {
+  console.log("searchTerm", searchTerm);
+  return function (dispatch, getState) {
+    return fetch("/searchNews/" + searchTerm).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(setNewsData(json.articles));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
 //function to call Reducer and set news data in redux.state
 function receiveNewsData(newsData) {
   return {
@@ -27448,7 +27463,7 @@ function setNewsData(newsData) {
       }
       myNewsObject["description"] = newsObject.description;
 
-      myNewsObject["date"] = newsObject.publishedAt;
+      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
 
       myNewsObject["title"] = newsObject.title;
 
@@ -27459,9 +27474,42 @@ function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-
+    // console.log(myNewsData);
     dispatch(receiveNewsData(myNewsData));
   };
+}
+// Makes Dates look presentable
+function formatDate(date) {
+  var myDate = new Date(date);
+
+  var prettyDate = myDate.toDateString().substring(4, myDate.length);
+  var minutes = ("0" + myDate.getMinutes()).slice(-2);
+  var hours = myDate.getHours();
+
+  myDate = prettyDate.split(" ");
+  var month = myDate[0];
+  var day = parseInt(myDate[1]);
+  var year = myDate[2];
+  var suffix = "";
+  switch (day) {
+    case 1:
+    case 21:
+    case 31:
+      suffix = "st";
+      break;
+    case 2:
+    case 22:
+      suffix = "nd";
+      break;
+    case 3:
+    case 23:
+      suffix = "rd";
+      break;
+    default:
+      suffix = "th";
+      break;
+  }
+  return "" + day + suffix + " " + month + " " + year + " at " + hours + ":" + minutes + " ";
 }
 
 /***/ }),
@@ -27895,7 +27943,7 @@ var News = function (_React$Component) {
   _createClass(News, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.fetchNewsData !== undefined) {
+      if (this.props.fetchNewsData !== undefined && this.props.searchNewsData !== undefined) {
         this.props.fetchNewsData();
       }
     }
@@ -27911,9 +27959,9 @@ var News = function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.props.fetchNewsData("/newsApi/:" + this.state.searchNews);
+      this.props.searchNewsData(this.state.searchNews);
       this.setState({
-        searchGame: ""
+        searchNews: ""
       });
     }
   }, {
@@ -27923,30 +27971,79 @@ var News = function (_React$Component) {
 
       console.log(newsData);
 
+      var newsDisplay = newsData === "No results found" ? newsData : newsData.map(function (news) {
+        return _react2.default.createElement(
+          "div",
+          { className: "news__result", key: news.title },
+          _react2.default.createElement(
+            "li",
+            null,
+            _react2.default.createElement(
+              "a",
+              { href: news.url, target: "blank" },
+              _react2.default.createElement("img", {
+                src: news.image,
+                className: "news__img",
+                alt: news.title
+              }),
+              _react2.default.createElement(
+                "header",
+                { className: "news__title" },
+                news.title
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "news__desc" },
+                news.description
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "news__desc" },
+                news.author
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "news__desc" },
+                news.date
+              )
+            )
+          )
+        );
+      });
+
       return _react2.default.createElement(
         "div",
         null,
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "form",
-          {
-            className: "search__form",
-            id: "search__form",
-            onSubmit: this.handleSubmit
-          },
+          { className: "news__form", onSubmit: this.handleSubmit },
           _react2.default.createElement("input", {
             onChange: this.handleChange,
             type: "search",
             results: "0",
             alt: "Search",
-            className: "search__input",
-            id: "search__text",
+            className: "news__input",
             autoComplete: "off",
             value: this.state.searchNews,
-            placeholder: "\uD83D\uDD0D Search"
+            placeholder: "\uD83D\uDD0D Search news articles"
           })
         ),
-        _react2.default.createElement("br", null)
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "h1",
+          null,
+          "Latest News"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "news" },
+          _react2.default.createElement(
+            "ul",
+            null,
+            newsDisplay
+          )
+        )
       );
     }
   }]);
@@ -28526,6 +28623,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchNewsData: function fetchNewsData() {
       dispatch((0, _actions.fetchNewsInfoFromAPI)());
+    },
+    searchNewsData: function searchNewsData(searchTerm) {
+      dispatch((0, _actions.searchNewsAPI)(searchTerm));
     }
   };
 };
