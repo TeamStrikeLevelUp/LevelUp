@@ -1,6 +1,5 @@
 import React from "react";
-import "../../static/styles/components/header.scss";
-import "../../static/styles/index.scss";
+import "../../styles/components/header.scss";
 
 function Header() {
   return (

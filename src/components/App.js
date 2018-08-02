@@ -13,14 +13,14 @@ import SearchGamesRoute from "../routes/SearchGamesRoute";
 import ForumsRoute from "../routes/ForumsRoute";
 import DashboardRoute from "../routes/DashboardRoute";
 
-import "../../static/styles/index.scss";
+import "../../styles/index.scss";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <HomeNavBar />
+        <Header />
         <Switch>
           <Route exact path="/homepage" render={() => <HomeRoute />} />
           <Route path="/search" render={() => <SearchGamesRoute />} />

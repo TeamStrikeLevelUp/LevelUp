@@ -3,7 +3,7 @@ import DashboardContainer from '../containers/DashboardContainer'
 
 function HomeRoute() {
     return (
-        <div className="dashboard">
+        <div>
             <DashboardContainer />
         </div>
     );

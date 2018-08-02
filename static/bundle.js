@@ -86,33 +86,52 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/header.scss":
-/*!*****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/header.scss ***!
-  \*****************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\n.header {\n  padding: 3px;\n  margin: 0;\n  background-color: cadetblue; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__content {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__content {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__content .dashboard__content--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__content .dashboard__content--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__content .dashboard__content--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__content .dashboard__content--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/navbar.scss":
-/*!*****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/navbar.scss ***!
-  \*****************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".header {\n  padding: 3px;\n  margin: 0;\n  background-color: cadetblue; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
@@ -124,38 +143,38 @@ exports.push([module.i, "ul {\n  display: flex;\n  flex-direction: row;\n  justi
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss":
-/*!*****************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss ***!
-  \*****************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\nbody {\n  margin: 0;\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39);\n  --dashboard-primary-color: #1c4154;\n  --dashboard-secondary-color: #355e72; }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -27513,7 +27532,7 @@ var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src
 
 var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
 
-__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27538,8 +27557,8 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(_HomeNavBar2.default, null),
+        _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
@@ -27592,6 +27611,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/dashboard.scss */ "./styles/components/dashboard.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27615,7 +27636,7 @@ var Dashboard = function (_React$Component) {
     }
 
     _createClass(Dashboard, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             // Get initialUser variable from global scope declared in index.hbs
             var userData = initialUser; // JSON.parse(document.querySelector('#data').innerHTML);
@@ -27627,14 +27648,181 @@ var Dashboard = function (_React$Component) {
             };
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "div",
-                { className: "dashboard-container" },
-                "Hi ",
-                this.state.user.username,
-                ", Dashboard component here"
+                'div',
+                { className: 'dashboard' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'dashboard__container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'dashboard__sidebar' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'dashboard__profile' },
+                            _react2.default.createElement('img', { className: 'dashboard__profile--image', src: '../../static/images/user.jpg', alt: '' }),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__profile--name' },
+                                this.state.user.username
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'dashboard__nav' },
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'dashboard__nav--item' },
+                                'Dashboard'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'dashboard__nav--item' },
+                                'Account'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'dashboard__nav--item' },
+                                'Forum'
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'dashboard__nav--item' },
+                                'Settings'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'dashboard-content-wrapper' },
+                        _react2.default.createElement(
+                            'h2',
+                            null,
+                            'Welcome back, ',
+                            this.state.user.username
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'dashboard__content' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__content--item' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    { className: 'dashboard__content--heading' },
+                                    'Points'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__content--points' },
+                                    '250'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'dashboard__content--text' },
+                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__content--item' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    { className: 'dashboard__content--heading' },
+                                    'Total Post'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__content--points' },
+                                    '1750'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'dashboard__content--text' },
+                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__content--item' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    { className: 'dashboard__content--heading' },
+                                    'Messages'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__content--points' },
+                                    '450'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'dashboard__content--text' },
+                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__content--item' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    { className: 'dashboard__content--heading' },
+                                    'Forum'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__content--points' },
+                                    '50'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'dashboard__content--text' },
+                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__content--item' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    { className: 'dashboard__content--heading' },
+                                    'Twitch'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__content--points' },
+                                    '340'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'dashboard__content--text' },
+                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'dashboard__content--item' },
+                                _react2.default.createElement(
+                                    'h3',
+                                    { className: 'dashboard__content--heading' },
+                                    'Video Game'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__content--points' },
+                                    '20'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'dashboard__content--text' },
+                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
+                                )
+                            )
+                        )
+                    )
+                )
             );
         }
     }]);
@@ -27889,9 +28077,7 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(/*! ../../static/styles/components/header.scss */ "./static/styles/components/header.scss");
-
-__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+__webpack_require__(/*! ../../styles/components/header.scss */ "./styles/components/header.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27935,9 +28121,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
-__webpack_require__(/*! ../../static/styles/components/navbar.scss */ "./static/styles/components/navbar.scss");
+__webpack_require__(/*! ../../styles/components/navbar.scss */ "./styles/components/navbar.scss");
 
-__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28161,9 +28347,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(/*! ../../static/styles/components/search.scss */ "./static/styles/components/search.scss");
+__webpack_require__(/*! ../../styles/components/search.scss */ "./styles/components/search.scss");
 
-__webpack_require__(/*! ../../static/styles/index.scss */ "./static/styles/index.scss");
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28843,7 +29029,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function HomeRoute() {
     return _react2.default.createElement(
         'div',
-        { className: 'dashboard' },
+        null,
         _react2.default.createElement(_DashboardContainer2.default, null)
     );
 }
@@ -29098,105 +29284,15 @@ exports.default = TwitchRoute;
 
 /***/ }),
 
-/***/ "./static/styles/components/header.scss":
-/*!**********************************************!*\
-  !*** ./static/styles/components/header.scss ***!
-  \**********************************************/
+/***/ "./styles/components/dashboard.scss":
+/*!******************************************!*\
+  !*** ./styles/components/dashboard.scss ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/header.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./static/styles/components/navbar.scss":
-/*!**********************************************!*\
-  !*** ./static/styles/components/navbar.scss ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/navbar.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./static/styles/components/search.scss":
-/*!**********************************************!*\
-  !*** ./static/styles/components/search.scss ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/components/search.scss");
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ "./static/styles/index.scss":
-/*!**********************************!*\
-  !*** ./static/styles/index.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./static/styles/index.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -29211,6 +29307,126 @@ options.transform = transform
 options.insertInto = undefined;
 
 var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/header.scss":
+/*!***************************************!*\
+  !*** ./styles/components/header.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/navbar.scss":
+/*!***************************************!*\
+  !*** ./styles/components/navbar.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/search.scss":
+/*!***************************************!*\
+  !*** ./styles/components/search.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/index.scss":
+/*!***************************!*\
+  !*** ./styles/index.scss ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
