@@ -3,7 +3,6 @@ import React from 'react';
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             user: {}
         };
@@ -14,13 +13,14 @@ class Dashboard extends React.Component {
         this.setState({
             user: userData
         })
+        if (userData) { this.props.setAuthState(userData) };
     }
 
     render() {
         return (
             <div className="dashboard-container">
                 Hi {this.state.user.username},
-                Dashboard component here.
+                Dashboard component here
             </div>
         );
     }

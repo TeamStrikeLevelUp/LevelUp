@@ -27244,6 +27244,7 @@ exports.receiveGenreData = receiveGenreData;
 exports.receiveThemeData = receiveThemeData;
 exports.setGameData = setGameData;
 exports.receiveGameData = receiveGameData;
+exports.receiveAuthState = receiveAuthState;
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
@@ -27403,6 +27404,14 @@ function receiveGameData(gameData) {
   return {
     type: "RECEIVE_GAMEDATA",
     payload: gameData
+  };
+}
+
+//function to call Reducer and set auth in redux.state
+function receiveAuthState(auth) {
+  return {
+    type: "RECEIVE_AUTHSTATE",
+    payload: auth
   };
 }
 
@@ -27568,6 +27577,9 @@ var Dashboard = function (_React$Component) {
             this.setState({
                 user: userData
             });
+            if (userData) {
+                this.props.setAuthState(userData);
+            };
         }
     }, {
         key: 'render',
@@ -27577,7 +27589,7 @@ var Dashboard = function (_React$Component) {
                 { className: 'dashboard-container' },
                 'Hi ',
                 this.state.user.username,
-                ', Dashboard component here.'
+                ', Dashboard component here'
             );
         }
     }]);
@@ -28293,17 +28305,23 @@ var _Dashboard = __webpack_require__(/*! ../components/Dashboard */ "./src/compo
 
 var _Dashboard2 = _interopRequireDefault(_Dashboard);
 
+var _index = __webpack_require__(/*! ../actions/index */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log("receiveAuthState", _index.receiveAuthState);
 
 var mapStateToProps = function mapStateToProps(reduxState) {
     return {
-        // user: reduxState.user
+        userAuthState: reduxState.authState
     };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        //
+        setAuthState: function setAuthState(user) {
+            return dispatch((0, _index.receiveAuthState)(user));
+        }
     };
 };
 
@@ -28415,6 +28433,36 @@ _reactDom2.default.render(_react2.default.createElement(
 
 /***/ }),
 
+/***/ "./src/reducers/authState.js":
+/*!***********************************!*\
+  !*** ./src/reducers/authState.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function authState() {
+    var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case "RECEIVE_AUTHSTATE":
+            return action.payload;
+
+        default:
+            return reduxState;
+    }
+}
+
+exports.default = authState;
+
+/***/ }),
+
 /***/ "./src/reducers/gameInfo.js":
 /*!**********************************!*\
   !*** ./src/reducers/gameInfo.js ***!
@@ -28504,12 +28552,17 @@ var _genreInfo = __webpack_require__(/*! ./genreInfo */ "./src/reducers/genreInf
 
 var _genreInfo2 = _interopRequireDefault(_genreInfo);
 
+var _authState = __webpack_require__(/*! ./authState */ "./src/reducers/authState.js");
+
+var _authState2 = _interopRequireDefault(_authState);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
   gameInfo: _gameInfo2.default,
   themeInfo: _themeInfo2.default,
-  genreInfo: _genreInfo2.default
+  genreInfo: _genreInfo2.default,
+  authState: _authState2.default
 });
 
 /***/ }),
