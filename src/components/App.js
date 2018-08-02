@@ -14,6 +14,7 @@ import ForumsRoute from "../routes/ForumsRoute";
 import DashboardRoute from "../routes/DashboardRoute";
 
 import "../../static/styles/index.scss";
+import PostsContainer from "../containers/PostsContainer";
 
 class App extends React.Component {
   render() {
@@ -28,7 +29,7 @@ class App extends React.Component {
           <Route path="/twitch" render={() => <TwitchRoute />} />
 
           <Route path="/forum/:id" component={Forums} />
-          <Route path="/posts/:id" component={Posts} />
+          <Route path="/posts/:id" component={PostsContainer} />
           <Route path="/forum" render={() => <ForumsRoute />} />
         </Switch>
       </div>
