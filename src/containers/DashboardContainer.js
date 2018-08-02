@@ -2,8 +2,6 @@ import { connect } from 'react-redux';
 import Dashboard from '../components/Dashboard';
 import { receiveAuthState } from '../actions/index';
 
-console.log("receiveAuthState", receiveAuthState)
-
 const mapStateToProps = reduxState => {
     return {
         userAuthState: reduxState.authState

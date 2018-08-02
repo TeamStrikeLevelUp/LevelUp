@@ -28309,8 +28309,6 @@ var _index = __webpack_require__(/*! ../actions/index */ "./src/actions/index.js
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log("receiveAuthState", _index.receiveAuthState);
-
 var mapStateToProps = function mapStateToProps(reduxState) {
     return {
         userAuthState: reduxState.authState
