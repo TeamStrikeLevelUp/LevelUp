@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require("cors");
+
+//For News page
+const NewsAPI = require("newsapi");
+const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
+//For Search page
 const igdb = require("igdb-api-node").default;
+
 const pgp = require("pg-promise")();
 
 const bcrypt = require("bcrypt");
@@ -50,7 +55,7 @@ function getUserById(id) {
 }
 
 ///////////////// Ahmed - start //////////////////
-app.get("/api/forum", function(req, res) {
+app.get("/api/forum", function (req, res) {
   db.any(`SELECT * FROM forum`)
     .then(data => {
       res.json(data);
@@ -58,7 +63,7 @@ app.get("/api/forum", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/forum/:id", function(req, res) {
+app.get("/api/forum/:id", function (req, res) {
   db.one(`SELECT * FROM forum WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -66,7 +71,15 @@ app.get("/api/forum/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/post/:id", function(req, res) {
+app.get("/api/forum/search/:name", function (req, res) {
+  db.any(`SELECT * FROM forum WHERE title ILIKE \'%$1#%\'`, [req.params.name])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [
     req.params.id
   ])
@@ -76,7 +89,17 @@ app.get("/api/post/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/parentpost/:id", function(req, res) {
+app.get("/api/post/:id/search/:name", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 
+  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\'`, [
+    req.params.id, req.params.name])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/parentpost/:id", function (req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -84,13 +107,51 @@ app.get("/api/parentpost/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/reply/:id", function(req, res) {
+app.get("/api/reply/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
     })
     .catch(error => console.log(error.message));
 });
+
+app.get("/api/reply/:id/search/:name", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id = $1 
+  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\' `, [req.params.id, req.params.name])
+    .then(data => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+
+app.post('/api/reply', function(req, res){
+  
+  const {title, body, parent_id, forum_id, gamer_id, gamer_name} = req.body;
+  
+  db.one(`INSERT INTO post(title, body, parent_id, forum_id, gamer_id, gamer_name)
+          VALUES($1, $2, $3, $4, $5, $6) RETURNING id`,
+           [title, body, parent_id, forum_id, gamer_id, gamer_name])
+    .then(data => {
+
+      db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
+      .then(data => {
+        res.json(data);
+      })
+      .catch(error => console.log(error.message));
+      
+     // res.json(Object.assign({}, {id: data.id}, req.body));
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
+
 
 ///////////////// Ahmed - end //////////////////
 
@@ -104,13 +165,13 @@ function compare(plainTextPassword, hashedPassword) {
 }
 
 // serialise user into session
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   // console.log('4. Extract user id from user for serialisation');
   done(null, user.id);
 });
 
 // deserialise user from session
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
   // console.log('5. Use user id to load user from DB');
   getUserById(id).then(user => {
     done(null, user);
@@ -120,7 +181,7 @@ passport.deserializeUser(function(id, done) {
 // configure passport to use local strategy
 // that is use locally stored credentials
 passport.use(
-  new LocalStrategy(function(username, password, done) {
+  new LocalStrategy(function (username, password, done) {
     // console.log('1. Receive username and password');
     let _user;
     getUserByUsername(username)
@@ -152,7 +213,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // route to log out users
-app.get("/logout", function(req, res) {
+app.get("/logout", function (req, res) {
   // console.log('7. Log user out');
   // log user out and redirect them to home page
   req.logout();
@@ -162,9 +223,9 @@ app.get("/logout", function(req, res) {
 // Login ends
 
 // only accessible to logged in users
-app.get("/dashboard", isLoggedIn, function(req, res) {
+app.get("/dashboard", isLoggedIn, function (req, res) {
   res.render("index", {
-    data: JSON.stringify({ username: req.user.gamer_name })
+    data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
   });
 });
 
@@ -178,19 +239,19 @@ app.set("view engine", "hbs");
 //   res.render("index", {});
 // });
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.render("landing", {});
 });
 
-app.get("/homepage", function(req, res) {
+app.get("/homepage", function (req, res) {
   res.render("index", {});
 });
 
-app.get("/login", function(req, res) {
+app.get("/login", function (req, res) {
   res.render("login", {});
 });
 // route to accept logins
-app.post("/login", passport.authenticate("local", { session: true }), function(
+app.post("/login", passport.authenticate("local", { session: true }), function (
   req,
   res
 ) {
@@ -198,7 +259,7 @@ app.post("/login", passport.authenticate("local", { session: true }), function(
 });
 
 // register page
-app.get("/signup", function(req, res) {
+app.get("/signup", function (req, res) {
   res.render("signup", {});
 });
 
@@ -324,6 +385,41 @@ app.get("/genres/", (req, res) => {
 function displayData(res, data) {
   res.json(data);
 }
+
+//General NEWS search for latest Gaming articles
+app.get("/newsApi/", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      sources: "ign",
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
+//Specific NEWS search based on user-input
+app.get("/searchNews/:searchTerm", (req, res) => {
+  const search = req.params.searchTerm;
+  newsapi.v2
+    .everything({
+      sources: "ign",
+      q: search,
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
@@ -331,11 +427,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("*", function(req, res) {
-  res.render("index");
+app.get("*", function (req, res) {
+  res.render("index", {
+    data: req.user ? JSON.stringify({ username: req.user.gamer_name, userId: req.user.id }) : null
+  });
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, function() {
-  console.log(`Listening on port number ${port}`);
+app.listen(port, function () {
+  console.log(`Listening on port number http://localhost:${port}`);
 });
