@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  margin: 10px;
 }
 
 li {
@@ -10,12 +9,10 @@ li {
 body {
   margin: 0;
   background-color: var(--primary-color);
-
-  font-family: "Press Start 2P", cursive;
+  font-family: "IBM Plex Serif", serif;
   /* background: rgb(36, 36, 77); */
-  background-image: url("/static/images/background2.jpg");
+  // background-image: url("/static/images/background2.jpg");
   background-repeat: no-repeat;
-  // background-position: center center;
   background-size: cover;
   background-color: rgb(13, 27, 27);
   color: whitesmoke;

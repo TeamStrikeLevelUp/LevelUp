@@ -1,0 +1,10 @@
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  .main-nav__item {
+      margin-left: 20px;
+  }
+}

@@ -1,0 +1,15 @@
+.header {
+  padding: 20px;
+  margin: 0;
+
+  background-color: cadetblue;
+
+  .header__logo {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      margin: 0;
+    }
+  }
+ }

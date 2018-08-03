@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../static/styles/components/twitch.scss";
+import "../../styles/components/twitch.scss";
 
 class TwitchSearch extends React.Component {
   constructor() {

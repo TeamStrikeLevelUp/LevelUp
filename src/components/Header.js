@@ -1,14 +1,13 @@
 import React from "react";
-import "../../static/styles/components/header.scss";
-import "../../static/styles/index.scss";
+import HomeNavBar from "../components/HomeNavBar";
+import "../../styles/components/header.scss";
 
 function Header() {
   return (
     <div className="header">
       <div className="header__logo">
-        <p>
-          Leve<h3>1UP</h3>
-        </p>
+        <h2>Level Up</h2>
+        <HomeNavBar />
       </div>
     </div>
   );

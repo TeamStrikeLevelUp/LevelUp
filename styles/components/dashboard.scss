@@ -1,0 +1,90 @@
+.dashboard {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("/static/images/background2.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    background-color: var(--dashboard-primary-color);
+    height: 100vh;
+
+    .dashboard__container {
+        display: grid;
+        grid-template-columns: 100%;
+        height: 100%;
+
+        @media(min-width: 992px) {
+            grid-template-columns: 200px auto;
+        }
+        
+        .dashboard__sidebar {
+            padding: 40px;
+            background-color: rgba(53, 94, 114, 0.5);
+        }
+    }
+    .dashboard__nav {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        height: 100%;
+        padding-left: 0;
+
+        .dashboard__nav--item {
+            font-size: 15px;
+            color: #fff;
+            padding: 10px 0;
+        }
+    }
+
+    .dashboard__profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .dashboard__profile--image {
+            border-radius: 50%;
+            max-width: 70px;
+            width: 70px;
+        }
+
+        .dashboard__profile--name {
+            text-transform: capitalize;
+            font-size: 13px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .dashboard-content-wrapper {
+        padding: 40px;
+    }
+
+    .dashboard__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 40px;
+
+        @media(min-width: 992px) {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 2fr 2fr;
+        }
+
+        .dashboard__content--item {
+            // background-color: var(--dashboard-secondary-color);
+            background-color: rgba(53, 94, 114, 0.5);
+            padding: 20px; 
+        }
+
+        .dashboard__content--heading {
+            font-size: 15px
+        }
+        .dashboard__content--points{
+            font-size: 42px;
+            padding-left: 20px;
+        }
+        .dashboard__content--text {
+            font-size: 12px;
+            padding-left: 20px;
+        }
+    }
+}
