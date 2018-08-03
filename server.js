@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require("cors");
+
+//For News page
+const NewsAPI = require("newsapi");
+const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
+//For Search page
 const igdb = require("igdb-api-node").default;
+
 const pgp = require("pg-promise")();
 
 const bcrypt = require("bcrypt");
@@ -380,6 +385,41 @@ app.get("/genres/", (req, res) => {
 function displayData(res, data) {
   res.json(data);
 }
+
+//General NEWS search for latest Gaming articles
+app.get("/newsApi/", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      sources: "ign",
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
+//Specific NEWS search based on user-input
+app.get("/searchNews/:searchTerm", (req, res) => {
+  const search = req.params.searchTerm;
+  newsapi.v2
+    .everything({
+      sources: "ign",
+      q: search,
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");

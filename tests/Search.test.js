@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
-import Search from "../../src/components/Search";
+import Search from "../src/components/Search";
 
 describe("Search", () => {
   it("matches the snapshot", () => {

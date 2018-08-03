@@ -1,13 +1,9 @@
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/genres/`;
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    })
+    fetch(searchPath)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveGenreData(json.body));
@@ -19,14 +15,10 @@ export function fetchGenreData() {
 }
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/themes/`;
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    })
+    fetch(searchPath)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveThemeData(json.body));
@@ -38,11 +30,8 @@ export function fetchThemeData() {
 }
 //Main Game Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
-  return function (dispatch, getState) {
-    return fetch(searchPath, {
-      method: "GET",
-      mode: "cors"
-    })
+  return function(dispatch, getState) {
+    return fetch(searchPath)
       .then(response => response.json())
       .then(json => {
         dispatch(setGameData(json.body));
@@ -55,7 +44,6 @@ export function fetchGameInfoFromAPI(searchPath) {
 
 //function to call Reducer and set Genre data in redux.state
 export function receiveGenreData(genreData) {
-  console.log("genreData", genreData);
   return {
     type: "RECEIVE_GENREDATA",
     payload: genreData
@@ -64,7 +52,6 @@ export function receiveGenreData(genreData) {
 
 //function to call Reducer and set Theme in redux.state
 export function receiveThemeData(themeData) {
-  console.log("themeData", themeData);
   return {
     type: "RECEIVE_THEMEDATA",
     payload: themeData
@@ -75,8 +62,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function (dispatch, getState) {
-    console.log("API gameData", gameData);
+  return function(dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -139,7 +125,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-            screenshotObject["cloudinary_id"]
+              screenshotObject["cloudinary_id"]
           );
         });
 
@@ -160,7 +146,7 @@ export function setGameData(gameData) {
     if (myGameData.length === 0) {
       myGameData = "No results found";
     }
-    console.log("mygamedata", myGameData);
+
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -171,6 +157,105 @@ export function receiveGameData(gameData) {
     type: "RECEIVE_GAMEDATA",
     payload: gameData
   };
+}
+
+//Main NEWS Data fetch - calls helper function to sanitise data
+export function fetchNewsInfoFromAPI() {
+  return function(dispatch, getState) {
+    return fetch("/newsApi/")
+      .then(response => response.json())
+      .then(json => {
+        dispatch(setNewsData(json.articles));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
+//search NEWS Data based on User input
+export function searchNewsAPI(searchTerm) {
+  console.log("searchTerm", searchTerm);
+  return function(dispatch, getState) {
+    return fetch(`/searchNews/${searchTerm}`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(setNewsData(json.articles));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
+//function to call Reducer and set news data in redux.state
+export function receiveNewsData(newsData) {
+  return {
+    type: "RECEIVE_NEWSDATA",
+    payload: newsData
+  };
+}
+
+export function setNewsData(newsData) {
+  return function(dispatch, getState) {
+    const myNewsData = [];
+
+    newsData.map(newsObject => {
+      const myNewsObject = {};
+
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      if (newsObject.author) {
+        myNewsObject["author"] = newsObject.author;
+      }
+      myNewsObject["description"] = newsObject.description;
+
+      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
+
+      myNewsObject["title"] = newsObject.title;
+
+      myNewsObject["url"] = newsObject.url;
+
+      if (newsObject.urlToImage) {
+        myNewsObject["image"] = newsObject.urlToImage;
+      }
+      myNewsData.push(myNewsObject);
+    });
+    // console.log(myNewsData);
+    dispatch(receiveNewsData(myNewsData));
+  };
+}
+// Makes Dates look presentable
+function formatDate(date) {
+  let myDate = new Date(date);
+
+  const prettyDate = myDate.toDateString().substring(4, myDate.length);
+  const minutes = ("0" + myDate.getMinutes()).slice(-2);
+  const hours = myDate.getHours();
+
+  myDate = prettyDate.split(" ");
+  const month = myDate[0];
+  const day = parseInt(myDate[1]);
+  const year = myDate[2];
+  let suffix = "";
+  switch (day) {
+    case 1:
+    case 21:
+    case 31:
+      suffix = "st";
+      break;
+    case 2:
+    case 22:
+      suffix = "nd";
+      break;
+    case 3:
+    case 23:
+      suffix = "rd";
+      break;
+    default:
+      suffix = "th";
+      break;
+  }
+  return `${day}${suffix} ${month} ${year} at ${hours}:${minutes} `;
 }
 
 //function to call Reducer and set auth in redux.state
