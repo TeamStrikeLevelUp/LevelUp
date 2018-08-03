@@ -28948,41 +28948,228 @@ var TwitchSearch = function (_React$Component) {
       console.log(this.state.twitchQuery);
       return _react2.default.createElement(
         "div",
-        { className: "twitch__search" },
-        _react2.default.createElement(
-          "form",
-          {
-            onSubmit: this.handleSubmit,
-            className: "twitch__search--form",
-            id: "twitch__form",
-            action: ""
-          },
-          _react2.default.createElement("input", {
-            onChange: this.handleChange,
-            className: "twitch__search--input",
-            type: "text",
-            name: "twitch__input",
-            id: "twitch__input",
-            placeholder: "Search for a channel..."
-          }),
-          _react2.default.createElement(
-            "button",
-            { id: "twitch__submit", className: "twitch__submit" },
-            "Search"
-          )
-        ),
+        { className: "twitch" },
         _react2.default.createElement(
           "div",
-          null,
-          _react2.default.createElement("iframe", {
-            className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
-            src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
-            height: "700",
-            width: "800",
-            frameBorder: "2",
-            scrolling: "yes",
-            allowFullScreen: "true"
-          })
+          { className: "twitch__search" },
+          _react2.default.createElement(
+            "form",
+            {
+              onSubmit: this.handleSubmit,
+              className: "twitch__search--form",
+              id: "twitch__form",
+              action: ""
+            },
+            _react2.default.createElement("input", {
+              onChange: this.handleChange,
+              className: "twitch__search--input",
+              type: "text",
+              name: "twitch__input",
+              id: "twitch__input",
+              placeholder: "Search for a channel..."
+            }),
+            _react2.default.createElement(
+              "button",
+              { id: "twitch__submit", className: "twitch__submit" },
+              "Search"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement("iframe", {
+              className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
+              src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
+              height: "700",
+              width: "800",
+              frameBorder: "2",
+              scrolling: "yes",
+              allowFullScreen: "true"
+            })
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+              "h2",
+              { className: "twitch__streamers--title" },
+              "Check out these popular streamers:"
+            ),
+            _react2.default.createElement(
+              "ul",
+              { className: "twitch__streamers" },
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "Ninja"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: Fortnite"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "Shroud"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: Shooters"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "Riot Games"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: League of Legends"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "ESL"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: Counter Strike"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "TSM_Myth"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: Fortnite"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "MHeyhoe91"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: FIFA"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "CohhCarnage"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: PUBG"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "Asmongold"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: World of Warcraft"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "Dendi"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: Dota 2"
+                )
+              ),
+              _react2.default.createElement(
+                "li",
+                null,
+                _react2.default.createElement(
+                  "h4",
+                  {
+                    className: "twitch__streamers--names",
+                    onClick: this.handleClick
+                  },
+                  "Ltzonda"
+                ),
+                _react2.default.createElement(
+                  "p",
+                  null,
+                  "Focus: Grand Theft Auto"
+                )
+              )
+            )
+          )
         )
       );
     }
