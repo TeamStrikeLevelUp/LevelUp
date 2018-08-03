@@ -143,6 +143,25 @@ exports.push([module.i, ".main-nav {\n  display: flex;\n  flex-direction: row;\n
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli,\na {\n  list-style: none;\n  text-decoration: none; }\n\nbody {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  color: whitesmoke; }\n\n.news__form {\n  margin-bottom: 10px; }\n\n.news {\n  display: flex;\n  flex: 12;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin: auto;\n  text-align: center;\n  background-color: #222723;\n  color: white; }\n\n.news__result {\n  display: inline-block;\n  margin: 20px;\n  height: auto;\n  width: calc(100% / 3);\n  font-size: 20px;\n  text-align: left; }\n\n.news__img {\n  width: 100%;\n  height: auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 16px;\n  margin-left: 15px; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
@@ -174,7 +193,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39);\n  --dashboard-primary-color: #1c4154;\n  --dashboard-secondary-color: #355e72; }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.foo {\n  color: pink; }\n", ""]);
 
 // exports
 
@@ -27301,17 +27320,17 @@ exports.receiveGenreData = receiveGenreData;
 exports.receiveThemeData = receiveThemeData;
 exports.setGameData = setGameData;
 exports.receiveGameData = receiveGameData;
+exports.fetchNewsInfoFromAPI = fetchNewsInfoFromAPI;
+exports.searchNewsAPI = searchNewsAPI;
+exports.receiveNewsData = receiveNewsData;
+exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
     var searchPath = "/genres/";
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    }).then(function (response) {
+    fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveGenreData(json.body));
@@ -27325,11 +27344,7 @@ function fetchThemeData() {
   return function (dispatch, getState) {
     var searchPath = "/themes/";
 
-    fetch(searchPath, {
-      method: "GET",
-      mode: "cors",
-      headers: {}
-    }).then(function (response) {
+    fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveThemeData(json.body));
@@ -27341,10 +27356,7 @@ function fetchThemeData() {
 //Main Game Data fetch - calls helper function to sanitise data
 function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
-    return fetch(searchPath, {
-      method: "GET",
-      mode: "cors"
-    }).then(function (response) {
+    return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(setGameData(json.body));
@@ -27356,7 +27368,6 @@ function fetchGameInfoFromAPI(searchPath) {
 
 //function to call Reducer and set Genre data in redux.state
 function receiveGenreData(genreData) {
-  console.log("genreData", genreData);
   return {
     type: "RECEIVE_GENREDATA",
     payload: genreData
@@ -27365,7 +27376,6 @@ function receiveGenreData(genreData) {
 
 //function to call Reducer and set Theme in redux.state
 function receiveThemeData(themeData) {
-  console.log("themeData", themeData);
   return {
     type: "RECEIVE_THEMEDATA",
     payload: themeData
@@ -27377,7 +27387,6 @@ function receiveThemeData(themeData) {
 
 function setGameData(gameData) {
   return function (dispatch, getState) {
-    console.log("API gameData", gameData);
     var myGameData = [];
 
     gameData.map(function (gameObject) {
@@ -27451,7 +27460,7 @@ function setGameData(gameData) {
     if (myGameData.length === 0) {
       myGameData = "No results found";
     }
-    console.log("mygamedata", myGameData);
+
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -27462,6 +27471,103 @@ function receiveGameData(gameData) {
     type: "RECEIVE_GAMEDATA",
     payload: gameData
   };
+}
+
+//Main NEWS Data fetch - calls helper function to sanitise data
+function fetchNewsInfoFromAPI() {
+  return function (dispatch, getState) {
+    return fetch("/newsApi/").then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(setNewsData(json.articles));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//search NEWS Data based on User input
+function searchNewsAPI(searchTerm) {
+  console.log("searchTerm", searchTerm);
+  return function (dispatch, getState) {
+    return fetch("/searchNews/" + searchTerm).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(setNewsData(json.articles));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set news data in redux.state
+function receiveNewsData(newsData) {
+  return {
+    type: "RECEIVE_NEWSDATA",
+    payload: newsData
+  };
+}
+
+function setNewsData(newsData) {
+  return function (dispatch, getState) {
+    var myNewsData = [];
+
+    newsData.map(function (newsObject) {
+      var myNewsObject = {};
+
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      if (newsObject.author) {
+        myNewsObject["author"] = newsObject.author;
+      }
+      myNewsObject["description"] = newsObject.description;
+
+      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
+
+      myNewsObject["title"] = newsObject.title;
+
+      myNewsObject["url"] = newsObject.url;
+
+      if (newsObject.urlToImage) {
+        myNewsObject["image"] = newsObject.urlToImage;
+      }
+      myNewsData.push(myNewsObject);
+    });
+    // console.log(myNewsData);
+    dispatch(receiveNewsData(myNewsData));
+  };
+}
+// Makes Dates look presentable
+function formatDate(date) {
+  var myDate = new Date(date);
+
+  var prettyDate = myDate.toDateString().substring(4, myDate.length);
+  var minutes = ("0" + myDate.getMinutes()).slice(-2);
+  var hours = myDate.getHours();
+
+  myDate = prettyDate.split(" ");
+  var month = myDate[0];
+  var day = parseInt(myDate[1]);
+  var year = myDate[2];
+  var suffix = "";
+  switch (day) {
+    case 1:
+    case 21:
+    case 31:
+      suffix = "st";
+      break;
+    case 2:
+    case 22:
+      suffix = "nd";
+      break;
+    case 3:
+    case 23:
+      suffix = "rd";
+      break;
+    default:
+      suffix = "th";
+      break;
+  }
+  return "" + day + suffix + " " + month + " " + year + " at " + hours + ":" + minutes + " ";
 }
 
 //function to call Reducer and set auth in redux.state
@@ -27496,21 +27602,25 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
+
+var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
+
+var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
+
+var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
+
+var _NewsContainer = __webpack_require__(/*! ../containers/NewsContainer */ "./src/containers/NewsContainer.js");
+
+var _NewsContainer2 = _interopRequireDefault(_NewsContainer);
+
 var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
 
 var _Forums2 = _interopRequireDefault(_Forums);
 
-var _Posts = __webpack_require__(/*! ./Posts */ "./src/components/Posts.js");
-
-var _Posts2 = _interopRequireDefault(_Posts);
-
 var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
 
 var _Header2 = _interopRequireDefault(_Header);
-
-var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/HomeRoute.js");
-
-var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
 
 var _TwitchRoute = __webpack_require__(/*! ../routes/TwitchRoute */ "./src/routes/TwitchRoute.js");
 
@@ -27564,6 +27674,16 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
+              return _react2.default.createElement(_SearchContainer2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/news", render: function render() {
+              return _react2.default.createElement(_NewsContainer2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
+              return _react2.default.createElement(_DashboardRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/search", render: function render() {
               return _react2.default.createElement(_SearchGamesRoute2.default, null);
             } }),
@@ -27573,7 +27693,6 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/twitch", render: function render() {
               return _react2.default.createElement(_TwitchRoute2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _PostsContainer2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
               return _react2.default.createElement(_ForumsRoute2.default, null);
@@ -27939,7 +28058,9 @@ var Forums = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Forums.__proto__ || Object.getPrototypeOf(Forums)).call(this));
 
-    _this.state = { forum: {}, posts: [] };
+    _this.state = { forum: {}, posts: [], input: "" };
+    _this.inputHandler = _this.inputHandler.bind(_this);
+    _this.searchHandler = _this.searchHandler.bind(_this);
     return _this;
   }
 
@@ -27968,6 +28089,24 @@ var Forums = function (_React$Component) {
       });
     }
   }, {
+    key: "inputHandler",
+    value: function inputHandler(event) {
+      this.setState({ input: event.target.value });
+    }
+  }, {
+    key: "searchHandler",
+    value: function searchHandler(event) {
+      var _this3 = this;
+
+      event.preventDefault();
+
+      fetch("/api/post/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this3.setState({ posts: json });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
 
@@ -27986,6 +28125,16 @@ var Forums = function (_React$Component) {
           null,
           "Category: ",
           this.state.forum.category
+        ),
+        _react2.default.createElement(
+          "form",
+          null,
+          _react2.default.createElement("input", { placeholder: "search for posts", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.searchHandler },
+            " search "
+          )
         ),
         this.state.posts.map(function (post, index) {
           return _react2.default.createElement(
@@ -28147,6 +28296,170 @@ exports.default = HomeNavBar;
 
 /***/ }),
 
+/***/ "./src/components/News.js":
+/*!********************************!*\
+  !*** ./src/components/News.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../styles/components/news.scss */ "./styles/components/news.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var News = function (_React$Component) {
+  _inherits(News, _React$Component);
+
+  function News() {
+    _classCallCheck(this, News);
+
+    var _this = _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).call(this));
+
+    _this.state = {
+      searchNews: ""
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(News, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.fetchNewsData !== undefined && this.props.searchNewsData !== undefined) {
+        this.props.fetchNewsData();
+      }
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      event.preventDefault();
+      this.setState({
+        searchNews: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.props.searchNewsData(this.state.searchNews);
+      this.setState({
+        searchNews: ""
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var newsData = this.props.newsData;
+
+      console.log(newsData);
+
+      var newsDisplay = newsData === "No results found" ? newsData : newsData.map(function (news) {
+        return _react2.default.createElement(
+          "div",
+          { className: "news__result", key: news.title },
+          _react2.default.createElement(
+            "li",
+            null,
+            _react2.default.createElement(
+              "a",
+              { href: news.url, target: "blank" },
+              _react2.default.createElement("img", {
+                src: news.image,
+                className: "news__img",
+                alt: news.title
+              }),
+              _react2.default.createElement(
+                "header",
+                { className: "news__title" },
+                news.title
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "news__desc" },
+                news.description
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "news__desc" },
+                news.author
+              ),
+              _react2.default.createElement(
+                "p",
+                { className: "news__desc" },
+                news.date
+              )
+            )
+          )
+        );
+      });
+
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "form",
+          { className: "news__form", onSubmit: this.handleSubmit },
+          _react2.default.createElement("input", {
+            onChange: this.handleChange,
+            type: "search",
+            results: "0",
+            alt: "Search",
+            className: "news__input",
+            autoComplete: "off",
+            value: this.state.searchNews,
+            placeholder: "\uD83D\uDD0D Search news articles"
+          })
+        ),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(
+          "h1",
+          null,
+          "Latest News"
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "news" },
+          _react2.default.createElement(
+            "ul",
+            null,
+            newsDisplay
+          )
+        )
+      );
+    }
+  }]);
+
+  return News;
+}(_react2.default.Component);
+
+exports.default = News;
+
+/***/ }),
+
 /***/ "./src/components/Posts.js":
 /*!*********************************!*\
   !*** ./src/components/Posts.js ***!
@@ -28183,9 +28496,12 @@ var Posts = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
 
-    _this.state = { replies: [], post: {}, input: "" };
+    _this.state = { replies: [], post: {}, input: "", title: "", body: "" };
     _this.inputHandler = _this.inputHandler.bind(_this);
     _this.searchHandler = _this.searchHandler.bind(_this);
+    _this.titleHandler = _this.titleHandler.bind(_this);
+    _this.bodyHandler = _this.bodyHandler.bind(_this);
+    _this.replyHandler = _this.replyHandler.bind(_this);
     return _this;
   }
 
@@ -28214,20 +28530,66 @@ var Posts = function (_React$Component) {
   }, {
     key: "searchHandler",
     value: function searchHandler(event) {
+      var _this3 = this;
+
       event.preventDefault();
 
       fetch("/api/reply/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return console.log(json);
+        return _this3.setState({ replies: json });
       });
+    }
+  }, {
+    key: "titleHandler",
+    value: function titleHandler(event) {
+      this.setState({ title: event.target.value });
+    }
+  }, {
+    key: "bodyHandler",
+    value: function bodyHandler(event) {
+      this.setState({ body: event.target.value });
+    }
+  }, {
+    key: "replyHandler",
+    value: function replyHandler(event) {
+      var _this4 = this;
+
+      event.preventDefault();
+
+      if (!this.props.userAuthState) {
+        alert("login first");
+        return;
+      }
+
+      var newPost = {
+        title: this.state.title,
+        body: this.state.body,
+        parent_id: this.props.match.params.id,
+        forum_id: this.state.post.forum_id,
+        gamer_id: this.props.userAuthState.userId,
+        gamer_name: this.props.userAuthState.username
+      };
+
+      fetch("/api/reply", {
+        method: "post",
+        body: JSON.stringify(newPost),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this4.setState({ replies: json });
+      });
+
+      this.setState({ body: "", title: "" });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this5 = this;
 
-      console.log(this.props.userAuthState);
       if (!this.state.post.id) return null;
 
       return _react2.default.createElement(
@@ -28255,9 +28617,16 @@ var Posts = function (_React$Component) {
           " "
         ),
         _react2.default.createElement(
+          "h3",
+          null,
+          " Posted By: ",
+          this.state.post.gamer_name,
+          " "
+        ),
+        _react2.default.createElement(
           "form",
           null,
-          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement("input", { placeholder: "search for replies", value: this.state.input, onChange: this.inputHandler }),
           _react2.default.createElement(
             "button",
             { onClick: this.searchHandler },
@@ -28272,7 +28641,7 @@ var Posts = function (_React$Component) {
               "p",
               null,
               "Reply to \"",
-              _this3.state.post.title,
+              _this5.state.post.title,
               "\": "
             ),
             _react2.default.createElement(
@@ -28293,7 +28662,23 @@ var Posts = function (_React$Component) {
               reply.created
             )
           );
-        })
+        }),
+        _react2.default.createElement(
+          "div",
+          { className: this.props.userAuthState ? "" : "hidden" },
+          " login to reply "
+        ),
+        _react2.default.createElement(
+          "form",
+          { className: this.props.userAuthState ? "hidden" : "" },
+          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
+          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.replyHandler },
+            " reply "
+          )
+        )
       );
     }
   }]);
@@ -28652,6 +29037,52 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
+/***/ "./src/containers/NewsContainer.js":
+/*!*****************************************!*\
+  !*** ./src/containers/NewsContainer.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _News = __webpack_require__(/*! ../components/News */ "./src/components/News.js");
+
+var _News2 = _interopRequireDefault(_News);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  console.log(reduxState.newsData);
+  return {
+    newsData: reduxState.newsInfo
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchNewsData: function fetchNewsData() {
+      dispatch((0, _actions.fetchNewsInfoFromAPI)());
+    },
+    searchNewsData: function searchNewsData(searchTerm) {
+      dispatch((0, _actions.searchNewsAPI)(searchTerm));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_News2.default);
+
+/***/ }),
+
 /***/ "./src/containers/PostsContainer.js":
 /*!******************************************!*\
   !*** ./src/containers/PostsContainer.js ***!
@@ -28967,6 +29398,10 @@ var _genreInfo = __webpack_require__(/*! ./genreInfo */ "./src/reducers/genreInf
 
 var _genreInfo2 = _interopRequireDefault(_genreInfo);
 
+var _newsInfo = __webpack_require__(/*! ./newsInfo */ "./src/reducers/newsInfo.js");
+
+var _newsInfo2 = _interopRequireDefault(_newsInfo);
+
 var _authState = __webpack_require__(/*! ./authState */ "./src/reducers/authState.js");
 
 var _authState2 = _interopRequireDefault(_authState);
@@ -28977,8 +29412,38 @@ exports.default = (0, _redux.combineReducers)({
   gameInfo: _gameInfo2.default,
   themeInfo: _themeInfo2.default,
   genreInfo: _genreInfo2.default,
+  newsInfo: _newsInfo2.default,
   authState: _authState2.default
 });
+
+/***/ }),
+
+/***/ "./src/reducers/newsInfo.js":
+/*!**********************************!*\
+  !*** ./src/reducers/newsInfo.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function newsInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_NEWSDATA":
+      return action.payload;
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = newsInfo;
 
 /***/ }),
 
@@ -29404,6 +29869,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/news.scss":
+/*!*************************************!*\
+  !*** ./styles/components/news.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

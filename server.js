@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require("cors");
+
+//For News page
+const NewsAPI = require("newsapi");
+const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
+//For Search page
 const igdb = require("igdb-api-node").default;
+
 const pgp = require("pg-promise")();
 
 const bcrypt = require("bcrypt");
@@ -84,6 +89,16 @@ app.get("/api/post/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.get("/api/post/:id/search/:name", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 
+  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\'`, [
+    req.params.id, req.params.name])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
 app.get("/api/parentpost/:id", function (req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
@@ -101,13 +116,42 @@ app.get("/api/reply/:id", function (req, res) {
 });
 
 app.get("/api/reply/:id/search/:name", function (req, res) {
-  db.any(`SELECT * FROM post WHERE parent_id = $1 AND title ILIKE \'%$2#%\' `, [req.params.id, req.params.name])
+  db.any(`SELECT * FROM post WHERE parent_id = $1 
+  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\' `, [req.params.id, req.params.name])
     .then(data => {
       console.log(data);
       res.json(data);
     })
     .catch(error => console.log(error.message));
 });
+
+
+
+app.post('/api/reply', function(req, res){
+  
+  const {title, body, parent_id, forum_id, gamer_id, gamer_name} = req.body;
+  
+  db.one(`INSERT INTO post(title, body, parent_id, forum_id, gamer_id, gamer_name)
+          VALUES($1, $2, $3, $4, $5, $6) RETURNING id`,
+           [title, body, parent_id, forum_id, gamer_id, gamer_name])
+    .then(data => {
+
+      db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
+      .then(data => {
+        res.json(data);
+      })
+      .catch(error => console.log(error.message));
+      
+     // res.json(Object.assign({}, {id: data.id}, req.body));
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
+
 
 ///////////////// Ahmed - end //////////////////
 
@@ -341,6 +385,41 @@ app.get("/genres/", (req, res) => {
 function displayData(res, data) {
   res.json(data);
 }
+
+//General NEWS search for latest Gaming articles
+app.get("/newsApi/", (req, res) => {
+  newsapi.v2
+    .topHeadlines({
+      sources: "ign",
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
+//Specific NEWS search based on user-input
+app.get("/searchNews/:searchTerm", (req, res) => {
+  const search = req.params.searchTerm;
+  newsapi.v2
+    .everything({
+      sources: "ign",
+      q: search,
+      language: "en"
+    })
+    .then(response => {
+      res.json(response);
+      // console.log(response);
+    })
+    .catch(error => {
+      console.log("You have 2 lives remaining ", error);
+    });
+});
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
@@ -356,5 +435,5 @@ app.get("*", function (req, res) {
 
 const port = process.env.PORT || 8080;
 app.listen(port, function () {
-  console.log(`Listening on port number ${port}`);
+  console.log(`Listening on port number http://localhost:${port}`);
 });
