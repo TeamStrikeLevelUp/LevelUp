@@ -28192,6 +28192,7 @@ var Forums = function (_React$Component) {
     value: function render() {
 
       if (!this.state.forum.id) return null;
+
       return _react2.default.createElement(
         "div",
         null,
@@ -28218,13 +28219,20 @@ var Forums = function (_React$Component) {
           )
         ),
         this.state.posts.map(function (post, index) {
+
+          var date = String(new Date(post.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
             { key: post.id },
             _react2.default.createElement(
               _reactRouterDom.Link,
               { to: "/posts/" + post.id },
-              post.title
+              "Title: ",
+              post.title,
+              " - Posted By: ",
+              post.gamer_name,
+              " - On: ",
+              date
             )
           );
         }),
@@ -28701,7 +28709,7 @@ var Posts = function (_React$Component) {
       var _this5 = this;
 
       if (!this.state.post.id) return null;
-
+      var created = String(new Date(this.state.post.created)).substring(0, 24);
       return _react2.default.createElement(
         "div",
         null,
@@ -28723,7 +28731,7 @@ var Posts = function (_React$Component) {
           "h3",
           null,
           " Date Posted: ",
-          this.state.post.created,
+          created,
           " "
         ),
         _react2.default.createElement(
@@ -28744,6 +28752,7 @@ var Posts = function (_React$Component) {
           )
         ),
         this.state.replies.map(function (reply) {
+          var date = String(new Date(reply.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
             { key: reply.id },
@@ -28769,7 +28778,7 @@ var Posts = function (_React$Component) {
               "p",
               null,
               "Date Posted: ",
-              reply.created
+              date
             )
           );
         }),

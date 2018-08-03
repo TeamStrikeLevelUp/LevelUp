@@ -164,7 +164,7 @@ app.post("/api/post", function(req, res) {
     [title, body, forum_id, gamer_id, gamer_name]
   )
     .then(data => {
-      db.any(`SELECT * FROM post WHERE parent_id is NULL`)
+      db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1`, [forum_id])
         .then(data => {
           res.json(data);
         })
