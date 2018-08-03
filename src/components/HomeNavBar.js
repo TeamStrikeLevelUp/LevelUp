@@ -14,16 +14,23 @@ function HomeNavBar() {
           <Link to="/search">Search Games</Link>
         </li>
         <li>
+          <Link to="/news">Gaming News</Link>
+        </li>
+        <li>
           <Link to="/forum">Community</Link>
         </li>
         <li>
-          <Link to="/twitch">Twitch Streams</Link>
+          <Link to="/twitch">Twitch Me</Link>
+        </li>
+        <li>
+          <Link to="/top-games">Top Games</Link>
         </li>
         <li>
           <Link to="/dashboard">Profile</Link>
         </li>
         <li>
-          <Link to="/signup">Log In/Sign Up</Link>
+          <a href="/signup">Log In/Sign Up</a>
+          d6d0fd37ff5697603da7d3c3523f1a5535295940
         </li>
       </ul>
     </div>

@@ -1,0 +1,30 @@
+.twitch {
+  display: flex;
+}
+
+.twitch__streamers {
+  display: flex;
+  flex-direction: column;
+}
+
+.twitch__search--title {
+  text-align: center;
+}
+
+.twitch__streamers--title {
+  text-align: center;
+}
+
+.twitch__player {
+  display: block;
+
+  text-align: center;
+}
+
+.twitch__player--hide {
+  display: none;
+}
+
+.twitch__search--input {
+  text-align: center;
+}

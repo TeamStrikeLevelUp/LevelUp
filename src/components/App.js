@@ -12,6 +12,8 @@ import TwitchRoute from "../routes/TwitchRoute";
 import SearchGamesRoute from "../routes/SearchGamesRoute";
 import ForumsRoute from "../routes/ForumsRoute";
 import DashboardRoute from "../routes/DashboardRoute";
+import NewsRoute from "../routes/NewsRoute";
+import TopGamesRoute from "../routes/TopGamesRoute";
 
 import "../../static/styles/index.scss";
 
@@ -30,6 +32,8 @@ class App extends React.Component {
           <Route path="/forum/:id" component={Forums} />
           <Route path="/posts/:id" component={Posts} />
           <Route path="/forum" render={() => <ForumsRoute />} />
+          <Route path="/news" render={() => <NewsRoute />} />
+          <Route path="/top-games" render={() => <TopGamesRoute />} />
         </Switch>
       </div>
     );

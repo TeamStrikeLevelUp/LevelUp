@@ -6,7 +6,9 @@ function Header() {
   return (
     <div className="header">
       <div className="header__logo">
-        <h2>Level Up</h2>
+        <p>
+          Leve<h3>1UP</h3>
+        </p>
       </div>
     </div>
   );
