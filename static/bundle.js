@@ -181,6 +181,25 @@ exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: fl
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".twitch {\n  display: flex; }\n\n.twitch__streamers {\n  display: flex;\n  flex-direction: column; }\n\n.twitch__search--title {\n  text-align: center; }\n\n.twitch__streamers--title {\n  text-align: center; }\n\n.twitch__player {\n  display: block;\n  text-align: center; }\n\n.twitch__player--hide {\n  display: none; }\n\n.twitch__search--input {\n  text-align: center; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
 /*!**********************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
@@ -191,6 +210,7 @@ exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: fl
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Open+Sans);", ""]);
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
 exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.foo {\n  color: pink; }\n", ""]);
@@ -27638,6 +27658,14 @@ var _DashboardRoute = __webpack_require__(/*! ../routes/DashboardRoute */ "./src
 
 var _DashboardRoute2 = _interopRequireDefault(_DashboardRoute);
 
+var _NewsRoute = __webpack_require__(/*! ../routes/NewsRoute */ "./src/routes/NewsRoute.js");
+
+var _NewsRoute2 = _interopRequireDefault(_NewsRoute);
+
+var _TopGamesRoute = __webpack_require__(/*! ../routes/TopGamesRoute */ "./src/routes/TopGamesRoute.js");
+
+var _TopGamesRoute2 = _interopRequireDefault(_TopGamesRoute);
+
 var _PostsContainer = __webpack_require__(/*! ../containers/PostsContainer */ "./src/containers/PostsContainer.js");
 
 var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
@@ -27696,6 +27724,12 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/posts/:id", component: _PostsContainer2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum", render: function render() {
               return _react2.default.createElement(_ForumsRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/news", render: function render() {
+              return _react2.default.createElement(_NewsRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/top-games", render: function render() {
+              return _react2.default.createElement(_TopGamesRoute2.default, null);
             } })
         )
       );
@@ -28255,6 +28289,24 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/news" },
+        "Gaming News"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/top-games" },
+        "Top Games"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
       { className: "main-nav__item" },
       _react2.default.createElement(
         _reactRouterDom.Link,
@@ -28284,8 +28336,8 @@ function HomeNavBar() {
       "li",
       null,
       _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/signup" },
+        "a",
+        { href: "/signup" },
         "Log In/Sign Up"
       )
     )
@@ -28901,6 +28953,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/twitch.scss */ "./styles/components/twitch.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28924,6 +28978,7 @@ var TwitchSearch = function (_React$Component) {
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
     return _this;
   }
 
@@ -28943,46 +28998,246 @@ var TwitchSearch = function (_React$Component) {
       });
     }
   }, {
+    key: "handleClick",
+    value: function handleClick(event) {
+      this.setState({
+        twitchQuery: event.target.innerText,
+        displayVideo: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       console.log(this.state.twitchQuery);
       return _react2.default.createElement(
         "div",
-        { className: "twitch__search" },
+        { className: "twitch" },
         _react2.default.createElement(
-          "form",
-          {
-            onSubmit: this.handleSubmit,
-            className: "twitch__search--form",
-            id: "twitch__form",
-            action: ""
-          },
-          _react2.default.createElement("input", {
-            onChange: this.handleChange,
-            className: "twitch__search--input",
-            type: "text",
-            name: "twitch__input",
-            id: "twitch__input",
-            placeholder: "Search for a channel..."
-          }),
+          "div",
+          { className: "twitch__search" },
           _react2.default.createElement(
-            "button",
-            { id: "twitch__submit", className: "twitch__submit" },
-            "Search"
+            "h2",
+            { className: "twitch__search--title" },
+            "Find Your Favourite Streamers and Enjoy!"
+          ),
+          _react2.default.createElement(
+            "form",
+            {
+              onSubmit: this.handleSubmit,
+              className: "twitch__search--form",
+              id: "twitch__form",
+              action: ""
+            },
+            _react2.default.createElement("input", {
+              onChange: this.handleChange,
+              className: "twitch__search--input",
+              type: "text",
+              name: "twitch__input",
+              id: "twitch__input",
+              placeholder: "Search for a channel..."
+            }),
+            _react2.default.createElement(
+              "button",
+              { id: "twitch__submit", className: "twitch__submit" },
+              "Search"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement("iframe", {
+              className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
+              src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
+              height: "700",
+              width: "800",
+              frameBorder: "2",
+              scrolling: "yes",
+              allowFullScreen: "true"
+            })
           )
         ),
         _react2.default.createElement(
           "div",
           null,
-          _react2.default.createElement("iframe", {
-            className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
-            src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
-            height: "700",
-            width: "800",
-            frameBorder: "2",
-            scrolling: "yes",
-            allowFullScreen: "true"
-          })
+          _react2.default.createElement(
+            "h2",
+            { className: "twitch__streamers--title" },
+            "Check out these popular streamers:"
+          ),
+          _react2.default.createElement(
+            "ul",
+            { className: "twitch__streamers" },
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "Ninja"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: Fortnite"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "Shroud"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: Shooters"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "Riot Games"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: League of Legends"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "ESL"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: Counter Strike"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "TSM_Myth"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: Fortnite"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "MHeyhoe91"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: FIFA"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "CohhCarnage"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: PUBG"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "Asmongold"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: World of Warcraft"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "Dendi"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: Dota 2"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "h4",
+                {
+                  className: "twitch__streamers--names",
+                  onClick: this.handleClick
+                },
+                "Ltzonda"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Focus: Grand Theft Auto"
+              )
+            )
+          )
         )
       );
     }
@@ -29682,6 +29937,65 @@ exports.default = HomeRoute;
 
 /***/ }),
 
+/***/ "./src/routes/NewsRoute.js":
+/*!*********************************!*\
+  !*** ./src/routes/NewsRoute.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewsRoute = function (_React$Component) {
+  _inherits(NewsRoute, _React$Component);
+
+  function NewsRoute() {
+    _classCallCheck(this, NewsRoute);
+
+    return _possibleConstructorReturn(this, (NewsRoute.__proto__ || Object.getPrototypeOf(NewsRoute)).apply(this, arguments));
+  }
+
+  _createClass(NewsRoute, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "h2",
+          null,
+          "Sheila: place news container here"
+        )
+      );
+    }
+  }]);
+
+  return NewsRoute;
+}(_react2.default.Component);
+
+exports.default = NewsRoute;
+
+/***/ }),
+
 /***/ "./src/routes/SearchGamesRoute.js":
 /*!****************************************!*\
   !*** ./src/routes/SearchGamesRoute.js ***!
@@ -29738,6 +30052,65 @@ var SearchGamesRoute = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = SearchGamesRoute;
+
+/***/ }),
+
+/***/ "./src/routes/TopGamesRoute.js":
+/*!*************************************!*\
+  !*** ./src/routes/TopGamesRoute.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopGamesRoute = function (_React$Component) {
+  _inherits(TopGamesRoute, _React$Component);
+
+  function TopGamesRoute() {
+    _classCallCheck(this, TopGamesRoute);
+
+    return _possibleConstructorReturn(this, (TopGamesRoute.__proto__ || Object.getPrototypeOf(TopGamesRoute)).apply(this, arguments));
+  }
+
+  _createClass(TopGamesRoute, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "h3",
+          null,
+          "Hamzah sort this out"
+        )
+      );
+    }
+  }]);
+
+  return TopGamesRoute;
+}(_react2.default.Component);
+
+exports.default = TopGamesRoute;
 
 /***/ }),
 
@@ -29929,6 +30302,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/twitch.scss":
+/*!***************************************!*\
+  !*** ./styles/components/twitch.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
