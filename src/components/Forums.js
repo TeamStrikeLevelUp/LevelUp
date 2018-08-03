@@ -89,6 +89,7 @@ class Forums extends React.Component {
   render() {
      
     if(!this.state.forum.id) return null
+    
     return (
       <div>
           <p>Title: {this.state.forum.title}</p>
@@ -102,9 +103,11 @@ class Forums extends React.Component {
 
 
           {this.state.posts.map((post, index) => {
+            
+            let date= String(new Date(post.created)).substring(0,24)
          return (
          <div key={post.id}>
-             <Link  to={`/posts/${post.id}`}>{post.title}</Link>
+             <Link  to={`/posts/${post.id}`}>Title: {post.title} - Posted By: {post.gamer_name} - On: {date}</Link>
         </div>
             
         )
