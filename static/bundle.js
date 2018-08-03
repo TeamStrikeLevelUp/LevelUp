@@ -117,7 +117,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header {\n  padding: 3px;\n  margin: 0;\n  background-color: cadetblue; }\n", ""]);
+exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: cadetblue; }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
 
 // exports
 
@@ -136,7 +136,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "ul {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around; }\n", ""]);
+exports.push([module.i, ".main-nav {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n", ""]);
 
 // exports
 
@@ -28084,64 +28084,60 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function HomeNavBar() {
   return _react2.default.createElement(
-    "div",
-    null,
+    "ul",
+    { className: "main-nav" },
     _react2.default.createElement(
-      "ul",
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/homepage" },
+        "Home"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/search" },
+        "Search Games"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/forum" },
+        "Community"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/twitch" },
+        "Twitch Streams"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/dashboard" },
+        "Profile"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
       null,
       _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/homepage" },
-          "Home"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/search" },
-          "Search Games"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/forum" },
-          "Community"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/twitch" },
-          "Twitch Streams"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/dashboard" },
-          "Profile"
-        )
-      ),
-      _react2.default.createElement(
-        "li",
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: "/signup" },
-          "Log In/Sign Up"
-        )
+        _reactRouterDom.Link,
+        { to: "/signup" },
+        "Log In/Sign Up"
       )
     )
   );

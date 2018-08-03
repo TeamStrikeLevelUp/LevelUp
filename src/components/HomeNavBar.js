@@ -5,28 +5,26 @@ import "../../styles/index.scss";
 
 function HomeNavBar() {
   return (
-    <div>
-      <ul>
-        <li>
+      <ul className="main-nav">
+        <li className="main-nav__item">
           <Link to="/homepage">Home</Link>
         </li>
-        <li>
+        <li className="main-nav__item">
           <Link to="/search">Search Games</Link>
         </li>
-        <li>
+        <li className="main-nav__item">
           <Link to="/forum">Community</Link>
         </li>
-        <li>
+        <li className="main-nav__item">
           <Link to="/twitch">Twitch Streams</Link>
         </li>
-        <li>
+        <li className="main-nav__item">
           <Link to="/dashboard">Profile</Link>
         </li>
         <li>
           <Link to="/signup">Log In/Sign Up</Link>
         </li>
       </ul>
-    </div>
   );
 }
 
