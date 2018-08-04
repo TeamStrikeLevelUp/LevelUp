@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class Posts extends React.Component {
   constructor() {
     super();
@@ -109,9 +110,9 @@ class Posts extends React.Component {
       )
       })}
 
-      <div className={this.props.userAuthState ? "" : "hidden"} > login to reply </div>
+      <div style={{display: this.props.userAuthState ? 'none' : '' }} > login to post </div>
 
-      <form className= {this.props.userAuthState ? "hidden" : ""}>
+      <form style={{display: this.props.userAuthState ? '' : 'none' }} >
       <input placeholder="title" value={this.state.title} onChange={this.titleHandler} />
       <input placeholder="body" value={this.state.body} onChange={this.bodyHandler} />
       <button onClick={this.replyHandler}> reply </button>

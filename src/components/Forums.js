@@ -5,12 +5,13 @@ import {Link} from 'react-router-dom';
 class Forums extends React.Component {
   constructor() {
     super();
-    this.state = { forum: {}, posts:[], input:"", title:"", body:"" };
+    this.state = { forum: {}, posts:[], input:"", title:"", body:"", page:0 };
     this.inputHandler=this.inputHandler.bind(this);
     this.searchHandler=this.searchHandler.bind(this);
     this.titleHandler=this.titleHandler.bind(this);
     this.bodyHandler=this.bodyHandler.bind(this);
     this.replyHandler=this.replyHandler.bind(this)
+    this.pageHandler=this.pageHandler.bind(this)
   }
 
   componentDidUpdate(prevProps){
@@ -85,6 +86,16 @@ class Forums extends React.Component {
       this.setState({body:"",title:""})
   }
 
+  pageHandler(event){
+    if(event.target.name==="prev"){
+      if(this.state.page>=0){
+        alert("already on first page")
+        return
+      }
+    }
+
+  }
+
 
   render() {
      
@@ -113,13 +124,18 @@ class Forums extends React.Component {
         )
         })}
 
-      <form className= {this.props.userAuthState ? "hidden" : ""}>
+        <div style={{display: this.props.userAuthState ? 'none' : '' }} > login to post </div>
+
+      <form style={{display: this.props.userAuthState ? '' : 'none' }}>
       <input placeholder="title" value={this.state.title} onChange={this.titleHandler} />
       <input placeholder="body" value={this.state.body} onChange={this.bodyHandler} />
       <button onClick={this.replyHandler}> reply </button>
       </form>
 
-        
+      <div >
+          <button name="prev" onClick={this.pageHandler}> previous page </button>
+          <button name="next" onClick={this.pageHandler}> next page </button>
+       </div>
         
       </div>
     );
