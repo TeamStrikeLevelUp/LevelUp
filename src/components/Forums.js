@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 class Forums extends React.Component {
   constructor() {
     super();
-    this.state = { forum: {}, posts:[], input:"", title:"", body:"", page:0 };
+    this.state = { forum: {}, posts:[], input:"", title:"", body:"" };
     this.inputHandler=this.inputHandler.bind(this);
     this.searchHandler=this.searchHandler.bind(this);
     this.titleHandler=this.titleHandler.bind(this);
@@ -86,16 +86,6 @@ class Forums extends React.Component {
       this.setState({body:"",title:""})
   }
 
-  pageHandler(event){
-    if(event.target.name==="prev"){
-      if(this.state.page>=0){
-        alert("already on first page")
-        return
-      }
-    }
-
-  }
-
 
   render() {
      
@@ -132,10 +122,6 @@ class Forums extends React.Component {
       <button onClick={this.replyHandler}> reply </button>
       </form>
 
-      <div >
-          <button name="prev" onClick={this.pageHandler}> previous page </button>
-          <button name="next" onClick={this.pageHandler}> next page </button>
-       </div>
         
       </div>
     );
