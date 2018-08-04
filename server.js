@@ -55,8 +55,10 @@ function getUserById(id) {
 }
 
 ///////////////// Ahmed - start //////////////////
+
+
 app.get("/api/forum", function(req, res) {
-  db.any(`SELECT * FROM forum`)
+  db.any(`SELECT * FROM forum ORDER BY title ASC`)
     .then(data => {
       res.json(data);
     })
@@ -80,7 +82,7 @@ app.get("/api/forum/search/:name", function(req, res) {
 });
 
 app.get("/api/post/:id", function(req, res) {
-  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [
+  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`, [
     req.params.id
   ])
     .then(data => {
@@ -92,7 +94,7 @@ app.get("/api/post/:id", function(req, res) {
 app.get("/api/post/:id/search/:name", function(req, res) {
   db.any(
     `SELECT * FROM post WHERE parent_id is null AND forum_id = $1 
-  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\'`,
+  AND (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') ORDER BY created DESC`,
     [req.params.id, req.params.name]
   )
     .then(data => {
@@ -119,8 +121,8 @@ app.get("/api/reply/:id", function(req, res) {
 
 app.get("/api/reply/:id/search/:name", function(req, res) {
   db.any(
-    `SELECT * FROM post WHERE parent_id = $1 
-  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\' `,
+    `SELECT * FROM post WHERE  
+   (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') AND parent_id = $1 `,
     [req.params.id, req.params.name]
   )
     .then(data => {
@@ -164,7 +166,7 @@ app.post("/api/post", function(req, res) {
     [title, body, forum_id, gamer_id, gamer_name]
   )
     .then(data => {
-      db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1`, [forum_id])
+      db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1 ORDER BY created DESC`, [forum_id])
         .then(data => {
           res.json(data);
         })

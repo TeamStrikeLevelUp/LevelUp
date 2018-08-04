@@ -28098,6 +28098,7 @@ var Forums = function (_React$Component) {
     _this.titleHandler = _this.titleHandler.bind(_this);
     _this.bodyHandler = _this.bodyHandler.bind(_this);
     _this.replyHandler = _this.replyHandler.bind(_this);
+    _this.pageHandler = _this.pageHandler.bind(_this);
     return _this;
   }
 
@@ -28237,8 +28238,13 @@ var Forums = function (_React$Component) {
           );
         }),
         _react2.default.createElement(
+          "div",
+          { style: { display: this.props.userAuthState ? 'none' : '' } },
+          " login to post "
+        ),
+        _react2.default.createElement(
           "form",
-          { className: this.props.userAuthState ? "hidden" : "" },
+          { style: { display: this.props.userAuthState ? '' : 'none' } },
           _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
           _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
           _react2.default.createElement(
@@ -28784,12 +28790,12 @@ var Posts = function (_React$Component) {
         }),
         _react2.default.createElement(
           "div",
-          { className: this.props.userAuthState ? "" : "hidden" },
-          " login to reply "
+          { style: { display: this.props.userAuthState ? 'none' : '' } },
+          " login to post "
         ),
         _react2.default.createElement(
           "form",
-          { className: this.props.userAuthState ? "hidden" : "" },
+          { style: { display: this.props.userAuthState ? '' : 'none' } },
           _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
           _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
           _react2.default.createElement(
