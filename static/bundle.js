@@ -28098,7 +28098,7 @@ var Forums = function (_React$Component) {
     _this.titleHandler = _this.titleHandler.bind(_this);
     _this.bodyHandler = _this.bodyHandler.bind(_this);
     _this.replyHandler = _this.replyHandler.bind(_this);
-    _this.pageHandler = _this.pageHandler.bind(_this);
+
     return _this;
   }
 

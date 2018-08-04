@@ -11,7 +11,7 @@ class Forums extends React.Component {
     this.titleHandler=this.titleHandler.bind(this);
     this.bodyHandler=this.bodyHandler.bind(this);
     this.replyHandler=this.replyHandler.bind(this)
-    this.pageHandler=this.pageHandler.bind(this)
+    
   }
 
   componentDidUpdate(prevProps){

@@ -126,7 +126,6 @@ app.get("/api/reply/:id/search/:name", function(req, res) {
     [req.params.id, req.params.name]
   )
     .then(data => {
-      console.log(data);
       res.json(data);
     })
     .catch(error => console.log(error.message));
