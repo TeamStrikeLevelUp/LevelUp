@@ -154,6 +154,31 @@ app.post("/api/reply", function (req, res) {
     });
 });
 
+
+app.post("/api/post", function(req, res) {
+  const { title, body, forum_id, gamer_id, gamer_name } = req.body;
+
+  db.one(
+    `INSERT INTO post(title, body, forum_id, gamer_id, gamer_name)
+          VALUES($1, $2, $3, $4, $5) RETURNING id`,
+    [title, body, forum_id, gamer_id, gamer_name]
+  )
+    .then(data => {
+      db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1`, [forum_id])
+        .then(data => {
+          res.json(data);
+        })
+        .catch(error => console.log(error.message));
+
+      // res.json(Object.assign({}, {id: data.id}, req.body));
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
 ///////////////// Ahmed - end //////////////////
 
 // Database connection test ends

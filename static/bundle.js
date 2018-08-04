@@ -27634,10 +27634,6 @@ var _NewsContainer = __webpack_require__(/*! ../containers/NewsContainer */ "./s
 
 var _NewsContainer2 = _interopRequireDefault(_NewsContainer);
 
-var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
-
-var _Forums2 = _interopRequireDefault(_Forums);
-
 var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
 
 var _Header2 = _interopRequireDefault(_Header);
@@ -27669,6 +27665,10 @@ var _TopGamesRoute2 = _interopRequireDefault(_TopGamesRoute);
 var _PostsContainer = __webpack_require__(/*! ../containers/PostsContainer */ "./src/containers/PostsContainer.js");
 
 var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
+
+var _ForumsContainer = __webpack_require__(/*! ../containers/ForumsContainer */ "./src/containers/ForumsContainer.js");
+
+var _ForumsContainer2 = _interopRequireDefault(_ForumsContainer);
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
@@ -27711,7 +27711,7 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
               return _react2.default.createElement(_DashboardRoute2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _ForumsContainer2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/search", render: function render() {
               return _react2.default.createElement(_SearchGamesRoute2.default, null);
             } }),
@@ -28092,9 +28092,12 @@ var Forums = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Forums.__proto__ || Object.getPrototypeOf(Forums)).call(this));
 
-    _this.state = { forum: {}, posts: [], input: "" };
+    _this.state = { forum: {}, posts: [], input: "", title: "", body: "" };
     _this.inputHandler = _this.inputHandler.bind(_this);
     _this.searchHandler = _this.searchHandler.bind(_this);
+    _this.titleHandler = _this.titleHandler.bind(_this);
+    _this.bodyHandler = _this.bodyHandler.bind(_this);
+    _this.replyHandler = _this.replyHandler.bind(_this);
     return _this;
   }
 
@@ -28141,10 +28144,55 @@ var Forums = function (_React$Component) {
       });
     }
   }, {
+    key: "titleHandler",
+    value: function titleHandler(event) {
+      this.setState({ title: event.target.value });
+    }
+  }, {
+    key: "bodyHandler",
+    value: function bodyHandler(event) {
+      this.setState({ body: event.target.value });
+    }
+  }, {
+    key: "replyHandler",
+    value: function replyHandler(event) {
+      var _this4 = this;
+
+      event.preventDefault();
+
+      if (!this.props.userAuthState) {
+        alert("login first");
+        return;
+      }
+
+      var newPost = {
+        title: this.state.title,
+        body: this.state.body,
+        forum_id: this.state.forum.id,
+        gamer_id: this.props.userAuthState.userId,
+        gamer_name: this.props.userAuthState.username
+      };
+
+      fetch("/api/post", {
+        method: "post",
+        body: JSON.stringify(newPost),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this4.setState({ posts: json });
+      });
+
+      this.setState({ body: "", title: "" });
+    }
+  }, {
     key: "render",
     value: function render() {
 
       if (!this.state.forum.id) return null;
+
       return _react2.default.createElement(
         "div",
         null,
@@ -28171,16 +28219,34 @@ var Forums = function (_React$Component) {
           )
         ),
         this.state.posts.map(function (post, index) {
+
+          var date = String(new Date(post.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
             { key: post.id },
             _react2.default.createElement(
               _reactRouterDom.Link,
               { to: "/posts/" + post.id },
-              post.title
+              "Title: ",
+              post.title,
+              " - Posted By: ",
+              post.gamer_name,
+              " - On: ",
+              date
             )
           );
-        })
+        }),
+        _react2.default.createElement(
+          "form",
+          { className: this.props.userAuthState ? "hidden" : "" },
+          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
+          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.replyHandler },
+            " reply "
+          )
+        )
       );
     }
   }]);
@@ -28652,7 +28718,7 @@ var Posts = function (_React$Component) {
       var _this5 = this;
 
       if (!this.state.post.id) return null;
-
+      var created = String(new Date(this.state.post.created)).substring(0, 24);
       return _react2.default.createElement(
         "div",
         null,
@@ -28674,7 +28740,7 @@ var Posts = function (_React$Component) {
           "h3",
           null,
           " Date Posted: ",
-          this.state.post.created,
+          created,
           " "
         ),
         _react2.default.createElement(
@@ -28695,6 +28761,7 @@ var Posts = function (_React$Component) {
           )
         ),
         this.state.replies.map(function (reply) {
+          var date = String(new Date(reply.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
             { key: reply.id },
@@ -28720,7 +28787,7 @@ var Posts = function (_React$Component) {
               "p",
               null,
               "Date Posted: ",
-              reply.created
+              date
             )
           );
         }),
@@ -29298,6 +29365,39 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
+
+/***/ }),
+
+/***/ "./src/containers/ForumsContainer.js":
+/*!*******************************************!*\
+  !*** ./src/containers/ForumsContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Forums = __webpack_require__(/*! ../components/Forums */ "./src/components/Forums.js");
+
+var _Forums2 = _interopRequireDefault(_Forums);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState, ownProps) {
+  return {
+    match: ownProps.match,
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Forums2.default);
 
 /***/ }),
 
