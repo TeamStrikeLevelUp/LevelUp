@@ -213,7 +213,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.foo {\n  color: pink; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -28289,7 +28289,7 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/news" },
@@ -28298,7 +28298,7 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/top-games" },
@@ -28339,6 +28339,15 @@ function HomeNavBar() {
         "a",
         { href: "/signup" },
         "Log In/Sign Up"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/logout" },
+        "Logout"
       )
     )
   );

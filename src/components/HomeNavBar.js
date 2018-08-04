@@ -12,11 +12,11 @@ function HomeNavBar() {
       <li className="main-nav__item">
         <Link to="/search">Search Games</Link>
       </li>
-      <li>
+      <li className="main-nav__item">
         <Link to="/news">Gaming News</Link>
       </li>
 
-      <li>
+      <li className="main-nav__item">
         <Link to="/top-games">Top Games</Link>
       </li>
 
@@ -31,6 +31,9 @@ function HomeNavBar() {
       </li>
       <li>
         <a href="/signup">Log In/Sign Up</a>
+      </li>
+      <li>
+        <Link to="/logout">Logout</Link>
       </li>
     </ul>
   );

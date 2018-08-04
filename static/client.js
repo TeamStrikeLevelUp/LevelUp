@@ -3,7 +3,7 @@ const signupForm = document.getElementById("signup-form");
 
 // Login form handler
 if (loginForm) {
-  loginForm.addEventListener("submit", function(event) {
+  loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const username = document.getElementById("username").value;
@@ -16,7 +16,7 @@ if (loginForm) {
       headers: {
         "content-type": "application/json"
       }
-    }).then(function(response) {
+    }).then(function (response) {
       if (response.status === 200) {
         window.location.pathname = "/dashboard";
       } else {
@@ -28,7 +28,7 @@ if (loginForm) {
 
 // Registration form handler
 if (signupForm) {
-  signupForm.addEventListener("submit", function(event) {
+  signupForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const signupUsername = document.getElementById("signup-username").value;
@@ -42,7 +42,7 @@ if (signupForm) {
       headers: {
         "content-type": "application/json"
       }
-    }).then(function(response) {
+    }).then(function (response) {
       console.log("response", response);
       if (response.status == 200) {
         window.location.pathname = "/dashboard";
@@ -51,4 +51,35 @@ if (signupForm) {
       }
     });
   });
+}
+const loginButton = document.querySelectorAll(".landing__login");
+
+if (loginButton) {
+  for (var i = 0; i < loginButton.length; i++) {
+    loginButton[i].addEventListener('click', function (e) {
+      console.log("fail");
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      fetch("/login", {
+        method: "POST",
+        body: JSON.stringify({ username, password }),
+        credentials: "same-origin",
+        headers: {
+          "content-type": "application/json"
+        }
+      }).then(function (response) {
+        if (response.status === 200) {
+          window.location.pathname = "/dashboard";
+        } else {
+          alert("invalid user name or password");
+        }
+      });
+      // e.preventDefault();
+      // loginForm.submit();
+    })
+  }
+
 }
