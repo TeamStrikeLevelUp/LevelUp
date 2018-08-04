@@ -132,32 +132,6 @@ app.get("/api/reply/:id/search/:name", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-// app.get("/api/reply/:id/search/:name", function(req, res) {
-//   db.any(
-//     `SELECT * FROM post WHERE  
-//     parent_id = $1 `,
-//     [req.params.id, req.params.name]
-//   )
-//     .then(data => {
-//       console.log(data);
-//       res.json(data);
-//     })
-//     .catch(error => console.log(error.message));
-// });
-
-// app.get("/api/forum/:forumid/reply/:replyid/search/:name", function(req, res) {
-//   db.any(
-//     `SELECT * FROM post WHERE  
-//    title ILIKE \'%$3#%\' OR body ILIKE \'%$3#%\' AND forum_id = 1 AND parent_id = $2`,
-//     [req.params.forumid, req.params.replyid, req.params.name]
-//   )
-//     .then(data => {
-//       console.log(data);
-//       res.json(data);
-//     })
-//     .catch(error => console.log(error.message));
-// });
-
 app.post("/api/reply", function(req, res) {
   const { title, body, parent_id, forum_id, gamer_id, gamer_name } = req.body;
 
