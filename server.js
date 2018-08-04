@@ -155,7 +155,7 @@ app.post("/api/reply", function (req, res) {
 });
 
 
-app.post("/api/post", function(req, res) {
+app.post("/api/post", function (req, res) {
   const { title, body, forum_id, gamer_id, gamer_name } = req.body;
 
   db.one(
@@ -300,17 +300,11 @@ app.post("/signup", (req, res) => {
       return bcrypt.hash(signupPassword, salt);
     })
     .then(hashedPassword => {
-      db.one(
-        `
-              INSERT INTO gamer (gamer_name, password_hash, email)
-              VALUES ($1, $2, $3)
-        `,
-        [signupUsername, hashedPassword, signupEmail]
-      )
-        .then(data => {
-          console.log("data", data);
-          // res.json(data)
-        })
+      db.oneOrNone(`
+        INSERT INTO gamer (gamer_name, password_hash, email)
+        VALUES ($1, $2, $3)
+        `, [signupUsername, hashedPassword, signupEmail])
+        .then(data => res.json(data))
         .catch(error => console.log("Gamer already exist: ", error.message));
     });
 });
