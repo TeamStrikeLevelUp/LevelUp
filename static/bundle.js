@@ -27784,6 +27784,7 @@ var Dashboard = function (_React$Component) {
         _this.state = {
             user: {}
         };
+        _this.gamerInfo = _this.gamerInfo.bind(_this);
         return _this;
     }
 
@@ -27800,11 +27801,35 @@ var Dashboard = function (_React$Component) {
             };
         }
     }, {
+        key: 'gamerInfo',
+        value: function gamerInfo() {
+            if (this.props.userAuthState) {
+                //fetch gamer_profile
+                fetch('/api/gamer/' + this.props.userAuthState.userId).then(function (response) {
+                    return response.json();
+                }).then(function (json) {
+                    return console.log("----gamer_profile----", json);
+                });
+
+                //fetch replies by gamer
+                fetch('/api/gamer/post/' + this.props.userAuthState.userId).then(function (response) {
+                    return response.json();
+                }).then(function (json) {
+                    return console.log("----gamer_posts----", json);
+                });
+            } else alert("not logged");
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 { className: 'dashboard' },
+                _react2.default.createElement(
+                    'button',
+                    { onClick: this.gamerInfo },
+                    ' gamer info '
+                ),
                 _react2.default.createElement(
                     'div',
                     { className: 'dashboard__container' },

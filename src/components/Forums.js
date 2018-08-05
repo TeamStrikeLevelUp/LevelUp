@@ -11,6 +11,7 @@ class Forums extends React.Component {
     this.titleHandler=this.titleHandler.bind(this);
     this.bodyHandler=this.bodyHandler.bind(this);
     this.replyHandler=this.replyHandler.bind(this)
+
     
   }
 
@@ -93,6 +94,10 @@ class Forums extends React.Component {
     
     return (
       <div>
+
+     
+
+
           <p>Title: {this.state.forum.title}</p>
           <p>Category: {this.state.forum.category}</p>
 

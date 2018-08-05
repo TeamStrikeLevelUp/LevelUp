@@ -7,6 +7,7 @@ class Dashboard extends React.Component {
         this.state = {
             user: {}
         };
+        this.gamerInfo=this.gamerInfo.bind(this)
     }
 
     componentDidMount() {
@@ -18,9 +19,29 @@ class Dashboard extends React.Component {
         if (userData) { this.props.setAuthState(userData) };
     }
 
+    gamerInfo(){
+        if(this.props.userAuthState){
+          //fetch gamer_profile
+          fetch(`/api/gamer/${this.props.userAuthState.userId}`)
+          .then(response => response.json())
+          .then(json => console.log("----gamer_profile----",json));
+    
+          //fetch replies by gamer
+          fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+          .then(response => response.json())
+          .then(json => console.log("----gamer_posts----",json));
+    
+        }
+    
+        else
+          alert("not logged")
+    
+      }
+
     render() {
         return (
             <div className="dashboard">
+             <button onClick={this.gamerInfo}> gamer info </button>
                 <div className="dashboard__container">
                     <div className="dashboard__sidebar">
                         <div className="dashboard__profile">
