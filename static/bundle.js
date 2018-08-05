@@ -27506,25 +27506,12 @@ function fetchNewsInfoFromAPI(pageNum) {
     });
   };
 }
-//Next page NEWS Data fetch - executes different fetch
-// export function fetchNextPage(pageNum) {
-//   return function(dispatch, getState) {
-//     return fetch("/nextPage/" + pageNum)
-//       .then(response => response.json())
-//       .then(json => {
-//         // console.log("fetch news ", json.articles);
-//         dispatch(setNewsData(json.articles));
-//       })
-//       .catch(error => {
-//         console.log("Sorry the following error occurred: ", error);
-//       });
-//   };
-// }
 
 //search NEWS Data based on User input
-function searchNewsAPI(searchTerm) {
+function searchNewsAPI(searchTerm, pageNum) {
   return function (dispatch, getState) {
-    return fetch("/searchNews/" + searchTerm).then(function (response) {
+    console.log("/searchNews/" + searchTerm + "-" + pageNum);
+    return fetch("/searchNews/" + searchTerm + "/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(setNewsData(removeDuplicates(json.articles)));
@@ -27588,7 +27575,7 @@ function formatTime(date) {
   var minutes = Math.floor(diff % 86400000 % 3600000 / 60000);
 
   //If the data is more than 2 weeks old, then just display the PublishedAt date
-  console.log("arg", days, hours, minutes);
+
   if (days >= 1) {
     displayTime = days + "d ";
   } else if (hours === 24) {
@@ -28420,7 +28407,8 @@ var News = function (_React$Component) {
 
     _this.state = {
       searchNews: "",
-      pageNum: 1
+      pageNum: 1,
+      currentSearch: ""
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
@@ -28439,16 +28427,23 @@ var News = function (_React$Component) {
   }, {
     key: "handleChange",
     value: function handleChange(event) {
+      var _this2 = this;
+
       event.preventDefault();
       this.setState({
         searchNews: event.target.value
+      }, function () {
+        return _this2.setState({
+          currentSearch: _this2.state.searchNews
+        });
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.props.searchNewsData(this.state.searchNews);
+      this.setState({ pageNum: 1 });
+      this.props.searchNewsData(this.state.searchNews, 1);
       this.setState({
         searchNews: ""
       });
@@ -28456,16 +28451,22 @@ var News = function (_React$Component) {
   }, {
     key: "nextPage",
     value: function nextPage(event) {
-      var _this2 = this;
+      var _this3 = this;
 
-      this.setState({ pageNum: this.state.pageNum + 1 }, function () {
-        return _this2.props.fetchNewsData(_this2.state.pageNum);
-      });
+      if (this.state.currentSearch !== "") {
+        this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+          return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
+        });
+      } else {
+        this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+          return _this3.props.fetchNewsData(_this3.state.pageNum);
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var newsData = this.props.newsData;
 
@@ -28536,7 +28537,7 @@ var News = function (_React$Component) {
           newsDisplay !== undefined ? _react2.default.createElement(
             "a",
             { href: "#", onClick: function onClick(event) {
-                return _this3.nextPage(event);
+                return _this4.nextPage(event);
               } },
             "Next >>"
           ) : null
@@ -29398,8 +29399,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchNewsData: function fetchNewsData(pageNum) {
       dispatch((0, _actions.fetchNewsInfoFromAPI)(pageNum));
     },
-    searchNewsData: function searchNewsData(searchTerm) {
-      dispatch((0, _actions.searchNewsAPI)(searchTerm));
+    searchNewsData: function searchNewsData(searchTerm, pageNum) {
+      console.log("searchterm", searchTerm);
+      dispatch((0, _actions.searchNewsAPI)(searchTerm, pageNum));
     }
   };
 };

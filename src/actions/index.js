@@ -162,7 +162,7 @@ export function receiveGameData(gameData) {
 //Main NEWS Data fetch - calls helper function to sanitise data
 export function fetchNewsInfoFromAPI(pageNum) {
   return function(dispatch, getState) {
-    return fetch("/newsApi/" + pageNum)
+    return fetch(`/newsApi/${pageNum}`)
       .then(response => response.json())
       .then(json => {
         // console.log("fetch news ", json.articles);
@@ -173,25 +173,12 @@ export function fetchNewsInfoFromAPI(pageNum) {
       });
   };
 }
-//Next page NEWS Data fetch - executes different fetch
-// export function fetchNextPage(pageNum) {
-//   return function(dispatch, getState) {
-//     return fetch("/nextPage/" + pageNum)
-//       .then(response => response.json())
-//       .then(json => {
-//         // console.log("fetch news ", json.articles);
-//         dispatch(setNewsData(json.articles));
-//       })
-//       .catch(error => {
-//         console.log("Sorry the following error occurred: ", error);
-//       });
-//   };
-// }
 
 //search NEWS Data based on User input
-export function searchNewsAPI(searchTerm) {
+export function searchNewsAPI(searchTerm, pageNum) {
   return function(dispatch, getState) {
-    return fetch(`/searchNews/${searchTerm}`)
+    console.log(`/searchNews/${searchTerm}-${pageNum}`);
+    return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
         dispatch(setNewsData(removeDuplicates(json.articles)));
@@ -256,7 +243,7 @@ function formatTime(date) {
   const minutes = Math.floor(((diff % 86400000) % 3600000) / 60000);
 
   //If the data is more than 2 weeks old, then just display the PublishedAt date
-  console.log("arg", days, hours, minutes);
+
   if (days >= 1) {
     displayTime = days + "d ";
   } else if (hours === 24) {

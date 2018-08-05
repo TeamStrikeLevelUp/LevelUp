@@ -8,7 +8,8 @@ class News extends React.Component {
 
     this.state = {
       searchNews: "",
-      pageNum: 1
+      pageNum: 1,
+      currentSearch: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,23 +25,36 @@ class News extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
-    this.setState({
-      searchNews: event.target.value
-    });
+    this.setState(
+      {
+        searchNews: event.target.value
+      },
+      () =>
+        this.setState({
+          currentSearch: this.state.searchNews
+        })
+    );
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.searchNewsData(this.state.searchNews);
+    this.setState({ pageNum: 1 });
+    this.props.searchNewsData(this.state.searchNews, 1);
     this.setState({
       searchNews: ""
     });
   }
 
   nextPage(event) {
-    this.setState({ pageNum: this.state.pageNum + 1 }, () =>
-      this.props.fetchNewsData(this.state.pageNum)
-    );
+    if (this.state.currentSearch !== "") {
+      this.setState({ pageNum: this.state.pageNum + 1 }, () =>
+        this.props.searchNewsData(this.state.currentSearch, this.state.pageNum)
+      );
+    } else {
+      this.setState({ pageNum: this.state.pageNum + 1 }, () =>
+        this.props.fetchNewsData(this.state.pageNum)
+      );
+    }
   }
 
   render() {
