@@ -11,6 +11,7 @@ class Forums extends React.Component {
     this.titleHandler=this.titleHandler.bind(this);
     this.bodyHandler=this.bodyHandler.bind(this);
     this.replyHandler=this.replyHandler.bind(this)
+    
   }
 
   componentDidUpdate(prevProps){
@@ -113,13 +114,14 @@ class Forums extends React.Component {
         )
         })}
 
-      <form className= {this.props.userAuthState ? "hidden" : ""}>
+        <div style={{display: this.props.userAuthState ? 'none' : '' }} > login to post </div>
+
+      <form style={{display: this.props.userAuthState ? '' : 'none' }}>
       <input placeholder="title" value={this.state.title} onChange={this.titleHandler} />
       <input placeholder="body" value={this.state.body} onChange={this.bodyHandler} />
       <button onClick={this.replyHandler}> reply </button>
       </form>
 
-        
         
       </div>
     );
