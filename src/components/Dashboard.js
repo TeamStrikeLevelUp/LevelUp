@@ -1,4 +1,7 @@
 import React from 'react';
+import { Route, Link, Switch } from 'react-router-dom';
+import DashboardPanels from './dashboard/DashboardPanels';
+import DashboardAccount from './dashboard/DashboardAccount';
 import '../../styles/components/dashboard.scss';
 
 class Dashboard extends React.Component {
@@ -30,46 +33,18 @@ class Dashboard extends React.Component {
                             </div>
                         </div>
                         <ul className="dashboard__nav">
-                            <li className="dashboard__nav--item">Dashboard</li>
-                            <li className="dashboard__nav--item">Account</li>
+                            <li className="dashboard__nav--item"><Link to="/dashboard">Dashboard</Link></li>
+                            <li className="dashboard__nav--item"><Link to="/dashboard/account">Account</Link></li>
                             <li className="dashboard__nav--item">Forum</li>
                             <li className="dashboard__nav--item">Favorites</li>
                         </ul>
                     </div>
                     <div className="dashboard-content-wrapper">
                         <h2>Welcome back, {this.state.user.username}</h2>
-                        <div className="dashboard__content">
-                            <div className="dashboard__content--item">
-                                <h3 className="dashboard__content--heading">Points</h3>
-                                <div className="dashboard__content--points">250</div>
-                                <p className="dashboard__content--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-                            </div>
-                            <div className="dashboard__content--item">
-                                <h3 className="dashboard__content--heading">Total Post</h3>
-                                <div className="dashboard__content--points">1750</div>
-                                <p className="dashboard__content--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-                            </div>
-                            <div className="dashboard__content--item">
-                                <h3 className="dashboard__content--heading">Messages</h3>
-                                <div className="dashboard__content--points">450</div>
-                                <p className="dashboard__content--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-                            </div>
-                            <div className="dashboard__content--item">
-                                <h3 className="dashboard__content--heading">Forum</h3>
-                                <div className="dashboard__content--points">50</div>
-                                <p className="dashboard__content--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-                            </div>
-                            <div className="dashboard__content--item">
-                                <h3 className="dashboard__content--heading">Twitch</h3>
-                                <div className="dashboard__content--points">340</div>
-                                <p className="dashboard__content--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-                            </div>
-                            <div className="dashboard__content--item">
-                                <h3 className="dashboard__content--heading">Video Game</h3>
-                                <div className="dashboard__content--points">20</div>
-                                <p className="dashboard__content--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
-                            </div>
-                        </div>
+                        <Switch>
+                            <Route exact path="/dashboard" component={DashboardPanels} />
+                            <Route path="/dashboard/account" component={DashboardAccount} />
+                        </Switch>
                     </div>
                 </div>
             </div>

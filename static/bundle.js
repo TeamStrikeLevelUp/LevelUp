@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__content {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__content {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__content .dashboard__content--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__content .dashboard__content--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__content .dashboard__content--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__content .dashboard__content--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__panels {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__panels {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__panels .dashboard__panels--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__panels .dashboard__panels--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
 
 // exports
 
@@ -136,7 +136,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".main-nav {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n", ""]);
+exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n    .main-nav .main-nav__item a {\n      color: #fff;\n      font-size: 14px; }\n", ""]);
 
 // exports
 
@@ -155,7 +155,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli,\na {\n  list-style: none;\n  text-decoration: none; }\n\nbody {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  color: whitesmoke; }\n\n.news__form {\n  margin-bottom: 10px; }\n\n.news {\n  display: flex;\n  flex: 12;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin: auto;\n  text-align: center;\n  background-color: #222723;\n  color: white; }\n\n.news__result {\n  display: inline-block;\n  margin: 20px;\n  height: auto;\n  width: calc(100% / 3);\n  font-size: 20px;\n  text-align: left; }\n\n.news__img {\n  width: 100%;\n  height: auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 16px;\n  margin-left: 15px; }\n", ""]);
+exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\nbody {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  color: whitesmoke; }\n\n.news__form {\n  margin-bottom: 10px; }\n\n.news {\n  display: flex;\n  flex: 12;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin: auto;\n  text-align: center;\n  background-color: #222723;\n  color: white; }\n\n.news__result {\n  display: inline-block;\n  margin: 20px;\n  height: auto;\n  width: calc(100% / 3);\n  font-size: 20px;\n  text-align: left; }\n\n.news__img {\n  width: 100%;\n  height: auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 16px;\n  margin-left: 15px; }\n", ""]);
 
 // exports
 
@@ -27708,15 +27708,12 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/news", render: function render() {
               return _react2.default.createElement(_NewsContainer2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/dashboard", render: function render() {
               return _react2.default.createElement(_DashboardRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _ForumsContainer2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/search", render: function render() {
               return _react2.default.createElement(_SearchGamesRoute2.default, null);
-            } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/dashboard", render: function render() {
-              return _react2.default.createElement(_DashboardRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/twitch", render: function render() {
               return _react2.default.createElement(_TwitchRoute2.default, null);
@@ -27762,6 +27759,16 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _DashboardPanels = __webpack_require__(/*! ./dashboard/DashboardPanels */ "./src/components/dashboard/DashboardPanels.js");
+
+var _DashboardPanels2 = _interopRequireDefault(_DashboardPanels);
+
+var _DashboardAccount = __webpack_require__(/*! ./dashboard/DashboardAccount */ "./src/components/dashboard/DashboardAccount.js");
+
+var _DashboardAccount2 = _interopRequireDefault(_DashboardAccount);
 
 __webpack_require__(/*! ../../styles/components/dashboard.scss */ "./styles/components/dashboard.scss");
 
@@ -27827,12 +27834,20 @@ var Dashboard = function (_React$Component) {
                             _react2.default.createElement(
                                 'li',
                                 { className: 'dashboard__nav--item' },
-                                'Dashboard'
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/dashboard' },
+                                    'Dashboard'
+                                )
                             ),
                             _react2.default.createElement(
                                 'li',
                                 { className: 'dashboard__nav--item' },
-                                'Account'
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/dashboard/account' },
+                                    'Account'
+                                )
                             ),
                             _react2.default.createElement(
                                 'li',
@@ -27856,122 +27871,10 @@ var Dashboard = function (_React$Component) {
                             this.state.user.username
                         ),
                         _react2.default.createElement(
-                            'div',
-                            { className: 'dashboard__content' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Points'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '250'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Total Post'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '1750'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Messages'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '450'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Forum'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '50'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Twitch'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '340'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Video Game'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '20'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            )
+                            _reactRouterDom.Switch,
+                            null,
+                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _DashboardPanels2.default }),
+                            _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', component: _DashboardAccount2.default })
                         )
                     )
                 )
@@ -28400,16 +28303,16 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
       _react2.default.createElement(
-        "a",
-        { href: "/signup" },
+        _reactRouterDom.Link,
+        { to: "/signup" },
         "Log In/Sign Up"
       )
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/logout" },
@@ -29326,6 +29229,201 @@ exports.default = TwitchSearch;
 
 /***/ }),
 
+/***/ "./src/components/dashboard/DashboardAccount.js":
+/*!******************************************************!*\
+  !*** ./src/components/dashboard/DashboardAccount.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DashboardAccount() {
+    return _react2.default.createElement(
+        "div",
+        { className: "dashboard__Account" },
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__Account--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__Account--heading" },
+                "Account"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__Account--points" },
+                "Pos"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__Account--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        )
+    );
+}
+
+exports.default = DashboardAccount;
+
+/***/ }),
+
+/***/ "./src/components/dashboard/DashboardPanels.js":
+/*!*****************************************************!*\
+  !*** ./src/components/dashboard/DashboardPanels.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DashboardPanels() {
+    return _react2.default.createElement(
+        "div",
+        { className: "dashboard__panels" },
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Points"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "250"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Total Post"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "1750"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Messages"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "450"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Forum"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "50"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Twitch"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "340"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Video Game"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "20"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        )
+    );
+}
+
+exports.default = DashboardPanels;
+
+/***/ }),
+
 /***/ "./src/containers/DashboardContainer.js":
 /*!**********************************************!*\
   !*** ./src/containers/DashboardContainer.js ***!
@@ -29364,7 +29462,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps, null, {
+    // https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
+    pure: false
+})(_Dashboard2.default);
 
 /***/ }),
 

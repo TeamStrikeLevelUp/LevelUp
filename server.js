@@ -234,9 +234,7 @@ function isLoggedIn(req, res, next) {
   if (req.user && req.user.id) {
     next();
   } else {
-    res.redirect("/login", {
-      data: {}
-    });
+    res.redirect("/login");
   }
 }
 
@@ -252,6 +250,11 @@ app.get("/logout", function (req, res) {
 
 // only accessible to logged in users
 app.get("/dashboard", isLoggedIn, function (req, res) {
+  res.render("index", {
+    data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
+  });
+});
+app.get("/dashboard/account", isLoggedIn, function (req, res) {
   res.render("index", {
     data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
   });
@@ -300,7 +303,7 @@ app.post("/signup", (req, res) => {
       return bcrypt.hash(signupPassword, salt);
     })
     .then(hashedPassword => {
-      db.oneOrNone(`
+      db.none(`
         INSERT INTO gamer (gamer_name, password_hash, email)
         VALUES ($1, $2, $3)
         `, [signupUsername, hashedPassword, signupEmail])

@@ -29,10 +29,10 @@ function HomeNavBar() {
       <li className="main-nav__item">
         <Link to="/dashboard">Profile</Link>
       </li>
-      <li>
-        <a href="/signup">Log In/Sign Up</a>
+      <li className="main-nav__item">
+        <Link to="/signup">Log In/Sign Up</Link>
       </li>
-      <li>
+      <li className="main-nav__item">
         <Link to="/logout">Logout</Link>
       </li>
     </ul>
