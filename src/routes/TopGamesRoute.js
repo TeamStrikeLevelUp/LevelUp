@@ -1,10 +1,11 @@
 import React from "react";
+import FortniteContainer from "../containers/FortniteContainer";
 
 class TopGamesRoute extends React.Component {
   render() {
     return (
       <div>
-        <h3>Hamzah sort this out</h3>
+        <FortniteContainer />
       </div>
     );
   }

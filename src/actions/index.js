@@ -265,3 +265,21 @@ export function receiveAuthState(auth) {
     payload: auth
   };
 }
+
+// export function fetchFortniteData(platform, name) {
+//   return function(dispatch, getState) {
+//     const window = "alltime";
+//     fetch("https://fortnite-public-api.theapinetwork.com/prod09/users/id", {
+//       method: "post",
+//       body: {
+//         username: name
+//       },
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//         Authorization: "49814d647a64a41873378c2c7acd74b1"
+//       }
+//     }).then(function(response) {
+//       return response.json();
+//     });
+//   };
+// }
