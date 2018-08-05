@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
     componentDidMount() {
         // Get initialUser variable from global scope declared in index.hbs
-        const userData = initialUser; // JSON.parse(document.querySelector('#data').innerHTML);
+        const userData = initialUser;
         this.setState({
             user: userData
         })
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
                 <div className="dashboard__container">
                     <div className="dashboard__sidebar">
                         <div className="dashboard__profile">
-                            <img className="dashboard__profile--image" src="../../static/images/user.jpg" alt="" />
+                            <img className="dashboard__profile--image" src={this.state.user.avatar ? this.state.user.avatar : "../../static/images/user.jpg"} alt="" />
                             <div className="dashboard__profile--name">
                                 {this.state.user.username}
                             </div>
@@ -43,7 +43,9 @@ class Dashboard extends React.Component {
                         <h2>Welcome back, {this.state.user.username}</h2>
                         <Switch>
                             <Route exact path="/dashboard" component={DashboardPanels} />
-                            <Route path="/dashboard/account" component={DashboardAccount} />
+                            <Route path="/dashboard/account" render={() => {
+                                return <DashboardAccount userAuthState={this.props.userAuthState} />
+                            }} />
                         </Switch>
                     </div>
                 </div>

@@ -27798,7 +27798,7 @@ var Dashboard = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             // Get initialUser variable from global scope declared in index.hbs
-            var userData = initialUser; // JSON.parse(document.querySelector('#data').innerHTML);
+            var userData = initialUser;
             this.setState({
                 user: userData
             });
@@ -27809,6 +27809,8 @@ var Dashboard = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'div',
                 { className: 'dashboard' },
@@ -27821,7 +27823,7 @@ var Dashboard = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'dashboard__profile' },
-                            _react2.default.createElement('img', { className: 'dashboard__profile--image', src: '../../static/images/user.jpg', alt: '' }),
+                            _react2.default.createElement('img', { className: 'dashboard__profile--image', src: this.state.user.avatar ? this.state.user.avatar : "../../static/images/user.jpg", alt: '' }),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'dashboard__profile--name' },
@@ -27874,7 +27876,9 @@ var Dashboard = function (_React$Component) {
                             _reactRouterDom.Switch,
                             null,
                             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _DashboardPanels2.default }),
-                            _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', component: _DashboardAccount2.default })
+                            _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
+                                    return _react2.default.createElement(_DashboardAccount2.default, { userAuthState: _this2.props.userAuthState });
+                                } })
                         )
                     )
                 )
@@ -29249,37 +29253,133 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function DashboardAccount() {
-    return _react2.default.createElement(
-        "div",
-        { className: "dashboard__Account" },
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__Account--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__Account--heading" },
-                "Account"
-            ),
-            _react2.default.createElement(
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DashboardAccount = function (_React$Component) {
+    _inherits(DashboardAccount, _React$Component);
+
+    function DashboardAccount(props) {
+        _classCallCheck(this, DashboardAccount);
+
+        var _this = _possibleConstructorReturn(this, (DashboardAccount.__proto__ || Object.getPrototypeOf(DashboardAccount)).call(this, props));
+
+        _this.state = {
+            user: {}
+        };
+        return _this;
+    }
+
+    _createClass(DashboardAccount, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch("/api/user/" + this.props.userAuthState.userId).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this2.setState({
+                    user: Object.assign.apply(Object, [{}].concat(_toConsumableArray(data)))
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
                 "div",
-                { className: "dashboard__Account--points" },
-                "Pos"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__Account--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        )
-    );
-}
+                { className: "dashboard__Account" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__Account--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__Account--heading" },
+                        "Account"
+                    ),
+                    _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.user.avatar, alt: "{this.state.user.gamer_name}" }),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__Account--text" },
+                        _react2.default.createElement(
+                            "strong",
+                            null,
+                            "Gamer ID: "
+                        ),
+                        this.state.user.gamer_id
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__Account--text" },
+                        _react2.default.createElement(
+                            "strong",
+                            null,
+                            "Name: "
+                        ),
+                        this.state.user.gamer_name
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__Account--points" },
+                        _react2.default.createElement(
+                            "strong",
+                            null,
+                            "Level: "
+                        ),
+                        this.state.user.gamer_level
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__Account--text" },
+                        _react2.default.createElement(
+                            "strong",
+                            null,
+                            "Total Posts: "
+                        ),
+                        this.state.user.totalposts
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__Account--text" },
+                        _react2.default.createElement(
+                            "strong",
+                            null,
+                            "Email: "
+                        ),
+                        this.state.user.email
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__Account--text" },
+                        _react2.default.createElement(
+                            "strong",
+                            null,
+                            "Description: "
+                        ),
+                        this.state.user.description
+                    )
+                )
+            );
+        }
+    }]);
+
+    return DashboardAccount;
+}(_react2.default.Component);
 
 exports.default = DashboardAccount;
 

@@ -42,7 +42,6 @@ const SALT_ROUNDS = 12;
 
 /* helper function to get user by username */
 function getUserByUsername(username) {
-  // console.log('2. Load user by username from (DB)');
   return db
     .one(`SELECT * FROM gamer WHERE gamer_name = $1`, [username])
     .catch(error => console.log(error.message));
@@ -51,6 +50,12 @@ function getUserByUsername(username) {
 function getUserById(id) {
   return db
     .one(`SELECT * FROM gamer WHERE id = $1`, [id])
+    .catch(error => console.log(error.message));
+}
+
+function getUserAvatarById(id) {
+  return db
+    .one(`SELECT avatar FROM gamer_profile WHERE gamer_id = $1`, [id])
     .catch(error => console.log(error.message));
 }
 
@@ -182,7 +187,16 @@ app.post("/api/post", function (req, res) {
 
 ///////////////// Ahmed - end //////////////////
 
-// Database connection test ends
+app.get("/api/user/:id", function (req, res) {
+  db.any(
+    `SELECT gamer_profile.*, gamer.gamer_name, gamer.email FROM gamer_profile
+    INNER JOIN gamer ON gamer.id=$1 WHERE gamer_profile.gamer_id =$1;`,
+    [req.params.id]
+  )
+    .then(data => res.json(data))
+    .catch(error => console.log(error.message));
+});
+// Database connection ends
 
 function compare(plainTextPassword, hashedPassword) {
   return bcrypt.compare(plainTextPassword, hashedPassword).then(matches => {
@@ -193,13 +207,11 @@ function compare(plainTextPassword, hashedPassword) {
 
 // serialise user into session
 passport.serializeUser(function (user, done) {
-  // console.log('4. Extract user id from user for serialisation');
   done(null, user.id);
 });
 
 // deserialise user from session
 passport.deserializeUser(function (id, done) {
-  // console.log('5. Use user id to load user from DB');
   getUserById(id).then(user => {
     done(null, user);
   });
@@ -209,7 +221,6 @@ passport.deserializeUser(function (id, done) {
 // that is use locally stored credentials
 passport.use(
   new LocalStrategy(function (username, password, done) {
-    // console.log('1. Receive username and password');
     let _user;
     getUserByUsername(username)
       .then(user => {
@@ -231,7 +242,6 @@ app.use(passport.session());
 
 // middleware function to check user is logged in
 function isLoggedIn(req, res, next) {
-  // console.log('6. Check that we have a logged in user before allowing access to protected route');
   if (req.user && req.user.id) {
     next();
   } else {
@@ -241,7 +251,6 @@ function isLoggedIn(req, res, next) {
 
 // route to log out users
 app.get("/logout", function (req, res) {
-  // console.log('7. Log user out');
   // log user out and redirect them to home page
   req.logout();
   res.redirect("/");
@@ -251,14 +260,30 @@ app.get("/logout", function (req, res) {
 
 // only accessible to logged in users
 app.get("/dashboard", isLoggedIn, function (req, res) {
-  res.render("index", {
-    data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
-  });
+  getUserAvatarById(req.user.id)
+    .then(avatar => {
+      res.render("index", {
+        data: JSON.stringify(
+          {
+            username: req.user.gamer_name,
+            userId: req.user.id,
+            avatar: avatar ? avatar.avatar : ""
+          })
+      });
+    })
 });
 app.get("/dashboard/account", isLoggedIn, function (req, res) {
-  res.render("index", {
-    data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
-  });
+  getUserAvatarById(req.user.id)
+    .then(avatar => {
+      res.render("index", {
+        data: JSON.stringify(
+          {
+            username: req.user.gamer_name,
+            userId: req.user.id,
+            avatar: avatar ? avatar.avatar : ""
+          })
+      });
+    })
 });
 
 // app.use(cors());
@@ -283,10 +308,7 @@ app.get("/login", function (req, res) {
   res.render("login", {});
 });
 // route to accept logins
-app.post("/login", passport.authenticate("local", { session: true }), function (
-  req,
-  res
-) {
+app.post("/login", passport.authenticate("local", { session: true }), function (req, res) {
   res.status(200).end();
 });
 
@@ -305,8 +327,8 @@ app.post("/signup", (req, res) => {
     })
     .then(hashedPassword => {
       db.none(`
-        INSERT INTO gamer (gamer_name, password_hash, email)
-        VALUES ($1, $2, $3)
+      INSERT INTO gamer (gamer_name, password_hash, email)
+      VALUES ($1, $2, $3);
         `, [signupUsername, hashedPassword, signupEmail])
         .then(data => res.json(data))
         .catch(error => console.log("Gamer already exist: ", error.message));
