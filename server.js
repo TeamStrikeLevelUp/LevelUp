@@ -54,7 +54,9 @@ function getUserById(id) {
     .catch(error => console.log(error.message));
 }
 
-///////////////// Ahmed - start //////////////////
+
+
+///////////////// Forum - start //////////////////
 
 
 app.get("/api/forum", function(req, res) {
@@ -180,7 +182,54 @@ app.post("/api/post", function(req, res) {
     });
 });
 
-///////////////// Ahmed - end //////////////////
+///////////////// Forum - end //////////////////
+
+///////////////// profile - start //////////////////
+
+app.get("/api/gamer/:id", function(req, res) {
+  db.one(`SELECT * FROM gamer_profile WHERE gamer_id = $1`, [req.params.id])
+    .then(profile => {
+
+
+      db.any(`SELECT * FROM gamer_favorites WHERE gamer_id = $1`, [req.params.id])
+      .then(favs => {
+        
+        res.json({profile: profile, favs:favs});
+      })
+      .catch(error => console.log(error.message));
+
+
+     // res.json(profile);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+app.get("/api/gamer/post/:id", function(req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
+    req.params.id
+  ])
+    .then(posts => {
+
+
+        db.any(`SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`, [req.params.id])
+          .then(replies => {
+            res.json({posts:posts, replies:replies});
+          })
+          .catch(error => console.log(error.message));
+      
+
+
+     // res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+
+
+///////////////// profile - end //////////////////
+
 
 // Database connection test ends
 
