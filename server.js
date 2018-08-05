@@ -185,17 +185,48 @@ app.post("/api/post", function (req, res) {
     });
 });
 
-///////////////// Ahmed - end //////////////////
+///////////////// Forum - end //////////////////
 
-app.get("/api/user/:id", function (req, res) {
-  db.any(
-    `SELECT gamer_profile.*, gamer.gamer_name, gamer.email FROM gamer_profile
-    INNER JOIN gamer ON gamer.id=$1 WHERE gamer_profile.gamer_id =$1;`,
-    [req.params.id]
-  )
-    .then(data => res.json(data))
+///////////////// profile - start //////////////////
+
+app.get("/api/gamer/:id", function (req, res) {
+  db.one(`SELECT gamer_profile.*, gamer.gamer_name, gamer.email FROM gamer_profile
+       INNER JOIN gamer ON gamer.id=$1 WHERE gamer_profile.gamer_id =$1;`, [req.params.id])
+    .then(profile => {
+      db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
+      AND game.id = gamer_favorites.game_id`, [req.params.id])
+        .then(favs => {
+          res.json({ profile: profile, favs: favs });
+        })
+        .catch(error => console.log(error.message));
+    })
     .catch(error => console.log(error.message));
 });
+
+
+app.get("/api/gamer/post/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
+    req.params.id
+  ])
+    .then(posts => {
+
+
+      db.any(`SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`, [req.params.id])
+        .then(replies => {
+          res.json({ posts: posts, replies: replies });
+        })
+        .catch(error => console.log(error.message));
+
+
+
+      // res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+///////////////// profile - end //////////////////
+
+
 // Database connection ends
 
 function compare(plainTextPassword, hashedPassword) {

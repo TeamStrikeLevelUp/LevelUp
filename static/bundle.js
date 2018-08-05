@@ -27791,6 +27791,7 @@ var Dashboard = function (_React$Component) {
         _this.state = {
             user: {}
         };
+        // this.gamerInfo = this.gamerInfo.bind(this)
         return _this;
     }
 
@@ -27806,6 +27807,26 @@ var Dashboard = function (_React$Component) {
                 this.props.setAuthState(userData);
             };
         }
+
+        // gamerInfo(){
+        //     if(this.props.userAuthState){
+        //       //fetch gamer_profile
+        //       fetch(`/api/gamer/${this.props.userAuthState.userId}`)
+        //       .then(response => response.json())
+        //       .then(json => console.log("----gamer_profile----",json));
+
+        //       //fetch replies by gamer
+        //       fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+        //       .then(response => response.json())
+        //       .then(json => console.log("----gamer_posts----",json));
+
+        //     }
+
+        //     else
+        //       alert("not logged")
+
+        //   }
+
     }, {
         key: 'render',
         value: function render() {
@@ -29261,8 +29282,6 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -29278,29 +29297,47 @@ var DashboardAccount = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DashboardAccount.__proto__ || Object.getPrototypeOf(DashboardAccount)).call(this, props));
 
         _this.state = {
-            user: {}
-        };
-        return _this;
+            gamer_info: null
+            // this.gamerInfo = this.gamerInfo.bind(this);
+        };return _this;
     }
 
     _createClass(DashboardAccount, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            // fetch(`/api/user/${this.props.userAuthState.userId}`)
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         this.setState({
+            //             user: Object.assign({}, ...data)
+            //         })
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
+            this.gamerInfo();
+        }
+    }, {
+        key: "gamerInfo",
+        value: function gamerInfo() {
             var _this2 = this;
 
-            fetch("/api/user/" + this.props.userAuthState.userId).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                _this2.setState({
-                    user: Object.assign.apply(Object, [{}].concat(_toConsumableArray(data)))
+            if (this.props.userAuthState) {
+                //fetch gamer_profile
+                fetch("/api/gamer/" + this.props.userAuthState.userId).then(function (response) {
+                    return response.json();
+                }).then(function (gamerData) {
+                    console.log("gamerData", gamerData);
+                    _this2.setState({
+                        gamer_info: gamerData
+                    });
                 });
-            }).catch(function (error) {
-                console.log(error);
-            });
+            };
         }
     }, {
         key: "render",
         value: function render() {
+            console.log("this.state.gamer_info", this.state.gamer_info);
             return _react2.default.createElement(
                 "div",
                 { className: "dashboard__Account" },
@@ -29312,67 +29349,71 @@ var DashboardAccount = function (_React$Component) {
                         { className: "dashboard__Account--heading" },
                         "Account"
                     ),
-                    _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.user.avatar, alt: "{this.state.user.gamer_name}" }),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__Account--text" },
-                        _react2.default.createElement(
-                            "strong",
-                            null,
-                            "Gamer ID: "
-                        ),
-                        this.state.user.gamer_id
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__Account--text" },
-                        _react2.default.createElement(
-                            "strong",
-                            null,
-                            "Name: "
-                        ),
-                        this.state.user.gamer_name
-                    ),
-                    _react2.default.createElement(
+                    this.state.gamer_info ? _react2.default.createElement(
                         "div",
-                        { className: "dashboard__Account--points" },
+                        null,
+                        _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.gamer_info.profile.avatar, alt: "{this.state.gamer_info.profile.gamer_name}" }),
                         _react2.default.createElement(
-                            "strong",
-                            null,
-                            "Level: "
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Gamer ID: "
+                            ),
+                            this.state.gamer_info.profile.gamer_id
                         ),
-                        this.state.user.gamer_level
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__Account--text" },
                         _react2.default.createElement(
-                            "strong",
-                            null,
-                            "Total Posts: "
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Name: "
+                            ),
+                            this.state.gamer_info.profile.gamer_name
                         ),
-                        this.state.user.totalposts
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__Account--text" },
                         _react2.default.createElement(
-                            "strong",
-                            null,
-                            "Email: "
+                            "div",
+                            { className: "dashboard__Account--points" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Level: "
+                            ),
+                            this.state.gamer_info.profile.gamer_level
                         ),
-                        this.state.user.email
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__Account--text" },
                         _react2.default.createElement(
-                            "strong",
-                            null,
-                            "Description: "
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Total Posts: "
+                            ),
+                            this.state.gamer_info.profile.totalposts
                         ),
-                        this.state.user.description
-                    )
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Email: "
+                            ),
+                            this.state.gamer_info.profile.email
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Description: "
+                            ),
+                            this.state.gamer_info.profile.description
+                        )
+                    ) : ""
                 )
             );
         }
