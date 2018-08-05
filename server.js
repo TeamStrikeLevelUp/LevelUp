@@ -191,7 +191,8 @@ app.get("/api/gamer/:id", function(req, res) {
     .then(profile => {
 
 
-      db.any(`SELECT * FROM gamer_favorites WHERE gamer_id = $1`, [req.params.id])
+      db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
+      AND game.id = gamer_favorites.game_id`, [req.params.id])
       .then(favs => {
         
         res.json({profile: profile, favs:favs});
