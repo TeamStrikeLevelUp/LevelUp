@@ -3,7 +3,6 @@ import News from "../components/News";
 import { fetchNewsInfoFromAPI, searchNewsAPI } from "../actions";
 
 const mapStateToProps = reduxState => {
-  console.log(reduxState.newsData);
   return {
     newsData: reduxState.newsInfo
   };
@@ -11,8 +10,8 @@ const mapStateToProps = reduxState => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchNewsData: () => {
-      dispatch(fetchNewsInfoFromAPI());
+    fetchNewsData: pageNum => {
+      dispatch(fetchNewsInfoFromAPI(pageNum));
     },
     searchNewsData: searchTerm => {
       dispatch(searchNewsAPI(searchTerm));

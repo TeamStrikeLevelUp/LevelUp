@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/components/news.scss";
 import "../../styles/index.scss";
+import NextNews from "NextNews";
 
 class News extends React.Component {
   constructor() {
@@ -94,10 +95,12 @@ class News extends React.Component {
           <ul className="news__wrapper">{newsDisplay}</ul>
 
           {newsDisplay !== undefined ? (
-            <a href="#" onClick={event => this.nextPage(event)}>
-              Next >>
-            </a>
-          ) : null}
+            <NextNews />
+          ) : //   <a href="#" onClick={event => this.nextPage(event)}>
+          //     Next >>
+          //   </a>
+          //
+          null}
         </div>
 
         <footer className="news__footer">Powered by NewsAPI.org</footer>

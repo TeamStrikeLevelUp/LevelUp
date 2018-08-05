@@ -39,68 +39,79 @@ class Search extends React.Component {
       gameData === "No results found"
         ? gameData
         : gameData.map(game => {
-          return (
-            <li key={game.igdbId} className="search__result">
-              <img src={game.cover_img} className="search__img--cover" />
-              <div className="search__details">
-                <header className="search__details--name">{game.name}</header>
-                {game.description !== "" || game.description !== undefined ? (
-                  <p>{game.description}</p>
-                ) : null}
-                <div className="search__box">
-                  <div className="search__info">
-                    {game.user_rating ? (
-                      <header className="search__details--ratings">
-                        Gamer Rating: {game.user_rating}%
+            return (
+              <li key={game.igdbId} className="search__result">
+                <img src={game.cover_img} className="search__img--cover" />
+                <div className="search__details">
+                  <header className="search__details--name">{game.name}</header>
+                  {game.description !== "" || game.description !== undefined ? (
+                    <p>{game.description}</p>
+                  ) : null}
+                  <div className="search__box">
+                    <div className="search__info">
+                      {game.user_rating ? (
+                        <header className="search__details--ratings">
+                          Gamer Rating:{" "}
+                          <span className="search__rating">
+                            {game.user_rating}%
+                          </span>
                         </header>
-                    ) : null}
+                      ) : null}
 
-                    {game.critic_rating ? (
-                      <header className="search__details--ratings">
-                        Critics Rating: {game.critic_rating}%
+                      {game.critic_rating ? (
+                        <header className="search__details--ratings">
+                          Critic Rating:{" "}
+                          <span className="search__rating">
+                            {game.critic_rating}%
+                          </span>
                         </header>
-                    ) : null}
+                      ) : null}
 
-                    {game.genres ? (
-                      <header className="search__details--ratings">
-                        Genre: {game.genres}
-                      </header>
-                    ) : null}
+                      {game.genres ? (
+                        <header className="search__details--ratings">
+                          Genre:{" "}
+                          <span className="search__rating">{game.genres}</span>
+                        </header>
+                      ) : null}
 
-                    {game.themes ? (
-                      <header className="search__details--ratings">
-                        Theme: {game.themes}
-                      </header>
-                    ) : null}
-                  </div>
+                      {game.themes ? (
+                        <header className="search__details--ratings">
+                          Theme:<span className="search__rating">
+                            {" "}
+                            {game.themes}
+                          </span>
+                        </header>
+                      ) : null}
+                    </div>
 
-                  <div className="search__video">
-                    {game.video ? (
-                      <iframe
-                        width="560"
-                        height="315"
-                        src={game.video}
-                        frameBorder="0"
-                        allowFullScreen
-                      />
-                    ) : null}
+                    <div className="search__video">
+                      {game.video ? (
+                        <iframe
+                          width="560"
+                          height="315"
+                          src={game.video}
+                          frameBorder="0"
+                          allowFullScreen
+                          autostart="false"
+                        />
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="search__details--screenshots">
-                {game.screenshot
-                  ? game.screenshot.map(currentImg => {
-                    return <img src={currentImg} key={currentImg} />;
-                  })
-                  : null}
-              </div>
-              <br />
-            </li>
-          );
-        });
+                <div className="search__details--screenshots">
+                  {game.screenshot
+                    ? game.screenshot.map(currentImg => {
+                        return <img src={currentImg} key={currentImg} />;
+                      })
+                    : null}
+                </div>
+                <br />
+              </li>
+            );
+          });
 
     return (
-      <div>
+      <div className="search__body">
         <br />
         <form
           className="search__form"
@@ -116,12 +127,12 @@ class Search extends React.Component {
             id="search__text"
             autoComplete="off"
             value={this.state.searchGame}
-            placeholder="🔍 Search"
+            placeholder="🔍 Search Game Info"
           />
         </form>
         <br />
-
         <ul className="search">{gameDisplay}</ul>
+        <footer className="search__footer">Powered by IGDB.com API</footer>
       </div>
     );
   }
