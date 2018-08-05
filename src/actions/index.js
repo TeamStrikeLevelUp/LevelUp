@@ -1,6 +1,6 @@
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/genres/`;
 
     fetch(searchPath)
@@ -15,7 +15,7 @@ export function fetchGenreData() {
 }
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/themes/`;
 
     fetch(searchPath)
@@ -30,7 +30,7 @@ export function fetchThemeData() {
 }
 //Main Game Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(searchPath)
       .then(response => response.json())
       .then(json => {
@@ -62,7 +62,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -125,7 +125,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-              screenshotObject["cloudinary_id"]
+            screenshotObject["cloudinary_id"]
           );
         });
 
@@ -161,7 +161,7 @@ export function receiveGameData(gameData) {
 
 //Main NEWS Data fetch - calls helper function to sanitise data
 export function fetchNewsInfoFromAPI(pageNum) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/newsApi/${pageNum}`)
       .then(response => response.json())
       .then(json => {
@@ -176,8 +176,8 @@ export function fetchNewsInfoFromAPI(pageNum) {
 
 //search NEWS Data based on User input
 export function searchNewsAPI(searchTerm, pageNum) {
-  return function(dispatch, getState) {
-    console.log(`/searchNews/${searchTerm}-${pageNum}`);
+  return function (dispatch, getState) {
+
     return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
@@ -198,7 +198,7 @@ export function receiveNewsData(newsData) {
 }
 
 export function setNewsData(newsData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const myNewsData = [];
 
     newsData.map(newsObject => {
@@ -226,7 +226,7 @@ export function setNewsData(newsData) {
 
       myNewsData.push(myNewsObject);
     });
-    console.log("mynewsdata", myNewsData);
+    // console.log("mynewsdata", myNewsData);
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
     // dispatch(receiveNewsData(newsData));
   };
@@ -251,7 +251,7 @@ function formatTime(date) {
   } else {
     displayTime = `${days !== 0 ? days + "d " : ""}${
       hours !== 0 ? hours + "h " : ""
-    }${minutes !== 0 ? minutes + "m " : ""}`;
+      }${minutes !== 0 ? minutes + "m " : ""}`;
   }
 
   return displayTime;

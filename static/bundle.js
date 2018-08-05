@@ -27510,7 +27510,7 @@ function fetchNewsInfoFromAPI(pageNum) {
 //search NEWS Data based on User input
 function searchNewsAPI(searchTerm, pageNum) {
   return function (dispatch, getState) {
-    console.log("/searchNews/" + searchTerm + "-" + pageNum);
+
     return fetch("/searchNews/" + searchTerm + "/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -27558,7 +27558,7 @@ function setNewsData(newsData) {
 
       myNewsData.push(myNewsObject);
     });
-    console.log("mynewsdata", myNewsData);
+    // console.log("mynewsdata", myNewsData);
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
     // dispatch(receiveNewsData(newsData));
   };
