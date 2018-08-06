@@ -1,6 +1,6 @@
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/genres/`;
 
     fetch(searchPath)
@@ -15,7 +15,7 @@ export function fetchGenreData() {
 }
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/themes/`;
 
     fetch(searchPath)
@@ -30,7 +30,7 @@ export function fetchThemeData() {
 }
 //Main Game Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(searchPath)
       .then(response => response.json())
       .then(json => {
@@ -62,7 +62,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -125,7 +125,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-              screenshotObject["cloudinary_id"]
+            screenshotObject["cloudinary_id"]
           );
         });
 
@@ -161,7 +161,7 @@ export function receiveGameData(gameData) {
 
 //Main NEWS Data fetch - calls helper function to sanitise data
 export function fetchNewsInfoFromAPI() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch("/newsApi/")
       .then(response => response.json())
       .then(json => {
@@ -176,7 +176,7 @@ export function fetchNewsInfoFromAPI() {
 //search NEWS Data based on User input
 export function searchNewsAPI(searchTerm) {
   console.log("searchTerm", searchTerm);
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/searchNews/${searchTerm}`)
       .then(response => response.json())
       .then(json => {
@@ -197,7 +197,7 @@ export function receiveNewsData(newsData) {
 }
 
 export function setNewsData(newsData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const myNewsData = [];
 
     newsData.map(newsObject => {
@@ -266,20 +266,26 @@ export function receiveAuthState(auth) {
   };
 }
 
-// export function fetchFortniteData(platform, name) {
-//   return function(dispatch, getState) {
-//     const window = "alltime";
-//     fetch("https://fortnite-public-api.theapinetwork.com/prod09/users/id", {
-//       method: "post",
-//       body: {
-//         username: name
-//       },
-//       headers: {
-//         "Content-Type": "multipart/form-data",
-//         Authorization: "49814d647a64a41873378c2c7acd74b1"
-//       }
-//     }).then(function(response) {
-//       return response.json();
-//     });
-//   };
-// }
+// fetch to grab fortnite user statistics
+export function fetchFortniteStats(username) {
+  console.log("fortnite username", username)
+  return function (dispatch, getState) {
+    return fetch(`/api/fortnite/${username}`)
+      .then(response => response.json())
+      .then(data => {
+        dispatch(setFortniteStats(data))
+      })
+      .catch(e => {
+        alert("Sorry, we could not find your Fortnite data", e)
+      })
+  }
+}
+
+// set fortnite data into redux state
+export function setFortniteStats(userData) {
+  return {
+    type: "RECEIVE_FORTNITE_DATA",
+    payload: userData
+  };
+}
+

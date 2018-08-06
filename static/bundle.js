@@ -27364,6 +27364,8 @@ exports.searchNewsAPI = searchNewsAPI;
 exports.receiveNewsData = receiveNewsData;
 exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
+exports.fetchFortniteStats = fetchFortniteStats;
+exports.setFortniteStats = setFortniteStats;
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
@@ -27617,23 +27619,27 @@ function receiveAuthState(auth) {
   };
 }
 
-// export function fetchFortniteData(platform, name) {
-//   return function(dispatch, getState) {
-//     const window = "alltime";
-//     fetch("https://fortnite-public-api.theapinetwork.com/prod09/users/id", {
-//       method: "post",
-//       body: {
-//         username: name
-//       },
-//       headers: {
-//         "Content-Type": "multipart/form-data",
-//         Authorization: "49814d647a64a41873378c2c7acd74b1"
-//       }
-//     }).then(function(response) {
-//       return response.json();
-//     });
-//   };
-// }
+// fetch to grab fortnite user statistics
+function fetchFortniteStats(username) {
+  console.log("fortnite username", username);
+  return function (dispatch, getState) {
+    return fetch("/api/fortnite/" + username).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      dispatch(setFortniteStats(data));
+    }).catch(function (e) {
+      alert("Sorry, we could not find your Fortnite data", e);
+    });
+  };
+}
+
+// set fortnite data into redux state
+function setFortniteStats(userData) {
+  return {
+    type: "RECEIVE_FORTNITE_DATA",
+    payload: userData
+  };
+}
 
 /***/ }),
 
@@ -29690,48 +29696,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _Fortnite = __webpack_require__(/*! ../components/Fortnite */ "./src/components/Fortnite.js");
 
 var _Fortnite2 = _interopRequireDefault(_Fortnite);
 
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    fortniteData: reduxState.fortniteStats
+  };
+};
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FortniteContainer = function (_React$Component) {
-  _inherits(FortniteContainer, _React$Component);
-
-  function FortniteContainer() {
-    _classCallCheck(this, FortniteContainer);
-
-    return _possibleConstructorReturn(this, (FortniteContainer.__proto__ || Object.getPrototypeOf(FortniteContainer)).call(this));
-  }
-
-  _createClass(FortniteContainer, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_Fortnite2.default, null)
-      );
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchFortniteStats: function fetchFortniteStats() {
+      dispatch((0, _actions.fetchFortniteStats)(searchUser));
     }
-  }]);
+  };
+};
 
-  return FortniteContainer;
-}(_react2.default.Component);
-
-exports.default = FortniteContainer;
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Fortnite2.default);
 
 /***/ }),
 
@@ -30043,6 +30032,36 @@ exports.default = authState;
 
 /***/ }),
 
+/***/ "./src/reducers/fortniteStats.js":
+/*!***************************************!*\
+  !*** ./src/reducers/fortniteStats.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function fortniteStats() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_FORTNITE_DATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = fortniteStats;
+
+/***/ }),
+
 /***/ "./src/reducers/gameInfo.js":
 /*!**********************************!*\
   !*** ./src/reducers/gameInfo.js ***!
@@ -30140,6 +30159,10 @@ var _authState = __webpack_require__(/*! ./authState */ "./src/reducers/authStat
 
 var _authState2 = _interopRequireDefault(_authState);
 
+var _fortniteStats = __webpack_require__(/*! ./fortniteStats */ "./src/reducers/fortniteStats.js");
+
+var _fortniteStats2 = _interopRequireDefault(_fortniteStats);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
@@ -30147,7 +30170,8 @@ exports.default = (0, _redux.combineReducers)({
   themeInfo: _themeInfo2.default,
   genreInfo: _genreInfo2.default,
   newsInfo: _newsInfo2.default,
-  authState: _authState2.default
+  authState: _authState2.default,
+  fortniteStats: _fortniteStats2.default
 });
 
 /***/ }),

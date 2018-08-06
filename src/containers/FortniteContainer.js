@@ -1,17 +1,19 @@
-import React from "react";
+import { connect } from "react-redux";
 import Fortnite from "../components/Fortnite";
+import { fetchFortniteStats, setFortniteStats } from "../actions"
 
-class FortniteContainer extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div>
-        <Fortnite />
-      </div>
-    );
+const mapStateToProps = reduxState => {
+  return {
+    fortniteData: reduxState.fortniteStats
   }
 }
 
-export default FortniteContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchFortniteStats: () => {
+      dispatch(fetchFortniteStats(searchUser))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Fortnite)
