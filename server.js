@@ -228,6 +228,14 @@ app.get("/api/gamer/post/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.get("/api/profile/:username", function(req, res) {
+  db.one(`SELECT * FROM gamer_profile WHERE gamer_name = $1`, [req.params.username])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
 ///////////////// profile - end //////////////////
 
 
@@ -350,6 +358,8 @@ app.get("/signup", function (req, res) {
   res.render("signup", {});
 });
 
+
+
 app.post("/signup", (req, res) => {
   const { signupUsername, signupPassword, signupEmail } = req.body;
   pass = signupPassword;
@@ -359,14 +369,35 @@ app.post("/signup", (req, res) => {
       return bcrypt.hash(signupPassword, salt);
     })
     .then(hashedPassword => {
-      db.none(`
-      INSERT INTO gamer (gamer_name, password_hash, email)
-      VALUES ($1, $2, $3);
-        `, [signupUsername, hashedPassword, signupEmail])
-        .then(data => res.json(data))
-        .catch(error => console.log("Gamer already exist: ", error.message));
+      db.one(
+        `
+              INSERT INTO gamer (gamer_name, password_hash, email)
+              VALUES ($1, $2, $3) RETURNING id;
+        `,
+        [signupUsername, hashedPassword, signupEmail]
+      )
+        .then(data => {
+         
+
+          db.one(
+            `
+                  INSERT INTO gamer_profile (gamer_name, gamer_id)
+                  VALUES ($1, $2) RETURNING id;
+            `,
+            [signupUsername, data.id]
+          )
+            .then(data2 => {
+            
+    
+              res.status(200).end();
+            }).catch(error => console.log("Gamer_profile error: ", error.message));
+
+                  })
+        .catch(error => console.log("Gamer error: ", error.message));
     });
 });
+
+
 
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
