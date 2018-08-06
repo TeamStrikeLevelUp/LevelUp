@@ -207,7 +207,73 @@ app.get("/api/gamer/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.post("/api/newfavourite/", function (req, res) {
 
+
+  //check if game exists in game table
+  db.one(`SELECT * FROM game WHERE igdb_id = $1`, [req.body.igdb])
+    .then(data1 => {
+      console.log(data1.id)
+
+      // game exists in game table => check if it exists in gamer_favorites
+      db.one(`SELECT * FROM gamer_favorites WHERE game_id = $1 
+      AND gamer_id = $2`, [data1.id, req.body.gamerId])
+        .then(data2 => {
+          //game already exists in gamer_favorites. Returning
+          res.json({ msg: "game is already there" })
+
+        }).catch(error => {
+          // game doesnt exists in gamer_favorites. Adding
+
+          db.one(
+            `INSERT INTO gamer_favorites(game_id, gamer_id)
+                    VALUES($1, $2) RETURNING id`,
+            [data1.id, req.body.gamerId]
+          )
+            .then(data3 => {
+              res.json({ msg: "added fav" })
+            })
+            .catch(error => {
+              res.json({
+                error: error.message
+              });
+            });
+
+        });
+
+    })
+    .catch(error => {
+      //game doesnt exsits in game table, Adding to game table
+      console.log("doesnt exist")
+
+
+      db.one(
+        `INSERT INTO game(title, igdb_id)
+                VALUES($1, $2) RETURNING id`,
+        [req.body.title, req.body.igdb]
+      )
+        .then(data4 => {
+          db.one(
+            `INSERT INTO gamer_favorites(game_id, gamer_id)
+                    VALUES($1, $2) RETURNING id`,
+            [data4.id, req.body.gamerId]
+          )
+            .then(data5 => {
+              res.json({ msg: "added game and fav" })
+            })
+            .catch(error => console.log(error.message));
+
+          // res.json(Object.assign({}, {id: data.id}, req.body));
+        })
+        .catch(error => {
+          res.json({
+            error: error.message
+          });
+        });
+
+    }
+    );
+});
 app.get("/api/gamer/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
     req.params.id
@@ -228,7 +294,7 @@ app.get("/api/gamer/post/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/profile/:username", function(req, res) {
+app.get("/api/profile/:username", function (req, res) {
   db.one(`SELECT * FROM gamer_profile WHERE gamer_name = $1`, [req.params.username])
     .then(data => {
       res.json(data);
@@ -377,7 +443,7 @@ app.post("/signup", (req, res) => {
         [signupUsername, hashedPassword, signupEmail]
       )
         .then(data => {
-         
+
 
           db.one(
             `
@@ -387,18 +453,18 @@ app.post("/signup", (req, res) => {
             [signupUsername, data.id]
           )
             .then(data2 => {
-            
-    
+
+
               res.status(200).end();
             }).catch(error => console.log("Gamer_profile error: ", error.message));
 
-                  })
+        })
         .catch(error => console.log("Gamer error: ", error.message));
     });
 });
 
 
-
+//Main  GAMES search for specific title
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client
@@ -408,7 +474,8 @@ app.get("/games/:title", (req, res) => {
           "name-in": gameTitle
         },
         order: "popularity:desc",
-        search: gameTitle
+        search: gameTitle,
+        // limit: 50 // Limit to 50 results
       },
       ["*"]
     )
@@ -421,6 +488,7 @@ app.get("/games/:title", (req, res) => {
     });
 });
 
+//NOT CURRENTLY USED in game - utility to search for game details
 app.get("/gameid/:id", (req, res) => {
   const gameTitle = req.params.id;
   client

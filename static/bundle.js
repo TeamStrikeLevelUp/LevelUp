@@ -155,7 +155,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\n.news__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.news {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: right;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  vertical-align: top;\n  color: #7d6099; }\n\n.news__author {\n  color: grey;\n  font-size: 15px; }\n\n.news__date {\n  color: rgba(211, 211, 211, 0.623);\n  font-size: 15px; }\n\n.news__form {\n  margin-left: 10px; }\n\n.news__img {\n  width: 75%;\n  height: auto;\n  margin: 0 auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 15px; }\n\n.news__wrapper {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr 1fr;\n  grid-row-gap: 0;\n  grid-column-gap: 8px;\n  grid-auto-rows: minmax(50px, auto); }\n\n.news__result0 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result1 {\n  grid-column: 2/4;\n  grid-row: 1/2;\n  display: inline-block;\n  font-size: 12px;\n  border-right: 1px solid darkslategrey; }\n\n.news__result3 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result4 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result5 {\n  grid-column: 3/5;\n  border-top: 1px solid darkslategrey; }\n\n.news__result6 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result7 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result8 {\n  border-right: 1px solid darkslategrey; }\n\n.news__list:nth-child(n + 11) {\n  border-right: 1px solid darkslategrey; }\n\n.news__pages {\n  width: 100%;\n  text-align: center;\n  color: whitesmoke; }\n\n.news__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #7d6099;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n", ""]);
+exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\n.news__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.news {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: right;\n  background-color: rgba(34, 39, 35, 0.8);\n  margin: auto;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3; }\n\n.news__author {\n  color: grey;\n  font-size: 15px; }\n\n.news__date {\n  color: rgba(211, 211, 211, 0.623);\n  font-size: 15px; }\n\n.news__form {\n  margin-left: 10px; }\n\n.news__img {\n  width: 75%;\n  height: auto;\n  margin: 0 auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 15px; }\n\n.news__wrapper {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr 1fr;\n  grid-row-gap: 0;\n  grid-column-gap: 8px;\n  grid-auto-rows: minmax(50px, auto); }\n\n.news__result0 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result1 {\n  grid-column: 2/4;\n  grid-row: 1/2;\n  display: inline-block;\n  font-size: 12px;\n  border-right: 1px solid darkslategrey; }\n\n.news__result3 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result4 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result5 {\n  grid-column: 3/5;\n  border-top: 1px solid darkslategrey; }\n\n.news__result6 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result7 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result8 {\n  border-right: 1px solid darkslategrey; }\n\n.news__list:nth-child(n + 11) {\n  border-right: 1px solid darkslategrey; }\n\n.news__pages {\n  width: 100%;\n  text-align: center;\n  color: whitesmoke; }\n\n.news__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #7d6099;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n", ""]);
 
 // exports
 
@@ -174,7 +174,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\n.search__body {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke;\n  height: 100vh; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px;\n  color: gold; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__rating {\n  color: gold; }\n\n.search__footer {\n  position: fixed;\n  right: 50px;\n  bottom: 0;\n  font-size: 15px;\n  color: grey; }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none; }\n\n.search__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.search {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3;\n  margin-left: 10px; }\n\n.search__desc {\n  margin-left: 10px; }\n\n.search__form {\n  margin-left: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12; }\n\n.search__img {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  align-content: center;\n  margin: auto; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__details--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__details--ratings {\n  margin-left: 10px;\n  color: grey; }\n\n.search__rating {\n  color: #4bd4fd; }\n\n.search__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #9270b1;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n\n.search__screenshots {\n  margin-top: 20px;\n  text-align: center; }\n\n.carousel {\n  height: 100%;\n  margin: 0;\n  width: 100%; }\n\n.image-slide {\n  height: 100%;\n  width: 100%; }\n\n.slide-arrow {\n  color: #14B6D4;\n  cursor: pointer;\n  font-size: 2rem;\n  position: fixed;\n  top: 50%; }\n\n.slide-arrow.right {\n  right: 1rem; }\n\n.slide-arrow.left {\n  left: 1rem; }\n", ""]);
 
 // exports
 
@@ -27333,6 +27333,8 @@ module.exports = function(originalModule) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.addFavouriteToDB = addFavouriteToDB;
+exports.receiveFavouriteData = receiveFavouriteData;
 exports.fetchGenreData = fetchGenreData;
 exports.fetchThemeData = fetchThemeData;
 exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
@@ -27347,6 +27349,38 @@ exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
+
+// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
+
+function addFavouriteToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/newfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      //call action function to select reducer to set redux state value
+
+      dispatch(receiveFavouriteData(favObject));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+function receiveFavouriteData(favouriteData) {
+  return {
+    type: "RECEIVE_FAVOURITEDATA",
+    payload: favouriteData
+  };
+}
+
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
@@ -27375,12 +27409,14 @@ function fetchThemeData() {
     });
   };
 }
-//Main Game Data fetch - calls helper function to sanitise data
+//Main GAME Data fetch - calls helper function to sanitise data
 function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
     return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
+      console.log(json.body.length, " results");
+
       dispatch(setGameData(json.body));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -28620,7 +28656,9 @@ var News = function (_React$Component) {
           { className: "news" },
           _react2.default.createElement(
             "form",
-            { className: "news__form", onSubmit: this.handleSubmit },
+            { className: "news__form",
+              onSubmit: this.handleSubmit
+            },
             _react2.default.createElement("input", {
               onChange: this.handleChange,
               type: "search",
@@ -29005,6 +29043,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import SearchGallery from "./SearchGallery";
+
 var Search = function (_React$Component) {
   _inherits(Search, _React$Component);
 
@@ -29019,6 +29059,8 @@ var Search = function (_React$Component) {
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.addToFavourites = _this.addToFavourites.bind(_this);
+
     return _this;
   }
 
@@ -29045,15 +29087,56 @@ var Search = function (_React$Component) {
       });
     }
   }, {
+    key: "addToFavourites",
+    value: function addToFavourites(gameId, gameTitle) {
+      if (this.props.userAuthState) {
+        var newFav = {
+          gamerId: this.props.userAuthState.userId,
+          igdb: gameId,
+          title: gameTitle
+        };
+        console.log("search.js", newFav);
+        this.props.addToFavourite(newFav);
+      } else {
+        alert("Please log in to select favourites");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var gameData = this.props.gameData;
+      var _this2 = this;
 
-      var gameDisplay = gameData === "No results found" ? gameData : gameData.map(function (game) {
+      var _props = this.props,
+          gameData = _props.gameData,
+          userAuthState = _props.userAuthState;
+
+      var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
+        "div",
+        { className: "search__result" },
+        " ",
+        _react2.default.createElement(
+          "div",
+          { className: "search__details" },
+          " ",
+          gameData,
+          " "
+        )
+      ) : gameData.map(function (game) {
         return _react2.default.createElement(
           "li",
           { key: game.igdbId, className: "search__result" },
-          _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
+          _react2.default.createElement(
+            "div",
+            { className: "search__img" },
+            _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
+            _react2.default.createElement(
+              "button",
+              { className: "search__details--button", onClick: function onClick(event) {
+                  _this2.addToFavourites(game.igdbId, game.name);
+                } },
+              "Add to favourites"
+            )
+          ),
           _react2.default.createElement(
             "div",
             { className: "search__details" },
@@ -29064,7 +29147,7 @@ var Search = function (_React$Component) {
             ),
             game.description !== "" || game.description !== undefined ? _react2.default.createElement(
               "p",
-              null,
+              { className: "search__desc" },
               game.description
             ) : null,
             _react2.default.createElement(
@@ -29126,17 +29209,19 @@ var Search = function (_React$Component) {
                 game.video ? _react2.default.createElement("iframe", {
                   width: "560",
                   height: "315",
-                  src: game.video,
+                  src: game.video + "autoPlay=0",
+
                   frameBorder: "0",
                   allowFullScreen: true,
                   autostart: "false"
+
                 }) : null
               )
             )
           ),
           _react2.default.createElement(
             "div",
-            { className: "search__details--screenshots" },
+            { className: "search__screenshots" },
             game.screenshot ? game.screenshot.map(function (currentImg) {
               return _react2.default.createElement("img", { src: currentImg, key: currentImg });
             }) : null
@@ -29144,41 +29229,45 @@ var Search = function (_React$Component) {
           _react2.default.createElement("br", null)
         );
       });
-      var displayStatus = this.props.userAuthState ? "youre logged in!" : "youre not logged in";
+      var displayStatus = userAuthState ? "Welcome Gamer " + userAuthState.userId : "You are not logged in";
       return _react2.default.createElement(
         "div",
         { className: "search__body" },
-        displayStatus,
-        _react2.default.createElement("br", null),
         _react2.default.createElement(
-          "form",
-          {
-            className: "search__form",
-            id: "search__form",
-            onSubmit: this.handleSubmit
-          },
-          _react2.default.createElement("input", {
-            onChange: this.handleChange,
-            type: "search",
-            results: "0",
-            alt: "Search",
-            className: "search__input",
-            id: "search__text",
-            autoComplete: "off",
-            value: this.state.searchGame,
-            placeholder: "\uD83D\uDD0D Search Game Info"
-          })
-        ),
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "ul",
+          "div",
           { className: "search" },
-          gameDisplay
-        ),
-        _react2.default.createElement(
-          "footer",
-          { className: "search__footer" },
-          "Powered by IGDB.com API"
+          displayStatus,
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "form",
+            {
+              className: "search__form",
+              id: "search__form",
+              onSubmit: this.handleSubmit
+            },
+            _react2.default.createElement("input", {
+              onChange: this.handleChange,
+              type: "search",
+              results: "0",
+              alt: "Search",
+              className: "search__input"
+              // id="search__text"
+              , autoComplete: "off",
+              value: this.state.searchGame,
+              placeholder: "Search games"
+            })
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "ul",
+            { className: "search__wrapper" },
+            gameDisplay
+          ),
+          _react2.default.createElement(
+            "footer",
+            { className: "search__footer" },
+            "Powered by IGDB.com API"
+          )
         )
       );
     }
@@ -29838,7 +29927,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(reduxState) {
     return {
         userAuthState: reduxState.authState,
-        userDataStore: reduxState.userData
+        userDataStore: reduxState.userData,
+        favouriteData: reduxState.favouriteInfo
+
     };
 };
 
@@ -29999,12 +30090,14 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  // console.log("redux gameData", reduxState.gameInfo);
+  console.log("Gamer Favourite info in Search Container ", reduxState.favouriteInfo);
+
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
     genreData: reduxState.genreInfo,
-    userAuthState: reduxState.authState
+    userAuthState: reduxState.authState,
+    favouriteData: reduxState.favouriteInfo
 
   };
 };
@@ -30017,6 +30110,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
     fetchGameInfo: function fetchGameInfo(searchGame) {
       dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
+    },
+    addToFavourite: function addToFavourite(favInfo) {
+      dispatch((0, _actions.addFavouriteToDB)(favInfo));
     }
   };
 };
@@ -30169,6 +30265,38 @@ exports.default = authState;
 
 /***/ }),
 
+/***/ "./src/reducers/favouriteInfo.js":
+/*!***************************************!*\
+  !*** ./src/reducers/favouriteInfo.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function favouriteInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_FAVOURITEDATA":
+
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = favouriteInfo;
+
+/***/ }),
+
 /***/ "./src/reducers/gameInfo.js":
 /*!**********************************!*\
   !*** ./src/reducers/gameInfo.js ***!
@@ -30182,12 +30310,14 @@ exports.default = authState;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function userInfo() {
+function gameInfo() {
   var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+
   switch (action.type) {
-    case "RECEIVE_USERDATA":
+    case "RECEIVE_GAMEDATA":
+
       return action.payload;
 
     default:
@@ -30195,7 +30325,7 @@ function userInfo() {
   }
 }
 
-exports.default = userInfo;
+exports.default = gameInfo;
 
 /***/ }),
 
@@ -30266,6 +30396,14 @@ var _authState = __webpack_require__(/*! ./authState */ "./src/reducers/authStat
 
 var _authState2 = _interopRequireDefault(_authState);
 
+var _userInfo = __webpack_require__(/*! ./userInfo */ "./src/reducers/userInfo.js");
+
+var _userInfo2 = _interopRequireDefault(_userInfo);
+
+var _favouriteInfo = __webpack_require__(/*! ./favouriteInfo */ "./src/reducers/favouriteInfo.js");
+
+var _favouriteInfo2 = _interopRequireDefault(_favouriteInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
@@ -30273,7 +30411,9 @@ exports.default = (0, _redux.combineReducers)({
   themeInfo: _themeInfo2.default,
   genreInfo: _genreInfo2.default,
   newsInfo: _newsInfo2.default,
-  authState: _authState2.default
+  authState: _authState2.default,
+  userInfo: _userInfo2.default,
+  favouriteInfo: _favouriteInfo2.default
 });
 
 /***/ }),
@@ -30335,6 +30475,36 @@ function themeInfo() {
 }
 
 exports.default = themeInfo;
+
+/***/ }),
+
+/***/ "./src/reducers/userInfo.js":
+/*!**********************************!*\
+  !*** ./src/reducers/userInfo.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function userInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_USERDATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = userInfo;
 
 /***/ }),
 

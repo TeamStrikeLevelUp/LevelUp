@@ -21,7 +21,7 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: right;
-  background-color: rgba(34, 39, 35, 0.9);
+  background-color: rgba(34, 39, 35, 0.8);
   margin: auto;
   color: whitesmoke;
 }
@@ -39,15 +39,18 @@ a {
 .news__title {
   font-size: 20px;
   vertical-align: top;
-  color: rgb(125, 96, 153);
+  // color: rgb(125, 96, 153);
+  color: rgb(205, 165, 243)
 }
 
 .news__author {
   color: grey;
+
   font-size: 15px;
 }
 .news__date {
   color: rgba(211, 211, 211, 0.623);
+ 
   font-size: 15px;
 }
 

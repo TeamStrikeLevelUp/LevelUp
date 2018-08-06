@@ -1,3 +1,39 @@
+
+// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
+
+export function addFavouriteToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/newfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(json => {
+        //call action function to select reducer to set redux state value
+
+        dispatch(receiveFavouriteData(favObject));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  }
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+export function receiveFavouriteData(favouriteData) {
+  return {
+    type: "RECEIVE_FAVOURITEDATA",
+    payload: favouriteData
+  };
+}
+
+
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
   return function (dispatch, getState) {
@@ -28,17 +64,21 @@ export function fetchThemeData() {
       });
   };
 }
-//Main Game Data fetch - calls helper function to sanitise data
+//Main GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
     return fetch(searchPath)
-      .then(response => response.json())
+      .then(response =>
+        response.json()
+      )
       .then(json => {
+        console.log((json.body).length, " results")
+
         dispatch(setGameData(json.body));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
-      });
+      })
   };
 }
 
