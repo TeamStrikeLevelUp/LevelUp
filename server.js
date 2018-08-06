@@ -59,11 +59,14 @@ function getUserAvatarById(id) {
     .catch(error => console.log(error.message));
 }
 
-///////////////// Ahmed - start //////////////////
+
+
+///////////////// Forum - start //////////////////
 
 
 app.get("/api/forum", function (req, res) {
   db.any(`SELECT * FROM forum ORDER BY title ASC`)
+
     .then(data => {
       res.json(data);
     })
@@ -88,6 +91,7 @@ app.get("/api/forum/search/:name", function (req, res) {
 
 app.get("/api/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`, [
+
     req.params.id
   ])
     .then(data => {
@@ -317,8 +321,6 @@ app.get("/dashboard/account", isLoggedIn, function (req, res) {
     })
 });
 
-// app.use(cors());
-
 const client = igdb("96651c2677f60060f3a91ef002c2a419");
 
 app.set("view engine", "hbs");
@@ -399,28 +401,6 @@ app.get("/gameid/:id", (req, res) => {
       offset: 15 // Index offset for results
     })
     .then(response => {
-      // response.body contains the parsed JSON response to this query
-
-      displayData(res, response);
-    })
-    .catch(error => {
-      console.log("You have 2 lives remaining ", error);
-    });
-});
-
-//Not used at the moment
-app.get("/reviews/:gameId", (req, res) => {
-  const gameTitle = req.params.gameId;
-  client
-    .reviews({
-      ids: [gameTitle], //try 2645 for an id
-      // fields: 'id,title,review_rating,content,positive_points,negative_points', // Return all fields
-      fields: "*",
-      limit: 5, // Limit to 5 results
-      offset: 15 // Index offset for results
-    })
-    .then(response => {
-      // response.body contains the parsed JSON response to this query
       displayData(res, response);
     })
     .catch(error => {
@@ -453,7 +433,6 @@ app.get("/genres/", (req, res) => {
     })
     .then(response => {
       // response.body contains the parsed JSON response to this query
-
       displayData(res, response);
     })
     .catch(error => {
@@ -465,16 +444,19 @@ function displayData(res, data) {
   res.json(data);
 }
 
-//General NEWS search for latest Gaming articles
-app.get("/newsApi/", (req, res) => {
-  newsapi.v2
-    .topHeadlines({
-      sources: "ign",
-      language: "en"
-    })
+//Main general NEWS search for latest Gaming/tech articles
+app.get("/newsApi/:pageNum", (req, res) => {
+  const page = req.params.pageNum;
+
+  newsapi.v2.everything({
+    sources: "ign,techradar",
+    language: "en",
+    sortBy: "publishedAt",
+    pageSize: 10,
+    page
+  })
     .then(response => {
       res.json(response);
-      // console.log(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
@@ -482,17 +464,20 @@ app.get("/newsApi/", (req, res) => {
 });
 
 //Specific NEWS search based on user-input
-app.get("/searchNews/:searchTerm", (req, res) => {
+app.get("/searchNews/:searchTerm/:pageNum", (req, res) => {
   const search = req.params.searchTerm;
+  const page = req.params.pageNum;
   newsapi.v2
     .everything({
       sources: "ign",
       q: search,
-      language: "en"
+      language: "en",
+      sortBy: "relevancy,publishedAt",
+      pageSize: 10,
+      page
     })
     .then(response => {
       res.json(response);
-      // console.log(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);

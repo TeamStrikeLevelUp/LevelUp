@@ -155,7 +155,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\nbody {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  color: whitesmoke; }\n\n.news__form {\n  margin-bottom: 10px; }\n\n.news {\n  display: flex;\n  flex: 12;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin: auto;\n  text-align: center;\n  background-color: #222723;\n  color: white; }\n\n.news__result {\n  display: inline-block;\n  margin: 20px;\n  height: auto;\n  width: calc(100% / 3);\n  font-size: 20px;\n  text-align: left; }\n\n.news__img {\n  width: 100%;\n  height: auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 16px;\n  margin-left: 15px; }\n", ""]);
+exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\n.news__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.news {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: right;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  vertical-align: top;\n  color: #7d6099; }\n\n.news__author {\n  color: grey;\n  font-size: 15px; }\n\n.news__date {\n  color: rgba(211, 211, 211, 0.623);\n  font-size: 15px; }\n\n.news__form {\n  margin-left: 10px; }\n\n.news__img {\n  width: 75%;\n  height: auto;\n  margin: 0 auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 15px; }\n\n.news__wrapper {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr 1fr;\n  grid-row-gap: 0;\n  grid-column-gap: 8px;\n  grid-auto-rows: minmax(50px, auto); }\n\n.news__result0 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result1 {\n  grid-column: 2/4;\n  grid-row: 1/2;\n  display: inline-block;\n  font-size: 12px;\n  border-right: 1px solid darkslategrey; }\n\n.news__result3 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result4 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result5 {\n  grid-column: 3/5;\n  border-top: 1px solid darkslategrey; }\n\n.news__result6 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result7 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result8 {\n  border-right: 1px solid darkslategrey; }\n\n.news__list:nth-child(n + 11) {\n  border-right: 1px solid darkslategrey; }\n\n.news__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #7d6099;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n", ""]);
 
 // exports
 
@@ -174,7 +174,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\n.search__body {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke;\n  height: 100vh; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px;\n  color: gold; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__rating {\n  color: gold; }\n\n.search__footer {\n  position: fixed;\n  right: 50px;\n  bottom: 0;\n  font-size: 15px;\n  color: grey; }\n", ""]);
 
 // exports
 
@@ -27496,11 +27496,12 @@ function receiveGameData(gameData) {
 }
 
 //Main NEWS Data fetch - calls helper function to sanitise data
-function fetchNewsInfoFromAPI() {
+function fetchNewsInfoFromAPI(pageNum) {
   return function (dispatch, getState) {
-    return fetch("/newsApi/").then(function (response) {
+    return fetch("/newsApi/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
+      // console.log("fetch news ", json.articles);
       dispatch(setNewsData(json.articles));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27509,13 +27510,13 @@ function fetchNewsInfoFromAPI() {
 }
 
 //search NEWS Data based on User input
-function searchNewsAPI(searchTerm) {
-  // console.log("searchTerm", searchTerm);
+function searchNewsAPI(searchTerm, pageNum) {
   return function (dispatch, getState) {
-    return fetch("/searchNews/" + searchTerm).then(function (response) {
+
+    return fetch("/searchNews/" + searchTerm + "/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
-      dispatch(setNewsData(json.articles));
+      dispatch(setNewsData(removeDuplicates(json.articles)));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
     });
@@ -27536,60 +27537,57 @@ function setNewsData(newsData) {
 
     newsData.map(function (newsObject) {
       var myNewsObject = {};
+      // Only select news items which have a description
+      if (!newsObject.description) {
+        return;
+      }
 
-      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields, renaming keys
       if (newsObject.author) {
         myNewsObject["author"] = newsObject.author;
       }
       myNewsObject["description"] = newsObject.description;
 
-      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
+      myNewsObject["date"] = formatTime(newsObject.publishedAt);
 
       myNewsObject["title"] = newsObject.title;
 
       myNewsObject["url"] = newsObject.url;
 
       if (newsObject.urlToImage) {
-        myNewsObject["image"] = newsObject.urlToImage;
+        if (!newsObject.urlToImage.includes("placeholder")) {
+          myNewsObject["image"] = newsObject.urlToImage;
+        }
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log(myNewsData);
-    dispatch(receiveNewsData(myNewsData));
+    // console.log("mynewsdata", myNewsData);
+    dispatch(receiveNewsData(removeDuplicates(myNewsData)));
+    // dispatch(receiveNewsData(newsData));
   };
 }
-// Makes Dates look presentable
-function formatDate(date) {
+
+// Time passed since news article was published
+function formatTime(date) {
+  var displayTime = void 0;
+  var now = new Date();
   var myDate = new Date(date);
+  var diff = now - myDate;
+  var days = Math.floor(diff / 3600000 / 24);
+  var hours = Math.floor(diff % 86400000 / 3600000) + 1; //UTC timezone
+  var minutes = Math.floor(diff % 86400000 % 3600000 / 60000);
 
-  var prettyDate = myDate.toDateString().substring(4, myDate.length);
-  var minutes = ("0" + myDate.getMinutes()).slice(-2);
-  var hours = myDate.getHours();
+  //If the data is more than 2 weeks old, then just display the PublishedAt date
 
-  myDate = prettyDate.split(" ");
-  var month = myDate[0];
-  var day = parseInt(myDate[1]);
-  var year = myDate[2];
-  var suffix = "";
-  switch (day) {
-    case 1:
-    case 21:
-    case 31:
-      suffix = "st";
-      break;
-    case 2:
-    case 22:
-      suffix = "nd";
-      break;
-    case 3:
-    case 23:
-      suffix = "rd";
-      break;
-    default:
-      suffix = "th";
-      break;
+  if (days >= 1) {
+    displayTime = days + "d ";
+  } else if (hours === 24) {
+    displayTime = "1d";
+  } else {
+    displayTime = "" + (days !== 0 ? days + "d " : "") + (hours !== 0 ? hours + "h " : "") + (minutes !== 0 ? minutes + "m " : "");
   }
-  return "" + day + suffix + " " + month + " " + year + " at " + hours + ":" + minutes + " ";
+
+  return displayTime;
 }
 
 //function to call Reducer and set auth in redux.state
@@ -27641,6 +27639,25 @@ function fetchGamerInfo(gamerId) {
 //   //     .then(json => console.log("----gamer_posts----", json));
 
 // }
+// API data coming out contains duplicates-remove those with the same title OR same description
+
+function removeDuplicates(newsSearch) {
+  var myNewsData = newsSearch.reduce(function (acc, newsObject) {
+    if (!acc[newsObject.title]) {
+      acc[newsObject.title] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  var cleanNewsData = Object.values(myNewsData).reduce(function (acc, newsObject) {
+    if (!acc[newsObject.description]) {
+      acc[newsObject.description] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  return Object.values(cleanNewsData);
+}
 
 /***/ }),
 
@@ -28461,79 +28478,103 @@ var News = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).call(this));
 
     _this.state = {
-      searchNews: ""
+      searchNews: "",
+      pageNum: 1,
+      currentSearch: ""
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.nextPage = _this.nextPage.bind(_this);
     return _this;
   }
 
   _createClass(News, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.fetchNewsData !== undefined && this.props.searchNewsData !== undefined) {
-        this.props.fetchNewsData();
+      if (this.props.fetchNewsData !== undefined) {
+        this.props.fetchNewsData(this.state.pageNum);
       }
     }
   }, {
     key: "handleChange",
     value: function handleChange(event) {
+      var _this2 = this;
+
       event.preventDefault();
       this.setState({
         searchNews: event.target.value
+      }, function () {
+        return _this2.setState({
+          currentSearch: _this2.state.searchNews
+        });
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.props.searchNewsData(this.state.searchNews);
+      this.setState({ pageNum: 1 });
+      this.props.searchNewsData(this.state.searchNews, 1);
       this.setState({
         searchNews: ""
       });
     }
   }, {
+    key: "nextPage",
+    value: function nextPage(event) {
+      var _this3 = this;
+
+      if (this.state.currentSearch !== "") {
+        this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+          return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
+        });
+      } else {
+        this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+          return _this3.props.fetchNewsData(_this3.state.pageNum);
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var newsData = this.props.newsData;
 
-      console.log(newsData);
 
-      var newsDisplay = newsData === "No results found" ? newsData : newsData.map(function (news) {
+      var newsDisplay = newsData === "No results found" ? newsData : newsData.map(function (news, i) {
+        var cn = "news__result" + i;
         return _react2.default.createElement(
           "div",
-          { className: "news__result", key: news.title },
+          { className: cn, key: news.title },
           _react2.default.createElement(
             "li",
-            null,
+            { className: "news__list" },
             _react2.default.createElement(
               "a",
               { href: news.url, target: "blank" },
-              _react2.default.createElement("img", {
+              news.image ? _react2.default.createElement("img", {
                 src: news.image,
                 className: "news__img",
                 alt: news.title
-              }),
+              }) : null,
               _react2.default.createElement(
                 "header",
                 { className: "news__title" },
                 news.title
               ),
               _react2.default.createElement(
-                "p",
+                "div",
                 { className: "news__desc" },
                 news.description
               ),
               _react2.default.createElement(
                 "p",
-                { className: "news__desc" },
+                { className: "news__date" },
+                news.date,
+                "\uD83D\uDD54 | ",
                 news.author
-              ),
-              _react2.default.createElement(
-                "p",
-                { className: "news__desc" },
-                news.date
               )
             )
           )
@@ -28542,36 +28583,41 @@ var News = function (_React$Component) {
 
       return _react2.default.createElement(
         "div",
-        null,
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "form",
-          { className: "news__form", onSubmit: this.handleSubmit },
-          _react2.default.createElement("input", {
-            onChange: this.handleChange,
-            type: "search",
-            results: "0",
-            alt: "Search",
-            className: "news__input",
-            autoComplete: "off",
-            value: this.state.searchNews,
-            placeholder: "\uD83D\uDD0D Search news articles"
-          })
-        ),
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "h1",
-          null,
-          "Latest News"
-        ),
+        { className: "news__body" },
         _react2.default.createElement(
           "div",
           { className: "news" },
           _react2.default.createElement(
+            "form",
+            { className: "news__form", onSubmit: this.handleSubmit },
+            _react2.default.createElement("input", {
+              onChange: this.handleChange,
+              type: "search",
+              results: "0",
+              alt: "Search",
+              className: "news__input",
+              autoComplete: "off",
+              value: this.state.searchNews,
+              placeholder: "Search news"
+            })
+          ),
+          _react2.default.createElement(
             "ul",
-            null,
+            { className: "news__wrapper" },
             newsDisplay
-          )
+          ),
+          newsDisplay !== undefined ? _react2.default.createElement(
+            "a",
+            { href: "#", onClick: function onClick(event) {
+                return _this4.nextPage(event);
+              } },
+            "Next >>"
+          ) : null
+        ),
+        _react2.default.createElement(
+          "footer",
+          { className: "news__footer" },
+          "Powered by NewsAPI.org"
         )
       );
     }
@@ -28918,28 +28964,48 @@ var Search = function (_React$Component) {
                 game.user_rating ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Gamer Rating: ",
-                  game.user_rating,
-                  "%"
+                  "Gamer Rating:",
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    game.user_rating,
+                    "%"
+                  )
                 ) : null,
                 game.critic_rating ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Critics Rating: ",
-                  game.critic_rating,
-                  "%"
+                  "Critic Rating:",
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    game.critic_rating,
+                    "%"
+                  )
                 ) : null,
                 game.genres ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Genre: ",
-                  game.genres
+                  "Genre:",
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    game.genres
+                  )
                 ) : null,
                 game.themes ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Theme: ",
-                  game.themes
+                  "Theme:",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    " ",
+                    game.themes
+                  )
                 ) : null
               ),
               _react2.default.createElement(
@@ -28950,7 +29016,8 @@ var Search = function (_React$Component) {
                   height: "315",
                   src: game.video,
                   frameBorder: "0",
-                  allowFullScreen: true
+                  allowFullScreen: true,
+                  autostart: "false"
                 }) : null
               )
             )
@@ -28968,7 +29035,7 @@ var Search = function (_React$Component) {
 
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "search__body" },
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "form",
@@ -28986,7 +29053,7 @@ var Search = function (_React$Component) {
             id: "search__text",
             autoComplete: "off",
             value: this.state.searchGame,
-            placeholder: "\uD83D\uDD0D Search"
+            placeholder: "\uD83D\uDD0D Search Game Info"
           })
         ),
         _react2.default.createElement("br", null),
@@ -28994,6 +29061,11 @@ var Search = function (_React$Component) {
           "ul",
           { className: "search" },
           gameDisplay
+        ),
+        _react2.default.createElement(
+          "footer",
+          { className: "search__footer" },
+          "Powered by IGDB.com API"
         )
       );
     }
@@ -29736,7 +29808,6 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log(reduxState.newsData);
   return {
     newsData: reduxState.newsInfo
   };
@@ -29744,11 +29815,12 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchNewsData: function fetchNewsData() {
-      dispatch((0, _actions.fetchNewsInfoFromAPI)());
+    fetchNewsData: function fetchNewsData(pageNum) {
+      dispatch((0, _actions.fetchNewsInfoFromAPI)(pageNum));
     },
-    searchNewsData: function searchNewsData(searchTerm) {
-      dispatch((0, _actions.searchNewsAPI)(searchTerm));
+    searchNewsData: function searchNewsData(searchTerm, pageNum) {
+      console.log("searchterm", searchTerm);
+      dispatch((0, _actions.searchNewsAPI)(searchTerm, pageNum));
     }
   };
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/components/news.scss";
 import "../../styles/index.scss";
+import NextNews from "NextNews";
 
 class News extends React.Component {
   constructor() {
@@ -8,8 +9,7 @@ class News extends React.Component {
 
     this.state = {
       searchNews: "",
-      pageNum: 1,
-      currentSearch: ""
+      pageNum: 1
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,36 +25,23 @@ class News extends React.Component {
 
   handleChange(event) {
     event.preventDefault();
-    this.setState(
-      {
-        searchNews: event.target.value
-      },
-      () =>
-        this.setState({
-          currentSearch: this.state.searchNews
-        })
-    );
+    this.setState({
+      searchNews: event.target.value
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ pageNum: 1 });
-    this.props.searchNewsData(this.state.searchNews, 1);
+    this.props.searchNewsData(this.state.searchNews);
     this.setState({
       searchNews: ""
     });
   }
 
   nextPage(event) {
-    if (this.state.currentSearch !== "") {
-      this.setState({ pageNum: this.state.pageNum + 1 }, () =>
-        this.props.searchNewsData(this.state.currentSearch, this.state.pageNum)
-      );
-    } else {
-      this.setState({ pageNum: this.state.pageNum + 1 }, () =>
-        this.props.fetchNewsData(this.state.pageNum)
-      );
-    }
+    this.setState({ pageNum: this.state.pageNum + 1 }, () =>
+      this.props.fetchNewsData(this.state.pageNum)
+    );
   }
 
   render() {
@@ -108,10 +95,12 @@ class News extends React.Component {
           <ul className="news__wrapper">{newsDisplay}</ul>
 
           {newsDisplay !== undefined ? (
-            <a href="#" onClick={event => this.nextPage(event)}>
-              Next >>
-            </a>
-          ) : null}
+            <NextNews />
+          ) : //   <a href="#" onClick={event => this.nextPage(event)}>
+          //     Next >>
+          //   </a>
+          //
+          null}
         </div>
 
         <footer className="news__footer">Powered by NewsAPI.org</footer>
