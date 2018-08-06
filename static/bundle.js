@@ -28416,9 +28416,18 @@ function HomeNavBar() {
       "li",
       { className: "main-nav__item" },
       _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/signup" },
-        "Log In/Sign Up"
+        "a",
+        { href: "/login" },
+        "Log In"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        "a",
+        { href: "/signup" },
+        "Sign Up"
       )
     ),
     _react2.default.createElement(
