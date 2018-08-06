@@ -191,6 +191,34 @@ app.post("/api/post", function (req, res) {
 
 ///////////////// Forum - end //////////////////
 
+
+
+///////////////// Account Updates - Starts /////////////////
+// Avatar Update
+app.post("/api/account/avatar", function (req, res) {
+  const { gamer_id, avatar } = req.body;
+  if (avatar) {
+    db.one(
+      `UPDATE gamer_profile SET avatar = $2
+            WHERE gamer_id = $1`,
+      [gamer_id, avatar]
+    )
+      .then(data => {
+        return { "status": "success" }
+      })
+      .catch(error => {
+        res.json({
+          error: error.message
+        });
+      });
+  }
+});
+
+///////////////// Account Updates - Ends //////////////////
+
+
+
+
 ///////////////// profile - start //////////////////
 
 app.get("/api/gamer/:id", function (req, res) {
@@ -228,7 +256,7 @@ app.get("/api/gamer/post/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/profile/:username", function(req, res) {
+app.get("/api/profile/:username", function (req, res) {
   db.one(`SELECT * FROM gamer_profile WHERE gamer_name = $1`, [req.params.username])
     .then(data => {
       res.json(data);
@@ -238,8 +266,6 @@ app.get("/api/profile/:username", function(req, res) {
 
 ///////////////// profile - end //////////////////
 
-
-// Database connection ends
 
 function compare(plainTextPassword, hashedPassword) {
   return bcrypt.compare(plainTextPassword, hashedPassword).then(matches => {
@@ -377,7 +403,7 @@ app.post("/signup", (req, res) => {
         [signupUsername, hashedPassword, signupEmail]
       )
         .then(data => {
-         
+
 
           db.one(
             `
@@ -387,12 +413,12 @@ app.post("/signup", (req, res) => {
             [signupUsername, data.id]
           )
             .then(data2 => {
-            
-    
+
+
               res.status(200).end();
             }).catch(error => console.log("Gamer_profile error: ", error.message));
 
-                  })
+        })
         .catch(error => console.log("Gamer error: ", error.message));
     });
 });

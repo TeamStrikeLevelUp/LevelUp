@@ -86,6 +86,68 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
 /*!*************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
@@ -98,7 +160,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__panels {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__panels {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__panels .dashboard__panels--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__panels .dashboard__panels--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    background-color: rgba(53, 94, 114, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 15px; }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 42px;\n    padding-left: 20px; }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px; }\n\n.dashboard__account .dashboard__avatar .dashboard__avatar--image {\n  width: 150px;\n  max-width: 100%;\n  border-radius: 50%;\n  display: block;\n  margin-bottom: 20px; }\n\n.dashboard__account .dashboard__avatar .dashboard__avatar--input {\n  display: block; }\n\n.dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n  font-size: 11px;\n  margin-bottom: 5px; }\n  .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n    cursor: pointer;\n    opacity: .8; }\n\n.dashboard__account .dashboard__avatar .dashboard__avatar--form {\n  display: none; }\n  .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n    display: block; }\n", ""]);
 
 // exports
 
@@ -27856,9 +27918,7 @@ var Dashboard = function (_React$Component) {
 
         _this.state = {
             user: {}
-            // gamer_info: this.props.userDataStore
         };
-        // this.gamerInfo = this.gamerInfo.bind(this)
         return _this;
     }
 
@@ -27873,41 +27933,7 @@ var Dashboard = function (_React$Component) {
             if (userData) {
                 this.props.setAuthState(userData);
             };
-
-            // console.log('Oh first shiiiit', userData);
-            // if (userData) {
-            //     this.props.fetchGamerInfo(this.state.user.userId)
-            //         .then(data => {
-            //             console.log("gamerData in coomp", data)
-            //             this.props.setUserData(data);
-            //             this.setState({
-            //                 gamer_info: data
-            //             });
-            //         });
-
-            // } else {
-            //     console.log('Oh shiiiit');
-            // }
         }
-
-        // gamerInfo() {
-        //     if (this.props.userAuthState) {
-        //         //fetch gamer_profile
-        //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
-        //             .then(response => response.json())
-        //             .then(gamerData => {
-        //                 console.log("gamerData", gamerData);
-        //                 return gamerData
-        //             });
-
-        //         //fetch replies by gamer
-        //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-        //         //     .then(response => response.json())
-        //         //     .then(json => console.log("----gamer_posts----", json));
-
-        //     }
-        // }
-
     }, {
         key: 'render',
         value: function render() {
@@ -29499,6 +29525,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29517,17 +29547,21 @@ var DashboardAccount = function (_React$Component) {
 
         _this.state = {
             user: null,
-            gamer_info: null
+            gamer_info: null,
+            toggler: false,
+            selectedFile: ""
         };
+        _this.togglerHandler = _this.togglerHandler.bind(_this);
+        _this.fileChangedHandler = _this.fileChangedHandler.bind(_this);
+        _this.uploadHandler = _this.uploadHandler.bind(_this);
         return _this;
     }
 
     _createClass(DashboardAccount, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
 
-            console.log("this.props", this.props);
             // Get initialUser variable from global scope declared in index.hbs
             var userData = initialUser;
             this.setState({
@@ -29546,81 +29580,146 @@ var DashboardAccount = function (_React$Component) {
             }
         }
     }, {
-        key: "render",
-        value: function render() {
+        key: 'togglerHandler',
+        value: function togglerHandler() {
+            this.setState({
+                toggler: !this.state.toggler
+            });
+        }
+    }, {
+        key: 'fileChangedHandler',
+        value: function fileChangedHandler(event) {
+            this.setState({
+                selectedFile: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadHandler',
+        value: function uploadHandler(e) {
+            var _this3 = this;
 
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var avatar = this.state.selectedFile;
+            fetch("/api/account/avatar", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, avatar: avatar }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this3.setState({
+                        toggler: !_this3.state.toggler
+                    });
+                    // TODO: Add avatar to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var togglerClasses = (0, _classnames2.default)('dashboard__avatar--form ', {
+                'dashboard__avatar--form--visible': this.state.toggler
+            });
             return _react2.default.createElement(
-                "div",
-                { className: "dashboard__Account" },
+                'div',
+                { className: 'dashboard__account' },
                 _react2.default.createElement(
-                    "div",
-                    { className: "dashboard__Account--item" },
+                    'div',
+                    { className: 'dashboard__account--item' },
                     _react2.default.createElement(
-                        "h3",
-                        { className: "dashboard__Account--heading" },
-                        "Account"
+                        'h3',
+                        { className: 'dashboard__account--heading' },
+                        'Account'
                     ),
                     this.state.gamer_info ? _react2.default.createElement(
-                        "div",
+                        'div',
                         null,
-                        _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.gamer_info.profile.avatar, alt: "{this.state.gamer_info.profile.gamer_name}" }),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'div',
+                            { className: 'dashboard__avatar' },
+                            _react2.default.createElement('img', { className: 'dashboard__avatar--image', src: this.state.gamer_info.profile.avatar, alt: '{this.state.gamer_info.profile.gamer_name}' }),
                             _react2.default.createElement(
-                                "strong",
+                                'div',
+                                { className: 'dashboard__avatar--toggle', onClick: this.togglerHandler },
+                                'Update avatar'
+                            ),
+                            _react2.default.createElement(
+                                'form',
+                                { className: togglerClasses },
+                                _react2.default.createElement('input', {
+                                    className: 'dashboard__avatar--input',
+                                    type: 'text',
+                                    onChange: this.fileChangedHandler,
+                                    placeholder: 'New avatar URL' }),
+                                _react2.default.createElement(
+                                    'button',
+                                    {
+                                        className: 'dashboard__avatar--submit',
+                                        onClick: this.uploadHandler },
+                                    'Upload!'
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            { className: 'dashboard__account--text' },
+                            _react2.default.createElement(
+                                'strong',
                                 null,
-                                "Gamer ID: "
+                                'Gamer ID: '
                             ),
                             this.state.gamer_info.profile.gamer_id
                         ),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'p',
+                            { className: 'dashboard__account--text' },
                             _react2.default.createElement(
-                                "strong",
+                                'strong',
                                 null,
-                                "Name: "
+                                'Name: '
                             ),
                             this.state.gamer_info.profile.gamer_name
                         ),
                         _react2.default.createElement(
-                            "div",
-                            { className: "dashboard__Account--points" },
+                            'div',
+                            { className: 'dashboard__account--points' },
                             _react2.default.createElement(
-                                "strong",
+                                'strong',
                                 null,
-                                "Level: "
+                                'Level: '
                             ),
                             this.state.gamer_info.profile.gamer_level
                         ),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'p',
+                            { className: 'dashboard__account--text' },
                             _react2.default.createElement(
-                                "strong",
+                                'strong',
                                 null,
-                                "Total Posts: "
+                                'Total Posts: '
                             ),
                             this.state.gamer_info.profile.totalposts
                         ),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'p',
+                            { className: 'dashboard__account--text' },
                             _react2.default.createElement(
-                                "strong",
+                                'strong',
                                 null,
-                                "Email: "
+                                'Email: '
                             ),
                             this.state.gamer_info.profile.email
                         ),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'p',
+                            { className: 'dashboard__account--text' },
                             _react2.default.createElement(
-                                "strong",
+                                'strong',
                                 null,
-                                "Description: "
+                                'Description: '
                             ),
                             this.state.gamer_info.profile.description
                         )

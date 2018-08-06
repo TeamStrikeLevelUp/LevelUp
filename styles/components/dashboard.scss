@@ -58,7 +58,11 @@
         padding: 40px;
     }
 
-    .dashboard__panels {
+    
+}
+
+// Dashboard panels
+.dashboard__panels {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -87,4 +91,34 @@
             padding-left: 20px;
         }
     }
-}
+
+    // Dashboard account
+    .dashboard__account {
+        .dashboard__avatar {
+            .dashboard__avatar--image {
+                width: 150px;
+                max-width: 100%;
+                border-radius: 50%;
+                display: block;
+                margin-bottom: 20px;
+            }
+            .dashboard__avatar--input {
+                display: block;
+            }
+            .dashboard__avatar--toggle {
+                font-size: 11px;
+                margin-bottom: 5px;
+                &:hover {
+                    cursor: pointer;
+                    opacity: .8;
+                }
+            }
+            .dashboard__avatar--form {
+                display: none;
+
+                &.dashboard__avatar--form--visible {
+                    display: block;
+                }
+            }
+        }
+    }
