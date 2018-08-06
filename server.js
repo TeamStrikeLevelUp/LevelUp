@@ -506,7 +506,7 @@ app.get("/newsApi/:pageNum", (req, res) => {
   const page = req.params.pageNum;
 
   newsapi.v2.everything({
-    sources: "ign,techradar",
+    sources: "ign",
     language: "en",
     sortBy: "publishedAt",
     pageSize: 10,

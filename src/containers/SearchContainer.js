@@ -11,7 +11,9 @@ const mapStateToProps = reduxState => {
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
-    genreData: reduxState.genreInfo
+    genreData: reduxState.genreInfo,
+    userAuthState: reduxState.authState
+
   };
 };
 
