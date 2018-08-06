@@ -181,7 +181,7 @@ export function searchNewsAPI(searchTerm, pageNum) {
     return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
-        dispatch(setNewsData(removeDuplicates(json.articles)));
+        dispatch(setNewsData(json.articles));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
@@ -199,7 +199,7 @@ export function receiveNewsData(newsData) {
 
 export function setNewsData(newsData) {
   return function (dispatch, getState) {
-    const myNewsData = [];
+    let myNewsData = [];
 
     newsData.map(newsObject => {
       const myNewsObject = {};
@@ -227,9 +227,9 @@ export function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log("mynewsdata", myNewsData);
+
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
-    // dispatch(receiveNewsData(newsData));
+
   };
 }
 
@@ -269,6 +269,12 @@ export function receiveAuthState(auth) {
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
+  if (newsSearch.length === 0) {
+
+    newsSearch = "No results found";
+    console.log("remove duplicates", newsSearch)
+    return;
+  }
   const myNewsData = newsSearch.reduce((acc, newsObject) => {
     if (!acc[newsObject.title]) {
       acc[newsObject.title] = newsObject;

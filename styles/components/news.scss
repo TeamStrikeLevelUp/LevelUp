@@ -115,6 +115,14 @@ a {
 .news__list:nth-child(n + 11) {
   border-right: 1px solid darkslategrey;
 }
+.news__pages{
+  width:100%;
+ text-align: center;
+  color: whitesmoke;
+  
+
+}
+
 .news__footer {
   position: fixed;
   left: -80px;

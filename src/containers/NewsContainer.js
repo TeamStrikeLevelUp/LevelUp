@@ -14,7 +14,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(fetchNewsInfoFromAPI(pageNum));
     },
     searchNewsData: (searchTerm, pageNum) => {
-      console.log("searchterm", searchTerm);
       dispatch(searchNewsAPI(searchTerm, pageNum));
     }
   };
