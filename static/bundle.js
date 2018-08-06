@@ -105,6 +105,25 @@ exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".fortnite {\n  display: flex; }\n\n.fortnite__search {\n  flex: 4; }\n\n.fortnite__title {\n  text-align: center; }\n\n.fortnite__playerlist {\n  flex: 1; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
@@ -27771,7 +27790,7 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/news", render: function render() {
               return _react2.default.createElement(_NewsRoute2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/top-games", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/the-fort", render: function render() {
               return _react2.default.createElement(_TopGamesRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
@@ -28052,6 +28071,14 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _FortniteStats = __webpack_require__(/*! ./FortniteStats */ "./src/components/FortniteStats.js");
+
+var _FortniteStats2 = _interopRequireDefault(_FortniteStats);
+
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28066,12 +28093,33 @@ var Fortnite = function (_React$Component) {
   function Fortnite() {
     _classCallCheck(this, Fortnite);
 
-    return _possibleConstructorReturn(this, (Fortnite.__proto__ || Object.getPrototypeOf(Fortnite)).call(this));
+    var _this = _possibleConstructorReturn(this, (Fortnite.__proto__ || Object.getPrototypeOf(Fortnite)).call(this));
+
+    _this.state = {
+      searchUser: ""
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
   }
 
   _createClass(Fortnite, [{
-    key: "fetchFortniteData",
-    value: function fetchFortniteData(username, platform) {}
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({
+        searchUser: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.props.fetchFortniteStats(this.state.searchUser);
+      this.setState({
+        searchUser: ""
+      });
+    }
   }, {
     key: "render",
     value: function render() {
@@ -28080,34 +28128,105 @@ var Fortnite = function (_React$Component) {
         { className: "fortnite" },
         _react2.default.createElement(
           "div",
-          { className: "fortnite__option" },
+          { className: "fortnite__search" },
           _react2.default.createElement(
-            "form",
+            "div",
+            { className: "fortnite__title" },
+            _react2.default.createElement(
+              "h2",
+              null,
+              "Welcome to The Fort"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "How Fortified are you?"
+            ),
+            _react2.default.createElement(
+              "h4",
+              null,
+              "Check and compare your scores with the best players around!"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "fortnite__option" },
+            _react2.default.createElement(
+              "form",
+              { className: "", onSubmit: this.handleSubmit },
+              _react2.default.createElement("input", { onChange: this.handleChange, type: "search", value: this.state.searchUser, placeholder: "Search username..." }),
+              _react2.default.createElement(
+                "button",
+                null,
+                "Search"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "fortnite__userstats" },
+            _react2.default.createElement(_FortniteStats2.default, { stat: this.props.fortniteData })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "fortnite__playerlist" },
+          _react2.default.createElement(
+            "ul",
             null,
             _react2.default.createElement(
-              "select",
+              "li",
               null,
               _react2.default.createElement(
-                "option",
+                "p",
                 null,
-                "PS4"
-              ),
-              _react2.default.createElement(
-                "option",
-                null,
-                "Xbox"
-              ),
-              _react2.default.createElement(
-                "option",
-                null,
-                "PC"
+                "Ninja"
               )
             ),
-            _react2.default.createElement("input", { type: "search" }),
             _react2.default.createElement(
-              "button",
+              "li",
               null,
-              "Search"
+              _react2.default.createElement(
+                "p",
+                null,
+                "Fnatic_Ettnix"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "Terry 5L"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "dondottah571"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "ViniciusAmazing"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "JeDiiiKniiGhT"
+              )
             )
           )
         )
@@ -28119,6 +28238,121 @@ var Fortnite = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Fortnite;
+
+/***/ }),
+
+/***/ "./src/components/FortniteStats.js":
+/*!*****************************************!*\
+  !*** ./src/components/FortniteStats.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FortniteStats(_ref) {
+  var stat = _ref.stat;
+
+  if (!stat.totals) return null;
+  console.log(stat);
+
+  return _react2.default.createElement(
+    "ul",
+    null,
+    _react2.default.createElement(
+      "li",
+      { key: stat.uid },
+      _react2.default.createElement(
+        "h3",
+        null,
+        stat.username
+      ),
+      _react2.default.createElement(
+        "h5",
+        null,
+        stat.platform
+      ),
+      _react2.default.createElement("img", { src: stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg" }),
+      _react2.default.createElement(
+        "h4",
+        null,
+        "Solo Skills"
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "1st Place Finishes: ",
+        stat.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Top 10 Finishes: ",
+        stat.stats.placetop10_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo Kills: ",
+        stat.stats.kills_solo
+      ),
+      _react2.default.createElement(
+        "h4",
+        null,
+        "Total Skills"
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Kills: ",
+        stat.totals.kills
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        stat.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Matches: ",
+        stat.totals.matchesplayed
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Hours: ",
+        stat.totals.hoursplayed
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Win rate: ",
+        stat.totals.winrate
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        stat.totals.score
+      )
+    )
+  );
+}
+
+exports.default = FortniteStats;
 
 /***/ }),
 
@@ -28437,8 +28671,8 @@ function HomeNavBar() {
       null,
       _react2.default.createElement(
         _reactRouterDom.Link,
-        { to: "/top-games" },
-        "Top Games"
+        { to: "/the-fort" },
+        "The Fort"
       )
     ),
     _react2.default.createElement(
@@ -28456,7 +28690,7 @@ function HomeNavBar() {
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/twitch" },
-        "Twitch Streams"
+        "Twitch"
       )
     ),
     _react2.default.createElement(
@@ -29714,7 +29948,7 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchFortniteStats: function fetchFortniteStats() {
+    fetchFortniteStats: function fetchFortniteStats(searchUser) {
       dispatch((0, _actions.fetchFortniteStats)(searchUser));
     }
   };
@@ -30681,6 +30915,36 @@ exports.default = TwitchRoute;
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/fortnite.scss":
+/*!*****************************************!*\
+  !*** ./styles/components/fortnite.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

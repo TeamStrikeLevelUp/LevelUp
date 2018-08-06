@@ -33,7 +33,7 @@ class App extends React.Component {
           <Route path="/posts/:id" component={PostsContainer} />
           <Route path="/forum" render={() => <ForumsRoute />} />
           <Route path="/news" render={() => <NewsRoute />} />
-          <Route path="/top-games" render={() => <TopGamesRoute />} />
+          <Route path="/the-fort" render={() => <TopGamesRoute />} />
           <Route path="/retroclub" render={() => <RetroRoute />} />
         </Switch>
       </div>

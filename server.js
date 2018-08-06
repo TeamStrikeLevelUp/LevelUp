@@ -426,7 +426,7 @@ app.get("/searchNews/:searchTerm", (req, res) => {
     });
 });
 
-// Fortnite data -- Hamzah start -->
+// Fortnite data --
 
 app.get("/api/fortnite/:username", (req, res) => {
   const username = req.params.username
@@ -471,79 +471,7 @@ app.get("/api/fortnite/:username", (req, res) => {
         });
     });
 });
-
-/*
-app.post("/api/fortnite", (req, res) => {
-  const http = require("https");
-  const options1 = {
-    method: "POST",
-    hostname: ["fortnite-public-api", "theapinetwork", "com"],
-    path: ["prod09", "users", "id"],
-    headers: {
-      "content-type":
-        "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-      Authorization: "49814d647a64a41873378c2c7acd74b1"
-    }
-  };
-
-  const request = http.request(options1, function(response) {
-    let dataset = [];
-
-    response.on("data", function(data) {
-      dataset.push(data);
-    });
-
-    response.on("end", function() {
-      let fullData = Buffer.concat(dataset);
-      console.log(fullData.toString());
-    });
-  });
-
-  request.write(
-    `------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n${
-      req.params.username
-    }\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--`
-  );
-  request.end();
-
-  const options2 = {
-    method: "POST",
-    hostname: ["fortnite-public-api", "theapinetwork", "com"],
-    path: ["prod09", "users", "public", "br_stats"],
-    headers: {
-      "content-type":
-        "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-      Authorization: "49814d647a64a41873378c2c7acd74b1"
-    }
-  };
-
-  let req2 = http.request(options2, function(response2) {
-    let chunks = [];
-
-    response2.on("data", function(chunk) {
-      chunks.push(chunk);
-    });
-
-    response2.on("end", function() {
-      let body = Buffer.concat(chunks);
-      console.log(body.toString());
-    });
-  });
-
-  req2.write(
-    `------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="user_id"\r\n\r\n${
-      fullData.uid
-    }\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="platform"\r\n\r\n${
-      req.params.platform
-    }\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name="window"\r\n\r\nalltime\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--`
-  );
-  req2.end();
-  return body;
-  console.log(body);
-});
-
-// -- Hamzah end
-*/
+// -- Fortnite end
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

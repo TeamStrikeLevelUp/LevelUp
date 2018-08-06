@@ -10,7 +10,7 @@ const mapStateToProps = reduxState => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchFortniteStats: () => {
+    fetchFortniteStats: (searchUser) => {
       dispatch(fetchFortniteStats(searchUser))
     }
   }
