@@ -13,6 +13,7 @@ import NewsRoute from "../routes/NewsRoute";
 import TopGamesRoute from "../routes/TopGamesRoute";
 import PostsContainer from "../containers/PostsContainer";
 import ForumsContainer from "../containers/ForumsContainer";
+import Profile from "../components/Profile";
 
 import "../../styles/index.scss";
 
@@ -25,15 +26,16 @@ class App extends React.Component {
           <Route exact path="/homepage" render={() => <HomeRoute />} />
           <Route exact path="/search" render={() => <SearchContainer />} />
           <Route exact path="/news" render={() => <NewsContainer />} />
-          <Route exact path="/dashboard" render={() => <DashboardRoute />} />
+          <Route path="/dashboard" render={() => <DashboardRoute />} />
           <Route path="/forum/:id" component={ForumsContainer} />
           <Route path="/search" render={() => <SearchGamesRoute />} />
-          <Route path="/dashboard" render={() => <DashboardRoute />} />
           <Route path="/twitch" render={() => <TwitchRoute />} />
           <Route path="/posts/:id" component={PostsContainer} />
           <Route path="/forum" render={() => <ForumsRoute />} />
           <Route path="/news" render={() => <NewsRoute />} />
           <Route path="/top-games" render={() => <TopGamesRoute />} />
+          <Route path="/profile/:id" component={Profile} />
+          {/* <Route component={NotFound} /> */}
         </Switch>
       </div>
     );

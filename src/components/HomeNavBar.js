@@ -12,11 +12,11 @@ function HomeNavBar() {
       <li className="main-nav__item">
         <Link to="/search">Search Games</Link>
       </li>
-      <li>
+      <li className="main-nav__item">
         <Link to="/news">Gaming News</Link>
       </li>
 
-      <li>
+      <li className="main-nav__item">
         <Link to="/top-games">Top Games</Link>
       </li>
 
@@ -29,8 +29,14 @@ function HomeNavBar() {
       <li className="main-nav__item">
         <Link to="/dashboard">Profile</Link>
       </li>
-      <li>
-        <a href="/signup">Log In/Sign Up</a>
+      <li className="main-nav__item">
+        <a href="/login">Log In</a>
+      </li>
+      <li className="main-nav__item">
+        <a href="/signup">Sign Up</a>
+      </li>
+      <li className="main-nav__item">
+        <Link to="/logout">Logout</Link>
       </li>
     </ul>
   );

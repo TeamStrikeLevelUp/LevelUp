@@ -151,6 +151,7 @@ export function setGameData(gameData) {
   };
 }
 
+
 //function to call Reducer and set game data in redux.state
 export function receiveGameData(gameData) {
   return {
@@ -266,6 +267,51 @@ export function receiveAuthState(auth) {
   };
 }
 
+
+//function to call Reducer and set user data in redux.state
+export function receiveUserData(userData) {
+  return {
+    type: "RECEIVE_USERDATA",
+    payload: userData
+  };
+}
+
+export function fetchGamerInfo(gamerId) {
+  //fetch gamer_profile
+  return function (dispatch, getState) {
+    return fetch(`/api/gamer/${gamerId}`)
+      .then(response => response.json())
+      .then(gamerData => {
+        dispatch(receiveUserData(gamerData));
+        return gamerData;
+      })
+      .catch(error => {
+        console.log("Error occurred: ", error);
+      });
+  }
+}
+
+
+
+// export function fetchGamerInfo(gamerId) {
+//   //fetch gamer posts
+//   return function (dispatch, getState) {
+//     return fetch(`/api/gamer/${gamerId}`)
+//       .then(response => response.json())
+//       .then(gamerData => {
+//         dispatch.receiveUserData(gamerData);
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//   }
+
+//   //fetch replies by gamer
+//   // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+//   //     .then(response => response.json())
+//   //     .then(json => console.log("----gamer_posts----", json));
+
+// }
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
