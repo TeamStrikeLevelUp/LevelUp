@@ -54,9 +54,15 @@ function getUserById(id) {
     .catch(error => console.log(error.message));
 }
 
-///////////////// Ahmed - start //////////////////
+
+
+
+///////////////// Forum - start //////////////////
+
+
 app.get("/api/forum", function (req, res) {
-  db.any(`SELECT * FROM forum`)
+  db.any(`SELECT * FROM forum ORDER BY title ASC`)
+
     .then(data => {
       res.json(data);
     })
@@ -79,8 +85,10 @@ app.get("/api/forum/search/:name", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+
 app.get("/api/post/:id", function (req, res) {
-  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1`, [
+  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`, [
+
     req.params.id
   ])
     .then(data => {
@@ -92,7 +100,7 @@ app.get("/api/post/:id", function (req, res) {
 app.get("/api/post/:id/search/:name", function (req, res) {
   db.any(
     `SELECT * FROM post WHERE parent_id is null AND forum_id = $1 
-  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\'`,
+  AND (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') ORDER BY created DESC`,
     [req.params.id, req.params.name]
   )
     .then(data => {
@@ -119,12 +127,11 @@ app.get("/api/reply/:id", function (req, res) {
 
 app.get("/api/reply/:id/search/:name", function (req, res) {
   db.any(
-    `SELECT * FROM post WHERE parent_id = $1 
-  AND title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\' `,
+    `SELECT * FROM post WHERE  
+   (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') AND parent_id = $1 `,
     [req.params.id, req.params.name]
   )
     .then(data => {
-      console.log(data);
       res.json(data);
     })
     .catch(error => console.log(error.message));
@@ -154,7 +161,80 @@ app.post("/api/reply", function (req, res) {
     });
 });
 
-///////////////// Ahmed - end //////////////////
+
+app.post("/api/post", function (req, res) {
+  const { title, body, forum_id, gamer_id, gamer_name } = req.body;
+
+  db.one(
+    `INSERT INTO post(title, body, forum_id, gamer_id, gamer_name)
+          VALUES($1, $2, $3, $4, $5) RETURNING id`,
+    [title, body, forum_id, gamer_id, gamer_name]
+  )
+    .then(data => {
+      db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1 ORDER BY created DESC`, [forum_id])
+        .then(data => {
+          res.json(data);
+        })
+        .catch(error => console.log(error.message));
+
+      // res.json(Object.assign({}, {id: data.id}, req.body));
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
+///////////////// Forum - end //////////////////
+
+///////////////// profile - start //////////////////
+
+app.get("/api/gamer/:id", function (req, res) {
+  db.one(`SELECT * FROM gamer_profile WHERE gamer_id = $1`, [req.params.id])
+    .then(profile => {
+
+
+      db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
+      AND game.id = gamer_favorites.game_id`, [req.params.id])
+        .then(favs => {
+
+          res.json({ profile: profile, favs: favs });
+        })
+        .catch(error => console.log(error.message));
+
+
+      // res.json(profile);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+app.get("/api/gamer/post/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
+    req.params.id
+  ])
+    .then(posts => {
+
+
+      db.any(`SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`, [req.params.id])
+        .then(replies => {
+          res.json({ posts: posts, replies: replies });
+        })
+        .catch(error => console.log(error.message));
+
+
+
+      // res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+
+
+///////////////// profile - end //////////////////
+
 
 // Database connection test ends
 

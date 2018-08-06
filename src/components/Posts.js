@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class Posts extends React.Component {
   constructor() {
     super();
@@ -83,12 +84,12 @@ class Posts extends React.Component {
   render() {
     
     if(!this.state.post.id) return null
-     
+    let created= String(new Date(this.state.post.created)).substring(0,24)
     return (
       <div>
        <h3> Topic: {this.state.post.title} </h3>
        <h3> {this.state.post.body} </h3>
-       <h3> Date Posted: {this.state.post.created} </h3>
+       <h3> Date Posted: {created} </h3>
        <h3> Posted By: {this.state.post.gamer_name} </h3>
 
       <form>
@@ -98,19 +99,20 @@ class Posts extends React.Component {
 
 
       {this.state.replies.map(reply => {
+        let date= String(new Date(reply.created)).substring(0,24)
         return (
           <div key={reply.id}>
         <p>Reply to "{this.state.post.title}": </p>
         <p>Title: {reply.title}</p>
         <p>{reply.body}</p>
-        <p>Date Posted: {reply.created}</p>
+        <p>Date Posted: {date}</p>
         </div>
       )
       })}
 
-      <div className={this.props.userAuthState ? "" : "hidden"} > login to reply </div>
+      <div style={{display: this.props.userAuthState ? 'none' : '' }} > login to post </div>
 
-      <form className= {this.props.userAuthState ? "hidden" : ""}>
+      <form style={{display: this.props.userAuthState ? '' : 'none' }} >
       <input placeholder="title" value={this.state.title} onChange={this.titleHandler} />
       <input placeholder="body" value={this.state.body} onChange={this.bodyHandler} />
       <button onClick={this.replyHandler}> reply </button>
