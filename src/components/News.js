@@ -90,10 +90,10 @@ class News extends React.Component {
                       alt={news.title}
                     />
                   ) : null}
-                  {/* <div className="news__title"> */}
+
                   <header className="news__title">{news.title}</header>
                   <div className="news__desc">{news.description}</div>
-                  {/* <p className="news__author"></p> */}
+
                   <p className="news__date">
                     {news.date}🕔 | {news.author}
                   </p>

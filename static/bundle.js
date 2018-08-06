@@ -155,7 +155,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\n.news__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.news {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: right;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  vertical-align: top;\n  color: #7d6099; }\n\n.news__author {\n  color: grey;\n  font-size: 15px; }\n\n.news__date {\n  color: rgba(211, 211, 211, 0.623);\n  font-size: 15px; }\n\n.news__form {\n  margin-left: 10px; }\n\n.news__img {\n  width: 75%;\n  height: auto;\n  margin: 0 auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 15px; }\n\n.news__wrapper {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr 1fr;\n  grid-row-gap: 0;\n  grid-column-gap: 8px;\n  grid-auto-rows: minmax(50px, auto); }\n\n.news__result0 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result1 {\n  grid-column: 2/4;\n  grid-row: 1/2;\n  display: inline-block;\n  font-size: 12px;\n  border-right: 1px solid darkslategrey; }\n\n.news__result3 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result4 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result5 {\n  grid-column: 3/5;\n  border-top: 1px solid darkslategrey; }\n\n.news__result6 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result7 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result8 {\n  border-right: 1px solid darkslategrey; }\n\n.news__list:nth-child(n + 11) {\n  border-right: 1px solid darkslategrey; }\n\n.news__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #7d6099;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n", ""]);
+exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\n.news__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.news {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: right;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  vertical-align: top;\n  color: #7d6099; }\n\n.news__author {\n  color: grey;\n  font-size: 15px; }\n\n.news__date {\n  color: rgba(211, 211, 211, 0.623);\n  font-size: 15px; }\n\n.news__form {\n  margin-left: 10px; }\n\n.news__img {\n  width: 75%;\n  height: auto;\n  margin: 0 auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 15px; }\n\n.news__wrapper {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr 1fr;\n  grid-row-gap: 0;\n  grid-column-gap: 8px;\n  grid-auto-rows: minmax(50px, auto); }\n\n.news__result0 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result1 {\n  grid-column: 2/4;\n  grid-row: 1/2;\n  display: inline-block;\n  font-size: 12px;\n  border-right: 1px solid darkslategrey; }\n\n.news__result3 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result4 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result5 {\n  grid-column: 3/5;\n  border-top: 1px solid darkslategrey; }\n\n.news__result6 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result7 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result8 {\n  border-right: 1px solid darkslategrey; }\n\n.news__list:nth-child(n + 11) {\n  border-right: 1px solid darkslategrey; }\n\n.news__pages {\n  width: 100%;\n  text-align: center;\n  color: whitesmoke; }\n\n.news__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #7d6099;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n", ""]);
 
 // exports
 
@@ -27516,7 +27516,7 @@ function searchNewsAPI(searchTerm, pageNum) {
     return fetch("/searchNews/" + searchTerm + "/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
-      dispatch(setNewsData(removeDuplicates(json.articles)));
+      dispatch(setNewsData(json.articles));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
     });
@@ -27561,9 +27561,8 @@ function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log("mynewsdata", myNewsData);
+
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
-    // dispatch(receiveNewsData(newsData));
   };
 }
 
@@ -27577,7 +27576,7 @@ function formatTime(date) {
   var hours = Math.floor(diff % 86400000 / 3600000) + 1; //UTC timezone
   var minutes = Math.floor(diff % 86400000 % 3600000 / 60000);
 
-  //If the data is more than 2 weeks old, then just display the PublishedAt date
+  //If the data is more than 1 day old, then just display the number of days
 
   if (days >= 1) {
     displayTime = days + "d ";
@@ -27642,6 +27641,12 @@ function fetchGamerInfo(gamerId) {
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
+
+  if (newsSearch.length === 0) {
+    newsSearch = "No results found";
+    console.log("remove duplicates", newsSearch);
+    return newsSearch;
+  }
   var myNewsData = newsSearch.reduce(function (acc, newsObject) {
     if (!acc[newsObject.title]) {
       acc[newsObject.title] = newsObject;
@@ -28536,17 +28541,29 @@ var News = function (_React$Component) {
     }
   }, {
     key: "nextPage",
-    value: function nextPage(event) {
+    value: function nextPage(direction) {
       var _this3 = this;
 
       if (this.state.currentSearch !== "") {
-        this.setState({ pageNum: this.state.pageNum + 1 }, function () {
-          return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
-        });
+        if (direction === "next") {
+          this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+            return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
+          });
+        } else {
+          this.setState({ pageNum: this.state.pageNum - 1 }, function () {
+            return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
+          });
+        }
       } else {
-        this.setState({ pageNum: this.state.pageNum + 1 }, function () {
-          return _this3.props.fetchNewsData(_this3.state.pageNum);
-        });
+        if (direction === "next") {
+          this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+            return _this3.props.fetchNewsData(_this3.state.pageNum);
+          });
+        } else {
+          this.setState({ pageNum: this.state.pageNum - 1 }, function () {
+            return _this3.props.fetchNewsData(_this3.state.pageNum);
+          });
+        }
       }
     }
   }, {
@@ -28620,13 +28637,24 @@ var News = function (_React$Component) {
             { className: "news__wrapper" },
             newsDisplay
           ),
-          newsDisplay !== undefined ? _react2.default.createElement(
-            "a",
-            { href: "#", onClick: function onClick(event) {
-                return _this4.nextPage(event);
-              } },
-            "Next >>"
-          ) : null
+          _react2.default.createElement(
+            "div",
+            { className: "news__pages" },
+            this.state.pageNum >= 2 ? _react2.default.createElement(
+              "a",
+              { href: "#", className: "news__pages", onClick: function onClick(event) {
+                  return _this4.nextPage("prev");
+                } },
+              "\uD83E\uDCA4 Prev"
+            ) : null,
+            newsDisplay !== undefined ? _react2.default.createElement(
+              "a",
+              { href: "#", className: "news__pages", onClick: function onClick(event) {
+                  return _this4.nextPage("next");
+                } },
+              "Next \uD83E\uDCA7"
+            ) : null
+          )
         ),
         _react2.default.createElement(
           "footer",
@@ -29116,10 +29144,11 @@ var Search = function (_React$Component) {
           _react2.default.createElement("br", null)
         );
       });
-
+      var displayStatus = this.props.userAuthState ? "youre logged in!" : "youre not logged in";
       return _react2.default.createElement(
         "div",
         { className: "search__body" },
+        displayStatus,
         _react2.default.createElement("br", null),
         _react2.default.createElement(
           "form",
@@ -29903,7 +29932,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch((0, _actions.fetchNewsInfoFromAPI)(pageNum));
     },
     searchNewsData: function searchNewsData(searchTerm, pageNum) {
-      console.log("searchterm", searchTerm);
       dispatch((0, _actions.searchNewsAPI)(searchTerm, pageNum));
     }
   };
@@ -29975,7 +30003,9 @@ var mapStateToProps = function mapStateToProps(reduxState) {
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
-    genreData: reduxState.genreInfo
+    genreData: reduxState.genreInfo,
+    userAuthState: reduxState.authState
+
   };
 };
 
