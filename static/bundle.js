@@ -29927,7 +29927,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(reduxState) {
     return {
         userAuthState: reduxState.authState,
-        userDataStore: reduxState.userData
+        userDataStore: reduxState.userData,
+        favouriteData: reduxState.favouriteInfo
+
     };
 };
 

@@ -5,7 +5,9 @@ import { receiveAuthState, fetchGamerInfo, receiveUserData } from '../actions/in
 const mapStateToProps = reduxState => {
     return {
         userAuthState: reduxState.authState,
-        userDataStore: reduxState.userData
+        userDataStore: reduxState.userData,
+        favouriteData: reduxState.favouriteInfo
+
     };
 };
 
