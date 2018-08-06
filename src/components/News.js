@@ -106,7 +106,9 @@ class News extends React.Component {
     return (
       <div className="news__body">
         <div className="news">
-          <form className="news__form" onSubmit={this.handleSubmit}>
+          <form className="news__form"
+            onSubmit={this.handleSubmit}
+          >
             <input
               onChange={this.handleChange}
               type="search"
