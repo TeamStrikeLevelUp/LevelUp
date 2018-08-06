@@ -56,18 +56,20 @@ function getUserById(id) {
 
 
 
+
 ///////////////// Forum - start //////////////////
 
 
-app.get("/api/forum", function(req, res) {
+app.get("/api/forum", function (req, res) {
   db.any(`SELECT * FROM forum ORDER BY title ASC`)
+
     .then(data => {
       res.json(data);
     })
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/forum/:id", function(req, res) {
+app.get("/api/forum/:id", function (req, res) {
   db.one(`SELECT * FROM forum WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -75,7 +77,7 @@ app.get("/api/forum/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/forum/search/:name", function(req, res) {
+app.get("/api/forum/search/:name", function (req, res) {
   db.any(`SELECT * FROM forum WHERE title ILIKE \'%$1#%\'`, [req.params.name])
     .then(data => {
       res.json(data);
@@ -83,8 +85,10 @@ app.get("/api/forum/search/:name", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/post/:id", function(req, res) {
+
+app.get("/api/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`, [
+
     req.params.id
   ])
     .then(data => {
@@ -93,7 +97,7 @@ app.get("/api/post/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/post/:id/search/:name", function(req, res) {
+app.get("/api/post/:id/search/:name", function (req, res) {
   db.any(
     `SELECT * FROM post WHERE parent_id is null AND forum_id = $1 
   AND (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') ORDER BY created DESC`,
@@ -105,7 +109,7 @@ app.get("/api/post/:id/search/:name", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/parentpost/:id", function(req, res) {
+app.get("/api/parentpost/:id", function (req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -113,7 +117,7 @@ app.get("/api/parentpost/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/reply/:id", function(req, res) {
+app.get("/api/reply/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -121,7 +125,7 @@ app.get("/api/reply/:id", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/reply/:id/search/:name", function(req, res) {
+app.get("/api/reply/:id/search/:name", function (req, res) {
   db.any(
     `SELECT * FROM post WHERE  
    (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') AND parent_id = $1 `,
@@ -133,7 +137,7 @@ app.get("/api/reply/:id/search/:name", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.post("/api/reply", function(req, res) {
+app.post("/api/reply", function (req, res) {
   const { title, body, parent_id, forum_id, gamer_id, gamer_name } = req.body;
 
   db.one(
@@ -158,7 +162,7 @@ app.post("/api/reply", function(req, res) {
 });
 
 
-app.post("/api/post", function(req, res) {
+app.post("/api/post", function (req, res) {
   const { title, body, forum_id, gamer_id, gamer_name } = req.body;
 
   db.one(
@@ -186,42 +190,42 @@ app.post("/api/post", function(req, res) {
 
 ///////////////// profile - start //////////////////
 
-app.get("/api/gamer/:id", function(req, res) {
+app.get("/api/gamer/:id", function (req, res) {
   db.one(`SELECT * FROM gamer_profile WHERE gamer_id = $1`, [req.params.id])
     .then(profile => {
 
 
       db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
       AND game.id = gamer_favorites.game_id`, [req.params.id])
-      .then(favs => {
-        
-        res.json({profile: profile, favs:favs});
-      })
-      .catch(error => console.log(error.message));
+        .then(favs => {
+
+          res.json({ profile: profile, favs: favs });
+        })
+        .catch(error => console.log(error.message));
 
 
-     // res.json(profile);
+      // res.json(profile);
     })
     .catch(error => console.log(error.message));
 });
 
 
-app.get("/api/gamer/post/:id", function(req, res) {
+app.get("/api/gamer/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
     req.params.id
   ])
     .then(posts => {
 
 
-        db.any(`SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`, [req.params.id])
-          .then(replies => {
-            res.json({posts:posts, replies:replies});
-          })
-          .catch(error => console.log(error.message));
-      
+      db.any(`SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`, [req.params.id])
+        .then(replies => {
+          res.json({ posts: posts, replies: replies });
+        })
+        .catch(error => console.log(error.message));
 
 
-     // res.json(data);
+
+      // res.json(data);
     })
     .catch(error => console.log(error.message));
 });
@@ -242,13 +246,13 @@ function compare(plainTextPassword, hashedPassword) {
 }
 
 // serialise user into session
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   // console.log('4. Extract user id from user for serialisation');
   done(null, user.id);
 });
 
 // deserialise user from session
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
   // console.log('5. Use user id to load user from DB');
   getUserById(id).then(user => {
     done(null, user);
@@ -258,7 +262,7 @@ passport.deserializeUser(function(id, done) {
 // configure passport to use local strategy
 // that is use locally stored credentials
 passport.use(
-  new LocalStrategy(function(username, password, done) {
+  new LocalStrategy(function (username, password, done) {
     // console.log('1. Receive username and password');
     let _user;
     getUserByUsername(username)
@@ -292,7 +296,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // route to log out users
-app.get("/logout", function(req, res) {
+app.get("/logout", function (req, res) {
   // console.log('7. Log user out');
   // log user out and redirect them to home page
   req.logout();
@@ -302,13 +306,11 @@ app.get("/logout", function(req, res) {
 // Login ends
 
 // only accessible to logged in users
-app.get("/dashboard", isLoggedIn, function(req, res) {
+app.get("/dashboard", isLoggedIn, function (req, res) {
   res.render("index", {
     data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
   });
 });
-
-// app.use(cors());
 
 const client = igdb("96651c2677f60060f3a91ef002c2a419");
 
@@ -318,19 +320,19 @@ app.set("view engine", "hbs");
 //   res.render("index", {});
 // });
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.render("landing", {});
 });
 
-app.get("/homepage", function(req, res) {
+app.get("/homepage", function (req, res) {
   res.render("index", {});
 });
 
-app.get("/login", function(req, res) {
+app.get("/login", function (req, res) {
   res.render("login", {});
 });
 // route to accept logins
-app.post("/login", passport.authenticate("local", { session: true }), function(
+app.post("/login", passport.authenticate("local", { session: true }), function (
   req,
   res
 ) {
@@ -338,7 +340,7 @@ app.post("/login", passport.authenticate("local", { session: true }), function(
 });
 
 // register page
-app.get("/signup", function(req, res) {
+app.get("/signup", function (req, res) {
   res.render("signup", {});
 });
 
@@ -399,28 +401,6 @@ app.get("/gameid/:id", (req, res) => {
       offset: 15 // Index offset for results
     })
     .then(response => {
-      // response.body contains the parsed JSON response to this query
-
-      displayData(res, response);
-    })
-    .catch(error => {
-      console.log("You have 2 lives remaining ", error);
-    });
-});
-
-//Not used at the moment
-app.get("/reviews/:gameId", (req, res) => {
-  const gameTitle = req.params.gameId;
-  client
-    .reviews({
-      ids: [gameTitle], //try 2645 for an id
-      // fields: 'id,title,review_rating,content,positive_points,negative_points', // Return all fields
-      fields: "*",
-      limit: 5, // Limit to 5 results
-      offset: 15 // Index offset for results
-    })
-    .then(response => {
-      // response.body contains the parsed JSON response to this query
       displayData(res, response);
     })
     .catch(error => {
@@ -453,7 +433,6 @@ app.get("/genres/", (req, res) => {
     })
     .then(response => {
       // response.body contains the parsed JSON response to this query
-
       displayData(res, response);
     })
     .catch(error => {
@@ -465,16 +444,19 @@ function displayData(res, data) {
   res.json(data);
 }
 
-//General NEWS search for latest Gaming articles
-app.get("/newsApi/", (req, res) => {
-  newsapi.v2
-    .topHeadlines({
-      sources: "ign",
-      language: "en"
-    })
+//Main general NEWS search for latest Gaming/tech articles
+app.get("/newsApi/:pageNum", (req, res) => {
+  const page = req.params.pageNum;
+
+  newsapi.v2.everything({
+    sources: "ign,techradar",
+    language: "en",
+    sortBy: "publishedAt",
+    pageSize: 10,
+    page
+  })
     .then(response => {
       res.json(response);
-      // console.log(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
@@ -482,17 +464,20 @@ app.get("/newsApi/", (req, res) => {
 });
 
 //Specific NEWS search based on user-input
-app.get("/searchNews/:searchTerm", (req, res) => {
+app.get("/searchNews/:searchTerm/:pageNum", (req, res) => {
   const search = req.params.searchTerm;
+  const page = req.params.pageNum;
   newsapi.v2
     .everything({
       sources: "ign",
       q: search,
-      language: "en"
+      language: "en",
+      sortBy: "relevancy,publishedAt",
+      pageSize: 10,
+      page
     })
     .then(response => {
       res.json(response);
-      // console.log(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
@@ -506,7 +491,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
   res.render("index", {
     data: req.user
       ? JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
@@ -515,6 +500,6 @@ app.get("*", function(req, res) {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, function() {
+app.listen(port, function () {
   console.log(`Listening on port number http://localhost:${port}`);
 });
