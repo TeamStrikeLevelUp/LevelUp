@@ -27345,6 +27345,8 @@ exports.searchNewsAPI = searchNewsAPI;
 exports.receiveNewsData = receiveNewsData;
 exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
+exports.receiveUserData = receiveUserData;
+exports.fetchGamerInfo = fetchGamerInfo;
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
@@ -27508,7 +27510,7 @@ function fetchNewsInfoFromAPI() {
 
 //search NEWS Data based on User input
 function searchNewsAPI(searchTerm) {
-  console.log("searchTerm", searchTerm);
+  // console.log("searchTerm", searchTerm);
   return function (dispatch, getState) {
     return fetch("/searchNews/" + searchTerm).then(function (response) {
       return response.json();
@@ -27597,6 +27599,48 @@ function receiveAuthState(auth) {
     payload: auth
   };
 }
+
+//function to call Reducer and set user data in redux.state
+function receiveUserData(userData) {
+  return {
+    type: "RECEIVE_USERDATA",
+    payload: userData
+  };
+}
+
+function fetchGamerInfo(gamerId) {
+  //fetch gamer_profile
+  return function (dispatch, getState) {
+    return fetch("/api/gamer/" + gamerId).then(function (response) {
+      return response.json();
+    }).then(function (gamerData) {
+      dispatch(receiveUserData(gamerData));
+      return gamerData;
+    }).catch(function (error) {
+      console.log("Error occurred: ", error);
+    });
+  };
+}
+
+// export function fetchGamerInfo(gamerId) {
+//   //fetch gamer posts
+//   return function (dispatch, getState) {
+//     return fetch(`/api/gamer/${gamerId}`)
+//       .then(response => response.json())
+//       .then(gamerData => {
+//         dispatch.receiveUserData(gamerData);
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//   }
+
+//   //fetch replies by gamer
+//   // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+//   //     .then(response => response.json())
+//   //     .then(json => console.log("----gamer_posts----", json));
+
+// }
 
 /***/ }),
 
@@ -27790,6 +27834,7 @@ var Dashboard = function (_React$Component) {
 
         _this.state = {
             user: {}
+            // gamer_info: this.props.userDataStore
         };
         // this.gamerInfo = this.gamerInfo.bind(this)
         return _this;
@@ -27806,26 +27851,40 @@ var Dashboard = function (_React$Component) {
             if (userData) {
                 this.props.setAuthState(userData);
             };
+
+            // console.log('Oh first shiiiit', userData);
+            // if (userData) {
+            //     this.props.fetchGamerInfo(this.state.user.userId)
+            //         .then(data => {
+            //             console.log("gamerData in coomp", data)
+            //             this.props.setUserData(data);
+            //             this.setState({
+            //                 gamer_info: data
+            //             });
+            //         });
+
+            // } else {
+            //     console.log('Oh shiiiit');
+            // }
         }
 
-        // gamerInfo(){
-        //     if(this.props.userAuthState){
-        //       //fetch gamer_profile
-        //       fetch(`/api/gamer/${this.props.userAuthState.userId}`)
-        //       .then(response => response.json())
-        //       .then(json => console.log("----gamer_profile----",json));
+        // gamerInfo() {
+        //     if (this.props.userAuthState) {
+        //         //fetch gamer_profile
+        //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
+        //             .then(response => response.json())
+        //             .then(gamerData => {
+        //                 console.log("gamerData", gamerData);
+        //                 return gamerData
+        //             });
 
-        //       //fetch replies by gamer
-        //       fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-        //       .then(response => response.json())
-        //       .then(json => console.log("----gamer_posts----",json));
+        //         //fetch replies by gamer
+        //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+        //         //     .then(response => response.json())
+        //         //     .then(json => console.log("----gamer_posts----", json));
 
         //     }
-
-        //     else
-        //       alert("not logged")
-
-        //   }
+        // }
 
     }, {
         key: 'render',
@@ -27898,7 +27957,11 @@ var Dashboard = function (_React$Component) {
                             null,
                             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _DashboardPanels2.default }),
                             _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
-                                    return _react2.default.createElement(_DashboardAccount2.default, { userAuthState: _this2.props.userAuthState });
+                                    return _react2.default.createElement(_DashboardAccount2.default, {
+                                        setAuthState: _this2.props.setAuthState,
+                                        userAuthState: _this2.props.userAuthState,
+                                        fetchGamerInfo: _this2.props.fetchGamerInfo,
+                                        userDataStore: _this2.props.userDataStore });
                                 } })
                         )
                     )
@@ -29297,47 +29360,39 @@ var DashboardAccount = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DashboardAccount.__proto__ || Object.getPrototypeOf(DashboardAccount)).call(this, props));
 
         _this.state = {
+            user: null,
             gamer_info: null
-            // this.gamerInfo = this.gamerInfo.bind(this);
-        };return _this;
+        };
+        return _this;
     }
 
     _createClass(DashboardAccount, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            // fetch(`/api/user/${this.props.userAuthState.userId}`)
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         this.setState({
-            //             user: Object.assign({}, ...data)
-            //         })
-            //     })
-            //     .catch(function (error) {
-            //         console.log(error);
-            //     });
-            this.gamerInfo();
-        }
-    }, {
-        key: "gamerInfo",
-        value: function gamerInfo() {
             var _this2 = this;
 
-            if (this.props.userAuthState) {
-                //fetch gamer_profile
-                fetch("/api/gamer/" + this.props.userAuthState.userId).then(function (response) {
-                    return response.json();
-                }).then(function (gamerData) {
-                    console.log("gamerData", gamerData);
+            console.log("this.props", this.props);
+            // Get initialUser variable from global scope declared in index.hbs
+            var userData = initialUser;
+            this.setState({
+                user: userData
+            });
+            if (userData) {
+                this.props.setAuthState(userData);
+            };
+
+            if (userData) {
+                this.props.fetchGamerInfo(userData.userId).then(function (data) {
                     _this2.setState({
-                        gamer_info: gamerData
+                        gamer_info: data
                     });
                 });
-            };
+            }
         }
     }, {
         key: "render",
         value: function render() {
-            console.log("this.state.gamer_info", this.state.gamer_info);
+
             return _react2.default.createElement(
                 "div",
                 { className: "dashboard__Account" },
@@ -29597,7 +29652,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(reduxState) {
     return {
-        userAuthState: reduxState.authState
+        userAuthState: reduxState.authState,
+        userDataStore: reduxState.userData
     };
 };
 
@@ -29605,6 +29661,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         setAuthState: function setAuthState(user) {
             return dispatch((0, _index.receiveAuthState)(user));
+        },
+        setUserData: function setUserData(userData) {
+            return dispatch((0, _index.receiveUserData)(userData));
+        },
+        fetchGamerInfo: function fetchGamerInfo(gamerId) {
+            return dispatch((0, _index.fetchGamerInfo)(gamerId));
         }
     };
 };
@@ -29934,12 +29996,12 @@ exports.default = authState;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function gameInfo() {
+function userInfo() {
   var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
   switch (action.type) {
-    case "RECEIVE_GAMEDATA":
+    case "RECEIVE_USERDATA":
       return action.payload;
 
     default:
@@ -29947,7 +30009,7 @@ function gameInfo() {
   }
 }
 
-exports.default = gameInfo;
+exports.default = userInfo;
 
 /***/ }),
 

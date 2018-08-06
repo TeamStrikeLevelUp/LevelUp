@@ -8,7 +8,8 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {}
+            user: {},
+            // gamer_info: this.props.userDataStore
         };
         // this.gamerInfo = this.gamerInfo.bind(this)
     }
@@ -17,34 +18,47 @@ class Dashboard extends React.Component {
         // Get initialUser variable from global scope declared in index.hbs
         const userData = initialUser;
         this.setState({
-            user: userData
-        })
+            user: userData,
+        });
         if (userData) { this.props.setAuthState(userData) };
+
+        // console.log('Oh first shiiiit', userData);
+        // if (userData) {
+        //     this.props.fetchGamerInfo(this.state.user.userId)
+        //         .then(data => {
+        //             console.log("gamerData in coomp", data)
+        //             this.props.setUserData(data);
+        //             this.setState({
+        //                 gamer_info: data
+        //             });
+        //         });
+
+        // } else {
+        //     console.log('Oh shiiiit');
+        // }
     }
 
-    // gamerInfo(){
-    //     if(this.props.userAuthState){
-    //       //fetch gamer_profile
-    //       fetch(`/api/gamer/${this.props.userAuthState.userId}`)
-    //       .then(response => response.json())
-    //       .then(json => console.log("----gamer_profile----",json));
+    // gamerInfo() {
+    //     if (this.props.userAuthState) {
+    //         //fetch gamer_profile
+    //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
+    //             .then(response => response.json())
+    //             .then(gamerData => {
+    //                 console.log("gamerData", gamerData);
+    //                 return gamerData
+    //             });
 
-    //       //fetch replies by gamer
-    //       fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-    //       .then(response => response.json())
-    //       .then(json => console.log("----gamer_posts----",json));
+    //         //fetch replies by gamer
+    //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+    //         //     .then(response => response.json())
+    //         //     .then(json => console.log("----gamer_posts----", json));
 
     //     }
-
-    //     else
-    //       alert("not logged")
-
-    //   }
+    // }
 
     render() {
         return (
             <div className="dashboard">
-                {/* <button onClick={this.gamerInfo}> gamer info </button> */}
                 <div className="dashboard__container">
                     <div className="dashboard__sidebar">
                         <div className="dashboard__profile">
@@ -65,7 +79,11 @@ class Dashboard extends React.Component {
                         <Switch>
                             <Route exact path="/dashboard" component={DashboardPanels} />
                             <Route path="/dashboard/account" render={() => {
-                                return <DashboardAccount userAuthState={this.props.userAuthState} />
+                                return <DashboardAccount
+                                    setAuthState={this.props.setAuthState}
+                                    userAuthState={this.props.userAuthState}
+                                    fetchGamerInfo={this.props.fetchGamerInfo}
+                                    userDataStore={this.props.userDataStore} />
                             }} />
                         </Switch>
                     </div>
