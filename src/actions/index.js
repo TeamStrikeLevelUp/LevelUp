@@ -147,6 +147,7 @@ export function setGameData(gameData) {
       myGameData = "No results found";
     }
 
+
     dispatch(receiveGameData(myGameData));
   };
 }
@@ -182,7 +183,7 @@ export function searchNewsAPI(searchTerm, pageNum) {
     return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
-        dispatch(setNewsData(removeDuplicates(json.articles)));
+        dispatch(setNewsData(json.articles));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
@@ -200,7 +201,7 @@ export function receiveNewsData(newsData) {
 
 export function setNewsData(newsData) {
   return function (dispatch, getState) {
-    const myNewsData = [];
+    let myNewsData = [];
 
     newsData.map(newsObject => {
       const myNewsObject = {};
@@ -228,9 +229,9 @@ export function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log("mynewsdata", myNewsData);
+
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
-    // dispatch(receiveNewsData(newsData));
+
   };
 }
 
@@ -244,7 +245,7 @@ function formatTime(date) {
   const hours = Math.floor((diff % 86400000) / 3600000) + 1; //UTC timezone
   const minutes = Math.floor(((diff % 86400000) % 3600000) / 60000);
 
-  //If the data is more than 2 weeks old, then just display the PublishedAt date
+  //If the data is more than 1 day old, then just display the number of days
 
   if (days >= 1) {
     displayTime = days + "d ";
@@ -315,6 +316,12 @@ export function fetchGamerInfo(gamerId) {
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
+
+  if (newsSearch.length === 0) {
+    newsSearch = "No results found";
+    console.log("remove duplicates", newsSearch)
+    return newsSearch;
+  }
   const myNewsData = newsSearch.reduce((acc, newsObject) => {
     if (!acc[newsObject.title]) {
       acc[newsObject.title] = newsObject;
