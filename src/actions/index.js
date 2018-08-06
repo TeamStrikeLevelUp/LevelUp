@@ -1,6 +1,6 @@
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/genres/`;
 
     fetch(searchPath)
@@ -15,7 +15,7 @@ export function fetchGenreData() {
 }
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/themes/`;
 
     fetch(searchPath)
@@ -30,7 +30,7 @@ export function fetchThemeData() {
 }
 //Main Game Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(searchPath)
       .then(response => response.json())
       .then(json => {
@@ -62,7 +62,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -125,7 +125,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-              screenshotObject["cloudinary_id"]
+            screenshotObject["cloudinary_id"]
           );
         });
 
@@ -160,11 +160,12 @@ export function receiveGameData(gameData) {
 }
 
 //Main NEWS Data fetch - calls helper function to sanitise data
-export function fetchNewsInfoFromAPI() {
-  return function(dispatch, getState) {
-    return fetch("/newsApi/")
+export function fetchNewsInfoFromAPI(pageNum) {
+  return function (dispatch, getState) {
+    return fetch(`/newsApi/${pageNum}`)
       .then(response => response.json())
       .then(json => {
+        // console.log("fetch news ", json.articles);
         dispatch(setNewsData(json.articles));
       })
       .catch(error => {
@@ -174,13 +175,13 @@ export function fetchNewsInfoFromAPI() {
 }
 
 //search NEWS Data based on User input
-export function searchNewsAPI(searchTerm) {
-  console.log("searchTerm", searchTerm);
-  return function(dispatch, getState) {
-    return fetch(`/searchNews/${searchTerm}`)
+export function searchNewsAPI(searchTerm, pageNum) {
+  return function (dispatch, getState) {
+
+    return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
-        dispatch(setNewsData(json.articles));
+        dispatch(setNewsData(removeDuplicates(json.articles)));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
@@ -197,65 +198,64 @@ export function receiveNewsData(newsData) {
 }
 
 export function setNewsData(newsData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const myNewsData = [];
 
     newsData.map(newsObject => {
       const myNewsObject = {};
+      // Only select news items which have a description
+      if (!newsObject.description) {
+        return;
+      }
 
-      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields, renaming keys
       if (newsObject.author) {
         myNewsObject["author"] = newsObject.author;
       }
       myNewsObject["description"] = newsObject.description;
 
-      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
+      myNewsObject["date"] = formatTime(newsObject.publishedAt);
 
       myNewsObject["title"] = newsObject.title;
 
       myNewsObject["url"] = newsObject.url;
 
       if (newsObject.urlToImage) {
-        myNewsObject["image"] = newsObject.urlToImage;
+        if (!newsObject.urlToImage.includes("placeholder")) {
+          myNewsObject["image"] = newsObject.urlToImage;
+        }
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log(myNewsData);
-    dispatch(receiveNewsData(myNewsData));
+    // console.log("mynewsdata", myNewsData);
+    dispatch(receiveNewsData(removeDuplicates(myNewsData)));
+    // dispatch(receiveNewsData(newsData));
   };
 }
-// Makes Dates look presentable
-function formatDate(date) {
-  let myDate = new Date(date);
 
-  const prettyDate = myDate.toDateString().substring(4, myDate.length);
-  const minutes = ("0" + myDate.getMinutes()).slice(-2);
-  const hours = myDate.getHours();
+// Time passed since news article was published
+function formatTime(date) {
+  let displayTime;
+  const now = new Date();
+  const myDate = new Date(date);
+  const diff = now - myDate;
+  const days = Math.floor(diff / 3600000 / 24);
+  const hours = Math.floor((diff % 86400000) / 3600000) + 1; //UTC timezone
+  const minutes = Math.floor(((diff % 86400000) % 3600000) / 60000);
 
-  myDate = prettyDate.split(" ");
-  const month = myDate[0];
-  const day = parseInt(myDate[1]);
-  const year = myDate[2];
-  let suffix = "";
-  switch (day) {
-    case 1:
-    case 21:
-    case 31:
-      suffix = "st";
-      break;
-    case 2:
-    case 22:
-      suffix = "nd";
-      break;
-    case 3:
-    case 23:
-      suffix = "rd";
-      break;
-    default:
-      suffix = "th";
-      break;
+  //If the data is more than 2 weeks old, then just display the PublishedAt date
+
+  if (days >= 1) {
+    displayTime = days + "d ";
+  } else if (hours === 24) {
+    displayTime = "1d";
+  } else {
+    displayTime = `${days !== 0 ? days + "d " : ""}${
+      hours !== 0 ? hours + "h " : ""
+      }${minutes !== 0 ? minutes + "m " : ""}`;
   }
-  return `${day}${suffix} ${month} ${year} at ${hours}:${minutes} `;
+
+  return displayTime;
 }
 
 //function to call Reducer and set auth in redux.state
@@ -264,4 +264,24 @@ export function receiveAuthState(auth) {
     type: "RECEIVE_AUTHSTATE",
     payload: auth
   };
+}
+
+// API data coming out contains duplicates-remove those with the same title OR same description
+
+function removeDuplicates(newsSearch) {
+  const myNewsData = newsSearch.reduce((acc, newsObject) => {
+    if (!acc[newsObject.title]) {
+      acc[newsObject.title] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  const cleanNewsData = Object.values(myNewsData).reduce((acc, newsObject) => {
+    if (!acc[newsObject.description]) {
+      acc[newsObject.description] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  return Object.values(cleanNewsData);
 }
