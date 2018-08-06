@@ -42,7 +42,6 @@ const SALT_ROUNDS = 12;
 
 /* helper function to get user by username */
 function getUserByUsername(username) {
-  // console.log('2. Load user by username from (DB)');
   return db
     .one(`SELECT * FROM gamer WHERE gamer_name = $1`, [username])
     .catch(error => console.log(error.message));
@@ -54,6 +53,11 @@ function getUserById(id) {
     .catch(error => console.log(error.message));
 }
 
+function getUserAvatarById(id) {
+  return db
+    .one(`SELECT avatar FROM gamer_profile WHERE gamer_id = $1`, [id])
+    .catch(error => console.log(error.message));
+}
 
 
 
@@ -84,7 +88,6 @@ app.get("/api/forum/search/:name", function (req, res) {
     })
     .catch(error => console.log(error.message));
 });
-
 
 app.get("/api/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`, [
@@ -191,20 +194,15 @@ app.post("/api/post", function (req, res) {
 ///////////////// profile - start //////////////////
 
 app.get("/api/gamer/:id", function (req, res) {
-  db.one(`SELECT * FROM gamer_profile WHERE gamer_id = $1`, [req.params.id])
+  db.one(`SELECT gamer_profile.*, gamer.gamer_name, gamer.email FROM gamer_profile
+       INNER JOIN gamer ON gamer.id=$1 WHERE gamer_profile.gamer_id =$1;`, [req.params.id])
     .then(profile => {
-
-
       db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
       AND game.id = gamer_favorites.game_id`, [req.params.id])
         .then(favs => {
-
           res.json({ profile: profile, favs: favs });
         })
         .catch(error => console.log(error.message));
-
-
-      // res.json(profile);
     })
     .catch(error => console.log(error.message));
 });
@@ -230,13 +228,10 @@ app.get("/api/gamer/post/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-
-
-
 ///////////////// profile - end //////////////////
 
 
-// Database connection test ends
+// Database connection ends
 
 function compare(plainTextPassword, hashedPassword) {
   return bcrypt.compare(plainTextPassword, hashedPassword).then(matches => {
@@ -247,13 +242,11 @@ function compare(plainTextPassword, hashedPassword) {
 
 // serialise user into session
 passport.serializeUser(function (user, done) {
-  // console.log('4. Extract user id from user for serialisation');
   done(null, user.id);
 });
 
 // deserialise user from session
 passport.deserializeUser(function (id, done) {
-  // console.log('5. Use user id to load user from DB');
   getUserById(id).then(user => {
     done(null, user);
   });
@@ -263,7 +256,6 @@ passport.deserializeUser(function (id, done) {
 // that is use locally stored credentials
 passport.use(
   new LocalStrategy(function (username, password, done) {
-    // console.log('1. Receive username and password');
     let _user;
     getUserByUsername(username)
       .then(user => {
@@ -285,19 +277,15 @@ app.use(passport.session());
 
 // middleware function to check user is logged in
 function isLoggedIn(req, res, next) {
-  // console.log('6. Check that we have a logged in user before allowing access to protected route');
   if (req.user && req.user.id) {
     next();
   } else {
-    res.redirect("/login", {
-      data: {}
-    });
+    res.redirect("/login");
   }
 }
 
 // route to log out users
 app.get("/logout", function (req, res) {
-  // console.log('7. Log user out');
   // log user out and redirect them to home page
   req.logout();
   res.redirect("/");
@@ -307,22 +295,43 @@ app.get("/logout", function (req, res) {
 
 // only accessible to logged in users
 app.get("/dashboard", isLoggedIn, function (req, res) {
-  res.render("index", {
-    data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
-  });
+  getUserAvatarById(req.user.id)
+    .then(avatar => {
+      res.render("index", {
+        data: JSON.stringify(
+          {
+            username: req.user.gamer_name,
+            userId: req.user.id,
+            avatar: avatar ? avatar.avatar : ""
+          })
+      });
+    })
+});
+app.get("/dashboard/account", isLoggedIn, function (req, res) {
+  getUserAvatarById(req.user.id)
+    .then(avatar => {
+      res.render("index", {
+        data: JSON.stringify(
+          {
+            username: req.user.gamer_name,
+            userId: req.user.id,
+            avatar: avatar ? avatar.avatar : ""
+          })
+      });
+    })
 });
 
 const client = igdb("96651c2677f60060f3a91ef002c2a419");
 
 app.set("view engine", "hbs");
 
-// app.get("/", function (req, res) {
-//   res.render("index", {});
-// });
-
 app.get("/", function (req, res) {
-  res.render("landing", {});
+  res.render("index", {});
 });
+
+// app.get("/", function(req, res) {
+//   res.render("landing", {});
+// });
 
 app.get("/homepage", function (req, res) {
   res.render("index", {});
@@ -332,10 +341,7 @@ app.get("/login", function (req, res) {
   res.render("login", {});
 });
 // route to accept logins
-app.post("/login", passport.authenticate("local", { session: true }), function (
-  req,
-  res
-) {
+app.post("/login", passport.authenticate("local", { session: true }), function (req, res) {
   res.status(200).end();
 });
 
@@ -353,17 +359,11 @@ app.post("/signup", (req, res) => {
       return bcrypt.hash(signupPassword, salt);
     })
     .then(hashedPassword => {
-      db.one(
-        `
-              INSERT INTO gamer (gamer_name, password_hash, email)
-              VALUES ($1, $2, $3)
-        `,
-        [signupUsername, hashedPassword, signupEmail]
-      )
-        .then(data => {
-          console.log("data", data);
-          // res.json(data)
-        })
+      db.none(`
+      INSERT INTO gamer (gamer_name, password_hash, email)
+      VALUES ($1, $2, $3);
+        `, [signupUsername, hashedPassword, signupEmail])
+        .then(data => res.json(data))
         .catch(error => console.log("Gamer already exist: ", error.message));
     });
 });

@@ -58,7 +58,7 @@
         padding: 40px;
     }
 
-    .dashboard__content {
+    .dashboard__panels {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -69,20 +69,20 @@
             grid-template-rows: 2fr 2fr;
         }
 
-        .dashboard__content--item {
+        .dashboard__panels--item {
             // background-color: var(--dashboard-secondary-color);
             background-color: rgba(53, 94, 114, 0.5);
             padding: 20px; 
         }
 
-        .dashboard__content--heading {
+        .dashboard__panels--heading {
             font-size: 15px
         }
-        .dashboard__content--points{
+        .dashboard__panels--points{
             font-size: 42px;
             padding-left: 20px;
         }
-        .dashboard__content--text {
+        .dashboard__panels--text {
             font-size: 12px;
             padding-left: 20px;
         }

@@ -1,6 +1,6 @@
-function gameInfo(reduxState = [], action) {
+function userInfo(reduxState = [], action) {
   switch (action.type) {
-    case "RECEIVE_GAMEDATA":
+    case "RECEIVE_USERDATA":
       return action.payload;
 
     default:
@@ -8,4 +8,4 @@ function gameInfo(reduxState = [], action) {
   }
 }
 
-export default gameInfo;
+export default userInfo;
