@@ -219,6 +219,7 @@ export function setNewsData(newsData) {
       myNewsObject["title"] = newsObject.title;
 
       myNewsObject["url"] = newsObject.url;
+
       if (newsObject.urlToImage) {
         if (!newsObject.urlToImage.includes("placeholder")) {
           myNewsObject["image"] = newsObject.urlToImage;
