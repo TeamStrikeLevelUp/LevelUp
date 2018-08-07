@@ -9,6 +9,7 @@ class Homepage extends React.Component {
     super();
     this.state={gamer:{},game:{}, forum:{}, choice:{} }
     this.handleChange=this.handleChange.bind(this);
+    this.voteHandler=this.voteHandler.bind(this)
   }
 
   componentDidMount(){
@@ -29,7 +30,37 @@ class Homepage extends React.Component {
 
   voteHandler(event){
     event.preventDefault();
-    console.log(this.state.choice)
+    
+    if(this.state.choice.value){
+      if(this.props.userAuthState){
+
+        const newVote={
+          value: this.state.choice.value,
+          title: this.state.choice.title,
+          gamer_id:this.props.userAuthState.userId,
+         gamer_name:this.props.userAuthState.username
+        }
+
+        fetch("/api/vote", {
+          method: "post",
+          body: JSON.stringify(newVote),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(json => {
+
+          } )
+
+      }
+      else
+       alert("login to vote")
+    }
+    else
+    alert("select a choice to vote")
   }
 
   viewHandler(event){
@@ -37,7 +68,6 @@ class Homepage extends React.Component {
   }
 
   render() {
-    console.log("logged",this.props.userAuthState)
     
     return (
       <div className="homepage">

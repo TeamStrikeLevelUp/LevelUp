@@ -332,6 +332,28 @@ app.get("/api/featured/", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+
+
+
+app.post("/api/vote", function (req, res) {
+  const { title, value, gamer_id, gamer_name } = req.body;
+
+  db.one(
+    `INSERT INTO poll(value, title, gamer_id, gamer_name)
+          VALUES($1, $2, $3, $4) RETURNING id`,
+    [value, title, gamer_id,gamer_name]
+  )
+    .then(data => {
+      
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
+
 ///////////////// homepage - end //////////////////
 
 

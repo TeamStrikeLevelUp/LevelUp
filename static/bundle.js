@@ -28887,6 +28887,7 @@ var Homepage = function (_React$Component) {
 
     _this.state = { gamer: {}, game: {}, forum: {}, choice: {} };
     _this.handleChange = _this.handleChange.bind(_this);
+    _this.voteHandler = _this.voteHandler.bind(_this);
     return _this;
   }
 
@@ -28915,7 +28916,28 @@ var Homepage = function (_React$Component) {
     key: "voteHandler",
     value: function voteHandler(event) {
       event.preventDefault();
-      console.log(this.state.choice);
+
+      if (this.state.choice.value) {
+        if (this.props.userAuthState) {
+
+          var newVote = {
+            value: this.state.choice.value,
+            title: this.state.choice.title,
+            gamer_id: this.props.userAuthState.userId,
+            gamer_name: this.props.userAuthState.username
+          };
+
+          fetch("/api/vote", {
+            method: "post",
+            body: JSON.stringify(newVote),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }).then(function (response) {
+            return response.json();
+          }).then(function (json) {});
+        } else alert("login to vote");
+      } else alert("select a choice to vote");
     }
   }, {
     key: "viewHandler",
@@ -28925,7 +28947,6 @@ var Homepage = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log("logged", this.props.userAuthState);
 
       return _react2.default.createElement(
         "div",
