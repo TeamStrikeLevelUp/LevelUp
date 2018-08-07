@@ -28885,7 +28885,8 @@ var Homepage = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
 
-    _this.state = { gamer: {}, game: {}, forum: {} };
+    _this.state = { gamer: {}, game: {}, forum: {}, choice: {} };
+    _this.handleChange = _this.handleChange.bind(_this);
     return _this;
   }
 
@@ -28901,11 +28902,31 @@ var Homepage = function (_React$Component) {
       });
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+
+      var choice = {
+        value: event.target.value,
+        title: event.target.id
+      };
+      this.setState({ choice: choice });
+    }
+  }, {
+    key: "voteHandler",
+    value: function voteHandler(event) {
+      event.preventDefault();
+      console.log(this.state.choice);
+    }
+  }, {
+    key: "viewHandler",
+    value: function viewHandler(event) {
+      event.preventDefault();
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log("gamer", this.state.gamer);
-      console.log("game", this.state.game);
-      console.log("forum", this.state.forum);
+      console.log("logged", this.props.userAuthState);
+
       return _react2.default.createElement(
         "div",
         { className: "homepage" },
@@ -29019,7 +29040,7 @@ var Homepage = function (_React$Component) {
             { className: "homepage__side--poll" },
             _react2.default.createElement(
               "form",
-              null,
+              { onChange: this.handleChange },
               _react2.default.createElement(
                 "div",
                 null,
@@ -29071,8 +29092,8 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "div",
                   null,
-                  _react2.default.createElement("input", { type: "submit", value: " Vote " }),
-                  _react2.default.createElement("input", { type: "submit", value: " View " })
+                  _react2.default.createElement("input", { onClick: this.voteHandler, value: " Vote " }),
+                  _react2.default.createElement("input", { onClick: this.viewHandler, value: " View " })
                 )
               )
             )
@@ -30675,9 +30696,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+var _HomepageContainer = __webpack_require__(/*! ../containers/HomepageContainer */ "./src/containers/HomepageContainer.js");
 
-var _Homepage2 = _interopRequireDefault(_Homepage);
+var _HomepageContainer2 = _interopRequireDefault(_HomepageContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30685,11 +30706,43 @@ function HomeContainer() {
   return _react2.default.createElement(
     "div",
     null,
-    _react2.default.createElement(_Homepage2.default, null)
+    _react2.default.createElement(_HomepageContainer2.default, null)
   );
 }
 
 exports.default = HomeContainer;
+
+/***/ }),
+
+/***/ "./src/containers/HomepageContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/HomepageContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+
+var _Homepage2 = _interopRequireDefault(_Homepage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+    return {
+        userAuthState: reduxState.authState
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Homepage2.default);
 
 /***/ }),
 

@@ -7,7 +7,8 @@ import "../../styles/components/homepage.scss";
 class Homepage extends React.Component {
   constructor() {
     super();
-    this.state={gamer:{},game:{}, forum:{} }
+    this.state={gamer:{},game:{}, forum:{}, choice:{} }
+    this.handleChange=this.handleChange.bind(this);
   }
 
   componentDidMount(){
@@ -17,10 +18,27 @@ class Homepage extends React.Component {
 
   }
 
+  handleChange(event){
+    
+    const choice={
+      value:event.target.value,
+      title:event.target.id
+    }
+    this.setState({choice})
+  }
+
+  voteHandler(event){
+    event.preventDefault();
+    console.log(this.state.choice)
+  }
+
+  viewHandler(event){
+    event.preventDefault();
+  }
+
   render() {
-    console.log("gamer",this.state.gamer)
-    console.log("game",this.state.game)
-    console.log("forum",this.state.forum)
+    console.log("logged",this.props.userAuthState)
+    
     return (
       <div className="homepage">
         <div className="homepage__main">
@@ -54,7 +72,7 @@ class Homepage extends React.Component {
         </div>
         <div className="homepage__side">
           <div className="homepage__side--poll">
-            <form>
+            <form onChange={this.handleChange}>
               <div>
                 <div>
                   <strong>
@@ -74,8 +92,8 @@ class Homepage extends React.Component {
                 <input type="radio" name="answer" value="6" id="Other" />
                 <label htmlFor="Other">Other</label>
                 <div>
-                  <input type="submit" value=" Vote " />
-                  <input type="submit" value=" View " />
+                  <input onClick={this.voteHandler} value=" Vote " />
+                  <input onClick={this.viewHandler} value=" View " />
                 </div>
               </div>
             </form>
