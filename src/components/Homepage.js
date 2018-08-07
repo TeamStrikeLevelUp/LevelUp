@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
@@ -6,9 +7,20 @@ import "../../styles/components/homepage.scss";
 class Homepage extends React.Component {
   constructor() {
     super();
+    this.state={gamer:{},game:{}, forum:{} }
+  }
+
+  componentDidMount(){
+    fetch(`/api/featured`)
+    .then(response => response.json())
+    .then(json => this.setState({gamer:json.gamer ,game:json.game, forum:json.forum}));
+
   }
 
   render() {
+    console.log("gamer",this.state.gamer)
+    console.log("game",this.state.game)
+    console.log("forum",this.state.forum)
     return (
       <div className="homepage">
         <div className="homepage__main">
@@ -17,13 +29,13 @@ class Homepage extends React.Component {
           <div className="homepage__main--featured">
             <div className="homepage__main--featured--selection">
               <div className="homepage__main--featured--selection--game">
-                <h4>Featured Game: Fortnite</h4>
+                <h4>Featured Game: {this.state.game.title}</h4>
               </div>
               <div className="homepage__main--featured--selection--user">
-                <h4>Featured User: Ahmed1</h4>
+                <h4>Featured User: <Link to={`/profile/${this.state.gamer.gamer_name}`}> {this.state.gamer.gamer_name} </Link>  </h4>
               </div>
               <div className="homepage__main--featured--selection--forum">
-                <h4>Featured Forum: Kingsway</h4>
+                <h4>Featured Forum: <Link to={`/forum/${this.state.forum.id}`}> {this.state.forum.title} </Link>  </h4>
               </div>
               <div className="homepage__main--featured--selection--news">
                 <h4>Featured News: IGN</h4>

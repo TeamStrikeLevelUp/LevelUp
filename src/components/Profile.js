@@ -18,7 +18,7 @@ class Profile extends React.Component {
         console.log(this.state.profile)
         return(
             <div>
-                Profile
+                name: {this.state.profile.gamer_name}
             </div>
         )
     }

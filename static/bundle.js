@@ -28863,6 +28863,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 __webpack_require__(/*! ../../styles/components/homepage.scss */ "./styles/components/homepage.scss");
@@ -28881,12 +28883,29 @@ var Homepage = function (_React$Component) {
   function Homepage() {
     _classCallCheck(this, Homepage);
 
-    return _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+
+    _this.state = { gamer: {}, game: {}, forum: {} };
+    return _this;
   }
 
   _createClass(Homepage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/featured").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ gamer: json.gamer, game: json.game, forum: json.forum });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      console.log("gamer", this.state.gamer);
+      console.log("game", this.state.game);
+      console.log("forum", this.state.forum);
       return _react2.default.createElement(
         "div",
         { className: "homepage" },
@@ -28915,7 +28934,8 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Game: Fortnite"
+                  "Featured Game: ",
+                  this.state.game.title
                 )
               ),
               _react2.default.createElement(
@@ -28924,7 +28944,15 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured User: Ahmed1"
+                  "Featured User: ",
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: "/profile/" + this.state.gamer.gamer_name },
+                    " ",
+                    this.state.gamer.gamer_name,
+                    " "
+                  ),
+                  "  "
                 )
               ),
               _react2.default.createElement(
@@ -28933,7 +28961,15 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Forum: Kingsway"
+                  "Featured Forum: ",
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: "/forum/" + this.state.forum.id },
+                    " ",
+                    this.state.forum.title,
+                    " "
+                  ),
+                  "  "
                 )
               ),
               _react2.default.createElement(
@@ -29587,7 +29623,8 @@ var Profile = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                "Profile"
+                "name: ",
+                this.state.profile.gamer_name
             );
         }
     }]);

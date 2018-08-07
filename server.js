@@ -307,6 +307,33 @@ app.get("/api/profile/:username", function (req, res) {
 
 ///////////////// profile - end //////////////////
 
+///////////////// homepage - start //////////////////
+
+app.get("/api/featured/", function (req, res) {
+  db.one(`SELECT gamer_name, gamer_id FROM gamer_profile ORDER BY RANDOM() LIMIT 1`)
+    .then(gamer => {
+      
+      db.one(`SELECT title, igdb_id FROM game ORDER BY RANDOM() LIMIT 1`)
+    .then(game => {
+      
+      db.one(`SELECT title, id FROM forum ORDER BY RANDOM() LIMIT 1`)
+    .then(forum => {
+
+      res.json({gamer,game,forum})
+      
+    })
+    .catch(error => console.log(error.message));
+
+      
+    })
+    .catch(error => console.log(error.message));
+
+    })
+    .catch(error => console.log(error.message));
+});
+
+///////////////// homepage - end //////////////////
+
 
 // Database connection ends
 
@@ -407,7 +434,7 @@ app.set("view engine", "hbs");
 // });
 
 app.get("/", function (req, res) {
-  res.render("landing", {});
+  res.render("login", {});
 });
 
 app.get("/homepage", function (req, res) {
