@@ -28924,6 +28924,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 __webpack_require__(/*! ../../styles/components/homepage.scss */ "./styles/components/homepage.scss");
@@ -28942,12 +28944,71 @@ var Homepage = function (_React$Component) {
   function Homepage() {
     _classCallCheck(this, Homepage);
 
-    return _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+
+    _this.state = { gamer: {}, game: {}, forum: {}, choice: {} };
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.voteHandler = _this.voteHandler.bind(_this);
+    return _this;
   }
 
   _createClass(Homepage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/featured").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ gamer: json.gamer, game: json.game, forum: json.forum });
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+
+      var choice = {
+        value: event.target.value,
+        title: event.target.id
+      };
+      this.setState({ choice: choice });
+    }
+  }, {
+    key: "voteHandler",
+    value: function voteHandler(event) {
+      event.preventDefault();
+
+      if (this.state.choice.value) {
+        if (this.props.userAuthState) {
+
+          var newVote = {
+            value: this.state.choice.value,
+            title: this.state.choice.title,
+            gamer_id: this.props.userAuthState.userId,
+            gamer_name: this.props.userAuthState.username
+          };
+
+          fetch("/api/vote", {
+            method: "post",
+            body: JSON.stringify(newVote),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }).then(function (response) {
+            return response.json();
+          }).then(function (json) {});
+        } else alert("login to vote");
+      } else alert("select a choice to vote");
+    }
+  }, {
+    key: "viewHandler",
+    value: function viewHandler(event) {
+      event.preventDefault();
+    }
+  }, {
     key: "render",
     value: function render() {
+
       return _react2.default.createElement(
         "div",
         { className: "homepage" },
@@ -28976,7 +29037,8 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Game: Fortnite"
+                  "Featured Game: ",
+                  this.state.game.title
                 )
               ),
               _react2.default.createElement(
@@ -28985,7 +29047,15 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured User: Ahmed1"
+                  "Featured User: ",
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: "/profile/" + this.state.gamer.gamer_name },
+                    " ",
+                    this.state.gamer.gamer_name,
+                    " "
+                  ),
+                  "  "
                 )
               ),
               _react2.default.createElement(
@@ -28994,7 +29064,15 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Forum: Kingsway"
+                  "Featured Forum: ",
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: "/forum/" + this.state.forum.id },
+                    " ",
+                    this.state.forum.title,
+                    " "
+                  ),
+                  "  "
                 )
               ),
               _react2.default.createElement(
@@ -29044,7 +29122,7 @@ var Homepage = function (_React$Component) {
             { className: "homepage__side--poll" },
             _react2.default.createElement(
               "form",
-              null,
+              { onChange: this.handleChange },
               _react2.default.createElement(
                 "div",
                 null,
@@ -29096,8 +29174,8 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "div",
                   null,
-                  _react2.default.createElement("input", { type: "submit", value: " Vote " }),
-                  _react2.default.createElement("input", { type: "submit", value: " View " })
+                  _react2.default.createElement("input", { onClick: this.voteHandler, value: " Vote " }),
+                  _react2.default.createElement("input", { onClick: this.viewHandler, value: " View " })
                 )
               )
             )
@@ -29648,7 +29726,8 @@ var Profile = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                "Profile"
+                "name: ",
+                this.state.profile.gamer_name
             );
         }
     }]);
@@ -30759,9 +30838,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+var _HomepageContainer = __webpack_require__(/*! ../containers/HomepageContainer */ "./src/containers/HomepageContainer.js");
 
-var _Homepage2 = _interopRequireDefault(_Homepage);
+var _HomepageContainer2 = _interopRequireDefault(_HomepageContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30769,11 +30848,43 @@ function HomeContainer() {
   return _react2.default.createElement(
     "div",
     null,
-    _react2.default.createElement(_Homepage2.default, null)
+    _react2.default.createElement(_HomepageContainer2.default, null)
   );
 }
 
 exports.default = HomeContainer;
+
+/***/ }),
+
+/***/ "./src/containers/HomepageContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/HomepageContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+
+var _Homepage2 = _interopRequireDefault(_Homepage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+    return {
+        userAuthState: reduxState.authState
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Homepage2.default);
 
 /***/ }),
 
