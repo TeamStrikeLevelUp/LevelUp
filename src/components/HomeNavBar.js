@@ -16,7 +16,7 @@ function HomeNavBar() {
         <Link to="/news">Gaming News</Link>
       </li>
 
-      <li>
+      <li className="main-nav__item">
         <Link to="/the-fort">The Fort</Link>
       </li>
 

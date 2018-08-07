@@ -5,7 +5,7 @@ import {
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-  console.log("reduxstate", reduxState.twitchFavourite)
+
   return {
 
     userAuthState: reduxState.authState,

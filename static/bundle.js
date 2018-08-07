@@ -27467,7 +27467,7 @@ function fetchTwitchFavourite(gamerId) {
     fetch("/api/twitchfavourites/" + gamerId).then(function (response) {
       return response.ok ? response.json() : Promise.reject(response);
     }).then(function (json) {
-      console.log("ACTION", json);
+
       dispatch(receiveTwitchFavourites(json));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -28836,7 +28836,7 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/the-fort" },
@@ -30935,7 +30935,7 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log("reduxstate", reduxState.twitchFavourite);
+
   return {
 
     userAuthState: reduxState.authState,
@@ -31316,7 +31316,7 @@ function twitchFavourite() {
 
   switch (action.type) {
     case "RECEIVE_TWITCHFAVOURITES":
-      console.log("reducer", action.payload);
+
       return action.payload;
 
     default:

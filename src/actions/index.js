@@ -82,7 +82,7 @@ export function fetchTwitchFavourite(gamerId) {
         : Promise.reject(response)
       )
       .then(json => {
-        console.log("ACTION", json)
+
         dispatch(receiveTwitchFavourites(json));
       })
       .catch(error => {
