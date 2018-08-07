@@ -30713,8 +30713,8 @@ var DashboardAccount = function (_React$Component) {
                                     { className: 'dashboard__avatar--toggle', onClick: this.togglerAvatarHandler },
                                     _react2.default.createElement(
                                         'svg',
-                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
-                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                        { className: 'button-edit', 'aria-hidden': 'true', focusable: 'false' },
+                                        _react2.default.createElement('use', { xlinkHref: '#button-edit' })
                                     )
                                 ),
                                 _react2.default.createElement(
@@ -30771,8 +30771,8 @@ var DashboardAccount = function (_React$Component) {
                                     this.state.gamer_info.profile.fortnitename,
                                     _react2.default.createElement(
                                         'svg',
-                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
-                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                        { className: 'button-edit', 'aria-hidden': 'true', focusable: 'false' },
+                                        _react2.default.createElement('use', { xlinkHref: '#button-edit' })
                                     )
                                 ),
                                 _react2.default.createElement(
@@ -30806,8 +30806,8 @@ var DashboardAccount = function (_React$Component) {
                                     this.state.gamer_info.profile.email,
                                     _react2.default.createElement(
                                         'svg',
-                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
-                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                        { className: 'button-edit', 'aria-hidden': 'true', focusable: 'false' },
+                                        _react2.default.createElement('use', { xlinkHref: '#button-edit' })
                                     )
                                 ),
                                 _react2.default.createElement(
@@ -30815,7 +30815,7 @@ var DashboardAccount = function (_React$Component) {
                                     { className: emailClasses },
                                     _react2.default.createElement('input', {
                                         className: 'dashboard__input dashboard__email--input',
-                                        type: 'email',
+                                        type: 'text',
                                         onChange: this.emailChangedHandler,
                                         placeholder: 'Add your email' }),
                                     _react2.default.createElement(
@@ -30841,8 +30841,8 @@ var DashboardAccount = function (_React$Component) {
                                     this.state.gamer_info.profile.description,
                                     _react2.default.createElement(
                                         'svg',
-                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
-                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                        { className: 'button-edit', 'aria-hidden': 'true', focusable: 'false' },
+                                        _react2.default.createElement('use', { xlinkHref: '#button-edit' })
                                     )
                                 ),
                                 _react2.default.createElement(
