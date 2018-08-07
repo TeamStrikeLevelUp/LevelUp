@@ -1,0 +1,21 @@
+.button-edit {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    fill: #fff;
+    &:hover {
+        cursor: pointer;
+        fill: var(--secondary-color);
+    }
+}
+
+.button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+
+    &.button-primary {
+        color: #fff;
+        background-color: var(--secondary-color);
+    }
+}
