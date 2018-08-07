@@ -1,4 +1,3 @@
-
 // Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
 
 export function addFavouriteToDB(favObject) {
@@ -17,7 +16,7 @@ export function addFavouriteToDB(favObject) {
       .then(json => {
         //call action function to select reducer to set redux state value
 
-        dispatch(receiveFavouriteData(favObject));
+        // dispatch(receiveFavouriteData(favObject));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
@@ -25,14 +24,80 @@ export function addFavouriteToDB(favObject) {
   }
 }
 
+// Add TWITCH FAVOURITE to database  
+
+export function addFavTwitchToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/addtwitchfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(function (response) {
+
+        return response.json();
+      })
+      .then(json => {
+        //call action function to select reducer to set redux state value
+        // console.log("json", json)
+        // dispatch(receiveFavouriteData(favObject));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  }
+}
+
+// FETCHES GAME favourites by UserID
+export function fetchGameFavourite(gamerId) {
+  return function (dispatch, getState) {
+    fetch(`/api/favourites/${gamerId}`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(receiveGameFavourites(json.body));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
 //function to call Reducer and set FAVOURITE data in redux.state
-export function receiveFavouriteData(favouriteData) {
+export function receiveGameFavourites(favouriteData) {
   return {
-    type: "RECEIVE_FAVOURITEDATA",
+    type: "RECEIVE_GAMEFAVOURITES",
     payload: favouriteData
   };
 }
 
+// FETCHES TWITCH favourites by UserID
+export function fetchTwitchFavourite(gamerId) {
+  return function (dispatch, getState) {
+    fetch(`/api/twitchfavourites/${gamerId}`)
+      .then(response => response.ok
+        ? response.json()
+        : Promise.reject(response)
+      )
+      .then(json => {
+        console.log("ACTION", json)
+        dispatch(receiveTwitchFavourites(json));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+export function receiveTwitchFavourites(favouriteData) {
+  return {
+    type: "RECEIVE_TWITCHFAVOURITES",
+    payload: favouriteData
+  };
+}
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
@@ -72,7 +137,7 @@ export function fetchGameInfoFromAPI(searchPath) {
         response.json()
       )
       .then(json => {
-        console.log((json.body).length, " results")
+        // console.log((json.body).length, " results")
 
         dispatch(setGameData(json.body));
       })
@@ -186,7 +251,6 @@ export function setGameData(gameData) {
     if (myGameData.length === 0) {
       myGameData = "No results found";
     }
-
 
     dispatch(receiveGameData(myGameData));
   };
@@ -359,7 +423,6 @@ function removeDuplicates(newsSearch) {
 
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
-    console.log("remove duplicates", newsSearch)
     return newsSearch;
   }
   const myNewsData = newsSearch.reduce((acc, newsObject) => {

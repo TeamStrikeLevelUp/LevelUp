@@ -193,7 +193,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".twitch {\n  display: flex; }\n\n.twitch__streamers {\n  display: flex;\n  flex-direction: column; }\n\n.twitch__search--title {\n  text-align: center; }\n\n.twitch__streamers--title {\n  text-align: center; }\n\n.twitch__player {\n  display: block;\n  text-align: center; }\n\n.twitch__player--hide {\n  display: none; }\n\n.twitch__search--input {\n  text-align: center; }\n", ""]);
+exports.push([module.i, ".twitch {\n  display: flex;\n  margin-left: 10px; }\n\n.twitch__anchor {\n  text-decoration: none;\n  color: whitesmoke;\n  text-align: center;\n  font-size: 15px; }\n\n.twitch__search {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap; }\n\n.twitch__search--video {\n  text-align: center; }\n\n.twitch__search--form {\n  color: 75, 212, 253; }\n\n.twitch__search--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.twitch__streamers {\n  display: flex;\n  flex-direction: column; }\n\n.twitch__search--title {\n  text-align: center; }\n\n.twitch__streamers--title {\n  text-align: center; }\n\n.twitch__player {\n  display: block;\n  text-align: center; }\n\n.twitch__player--hide {\n  display: none; }\n\n.twitch__search--input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.twitch__button {\n  height: 50px;\n  margin: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n", ""]);
 
 // exports
 
@@ -27334,7 +27334,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.addFavouriteToDB = addFavouriteToDB;
-exports.receiveFavouriteData = receiveFavouriteData;
+exports.addFavTwitchToDB = addFavTwitchToDB;
+exports.fetchGameFavourite = fetchGameFavourite;
+exports.receiveGameFavourites = receiveGameFavourites;
+exports.fetchTwitchFavourite = fetchTwitchFavourite;
+exports.receiveTwitchFavourites = receiveTwitchFavourites;
 exports.fetchGenreData = fetchGenreData;
 exports.fetchThemeData = fetchThemeData;
 exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
@@ -27349,7 +27353,6 @@ exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
-
 // Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
 
 function addFavouriteToDB(favObject) {
@@ -27366,7 +27369,44 @@ function addFavouriteToDB(favObject) {
     }).then(function (json) {
       //call action function to select reducer to set redux state value
 
-      dispatch(receiveFavouriteData(favObject));
+      // dispatch(receiveFavouriteData(favObject));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+// Add TWITCH FAVOURITE to database  
+
+function addFavTwitchToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/addtwitchfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (response) {
+
+      return response.json();
+    }).then(function (json) {
+      //call action function to select reducer to set redux state value
+      // console.log("json", json)
+      // dispatch(receiveFavouriteData(favObject));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+// FETCHES GAME favourites by UserID
+function fetchGameFavourite(gamerId) {
+  return function (dispatch, getState) {
+    fetch("/api/favourites/" + gamerId).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(receiveGameFavourites(json.body));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
     });
@@ -27374,9 +27414,31 @@ function addFavouriteToDB(favObject) {
 }
 
 //function to call Reducer and set FAVOURITE data in redux.state
-function receiveFavouriteData(favouriteData) {
+function receiveGameFavourites(favouriteData) {
   return {
-    type: "RECEIVE_FAVOURITEDATA",
+    type: "RECEIVE_GAMEFAVOURITES",
+    payload: favouriteData
+  };
+}
+
+// FETCHES TWITCH favourites by UserID
+function fetchTwitchFavourite(gamerId) {
+  return function (dispatch, getState) {
+    fetch("/api/twitchfavourites/" + gamerId).then(function (response) {
+      return response.ok ? response.json() : Promise.reject(response);
+    }).then(function (json) {
+      console.log("ACTION", json);
+      dispatch(receiveTwitchFavourites(json));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+function receiveTwitchFavourites(favouriteData) {
+  return {
+    type: "RECEIVE_TWITCHFAVOURITES",
     payload: favouriteData
   };
 }
@@ -27415,7 +27477,7 @@ function fetchGameInfoFromAPI(searchPath) {
     return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
-      console.log(json.body.length, " results");
+      // console.log((json.body).length, " results")
 
       dispatch(setGameData(json.body));
     }).catch(function (error) {
@@ -27680,7 +27742,6 @@ function removeDuplicates(newsSearch) {
 
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
-    console.log("remove duplicates", newsSearch);
     return newsSearch;
   }
   var myNewsData = newsSearch.reduce(function (acc, newsObject) {
@@ -29249,7 +29310,7 @@ var Search = function (_React$Component) {
               onChange: this.handleChange,
               type: "search",
               results: "0",
-              alt: "Search",
+              alt: "Game Search",
               className: "search__input"
               // id="search__text"
               , autoComplete: "off",
@@ -29326,10 +29387,20 @@ var TwitchSearch = function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.handleClick = _this.handleClick.bind(_this);
+    _this.addToFavourites = _this.addToFavourites.bind(_this);
     return _this;
   }
 
   _createClass(TwitchSearch, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.fetchTwitchFavourites !== undefined) {
+        if (this.props.userAuthState) {
+          this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+        }
+      }
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(event) {
       this.setState({
@@ -29343,6 +29414,9 @@ var TwitchSearch = function (_React$Component) {
       this.setState({
         displayVideo: true
       });
+      // this.setState({
+      //   twitchQuery: ""
+      // });
     }
   }, {
     key: "handleClick",
@@ -29353,20 +29427,38 @@ var TwitchSearch = function (_React$Component) {
       });
     }
   }, {
+    key: "addToFavourites",
+    value: function addToFavourites(twitchStream) {
+      if (this.props.userAuthState) {
+        var newFav = {
+          gamerId: this.props.userAuthState.userId,
+          twitchName: twitchStream
+          // console.log("twitch info", newFav)
+        };this.props.addToFavourite(newFav);
+        this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+      } else {
+        alert("Please log in to select favourites");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.state.twitchQuery);
+      var _this2 = this;
+
+      // console.log("twitch search string", this.state.twitchQuery);
+      var _props = this.props,
+          fetchTwitchFavourites = _props.fetchTwitchFavourites,
+          twitchFavourite = _props.twitchFavourite,
+          userAuthState = _props.userAuthState;
+      // const favouriteDisplay=twitchFavourite.
+
+
       return _react2.default.createElement(
         "div",
         { className: "twitch" },
         _react2.default.createElement(
           "div",
           { className: "twitch__search" },
-          _react2.default.createElement(
-            "h2",
-            { className: "twitch__search--title" },
-            "Find Your Favourite Streamers and Enjoy!"
-          ),
           _react2.default.createElement(
             "form",
             {
@@ -29380,18 +29472,48 @@ var TwitchSearch = function (_React$Component) {
               className: "twitch__search--input",
               type: "text",
               name: "twitch__input",
+              alt: "Twitch Search",
               id: "twitch__input",
-              placeholder: "Search for a channel..."
+              placeholder: "Search streamers",
+              value: this.state.twitchQuery
             }),
             _react2.default.createElement(
               "button",
-              { id: "twitch__submit", className: "twitch__submit" },
+              { id: "twitch__submit", className: "twitch__button" },
               "Search"
+            ),
+            _react2.default.createElement(
+              "button",
+              { className: "twitch__button", onClick: function onClick(event) {
+                  _this2.addToFavourites(_this2.state.twitchQuery);
+                } },
+              "Add to favourites"
+            ),
+            userAuthState ? _react2.default.createElement(
+              "h2",
+              null,
+              "Favourites "
+            ) : null,
+            _react2.default.createElement(
+              "ul",
+              null,
+              twitchFavourite.map(function (currentFavourite) {
+                return _react2.default.createElement(
+                  "a",
+                  { href: "#", className: "twitch__anchor" },
+                  " ",
+                  _react2.default.createElement(
+                    "li",
+                    { key: currentFavourite.twitch_name, onClick: _this2.handleClick },
+                    currentFavourite.twitch_name
+                  )
+                );
+              })
             )
           ),
           _react2.default.createElement(
             "div",
-            null,
+            { className: "twitch__search--video" },
             _react2.default.createElement("iframe", {
               className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
               src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
@@ -30090,14 +30212,13 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log("Gamer Favourite info in Search Container ", reduxState.favouriteInfo);
 
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
     genreData: reduxState.genreInfo,
     userAuthState: reduxState.authState,
-    favouriteData: reduxState.favouriteInfo
+    gameFavourite: reduxState.gameFavourite
 
   };
 };
@@ -30135,48 +30256,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _TwitchSearch = __webpack_require__(/*! ../components/TwitchSearch */ "./src/components/TwitchSearch.js");
 
 var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
 
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var mapStateToProps = function mapStateToProps(reduxState) {
+  console.log("reduxstate", reduxState.twitchFavourite);
+  return {
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+    userAuthState: reduxState.authState,
+    twitchFavourite: reduxState.twitchFavourite
+  };
+};
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TwitchContainer = function (_React$Component) {
-  _inherits(TwitchContainer, _React$Component);
-
-  function TwitchContainer() {
-    _classCallCheck(this, TwitchContainer);
-
-    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
-  }
-
-  _createClass(TwitchContainer, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_TwitchSearch2.default, null)
-      );
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    addToFavourite: function addToFavourite(favInfo) {
+      dispatch((0, _actions.addFavTwitchToDB)(favInfo)); //This might need to be different
+    },
+    fetchTwitchFavourites: function fetchTwitchFavourites(userId) {
+      dispatch((0, _actions.fetchTwitchFavourite)(userId));
     }
-  }]);
+  };
+};
 
-  return TwitchContainer;
-}(_react2.default.Component);
-
-exports.default = TwitchContainer;
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_TwitchSearch2.default);
 
 /***/ }),
 
@@ -30265,9 +30375,9 @@ exports.default = authState;
 
 /***/ }),
 
-/***/ "./src/reducers/favouriteInfo.js":
+/***/ "./src/reducers/gameFavourite.js":
 /*!***************************************!*\
-  !*** ./src/reducers/favouriteInfo.js ***!
+  !*** ./src/reducers/gameFavourite.js ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -30278,13 +30388,13 @@ exports.default = authState;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-function favouriteInfo() {
-  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+function gameFavourite() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
 
   switch (action.type) {
-    case "RECEIVE_FAVOURITEDATA":
+    case "RECEIVE_GAMEFAVOURITES":
 
       return action.payload;
 
@@ -30293,7 +30403,7 @@ function favouriteInfo() {
   }
 }
 
-exports.default = favouriteInfo;
+exports.default = gameFavourite;
 
 /***/ }),
 
@@ -30400,9 +30510,13 @@ var _userInfo = __webpack_require__(/*! ./userInfo */ "./src/reducers/userInfo.j
 
 var _userInfo2 = _interopRequireDefault(_userInfo);
 
-var _favouriteInfo = __webpack_require__(/*! ./favouriteInfo */ "./src/reducers/favouriteInfo.js");
+var _gameFavourite = __webpack_require__(/*! ./gameFavourite */ "./src/reducers/gameFavourite.js");
 
-var _favouriteInfo2 = _interopRequireDefault(_favouriteInfo);
+var _gameFavourite2 = _interopRequireDefault(_gameFavourite);
+
+var _twitchFavourite = __webpack_require__(/*! ./twitchFavourite */ "./src/reducers/twitchFavourite.js");
+
+var _twitchFavourite2 = _interopRequireDefault(_twitchFavourite);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30413,7 +30527,8 @@ exports.default = (0, _redux.combineReducers)({
   newsInfo: _newsInfo2.default,
   authState: _authState2.default,
   userInfo: _userInfo2.default,
-  favouriteInfo: _favouriteInfo2.default
+  gameFavourite: _gameFavourite2.default,
+  twitchFavourite: _twitchFavourite2.default
 });
 
 /***/ }),
@@ -30475,6 +30590,38 @@ function themeInfo() {
 }
 
 exports.default = themeInfo;
+
+/***/ }),
+
+/***/ "./src/reducers/twitchFavourite.js":
+/*!*****************************************!*\
+  !*** ./src/reducers/twitchFavourite.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function twitchFavourite() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_TWITCHFAVOURITES":
+      console.log("reducer", action.payload);
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = twitchFavourite;
 
 /***/ }),
 

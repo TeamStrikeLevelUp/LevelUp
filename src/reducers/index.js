@@ -5,7 +5,8 @@ import genreInfo from "./genreInfo";
 import newsInfo from "./newsInfo";
 import authState from "./authState";
 import userInfo from "./userInfo";
-import favouriteInfo from "./favouriteInfo";
+import gameFavourite from "./gameFavourite";
+import twitchFavourite from "./twitchFavourite";
 
 export default combineReducers({
   gameInfo,
@@ -14,5 +15,6 @@ export default combineReducers({
   newsInfo,
   authState,
   userInfo,
-  favouriteInfo
+  gameFavourite,
+  twitchFavourite
 });
