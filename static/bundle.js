@@ -98,7 +98,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__content {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__content {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__content .dashboard__content--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__content .dashboard__content--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__content .dashboard__content--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__content .dashboard__content--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__panels {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__panels {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__panels .dashboard__panels--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__panels .dashboard__panels--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
 
 // exports
 
@@ -174,7 +174,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".main-nav {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n", ""]);
+exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n    .main-nav .main-nav__item a {\n      color: #fff;\n      font-size: 14px; }\n", ""]);
 
 // exports
 
@@ -193,7 +193,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "* {\n  box-sizing: border-box;\n  margin: 10px; }\n\nli,\na {\n  list-style: none;\n  text-decoration: none; }\n\nbody {\n  margin: 0;\n  /* background: rgb(36, 36, 77); */\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  color: whitesmoke; }\n\n.news__form {\n  margin-bottom: 10px; }\n\n.news {\n  display: flex;\n  flex: 12;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: center;\n  margin: auto;\n  text-align: center;\n  background-color: #222723;\n  color: white; }\n\n.news__result {\n  display: inline-block;\n  margin: 20px;\n  height: auto;\n  width: calc(100% / 3);\n  font-size: 20px;\n  text-align: left; }\n\n.news__img {\n  width: 100%;\n  height: auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 16px;\n  margin-left: 15px; }\n", ""]);
+exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none; }\n\n.news__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.news {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  justify-content: right;\n  background-color: rgba(34, 39, 35, 0.8);\n  margin: auto;\n  color: whitesmoke; }\n\n.news__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.news__title {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3; }\n\n.news__author {\n  color: grey;\n  font-size: 15px; }\n\n.news__date {\n  color: rgba(211, 211, 211, 0.623);\n  font-size: 15px; }\n\n.news__form {\n  margin-left: 10px; }\n\n.news__img {\n  width: 75%;\n  height: auto;\n  margin: 0 auto; }\n\n.news__desc {\n  color: lightgray;\n  font-size: 15px; }\n\n.news__wrapper {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr 1fr;\n  grid-row-gap: 0;\n  grid-column-gap: 8px;\n  grid-auto-rows: minmax(50px, auto); }\n\n.news__result0 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result1 {\n  grid-column: 2/4;\n  grid-row: 1/2;\n  display: inline-block;\n  font-size: 12px;\n  border-right: 1px solid darkslategrey; }\n\n.news__result3 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result4 {\n  border-top: 1px solid darkslategrey; }\n\n.news__result5 {\n  grid-column: 3/5;\n  border-top: 1px solid darkslategrey; }\n\n.news__result6 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result7 {\n  border-right: 1px solid darkslategrey; }\n\n.news__result8 {\n  border-right: 1px solid darkslategrey; }\n\n.news__list:nth-child(n + 11) {\n  border-right: 1px solid darkslategrey; }\n\n.news__pages {\n  width: 100%;\n  text-align: center;\n  color: whitesmoke; }\n\n.news__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #7d6099;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n", ""]);
 
 // exports
 
@@ -212,7 +212,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li {\n  list-style: none; }\n\n.search {\n  display: flex;\n  flex-direction: column; }\n\n.search__input {\n  font-size: 30px;\n  width: 100%;\n  height: 40px;\n  border-radius: 5%;\n  border: 2px solid #ccc;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 30px; }\n\n.search__form {\n  margin-bottom: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12;\n  background-color: #222723; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none; }\n\n.search__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.search {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3;\n  margin-left: 10px; }\n\n.search__desc {\n  margin-left: 10px; }\n\n.search__form {\n  margin-left: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12; }\n\n.search__img {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  align-content: center;\n  margin: auto; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__details--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__details--ratings {\n  margin-left: 10px;\n  color: grey; }\n\n.search__rating {\n  color: #4bd4fd; }\n\n.search__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #9270b1;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n\n.search__screenshots {\n  margin-top: 20px;\n  text-align: center; }\n\n.carousel {\n  height: 100%;\n  margin: 0;\n  width: 100%; }\n\n.image-slide {\n  height: 100%;\n  width: 100%; }\n\n.slide-arrow {\n  color: #14B6D4;\n  cursor: pointer;\n  font-size: 2rem;\n  position: fixed;\n  top: 50%; }\n\n.slide-arrow.right {\n  right: 1rem; }\n\n.slide-arrow.left {\n  left: 1rem; }\n", ""]);
 
 // exports
 
@@ -251,7 +251,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.foo {\n  color: pink; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -27371,6 +27371,8 @@ module.exports = function(originalModule) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.addFavouriteToDB = addFavouriteToDB;
+exports.receiveFavouriteData = receiveFavouriteData;
 exports.fetchGenreData = fetchGenreData;
 exports.fetchThemeData = fetchThemeData;
 exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
@@ -27385,6 +27387,40 @@ exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
 exports.fetchFortniteStats = fetchFortniteStats;
 exports.setFortniteStats = setFortniteStats;
+exports.receiveUserData = receiveUserData;
+exports.fetchGamerInfo = fetchGamerInfo;
+
+// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
+
+function addFavouriteToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/newfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      //call action function to select reducer to set redux state value
+
+      dispatch(receiveFavouriteData(favObject));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+function receiveFavouriteData(favouriteData) {
+  return {
+    type: "RECEIVE_FAVOURITEDATA",
+    payload: favouriteData
+  };
+}
+
 // Genre & Themes are retrieved via separate fetches
 function fetchGenreData() {
   return function (dispatch, getState) {
@@ -27413,12 +27449,14 @@ function fetchThemeData() {
     });
   };
 }
-//Main Game Data fetch - calls helper function to sanitise data
+//Main GAME Data fetch - calls helper function to sanitise data
 function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
     return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
+      console.log(json.body.length, " results");
+
       dispatch(setGameData(json.body));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27534,11 +27572,12 @@ function receiveGameData(gameData) {
 }
 
 //Main NEWS Data fetch - calls helper function to sanitise data
-function fetchNewsInfoFromAPI() {
+function fetchNewsInfoFromAPI(pageNum) {
   return function (dispatch, getState) {
-    return fetch("/newsApi/").then(function (response) {
+    return fetch("/newsApi/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
+      // console.log("fetch news ", json.articles);
       dispatch(setNewsData(json.articles));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27547,10 +27586,10 @@ function fetchNewsInfoFromAPI() {
 }
 
 //search NEWS Data based on User input
-function searchNewsAPI(searchTerm) {
-  console.log("searchTerm", searchTerm);
+function searchNewsAPI(searchTerm, pageNum) {
   return function (dispatch, getState) {
-    return fetch("/searchNews/" + searchTerm).then(function (response) {
+
+    return fetch("/searchNews/" + searchTerm + "/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(setNewsData(json.articles));
@@ -27574,60 +27613,56 @@ function setNewsData(newsData) {
 
     newsData.map(function (newsObject) {
       var myNewsObject = {};
+      // Only select news items which have a description
+      if (!newsObject.description) {
+        return;
+      }
 
-      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields, renaming keys
       if (newsObject.author) {
         myNewsObject["author"] = newsObject.author;
       }
       myNewsObject["description"] = newsObject.description;
 
-      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
+      myNewsObject["date"] = formatTime(newsObject.publishedAt);
 
       myNewsObject["title"] = newsObject.title;
 
       myNewsObject["url"] = newsObject.url;
 
       if (newsObject.urlToImage) {
-        myNewsObject["image"] = newsObject.urlToImage;
+        if (!newsObject.urlToImage.includes("placeholder")) {
+          myNewsObject["image"] = newsObject.urlToImage;
+        }
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log(myNewsData);
-    dispatch(receiveNewsData(myNewsData));
+
+    dispatch(receiveNewsData(removeDuplicates(myNewsData)));
   };
 }
-// Makes Dates look presentable
-function formatDate(date) {
+
+// Time passed since news article was published
+function formatTime(date) {
+  var displayTime = void 0;
+  var now = new Date();
   var myDate = new Date(date);
+  var diff = now - myDate;
+  var days = Math.floor(diff / 3600000 / 24);
+  var hours = Math.floor(diff % 86400000 / 3600000) + 1; //UTC timezone
+  var minutes = Math.floor(diff % 86400000 % 3600000 / 60000);
 
-  var prettyDate = myDate.toDateString().substring(4, myDate.length);
-  var minutes = ("0" + myDate.getMinutes()).slice(-2);
-  var hours = myDate.getHours();
+  //If the data is more than 1 day old, then just display the number of days
 
-  myDate = prettyDate.split(" ");
-  var month = myDate[0];
-  var day = parseInt(myDate[1]);
-  var year = myDate[2];
-  var suffix = "";
-  switch (day) {
-    case 1:
-    case 21:
-    case 31:
-      suffix = "st";
-      break;
-    case 2:
-    case 22:
-      suffix = "nd";
-      break;
-    case 3:
-    case 23:
-      suffix = "rd";
-      break;
-    default:
-      suffix = "th";
-      break;
+  if (days >= 1) {
+    displayTime = days + "d ";
+  } else if (hours === 24) {
+    displayTime = "1d";
+  } else {
+    displayTime = "" + (days !== 0 ? days + "d " : "") + (hours !== 0 ? hours + "h " : "") + (minutes !== 0 ? minutes + "m " : "");
   }
-  return "" + day + suffix + " " + month + " " + year + " at " + hours + ":" + minutes + " ";
+
+  return displayTime;
 }
 
 //function to call Reducer and set auth in redux.state
@@ -27658,6 +27693,54 @@ function setFortniteStats(userData) {
     type: "RECEIVE_FORTNITE_DATA",
     payload: userData
   };
+}
+
+//function to call Reducer and set user data in redux.state
+function receiveUserData(userData) {
+  return {
+    type: "RECEIVE_USERDATA",
+    payload: userData
+  };
+}
+
+function fetchGamerInfo(gamerId) {
+  //fetch gamer_profile
+  return function (dispatch, getState) {
+    return fetch("/api/gamer/" + gamerId).then(function (response) {
+      return response.json();
+    }).then(function (gamerData) {
+      dispatch(receiveUserData(gamerData));
+      return gamerData;
+    }).catch(function (error) {
+      console.log("Error occurred: ", error);
+    });
+  };
+}
+
+// API data coming out contains duplicates-remove those with the same title OR same description
+
+function removeDuplicates(newsSearch) {
+
+  if (newsSearch.length === 0) {
+    newsSearch = "No results found";
+    console.log("remove duplicates", newsSearch);
+    return newsSearch;
+  }
+  var myNewsData = newsSearch.reduce(function (acc, newsObject) {
+    if (!acc[newsObject.title]) {
+      acc[newsObject.title] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  var cleanNewsData = Object.values(myNewsData).reduce(function (acc, newsObject) {
+    if (!acc[newsObject.description]) {
+      acc[newsObject.description] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  return Object.values(cleanNewsData);
 }
 
 /***/ }),
@@ -27696,10 +27779,6 @@ var _NewsContainer = __webpack_require__(/*! ../containers/NewsContainer */ "./s
 
 var _NewsContainer2 = _interopRequireDefault(_NewsContainer);
 
-var _Forums = __webpack_require__(/*! ./Forums */ "./src/components/Forums.js");
-
-var _Forums2 = _interopRequireDefault(_Forums);
-
 var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
 
 var _Header2 = _interopRequireDefault(_Header);
@@ -27731,6 +27810,14 @@ var _TopGamesRoute2 = _interopRequireDefault(_TopGamesRoute);
 var _PostsContainer = __webpack_require__(/*! ../containers/PostsContainer */ "./src/containers/PostsContainer.js");
 
 var _PostsContainer2 = _interopRequireDefault(_PostsContainer);
+
+var _ForumsContainer = __webpack_require__(/*! ../containers/ForumsContainer */ "./src/containers/ForumsContainer.js");
+
+var _ForumsContainer2 = _interopRequireDefault(_ForumsContainer);
+
+var _Profile = __webpack_require__(/*! ../components/Profile */ "./src/components/Profile.js");
+
+var _Profile2 = _interopRequireDefault(_Profile);
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
@@ -27770,15 +27857,12 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/news", render: function render() {
               return _react2.default.createElement(_NewsContainer2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/dashboard", render: function render() {
-              return _react2.default.createElement(_DashboardRoute2.default, null);
-            } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _Forums2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/search", render: function render() {
-              return _react2.default.createElement(_SearchGamesRoute2.default, null);
-            } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/dashboard", render: function render() {
               return _react2.default.createElement(_DashboardRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/forum/:id", component: _ForumsContainer2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/search", render: function render() {
+              return _react2.default.createElement(_SearchGamesRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/twitch", render: function render() {
               return _react2.default.createElement(_TwitchRoute2.default, null);
@@ -27795,7 +27879,8 @@ var App = function (_React$Component) {
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
               return _react2.default.createElement(RetroRoute, null);
-            } })
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default })
         )
       );
     }
@@ -27828,6 +27913,16 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+var _DashboardPanels = __webpack_require__(/*! ./dashboard/DashboardPanels */ "./src/components/dashboard/DashboardPanels.js");
+
+var _DashboardPanels2 = _interopRequireDefault(_DashboardPanels);
+
+var _DashboardAccount = __webpack_require__(/*! ./dashboard/DashboardAccount */ "./src/components/dashboard/DashboardAccount.js");
+
+var _DashboardAccount2 = _interopRequireDefault(_DashboardAccount);
+
 __webpack_require__(/*! ../../styles/components/dashboard.scss */ "./styles/components/dashboard.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27848,7 +27943,9 @@ var Dashboard = function (_React$Component) {
 
         _this.state = {
             user: {}
+            // gamer_info: this.props.userDataStore
         };
+        // this.gamerInfo = this.gamerInfo.bind(this)
         return _this;
     }
 
@@ -27856,17 +27953,53 @@ var Dashboard = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             // Get initialUser variable from global scope declared in index.hbs
-            var userData = initialUser; // JSON.parse(document.querySelector('#data').innerHTML);
+            var userData = initialUser;
             this.setState({
                 user: userData
             });
             if (userData) {
                 this.props.setAuthState(userData);
             };
+
+            // console.log('Oh first shiiiit', userData);
+            // if (userData) {
+            //     this.props.fetchGamerInfo(this.state.user.userId)
+            //         .then(data => {
+            //             console.log("gamerData in coomp", data)
+            //             this.props.setUserData(data);
+            //             this.setState({
+            //                 gamer_info: data
+            //             });
+            //         });
+
+            // } else {
+            //     console.log('Oh shiiiit');
+            // }
         }
+
+        // gamerInfo() {
+        //     if (this.props.userAuthState) {
+        //         //fetch gamer_profile
+        //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
+        //             .then(response => response.json())
+        //             .then(gamerData => {
+        //                 console.log("gamerData", gamerData);
+        //                 return gamerData
+        //             });
+
+        //         //fetch replies by gamer
+        //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
+        //         //     .then(response => response.json())
+        //         //     .then(json => console.log("----gamer_posts----", json));
+
+        //     }
+        // }
+
     }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'div',
                 { className: 'dashboard' },
@@ -27879,7 +28012,7 @@ var Dashboard = function (_React$Component) {
                         _react2.default.createElement(
                             'div',
                             { className: 'dashboard__profile' },
-                            _react2.default.createElement('img', { className: 'dashboard__profile--image', src: '../../static/images/user.jpg', alt: '' }),
+                            _react2.default.createElement('img', { className: 'dashboard__profile--image', src: this.state.user.avatar ? this.state.user.avatar : "../../static/images/user.jpg", alt: '' }),
                             _react2.default.createElement(
                                 'div',
                                 { className: 'dashboard__profile--name' },
@@ -27892,12 +28025,20 @@ var Dashboard = function (_React$Component) {
                             _react2.default.createElement(
                                 'li',
                                 { className: 'dashboard__nav--item' },
-                                'Dashboard'
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/dashboard' },
+                                    'Dashboard'
+                                )
                             ),
                             _react2.default.createElement(
                                 'li',
                                 { className: 'dashboard__nav--item' },
-                                'Account'
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { to: '/dashboard/account' },
+                                    'Account'
+                                )
                             ),
                             _react2.default.createElement(
                                 'li',
@@ -27921,122 +28062,16 @@ var Dashboard = function (_React$Component) {
                             this.state.user.username
                         ),
                         _react2.default.createElement(
-                            'div',
-                            { className: 'dashboard__content' },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Points'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '250'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Total Post'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '1750'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Messages'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '450'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Forum'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '50'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Twitch'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '340'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'dashboard__content--item' },
-                                _react2.default.createElement(
-                                    'h3',
-                                    { className: 'dashboard__content--heading' },
-                                    'Video Game'
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'dashboard__content--points' },
-                                    '20'
-                                ),
-                                _react2.default.createElement(
-                                    'p',
-                                    { className: 'dashboard__content--text' },
-                                    'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.'
-                                )
-                            )
+                            _reactRouterDom.Switch,
+                            null,
+                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _DashboardPanels2.default }),
+                            _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
+                                    return _react2.default.createElement(_DashboardAccount2.default, {
+                                        setAuthState: _this2.props.setAuthState,
+                                        userAuthState: _this2.props.userAuthState,
+                                        fetchGamerInfo: _this2.props.fetchGamerInfo,
+                                        userDataStore: _this2.props.userDataStore });
+                                } })
                         )
                     )
                 )
@@ -28462,9 +28497,13 @@ var Forums = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Forums.__proto__ || Object.getPrototypeOf(Forums)).call(this));
 
-    _this.state = { forum: {}, posts: [], input: "" };
+    _this.state = { forum: {}, posts: [], input: "", title: "", body: "" };
     _this.inputHandler = _this.inputHandler.bind(_this);
     _this.searchHandler = _this.searchHandler.bind(_this);
+    _this.titleHandler = _this.titleHandler.bind(_this);
+    _this.bodyHandler = _this.bodyHandler.bind(_this);
+    _this.replyHandler = _this.replyHandler.bind(_this);
+
     return _this;
   }
 
@@ -28511,10 +28550,55 @@ var Forums = function (_React$Component) {
       });
     }
   }, {
+    key: "titleHandler",
+    value: function titleHandler(event) {
+      this.setState({ title: event.target.value });
+    }
+  }, {
+    key: "bodyHandler",
+    value: function bodyHandler(event) {
+      this.setState({ body: event.target.value });
+    }
+  }, {
+    key: "replyHandler",
+    value: function replyHandler(event) {
+      var _this4 = this;
+
+      event.preventDefault();
+
+      if (!this.props.userAuthState) {
+        alert("login first");
+        return;
+      }
+
+      var newPost = {
+        title: this.state.title,
+        body: this.state.body,
+        forum_id: this.state.forum.id,
+        gamer_id: this.props.userAuthState.userId,
+        gamer_name: this.props.userAuthState.username
+      };
+
+      fetch("/api/post", {
+        method: "post",
+        body: JSON.stringify(newPost),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this4.setState({ posts: json });
+      });
+
+      this.setState({ body: "", title: "" });
+    }
+  }, {
     key: "render",
     value: function render() {
 
       if (!this.state.forum.id) return null;
+
       return _react2.default.createElement(
         "div",
         null,
@@ -28541,16 +28625,39 @@ var Forums = function (_React$Component) {
           )
         ),
         this.state.posts.map(function (post, index) {
+
+          var date = String(new Date(post.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
             { key: post.id },
             _react2.default.createElement(
               _reactRouterDom.Link,
               { to: "/posts/" + post.id },
-              post.title
+              "Title: ",
+              post.title,
+              " - Posted By: ",
+              post.gamer_name,
+              " - On: ",
+              date
             )
           );
-        })
+        }),
+        _react2.default.createElement(
+          "div",
+          { style: { display: this.props.userAuthState ? 'none' : '' } },
+          " login to post "
+        ),
+        _react2.default.createElement(
+          "form",
+          { style: { display: this.props.userAuthState ? '' : 'none' } },
+          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
+          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.replyHandler },
+            " reply "
+          )
+        )
       );
     }
   }]);
@@ -28659,7 +28766,7 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/news" },
@@ -28704,11 +28811,29 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      null,
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        "a",
+        { href: "/login" },
+        "Log In"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
       _react2.default.createElement(
         "a",
         { href: "/signup" },
-        "Log In/Sign Up"
+        "Sign Up"
+      )
+    ),
+    _react2.default.createElement(
+      "li",
+      { className: "main-nav__item" },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: "/logout" },
+        "Logout"
       )
     )
   );
@@ -28989,79 +29114,115 @@ var News = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).call(this));
 
     _this.state = {
-      searchNews: ""
+      searchNews: "",
+      pageNum: 1,
+      currentSearch: ""
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.nextPage = _this.nextPage.bind(_this);
     return _this;
   }
 
   _createClass(News, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (this.props.fetchNewsData !== undefined && this.props.searchNewsData !== undefined) {
-        this.props.fetchNewsData();
+      if (this.props.fetchNewsData !== undefined) {
+        this.props.fetchNewsData(this.state.pageNum);
       }
     }
   }, {
     key: "handleChange",
     value: function handleChange(event) {
+      var _this2 = this;
+
       event.preventDefault();
       this.setState({
         searchNews: event.target.value
+      }, function () {
+        return _this2.setState({
+          currentSearch: _this2.state.searchNews
+        });
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
-      this.props.searchNewsData(this.state.searchNews);
+      this.setState({ pageNum: 1 });
+      this.props.searchNewsData(this.state.searchNews, 1);
       this.setState({
         searchNews: ""
       });
     }
   }, {
+    key: "nextPage",
+    value: function nextPage(direction) {
+      var _this3 = this;
+
+      if (this.state.currentSearch !== "") {
+        if (direction === "next") {
+          this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+            return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
+          });
+        } else {
+          this.setState({ pageNum: this.state.pageNum - 1 }, function () {
+            return _this3.props.searchNewsData(_this3.state.currentSearch, _this3.state.pageNum);
+          });
+        }
+      } else {
+        if (direction === "next") {
+          this.setState({ pageNum: this.state.pageNum + 1 }, function () {
+            return _this3.props.fetchNewsData(_this3.state.pageNum);
+          });
+        } else {
+          this.setState({ pageNum: this.state.pageNum - 1 }, function () {
+            return _this3.props.fetchNewsData(_this3.state.pageNum);
+          });
+        }
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var newsData = this.props.newsData;
 
-      console.log(newsData);
 
-      var newsDisplay = newsData === "No results found" ? newsData : newsData.map(function (news) {
+      var newsDisplay = newsData === "No results found" ? newsData : newsData.map(function (news, i) {
+        var cn = "news__result" + i;
         return _react2.default.createElement(
           "div",
-          { className: "news__result", key: news.title },
+          { className: cn, key: news.title },
           _react2.default.createElement(
             "li",
-            null,
+            { className: "news__list" },
             _react2.default.createElement(
               "a",
               { href: news.url, target: "blank" },
-              _react2.default.createElement("img", {
+              news.image ? _react2.default.createElement("img", {
                 src: news.image,
                 className: "news__img",
                 alt: news.title
-              }),
+              }) : null,
               _react2.default.createElement(
                 "header",
                 { className: "news__title" },
                 news.title
               ),
               _react2.default.createElement(
-                "p",
+                "div",
                 { className: "news__desc" },
                 news.description
               ),
               _react2.default.createElement(
                 "p",
-                { className: "news__desc" },
+                { className: "news__date" },
+                news.date,
+                "\uD83D\uDD54 | ",
                 news.author
-              ),
-              _react2.default.createElement(
-                "p",
-                { className: "news__desc" },
-                news.date
               )
             )
           )
@@ -29070,36 +29231,54 @@ var News = function (_React$Component) {
 
       return _react2.default.createElement(
         "div",
-        null,
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "form",
-          { className: "news__form", onSubmit: this.handleSubmit },
-          _react2.default.createElement("input", {
-            onChange: this.handleChange,
-            type: "search",
-            results: "0",
-            alt: "Search",
-            className: "news__input",
-            autoComplete: "off",
-            value: this.state.searchNews,
-            placeholder: "\uD83D\uDD0D Search news articles"
-          })
-        ),
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "h1",
-          null,
-          "Latest News"
-        ),
+        { className: "news__body" },
         _react2.default.createElement(
           "div",
           { className: "news" },
           _react2.default.createElement(
+            "form",
+            { className: "news__form",
+              onSubmit: this.handleSubmit
+            },
+            _react2.default.createElement("input", {
+              onChange: this.handleChange,
+              type: "search",
+              results: "0",
+              alt: "Search",
+              className: "news__input",
+              autoComplete: "off",
+              value: this.state.searchNews,
+              placeholder: "Search news"
+            })
+          ),
+          _react2.default.createElement(
             "ul",
-            null,
+            { className: "news__wrapper" },
             newsDisplay
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "news__pages" },
+            this.state.pageNum >= 2 ? _react2.default.createElement(
+              "a",
+              { href: "#", className: "news__pages", onClick: function onClick(event) {
+                  return _this4.nextPage("prev");
+                } },
+              "\uD83E\uDCA4 Prev"
+            ) : null,
+            newsDisplay !== undefined ? _react2.default.createElement(
+              "a",
+              { href: "#", className: "news__pages", onClick: function onClick(event) {
+                  return _this4.nextPage("next");
+                } },
+              "Next \uD83E\uDCA7"
+            ) : null
           )
+        ),
+        _react2.default.createElement(
+          "footer",
+          { className: "news__footer" },
+          "Powered by NewsAPI.org"
         )
       );
     }
@@ -29250,51 +29429,50 @@ var Posts = function (_React$Component) {
       var _this5 = this;
 
       if (!this.state.post.id) return null;
-
+      var created = String(new Date(this.state.post.created)).substring(0, 24);
       return _react2.default.createElement(
         "div",
-        { className: "posts" },
+        null,
         _react2.default.createElement(
           "h3",
-          { className: "posts__topic--title" },
-          "Topic: ",
-          this.state.post.title
+          null,
+          " Topic: ",
+          this.state.post.title,
+          " "
         ),
         _react2.default.createElement(
           "h3",
-          { className: "posts__topic--body" },
+          null,
           " ",
           this.state.post.body,
           " "
         ),
         _react2.default.createElement(
           "h3",
-          { className: "posts__topic--date" },
-          "Date Posted: ",
-          this.state.post.created
+          null,
+          " Date Posted: ",
+          created,
+          " "
         ),
         _react2.default.createElement(
           "h3",
-          { className: "posts__topic--user" },
-          "Posted By: ",
-          this.state.post.gamer_name
+          null,
+          " Posted By: ",
+          this.state.post.gamer_name,
+          " "
         ),
         _react2.default.createElement(
           "form",
-          { className: "posts__reply--search" },
-          _react2.default.createElement("input", {
-            className: "posts__reply--input",
-            placeholder: "search for replies",
-            value: this.state.input,
-            onChange: this.inputHandler
-          }),
+          null,
+          _react2.default.createElement("input", { placeholder: "search for replies", value: this.state.input, onChange: this.inputHandler }),
           _react2.default.createElement(
             "button",
             { onClick: this.searchHandler },
-            " Search "
+            " search "
           )
         ),
         this.state.replies.map(function (reply) {
+          var date = String(new Date(reply.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
             { key: reply.id },
@@ -29320,36 +29498,24 @@ var Posts = function (_React$Component) {
               "p",
               null,
               "Date Posted: ",
-              reply.created
+              date
             )
           );
         }),
         _react2.default.createElement(
           "div",
-          {
-            className: this.props.userAuthState ? "posts__login" : "posts__login--hidden"
-          },
-          "Please login to reply"
+          { style: { display: this.props.userAuthState ? 'none' : '' } },
+          " login to post "
         ),
         _react2.default.createElement(
           "form",
-          {
-            className: this.props.userAuthState ? "posts__logged--reply" : "posts__logged--reply--hidden"
-          },
-          _react2.default.createElement("input", {
-            placeholder: "title",
-            value: this.state.title,
-            onChange: this.titleHandler
-          }),
-          _react2.default.createElement("input", {
-            placeholder: "body",
-            value: this.state.body,
-            onChange: this.bodyHandler
-          }),
+          { style: { display: this.props.userAuthState ? '' : 'none' } },
+          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
+          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
           _react2.default.createElement(
             "button",
             { onClick: this.replyHandler },
-            " Reply "
+            " reply "
           )
         )
       );
@@ -29360,6 +29526,76 @@ var Posts = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Posts;
+
+/***/ }),
+
+/***/ "./src/components/Profile.js":
+/*!***********************************!*\
+  !*** ./src/components/Profile.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Profile = function (_React$Component) {
+    _inherits(Profile, _React$Component);
+
+    function Profile() {
+        _classCallCheck(this, Profile);
+
+        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this));
+
+        _this.state = { profile: {} };
+        return _this;
+    }
+
+    _createClass(Profile, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch("/api/profile/" + this.props.match.params.id).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return _this2.setState({ profile: json });
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            console.log(this.state.profile);
+            return _react2.default.createElement(
+                "div",
+                null,
+                "Profile"
+            );
+        }
+    }]);
+
+    return Profile;
+}(_react2.default.Component);
+
+exports.default = Profile;
 
 /***/ }),
 
@@ -29395,6 +29631,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import SearchGallery from "./SearchGallery";
+
 var Search = function (_React$Component) {
   _inherits(Search, _React$Component);
 
@@ -29409,6 +29647,8 @@ var Search = function (_React$Component) {
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.addToFavourites = _this.addToFavourites.bind(_this);
+
     return _this;
   }
 
@@ -29435,15 +29675,56 @@ var Search = function (_React$Component) {
       });
     }
   }, {
+    key: "addToFavourites",
+    value: function addToFavourites(gameId, gameTitle) {
+      if (this.props.userAuthState) {
+        var newFav = {
+          gamerId: this.props.userAuthState.userId,
+          igdb: gameId,
+          title: gameTitle
+        };
+        console.log("search.js", newFav);
+        this.props.addToFavourite(newFav);
+      } else {
+        alert("Please log in to select favourites");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var gameData = this.props.gameData;
+      var _this2 = this;
 
-      var gameDisplay = gameData === "No results found" ? gameData : gameData.map(function (game) {
+      var _props = this.props,
+          gameData = _props.gameData,
+          userAuthState = _props.userAuthState;
+
+      var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
+        "div",
+        { className: "search__result" },
+        " ",
+        _react2.default.createElement(
+          "div",
+          { className: "search__details" },
+          " ",
+          gameData,
+          " "
+        )
+      ) : gameData.map(function (game) {
         return _react2.default.createElement(
           "li",
           { key: game.igdbId, className: "search__result" },
-          _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
+          _react2.default.createElement(
+            "div",
+            { className: "search__img" },
+            _react2.default.createElement("img", { src: game.cover_img, className: "search__img--cover" }),
+            _react2.default.createElement(
+              "button",
+              { className: "search__details--button", onClick: function onClick(event) {
+                  _this2.addToFavourites(game.igdbId, game.name);
+                } },
+              "Add to favourites"
+            )
+          ),
           _react2.default.createElement(
             "div",
             { className: "search__details" },
@@ -29454,7 +29735,7 @@ var Search = function (_React$Component) {
             ),
             game.description !== "" || game.description !== undefined ? _react2.default.createElement(
               "p",
-              null,
+              { className: "search__desc" },
               game.description
             ) : null,
             _react2.default.createElement(
@@ -29466,28 +29747,48 @@ var Search = function (_React$Component) {
                 game.user_rating ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Gamer Rating: ",
-                  game.user_rating,
-                  "%"
+                  "Gamer Rating:",
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    game.user_rating,
+                    "%"
+                  )
                 ) : null,
                 game.critic_rating ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Critics Rating: ",
-                  game.critic_rating,
-                  "%"
+                  "Critic Rating:",
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    game.critic_rating,
+                    "%"
+                  )
                 ) : null,
                 game.genres ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Genre: ",
-                  game.genres
+                  "Genre:",
+                  " ",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    game.genres
+                  )
                 ) : null,
                 game.themes ? _react2.default.createElement(
                   "header",
                   { className: "search__details--ratings" },
-                  "Theme: ",
-                  game.themes
+                  "Theme:",
+                  _react2.default.createElement(
+                    "span",
+                    { className: "search__rating" },
+                    " ",
+                    game.themes
+                  )
                 ) : null
               ),
               _react2.default.createElement(
@@ -29496,16 +29797,19 @@ var Search = function (_React$Component) {
                 game.video ? _react2.default.createElement("iframe", {
                   width: "560",
                   height: "315",
-                  src: game.video,
+                  src: game.video + "autoPlay=0",
+
                   frameBorder: "0",
-                  allowFullScreen: true
+                  allowFullScreen: true,
+                  autostart: "false"
+
                 }) : null
               )
             )
           ),
           _react2.default.createElement(
             "div",
-            { className: "search__details--screenshots" },
+            { className: "search__screenshots" },
             game.screenshot ? game.screenshot.map(function (currentImg) {
               return _react2.default.createElement("img", { src: currentImg, key: currentImg });
             }) : null
@@ -29513,35 +29817,45 @@ var Search = function (_React$Component) {
           _react2.default.createElement("br", null)
         );
       });
-
+      var displayStatus = userAuthState ? "Welcome Gamer " + userAuthState.userId : "You are not logged in";
       return _react2.default.createElement(
         "div",
-        null,
-        _react2.default.createElement("br", null),
+        { className: "search__body" },
         _react2.default.createElement(
-          "form",
-          {
-            className: "search__form",
-            id: "search__form",
-            onSubmit: this.handleSubmit
-          },
-          _react2.default.createElement("input", {
-            onChange: this.handleChange,
-            type: "search",
-            results: "0",
-            alt: "Search",
-            className: "search__input",
-            id: "search__text",
-            autoComplete: "off",
-            value: this.state.searchGame,
-            placeholder: "\uD83D\uDD0D Search"
-          })
-        ),
-        _react2.default.createElement("br", null),
-        _react2.default.createElement(
-          "ul",
+          "div",
           { className: "search" },
-          gameDisplay
+          displayStatus,
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "form",
+            {
+              className: "search__form",
+              id: "search__form",
+              onSubmit: this.handleSubmit
+            },
+            _react2.default.createElement("input", {
+              onChange: this.handleChange,
+              type: "search",
+              results: "0",
+              alt: "Search",
+              className: "search__input"
+              // id="search__text"
+              , autoComplete: "off",
+              value: this.state.searchGame,
+              placeholder: "Search games"
+            })
+          ),
+          _react2.default.createElement("br", null),
+          _react2.default.createElement(
+            "ul",
+            { className: "search__wrapper" },
+            gameDisplay
+          ),
+          _react2.default.createElement(
+            "footer",
+            { className: "search__footer" },
+            "Powered by IGDB.com API"
+          )
         )
       );
     }
@@ -29874,6 +30188,309 @@ exports.default = TwitchSearch;
 
 /***/ }),
 
+/***/ "./src/components/dashboard/DashboardAccount.js":
+/*!******************************************************!*\
+  !*** ./src/components/dashboard/DashboardAccount.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DashboardAccount = function (_React$Component) {
+    _inherits(DashboardAccount, _React$Component);
+
+    function DashboardAccount(props) {
+        _classCallCheck(this, DashboardAccount);
+
+        var _this = _possibleConstructorReturn(this, (DashboardAccount.__proto__ || Object.getPrototypeOf(DashboardAccount)).call(this, props));
+
+        _this.state = {
+            user: null,
+            gamer_info: null
+        };
+        return _this;
+    }
+
+    _createClass(DashboardAccount, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            console.log("this.props", this.props);
+            // Get initialUser variable from global scope declared in index.hbs
+            var userData = initialUser;
+            this.setState({
+                user: userData
+            });
+            if (userData) {
+                this.props.setAuthState(userData);
+            };
+
+            if (userData) {
+                this.props.fetchGamerInfo(userData.userId).then(function (data) {
+                    _this2.setState({
+                        gamer_info: data
+                    });
+                });
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+
+            return _react2.default.createElement(
+                "div",
+                { className: "dashboard__Account" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__Account--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__Account--heading" },
+                        "Account"
+                    ),
+                    this.state.gamer_info ? _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.gamer_info.profile.avatar, alt: "{this.state.gamer_info.profile.gamer_name}" }),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Gamer ID: "
+                            ),
+                            this.state.gamer_info.profile.gamer_id
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Name: "
+                            ),
+                            this.state.gamer_info.profile.gamer_name
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "dashboard__Account--points" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Level: "
+                            ),
+                            this.state.gamer_info.profile.gamer_level
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Total Posts: "
+                            ),
+                            this.state.gamer_info.profile.totalposts
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Email: "
+                            ),
+                            this.state.gamer_info.profile.email
+                        ),
+                        _react2.default.createElement(
+                            "p",
+                            { className: "dashboard__Account--text" },
+                            _react2.default.createElement(
+                                "strong",
+                                null,
+                                "Description: "
+                            ),
+                            this.state.gamer_info.profile.description
+                        )
+                    ) : ""
+                )
+            );
+        }
+    }]);
+
+    return DashboardAccount;
+}(_react2.default.Component);
+
+exports.default = DashboardAccount;
+
+/***/ }),
+
+/***/ "./src/components/dashboard/DashboardPanels.js":
+/*!*****************************************************!*\
+  !*** ./src/components/dashboard/DashboardPanels.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function DashboardPanels() {
+    return _react2.default.createElement(
+        "div",
+        { className: "dashboard__panels" },
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Points"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "250"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Total Post"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "1750"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Messages"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "450"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Forum"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "50"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Twitch"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "340"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        ),
+        _react2.default.createElement(
+            "div",
+            { className: "dashboard__panels--item" },
+            _react2.default.createElement(
+                "h3",
+                { className: "dashboard__panels--heading" },
+                "Video Game"
+            ),
+            _react2.default.createElement(
+                "div",
+                { className: "dashboard__panels--points" },
+                "20"
+            ),
+            _react2.default.createElement(
+                "p",
+                { className: "dashboard__panels--text" },
+                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+            )
+        )
+    );
+}
+
+exports.default = DashboardPanels;
+
+/***/ }),
+
 /***/ "./src/containers/DashboardContainer.js":
 /*!**********************************************!*\
   !*** ./src/containers/DashboardContainer.js ***!
@@ -29900,7 +30517,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(reduxState) {
     return {
-        userAuthState: reduxState.authState
+        userAuthState: reduxState.authState,
+        userDataStore: reduxState.userData,
+        favouriteData: reduxState.favouriteInfo
+
     };
 };
 
@@ -29908,11 +30528,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         setAuthState: function setAuthState(user) {
             return dispatch((0, _index.receiveAuthState)(user));
+        },
+        setUserData: function setUserData(userData) {
+            return dispatch((0, _index.receiveUserData)(userData));
+        },
+        fetchGamerInfo: function fetchGamerInfo(gamerId) {
+            return dispatch((0, _index.fetchGamerInfo)(gamerId));
         }
     };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Dashboard2.default);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps, null, {
+    // https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
+    pure: false
+})(_Dashboard2.default);
 
 /***/ }),
 
@@ -29955,6 +30584,39 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Fortnite2.default);
+
+/***/ }),
+
+/***/ "./src/containers/ForumsContainer.js":
+/*!*******************************************!*\
+  !*** ./src/containers/ForumsContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Forums = __webpack_require__(/*! ../components/Forums */ "./src/components/Forums.js");
+
+var _Forums2 = _interopRequireDefault(_Forums);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState, ownProps) {
+  return {
+    match: ownProps.match,
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Forums2.default);
 
 /***/ }),
 
@@ -30019,7 +30681,6 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log(reduxState.newsData);
   return {
     newsData: reduxState.newsInfo
   };
@@ -30027,11 +30688,11 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchNewsData: function fetchNewsData() {
-      dispatch((0, _actions.fetchNewsInfoFromAPI)());
+    fetchNewsData: function fetchNewsData(pageNum) {
+      dispatch((0, _actions.fetchNewsInfoFromAPI)(pageNum));
     },
-    searchNewsData: function searchNewsData(searchTerm) {
-      dispatch((0, _actions.searchNewsAPI)(searchTerm));
+    searchNewsData: function searchNewsData(searchTerm, pageNum) {
+      dispatch((0, _actions.searchNewsAPI)(searchTerm, pageNum));
     }
   };
 };
@@ -30098,11 +30759,15 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  // console.log("redux gameData", reduxState.gameInfo);
+  console.log("Gamer Favourite info in Search Container ", reduxState.favouriteInfo);
+
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
-    genreData: reduxState.genreInfo
+    genreData: reduxState.genreInfo,
+    userAuthState: reduxState.authState,
+    favouriteData: reduxState.favouriteInfo
+
   };
 };
 
@@ -30114,6 +30779,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
     fetchGameInfo: function fetchGameInfo(searchGame) {
       dispatch((0, _actions.fetchGameInfoFromAPI)(searchGame));
+    },
+    addToFavourite: function addToFavourite(favInfo) {
+      dispatch((0, _actions.addFavouriteToDB)(favInfo));
     }
   };
 };
@@ -30266,6 +30934,38 @@ exports.default = authState;
 
 /***/ }),
 
+/***/ "./src/reducers/favouriteInfo.js":
+/*!***************************************!*\
+  !*** ./src/reducers/favouriteInfo.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function favouriteInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_FAVOURITEDATA":
+
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = favouriteInfo;
+
+/***/ }),
+
 /***/ "./src/reducers/fortniteStats.js":
 /*!***************************************!*\
   !*** ./src/reducers/fortniteStats.js ***!
@@ -30313,8 +31013,10 @@ function gameInfo() {
   var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
+
   switch (action.type) {
     case "RECEIVE_GAMEDATA":
+
       return action.payload;
 
     default:
@@ -30397,6 +31099,14 @@ var _fortniteStats = __webpack_require__(/*! ./fortniteStats */ "./src/reducers/
 
 var _fortniteStats2 = _interopRequireDefault(_fortniteStats);
 
+var _userInfo = __webpack_require__(/*! ./userInfo */ "./src/reducers/userInfo.js");
+
+var _userInfo2 = _interopRequireDefault(_userInfo);
+
+var _favouriteInfo = __webpack_require__(/*! ./favouriteInfo */ "./src/reducers/favouriteInfo.js");
+
+var _favouriteInfo2 = _interopRequireDefault(_favouriteInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
@@ -30405,7 +31115,9 @@ exports.default = (0, _redux.combineReducers)({
   genreInfo: _genreInfo2.default,
   newsInfo: _newsInfo2.default,
   authState: _authState2.default,
-  fortniteStats: _fortniteStats2.default
+  fortniteStats: _fortniteStats2.default,
+  userInfo: _userInfo2.default,
+  favouriteInfo: _favouriteInfo2.default
 });
 
 /***/ }),
@@ -30467,6 +31179,36 @@ function themeInfo() {
 }
 
 exports.default = themeInfo;
+
+/***/ }),
+
+/***/ "./src/reducers/userInfo.js":
+/*!**********************************!*\
+  !*** ./src/reducers/userInfo.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function userInfo() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_USERDATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = userInfo;
 
 /***/ }),
 

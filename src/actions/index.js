@@ -1,3 +1,39 @@
+
+// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
+
+export function addFavouriteToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/newfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(json => {
+        //call action function to select reducer to set redux state value
+
+        dispatch(receiveFavouriteData(favObject));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  }
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+export function receiveFavouriteData(favouriteData) {
+  return {
+    type: "RECEIVE_FAVOURITEDATA",
+    payload: favouriteData
+  };
+}
+
+
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
   return function (dispatch, getState) {
@@ -28,17 +64,21 @@ export function fetchThemeData() {
       });
   };
 }
-//Main Game Data fetch - calls helper function to sanitise data
+//Main GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
     return fetch(searchPath)
-      .then(response => response.json())
+      .then(response =>
+        response.json()
+      )
       .then(json => {
+        console.log((json.body).length, " results")
+
         dispatch(setGameData(json.body));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
-      });
+      })
   };
 }
 
@@ -147,9 +187,11 @@ export function setGameData(gameData) {
       myGameData = "No results found";
     }
 
+
     dispatch(receiveGameData(myGameData));
   };
 }
+
 
 //function to call Reducer and set game data in redux.state
 export function receiveGameData(gameData) {
@@ -160,11 +202,12 @@ export function receiveGameData(gameData) {
 }
 
 //Main NEWS Data fetch - calls helper function to sanitise data
-export function fetchNewsInfoFromAPI() {
+export function fetchNewsInfoFromAPI(pageNum) {
   return function (dispatch, getState) {
-    return fetch("/newsApi/")
+    return fetch(`/newsApi/${pageNum}`)
       .then(response => response.json())
       .then(json => {
+        // console.log("fetch news ", json.articles);
         dispatch(setNewsData(json.articles));
       })
       .catch(error => {
@@ -174,10 +217,10 @@ export function fetchNewsInfoFromAPI() {
 }
 
 //search NEWS Data based on User input
-export function searchNewsAPI(searchTerm) {
-  console.log("searchTerm", searchTerm);
+export function searchNewsAPI(searchTerm, pageNum) {
   return function (dispatch, getState) {
-    return fetch(`/searchNews/${searchTerm}`)
+
+    return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
         dispatch(setNewsData(json.articles));
@@ -198,64 +241,63 @@ export function receiveNewsData(newsData) {
 
 export function setNewsData(newsData) {
   return function (dispatch, getState) {
-    const myNewsData = [];
+    let myNewsData = [];
 
     newsData.map(newsObject => {
       const myNewsObject = {};
+      // Only select news items which have a description
+      if (!newsObject.description) {
+        return;
+      }
 
-      // API data is very bitty so we need to check if it exists or not so we don't display empty fields
+      // API data is very bitty so we need to check if it exists or not so we don't display empty fields, renaming keys
       if (newsObject.author) {
         myNewsObject["author"] = newsObject.author;
       }
       myNewsObject["description"] = newsObject.description;
 
-      myNewsObject["date"] = "Published " + formatDate(newsObject.publishedAt);
+      myNewsObject["date"] = formatTime(newsObject.publishedAt);
 
       myNewsObject["title"] = newsObject.title;
 
       myNewsObject["url"] = newsObject.url;
 
       if (newsObject.urlToImage) {
-        myNewsObject["image"] = newsObject.urlToImage;
+        if (!newsObject.urlToImage.includes("placeholder")) {
+          myNewsObject["image"] = newsObject.urlToImage;
+        }
       }
       myNewsData.push(myNewsObject);
     });
-    // console.log(myNewsData);
-    dispatch(receiveNewsData(myNewsData));
+
+    dispatch(receiveNewsData(removeDuplicates(myNewsData)));
+
   };
 }
-// Makes Dates look presentable
-function formatDate(date) {
-  let myDate = new Date(date);
 
-  const prettyDate = myDate.toDateString().substring(4, myDate.length);
-  const minutes = ("0" + myDate.getMinutes()).slice(-2);
-  const hours = myDate.getHours();
+// Time passed since news article was published
+function formatTime(date) {
+  let displayTime;
+  const now = new Date();
+  const myDate = new Date(date);
+  const diff = now - myDate;
+  const days = Math.floor(diff / 3600000 / 24);
+  const hours = Math.floor((diff % 86400000) / 3600000) + 1; //UTC timezone
+  const minutes = Math.floor(((diff % 86400000) % 3600000) / 60000);
 
-  myDate = prettyDate.split(" ");
-  const month = myDate[0];
-  const day = parseInt(myDate[1]);
-  const year = myDate[2];
-  let suffix = "";
-  switch (day) {
-    case 1:
-    case 21:
-    case 31:
-      suffix = "st";
-      break;
-    case 2:
-    case 22:
-      suffix = "nd";
-      break;
-    case 3:
-    case 23:
-      suffix = "rd";
-      break;
-    default:
-      suffix = "th";
-      break;
+  //If the data is more than 1 day old, then just display the number of days
+
+  if (days >= 1) {
+    displayTime = days + "d ";
+  } else if (hours === 24) {
+    displayTime = "1d";
+  } else {
+    displayTime = `${days !== 0 ? days + "d " : ""}${
+      hours !== 0 ? hours + "h " : ""
+      }${minutes !== 0 ? minutes + "m " : ""}`;
   }
-  return `${day}${suffix} ${month} ${year} at ${hours}:${minutes} `;
+
+  return displayTime;
 }
 
 //function to call Reducer and set auth in redux.state
@@ -289,3 +331,52 @@ export function setFortniteStats(userData) {
   };
 }
 
+
+//function to call Reducer and set user data in redux.state
+export function receiveUserData(userData) {
+  return {
+    type: "RECEIVE_USERDATA",
+    payload: userData
+  };
+}
+
+export function fetchGamerInfo(gamerId) {
+  //fetch gamer_profile
+  return function (dispatch, getState) {
+    return fetch(`/api/gamer/${gamerId}`)
+      .then(response => response.json())
+      .then(gamerData => {
+        dispatch(receiveUserData(gamerData));
+        return gamerData;
+      })
+      .catch(error => {
+        console.log("Error occurred: ", error);
+      });
+  }
+}
+
+// API data coming out contains duplicates-remove those with the same title OR same description
+
+function removeDuplicates(newsSearch) {
+
+  if (newsSearch.length === 0) {
+    newsSearch = "No results found";
+    console.log("remove duplicates", newsSearch)
+    return newsSearch;
+  }
+  const myNewsData = newsSearch.reduce((acc, newsObject) => {
+    if (!acc[newsObject.title]) {
+      acc[newsObject.title] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  const cleanNewsData = Object.values(myNewsData).reduce((acc, newsObject) => {
+    if (!acc[newsObject.description]) {
+      acc[newsObject.description] = newsObject;
+    }
+    return acc;
+  }, {});
+
+  return Object.values(cleanNewsData);
+}

@@ -5,6 +5,8 @@ import genreInfo from "./genreInfo";
 import newsInfo from "./newsInfo";
 import authState from "./authState";
 import fortniteStats from "./fortniteStats";
+import userInfo from "./userInfo";
+import favouriteInfo from "./favouriteInfo";
 
 export default combineReducers({
   gameInfo,
@@ -12,5 +14,7 @@ export default combineReducers({
   genreInfo,
   newsInfo,
   authState,
-  fortniteStats
+  fortniteStats,
+  userInfo,
+  favouriteInfo
 });

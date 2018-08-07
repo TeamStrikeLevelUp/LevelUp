@@ -1,20 +1,30 @@
 import { connect } from 'react-redux';
 import Dashboard from '../components/Dashboard';
-import { receiveAuthState } from '../actions/index';
+import { receiveAuthState, fetchGamerInfo, receiveUserData } from '../actions/index';
 
 const mapStateToProps = reduxState => {
     return {
-        userAuthState: reduxState.authState
+        userAuthState: reduxState.authState,
+        userDataStore: reduxState.userData,
+        favouriteData: reduxState.favouriteInfo
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        setAuthState: user => dispatch(receiveAuthState(user))
+        setAuthState: user => dispatch(receiveAuthState(user)),
+        setUserData: userData => dispatch(receiveUserData(userData)),
+        fetchGamerInfo: gamerId => dispatch(fetchGamerInfo(gamerId))
     };
 };
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    null,
+    {
+        // https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
+        pure: false
+    }
 )(Dashboard);
