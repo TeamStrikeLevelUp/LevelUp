@@ -16,15 +16,15 @@ function HomeNavBar() {
         <Link to="/news">Gaming News</Link>
       </li>
 
-      <li className="main-nav__item">
-        <Link to="/top-games">Top Games</Link>
+      <li>
+        <Link to="/the-fort">The Fort</Link>
       </li>
 
       <li className="main-nav__item">
         <Link to="/forum">Community</Link>
       </li>
       <li className="main-nav__item">
-        <Link to="/twitch">Twitch Streams</Link>
+        <Link to="/twitch">Twitch</Link>
       </li>
       <li className="main-nav__item">
         <Link to="/dashboard">Profile</Link>

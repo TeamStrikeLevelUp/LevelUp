@@ -7,7 +7,8 @@ class TwitchSearch extends React.Component {
     super();
 
     this.state = {
-      twitchQuery: "",
+
+      twitchQuery: "Ninja",
       displayVideo: false
     };
 
@@ -93,6 +94,7 @@ class TwitchSearch extends React.Component {
               id="twitch__input"
               placeholder="Search streamers"
               value={this.state.twitchQuery}
+
             />
             <button id="twitch__submit" className="twitch__button">
               Search
@@ -111,11 +113,7 @@ class TwitchSearch extends React.Component {
           </form>
           <div className="twitch__search--video">
             <iframe
-              className={
-                this.state.displayVideo
-                  ? "twitch__player"
-                  : "twitch__player--hide"
-              }
+              className="twitch__player"
               src={`http://player.twitch.tv/?channel=${this.state.twitchQuery}`}
               height="700"
               width="800"
@@ -127,7 +125,7 @@ class TwitchSearch extends React.Component {
         </div>
         <div>
           <h2 className="twitch__streamers--title">
-            Check out these popular streamers:
+            Click below to check out these popular streamers:
           </h2>
           <ul className="twitch__streamers">
             <li>

@@ -105,6 +105,25 @@ exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".fortnite {\n  display: flex; }\n\n.fortnite__search {\n  flex: 4; }\n\n.fortnite__title {\n  text-align: center; }\n\n.fortnite__playerlist {\n  flex: 1; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
@@ -118,6 +137,25 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 // module
 exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: cadetblue; }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".homepage {\n  display: flex;\n  width: 100%; }\n\n.homepage__main {\n  display: flex;\n  flex: 4;\n  flex-direction: column;\n  text-align: center; }\n\n.homepage__main--featured--selection {\n  display: flex;\n  flex-direction: row; }\n\n.homepage__main--top10 {\n  display: flex;\n  width: 60%; }\n\n.homepage__side {\n  flex: 1; }\n", ""]);
 
 // exports
 
@@ -27351,6 +27389,8 @@ exports.searchNewsAPI = searchNewsAPI;
 exports.receiveNewsData = receiveNewsData;
 exports.setNewsData = setNewsData;
 exports.receiveAuthState = receiveAuthState;
+exports.fetchFortniteStats = fetchFortniteStats;
+exports.setFortniteStats = setFortniteStats;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
 // Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
@@ -27695,6 +27735,28 @@ function receiveAuthState(auth) {
   };
 }
 
+// fetch to grab fortnite user statistics
+function fetchFortniteStats(username) {
+  console.log("fortnite username", username);
+  return function (dispatch, getState) {
+    return fetch("/api/fortnite/" + username).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      dispatch(setFortniteStats(data));
+    }).catch(function (e) {
+      alert("Sorry, we could not find your Fortnite data", e);
+    });
+  };
+}
+
+// set fortnite data into redux state
+function setFortniteStats(userData) {
+  return {
+    type: "RECEIVE_FORTNITE_DATA",
+    payload: userData
+  };
+}
+
 //function to call Reducer and set user data in redux.state
 function receiveUserData(userData) {
   return {
@@ -27717,25 +27779,6 @@ function fetchGamerInfo(gamerId) {
   };
 }
 
-// export function fetchGamerInfo(gamerId) {
-//   //fetch gamer posts
-//   return function (dispatch, getState) {
-//     return fetch(`/api/gamer/${gamerId}`)
-//       .then(response => response.json())
-//       .then(gamerData => {
-//         dispatch.receiveUserData(gamerData);
-//       })
-//       .catch(error => {
-//         console.log("Sorry the following error occurred: ", error);
-//       });
-//   }
-
-//   //fetch replies by gamer
-//   // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-//   //     .then(response => response.json())
-//   //     .then(json => console.log("----gamer_posts----", json));
-
-// }
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
@@ -27892,8 +27935,11 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/news", render: function render() {
               return _react2.default.createElement(_NewsRoute2.default, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/top-games", render: function render() {
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/the-fort", render: function render() {
               return _react2.default.createElement(_TopGamesRoute2.default, null);
+            } }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
+              return _react2.default.createElement(RetroRoute, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default })
         )
@@ -28098,6 +28144,311 @@ var Dashboard = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Dashboard;
+
+/***/ }),
+
+/***/ "./src/components/Fortnite.js":
+/*!************************************!*\
+  !*** ./src/components/Fortnite.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _FortniteStats = __webpack_require__(/*! ./FortniteStats */ "./src/components/FortniteStats.js");
+
+var _FortniteStats2 = _interopRequireDefault(_FortniteStats);
+
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Fortnite = function (_React$Component) {
+  _inherits(Fortnite, _React$Component);
+
+  function Fortnite() {
+    _classCallCheck(this, Fortnite);
+
+    var _this = _possibleConstructorReturn(this, (Fortnite.__proto__ || Object.getPrototypeOf(Fortnite)).call(this));
+
+    _this.state = {
+      searchUser: ""
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Fortnite, [{
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({
+        searchUser: event.target.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      this.props.fetchFortniteStats(this.state.searchUser);
+      this.setState({
+        searchUser: ""
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "fortnite" },
+        _react2.default.createElement(
+          "div",
+          { className: "fortnite__search" },
+          _react2.default.createElement(
+            "div",
+            { className: "fortnite__title" },
+            _react2.default.createElement(
+              "h2",
+              null,
+              "Welcome to The Fort"
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "How Fortified are you?"
+            ),
+            _react2.default.createElement(
+              "h4",
+              null,
+              "Check and compare your scores with the best players around!"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "fortnite__option" },
+            _react2.default.createElement(
+              "form",
+              { className: "", onSubmit: this.handleSubmit },
+              _react2.default.createElement("input", { onChange: this.handleChange, type: "search", value: this.state.searchUser, placeholder: "Search username..." }),
+              _react2.default.createElement(
+                "button",
+                null,
+                "Search"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "fortnite__userstats" },
+            _react2.default.createElement(_FortniteStats2.default, { stat: this.props.fortniteData })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "fortnite__playerlist" },
+          _react2.default.createElement(
+            "ul",
+            null,
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "Ninja"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "Fnatic_Ettnix"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "Terry 5L"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "dondottah571"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "ViniciusAmazing"
+              )
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              _react2.default.createElement(
+                "p",
+                null,
+                "JeDiiiKniiGhT"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Fortnite;
+}(_react2.default.Component);
+
+exports.default = Fortnite;
+
+/***/ }),
+
+/***/ "./src/components/FortniteStats.js":
+/*!*****************************************!*\
+  !*** ./src/components/FortniteStats.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FortniteStats(_ref) {
+  var stat = _ref.stat;
+
+  if (!stat.totals) return null;
+  console.log(stat);
+
+  return _react2.default.createElement(
+    "ul",
+    null,
+    _react2.default.createElement(
+      "li",
+      { key: stat.uid },
+      _react2.default.createElement(
+        "h3",
+        null,
+        stat.username
+      ),
+      _react2.default.createElement(
+        "h5",
+        null,
+        stat.platform.toUpperCase()
+      ),
+      _react2.default.createElement("img", { src: stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg" }),
+      _react2.default.createElement(
+        "h4",
+        null,
+        "Solo Skills"
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "1st Place Finishes: ",
+        stat.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Top 10 Finishes: ",
+        stat.stats.placetop10_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo Kills: ",
+        stat.stats.kills_solo
+      ),
+      _react2.default.createElement(
+        "h4",
+        null,
+        "Total Skills"
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Kills: ",
+        stat.totals.kills
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        stat.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Matches: ",
+        stat.totals.matchesplayed
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Hours: ",
+        stat.totals.hoursplayed
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Win rate: ",
+        stat.totals.winrate
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        stat.totals.score
+      )
+    )
+  );
+}
+
+exports.default = FortniteStats;
 
 /***/ }),
 
@@ -28485,11 +28836,11 @@ function HomeNavBar() {
     ),
     _react2.default.createElement(
       "li",
-      { className: "main-nav__item" },
+      null,
       _react2.default.createElement(
         _reactRouterDom.Link,
-        { to: "/top-games" },
-        "Top Games"
+        { to: "/the-fort" },
+        "The Fort"
       )
     ),
     _react2.default.createElement(
@@ -28507,7 +28858,7 @@ function HomeNavBar() {
       _react2.default.createElement(
         _reactRouterDom.Link,
         { to: "/twitch" },
-        "Twitch Streams"
+        "Twitch"
       )
     ),
     _react2.default.createElement(
@@ -28550,6 +28901,236 @@ function HomeNavBar() {
 }
 
 exports.default = HomeNavBar;
+
+/***/ }),
+
+/***/ "./src/components/Homepage.js":
+/*!************************************!*\
+  !*** ./src/components/Homepage.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+__webpack_require__(/*! ../../styles/components/homepage.scss */ "./styles/components/homepage.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Homepage = function (_React$Component) {
+  _inherits(Homepage, _React$Component);
+
+  function Homepage() {
+    _classCallCheck(this, Homepage);
+
+    return _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+  }
+
+  _createClass(Homepage, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "homepage" },
+        _react2.default.createElement(
+          "div",
+          { className: "homepage__main" },
+          _react2.default.createElement(
+            "h2",
+            { className: "homepage__main--title" },
+            "Welcome to Level Up"
+          ),
+          _react2.default.createElement(
+            "h4",
+            { className: "homepage__main--tour" },
+            "Take a tour of Level Up"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "homepage__main--featured" },
+            _react2.default.createElement(
+              "div",
+              { className: "homepage__main--featured--selection" },
+              _react2.default.createElement(
+                "div",
+                { className: "homepage__main--featured--selection--game" },
+                _react2.default.createElement(
+                  "h4",
+                  null,
+                  "Featured Game: Fortnite"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "homepage__main--featured--selection--user" },
+                _react2.default.createElement(
+                  "h4",
+                  null,
+                  "Featured User: Ahmed1"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "homepage__main--featured--selection--forum" },
+                _react2.default.createElement(
+                  "h4",
+                  null,
+                  "Featured Forum: Kingsway"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "homepage__main--featured--selection--news" },
+                _react2.default.createElement(
+                  "h4",
+                  null,
+                  "Featured News: IGN"
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "homepage__main--featured--selection--twitch" },
+                _react2.default.createElement(
+                  "h4",
+                  null,
+                  "Featured Stream: Twitch Streamer"
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "homepage__main--upcoming-releases" },
+            _react2.default.createElement(
+              "h4",
+              null,
+              "LIST OF UPCOMING RELEASES WITH LINKS/TRAILER ONCLICK"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "homepage__main--top10" },
+            _react2.default.createElement(
+              "h4",
+              null,
+              "Top 10 List"
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "homepage__side" },
+          _react2.default.createElement(
+            "div",
+            { className: "homepage__side--poll" },
+            _react2.default.createElement(
+              "form",
+              null,
+              _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                  "div",
+                  null,
+                  _react2.default.createElement(
+                    "strong",
+                    null,
+                    "What platform do you prefer to play on the most?"
+                  )
+                ),
+                _react2.default.createElement("input", { type: "radio", name: "answer", value: "1", id: "PC" }),
+                _react2.default.createElement(
+                  "label",
+                  { htmlFor: "PC" },
+                  "PC"
+                ),
+                _react2.default.createElement("input", { type: "radio", name: "answer", value: "2", id: "PS4" }),
+                _react2.default.createElement(
+                  "label",
+                  { htmlFor: "PS4" },
+                  "PS4"
+                ),
+                _react2.default.createElement("input", { type: "radio", name: "answer", value: "3", id: "Xbox" }),
+                _react2.default.createElement(
+                  "label",
+                  { htmlFor: "Xbox" },
+                  "Xbox One"
+                ),
+                _react2.default.createElement("input", { type: "radio", name: "answer", value: "4", id: "Switch" }),
+                _react2.default.createElement(
+                  "label",
+                  { htmlFor: "Switch" },
+                  "Nintendo Switch"
+                ),
+                _react2.default.createElement("input", { type: "radio", name: "answer", value: "5", id: "Mobile" }),
+                _react2.default.createElement(
+                  "label",
+                  { htmlFor: "Mobile" },
+                  "Mobile"
+                ),
+                _react2.default.createElement("input", { type: "radio", name: "answer", value: "6", id: "Other" }),
+                _react2.default.createElement(
+                  "label",
+                  { htmlFor: "Other" },
+                  "Other"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  null,
+                  _react2.default.createElement("input", { type: "submit", value: " Vote " }),
+                  _react2.default.createElement("input", { type: "submit", value: " View " })
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "homepage__side--twitter" },
+            _react2.default.createElement(
+              "h4",
+              null,
+              "TWITTER FEED"
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "homepage__side--social-links" },
+            _react2.default.createElement(
+              "h4",
+              null,
+              "SOCIAL MEDIA LINKS -- MAYBE HAVE ROUTE THAT ",
+              _react2.default.createElement("br", null),
+              " GOES TO ABOUT ME (IT WILL EXPLAIN OUR INTRO DURING DEMO)"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Homepage;
+}(_react2.default.Component);
+
+exports.default = Homepage;
 
 /***/ }),
 
@@ -28807,7 +29388,14 @@ var Posts = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
 
-    _this.state = { replies: [], post: {}, input: "", title: "", body: "" };
+    _this.state = {
+      replies: [],
+      post: {},
+      input: "",
+      title: "",
+      body: ""
+    };
+
     _this.inputHandler = _this.inputHandler.bind(_this);
     _this.searchHandler = _this.searchHandler.bind(_this);
     _this.titleHandler = _this.titleHandler.bind(_this);
@@ -29380,7 +29968,8 @@ var TwitchSearch = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
 
     _this.state = {
-      twitchQuery: "",
+
+      twitchQuery: "Ninja",
       displayVideo: false
     };
 
@@ -29476,6 +30065,7 @@ var TwitchSearch = function (_React$Component) {
               id: "twitch__input",
               placeholder: "Search streamers",
               value: this.state.twitchQuery
+
             }),
             _react2.default.createElement(
               "button",
@@ -29515,7 +30105,7 @@ var TwitchSearch = function (_React$Component) {
             "div",
             { className: "twitch__search--video" },
             _react2.default.createElement("iframe", {
-              className: this.state.displayVideo ? "twitch__player" : "twitch__player--hide",
+              className: "twitch__player",
               src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
               height: "700",
               width: "800",
@@ -29531,7 +30121,7 @@ var TwitchSearch = function (_React$Component) {
           _react2.default.createElement(
             "h2",
             { className: "twitch__streamers--title" },
-            "Check out these popular streamers:"
+            "Click below to check out these popular streamers:"
           ),
           _react2.default.createElement(
             "ul",
@@ -30076,6 +30666,48 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps, 
 
 /***/ }),
 
+/***/ "./src/containers/FortniteContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/FortniteContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Fortnite = __webpack_require__(/*! ../components/Fortnite */ "./src/components/Fortnite.js");
+
+var _Fortnite2 = _interopRequireDefault(_Fortnite);
+
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    fortniteData: reduxState.fortniteStats
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchFortniteStats: function fetchFortniteStats(searchUser) {
+      dispatch((0, _actions.fetchFortniteStats)(searchUser));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Fortnite2.default);
+
+/***/ }),
+
 /***/ "./src/containers/ForumsContainer.js":
 /*!*******************************************!*\
   !*** ./src/containers/ForumsContainer.js ***!
@@ -30106,6 +30738,42 @@ var mapStateToProps = function mapStateToProps(reduxState, ownProps) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Forums2.default);
+
+/***/ }),
+
+/***/ "./src/containers/HomeContainer.js":
+/*!*****************************************!*\
+  !*** ./src/containers/HomeContainer.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+
+var _Homepage2 = _interopRequireDefault(_Homepage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function HomeContainer() {
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(_Homepage2.default, null)
+  );
+}
+
+exports.default = HomeContainer;
 
 /***/ }),
 
@@ -30375,6 +31043,36 @@ exports.default = authState;
 
 /***/ }),
 
+/***/ "./src/reducers/fortniteStats.js":
+/*!***************************************!*\
+  !*** ./src/reducers/fortniteStats.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function fortniteStats() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "RECEIVE_FORTNITE_DATA":
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = fortniteStats;
+
+/***/ }),
+
 /***/ "./src/reducers/gameFavourite.js":
 /*!***************************************!*\
   !*** ./src/reducers/gameFavourite.js ***!
@@ -30506,6 +31204,10 @@ var _authState = __webpack_require__(/*! ./authState */ "./src/reducers/authStat
 
 var _authState2 = _interopRequireDefault(_authState);
 
+var _fortniteStats = __webpack_require__(/*! ./fortniteStats */ "./src/reducers/fortniteStats.js");
+
+var _fortniteStats2 = _interopRequireDefault(_fortniteStats);
+
 var _userInfo = __webpack_require__(/*! ./userInfo */ "./src/reducers/userInfo.js");
 
 var _userInfo2 = _interopRequireDefault(_userInfo);
@@ -30526,6 +31228,7 @@ exports.default = (0, _redux.combineReducers)({
   genreInfo: _genreInfo2.default,
   newsInfo: _newsInfo2.default,
   authState: _authState2.default,
+  fortniteStats: _fortniteStats2.default,
   userInfo: _userInfo2.default,
   gameFavourite: _gameFavourite2.default,
   twitchFavourite: _twitchFavourite2.default
@@ -30816,17 +31519,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ForumLinks = __webpack_require__(/*! ../components/ForumLinks */ "./src/components/ForumLinks.js");
+var _HomeContainer = __webpack_require__(/*! ../containers/HomeContainer */ "./src/containers/HomeContainer.js");
 
-var _ForumLinks2 = _interopRequireDefault(_ForumLinks);
-
-var _Header = __webpack_require__(/*! ../components/Header */ "./src/components/Header.js");
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
-
-var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
+var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30848,7 +31543,11 @@ var HomeRoute = function (_React$Component) {
   _createClass(HomeRoute, [{
     key: "render",
     value: function render() {
-      return _react2.default.createElement("div", { className: "home" });
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_HomeContainer2.default, null)
+      );
     }
   }]);
 
@@ -30997,6 +31696,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _FortniteContainer = __webpack_require__(/*! ../containers/FortniteContainer */ "./src/containers/FortniteContainer.js");
+
+var _FortniteContainer2 = _interopRequireDefault(_FortniteContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31020,11 +31723,7 @@ var TopGamesRoute = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(
-          "h3",
-          null,
-          "Hamzah sort this out"
-        )
+        _react2.default.createElement(_FortniteContainer2.default, null)
       );
     }
   }]);
@@ -31125,6 +31824,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./styles/components/fortnite.scss":
+/*!*****************************************!*\
+  !*** ./styles/components/fortnite.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./styles/components/header.scss":
 /*!***************************************!*\
   !*** ./styles/components/header.scss ***!
@@ -31134,6 +31863,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/homepage.scss":
+/*!*****************************************!*\
+  !*** ./styles/components/homepage.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

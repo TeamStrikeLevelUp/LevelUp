@@ -11,7 +11,8 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
+const fetch = require("node-fetch");
+const FormData = require("form-data");
 //For News page
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
@@ -27,6 +28,8 @@ const expressSession = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
 app.use("/static", express.static("static"));
 app.use(cookieParser());
 app.use(
@@ -438,7 +441,7 @@ function isLoggedIn(req, res, next) {
 
 // route to log out users
 app.get("/logout", function (req, res) {
-  // log user out and redirect them to home page
+
   req.logout();
   res.redirect("/");
 });
@@ -477,13 +480,13 @@ const client = igdb("96651c2677f60060f3a91ef002c2a419");
 
 app.set("view engine", "hbs");
 
-app.get("/", function (req, res) {
-  res.render("index", {});
-});
-
-// app.get("/", function(req, res) {
-//   res.render("landing", {});
+// app.get("/", function (req, res) {
+//   res.render("index", {});
 // });
+
+app.get("/", function (req, res) {
+  res.render("landing", {});
+});
 
 app.get("/homepage", function (req, res) {
   res.render("index", {});
@@ -660,6 +663,53 @@ app.get("/searchNews/:searchTerm/:pageNum", (req, res) => {
       console.log("You have 2 lives remaining ", error);
     });
 });
+
+// Fortnite data --
+
+app.get("/api/fortnite/:username", (req, res) => {
+  const username = req.params.username
+  var formData = new FormData();
+  formData.append("username", username);
+
+  fetch(`https://fortnite-public-api.theapinetwork.com/prod09/users/id`, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: "49814d647a64a41873378c2c7acd74b1"
+    }
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(result => {
+      console.log(result)
+      var formDataStats = new FormData();
+
+      formDataStats.append("user_id", result.uid);
+      formDataStats.append("platform", result.platforms[0]);
+      formDataStats.append("window", "alltime");
+
+      fetch(
+        `https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats`,
+        {
+          method: "POST",
+          body: formDataStats,
+          headers: {
+            Authorization: "49814d647a64a41873378c2c7acd74b1"
+          }
+        }
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(result => {
+          console.log(result)
+
+          res.json(result);
+        });
+    });
+});
+// -- Fortnite end
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
