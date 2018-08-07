@@ -18,7 +18,9 @@
         
         .dashboard__sidebar {
             padding: 40px;
-            background-color: rgba(53, 94, 114, 0.5);
+            // background-color: rgba(53, 94, 114, 0.5);
+            // background-color: rgba(114, 137, 218, .4);
+            background-color: rgba(54, 57, 63, 0.8);
         }
     }
     .dashboard__nav {
@@ -32,6 +34,25 @@
             font-size: 15px;
             color: #fff;
             padding: 10px 0;
+            width: 100%;
+            &:hover {
+                a {
+                    color: var(--primary-color);
+                }
+              }
+            a {
+                padding: 3px 10px;
+                color: var(--primary-color);
+                &.is-active {
+                    background-color: var(--primary-color);
+                    color: #fff;
+                }
+            }
+
+            &:active,
+            &:visited {
+                color: #fff;
+            }
         }
     }
 
@@ -58,7 +79,11 @@
         padding: 40px;
     }
 
-    .dashboard__panels {
+    
+}
+
+// Dashboard panels
+.dashboard__panels {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -87,4 +112,95 @@
             padding-left: 20px;
         }
     }
-}
+
+    // Dashboard account
+    .dashboard__account {
+        // background-color: var(--primary-color);
+        // background-color: rgba(114, 137, 218, .4);
+        background-color: rgba(54, 57, 63, 0.8);
+        padding: 20px;
+
+        .dashboard__input {
+            // display: block;
+            padding: 5px 0px 2px;
+            margin-top: 7px;
+            margin-bottom: 20px;
+            width: 220px;
+        }
+
+        .dashboard__avatar {
+                position: relative;
+            .dashboard__avatar--image {
+                width: 150px;
+                max-width: 100%;
+                border-radius: 50%;
+                display: block;
+                margin-bottom: 20px;
+            }
+            .dashboard__avatar--toggle {
+                font-size: 11px;
+                margin-bottom: 5px;
+                position: absolute;
+                top: -5px;
+                left: 140px;
+            
+                &:hover {
+                    cursor: pointer;
+                    opacity: .8;
+                }
+            }
+            .dashboard__avatar--form {
+                display: none;
+
+                &.dashboard__avatar--form--visible {
+                    display: block;
+                }
+            }
+        }
+
+        .dashboard__fortnite {
+            .dashboard__fortnite--form {
+                display: none;
+
+                &.dashboard__fortnite--form--visible {
+                    display: block;
+                }
+            }
+        }
+
+
+        .dashboard__email--form {
+            display: none;
+
+            &.dashboard__email--form--visible {
+                display: block;
+            }
+        }
+
+            .dashboard__account--text {
+                margin-bottom: 8px;
+                font-size: 15px;
+            }
+
+        .dashboard__desc--form {
+            display: none;
+
+            &.dashboard__desc--form--visible {
+                display: block;
+            }
+        }
+
+        .dashboard__account--boxes {
+            display: flex;
+            flex-direction: column;
+            @media(min-width: 768px) {
+                display: grid;
+                grid-template-columns: 25% 70%;
+                grid-template-rows: 100%;
+            }
+        }
+
+        .dashboard__account--name {
+            text-transform: capitalize;
+        }
+    }

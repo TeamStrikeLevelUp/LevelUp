@@ -86,6 +86,68 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
 /*!*************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
@@ -98,7 +160,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__panels {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__panels {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__panels .dashboard__panels--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__panels .dashboard__panels--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color); }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    background-color: rgba(53, 94, 114, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 15px; }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 42px;\n    padding-left: 20px; }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
 
 // exports
 
@@ -136,7 +198,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: cadetblue; }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
+exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: var(--dark-grey); }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
 
 // exports
 
@@ -174,7 +236,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n    .main-nav .main-nav__item a {\n      color: #fff;\n      font-size: 14px; }\n", ""]);
+exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n    .main-nav .main-nav__item a {\n      color: #fff;\n      font-size: 14px; }\n      .main-nav .main-nav__item a:hover {\n        color: var(--secondary-color); }\n", ""]);
 
 // exports
 
@@ -251,7 +313,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button-edit {\n  width: 15px;\n  height: 15px;\n  margin-left: 10px;\n  fill: #fff; }\n  .button-edit:hover {\n    cursor: pointer;\n    fill: var(--secondary-color); }\n\n.button {\n  padding: 5px 10px;\n  font-size: 14px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -28004,9 +28066,7 @@ var Dashboard = function (_React$Component) {
 
         _this.state = {
             user: {}
-            // gamer_info: this.props.userDataStore
         };
-        // this.gamerInfo = this.gamerInfo.bind(this)
         return _this;
     }
 
@@ -28021,41 +28081,7 @@ var Dashboard = function (_React$Component) {
             if (userData) {
                 this.props.setAuthState(userData);
             };
-
-            // console.log('Oh first shiiiit', userData);
-            // if (userData) {
-            //     this.props.fetchGamerInfo(this.state.user.userId)
-            //         .then(data => {
-            //             console.log("gamerData in coomp", data)
-            //             this.props.setUserData(data);
-            //             this.setState({
-            //                 gamer_info: data
-            //             });
-            //         });
-
-            // } else {
-            //     console.log('Oh shiiiit');
-            // }
         }
-
-        // gamerInfo() {
-        //     if (this.props.userAuthState) {
-        //         //fetch gamer_profile
-        //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
-        //             .then(response => response.json())
-        //             .then(gamerData => {
-        //                 console.log("gamerData", gamerData);
-        //                 return gamerData
-        //             });
-
-        //         //fetch replies by gamer
-        //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-        //         //     .then(response => response.json())
-        //         //     .then(json => console.log("----gamer_posts----", json));
-
-        //     }
-        // }
-
     }, {
         key: 'render',
         value: function render() {
@@ -28087,8 +28113,8 @@ var Dashboard = function (_React$Component) {
                                 'li',
                                 { className: 'dashboard__nav--item' },
                                 _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { to: '/dashboard' },
+                                    _reactRouterDom.NavLink,
+                                    { exact: true, activeClassName: 'is-active', to: '/dashboard' },
                                     'Dashboard'
                                 )
                             ),
@@ -28096,8 +28122,8 @@ var Dashboard = function (_React$Component) {
                                 'li',
                                 { className: 'dashboard__nav--item' },
                                 _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { to: '/dashboard/account' },
+                                    _reactRouterDom.NavLink,
+                                    { activeClassName: 'is-active', to: '/dashboard/account' },
                                     'Account'
                                 )
                             ),
@@ -30408,6 +30434,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30426,17 +30456,39 @@ var DashboardAccount = function (_React$Component) {
 
         _this.state = {
             user: null,
-            gamer_info: null
+            gamer_info: null,
+            togglerAvatar: false,
+            togglerFortnite: false,
+            togglerEmail: false,
+            selectedFile: "",
+            fortniteName: "",
+            email: "",
+            togglerDesc: false,
+            desc: ""
         };
+        _this.togglerAvatarHandler = _this.togglerAvatarHandler.bind(_this);
+        _this.uploadAvatarHandler = _this.uploadAvatarHandler.bind(_this);
+        _this.fileChangedHandler = _this.fileChangedHandler.bind(_this);
+
+        _this.togglerFortniteHandler = _this.togglerFortniteHandler.bind(_this);
+        _this.uploadFortniteHandler = _this.uploadFortniteHandler.bind(_this);
+        _this.fortniteChangedHandler = _this.fortniteChangedHandler.bind(_this);
+
+        _this.togglerEmailHandler = _this.togglerEmailHandler.bind(_this);
+        _this.emailChangedHandler = _this.emailChangedHandler.bind(_this);
+        _this.uploadEmailHandler = _this.uploadEmailHandler.bind(_this);
+
+        _this.togglerDescHandler = _this.togglerDescHandler.bind(_this);
+        _this.descChangedHandler = _this.descChangedHandler.bind(_this);
+        _this.uploadDescHandler = _this.uploadDescHandler.bind(_this);
         return _this;
     }
 
     _createClass(DashboardAccount, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
 
-            console.log("this.props", this.props);
             // Get initialUser variable from global scope declared in index.hbs
             var userData = initialUser;
             this.setState({
@@ -30454,84 +30506,362 @@ var DashboardAccount = function (_React$Component) {
                 });
             }
         }
-    }, {
-        key: "render",
-        value: function render() {
 
+        // Avatar
+
+    }, {
+        key: 'togglerAvatarHandler',
+        value: function togglerAvatarHandler() {
+            this.setState({
+                togglerAvatar: !this.state.togglerAvatar
+            });
+        }
+    }, {
+        key: 'fileChangedHandler',
+        value: function fileChangedHandler(event) {
+            this.setState({
+                selectedFile: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadAvatarHandler',
+        value: function uploadAvatarHandler(e) {
+            var _this3 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var avatar = this.state.selectedFile;
+            fetch("/api/account/avatar", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, avatar: avatar }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this3.setState({
+                        togglerAvatar: !_this3.state.togglerAvatar
+                    });
+                    // TODO: Add avatar to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+
+        // Fortnite username
+
+    }, {
+        key: 'togglerFortniteHandler',
+        value: function togglerFortniteHandler() {
+            this.setState({
+                togglerFortnite: !this.state.togglerFortnite
+            });
+        }
+    }, {
+        key: 'fortniteChangedHandler',
+        value: function fortniteChangedHandler(event) {
+            this.setState({
+                fortniteName: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadFortniteHandler',
+        value: function uploadFortniteHandler(e) {
+            var _this4 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var fortniteName = this.state.fortniteName;
+            fetch("/api/account/fortnitename", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, fortniteName: fortniteName }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this4.setState({
+                        togglerFortnite: !_this4.state.togglerFortnite
+                    });
+                    // TODO: Add fortniteName to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+
+        // Email 
+
+    }, {
+        key: 'togglerEmailHandler',
+        value: function togglerEmailHandler() {
+            this.setState({
+                togglerEmail: !this.state.togglerEmail
+            });
+        }
+    }, {
+        key: 'emailChangedHandler',
+        value: function emailChangedHandler(event) {
+            this.setState({
+                email: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadEmailHandler',
+        value: function uploadEmailHandler(e) {
+            var _this5 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var email = this.state.email;
+            fetch("/api/account/emailupdate", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, email: email }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this5.setState({
+                        togglerEmail: !_this5.state.togglerEmail
+                    });
+                    // TODO: Add email to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+        // Description  
+
+    }, {
+        key: 'togglerDescHandler',
+        value: function togglerDescHandler() {
+            this.setState({
+                togglerDesc: !this.state.togglerDesc
+            });
+        }
+    }, {
+        key: 'descChangedHandler',
+        value: function descChangedHandler(event) {
+            this.setState({
+                desc: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadDescHandler',
+        value: function uploadDescHandler(e) {
+            var _this6 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var desc = this.state.desc;
+            fetch("/api/account/description", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, desc: desc }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this6.setState({
+                        togglerDesc: !_this6.state.togglerDesc
+                    });
+                    // TODO: Add desc to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var togglerAvatarClasses = (0, _classnames2.default)('dashboard__avatar--form ', {
+                'dashboard__avatar--form--visible': this.state.togglerAvatar
+            });
+            var fortniteClasses = (0, _classnames2.default)('dashboard__fortnite--form ', {
+                'dashboard__fortnite--form--visible': this.state.togglerFortnite
+            });
+            var emailClasses = (0, _classnames2.default)('dashboard__email--form ', {
+                'dashboard__email--form--visible': this.state.togglerEmail
+            });
+            var descClasses = (0, _classnames2.default)('dashboard__desc--form ', {
+                'dashboard__desc--form--visible': this.state.togglerDesc
+            });
             return _react2.default.createElement(
-                "div",
-                { className: "dashboard__Account" },
+                'div',
+                { className: 'dashboard__account' },
                 _react2.default.createElement(
-                    "div",
-                    { className: "dashboard__Account--item" },
+                    'div',
+                    { className: 'dashboard__account--item' },
                     _react2.default.createElement(
-                        "h3",
-                        { className: "dashboard__Account--heading" },
-                        "Account"
+                        'h3',
+                        { className: 'dashboard__account--heading' },
+                        'Account'
                     ),
                     this.state.gamer_info ? _react2.default.createElement(
-                        "div",
-                        null,
-                        _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.gamer_info.profile.avatar, alt: "{this.state.gamer_info.profile.gamer_name}" }),
+                        'div',
+                        { className: 'dashboard__account--boxes' },
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'div',
+                            { className: 'dashboard__account--box' },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Gamer ID: "
-                            ),
-                            this.state.gamer_info.profile.gamer_id
+                                'div',
+                                { className: 'dashboard__avatar' },
+                                _react2.default.createElement('img', {
+                                    className: 'dashboard__avatar--image',
+                                    src: this.state.gamer_info.profile.avatar,
+                                    alt: '{this.state.gamer_info.profile.gamer_name}' }),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__avatar--toggle', onClick: this.togglerAvatarHandler },
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
+                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: togglerAvatarClasses },
+                                    _react2.default.createElement('input', {
+                                        className: 'dashboard__input dashboard__avatar--input',
+                                        type: 'text',
+                                        onChange: this.fileChangedHandler,
+                                        placeholder: 'New avatar URL' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadAvatarHandler },
+                                        'Upload!'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__account--name' },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        this.state.gamer_info.profile.gamer_name
+                                    )
+                                )
+                            )
                         ),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'div',
+                            { className: 'dashboard__account--box' },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Name: "
+                                'div',
+                                { className: 'dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'strong',
+                                    null,
+                                    'Gamer ID: '
+                                ),
+                                this.state.gamer_info.profile.gamer_id
                             ),
-                            this.state.gamer_info.profile.gamer_name
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "dashboard__Account--points" },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Level: "
+                                'div',
+                                { className: 'dashboard__fortnite dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__fortnite--toggle', onClick: this.togglerFortniteHandler },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        'Fortnite Name: '
+                                    ),
+                                    this.state.gamer_info.profile.fortnitename,
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
+                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: fortniteClasses },
+                                    _react2.default.createElement('input', {
+                                        className: 'dashboard__input dashboard__fortnite--input',
+                                        type: 'text',
+                                        onChange: this.fortniteChangedHandler,
+                                        placeholder: 'Add your Fortnite username' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadFortniteHandler },
+                                        'Add!'
+                                    )
+                                )
                             ),
-                            this.state.gamer_info.profile.gamer_level
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Total Posts: "
+                                'div',
+                                { className: 'dashboard__account--email dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__fortnite--toggle', onClick: this.togglerEmailHandler },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        'Email: '
+                                    ),
+                                    this.state.gamer_info.profile.email,
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
+                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: emailClasses },
+                                    _react2.default.createElement('input', {
+                                        className: 'dashboard__input dashboard__email--input',
+                                        type: 'email',
+                                        onChange: this.emailChangedHandler,
+                                        placeholder: 'Add your email' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadEmailHandler },
+                                        'Update!'
+                                    )
+                                )
                             ),
-                            this.state.gamer_info.profile.totalposts
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Email: "
-                            ),
-                            this.state.gamer_info.profile.email
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
-                            _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Description: "
-                            ),
-                            this.state.gamer_info.profile.description
+                                'div',
+                                { className: 'dashboard__account--desc dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__fortnite--toggle', onClick: this.togglerDescHandler },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        'Description: '
+                                    ),
+                                    this.state.gamer_info.profile.description,
+                                    _react2.default.createElement(
+                                        'svg',
+                                        { className: 'button-edit', version: '1.1', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' },
+                                        _react2.default.createElement('path', { d: 'M27 0c2.761 0 5 2.239 5 5 0 1.126-0.372 2.164-1 3l-2 2-7-7 2-2c0.836-0.628 1.874-1 3-1zM2 23l-2 9 9-2 18.5-18.5-7-7-18.5 18.5zM22.362 11.362l-14 14-1.724-1.724 14-14 1.724 1.724z' })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: descClasses },
+                                    _react2.default.createElement('textarea', {
+                                        className: 'dashboard__input dashboard__desc--input',
+                                        type: 'text',
+                                        onChange: this.descChangedHandler,
+                                        placeholder: 'Add your description' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadDescHandler },
+                                        'Update!'
+                                    )
+                                )
+                            )
                         )
                     ) : ""
                 )

@@ -33,7 +33,6 @@ const loginButton = document.querySelectorAll(".landing__login");
 if (loginButton) {
   for (var i = 0; i < loginButton.length; i++) {
     loginButton[i].addEventListener('click', function (e) {
-      console.log("fail");
       e.preventDefault();
 
       const username = document.getElementById("username").value;
