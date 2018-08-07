@@ -27819,6 +27819,10 @@ var _Profile = __webpack_require__(/*! ../components/Profile */ "./src/component
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
+var _NotFoundContainer = __webpack_require__(/*! ../containers/NotFoundContainer */ "./src/containers/NotFoundContainer.js");
+
+var _NotFoundContainer2 = _interopRequireDefault(_NotFoundContainer);
+
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27877,10 +27881,15 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/the-fort", render: function render() {
               return _react2.default.createElement(_TopGamesRoute2.default, null);
             } }),
+<<<<<<< Updated upstream
           _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
               return _react2.default.createElement(RetroRoute, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default })
+=======
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: "*", component: _NotFoundContainer2.default })
+>>>>>>> Stashed changes
         )
       );
     }
@@ -29291,6 +29300,83 @@ exports.default = News;
 
 /***/ }),
 
+/***/ "./src/components/NotFound.js":
+/*!************************************!*\
+  !*** ./src/components/NotFound.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//Convert component into a class, get username from state
+
+var NotFound = function (_React$Component) {
+  _inherits(NotFound, _React$Component);
+
+  function NotFound(props) {
+    _classCallCheck(this, NotFound);
+
+    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).call(this, props));
+  }
+
+  _createClass(NotFound, [{
+    key: "render",
+    value: function render() {
+      var userAuthState = this.props.userAuthState;
+
+      console.log("userAuthState:", userAuthState);
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "p",
+          null,
+          userAuthState
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          "Sorry username, Game Over."
+        )
+      );
+    }
+  }]);
+
+  return NotFound;
+}(_react2.default.Component);
+
+// function NotFound() {
+//   return (
+//     <div>
+//       <p>Sorry username, Game Over.</p>
+//     </div>
+//   );
+// }
+
+exports.default = NotFound;
+
+/***/ }),
+
 /***/ "./src/components/Posts.js":
 /*!*********************************!*\
   !*** ./src/components/Posts.js ***!
@@ -30698,6 +30784,38 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_News2.default);
+
+/***/ }),
+
+/***/ "./src/containers/NotFoundContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/NotFoundContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _NotFound = __webpack_require__(/*! ../components/NotFound */ "./src/components/NotFound.js");
+
+var _NotFound2 = _interopRequireDefault(_NotFound);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_NotFound2.default);
 
 /***/ }),
 
