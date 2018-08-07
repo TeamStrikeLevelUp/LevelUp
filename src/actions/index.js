@@ -308,6 +308,29 @@ export function receiveAuthState(auth) {
   };
 }
 
+// fetch to grab fortnite user statistics
+export function fetchFortniteStats(username) {
+  console.log("fortnite username", username)
+  return function (dispatch, getState) {
+    return fetch(`/api/fortnite/${username}`)
+      .then(response => response.json())
+      .then(data => {
+        dispatch(setFortniteStats(data))
+      })
+      .catch(e => {
+        alert("Sorry, we could not find your Fortnite data", e)
+      })
+  }
+}
+
+// set fortnite data into redux state
+export function setFortniteStats(userData) {
+  return {
+    type: "RECEIVE_FORTNITE_DATA",
+    payload: userData
+  };
+}
+
 
 //function to call Reducer and set user data in redux.state
 export function receiveUserData(userData) {
@@ -332,27 +355,6 @@ export function fetchGamerInfo(gamerId) {
   }
 }
 
-
-
-// export function fetchGamerInfo(gamerId) {
-//   //fetch gamer posts
-//   return function (dispatch, getState) {
-//     return fetch(`/api/gamer/${gamerId}`)
-//       .then(response => response.json())
-//       .then(gamerData => {
-//         dispatch.receiveUserData(gamerData);
-//       })
-//       .catch(error => {
-//         console.log("Sorry the following error occurred: ", error);
-//       });
-//   }
-
-//   //fetch replies by gamer
-//   // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-//   //     .then(response => response.json())
-//   //     .then(json => console.log("----gamer_posts----", json));
-
-// }
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
