@@ -3,16 +3,19 @@ import Search from "../components/Search";
 import {
   fetchGameInfoFromAPI,
   fetchGenreData,
-  fetchThemeData
+  fetchThemeData,
+  addFavouriteToDB
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-  // console.log("redux gameData", reduxState.gameInfo);
+
+
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
     genreData: reduxState.genreInfo,
-    userAuthState: reduxState.authState
+    userAuthState: reduxState.authState,
+    gameFavourite: reduxState.gameFavourite
 
   };
 };
@@ -25,6 +28,9 @@ const mapDispatchToProps = dispatch => {
 
     fetchGameInfo: searchGame => {
       dispatch(fetchGameInfoFromAPI(searchGame));
+    },
+    addToFavourite: (favInfo) => {
+      dispatch(addFavouriteToDB(favInfo))
     }
   };
 };

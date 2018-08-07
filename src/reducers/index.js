@@ -4,11 +4,19 @@ import themeInfo from "./themeInfo";
 import genreInfo from "./genreInfo";
 import newsInfo from "./newsInfo";
 import authState from "./authState";
+import fortniteStats from "./fortniteStats";
+import userInfo from "./userInfo";
+import gameFavourite from "./gameFavourite";
+import twitchFavourite from "./twitchFavourite";
 
 export default combineReducers({
   gameInfo,
   themeInfo,
   genreInfo,
   newsInfo,
-  authState
+  authState,
+  fortniteStats,
+  userInfo,
+  gameFavourite,
+  twitchFavourite
 });

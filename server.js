@@ -1,7 +1,18 @@
+// //twitch api testing
+// const TwitchApi = require('twitch-api');
+// const twitch = new TwitchApi({
+//   clientId: 'goetr7q6o8bx0zott538hwdsavlpf8',
+//   clientSecret: 'rvjs48iq0n9pppd5nsxdgrid3nroah',
+//   redirectUri: 'http://localhost:8080',
+//   scopes: [array of scopes you want access to]
+// });
+
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-
+const fetch = require("node-fetch");
+const FormData = require("form-data");
 //For News page
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
@@ -17,6 +28,8 @@ const expressSession = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+
 app.use("/static", express.static("static"));
 app.use(cookieParser());
 app.use(
@@ -35,6 +48,32 @@ const db = pgp({
   user: process.env.USERNAME,
   password: process.env.PASSWORD
 });
+
+//TWITCH TEST
+//Main  GAMES search for specific title
+// app.get("/streams", (req, res) => {
+
+//   client
+//     .games(
+//       {
+//         filters: {
+//           "name-in": gameTitle
+//         },
+//         order: "popularity:desc",
+//         search: gameTitle,
+//         // limit: 50 // Limit to 50 results
+//       },
+//       ["*"]
+//     )
+//     .then(response => {
+//       // response.body contains the parsed JSON response to this query
+//       displayData(res, response);
+//     })
+//     .catch(error => {
+//       console.log("You have 2 lives remaining ", error);
+//     });
+// });
+
 
 // Login starts
 
@@ -151,6 +190,7 @@ app.post("/api/reply", function (req, res) {
     .then(data => {
       db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
         .then(data => {
+          db.none(`UPDATE gamer_profile SET totalposts = totalposts+2 where gamer_id = $1`, [gamer_id]);
           res.json(data);
         })
         .catch(error => console.log(error.message));
@@ -176,6 +216,7 @@ app.post("/api/post", function (req, res) {
     .then(data => {
       db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1 ORDER BY created DESC`, [forum_id])
         .then(data => {
+          db.none(`UPDATE gamer_profile SET totalposts = totalposts+1 where gamer_id = $1`, [gamer_id])
           res.json(data);
         })
         .catch(error => console.log(error.message));
@@ -297,6 +338,112 @@ app.get("/api/gamer/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.post("/api/newfavourite/", function (req, res) {
+
+
+  //check if game exists in game table
+  db.one(`SELECT * FROM game WHERE igdb_id = $1`, [req.body.igdb])
+    .then(data1 => {
+      console.log(data1.id)
+
+      // game exists in game table => check if it exists in gamer_favorites
+      db.one(`SELECT * FROM gamer_favorites WHERE game_id = $1 
+      AND gamer_id = $2`, [data1.id, req.body.gamerId])
+        .then(data2 => {
+          //game already exists in gamer_favorites. Returning
+          res.json({ msg: "game is already there" })
+
+        }).catch(error => {
+          // game doesnt exists in gamer_favorites. Adding
+
+          db.one(
+            `INSERT INTO gamer_favorites(game_id, gamer_id)
+                    VALUES($1, $2) RETURNING id`,
+            [data1.id, req.body.gamerId]
+          )
+            .then(data3 => {
+              res.json({ msg: "added fav" })
+            })
+            .catch(error => {
+              res.json({
+                error: error.message
+              });
+            });
+
+        });
+
+    })
+    .catch(error => {
+      //game doesnt exsits in game table, Adding to game table
+      console.log("doesnt exist")
+
+      db.one(
+        `INSERT INTO game(title, igdb_id)
+                VALUES($1, $2) RETURNING id`,
+        [req.body.title, req.body.igdb]
+      )
+        .then(data4 => {
+          db.one(
+            `INSERT INTO gamer_favorites(game_id, gamer_id)
+                    VALUES($1, $2) RETURNING id`,
+            [data4.id, req.body.gamerId]
+          )
+            .then(data5 => {
+              res.json({ msg: "added game and fav" })
+            })
+            .catch(error => console.log(error.message));
+
+          // res.json(Object.assign({}, {id: data.id}, req.body));
+        })
+        .catch(error => {
+          res.json({
+            error: error.message
+          });
+        });
+
+    }
+    );
+});
+
+// gets all GAME favourites per user
+app.get("/api/favourites/:id", function (req, res) {
+  db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
+      AND game.id = gamer_favorites.game_id`, [req.params.id])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+// gets all TWITCH favourites per user
+app.get("/api/twitchfavourites/:id", function (req, res) {
+  db.any(`SELECT * FROM twitch_favorites WHERE  gamer_id = $1 `, [req.params.id])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+// adds TWITCH favourite to database
+app.post("/api/addtwitchfavourite", function (req, res) {
+
+  db.one(
+    `INSERT INTO twitch_favorites(twitch_name, gamer_id)
+          VALUES($1, $2) RETURNING id`,
+    [req.body.twitchName, req.body.gamerId]
+  )
+    .then(data => {
+      res.json({ msg: "added" })
+
+
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
 
 app.get("/api/gamer/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
@@ -327,6 +474,55 @@ app.get("/api/profile/:username", function (req, res) {
 });
 
 ///////////////// profile - end //////////////////
+
+///////////////// homepage - start //////////////////
+
+app.get("/api/featured/", function (req, res) {
+  db.one(`SELECT gamer_name, gamer_id FROM gamer_profile ORDER BY RANDOM() LIMIT 1`)
+    .then(gamer => {
+
+      db.one(`SELECT title, igdb_id FROM game ORDER BY RANDOM() LIMIT 1`)
+        .then(game => {
+
+          db.one(`SELECT title, id FROM forum ORDER BY RANDOM() LIMIT 1`)
+            .then(forum => {
+
+              res.json({ gamer, game, forum })
+
+            })
+            .catch(error => console.log(error.message));
+
+
+        })
+        .catch(error => console.log(error.message));
+
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+
+
+app.post("/api/vote", function (req, res) {
+  const { title, value, gamer_id, gamer_name } = req.body;
+
+  db.one(
+    `INSERT INTO poll(value, title, gamer_id, gamer_name)
+          VALUES($1, $2, $3, $4) RETURNING id`,
+    [value, title, gamer_id, gamer_name]
+  )
+    .then(data => {
+
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
+
+///////////////// homepage - end //////////////////
 
 
 function compare(plainTextPassword, hashedPassword) {
@@ -382,7 +578,7 @@ function isLoggedIn(req, res, next) {
 
 // route to log out users
 app.get("/logout", function (req, res) {
-  // log user out and redirect them to home page
+
   req.logout();
   res.redirect("/");
 });
@@ -430,6 +626,10 @@ const client = igdb("96651c2677f60060f3a91ef002c2a419");
 
 app.set("view engine", "hbs");
 
+// app.get("/", function (req, res) {
+//   res.render("index", {});
+// });
+
 app.get("/", function (req, res) {
   if (req.user) {
     res.render("index", { data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id }) })
@@ -437,10 +637,6 @@ app.get("/", function (req, res) {
     res.render("index", { data: "" });
   }
 });
-
-// app.get("/", function(req, res) {
-//   res.render("landing", {});
-// });
 
 app.get("/homepage", function (req, res) {
   if (req.user) {
@@ -503,7 +699,7 @@ app.post("/signup", (req, res) => {
 });
 
 
-
+//Main  GAMES search for specific title
 app.get("/games/:title", (req, res) => {
   const gameTitle = req.params.title;
   client
@@ -513,7 +709,8 @@ app.get("/games/:title", (req, res) => {
           "name-in": gameTitle
         },
         order: "popularity:desc",
-        search: gameTitle
+        search: gameTitle,
+        // limit: 50 // Limit to 50 results
       },
       ["*"]
     )
@@ -526,6 +723,7 @@ app.get("/games/:title", (req, res) => {
     });
 });
 
+//NOT CURRENTLY USED in game - utility to search for game details
 app.get("/gameid/:id", (req, res) => {
   const gameTitle = req.params.id;
   client
@@ -619,6 +817,53 @@ app.get("/searchNews/:searchTerm/:pageNum", (req, res) => {
       console.log("You have 2 lives remaining ", error);
     });
 });
+
+// Fortnite data --
+
+app.get("/api/fortnite/:username", (req, res) => {
+  const username = req.params.username
+  var formData = new FormData();
+  formData.append("username", username);
+
+  fetch(`https://fortnite-public-api.theapinetwork.com/prod09/users/id`, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Authorization: "49814d647a64a41873378c2c7acd74b1"
+    }
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(result => {
+      console.log(result)
+      var formDataStats = new FormData();
+
+      formDataStats.append("user_id", result.uid);
+      formDataStats.append("platform", result.platforms[0]);
+      formDataStats.append("window", "alltime");
+
+      fetch(
+        `https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats`,
+        {
+          method: "POST",
+          body: formDataStats,
+          headers: {
+            Authorization: "49814d647a64a41873378c2c7acd74b1"
+          }
+        }
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(result => {
+          console.log(result)
+
+          res.json(result);
+        });
+    });
+});
+// -- Fortnite end
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

@@ -1,11 +1,13 @@
 import React from "react";
-import ForumLinks from "../components/ForumLinks";
-import Header from "../components/Header";
-import HomeNavBar from "../components/HomeNavBar";
+import HomeContainer from "../containers/HomeContainer";
 
 class HomeRoute extends React.Component {
   render() {
-    return <div className="home" />;
+    return (
+      <div>
+        <HomeContainer />
+      </div>
+    );
   }
 }
 

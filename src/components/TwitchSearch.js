@@ -7,13 +7,22 @@ class TwitchSearch extends React.Component {
     super();
 
     this.state = {
-      twitchQuery: "",
+
+      twitchQuery: "Ninja",
       displayVideo: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.addToFavourites = this.addToFavourites.bind(this);
+  }
+  componentDidMount() {
+    if (this.props.fetchTwitchFavourites !== undefined) {
+      if (this.props.userAuthState) {
+        this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+      }
+    }
   }
 
   handleChange(event) {
@@ -27,6 +36,9 @@ class TwitchSearch extends React.Component {
     this.setState({
       displayVideo: true
     });
+    // this.setState({
+    //   twitchQuery: ""
+    // });
   }
 
   handleClick(event) {
@@ -36,14 +48,37 @@ class TwitchSearch extends React.Component {
     });
   }
 
+  addToFavourites(twitchStream) {
+    if (this.props.userAuthState) {
+      const newFav = {
+        gamerId: this.props.userAuthState.userId,
+        twitchName: twitchStream
+      }
+      // console.log("twitch info", newFav)
+      this.props.addToFavourite(newFav);
+      this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+
+    } else {
+      alert("Please log in to select favourites")
+    }
+
+  }
+
   render() {
-    console.log(this.state.twitchQuery);
+    // console.log("twitch search string", this.state.twitchQuery);
+    const { fetchTwitchFavourites, twitchFavourite, userAuthState } = this.props;
+    // const favouriteDisplay=twitchFavourite.
+
+
+
     return (
       <div className="twitch">
+
+
         <div className="twitch__search">
-          <h2 className="twitch__search--title">
+          {/* <h2 className="twitch__search--title">
             Find Your Favourite Streamers and Enjoy!
-          </h2>
+          </h2> */}
           <form
             onSubmit={this.handleSubmit}
             className="twitch__search--form"
@@ -55,20 +90,30 @@ class TwitchSearch extends React.Component {
               className="twitch__search--input"
               type="text"
               name="twitch__input"
+              alt="Twitch Search"
               id="twitch__input"
-              placeholder="Search for a channel..."
+              placeholder="Search streamers"
+              value={this.state.twitchQuery}
+
             />
-            <button id="twitch__submit" className="twitch__submit">
+            <button id="twitch__submit" className="twitch__button">
               Search
             </button>
+
+            <button className="twitch__button" onClick={event => { this.addToFavourites(this.state.twitchQuery) }}>Add to favourites</button>
+
+            {userAuthState ? <h2>Favourites </h2> : null}
+            <ul>
+              {twitchFavourite.map(currentFavourite =>
+                <a href="#" className="twitch__anchor"> <li key={currentFavourite.twitch_name} onClick={this.handleClick}>
+                  {currentFavourite.twitch_name}
+                </li></a>)}
+
+            </ul>
           </form>
-          <div>
+          <div className="twitch__search--video">
             <iframe
-              className={
-                this.state.displayVideo
-                  ? "twitch__player"
-                  : "twitch__player--hide"
-              }
+              className="twitch__player"
               src={`http://player.twitch.tv/?channel=${this.state.twitchQuery}`}
               height="700"
               width="800"
@@ -80,7 +125,7 @@ class TwitchSearch extends React.Component {
         </div>
         <div>
           <h2 className="twitch__streamers--title">
-            Check out these popular streamers:
+            Click below to check out these popular streamers:
           </h2>
           <ul className="twitch__streamers">
             <li>
