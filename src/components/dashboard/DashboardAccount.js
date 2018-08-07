@@ -217,9 +217,12 @@ class DashboardAccount extends React.Component {
                                         src={this.state.gamer_info.profile.avatar}
                                         alt="{this.state.gamer_info.profile.gamer_name}" />
                                     <div className="dashboard__avatar--toggle" onClick={this.togglerAvatarHandler}>
-                                        <svg className="button-edit" aria-hidden="true" focusable="false">
-                                            <use xlinkHref="#button-edit" />
-                                        </svg>
+                                        <div className="button__edit">
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlinkHref="#button-edit" />
+                                            </svg>
+                                            edit
+                                        </div>
                                     </div>
                                     <form className={togglerAvatarClasses}>
                                         <input
@@ -244,9 +247,12 @@ class DashboardAccount extends React.Component {
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerFortniteHandler}>
                                         <strong>Fortnite Name: </strong>
                                         {this.state.gamer_info.profile.fortnitename}
-                                        <svg className="button-edit" aria-hidden="true" focusable="false">
-                                            <use xlinkHref="#button-edit" />
-                                        </svg>
+                                        <div className="button__edit">
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlinkHref="#button-edit" />
+                                            </svg>
+                                            edit
+                                        </div>
                                     </div>
 
                                     <form className={fortniteClasses}>
@@ -266,9 +272,12 @@ class DashboardAccount extends React.Component {
 
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerEmailHandler}>
                                         <strong>Email: </strong>{this.state.gamer_info.profile.email}
-                                        <svg className="button-edit" aria-hidden="true" focusable="false">
-                                            <use xlinkHref="#button-edit" />
-                                        </svg>
+                                        <div className="button__edit">
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlinkHref="#button-edit" />
+                                            </svg>
+                                            edit
+                                        </div>
                                     </div>
 
                                     <form className={emailClasses}>
@@ -287,9 +296,12 @@ class DashboardAccount extends React.Component {
                                 <div className="dashboard__account--desc dashboard__account--text">
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerDescHandler}>
                                         <strong>Description: </strong>{this.state.gamer_info.profile.description}
-                                        <svg className="button-edit" aria-hidden="true" focusable="false">
-                                            <use xlinkHref="#button-edit" />
-                                        </svg>
+                                        <div className="button__edit">
+                                            <svg aria-hidden="true" focusable="false">
+                                                <use xlinkHref="#button-edit" />
+                                            </svg>
+                                            edit
+                                        </div>
                                     </div>
 
                                     <form className={descClasses}>

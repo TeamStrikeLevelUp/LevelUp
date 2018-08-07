@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import DashboardPanels from './dashboard/DashboardPanels';
 import DashboardAccount from './dashboard/DashboardAccount';
+import cx from 'classnames';
 import '../../styles/components/dashboard.scss';
 
 class Dashboard extends React.Component {
@@ -22,6 +23,9 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        const welcomeClasses = cx('dashboard__welcome', {
+            "dashboard__welcome--visible": this.state.welcome
+        })
         return (
             <div className="dashboard">
                 <div className="dashboard__container">
@@ -40,7 +44,7 @@ class Dashboard extends React.Component {
                         </ul>
                     </div>
                     <div className="dashboard-content-wrapper">
-                        <h2>Welcome back, {this.state.user.username}</h2>
+                        <h2 className={welcomeClasses} >Welcome back, {this.state.user.username}</h2>
                         <Switch>
                             <Route exact path="/dashboard" component={DashboardPanels} />
                             <Route path="/dashboard/account" render={() => {
