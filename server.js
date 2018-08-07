@@ -1,3 +1,13 @@
+// //twitch api testing
+// const TwitchApi = require('twitch-api');
+// const twitch = new TwitchApi({
+//   clientId: 'goetr7q6o8bx0zott538hwdsavlpf8',
+//   clientSecret: 'rvjs48iq0n9pppd5nsxdgrid3nroah',
+//   redirectUri: 'http://localhost:8080',
+//   scopes: [array of scopes you want access to]
+// });
+
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -38,6 +48,32 @@ const db = pgp({
   user: process.env.USERNAME,
   password: process.env.PASSWORD
 });
+
+//TWITCH TEST
+//Main  GAMES search for specific title
+// app.get("/streams", (req, res) => {
+
+//   client
+//     .games(
+//       {
+//         filters: {
+//           "name-in": gameTitle
+//         },
+//         order: "popularity:desc",
+//         search: gameTitle,
+//         // limit: 50 // Limit to 50 results
+//       },
+//       ["*"]
+//     )
+//     .then(response => {
+//       // response.body contains the parsed JSON response to this query
+//       displayData(res, response);
+//     })
+//     .catch(error => {
+//       console.log("You have 2 lives remaining ", error);
+//     });
+// });
+
 
 // Login starts
 
@@ -154,6 +190,7 @@ app.post("/api/reply", function (req, res) {
     .then(data => {
       db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
         .then(data => {
+          db.none(`UPDATE gamer_profile SET totalposts = totalposts+2 where gamer_id = $1`, [gamer_id]);
           res.json(data);
         })
         .catch(error => console.log(error.message));
@@ -179,6 +216,7 @@ app.post("/api/post", function (req, res) {
     .then(data => {
       db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1 ORDER BY created DESC`, [forum_id])
         .then(data => {
+          db.none(`UPDATE gamer_profile SET totalposts = totalposts+1 where gamer_id = $1`, [gamer_id])
           res.json(data);
         })
         .catch(error => console.log(error.message));
@@ -249,7 +287,6 @@ app.post("/api/newfavourite/", function (req, res) {
       //game doesnt exsits in game table, Adding to game table
       console.log("doesnt exist")
 
-
       db.one(
         `INSERT INTO game(title, igdb_id)
                 VALUES($1, $2) RETURNING id`,
@@ -277,6 +314,47 @@ app.post("/api/newfavourite/", function (req, res) {
     }
     );
 });
+
+// gets all GAME favourites per user
+app.get("/api/favourites/:id", function (req, res) {
+  db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
+      AND game.id = gamer_favorites.game_id`, [req.params.id])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+// gets all TWITCH favourites per user
+app.get("/api/twitchfavourites/:id", function (req, res) {
+  db.any(`SELECT * FROM twitch_favorites WHERE  gamer_id = $1 `, [req.params.id])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+// adds TWITCH favourite to database
+app.post("/api/addtwitchfavourite", function (req, res) {
+
+  db.one(
+    `INSERT INTO twitch_favorites(twitch_name, gamer_id)
+          VALUES($1, $2) RETURNING id`,
+    [req.body.twitchName, req.body.gamerId]
+  )
+    .then(data => {
+      res.json({ msg: "added" })
+
+
+    })
+    .catch(error => {
+      res.json({
+        error: error.message
+      });
+    });
+});
+
+
 app.get("/api/gamer/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
     req.params.id

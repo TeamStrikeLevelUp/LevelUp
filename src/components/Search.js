@@ -150,7 +150,7 @@ class Search extends React.Component {
               onChange={this.handleChange}
               type="search"
               results="0"
-              alt="Search"
+              alt="Game Search"
               className="search__input"
               // id="search__text"
               autoComplete="off"
