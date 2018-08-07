@@ -28281,7 +28281,7 @@ function FortniteStats(_ref) {
       _react2.default.createElement(
         "h5",
         null,
-        stat.platform
+        stat.platform.toUpperCase()
       ),
       _react2.default.createElement("img", { src: stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg" }),
       _react2.default.createElement(

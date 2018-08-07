@@ -8,7 +8,7 @@ function FortniteStats({ stat }) {
     <ul>
       <li key={stat.uid}>
         <h3>{stat.username}</h3>
-        <h5>{stat.platform}</h5>
+        <h5>{stat.platform.toUpperCase()}</h5>
         <img src={stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg"} />
         <h4>Solo Skills</h4>
         <p>1st Place Finishes: {stat.stats.placetop1_solo}</p>
