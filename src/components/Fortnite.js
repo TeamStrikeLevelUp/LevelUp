@@ -1,5 +1,6 @@
 import React from "react";
 import FortniteStats from "./FortniteStats";
+import FortnitePlayerList from "./FortnitePlayerList";
 
 import "../../styles/components/fortnite.scss";
 import "../../styles/index.scss";
@@ -34,6 +35,7 @@ class Fortnite extends React.Component {
   render() {
     return (
       <div className="fortnite">
+
         <div className="fortnite__search">
           <div className="fortnite__title-container">
             <h1 className="fortnite__title">Welcome to The Fort</h1>
@@ -51,26 +53,7 @@ class Fortnite extends React.Component {
           </div>
         </div>
         <div className="fortnite__playerlist">
-          <ul>
-            <li>
-              <p>Ninja</p>
-            </li>
-            <li>
-              <p>Fnatic_Ettnix</p>
-            </li>
-            <li>
-              <p>Terry 5L</p>
-            </li>
-            <li>
-              <p>dondottah571</p>
-            </li>
-            <li>
-              <p>ViniciusAmazing</p>
-            </li>
-            <li>
-              <p>JeDiiiKniiGhT</p>
-            </li>
-          </ul>
+          <FortnitePlayerList />
         </div>
       </div>
     );

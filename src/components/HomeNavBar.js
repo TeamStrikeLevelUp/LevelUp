@@ -16,7 +16,7 @@ class HomeNavBar extends React.Component {
           <Link to="/homepage">Home</Link>
         </li>
         <li className="main-nav__item">
-          <NavLink activeClassname="is-active" to="/search">Search Games</NavLink>
+          <NavLink activeClassName="is active" to="/search">Search Games</NavLink>
         </li>
         <li className="main-nav__item">
           <Link to="/news">Gaming News</Link>

@@ -8,27 +8,31 @@ function FortniteStats({ stat }) {
   console.log(stat);
 
   return (
-    <ul>
+    <ul className="fortnite__ul">
       <li className="fortnite__userstats" key={stat.uid}>
-        <h3>{stat.username}</h3>
-        <h5>{stat.platform.toUpperCase()}</h5>
-        <img src={stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg"} />
+        <h3 className="fortnite__userstats--username">{stat.username}</h3>
+        <h5 className="fortnite__userstats--platform">{stat.platform.toUpperCase()}</h5>
+        <img className="fortnite__userstats--image" src={stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fort-normal.jpg"} />
+        <br />
         <h2 className="fortnite__userstats--titles">Solo Stats</h2>
-        <p>1st Place Finishes: {stat.stats.placetop1_solo}</p>
-        <p>Solo Kills: {stat.stats.kills_solo}</p>
+        <p className="fortnite__userstats--stats">1st Place Finishes: {stat.stats.placetop1_solo}</p>
+        <p className="fortnite__userstats--stats">Solo Kills: {stat.stats.kills_solo}</p>
+        <br />
         <h2 className="fortnite__userstats--titles">Duo Stats</h2>
-        <p>1st Place Finishes: {stat.stats.placetop1_duo}</p>
-        <p>Duo Kills: {stat.stats.kills_duo}</p>
+        <p className="fortnite__userstats--stats">1st Place Finishes: {stat.stats.placetop1_duo}</p>
+        <p className="fortnite__userstats--stats">Duo Kills: {stat.stats.kills_duo}</p>
+        <br />
         <h2 className="fortnite__userstats--titles">Squad Stats</h2>
-        <p>1st Place Finishes: {stat.stats.placetop1_squad}</p>
-        <p>Squad Kills: {stat.stats.kills_squad}</p>
+        <p className="fortnite__userstats--stats">1st Place Finishes: {stat.stats.placetop1_squad}</p>
+        <p className="fortnite__userstats--stats">Squad Kills: {stat.stats.kills_squad}</p>
+        <br />
         <h2 className="fortnite__userstats--titles">Total Skills</h2>
-        <p>Total Kills: {stat.totals.kills}</p>
-        <p>Total Wins: {stat.totals.wins}</p>
-        <p>Total Matches: {stat.totals.matchesplayed}</p>
-        <p>Total Hours: {stat.totals.hoursplayed}</p>
-        <p>Win rate: {stat.totals.winrate}</p>
-        <p>Total Score: {stat.totals.score}</p>
+        <p className="fortnite__userstats--stats">Total Kills: {stat.totals.kills}</p>
+        <p className="fortnite__userstats--stats">Total Wins: {stat.totals.wins}</p>
+        <p className="fortnite__userstats--stats">Total Matches: {stat.totals.matchesplayed}</p>
+        <p className="fortnite__userstats--stats">Total Hours: {stat.totals.hoursplayed}</p>
+        <p className="fortnite__userstats--stats">Win rate: {stat.totals.winrate}</p>
+        <p className="fortnite__userstats--stats">Total Score: {stat.totals.score}</p>
       </li>
     </ul>
   )

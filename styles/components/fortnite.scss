@@ -47,23 +47,45 @@
 
 .fortnite__userstats {
   display: flex;
-  position: absolute;
-
   padding: 10px;
-  
   flex-direction: column;
   align-items: center;
-
-  top: 30%;
+  position: relative;
+  background-color: rgba(0, 0, 255, 0.473);
   
-  background-color: royalblue;
-  border-radius: 20%;
+  height: 100%;
+  top: 90px;
+  width: 60%;
+}
+
+.fortnite__ul {
+  columns: 2;
 }
 
 .fortnite__userstats--titles {
   color: #fafafe;
   margin: 0;
   padding:0;
+}
+
+.fortnite__userstats--image{
+  border-radius: 50%;
+
+  width: 80%;
+  height: auto;
+}
+
+.fortnite__userstats--stats {
+  margin: 0;
+  padding: 0;
+}
+
+.fortnite__userstats--username {
+  font-size: 170%;
+}
+
+.fortnite__userstats--platform {
+  font-size: 150%;
 }
 
 .fortnite__playerlist {

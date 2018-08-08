@@ -117,7 +117,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100vh;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  position: absolute;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  top: 30%;\n  background-color: royalblue;\n  border-radius: 20%; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n", ""]);
+exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100vh;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(0, 0, 255, 0.473);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n", ""]);
 
 // exports
 
@@ -28106,6 +28106,10 @@ var _FortniteStats = __webpack_require__(/*! ./FortniteStats */ "./src/component
 
 var _FortniteStats2 = _interopRequireDefault(_FortniteStats);
 
+var _FortnitePlayerList = __webpack_require__(/*! ./FortnitePlayerList */ "./src/components/FortnitePlayerList.js");
+
+var _FortnitePlayerList2 = _interopRequireDefault(_FortnitePlayerList);
+
 __webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
@@ -28202,64 +28206,7 @@ var Fortnite = function (_React$Component) {
         _react2.default.createElement(
           "div",
           { className: "fortnite__playerlist" },
-          _react2.default.createElement(
-            "ul",
-            null,
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "p",
-                null,
-                "Ninja"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "p",
-                null,
-                "Fnatic_Ettnix"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "p",
-                null,
-                "Terry 5L"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "p",
-                null,
-                "dondottah571"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "p",
-                null,
-                "ViniciusAmazing"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "p",
-                null,
-                "JeDiiiKniiGhT"
-              )
-            )
-          )
+          _react2.default.createElement(_FortnitePlayerList2.default, null)
         )
       );
     }
@@ -28269,6 +28216,115 @@ var Fortnite = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Fortnite;
+
+/***/ }),
+
+/***/ "./src/components/FortnitePlayerList.js":
+/*!**********************************************!*\
+  !*** ./src/components/FortnitePlayerList.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _FortniteUser = __webpack_require__(/*! ./FortniteUser1 */ "./src/components/FortniteUser1.js");
+
+var _FortniteUser2 = _interopRequireDefault(_FortniteUser);
+
+var _FortniteUser3 = __webpack_require__(/*! ./FortniteUser2 */ "./src/components/FortniteUser2.js");
+
+var _FortniteUser4 = _interopRequireDefault(_FortniteUser3);
+
+var _FortniteUser5 = __webpack_require__(/*! ./FortniteUser3 */ "./src/components/FortniteUser3.js");
+
+var _FortniteUser6 = _interopRequireDefault(_FortniteUser5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FortnitePlayerList = function (_React$Component) {
+  _inherits(FortnitePlayerList, _React$Component);
+
+  function FortnitePlayerList() {
+    _classCallCheck(this, FortnitePlayerList);
+
+    var _this = _possibleConstructorReturn(this, (FortnitePlayerList.__proto__ || Object.getPrototypeOf(FortnitePlayerList)).call(this));
+
+    _this.state = {
+      ninja: {},
+      viniciusAmazing: {},
+      terry5L: {}
+    };
+    return _this;
+  }
+
+  _createClass(FortnitePlayerList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/fortnite/ninja").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({
+          ninja: data
+        });
+      });
+
+      fetch("/api/fortnite/ViniciusAmazing").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({
+          viniciusAmazing: data
+        });
+        console.log(_this2.state.viniciusAmazing);
+      });
+
+      fetch("/api/fortnite/Terry 5L").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({
+          terry5L: data
+        });
+        console.log(_this2.state.terry5L);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log(this.state.ninja);
+
+      return _react2.default.createElement(
+        "div",
+        { className: "playerlist" },
+        _react2.default.createElement(_FortniteUser2.default, { ninja: this.state.ninja }),
+        _react2.default.createElement(_FortniteUser4.default, { viniciusAmazing: this.state.viniciusAmazing }),
+        _react2.default.createElement(_FortniteUser6.default, { terry5L: this.state.terry5L })
+      );
+    }
+  }]);
+
+  return FortnitePlayerList;
+}(_react2.default.Component);
+
+exports.default = FortnitePlayerList;
 
 /***/ }),
 
@@ -28304,21 +28360,22 @@ function FortniteStats(_ref) {
 
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "fortnite__ul" },
     _react2.default.createElement(
       "li",
       { className: "fortnite__userstats", key: stat.uid },
       _react2.default.createElement(
         "h3",
-        null,
+        { className: "fortnite__userstats--username" },
         stat.username
       ),
       _react2.default.createElement(
         "h5",
-        null,
+        { className: "fortnite__userstats--platform" },
         stat.platform.toUpperCase()
       ),
-      _react2.default.createElement("img", { src: stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg" }),
+      _react2.default.createElement("img", { className: "fortnite__userstats--image", src: stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fort-normal.jpg" }),
+      _react2.default.createElement("br", null),
       _react2.default.createElement(
         "h2",
         { className: "fortnite__userstats--titles" },
@@ -28326,16 +28383,17 @@ function FortniteStats(_ref) {
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "1st Place Finishes: ",
         stat.stats.placetop1_solo
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Solo Kills: ",
         stat.stats.kills_solo
       ),
+      _react2.default.createElement("br", null),
       _react2.default.createElement(
         "h2",
         { className: "fortnite__userstats--titles" },
@@ -28343,16 +28401,17 @@ function FortniteStats(_ref) {
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "1st Place Finishes: ",
         stat.stats.placetop1_duo
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Duo Kills: ",
         stat.stats.kills_duo
       ),
+      _react2.default.createElement("br", null),
       _react2.default.createElement(
         "h2",
         { className: "fortnite__userstats--titles" },
@@ -28360,16 +28419,17 @@ function FortniteStats(_ref) {
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "1st Place Finishes: ",
         stat.stats.placetop1_squad
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Squad Kills: ",
         stat.stats.kills_squad
       ),
+      _react2.default.createElement("br", null),
       _react2.default.createElement(
         "h2",
         { className: "fortnite__userstats--titles" },
@@ -28377,37 +28437,37 @@ function FortniteStats(_ref) {
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Total Kills: ",
         stat.totals.kills
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Total Wins: ",
         stat.totals.wins
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Total Matches: ",
         stat.totals.matchesplayed
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Total Hours: ",
         stat.totals.hoursplayed
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Win rate: ",
         stat.totals.winrate
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "fortnite__userstats--stats" },
         "Total Score: ",
         stat.totals.score
       )
@@ -28416,6 +28476,132 @@ function FortniteStats(_ref) {
 }
 
 exports.default = FortniteStats;
+
+/***/ }),
+
+/***/ "./src/components/FortniteUser1.js":
+/*!*****************************************!*\
+  !*** ./src/components/FortniteUser1.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FortniteUser1(_ref) {
+  var ninja = _ref.ninja;
+
+  return _react2.default.createElement(
+    "ul",
+    null,
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        "h2",
+        null,
+        ninja.username
+      )
+    )
+  );
+}
+
+exports.default = FortniteUser1;
+
+/***/ }),
+
+/***/ "./src/components/FortniteUser2.js":
+/*!*****************************************!*\
+  !*** ./src/components/FortniteUser2.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FortniteUser2(_ref) {
+  var viniciusAmazing = _ref.viniciusAmazing;
+
+  return _react2.default.createElement(
+    "ul",
+    null,
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        "h2",
+        null,
+        viniciusAmazing.username
+      )
+    )
+  );
+}
+
+exports.default = FortniteUser2;
+
+/***/ }),
+
+/***/ "./src/components/FortniteUser3.js":
+/*!*****************************************!*\
+  !*** ./src/components/FortniteUser3.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function FortniteUser3(_ref) {
+  var terry5L = _ref.terry5L;
+
+  return _react2.default.createElement(
+    "ul",
+    null,
+    _react2.default.createElement(
+      "li",
+      null,
+      _react2.default.createElement(
+        "h2",
+        null,
+        terry5L.username
+      )
+    )
+  );
+}
+
+exports.default = FortniteUser3;
 
 /***/ }),
 
@@ -28809,7 +28995,7 @@ var HomeNavBar = function (_React$Component) {
           { className: "main-nav__item" },
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { activeClassname: "is-active", to: "/search" },
+            { activeClassName: "is active", to: "/search" },
             "Search Games"
           )
         ),
@@ -29695,12 +29881,14 @@ var Search = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).call(this));
 
     _this.state = {
-      searchGame: ""
+      searchGame: "",
+      count: 0
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.addToFavourites = _this.addToFavourites.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
 
     return _this;
   }
@@ -29728,6 +29916,13 @@ var Search = function (_React$Component) {
       });
     }
   }, {
+    key: "handleClick",
+    value: function handleClick() {
+      this.setState({
+        count: this.state.count + 1
+      });
+    }
+  }, {
     key: "addToFavourites",
     value: function addToFavourites(gameId, gameTitle) {
       if (this.props.userAuthState) {
@@ -29751,6 +29946,9 @@ var Search = function (_React$Component) {
           gameData = _props.gameData,
           userAuthState = _props.userAuthState;
 
+      var imagesArr = gameData.map(function (img) {
+        _react2.default.createElement("img", { src: img.screenshot[_this2.state.count] });
+      });
       var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
         "div",
         { className: "search__result" },
@@ -29863,9 +30061,7 @@ var Search = function (_React$Component) {
           _react2.default.createElement(
             "div",
             { className: "search__screenshots" },
-            game.screenshot ? game.screenshot.map(function (currentImg) {
-              return _react2.default.createElement("img", { src: currentImg, key: currentImg });
-            }) : null
+            imagesArr
           ),
           _react2.default.createElement("br", null)
         );
@@ -29918,6 +30114,12 @@ var Search = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Search;
+
+// {game.screenshot
+//   ? game.screenshot.map(currentImg => {
+//     return <img src={currentImg} key={currentImg} />;
+//   })
+//   : null}
 
 /***/ }),
 

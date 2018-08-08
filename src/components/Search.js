@@ -8,12 +8,14 @@ class Search extends React.Component {
     super();
 
     this.state = {
-      searchGame: ""
+      searchGame: "",
+      count: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
   }
 
@@ -36,6 +38,12 @@ class Search extends React.Component {
     });
   }
 
+  handleClick() {
+    this.setState({
+      count: this.state.count + 1
+    })
+  }
+
   addToFavourites(gameId, gameTitle) {
     if (this.props.userAuthState) {
       const newFav = {
@@ -53,6 +61,11 @@ class Search extends React.Component {
   }
   render() {
     const { gameData, userAuthState } = this.props;
+    const imagesArr = gameData.map(img => {
+      <img src={
+        img.screenshot[this.state.count]
+      } />
+    })
     const gameDisplay =
       gameData === "No results found" ? <div className="search__result"> <div className="search__details"> {gameData} </div></div> :
         gameData.map(game => {
@@ -122,11 +135,7 @@ class Search extends React.Component {
                 </div>
               </div>
               <div className="search__screenshots">
-                {game.screenshot
-                  ? game.screenshot.map(currentImg => {
-                    return <img src={currentImg} key={currentImg} />;
-                  })
-                  : null}
+                {imagesArr}
               </div>
 
               <br />
@@ -168,3 +177,9 @@ class Search extends React.Component {
 }
 
 export default Search;
+
+// {game.screenshot
+//   ? game.screenshot.map(currentImg => {
+//     return <img src={currentImg} key={currentImg} />;
+//   })
+//   : null}
