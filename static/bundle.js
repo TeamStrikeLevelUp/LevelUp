@@ -148,10 +148,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -167,10 +167,10 @@ exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -186,10 +186,10 @@ exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -198,17 +198,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 60px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        border-right: 1px solid var(--light-grey);\n        padding-right: 10px;\n        margin-right: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        border-right: 1px solid var(--light-grey);\n        padding-right: 10px;\n        margin-right: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -224,10 +224,10 @@ exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -243,10 +243,10 @@ exports.push([module.i, ".homepage {\n  display: flex;\n  width: 100%; }\n\n.hom
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -262,10 +262,10 @@ exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -281,10 +281,10 @@ exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -300,10 +300,10 @@ exports.push([module.i, ".notfound {\n  margin: auto;\n  text-align: center;\n  
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -319,10 +319,10 @@ exports.push([module.i, "li {\n  list-style: none; }\n\n.game__anchor {\n  text-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -338,10 +338,10 @@ exports.push([module.i, ".twitch {\n  display: flex;\n  margin-left: 10px; }\n\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -32824,24 +32824,28 @@ var ForumsRoute = function (_React$Component) {
         "div",
         { className: "community" },
         _react2.default.createElement(
-          "h1",
-          null,
-          "Community Forums"
-        ),
-        _react2.default.createElement(
-          "form",
-          { className: "game-search__form" },
-          _react2.default.createElement("input", {
-            className: "game-search__field",
-            placeholder: "Search for a game",
-            value: this.state.input,
-            onChange: this.inputHandler }),
+          "header",
+          { className: "community__header" },
           _react2.default.createElement(
-            "button",
-            {
-              className: "button button-primary",
-              onClick: this.searchHandler },
-            " Search "
+            "h1",
+            { className: "community__heading" },
+            "Community Forums"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "game-search__form" },
+            _react2.default.createElement("input", {
+              className: "game-search__field",
+              placeholder: "Search for a game",
+              value: this.state.input,
+              onChange: this.inputHandler }),
+            _react2.default.createElement(
+              "button",
+              {
+                className: "button button-primary",
+                onClick: this.searchHandler },
+              " Search "
+            )
           )
         ),
         _react2.default.createElement(_ForumLinks2.default, { forums: this.state.forums })
@@ -33100,7 +33104,7 @@ exports.default = TwitchRoute;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33130,7 +33134,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33160,7 +33164,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33190,7 +33194,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33220,7 +33224,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33250,7 +33254,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33280,7 +33284,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33310,7 +33314,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33340,7 +33344,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33370,7 +33374,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33400,7 +33404,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
+var content = __webpack_require__(/*! !../node_modules/css-loader??ref--5-1!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
