@@ -1,17 +1,35 @@
-import React from "react";
+import { connect } from "react-redux";
 import TwitchSearch from "../components/TwitchSearch";
+import {
+  addFavTwitchToDB, fetchTwitchFavourite, fetchTopTwitchers
+} from "../actions";
 
-class TwitchContainer extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div>
-        <TwitchSearch />
-      </div>
-    );
-  }
-}
+const mapStateToProps = reduxState => {
 
-export default TwitchContainer;
+  console.log("twitchers in container", reduxState.topTwitchers)
+  return {
+    userAuthState: reduxState.authState,
+    twitchFavourite: reduxState.twitchFavourite,
+    topTwitchers: reduxState.topTwitchers
+
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+    addToFavourite: (favInfo) => {
+      dispatch(addFavTwitchToDB(favInfo)) //This might need to be different
+    },
+    fetchTwitchFavourites: (userId) => {
+      dispatch(fetchTwitchFavourite(userId))
+    },
+    fetchTopTwitchers: () => { dispatch(fetchTopTwitchers()) }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TwitchSearch);
+

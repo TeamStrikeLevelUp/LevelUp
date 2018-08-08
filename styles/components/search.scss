@@ -1,7 +1,12 @@
 li {
   list-style: none;
 }
-
+.game__anchor{
+  text-decoration: none;
+  color:whitesmoke;
+  text-align:center;
+  font-size:15px;
+}
 
 .search__body {
   display: flex;

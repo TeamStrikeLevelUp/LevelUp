@@ -13,6 +13,7 @@ import FortniteRoute from "../routes/FortniteRoute";
 import PostsContainer from "../containers/PostsContainer";
 import ForumsContainer from "../containers/ForumsContainer";
 import Profile from "../components/Profile";
+import NotFoundContainer from "../containers/NotFoundContainer";
 
 import "../../styles/index.scss";
 
@@ -22,6 +23,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
+          <Route exact path="/" render={() => <HomeRoute />} />
           <Route exact path="/homepage" render={() => <HomeRoute />} />
           <Route exact path="/search" render={() => (
             <SearchGamesRoute />)} />
@@ -36,7 +38,7 @@ class App extends React.Component {
           <Route path="/the-fort" render={() => <FortniteRoute />} />
           <Route path="/retroclub" render={() => <RetroRoute />} />
           <Route path="/profile/:id" component={Profile} />
-          {/* <Route component={NotFound} /> */}
+          <Route component={NotFoundContainer} />
         </Switch>
       </div>
     );

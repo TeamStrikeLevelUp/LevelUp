@@ -1,0 +1,45 @@
+.button__edit {
+    margin-left: 10px;
+    font-size: 9px;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 40px;
+    padding: 2px 3px;
+    border-radius: 4px;
+    display: inline-block;
+
+    &.button__edit--only-icon {
+        margin-left: 0;
+        border: none;
+        width: auto;
+
+        &:hover {
+            border: none;
+        }
+    }
+    svg {
+        fill: #fff;
+        width: 11px;
+        height: 11px;
+        margin-right: 4px;
+    }
+    &:hover {
+        cursor: pointer;
+        border: 1px solid var(--secondary-color);
+        color: var(--secondary-color);
+        svg {
+            fill: var(--secondary-color);
+        }
+    }
+}
+
+.button {
+    padding: 7px 10px 5px;
+    font-size: 12px;
+    border: none;
+
+    &.button-primary {
+        color: #fff;
+        background-color: var(--secondary-color);
+    }
+}

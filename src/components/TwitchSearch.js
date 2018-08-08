@@ -7,28 +7,41 @@ class TwitchSearch extends React.Component {
     super();
 
     this.state = {
+
       twitchQuery: "Ninja",
-      twitchChange: "",
       displayVideo: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.addToFavourites = this.addToFavourites.bind(this);
+  }
+  componentDidMount() {
+
+
+    if (this.props.fetchTwitchFavourites !== undefined) {
+      if (this.props.userAuthState) {
+        this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+      }
+    }
+    this.props.fetchTopTwitchers()
   }
 
   handleChange(event) {
     this.setState({
-      twitchChange: event.target.value
+      twitchQuery: event.target.value
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
-      displayVideo: true,
-      twitchQuery: this.state.twitchChange
+      displayVideo: true
     });
+    // this.setState({
+    //   twitchQuery: ""
+    // });
   }
 
   handleClick(event) {
@@ -38,14 +51,28 @@ class TwitchSearch extends React.Component {
     });
   }
 
+  addToFavourites(twitchStream) {
+    if (this.props.userAuthState) {
+      const newFav = {
+        gamerId: this.props.userAuthState.userId,
+        twitchName: twitchStream
+      }
+      // console.log("twitch info", newFav)
+      this.props.addToFavourite(newFav);
+      this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+
+    } else {
+      alert("Please log in to select favourites")
+    }
+
+  }
+
   render() {
-    console.log(this.state.twitchQuery);
+
+    const { fetchTwitchFavourites, twitchFavourite, userAuthState, topTwitchers } = this.props;
     return (
       <div className="twitch">
         <div className="twitch__search">
-          <h2 className="twitch__search--title">
-            Find Your Favourite Streamers and Enjoy!
-          </h2>
           <form
             onSubmit={this.handleSubmit}
             className="twitch__search--form"
@@ -57,15 +84,33 @@ class TwitchSearch extends React.Component {
               className="twitch__search--input"
               type="text"
               name="twitch__input"
+              alt="Twitch Search"
               id="twitch__input"
-              placeholder="Search for a channel..."
-              value={this.state.twitchChange}
+              placeholder="Search streamers"
+              value={this.state.twitchQuery}
+
             />
-            <button id="twitch__submit" className="twitch__submit">
+            <button id="twitch__submit" className="twitch__button">
               Search
             </button>
+
+            <button className="twitch__button" onClick={event => { this.addToFavourites(this.state.twitchQuery) }}>Add to favourites</button>
+
+            {userAuthState ? <h2>Favourites </h2> : null}
+            <ul>
+              {twitchFavourite.map(currentFavourite =>
+
+                <a href="#" className="twitch__anchor" key={currentFavourite.twitch_name}>
+                  <li key={currentFavourite.twitch_name} onClick={this.handleClick}>
+                    {currentFavourite.twitch_name}
+                  </li>
+                </a>)}
+
+
+            </ul>
           </form>
-          <div>
+
+          <div className="twitch__search--video">
             <iframe
               className="twitch__player"
               src={`http://player.twitch.tv/?channel=${this.state.twitchQuery}`}
@@ -74,14 +119,25 @@ class TwitchSearch extends React.Component {
               frameBorder="2"
               scrolling="yes"
               allowFullScreen="true"
+
             />
           </div>
         </div>
         <div>
           <h2 className="twitch__streamers--title">
-            Click below to check out these popular streamers:
+            Top 10 Streams:
           </h2>
-          <ul className="twitch__streamers">
+          <ul>
+            {topTwitchers.map(currentTwitch => {
+              return (<li key={currentTwitch.id}>
+                <img src={currentTwitch.profile_image_url} width="100" />
+                {currentTwitch.display_name}
+              </li>)
+            }
+            )}
+          </ul>
+
+          {/* <ul className="twitch__streamers">
             <li>
               <h4
                 className="twitch__streamers--names"
@@ -172,7 +228,7 @@ class TwitchSearch extends React.Component {
               </h4>
               <p>Focus: Grand Theft Auto</p>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     );

@@ -86,6 +86,68 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
 /*!*************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
@@ -98,7 +160,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px;\n      background-color: rgba(53, 94, 114, 0.5); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n  .dashboard .dashboard__panels {\n    display: grid;\n    grid-template-columns: 1fr;\n    grid-template-rows: auto;\n    grid-gap: 40px; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__panels {\n        grid-template-columns: 1fr 1fr 1fr;\n        grid-template-rows: 2fr 2fr; } }\n    .dashboard .dashboard__panels .dashboard__panels--item {\n      background-color: rgba(53, 94, 114, 0.5);\n      padding: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--heading {\n      font-size: 15px; }\n    .dashboard .dashboard__panels .dashboard__panels--points {\n      font-size: 42px;\n      padding-left: 20px; }\n    .dashboard .dashboard__panels .dashboard__panels--text {\n      font-size: 12px;\n      padding-left: 20px; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
 
 // exports
 
@@ -124,6 +186,25 @@ exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".forum__links {\n  color: gold; }\n\n.profile__links {\n  color: red; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
@@ -136,7 +217,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: cadetblue; }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
+exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: var(--dark-grey); }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
 
 // exports
 
@@ -155,7 +236,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".homepage {\n  display: flex;\n  width: 100%; }\n\n.homepage__main {\n  display: flex;\n  flex: 4;\n  flex-direction: column;\n  text-align: center; }\n\n.homepage__main--featured--selection {\n  display: flex;\n  flex-direction: row; }\n\n.homepage__main--top10 {\n  display: flex;\n  width: 60%; }\n\n.homepage__side {\n  flex: 1; }\n", ""]);
+exports.push([module.i, ".homepage {\n  display: flex;\n  width: 100%; }\n\n.homepage__main {\n  display: flex;\n  flex: 4;\n  flex-direction: column;\n  text-align: center; }\n\n.homepage__main--featured--selection {\n  display: flex;\n  flex-direction: row; }\n\n.homepage__main--top5 {\n  display: flex;\n  width: 60%; }\n\n.homepage__side {\n  flex: 1; }\n\n.homepage__links {\n  color: gold; }\n", ""]);
 
 // exports
 
@@ -174,7 +255,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n    .main-nav .main-nav__item a {\n      color: #fff;\n      font-size: 14px; }\n", ""]);
+exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  margin: 0;\n  padding: 0; }\n  .main-nav .main-nav__item {\n    margin-left: 20px; }\n    .main-nav .main-nav__item a {\n      color: #fff;\n      font-size: 14px; }\n      .main-nav .main-nav__item a:hover {\n        color: var(--secondary-color); }\n", ""]);
 
 // exports
 
@@ -200,6 +281,25 @@ exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".notfound {\n  margin: auto;\n  text-align: center;\n  width: 100%; }\n\n.notfound__image {\n  text-align: center; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
@@ -212,7 +312,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li {\n  list-style: none; }\n\n.search__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.search {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3;\n  margin-left: 10px; }\n\n.search__desc {\n  margin-left: 10px; }\n\n.search__form {\n  margin-left: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12; }\n\n.search__img {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  align-content: center;\n  margin: auto; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__details--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__details--ratings {\n  margin-left: 10px;\n  color: grey; }\n\n.search__rating {\n  color: #4bd4fd; }\n\n.search__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #9270b1;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n\n.search__screenshots {\n  margin-top: 20px;\n  text-align: center; }\n\n.carousel {\n  height: 100%;\n  margin: 0;\n  width: 100%; }\n\n.image-slide {\n  height: 100%;\n  width: 100%; }\n\n.slide-arrow {\n  color: #14B6D4;\n  cursor: pointer;\n  font-size: 2rem;\n  position: fixed;\n  top: 50%; }\n\n.slide-arrow.right {\n  right: 1rem; }\n\n.slide-arrow.left {\n  left: 1rem; }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none; }\n\n.game__anchor {\n  text-decoration: none;\n  color: whitesmoke;\n  text-align: center;\n  font-size: 15px; }\n\n.search__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.search {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3;\n  margin-left: 10px; }\n\n.search__desc {\n  margin-left: 10px; }\n\n.search__form {\n  margin-left: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12; }\n\n.search__img {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  align-content: center;\n  margin: auto; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__details--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__details--ratings {\n  margin-left: 10px;\n  color: grey; }\n\n.search__rating {\n  color: #4bd4fd; }\n\n.search__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #9270b1;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n\n.search__screenshots {\n  margin-top: 20px;\n  text-align: center; }\n\n.carousel {\n  height: 100%;\n  margin: 0;\n  width: 100%; }\n\n.image-slide {\n  height: 100%;\n  width: 100%; }\n\n.slide-arrow {\n  color: #14B6D4;\n  cursor: pointer;\n  font-size: 2rem;\n  position: fixed;\n  top: 50%; }\n\n.slide-arrow.right {\n  right: 1rem; }\n\n.slide-arrow.left {\n  left: 1rem; }\n", ""]);
 
 // exports
 
@@ -231,7 +331,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".twitch {\n  display: flex; }\n\n.twitch__streamers {\n  display: flex;\n  flex-direction: column; }\n\n.twitch__search--title {\n  text-align: center; }\n\n.twitch__streamers--title {\n  text-align: center; }\n\n.twitch__player {\n  display: block;\n  text-align: center; }\n\n.twitch__player--hide {\n  display: none; }\n\n.twitch__search--input {\n  text-align: center; }\n", ""]);
+exports.push([module.i, ".twitch {\n  display: flex;\n  margin-left: 10px; }\n\n.twitch__anchor {\n  text-decoration: none;\n  color: whitesmoke;\n  text-align: center;\n  font-size: 15px; }\n\n.twitch__search {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap; }\n\n.twitch__search--video {\n  text-align: center; }\n\n.twitch__search--form {\n  color: 75, 212, 253; }\n\n.twitch__search--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.twitch__streamers {\n  display: flex;\n  flex-direction: column; }\n\n.twitch__search--title {\n  text-align: center; }\n\n.twitch__streamers--title {\n  text-align: center; }\n\n.twitch__player {\n  display: block;\n  text-align: center; }\n\n.twitch__player--hide {\n  display: none; }\n\n.twitch__search--input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.twitch__button {\n  height: 50px;\n  margin: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n", ""]);
 
 // exports
 
@@ -251,7 +351,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -26612,6 +26712,100 @@ function resolvePathname(to) {
 
 /***/ }),
 
+/***/ "./node_modules/shuffle-array/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/shuffle-array/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Randomize the order of the elements in a given array.
+ * @param {Array} arr - The given array.
+ * @param {Object} [options] - Optional configuration options.
+ * @param {Boolean} [options.copy] - Sets if should return a shuffled copy of the given array. By default it's a falsy value.
+ * @param {Function} [options.rng] - Specifies a custom random number generator.
+ * @returns {Array}
+ */
+function shuffle(arr, options) {
+
+  if (!Array.isArray(arr)) {
+    throw new Error('shuffle expect an array as parameter.');
+  }
+
+  options = options || {};
+
+  var collection = arr,
+      len = arr.length,
+      rng = options.rng || Math.random,
+      random,
+      temp;
+
+  if (options.copy === true) {
+    collection = arr.slice();
+  }
+
+  while (len) {
+    random = Math.floor(rng() * len);
+    len -= 1;
+    temp = collection[len];
+    collection[len] = collection[random];
+    collection[random] = temp;
+  }
+
+  return collection;
+};
+
+/**
+ * Pick one or more random elements from the given array.
+ * @param {Array} arr - The given array.
+ * @param {Object} [options] - Optional configuration options.
+ * @param {Number} [options.picks] - Specifies how many random elements you want to pick. By default it picks 1.
+ * @param {Function} [options.rng] - Specifies a custom random number generator.
+ * @returns {Object}
+ */
+shuffle.pick = function(arr, options) {
+
+  if (!Array.isArray(arr)) {
+    throw new Error('shuffle.pick() expect an array as parameter.');
+  }
+
+  options = options || {};
+
+  var rng = options.rng || Math.random,
+      picks = options.picks || 1;
+
+  if (typeof picks === 'number' && picks !== 1) {
+    var len = arr.length,
+        collection = arr.slice(),
+        random = [],
+        index;
+
+    while (picks && len) {
+      index = Math.floor(rng() * len);
+      random.push(collection[index]);
+      collection.splice(index, 1);
+      len -= 1;
+      picks -= 1;
+    }
+
+    return random;
+  }
+
+  return arr[Math.floor(rng() * arr.length)];
+};
+
+/**
+ * Expose
+ */
+module.exports = shuffle;
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -27371,8 +27565,14 @@ module.exports = function(originalModule) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.fetchTopTwitchers = fetchTopTwitchers;
+exports.receiveTopTwitchers = receiveTopTwitchers;
 exports.addFavouriteToDB = addFavouriteToDB;
-exports.receiveFavouriteData = receiveFavouriteData;
+exports.addFavTwitchToDB = addFavTwitchToDB;
+exports.fetchGameFavourite = fetchGameFavourite;
+exports.receiveGameFavourites = receiveGameFavourites;
+exports.fetchTwitchFavourite = fetchTwitchFavourite;
+exports.receiveTwitchFavourites = receiveTwitchFavourites;
 exports.fetchGenreData = fetchGenreData;
 exports.fetchThemeData = fetchThemeData;
 exports.fetchGameInfoFromAPI = fetchGameInfoFromAPI;
@@ -27389,9 +27589,39 @@ exports.fetchFortniteStats = fetchFortniteStats;
 exports.setFortniteStats = setFortniteStats;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
+//get top twitchers
+function fetchTopTwitchers() {
+  return function (dispatch, getState) {
 
-// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
+    var searchPath = "/twitchStreams";
 
+    fetch(searchPath)
+    // .then(response => response.json())
+    .then(function (response) {
+      return response.ok ? response.json() : Promise.reject(response);
+    }).then(function (json) {
+      //fetch info for each twitcher
+      console.log("top twitchers in ACTION", json);
+      var items = json.map(function (item) {
+        return item.data[0];
+      });
+      console.log(items);
+      dispatch(receiveTopTwitchers(items));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+function receiveTopTwitchers(twitchApiData) {
+  return {
+    type: "RECEIVE_TOPTWITCHERS",
+    payload: twitchApiData
+  };
+}
+
+// Add GAME FAVOURITES to database 
 function addFavouriteToDB(favObject) {
   return function (dispatch, getState) {
 
@@ -27403,10 +27633,43 @@ function addFavouriteToDB(favObject) {
       }
     }).then(function (response) {
       return response.json();
+    }).then(function (json) {}).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+// Add TWITCH FAVOURITE to database  
+
+function addFavTwitchToDB(favObject) {
+  return function (dispatch, getState) {
+
+    fetch("/api/addtwitchfavourite/", {
+      method: "post",
+      body: JSON.stringify(favObject),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (response) {
+
+      return response.json();
     }).then(function (json) {
       //call action function to select reducer to set redux state value
+      // console.log("json", json)
+      // dispatch(receiveFavouriteData(favObject));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
 
-      dispatch(receiveFavouriteData(favObject));
+// FETCHES GAME favourites by UserID
+function fetchGameFavourite(gamerId) {
+  return function (dispatch, getState) {
+    fetch("/api/favourites/" + gamerId).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      dispatch(receiveGameFavourites(json));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
     });
@@ -27414,9 +27677,30 @@ function addFavouriteToDB(favObject) {
 }
 
 //function to call Reducer and set FAVOURITE data in redux.state
-function receiveFavouriteData(favouriteData) {
+function receiveGameFavourites(favouriteData) {
   return {
-    type: "RECEIVE_FAVOURITEDATA",
+    type: "RECEIVE_GAMEFAVOURITES",
+    payload: favouriteData
+  };
+}
+
+// FETCHES TWITCH favourites by UserID
+function fetchTwitchFavourite(gamerId) {
+  return function (dispatch, getState) {
+    fetch("/api/twitchfavourites/" + gamerId).then(function (response) {
+      return response.ok ? response.json() : Promise.reject(response);
+    }).then(function (json) {
+      dispatch(receiveTwitchFavourites(json));
+    }).catch(function (error) {
+      console.log("Sorry the following error occurred: ", error);
+    });
+  };
+}
+
+//function to call Reducer and set FAVOURITE data in redux.state
+function receiveTwitchFavourites(favouriteData) {
+  return {
+    type: "RECEIVE_TWITCHFAVOURITES",
     payload: favouriteData
   };
 }
@@ -27425,9 +27709,10 @@ function receiveFavouriteData(favouriteData) {
 function fetchGenreData() {
   return function (dispatch, getState) {
     var searchPath = "/genres/";
-
-    fetch(searchPath).then(function (response) {
-      return response.json();
+    fetch(searchPath)
+    // .then(response => response.json())
+    .then(function (response) {
+      return response.ok ? response.json() : Promise.reject(response);
     }).then(function (json) {
       dispatch(receiveGenreData(json.body));
     }).catch(function (error) {
@@ -27435,14 +27720,17 @@ function fetchGenreData() {
     });
   };
 }
+
 // Genre & Themes are retrieved via separate fetches
 function fetchThemeData() {
   return function (dispatch, getState) {
     var searchPath = "/themes/";
 
     fetch(searchPath).then(function (response) {
-      return response.json();
-    }).then(function (json) {
+      return response.ok ? response.json() : Promise.reject(response);
+    })
+    // .then(response => response.json())
+    .then(function (json) {
       dispatch(receiveThemeData(json.body));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27453,9 +27741,11 @@ function fetchThemeData() {
 function fetchGameInfoFromAPI(searchPath) {
   return function (dispatch, getState) {
     return fetch(searchPath).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-      console.log(json.body.length, " results");
+      return response.ok ? response.json() : Promise.reject(response);
+    })
+    // .then(response =>  response.json()  )
+    .then(function (json) {
+      // console.log((json.body).length, " results")
 
       dispatch(setGameData(json.body));
     }).catch(function (error) {
@@ -27723,7 +28013,6 @@ function removeDuplicates(newsSearch) {
 
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
-    console.log("remove duplicates", newsSearch);
     return newsSearch;
   }
   var myNewsData = newsSearch.reduce(function (acc, newsObject) {
@@ -27815,6 +28104,10 @@ var _Profile = __webpack_require__(/*! ../components/Profile */ "./src/component
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
+var _NotFoundContainer = __webpack_require__(/*! ../containers/NotFoundContainer */ "./src/containers/NotFoundContainer.js");
+
+var _NotFoundContainer2 = _interopRequireDefault(_NotFoundContainer);
+
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27844,6 +28137,9 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render() {
+              return _react2.default.createElement(_HomeRoute2.default, null);
+            } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
@@ -27876,7 +28172,8 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
               return _react2.default.createElement(RetroRoute, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { component: _NotFoundContainer2.default })
         )
       );
     }
@@ -27919,6 +28216,10 @@ var _DashboardAccount = __webpack_require__(/*! ./dashboard/DashboardAccount */ 
 
 var _DashboardAccount2 = _interopRequireDefault(_DashboardAccount);
 
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 __webpack_require__(/*! ../../styles/components/dashboard.scss */ "./styles/components/dashboard.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27939,9 +28240,7 @@ var Dashboard = function (_React$Component) {
 
         _this.state = {
             user: {}
-            // gamer_info: this.props.userDataStore
         };
-        // this.gamerInfo = this.gamerInfo.bind(this)
         return _this;
     }
 
@@ -27956,46 +28255,15 @@ var Dashboard = function (_React$Component) {
             if (userData) {
                 this.props.setAuthState(userData);
             };
-
-            // console.log('Oh first shiiiit', userData);
-            // if (userData) {
-            //     this.props.fetchGamerInfo(this.state.user.userId)
-            //         .then(data => {
-            //             console.log("gamerData in coomp", data)
-            //             this.props.setUserData(data);
-            //             this.setState({
-            //                 gamer_info: data
-            //             });
-            //         });
-
-            // } else {
-            //     console.log('Oh shiiiit');
-            // }
         }
-
-        // gamerInfo() {
-        //     if (this.props.userAuthState) {
-        //         //fetch gamer_profile
-        //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
-        //             .then(response => response.json())
-        //             .then(gamerData => {
-        //                 console.log("gamerData", gamerData);
-        //                 return gamerData
-        //             });
-
-        //         //fetch replies by gamer
-        //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-        //         //     .then(response => response.json())
-        //         //     .then(json => console.log("----gamer_posts----", json));
-
-        //     }
-        // }
-
     }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
+            var welcomeClasses = (0, _classnames2.default)('dashboard__welcome', {
+                "dashboard__welcome--visible": this.state.welcome
+            });
             return _react2.default.createElement(
                 'div',
                 { className: 'dashboard' },
@@ -28022,8 +28290,8 @@ var Dashboard = function (_React$Component) {
                                 'li',
                                 { className: 'dashboard__nav--item' },
                                 _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { to: '/dashboard' },
+                                    _reactRouterDom.NavLink,
+                                    { exact: true, activeClassName: 'is-active', to: '/dashboard' },
                                     'Dashboard'
                                 )
                             ),
@@ -28031,8 +28299,8 @@ var Dashboard = function (_React$Component) {
                                 'li',
                                 { className: 'dashboard__nav--item' },
                                 _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { to: '/dashboard/account' },
+                                    _reactRouterDom.NavLink,
+                                    { activeClassName: 'is-active', to: '/dashboard/account' },
                                     'Account'
                                 )
                             ),
@@ -28053,14 +28321,22 @@ var Dashboard = function (_React$Component) {
                         { className: 'dashboard-content-wrapper' },
                         _react2.default.createElement(
                             'h2',
-                            null,
+                            { className: welcomeClasses },
                             'Welcome back, ',
                             this.state.user.username
                         ),
                         _react2.default.createElement(
                             _reactRouterDom.Switch,
                             null,
-                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _DashboardPanels2.default }),
+                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', render: function render() {
+                                    return _react2.default.createElement(_DashboardPanels2.default, {
+                                        twitchFavourite: _this2.props.twitchFavourite,
+                                        fetchTwitchFavourite: _this2.props.fetchTwitchFavourite,
+                                        gameFavourite: _this2.props.gameFavourite,
+                                        userAuthState: _this2.props.userAuthState,
+                                        setAuthState: _this2.props.setAuthState,
+                                        fetchGameFavourite: _this2.props.fetchGameFavourite });
+                                } }),
                             _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
                                     return _react2.default.createElement(_DashboardAccount2.default, {
                                         setAuthState: _this2.props.setAuthState,
@@ -28695,6 +28971,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+__webpack_require__(/*! ../../styles/components/forums.scss */ "./styles/components/forums.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28846,11 +29126,17 @@ var Forums = function (_React$Component) {
             { key: post.id },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: "/posts/" + post.id },
+              { className: "forum__links", to: "/posts/" + post.id },
               "Title: ",
               post.title,
               " - Posted By: ",
-              post.gamer_name,
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: "profile__links", to: "/profile/" + post.gamer_name },
+                " ",
+                post.gamer_name,
+                " "
+              ),
               " - On: ",
               date
             )
@@ -29102,6 +29388,8 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 __webpack_require__(/*! ../../styles/components/homepage.scss */ "./styles/components/homepage.scss");
@@ -29114,18 +29402,107 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var shuffle = __webpack_require__(/*! shuffle-array */ "./node_modules/shuffle-array/index.js");
+
 var Homepage = function (_React$Component) {
   _inherits(Homepage, _React$Component);
 
   function Homepage() {
     _classCallCheck(this, Homepage);
 
-    return _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+    var _this = _possibleConstructorReturn(this, (Homepage.__proto__ || Object.getPrototypeOf(Homepage)).call(this));
+
+    _this.state = { gamer: {}, game: {}, forum: {}, choice: {}, voteResults: [], viewMode: false, topForum: [],
+      topGames: ["The Elder Scrolls V: Skyrim", "Fallout 4", "Grand Theft Auto V", "Fortnite", "The Witcher 3: Wild Hunt", "No Man's Sky", "Octopath Traveler", "Monster Hunter: World", "The Legend of Zelda: Breath of the Wild", "Persona 5"]
+    };
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.voteHandler = _this.voteHandler.bind(_this);
+    _this.viewHandler = _this.viewHandler.bind(_this);
+    return _this;
   }
 
   _createClass(Homepage, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch("/api/featured").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ gamer: json.gamer, game: json.game, forum: json.forum });
+      });
+
+      fetch("/api/top5forums").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({ topForum: json });
+      });
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+
+      var choice = {
+        value: event.target.value,
+        title: event.target.id
+      };
+      this.setState({ choice: choice });
+    }
+  }, {
+    key: "voteHandler",
+    value: function voteHandler(event) {
+      event.preventDefault();
+
+      if (this.state.choice.value) {
+        if (this.props.userAuthState) {
+
+          var newVote = {
+            value: this.state.choice.value,
+            title: this.state.choice.title,
+            gamer_id: this.props.userAuthState.userId,
+            gamer_name: this.props.userAuthState.username
+          };
+
+          fetch("/api/vote", {
+            method: "post",
+            body: JSON.stringify(newVote),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }).then(function (response) {
+            return response.json();
+          }).then(function (json) {
+            alert(json.msg);
+          }).catch(function (error) {
+            alert(error.msg);
+          });
+        } else alert("login to vote");
+      } else alert("select a choice to vote");
+    }
+  }, {
+    key: "viewHandler",
+    value: function viewHandler(event) {
+      var _this3 = this;
+
+      event.preventDefault();
+
+      fetch("/api/voteresults").then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        var count = 0;
+        json.forEach(function (vote) {
+          return count = count + parseInt(vote.count);
+        });
+        _this3.setState({ voteResults: json, totalVotes: count, viewMode: true });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
+      var topGames = this.state.topGames;
+      shuffle(topGames);
       return _react2.default.createElement(
         "div",
         { className: "homepage" },
@@ -29154,7 +29531,13 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Game: Fortnite"
+                  _react2.default.createElement(
+                    "i",
+                    null,
+                    "Featured Game:"
+                  ),
+                  " ",
+                  this.state.game.title
                 )
               ),
               _react2.default.createElement(
@@ -29163,7 +29546,20 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured User: Ahmed1"
+                  _react2.default.createElement(
+                    "i",
+                    null,
+                    "Featured User:"
+                  ),
+                  " ",
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { className: "homepage__links", to: "/profile/" + this.state.gamer.gamer_name },
+                    " ",
+                    this.state.gamer.gamer_name,
+                    " "
+                  ),
+                  "  "
                 )
               ),
               _react2.default.createElement(
@@ -29172,16 +29568,20 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Forum: Kingsway"
-                )
-              ),
-              _react2.default.createElement(
-                "div",
-                { className: "homepage__main--featured--selection--news" },
-                _react2.default.createElement(
-                  "h4",
-                  null,
-                  "Featured News: IGN"
+                  _react2.default.createElement(
+                    "i",
+                    null,
+                    "Featured Forum:"
+                  ),
+                  " ",
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { className: "homepage__links", to: "/forum/" + this.state.forum.id },
+                    " ",
+                    this.state.forum.title,
+                    " "
+                  ),
+                  "  "
                 )
               ),
               _react2.default.createElement(
@@ -29206,11 +29606,51 @@ var Homepage = function (_React$Component) {
           ),
           _react2.default.createElement(
             "div",
-            { className: "homepage__main--top10" },
+            { className: "homepage__main--top5" },
             _react2.default.createElement(
               "h4",
               null,
-              "Top 10 List"
+              "Top 5 Games"
+            ),
+            _react2.default.createElement(
+              "ul",
+              null,
+              topGames.map(function (game, index) {
+                if (index > 4) return;
+                return _react2.default.createElement(
+                  "li",
+                  null,
+                  game
+                );
+              })
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+              "h4",
+              { className: "homepage__main--top5" },
+              " Top 5 Active Forums"
+            ),
+            _react2.default.createElement(
+              "ul",
+              null,
+              this.state.topForum.map(function (forum) {
+
+                return _react2.default.createElement(
+                  "li",
+                  null,
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { className: "homepage__links", to: "/forum/" + forum.forum_id },
+                    " ",
+                    forum.title,
+                    " "
+                  ),
+                  " "
+                );
+              })
             )
           )
         ),
@@ -29222,7 +29662,7 @@ var Homepage = function (_React$Component) {
             { className: "homepage__side--poll" },
             _react2.default.createElement(
               "form",
-              null,
+              { onChange: this.handleChange },
               _react2.default.createElement(
                 "div",
                 null,
@@ -29274,8 +29714,38 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "div",
                   null,
-                  _react2.default.createElement("input", { type: "submit", value: " Vote " }),
-                  _react2.default.createElement("input", { type: "submit", value: " View " })
+                  _react2.default.createElement(
+                    "button",
+                    { onClick: this.voteHandler },
+                    "Vote  "
+                  ),
+                  _react2.default.createElement(
+                    "button",
+                    { onClick: this.viewHandler },
+                    "View "
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { style: { display: this.state.viewMode ? '' : 'none' } },
+                  _react2.default.createElement(
+                    "p",
+                    null,
+                    "Number of Voters: ",
+                    this.state.totalVotes,
+                    " "
+                  ),
+                  this.state.voteResults.map(function (vote) {
+                    return _react2.default.createElement(
+                      "p",
+                      { key: vote.title },
+                      " ",
+                      vote.title,
+                      " got %",
+                      vote.count / _this4.state.totalVotes * 100,
+                      " "
+                    );
+                  })
                 )
               )
             )
@@ -29284,10 +29754,11 @@ var Homepage = function (_React$Component) {
             "div",
             { className: "homepage__side--twitter" },
             _react2.default.createElement(
-              "h4",
-              null,
-              "TWITTER FEED"
-            )
+              "a",
+              { "class": "twitter-timeline", href: "https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw" },
+              "Tweets by UpUpDwnDwn"
+            ),
+            _react2.default.createElement("script", { async: true, src: "https://platform.twitter.com/widgets.js", charset: "utf-8" })
           ),
           _react2.default.createElement(
             "div",
@@ -29530,6 +30001,84 @@ exports.default = News;
 
 /***/ }),
 
+/***/ "./src/components/NotFound.js":
+/*!************************************!*\
+  !*** ./src/components/NotFound.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+__webpack_require__(/*! ../../styles/components/notfound.scss */ "./styles/components/notfound.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//Get username from state and conditionally render it depending on whether user is logged in.
+
+var NotFound = function (_React$Component) {
+  _inherits(NotFound, _React$Component);
+
+  function NotFound(props) {
+    _classCallCheck(this, NotFound);
+
+    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).call(this, props));
+  }
+
+  _createClass(NotFound, [{
+    key: "render",
+    value: function render() {
+      var userAuthState = this.props.userAuthState;
+
+      console.log("userAuthState:", userAuthState);
+      return _react2.default.createElement(
+        "div",
+        { className: "notfound" },
+        _react2.default.createElement(
+          "p",
+          { className: "notfound__message" },
+          "Sorry username, it's Game Over."
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          "404: Page Not Found"
+        ),
+        _react2.default.createElement("img", {
+          className: "notfound__image",
+          src: "https://media.giphy.com/media/xdnfWJFRpP8Eo/giphy.gif",
+          alt: "car crash"
+        })
+      );
+    }
+  }]);
+
+  return NotFound;
+}(_react2.default.Component);
+
+exports.default = NotFound;
+
+/***/ }),
+
 /***/ "./src/components/Posts.js":
 /*!*********************************!*\
   !*** ./src/components/Posts.js ***!
@@ -29549,6 +30098,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29697,8 +30248,14 @@ var Posts = function (_React$Component) {
           "h3",
           null,
           " Posted By: ",
-          this.state.post.gamer_name,
-          " "
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { className: "profile__links", to: "/profile/" + this.state.post.gamer_name },
+            " ",
+            this.state.post.gamer_name,
+            " "
+          ),
+          "    "
         ),
         _react2.default.createElement(
           "form",
@@ -29738,6 +30295,19 @@ var Posts = function (_React$Component) {
               null,
               "Date Posted: ",
               date
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Posted by: ",
+              _react2.default.createElement(
+                _reactRouterDom.Link,
+                { className: "profile__links", to: "/profile/" + reply.gamer_name },
+                " ",
+                reply.gamer_name,
+                " "
+              ),
+              " "
             )
           );
         }),
@@ -29826,7 +30396,8 @@ var Profile = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 null,
-                "Profile"
+                "name: ",
+                this.state.profile.gamer_name
             );
         }
     }]);
@@ -29897,7 +30468,19 @@ var Search = function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchReferenceData();
+      if (this.props.userAuthState) {
+        if (this.props.fetchGameFavourites !== undefined) {
+
+          this.props.fetchGameFavourites(this.props.userAuthState.userId);
+        }
+      }
     }
+    // handleClick(event) {
+    //   this.setState({
+    //     searchGame: event.target.innerText
+    //   }, () => this.handleSubmit(event))
+    // }
+
   }, {
     key: "handleChange",
     value: function handleChange(event) {
@@ -29911,6 +30494,7 @@ var Search = function (_React$Component) {
     value: function handleSubmit(event) {
       event.preventDefault();
       this.props.fetchGameInfo("/games/" + this.state.searchGame);
+      console.log("/games/" + this.state.searchGame);
       this.setState({
         searchGame: ""
       });
@@ -29931,8 +30515,9 @@ var Search = function (_React$Component) {
           igdb: gameId,
           title: gameTitle
         };
-        console.log("search.js", newFav);
+
         this.props.addToFavourite(newFav);
+        this.props.fetchGameFavourites(this.props.userAuthState.userId);
       } else {
         alert("Please log in to select favourites");
       }
@@ -29944,11 +30529,9 @@ var Search = function (_React$Component) {
 
       var _props = this.props,
           gameData = _props.gameData,
-          userAuthState = _props.userAuthState;
+          userAuthState = _props.userAuthState,
+          gameFavourite = _props.gameFavourite;
 
-      var imagesArr = gameData.map(function (img) {
-        _react2.default.createElement("img", { src: img.screenshot[_this2.state.count] });
-      });
       var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
         "div",
         { className: "search__result" },
@@ -29999,7 +30582,6 @@ var Search = function (_React$Component) {
                   "header",
                   { className: "search__details--ratings" },
                   "Gamer Rating:",
-                  " ",
                   _react2.default.createElement(
                     "span",
                     { className: "search__rating" },
@@ -30011,7 +30593,6 @@ var Search = function (_React$Component) {
                   "header",
                   { className: "search__details--ratings" },
                   "Critic Rating:",
-                  " ",
                   _react2.default.createElement(
                     "span",
                     { className: "search__rating" },
@@ -30023,7 +30604,6 @@ var Search = function (_React$Component) {
                   "header",
                   { className: "search__details--ratings" },
                   "Genre:",
-                  " ",
                   _react2.default.createElement(
                     "span",
                     { className: "search__rating" },
@@ -30037,7 +30617,6 @@ var Search = function (_React$Component) {
                   _react2.default.createElement(
                     "span",
                     { className: "search__rating" },
-                    " ",
                     game.themes
                   )
                 ) : null
@@ -30079,19 +30658,38 @@ var Search = function (_React$Component) {
             "form",
             {
               className: "search__form",
-              id: "search__form",
               onSubmit: this.handleSubmit
             },
             _react2.default.createElement("input", {
               onChange: this.handleChange,
               type: "search",
               results: "0",
-              alt: "Search",
-              className: "search__input"
-              // id="search__text"
-              , autoComplete: "off",
+              alt: "Game Search",
+              className: "search__input",
+              autoComplete: "off",
               value: this.state.searchGame,
               placeholder: "Search games"
+            })
+          ),
+          userAuthState ? _react2.default.createElement(
+            "h2",
+            null,
+            "Favourites "
+          ) : null,
+          _react2.default.createElement(
+            "ul",
+            null,
+            gameFavourite.map(function (currentFavourite) {
+              return _react2.default.createElement(
+                "a",
+                { href: "#", className: "game__anchor", key: currentFavourite.title },
+                " ",
+                _react2.default.createElement(
+                  "li",
+                  { key: currentFavourite.title },
+                  currentFavourite.title
+                )
+              );
             })
           ),
           _react2.default.createElement("br", null),
@@ -30162,22 +30760,34 @@ var TwitchSearch = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
 
     _this.state = {
+
       twitchQuery: "Ninja",
-      twitchChange: "",
       displayVideo: false
     };
 
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.handleClick = _this.handleClick.bind(_this);
+    _this.addToFavourites = _this.addToFavourites.bind(_this);
     return _this;
   }
 
   _createClass(TwitchSearch, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+
+      if (this.props.fetchTwitchFavourites !== undefined) {
+        if (this.props.userAuthState) {
+          this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+        }
+      }
+      this.props.fetchTopTwitchers();
+    }
+  }, {
     key: "handleChange",
     value: function handleChange(event) {
       this.setState({
-        twitchChange: event.target.value
+        twitchQuery: event.target.value
       });
     }
   }, {
@@ -30185,9 +30795,11 @@ var TwitchSearch = function (_React$Component) {
     value: function handleSubmit(event) {
       event.preventDefault();
       this.setState({
-        displayVideo: true,
-        twitchQuery: this.state.twitchChange
+        displayVideo: true
       });
+      // this.setState({
+      //   twitchQuery: ""
+      // });
     }
   }, {
     key: "handleClick",
@@ -30198,20 +30810,36 @@ var TwitchSearch = function (_React$Component) {
       });
     }
   }, {
+    key: "addToFavourites",
+    value: function addToFavourites(twitchStream) {
+      if (this.props.userAuthState) {
+        var newFav = {
+          gamerId: this.props.userAuthState.userId,
+          twitchName: twitchStream
+          // console.log("twitch info", newFav)
+        };this.props.addToFavourite(newFav);
+        this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
+      } else {
+        alert("Please log in to select favourites");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.state.twitchQuery);
+      var _this2 = this;
+
+      var _props = this.props,
+          fetchTwitchFavourites = _props.fetchTwitchFavourites,
+          twitchFavourite = _props.twitchFavourite,
+          userAuthState = _props.userAuthState,
+          topTwitchers = _props.topTwitchers;
+
       return _react2.default.createElement(
         "div",
         { className: "twitch" },
         _react2.default.createElement(
           "div",
           { className: "twitch__search" },
-          _react2.default.createElement(
-            "h2",
-            { className: "twitch__search--title" },
-            "Find Your Favourite Streamers and Enjoy!"
-          ),
           _react2.default.createElement(
             "form",
             {
@@ -30225,19 +30853,48 @@ var TwitchSearch = function (_React$Component) {
               className: "twitch__search--input",
               type: "text",
               name: "twitch__input",
+              alt: "Twitch Search",
               id: "twitch__input",
-              placeholder: "Search for a channel...",
-              value: this.state.twitchChange
+              placeholder: "Search streamers",
+              value: this.state.twitchQuery
+
             }),
             _react2.default.createElement(
               "button",
-              { id: "twitch__submit", className: "twitch__submit" },
+              { id: "twitch__submit", className: "twitch__button" },
               "Search"
+            ),
+            _react2.default.createElement(
+              "button",
+              { className: "twitch__button", onClick: function onClick(event) {
+                  _this2.addToFavourites(_this2.state.twitchQuery);
+                } },
+              "Add to favourites"
+            ),
+            userAuthState ? _react2.default.createElement(
+              "h2",
+              null,
+              "Favourites "
+            ) : null,
+            _react2.default.createElement(
+              "ul",
+              null,
+              twitchFavourite.map(function (currentFavourite) {
+                return _react2.default.createElement(
+                  "a",
+                  { href: "#", className: "twitch__anchor", key: currentFavourite.twitch_name },
+                  _react2.default.createElement(
+                    "li",
+                    { key: currentFavourite.twitch_name, onClick: _this2.handleClick },
+                    currentFavourite.twitch_name
+                  )
+                );
+              })
             )
           ),
           _react2.default.createElement(
             "div",
-            null,
+            { className: "twitch__search--video" },
             _react2.default.createElement("iframe", {
               className: "twitch__player",
               src: "http://player.twitch.tv/?channel=" + this.state.twitchQuery,
@@ -30246,6 +30903,7 @@ var TwitchSearch = function (_React$Component) {
               frameBorder: "2",
               scrolling: "yes",
               allowFullScreen: "true"
+
             })
           )
         ),
@@ -30255,181 +30913,19 @@ var TwitchSearch = function (_React$Component) {
           _react2.default.createElement(
             "h2",
             { className: "twitch__streamers--title" },
-            "Click below to check out these popular streamers:"
+            "Top 10 Streams:"
           ),
           _react2.default.createElement(
             "ul",
-            { className: "twitch__streamers" },
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "Ninja"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: Fortnite"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "Shroud"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: Shooters"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "Riot Games"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: League of Legends"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "ESL"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: Counter Strike"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "TSM_Myth"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: Fortnite"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "MHeyhoe91"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: FIFA"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "CohhCarnage"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: PUBG"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "Asmongold"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: World of Warcraft"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "Dendi"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: Dota 2"
-              )
-            ),
-            _react2.default.createElement(
-              "li",
-              null,
-              _react2.default.createElement(
-                "h4",
-                {
-                  className: "twitch__streamers--names",
-                  onClick: this.handleClick
-                },
-                "Ltzonda"
-              ),
-              _react2.default.createElement(
-                "p",
-                null,
-                "Focus: Grand Theft Auto"
-              )
-            )
+            null,
+            topTwitchers.map(function (currentTwitch) {
+              return _react2.default.createElement(
+                "li",
+                { key: currentTwitch.id },
+                _react2.default.createElement("img", { src: currentTwitch.profile_image_url, width: "100" }),
+                currentTwitch.display_name
+              );
+            })
           )
         )
       );
@@ -30463,6 +30959,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30481,17 +30981,39 @@ var DashboardAccount = function (_React$Component) {
 
         _this.state = {
             user: null,
-            gamer_info: null
+            gamer_info: null,
+            togglerAvatar: false,
+            togglerFortnite: false,
+            togglerEmail: false,
+            selectedFile: "",
+            fortniteName: "",
+            email: "",
+            togglerDesc: false,
+            desc: ""
         };
+        _this.togglerAvatarHandler = _this.togglerAvatarHandler.bind(_this);
+        _this.uploadAvatarHandler = _this.uploadAvatarHandler.bind(_this);
+        _this.fileChangedHandler = _this.fileChangedHandler.bind(_this);
+
+        _this.togglerFortniteHandler = _this.togglerFortniteHandler.bind(_this);
+        _this.uploadFortniteHandler = _this.uploadFortniteHandler.bind(_this);
+        _this.fortniteChangedHandler = _this.fortniteChangedHandler.bind(_this);
+
+        _this.togglerEmailHandler = _this.togglerEmailHandler.bind(_this);
+        _this.emailChangedHandler = _this.emailChangedHandler.bind(_this);
+        _this.uploadEmailHandler = _this.uploadEmailHandler.bind(_this);
+
+        _this.togglerDescHandler = _this.togglerDescHandler.bind(_this);
+        _this.descChangedHandler = _this.descChangedHandler.bind(_this);
+        _this.uploadDescHandler = _this.uploadDescHandler.bind(_this);
         return _this;
     }
 
     _createClass(DashboardAccount, [{
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
 
-            console.log("this.props", this.props);
             // Get initialUser variable from global scope declared in index.hbs
             var userData = initialUser;
             this.setState({
@@ -30509,84 +31031,382 @@ var DashboardAccount = function (_React$Component) {
                 });
             }
         }
-    }, {
-        key: "render",
-        value: function render() {
 
+        // Avatar
+
+    }, {
+        key: 'togglerAvatarHandler',
+        value: function togglerAvatarHandler() {
+            this.setState({
+                togglerAvatar: !this.state.togglerAvatar
+            });
+        }
+    }, {
+        key: 'fileChangedHandler',
+        value: function fileChangedHandler(event) {
+            this.setState({
+                selectedFile: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadAvatarHandler',
+        value: function uploadAvatarHandler(e) {
+            var _this3 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var avatar = this.state.selectedFile;
+            fetch("/api/account/avatar", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, avatar: avatar }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this3.setState({
+                        togglerAvatar: !_this3.state.togglerAvatar
+                    });
+                    // TODO: Add avatar to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+
+        // Fortnite username
+
+    }, {
+        key: 'togglerFortniteHandler',
+        value: function togglerFortniteHandler() {
+            this.setState({
+                togglerFortnite: !this.state.togglerFortnite
+            });
+        }
+    }, {
+        key: 'fortniteChangedHandler',
+        value: function fortniteChangedHandler(event) {
+            this.setState({
+                fortniteName: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadFortniteHandler',
+        value: function uploadFortniteHandler(e) {
+            var _this4 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var fortniteName = this.state.fortniteName;
+            fetch("/api/account/fortnitename", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, fortniteName: fortniteName }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this4.setState({
+                        togglerFortnite: !_this4.state.togglerFortnite
+                    });
+                    // TODO: Add fortniteName to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+
+        // Email 
+
+    }, {
+        key: 'togglerEmailHandler',
+        value: function togglerEmailHandler() {
+            this.setState({
+                togglerEmail: !this.state.togglerEmail
+            });
+        }
+    }, {
+        key: 'emailChangedHandler',
+        value: function emailChangedHandler(event) {
+            this.setState({
+                email: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadEmailHandler',
+        value: function uploadEmailHandler(e) {
+            var _this5 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var email = this.state.email;
+            fetch("/api/account/emailupdate", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, email: email }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this5.setState({
+                        togglerEmail: !_this5.state.togglerEmail
+                    });
+                    // TODO: Add email to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+        // Description  
+
+    }, {
+        key: 'togglerDescHandler',
+        value: function togglerDescHandler() {
+            this.setState({
+                togglerDesc: !this.state.togglerDesc
+            });
+        }
+    }, {
+        key: 'descChangedHandler',
+        value: function descChangedHandler(event) {
+            this.setState({
+                desc: event.target.value
+            });
+        }
+    }, {
+        key: 'uploadDescHandler',
+        value: function uploadDescHandler(e) {
+            var _this6 = this;
+
+            e.preventDefault();
+            var gamer_id = this.props.userAuthState.userId;
+            var desc = this.state.desc;
+            fetch("/api/account/description", {
+                method: "POST",
+                body: JSON.stringify({ gamer_id: gamer_id, desc: desc }),
+                headers: {
+                    "content-type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this6.setState({
+                        togglerDesc: !_this6.state.togglerDesc
+                    });
+                    // TODO: Add desc to redux.state for autoreload icon
+                    window.location.reload();
+                }
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var togglerAvatarClasses = (0, _classnames2.default)('dashboard__avatar--form ', {
+                'dashboard__avatar--form--visible': this.state.togglerAvatar
+            });
+            var fortniteClasses = (0, _classnames2.default)('dashboard__fortnite--form ', {
+                'dashboard__fortnite--form--visible': this.state.togglerFortnite
+            });
+            var emailClasses = (0, _classnames2.default)('dashboard__email--form ', {
+                'dashboard__email--form--visible': this.state.togglerEmail
+            });
+            var descClasses = (0, _classnames2.default)('dashboard__desc--form ', {
+                'dashboard__desc--form--visible': this.state.togglerDesc
+            });
             return _react2.default.createElement(
-                "div",
-                { className: "dashboard__Account" },
+                'div',
+                { className: 'dashboard__account' },
                 _react2.default.createElement(
-                    "div",
-                    { className: "dashboard__Account--item" },
+                    'div',
+                    { className: 'dashboard__account--item' },
                     _react2.default.createElement(
-                        "h3",
-                        { className: "dashboard__Account--heading" },
-                        "Account"
+                        'h3',
+                        { className: 'dashboard__account--heading' },
+                        'Account'
                     ),
                     this.state.gamer_info ? _react2.default.createElement(
-                        "div",
-                        null,
-                        _react2.default.createElement("img", { style: { maxWidth: 150 + "px" }, src: this.state.gamer_info.profile.avatar, alt: "{this.state.gamer_info.profile.gamer_name}" }),
+                        'div',
+                        { className: 'dashboard__account--boxes' },
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'div',
+                            { className: 'dashboard__account--box' },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Gamer ID: "
-                            ),
-                            this.state.gamer_info.profile.gamer_id
+                                'div',
+                                { className: 'dashboard__avatar' },
+                                _react2.default.createElement('img', {
+                                    className: 'dashboard__avatar--image',
+                                    src: this.state.gamer_info.profile.avatar,
+                                    alt: '{this.state.gamer_info.profile.gamer_name}' }),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__avatar--toggle', onClick: this.togglerAvatarHandler },
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'button__edit' },
+                                        _react2.default.createElement(
+                                            'svg',
+                                            { 'aria-hidden': 'true', focusable: 'false' },
+                                            _react2.default.createElement('use', { xlinkHref: '#button-edit' })
+                                        ),
+                                        'edit'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: togglerAvatarClasses },
+                                    _react2.default.createElement('input', {
+                                        className: 'dashboard__input dashboard__avatar--input',
+                                        type: 'text',
+                                        onChange: this.fileChangedHandler,
+                                        placeholder: 'New avatar URL' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadAvatarHandler },
+                                        'Upload!'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__account--name' },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        this.state.gamer_info.profile.gamer_name
+                                    )
+                                )
+                            )
                         ),
                         _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
+                            'div',
+                            { className: 'dashboard__account--box' },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Name: "
+                                'div',
+                                { className: 'dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'strong',
+                                    null,
+                                    'Gamer ID: '
+                                ),
+                                this.state.gamer_info.profile.gamer_id
                             ),
-                            this.state.gamer_info.profile.gamer_name
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "dashboard__Account--points" },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Level: "
+                                'div',
+                                { className: 'dashboard__fortnite dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__fortnite--toggle', onClick: this.togglerFortniteHandler },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        'Fortnite Name: '
+                                    ),
+                                    this.state.gamer_info.profile.fortnitename,
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'button__edit' },
+                                        _react2.default.createElement(
+                                            'svg',
+                                            { 'aria-hidden': 'true', focusable: 'false' },
+                                            _react2.default.createElement('use', { xlinkHref: '#button-edit' })
+                                        ),
+                                        'edit'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: fortniteClasses },
+                                    _react2.default.createElement('input', {
+                                        className: 'dashboard__input dashboard__fortnite--input',
+                                        type: 'text',
+                                        onChange: this.fortniteChangedHandler,
+                                        placeholder: 'Add your Fortnite username' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadFortniteHandler },
+                                        'Add!'
+                                    )
+                                )
                             ),
-                            this.state.gamer_info.profile.gamer_level
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Total Posts: "
+                                'div',
+                                { className: 'dashboard__account--email dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__fortnite--toggle', onClick: this.togglerEmailHandler },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        'Email: '
+                                    ),
+                                    this.state.gamer_info.profile.email,
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'button__edit' },
+                                        _react2.default.createElement(
+                                            'svg',
+                                            { 'aria-hidden': 'true', focusable: 'false' },
+                                            _react2.default.createElement('use', { xlinkHref: '#button-edit' })
+                                        ),
+                                        'edit'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: emailClasses },
+                                    _react2.default.createElement('input', {
+                                        className: 'dashboard__input dashboard__email--input',
+                                        type: 'text',
+                                        onChange: this.emailChangedHandler,
+                                        placeholder: 'Add your email' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadEmailHandler },
+                                        'Update!'
+                                    )
+                                )
                             ),
-                            this.state.gamer_info.profile.totalposts
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
                             _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Email: "
-                            ),
-                            this.state.gamer_info.profile.email
-                        ),
-                        _react2.default.createElement(
-                            "p",
-                            { className: "dashboard__Account--text" },
-                            _react2.default.createElement(
-                                "strong",
-                                null,
-                                "Description: "
-                            ),
-                            this.state.gamer_info.profile.description
+                                'div',
+                                { className: 'dashboard__account--desc dashboard__account--text' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { className: 'dashboard__fortnite--toggle', onClick: this.togglerDescHandler },
+                                    _react2.default.createElement(
+                                        'strong',
+                                        null,
+                                        'Description: '
+                                    ),
+                                    this.state.gamer_info.profile.description,
+                                    _react2.default.createElement(
+                                        'div',
+                                        { className: 'button__edit' },
+                                        _react2.default.createElement(
+                                            'svg',
+                                            { 'aria-hidden': 'true', focusable: 'false' },
+                                            _react2.default.createElement('use', { xlinkHref: '#button-edit' })
+                                        ),
+                                        'edit'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'form',
+                                    { className: descClasses },
+                                    _react2.default.createElement('textarea', {
+                                        className: 'dashboard__input dashboard__desc--input',
+                                        type: 'text',
+                                        onChange: this.descChangedHandler,
+                                        placeholder: 'Add your description' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        {
+                                            className: 'button button-primary',
+                                            onClick: this.uploadDescHandler },
+                                        'Update!'
+                                    )
+                                )
+                            )
                         )
                     ) : ""
                 )
@@ -30615,132 +31435,249 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function DashboardPanels() {
-    return _react2.default.createElement(
-        "div",
-        { className: "dashboard__panels" },
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Points"
-            ),
-            _react2.default.createElement(
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DashboardPanels = function (_React$Component) {
+    _inherits(DashboardPanels, _React$Component);
+
+    function DashboardPanels(props) {
+        _classCallCheck(this, DashboardPanels);
+
+        var _this = _possibleConstructorReturn(this, (DashboardPanels.__proto__ || Object.getPrototypeOf(DashboardPanels)).call(this, props));
+
+        _this.state = {
+            user: "",
+            userStats: "",
+            gamer_rank: ""
+        };
+        _this.gamerRank = _this.gamerRank.bind(_this);
+        return _this;
+    }
+
+    _createClass(DashboardPanels, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            var userData = initialUser;
+            this.setState({
+                user: userData
+            });
+
+            if (userData) {
+                this.props.setAuthState(userData);
+            };
+
+            // Fetch Twitch favourites if not in redux.state
+            if (userData && this.props.fetchTwitchFavourite) {
+                if (this.props.twitchFavourite.length === 0) {
+                    this.props.fetchTwitchFavourite(userData.userId);
+                }
+            }
+
+            // Fetch user info
+            fetch("/api/profile/" + userData.username).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return _this2.setState({ userStats: json });
+            });
+
+            // Gamer rank
+            this.gamerRank();
+
+            // Games Info
+            if (userData && this.props.fetchGameFavourite) {
+                this.props.fetchGameFavourite(userData.userId);
+            }
+        }
+    }, {
+        key: "gamerRank",
+        value: function gamerRank() {
+            var g_level = this.state.userStats.gamer_level;
+            switch (g_level) {
+                case g_level < 10:
+                    this.setState({ gamer_rank: "Noob" });
+                    break;
+                case g_level < 20:
+                    this.setState({ gamer_rank: "Challenger" });
+                    break;
+                case g_level < 30:
+                    this.setState({ gamer_rank: "Champion" });
+                    break;
+                default:
+                    this.setState({ gamer_rank: "Legend" });
+
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                twitchFavourite = _props.twitchFavourite,
+                gameFavourite = _props.gameFavourite;
+            var _state = this.state,
+                userStats = _state.userStats,
+                gamer_rank = _state.gamer_rank;
+
+
+            console.log("gameFavourite", gameFavourite);
+            return _react2.default.createElement(
                 "div",
-                { className: "dashboard__panels--points" },
-                "250"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Total Post"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "1750"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Messages"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "450"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Forum"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "50"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Twitch"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "340"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Video Game"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "20"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        )
-    );
-}
+                { className: "dashboard__panels" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Level"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        userStats.gamer_level
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text dashboard__panels--text--large" },
+                        "Your LevelUp rank is ",
+                        _react2.default.createElement(
+                            "strong",
+                            { className: "rank__level" },
+                            gamer_rank
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "This shows your overall rank related with the games you play and your levelUp points."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Total Posts"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        userStats.totalposts
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "This shows the total amount of post in all forums."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Twitch Favourites"
+                    ),
+                    _react2.default.createElement(
+                        "ol",
+                        { className: "dashboard__panels--twitch-list" },
+                        twitchFavourite.map(function (fav) {
+                            return _react2.default.createElement(
+                                "li",
+                                { key: fav.twitch_name },
+                                fav.twitch_name
+                            );
+                        })
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "Twitch users added to Favourites will show up here."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Favourite Games"
+                    ),
+                    _react2.default.createElement(
+                        "ol",
+                        { className: "dashboard__panels--twitch-list" },
+                        gameFavourite.map(function (fav) {
+                            return _react2.default.createElement(
+                                "li",
+                                { key: fav.twitch_name },
+                                fav.title
+                            );
+                        })
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "Games added to Favourites will show up here."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Twitch"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "340"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Video Game"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "20"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                )
+            );
+        }
+    }]);
+
+    return DashboardPanels;
+}(_react2.default.Component);
 
 exports.default = DashboardPanels;
 
@@ -30774,7 +31711,9 @@ var mapStateToProps = function mapStateToProps(reduxState) {
     return {
         userAuthState: reduxState.authState,
         userDataStore: reduxState.userData,
-        favouriteData: reduxState.favouriteInfo
+        favouriteData: reduxState.favouriteInfo,
+        twitchFavourite: reduxState.twitchFavourite,
+        gameFavourite: reduxState.gameFavourite
 
     };
 };
@@ -30789,6 +31728,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         },
         fetchGamerInfo: function fetchGamerInfo(gamerId) {
             return dispatch((0, _index.fetchGamerInfo)(gamerId));
+        },
+        fetchTwitchFavourite: function fetchTwitchFavourite(userId) {
+            return dispatch((0, _index.fetchTwitchFavourite)(userId));
+        },
+        fetchGameFavourite: function fetchGameFavourite(userId) {
+            return dispatch((0, _index.fetchGameFavourite)(userId));
         }
     };
 };
@@ -30893,9 +31838,9 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+var _HomepageContainer = __webpack_require__(/*! ../containers/HomepageContainer */ "./src/containers/HomepageContainer.js");
 
-var _Homepage2 = _interopRequireDefault(_Homepage);
+var _HomepageContainer2 = _interopRequireDefault(_HomepageContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30903,11 +31848,43 @@ function HomeContainer() {
   return _react2.default.createElement(
     "div",
     null,
-    _react2.default.createElement(_Homepage2.default, null)
+    _react2.default.createElement(_HomepageContainer2.default, null)
   );
 }
 
 exports.default = HomeContainer;
+
+/***/ }),
+
+/***/ "./src/containers/HomepageContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/HomepageContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/components/Homepage.js");
+
+var _Homepage2 = _interopRequireDefault(_Homepage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+    return {
+        userAuthState: reduxState.authState
+    };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Homepage2.default);
 
 /***/ }),
 
@@ -30988,6 +31965,38 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
+/***/ "./src/containers/NotFoundContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/NotFoundContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _NotFound = __webpack_require__(/*! ../components/NotFound */ "./src/components/NotFound.js");
+
+var _NotFound2 = _interopRequireDefault(_NotFound);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_NotFound2.default);
+
+/***/ }),
+
 /***/ "./src/containers/PostsContainer.js":
 /*!******************************************!*\
   !*** ./src/containers/PostsContainer.js ***!
@@ -31046,14 +32055,13 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-  console.log("Gamer Favourite info in Search Container ", reduxState.favouriteInfo);
 
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
     genreData: reduxState.genreInfo,
     userAuthState: reduxState.authState,
-    favouriteData: reduxState.favouriteInfo
+    gameFavourite: reduxState.gameFavourite
 
   };
 };
@@ -31061,7 +32069,8 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchReferenceData: function fetchReferenceData() {
-      dispatch((0, _actions.fetchGenreData)()), dispatch((0, _actions.fetchThemeData)());
+      dispatch((0, _actions.fetchGenreData)());
+      dispatch((0, _actions.fetchThemeData)());
     },
 
     fetchGameInfo: function fetchGameInfo(searchGame) {
@@ -31069,6 +32078,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     addToFavourite: function addToFavourite(favInfo) {
       dispatch((0, _actions.addFavouriteToDB)(favInfo));
+    },
+    fetchGameFavourites: function fetchGameFavourites(userId) {
+      dispatch((0, _actions.fetchGameFavourite)(userId));
     }
   };
 };
@@ -31091,48 +32103,43 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 var _TwitchSearch = __webpack_require__(/*! ../components/TwitchSearch */ "./src/components/TwitchSearch.js");
 
 var _TwitchSearch2 = _interopRequireDefault(_TwitchSearch);
 
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var mapStateToProps = function mapStateToProps(reduxState) {
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+  console.log("twitchers in container", reduxState.topTwitchers);
+  return {
+    userAuthState: reduxState.authState,
+    twitchFavourite: reduxState.twitchFavourite,
+    topTwitchers: reduxState.topTwitchers
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+  };
+};
 
-var TwitchContainer = function (_React$Component) {
-  _inherits(TwitchContainer, _React$Component);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
-  function TwitchContainer() {
-    _classCallCheck(this, TwitchContainer);
-
-    return _possibleConstructorReturn(this, (TwitchContainer.__proto__ || Object.getPrototypeOf(TwitchContainer)).call(this));
-  }
-
-  _createClass(TwitchContainer, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_TwitchSearch2.default, null)
-      );
+  return {
+    addToFavourite: function addToFavourite(favInfo) {
+      dispatch((0, _actions.addFavTwitchToDB)(favInfo)); //This might need to be different
+    },
+    fetchTwitchFavourites: function fetchTwitchFavourites(userId) {
+      dispatch((0, _actions.fetchTwitchFavourite)(userId));
+    },
+    fetchTopTwitchers: function fetchTopTwitchers() {
+      dispatch((0, _actions.fetchTopTwitchers)());
     }
-  }]);
+  };
+};
 
-  return TwitchContainer;
-}(_react2.default.Component);
-
-exports.default = TwitchContainer;
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_TwitchSearch2.default);
 
 /***/ }),
 
@@ -31221,38 +32228,6 @@ exports.default = authState;
 
 /***/ }),
 
-/***/ "./src/reducers/favouriteInfo.js":
-/*!***************************************!*\
-  !*** ./src/reducers/favouriteInfo.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function favouriteInfo() {
-  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments[1];
-
-
-  switch (action.type) {
-    case "RECEIVE_FAVOURITEDATA":
-
-      return action.payload;
-
-    default:
-      return reduxState;
-  }
-}
-
-exports.default = favouriteInfo;
-
-/***/ }),
-
 /***/ "./src/reducers/fortniteStats.js":
 /*!***************************************!*\
   !*** ./src/reducers/fortniteStats.js ***!
@@ -31280,6 +32255,38 @@ function fortniteStats() {
 }
 
 exports.default = fortniteStats;
+
+/***/ }),
+
+/***/ "./src/reducers/gameFavourite.js":
+/*!***************************************!*\
+  !*** ./src/reducers/gameFavourite.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function gameFavourite() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_GAMEFAVOURITES":
+
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = gameFavourite;
 
 /***/ }),
 
@@ -31390,9 +32397,17 @@ var _userInfo = __webpack_require__(/*! ./userInfo */ "./src/reducers/userInfo.j
 
 var _userInfo2 = _interopRequireDefault(_userInfo);
 
-var _favouriteInfo = __webpack_require__(/*! ./favouriteInfo */ "./src/reducers/favouriteInfo.js");
+var _gameFavourite = __webpack_require__(/*! ./gameFavourite */ "./src/reducers/gameFavourite.js");
 
-var _favouriteInfo2 = _interopRequireDefault(_favouriteInfo);
+var _gameFavourite2 = _interopRequireDefault(_gameFavourite);
+
+var _twitchFavourite = __webpack_require__(/*! ./twitchFavourite */ "./src/reducers/twitchFavourite.js");
+
+var _twitchFavourite2 = _interopRequireDefault(_twitchFavourite);
+
+var _topTwitchers = __webpack_require__(/*! ./topTwitchers */ "./src/reducers/topTwitchers.js");
+
+var _topTwitchers2 = _interopRequireDefault(_topTwitchers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31404,7 +32419,9 @@ exports.default = (0, _redux.combineReducers)({
   authState: _authState2.default,
   fortniteStats: _fortniteStats2.default,
   userInfo: _userInfo2.default,
-  favouriteInfo: _favouriteInfo2.default
+  gameFavourite: _gameFavourite2.default,
+  twitchFavourite: _twitchFavourite2.default,
+  topTwitchers: _topTwitchers2.default
 });
 
 /***/ }),
@@ -31466,6 +32483,71 @@ function themeInfo() {
 }
 
 exports.default = themeInfo;
+
+/***/ }),
+
+/***/ "./src/reducers/topTwitchers.js":
+/*!**************************************!*\
+  !*** ./src/reducers/topTwitchers.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function topTwitchers() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+  //topTwitchers is an array of objects with following keys:
+  // {broadcaster_type,description,display_name,id,login,offline_image_url,profile_image_url,type,view_count}
+  switch (action.type) {
+    case "RECEIVE_TOPTWITCHERS":
+
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = topTwitchers;
+
+/***/ }),
+
+/***/ "./src/reducers/twitchFavourite.js":
+/*!*****************************************!*\
+  !*** ./src/reducers/twitchFavourite.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function twitchFavourite() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments[1];
+
+
+  switch (action.type) {
+    case "RECEIVE_TWITCHFAVOURITES":
+
+      return action.payload;
+
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = twitchFavourite;
 
 /***/ }),
 
@@ -31995,6 +33077,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./styles/components/forums.scss":
+/*!***************************************!*\
+  !*** ./styles/components/forums.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./styles/components/header.scss":
 /*!***************************************!*\
   !*** ./styles/components/header.scss ***!
@@ -32094,6 +33206,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/notfound.scss":
+/*!*****************************************!*\
+  !*** ./styles/components/notfound.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

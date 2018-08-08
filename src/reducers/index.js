@@ -6,7 +6,9 @@ import newsInfo from "./newsInfo";
 import authState from "./authState";
 import fortniteStats from "./fortniteStats";
 import userInfo from "./userInfo";
-import favouriteInfo from "./favouriteInfo";
+import gameFavourite from "./gameFavourite";
+import twitchFavourite from "./twitchFavourite";
+import topTwitchers from "./topTwitchers";
 
 export default combineReducers({
   gameInfo,
@@ -16,5 +18,7 @@ export default combineReducers({
   authState,
   fortniteStats,
   userInfo,
-  favouriteInfo
+  gameFavourite,
+  twitchFavourite,
+  topTwitchers
 });

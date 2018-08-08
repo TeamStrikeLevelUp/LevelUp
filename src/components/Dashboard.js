@@ -1,17 +1,16 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import DashboardPanels from './dashboard/DashboardPanels';
 import DashboardAccount from './dashboard/DashboardAccount';
+import cx from 'classnames';
 import '../../styles/components/dashboard.scss';
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {},
-            // gamer_info: this.props.userDataStore
+            user: {}
         };
-        // this.gamerInfo = this.gamerInfo.bind(this)
     }
 
     componentDidMount() {
@@ -21,42 +20,12 @@ class Dashboard extends React.Component {
             user: userData,
         });
         if (userData) { this.props.setAuthState(userData) };
-
-        // console.log('Oh first shiiiit', userData);
-        // if (userData) {
-        //     this.props.fetchGamerInfo(this.state.user.userId)
-        //         .then(data => {
-        //             console.log("gamerData in coomp", data)
-        //             this.props.setUserData(data);
-        //             this.setState({
-        //                 gamer_info: data
-        //             });
-        //         });
-
-        // } else {
-        //     console.log('Oh shiiiit');
-        // }
     }
 
-    // gamerInfo() {
-    //     if (this.props.userAuthState) {
-    //         //fetch gamer_profile
-    //         return fetch(`/api/gamer/${this.props.userAuthState.userId}`)
-    //             .then(response => response.json())
-    //             .then(gamerData => {
-    //                 console.log("gamerData", gamerData);
-    //                 return gamerData
-    //             });
-
-    //         //fetch replies by gamer
-    //         // fetch(`/api/gamer/post/${this.props.userAuthState.userId}`)
-    //         //     .then(response => response.json())
-    //         //     .then(json => console.log("----gamer_posts----", json));
-
-    //     }
-    // }
-
     render() {
+        const welcomeClasses = cx('dashboard__welcome', {
+            "dashboard__welcome--visible": this.state.welcome
+        })
         return (
             <div className="dashboard">
                 <div className="dashboard__container">
@@ -68,16 +37,24 @@ class Dashboard extends React.Component {
                             </div>
                         </div>
                         <ul className="dashboard__nav">
-                            <li className="dashboard__nav--item"><Link to="/dashboard">Dashboard</Link></li>
-                            <li className="dashboard__nav--item"><Link to="/dashboard/account">Account</Link></li>
+                            <li className="dashboard__nav--item"><NavLink exact activeClassName="is-active" to="/dashboard">Dashboard</NavLink></li>
+                            <li className="dashboard__nav--item"><NavLink activeClassName="is-active" to="/dashboard/account">Account</NavLink></li>
                             <li className="dashboard__nav--item">Forum</li>
                             <li className="dashboard__nav--item">Favorites</li>
                         </ul>
                     </div>
                     <div className="dashboard-content-wrapper">
-                        <h2>Welcome back, {this.state.user.username}</h2>
+                        <h2 className={welcomeClasses} >Welcome back, {this.state.user.username}</h2>
                         <Switch>
-                            <Route exact path="/dashboard" component={DashboardPanels} />
+                            <Route exact path="/dashboard" render={() => {
+                                return <DashboardPanels
+                                    twitchFavourite={this.props.twitchFavourite}
+                                    fetchTwitchFavourite={this.props.fetchTwitchFavourite}
+                                    gameFavourite={this.props.gameFavourite}
+                                    userAuthState={this.props.userAuthState}
+                                    setAuthState={this.props.setAuthState}
+                                    fetchGameFavourite={this.props.fetchGameFavourite} />
+                            }} />
                             <Route path="/dashboard/account" render={() => {
                                 return <DashboardAccount
                                     setAuthState={this.props.setAuthState}

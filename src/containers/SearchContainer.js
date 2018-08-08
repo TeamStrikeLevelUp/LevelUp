@@ -4,18 +4,19 @@ import {
   fetchGameInfoFromAPI,
   fetchGenreData,
   fetchThemeData,
-  addFavouriteToDB
+  addFavouriteToDB,
+  fetchGameFavourite
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-  console.log("Gamer Favourite info in Search Container ", reduxState.favouriteInfo)
+
 
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
     genreData: reduxState.genreInfo,
     userAuthState: reduxState.authState,
-    favouriteData: reduxState.favouriteInfo
+    gameFavourite: reduxState.gameFavourite
 
   };
 };
@@ -23,7 +24,8 @@ const mapStateToProps = reduxState => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchReferenceData: () => {
-      dispatch(fetchGenreData()), dispatch(fetchThemeData());
+      dispatch(fetchGenreData());
+      dispatch(fetchThemeData());
     },
 
     fetchGameInfo: searchGame => {
@@ -31,6 +33,9 @@ const mapDispatchToProps = dispatch => {
     },
     addToFavourite: (favInfo) => {
       dispatch(addFavouriteToDB(favInfo))
+    },
+    fetchGameFavourites: (userId) => {
+      dispatch(fetchGameFavourite(userId))
     }
   };
 };

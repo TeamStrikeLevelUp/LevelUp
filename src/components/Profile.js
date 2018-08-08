@@ -3,22 +3,22 @@ import React from "react";
 
 class Profile extends React.Component {
 
-    constructor(){
+    constructor() {
         super()
-        this.state={profile:{}}
+        this.state = { profile: {} }
     }
 
-    componentDidMount(){
-     fetch(`/api/profile/${this.props.match.params.id}`)
-    .then(response => response.json())
-    .then(json => this.setState({profile: json}));
+    componentDidMount() {
+        fetch(`/api/profile/${this.props.match.params.id}`)
+            .then(response => response.json())
+            .then(json => this.setState({ profile: json }));
     }
 
-    render(){
+    render() {
         console.log(this.state.profile)
-        return(
+        return (
             <div>
-                Profile
+                name: {this.state.profile.gamer_name}
             </div>
         )
     }

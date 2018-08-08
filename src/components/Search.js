@@ -21,8 +21,19 @@ class Search extends React.Component {
 
   componentDidMount() {
     this.props.fetchReferenceData();
-  }
+    if (this.props.userAuthState) {
+      if (this.props.fetchGameFavourites !== undefined) {
 
+        this.props.fetchGameFavourites(this.props.userAuthState.userId);
+      }
+    }
+
+  }
+  // handleClick(event) {
+  //   this.setState({
+  //     searchGame: event.target.innerText
+  //   }, () => this.handleSubmit(event))
+  // }
   handleChange(event) {
     event.preventDefault();
     this.setState({
@@ -33,6 +44,7 @@ class Search extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.fetchGameInfo("/games/" + this.state.searchGame);
+    console.log("/games/" + this.state.searchGame)
     this.setState({
       searchGame: ""
     });
@@ -51,21 +63,16 @@ class Search extends React.Component {
         igdb: gameId,
         title: gameTitle
       }
-      console.log("search.js", newFav)
-      this.props.addToFavourite(newFav)
 
+      this.props.addToFavourite(newFav)
+      this.props.fetchGameFavourites(this.props.userAuthState.userId);
     } else {
       alert("Please log in to select favourites")
     }
 
   }
   render() {
-    const { gameData, userAuthState } = this.props;
-    const imagesArr = gameData.map(img => {
-      <img src={
-        img.screenshot[this.state.count]
-      } />
-    })
+    const { gameData, userAuthState, gameFavourite } = this.props;
     const gameDisplay =
       gameData === "No results found" ? <div className="search__result"> <div className="search__details"> {gameData} </div></div> :
         gameData.map(game => {
@@ -85,7 +92,7 @@ class Search extends React.Component {
                   <div className="search__info">
                     {game.user_rating ? (
                       <header className="search__details--ratings">
-                        Gamer Rating:{" "}
+                        Gamer Rating:
                         <span className="search__rating">
                           {game.user_rating}%
                           </span>
@@ -94,7 +101,7 @@ class Search extends React.Component {
 
                     {game.critic_rating ? (
                       <header className="search__details--ratings">
-                        Critic Rating:{" "}
+                        Critic Rating:
                         <span className="search__rating">
                           {game.critic_rating}%
                           </span>
@@ -103,7 +110,7 @@ class Search extends React.Component {
 
                     {game.genres ? (
                       <header className="search__details--ratings">
-                        Genre:{" "}
+                        Genre:
                         <span className="search__rating">{game.genres}</span>
                       </header>
                     ) : null}
@@ -111,7 +118,6 @@ class Search extends React.Component {
                     {game.themes ? (
                       <header className="search__details--ratings">
                         Theme:<span className="search__rating">
-                          {" "}
                           {game.themes}
                         </span>
                       </header>
@@ -152,21 +158,32 @@ class Search extends React.Component {
           <br />
           <form
             className="search__form"
-            id="search__form"
             onSubmit={this.handleSubmit}
           >
             <input
               onChange={this.handleChange}
               type="search"
               results="0"
-              alt="Search"
+              alt="Game Search"
               className="search__input"
-              // id="search__text"
               autoComplete="off"
               value={this.state.searchGame}
               placeholder="Search games"
             />
+
           </form>
+
+          {userAuthState ? <h2>Favourites </h2> : null}
+          <ul>
+            {gameFavourite.map(currentFavourite =>
+              <a href="#" className="game__anchor" key={currentFavourite.title}  > <li key={currentFavourite.title}>
+                {/* //onClick={this.handleClick}> */}
+
+                {currentFavourite.title}
+              </li></a>)}
+
+          </ul>
+
           <br />
           <ul className="search__wrapper">{gameDisplay}</ul>
           <footer className="search__footer">Powered by IGDB.com API</footer>
