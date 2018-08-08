@@ -4,7 +4,8 @@ import {
     receiveAuthState,
     fetchGamerInfo,
     receiveUserData,
-    fetchTwitchFavourite
+    fetchTwitchFavourite,
+    fetchGameFavourite
 } from '../actions/index';
 
 const mapStateToProps = reduxState => {
@@ -23,7 +24,8 @@ const mapDispatchToProps = dispatch => {
         setAuthState: user => dispatch(receiveAuthState(user)),
         setUserData: userData => dispatch(receiveUserData(userData)),
         fetchGamerInfo: gamerId => dispatch(fetchGamerInfo(gamerId)),
-        fetchTwitchFavourite: userId => dispatch(fetchTwitchFavourite(userId))
+        fetchTwitchFavourite: userId => dispatch(fetchTwitchFavourite(userId)),
+        fetchGameFavourite: userId => dispatch(fetchGameFavourite(userId))
     };
 };
 
