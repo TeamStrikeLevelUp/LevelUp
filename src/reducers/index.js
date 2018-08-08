@@ -8,6 +8,7 @@ import fortniteStats from "./fortniteStats";
 import userInfo from "./userInfo";
 import gameFavourite from "./gameFavourite";
 import twitchFavourite from "./twitchFavourite";
+import topTwitchers from "./topTwitchers";
 
 export default combineReducers({
   gameInfo,
@@ -18,5 +19,6 @@ export default combineReducers({
   fortniteStats,
   userInfo,
   gameFavourite,
-  twitchFavourite
+  twitchFavourite,
+  topTwitchers
 });
