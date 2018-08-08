@@ -1,3 +1,24 @@
+//get top twitchers
+export function fetchTopTwitchers() {
+  return function (dispatch, getState) {
+
+    const searchPath = `/twitchStreams`;
+    // console.log("TWITCH ACTION")
+    fetch(searchPath)
+      .then(response => response.json())
+      .then(json => {
+        console.log("jason", json)
+        // dispatch(receiveGenreData(json.body));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+  };
+}
+
+
+
+
 // Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
 
 export function addFavouriteToDB(favObject) {
@@ -57,7 +78,8 @@ export function fetchGameFavourite(gamerId) {
     fetch(`/api/favourites/${gamerId}`)
       .then(response => response.json())
       .then(json => {
-        dispatch(receiveGameFavourites(json.body));
+
+        dispatch(receiveGameFavourites(json));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);

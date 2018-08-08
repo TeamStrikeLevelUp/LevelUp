@@ -1,11 +1,6 @@
 // //twitch api testing
-// const TwitchApi = require('twitch-api');
-// const twitch = new TwitchApi({
-//   clientId: 'goetr7q6o8bx0zott538hwdsavlpf8',
-//   clientSecret: 'rvjs48iq0n9pppd5nsxdgrid3nroah',
-//   redirectUri: 'http://localhost:8080',
-//   scopes: [array of scopes you want access to]
-// });
+// var api = require('twitch-api-v5');
+// api.clientID = 'goetr7q6o8bx0zott538hwdsavlpf8';
 
 
 const express = require("express");
@@ -18,7 +13,7 @@ const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
 //For Search page
 const igdb = require("igdb-api-node").default;
-
+const client = igdb("96651c2677f60060f3a91ef002c2a419");
 const pgp = require("pg-promise")();
 
 const bcrypt = require("bcrypt");
@@ -50,29 +45,84 @@ const db = pgp({
 });
 
 //TWITCH TEST
-//Main  GAMES search for specific title
-// app.get("/streams", (req, res) => {
 
-//   client
-//     .games(
-//       {
-//         filters: {
-//           "name-in": gameTitle
-//         },
-//         order: "popularity:desc",
-//         search: gameTitle,
-//         // limit: 50 // Limit to 50 results
-//       },
-//       ["*"]
-//     )
-//     .then(response => {
-//       // response.body contains the parsed JSON response to this query
-//       displayData(res, response);
-//     })
-//     .catch(error => {
-//       console.log("You have 2 lives remaining ", error);
-//     });
-// });
+// var request = require('request');
+
+// var headers = {
+//   'Client-ID': 'goetr7q6o8bx0zott538hwdsavlpf8'
+// };
+
+// var options = {
+//   url: 'https://api.twitch.tv/helix/streams?first=20',
+//   headers: headers
+// };
+
+// function callback(error, response, body) {
+//   if (!error && response.statusCode == 200) {
+//     console.log(body);
+//     // JSON.parse(body)
+//     // response.body()
+//     // return response.json(body)
+//   }
+// }
+
+// request(options, callback);
+
+app.get("/twitchStreams", (req, res) => {
+  // const username = req.params.username
+  // var formData = new FormData();
+  // formData.append("username", username);
+  var headers = {
+    'Client-ID': 'goetr7q6o8bx0zott538hwdsavlpf8'
+  };
+  fetch(`https://api.twitch.tv/helix/streams?first=10`, {
+    method: "GET",
+    headers
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(result => {
+      console.log(result.data)
+      // result.json()
+    })
+})
+
+
+
+// api.streams.live("/twitchStreams/", (err, res) => {
+//   console.log("res ", res)
+// })
+//     if (err) {
+
+// let myStreams;
+// function getLiveTwitchStreams() {
+
+
+//   api.streams.live([], (err, res) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("size ", (res.streams).length);
+//       console.log("stream data ", (res.streams));
+//       // res.json();
+
+
+//     }
+
+//   }
+//   )
+// console.log(datal)
+// console.log(res.streams)
+// console.log(myStreams)
+// }
+// getLiveTwitchStreams()
+// app.get("/twitchStreams", function (req, res) {
+//   const streamers = getLiveTwitchStreams();
+//   res.json(streamers)
+
+// })
+
 
 
 // Login starts
@@ -622,7 +672,7 @@ app.get("/dashboard/account", isLoggedIn, function (req, res) {
     .catch(error => console.log(error.message))
 });
 
-const client = igdb("96651c2677f60060f3a91ef002c2a419");
+
 
 app.set("view engine", "hbs");
 
@@ -716,7 +766,8 @@ app.get("/games/:title", (req, res) => {
     )
     .then(response => {
       // response.body contains the parsed JSON response to this query
-      displayData(res, response);
+      // displayData(res, response);
+      res.json(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
@@ -735,7 +786,8 @@ app.get("/gameid/:id", (req, res) => {
       offset: 15 // Index offset for results
     })
     .then(response => {
-      displayData(res, response);
+      // displayData(res, response);
+      res.json(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
@@ -751,7 +803,8 @@ app.get("/themes/", (req, res) => {
       limit: 50 // Limit to 50 results
     })
     .then(response => {
-      displayData(res, response);
+      // displayData(res, response);
+      res.json(response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
@@ -767,16 +820,17 @@ app.get("/genres/", (req, res) => {
     })
     .then(response => {
       // response.body contains the parsed JSON response to this query
-      displayData(res, response);
+      res.json(response);
+      // displayData(res, response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
     });
 });
 
-function displayData(res, data) {
-  res.json(data);
-}
+// function displayData(res, data) {
+//   res.json(data);
+// }
 
 //Main general NEWS search for latest Gaming/tech articles
 app.get("/newsApi/:pageNum", (req, res) => {
