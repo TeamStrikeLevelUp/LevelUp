@@ -542,10 +542,10 @@ app.post("/api/vote", function (req, res) {
     [value, title, gamer_id, gamer_name]
   )
     .then(data => {
-      res.json({msg: "thank you for voting"})
+      res.json({ msg: "thank you for voting" })
     })
     .catch(error => {
-      res.json({msg: "you already voted"})
+      res.json({ msg: "you already voted" })
     });
 });
 
@@ -897,7 +897,7 @@ app.get("/api/fortnite/:username", (req, res) => {
           return response.json();
         })
         .then(result => {
-        //  console.log(result);
+          //  console.log(result);
 
           res.json(result);
         });

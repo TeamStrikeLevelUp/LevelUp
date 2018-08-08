@@ -1,5 +1,6 @@
 import React from "react";
 import FortniteStats from "./FortniteStats";
+import FortnitePlayerList from "./FortnitePlayerList";
 
 import "../../styles/components/fortnite.scss";
 import "../../styles/index.scss";
@@ -34,43 +35,25 @@ class Fortnite extends React.Component {
   render() {
     return (
       <div className="fortnite">
+
         <div className="fortnite__search">
-          <div className="fortnite__title">
-            <h2>Welcome to The Fort</h2>
-            <p>How Fortified are you?</p>
-            <h4>Check and compare your scores with the best players around!</h4>
+          <div className="fortnite__title-container">
+            <h1 className="fortnite__title">Welcome to The Fort</h1>
+            <h3 className="fortnite__title-tagline">How Fortified are you?</h3>
+            <h4 className="fortnite__title-para">Compare your scores with the best players around!</h4>
           </div>
           <div className="fortnite__option">
-            <form className="" onSubmit={this.handleSubmit}>
-              <input onChange={this.handleChange} type="search" value={this.state.searchUser} placeholder="Search username..." />
-              <button>Search</button>
+            <form className="fortnite__option-form" onSubmit={this.handleSubmit}>
+              <input className="fortnite__option-input" onChange={this.handleChange} type="search" value={this.state.searchUser} placeholder="Search username..." />
+              <button className="fortnite__button">Search</button>
             </form>
           </div>
-          <div className="fortnite__userstats">
+          <div>
             <FortniteStats stat={this.props.fortniteData} />
           </div>
         </div>
         <div className="fortnite__playerlist">
-          <ul>
-            <li>
-              <p>Ninja</p>
-            </li>
-            <li>
-              <p>Fnatic_Ettnix</p>
-            </li>
-            <li>
-              <p>Terry 5L</p>
-            </li>
-            <li>
-              <p>dondottah571</p>
-            </li>
-            <li>
-              <p>ViniciusAmazing</p>
-            </li>
-            <li>
-              <p>JeDiiiKniiGhT</p>
-            </li>
-          </ul>
+          <FortnitePlayerList />
         </div>
       </div>
     );

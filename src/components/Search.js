@@ -8,13 +8,14 @@ class Search extends React.Component {
     super();
 
     this.state = {
-      searchGame: ""
+      searchGame: "",
+      count: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
   }
 
@@ -47,6 +48,12 @@ class Search extends React.Component {
     this.setState({
       searchGame: ""
     });
+  }
+
+  handleClick() {
+    this.setState({
+      count: this.state.count + 1
+    })
   }
 
   addToFavourites(gameId, gameTitle) {
@@ -134,11 +141,7 @@ class Search extends React.Component {
                 </div>
               </div>
               <div className="search__screenshots">
-                {game.screenshot
-                  ? game.screenshot.map(currentImg => {
-                    return <img src={currentImg} key={currentImg} />;
-                  })
-                  : null}
+                {imagesArr}
               </div>
 
               <br />
@@ -191,3 +194,9 @@ class Search extends React.Component {
 }
 
 export default Search;
+
+// {game.screenshot
+//   ? game.screenshot.map(currentImg => {
+//     return <img src={currentImg} key={currentImg} />;
+//   })
+//   : null}

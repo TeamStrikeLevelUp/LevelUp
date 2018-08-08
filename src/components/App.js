@@ -2,7 +2,6 @@ import React from "react";
 
 import { Switch, Route, Link } from "react-router-dom";
 import HomeRoute from "../routes/HomeRoute";
-import SearchContainer from "../containers/SearchContainer";
 import NewsContainer from "../containers/NewsContainer";
 import Header from "../components/Header";
 import TwitchRoute from "../routes/TwitchRoute";
@@ -10,7 +9,7 @@ import SearchGamesRoute from "../routes/SearchGamesRoute";
 import ForumsRoute from "../routes/ForumsRoute";
 import DashboardRoute from "../routes/DashboardRoute";
 import NewsRoute from "../routes/NewsRoute";
-import TopGamesRoute from "../routes/TopGamesRoute";
+import FortniteRoute from "../routes/FortniteRoute";
 import PostsContainer from "../containers/PostsContainer";
 import ForumsContainer from "../containers/ForumsContainer";
 import Profile from "../components/Profile";
@@ -26,7 +25,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" render={() => <HomeRoute />} />
           <Route exact path="/homepage" render={() => <HomeRoute />} />
-          <Route exact path="/search" render={() => <SearchContainer />} />
+          <Route exact path="/search" render={() => (
+            <SearchGamesRoute />)} />
           <Route exact path="/news" render={() => <NewsContainer />} />
           <Route path="/dashboard" render={() => <DashboardRoute />} />
           <Route path="/forum/:id" component={ForumsContainer} />
@@ -35,7 +35,7 @@ class App extends React.Component {
           <Route path="/posts/:id" component={PostsContainer} />
           <Route path="/forum" render={() => <ForumsRoute />} />
           <Route path="/news" render={() => <NewsRoute />} />
-          <Route path="/the-fort" render={() => <TopGamesRoute />} />
+          <Route path="/the-fort" render={() => <FortniteRoute />} />
           <Route path="/retroclub" render={() => <RetroRoute />} />
           <Route path="/profile/:id" component={Profile} />
           <Route component={NotFoundContainer} />
