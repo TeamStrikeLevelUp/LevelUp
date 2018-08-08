@@ -38,6 +38,7 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
+    "shuffle-array": "^1.0.1",
     "twitch-api": "^0.5.0",
     "twitch-api-v5": "^2.0.4"
   },

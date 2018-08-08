@@ -523,6 +523,16 @@ app.get("/api/featured/", function (req, res) {
 
 
 
+app.get("/api/voteresults", function (req, res) {
+  db.any(`SELECT title, COUNT(title) FROM poll GROUP BY title`)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+
 app.post("/api/vote", function (req, res) {
   const { title, value, gamer_id, gamer_name } = req.body;
 
@@ -532,13 +542,21 @@ app.post("/api/vote", function (req, res) {
     [value, title, gamer_id, gamer_name]
   )
     .then(data => {
-
+      res.json({msg: "thank you for voting"})
     })
     .catch(error => {
-      res.json({
-        error: error.message
-      });
+      res.json({msg: "you already voted"})
     });
+});
+
+
+app.get("/api/top5forums", function (req, res) {
+  db.any(`SELECT post.forum_id, COUNT(post.forum_id), forum.title FROM post, forum 
+  WHERE post.forum_id = forum.id GROUP BY post.forum_id, forum.title ORDER BY count DESC LIMIT 5`)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
 });
 
 
@@ -858,7 +876,7 @@ app.get("/api/fortnite/:username", (req, res) => {
       return response.json();
     })
     .then(result => {
-      console.log(result);
+      //console.log(result);
       var formDataStats = new FormData();
 
       formDataStats.append("user_id", result.uid);
@@ -879,7 +897,7 @@ app.get("/api/fortnite/:username", (req, res) => {
           return response.json();
         })
         .then(result => {
-          console.log(result);
+        //  console.log(result);
 
           res.json(result);
         });

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 
 class Posts extends React.Component {
@@ -90,7 +91,7 @@ class Posts extends React.Component {
         <h3> Topic: {this.state.post.title} </h3>
         <h3> {this.state.post.body} </h3>
         <h3> Date Posted: {created} </h3>
-        <h3> Posted By: {this.state.post.gamer_name} </h3>
+        <h3> Posted By: <Link className="profile__links" to={`/profile/${this.state.post.gamer_name}`}> {this.state.post.gamer_name} </Link>    </h3>
 
         <form>
           <input placeholder="search for replies" value={this.state.input} onChange={this.inputHandler} />
@@ -106,6 +107,7 @@ class Posts extends React.Component {
               <p>Title: {reply.title}</p>
               <p>{reply.body}</p>
               <p>Date Posted: {date}</p>
+              <p>Posted by: <Link className="profile__links" to={`/profile/${reply.gamer_name}`}> {reply.gamer_name} </Link> </p>
             </div>
           )
         })}
