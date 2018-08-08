@@ -262,6 +262,25 @@ exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".notfound {\n  margin: auto;\n  text-align: center;\n  width: 100%; }\n\n.notfound__image {\n  text-align: center; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
@@ -27942,6 +27961,10 @@ var _Profile = __webpack_require__(/*! ../components/Profile */ "./src/component
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
+var _NotFoundContainer = __webpack_require__(/*! ../containers/NotFoundContainer */ "./src/containers/NotFoundContainer.js");
+
+var _NotFoundContainer2 = _interopRequireDefault(_NotFoundContainer);
+
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -27971,6 +27994,9 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render() {
+              return _react2.default.createElement(_HomeRoute2.default, null);
+            } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/homepage", render: function render() {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
@@ -28003,7 +28029,8 @@ var App = function (_React$Component) {
           _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
               return _react2.default.createElement(RetroRoute, null);
             } }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default })
+          _react2.default.createElement(_reactRouterDom.Route, { path: "/profile/:id", component: _Profile2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { component: _NotFoundContainer2.default })
         )
       );
     }
@@ -29453,6 +29480,84 @@ var News = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = News;
+
+/***/ }),
+
+/***/ "./src/components/NotFound.js":
+/*!************************************!*\
+  !*** ./src/components/NotFound.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+__webpack_require__(/*! ../../styles/components/notfound.scss */ "./styles/components/notfound.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//Get username from state and conditionally render it depending on whether user is logged in.
+
+var NotFound = function (_React$Component) {
+  _inherits(NotFound, _React$Component);
+
+  function NotFound(props) {
+    _classCallCheck(this, NotFound);
+
+    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).call(this, props));
+  }
+
+  _createClass(NotFound, [{
+    key: "render",
+    value: function render() {
+      var userAuthState = this.props.userAuthState;
+
+      console.log("userAuthState:", userAuthState);
+      return _react2.default.createElement(
+        "div",
+        { className: "notfound" },
+        _react2.default.createElement(
+          "p",
+          { className: "notfound__message" },
+          "Sorry username, it's Game Over."
+        ),
+        _react2.default.createElement(
+          "p",
+          null,
+          "404: Page Not Found"
+        ),
+        _react2.default.createElement("img", {
+          className: "notfound__image",
+          src: "https://media.giphy.com/media/xdnfWJFRpP8Eo/giphy.gif",
+          alt: "car crash"
+        })
+      );
+    }
+  }]);
+
+  return NotFound;
+}(_react2.default.Component);
+
+exports.default = NotFound;
 
 /***/ }),
 
@@ -31263,6 +31368,38 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(
 
 /***/ }),
 
+/***/ "./src/containers/NotFoundContainer.js":
+/*!*********************************************!*\
+  !*** ./src/containers/NotFoundContainer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _NotFound = __webpack_require__(/*! ../components/NotFound */ "./src/components/NotFound.js");
+
+var _NotFound2 = _interopRequireDefault(_NotFound);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_NotFound2.default);
+
+/***/ }),
+
 /***/ "./src/containers/PostsContainer.js":
 /*!******************************************!*\
   !*** ./src/containers/PostsContainer.js ***!
@@ -32394,6 +32531,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/notfound.scss":
+/*!*****************************************!*\
+  !*** ./styles/components/notfound.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
