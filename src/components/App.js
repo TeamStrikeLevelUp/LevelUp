@@ -24,6 +24,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
+          <Route exact path="/" render={() => <HomeRoute />} />
           <Route exact path="/homepage" render={() => <HomeRoute />} />
           <Route exact path="/search" render={() => <SearchContainer />} />
           <Route exact path="/news" render={() => <NewsContainer />} />
@@ -37,7 +38,7 @@ class App extends React.Component {
           <Route path="/the-fort" render={() => <TopGamesRoute />} />
           <Route path="/retroclub" render={() => <RetroRoute />} />
           <Route path="/profile/:id" component={Profile} />
-          <Route path="*" component={NotFoundContainer} />
+          <Route component={NotFoundContainer} />
         </Switch>
       </div>
     );

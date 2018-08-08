@@ -364,8 +364,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // route to log out users
-app.get("/logout", function (req, res) {
-
+app.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
@@ -586,7 +585,7 @@ app.get("/searchNews/:searchTerm/:pageNum", (req, res) => {
 // Fortnite data --
 
 app.get("/api/fortnite/:username", (req, res) => {
-  const username = req.params.username
+  const username = req.params.username;
   var formData = new FormData();
   formData.append("username", username);
 
@@ -597,11 +596,11 @@ app.get("/api/fortnite/:username", (req, res) => {
       Authorization: "49814d647a64a41873378c2c7acd74b1"
     }
   })
-    .then(function (response) {
+    .then(function(response) {
       return response.json();
     })
     .then(result => {
-      console.log(result)
+      console.log(result);
       var formDataStats = new FormData();
 
       formDataStats.append("user_id", result.uid);
@@ -618,11 +617,11 @@ app.get("/api/fortnite/:username", (req, res) => {
           }
         }
       )
-        .then(function (response) {
+        .then(function(response) {
           return response.json();
         })
         .then(result => {
-          console.log(result)
+          console.log(result);
 
           res.json(result);
         });
@@ -638,12 +637,11 @@ app.use((req, res, next) => {
 });
 
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./index.html"));
-  // res.render("index", {
-  //   data: req.user
-  //     ? JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
-  //     : JSON.stringify({ username: null, userId: null })
-  // });
+  res.render("index", {
+    data: req.user
+      ? JSON.stringify({ username: req.user.gamer_name, userId: req.user.id })
+      : JSON.stringify({ username: null, userId: null })
+  });
 });
 
 const port = process.env.PORT || 8080;

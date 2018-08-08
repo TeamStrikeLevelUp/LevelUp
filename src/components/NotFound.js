@@ -1,6 +1,9 @@
 import React from "react";
 
-//Convert component into a class, get username from state
+import "../../styles/index.scss";
+import "../../styles/components/notfound.scss";
+
+//Get username from state and conditionally render it depending on whether user is logged in.
 
 class NotFound extends React.Component {
   constructor(props) {
@@ -11,20 +14,18 @@ class NotFound extends React.Component {
     const { userAuthState } = this.props;
     console.log("userAuthState:", userAuthState);
     return (
-      <div>
-        <p>{userAuthState}</p>
-        <p>Sorry username, Game Over.</p>
+      <div className="notfound">
+        <p className="notfound__message">Sorry username, it's Game Over.</p>
+        <p>404: Page Not Found</p>
+        <img
+          className="notfound__image"
+          src="https://media.giphy.com/media/xdnfWJFRpP8Eo/giphy.gif"
+          alt="car
+          crash"
+        />
       </div>
     );
   }
 }
-
-// function NotFound() {
-//   return (
-//     <div>
-//       <p>Sorry username, Game Over.</p>
-//     </div>
-//   );
-// }
 
 export default NotFound;
