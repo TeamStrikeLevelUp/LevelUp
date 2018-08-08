@@ -148,12 +148,9 @@ function getUserAvatarById(id) {
     .catch(error => console.log(error.message));
 }
 
-
-
 ///////////////// Forum - start //////////////////
 
-
-app.get("/api/forum", function (req, res) {
+app.get("/api/forum", function(req, res) {
   db.any(`SELECT * FROM forum ORDER BY title ASC`)
 
     .then(data => {
@@ -162,7 +159,7 @@ app.get("/api/forum", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/forum/:id", function (req, res) {
+app.get("/api/forum/:id", function(req, res) {
   db.one(`SELECT * FROM forum WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -170,7 +167,7 @@ app.get("/api/forum/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/forum/search/:name", function (req, res) {
+app.get("/api/forum/search/:name", function(req, res) {
   db.any(`SELECT * FROM forum WHERE title ILIKE \'%$1#%\'`, [req.params.name])
     .then(data => {
       res.json(data);
@@ -178,18 +175,18 @@ app.get("/api/forum/search/:name", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/post/:id", function (req, res) {
-  db.any(`SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`, [
-
-    req.params.id
-  ])
+app.get("/api/post/:id", function(req, res) {
+  db.any(
+    `SELECT * FROM post WHERE parent_id is null AND forum_id = $1 ORDER BY created DESC`,
+    [req.params.id]
+  )
     .then(data => {
       res.json(data);
     })
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/post/:id/search/:name", function (req, res) {
+app.get("/api/post/:id/search/:name", function(req, res) {
   db.any(
     `SELECT * FROM post WHERE parent_id is null AND forum_id = $1 
   AND (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') ORDER BY created DESC`,
@@ -201,7 +198,7 @@ app.get("/api/post/:id/search/:name", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/parentpost/:id", function (req, res) {
+app.get("/api/parentpost/:id", function(req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -209,7 +206,7 @@ app.get("/api/parentpost/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/reply/:id", function (req, res) {
+app.get("/api/reply/:id", function(req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
       res.json(data);
@@ -217,7 +214,7 @@ app.get("/api/reply/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/reply/:id/search/:name", function (req, res) {
+app.get("/api/reply/:id/search/:name", function(req, res) {
   db.any(
     `SELECT * FROM post WHERE  
    (title ILIKE \'%$2#%\' OR body ILIKE \'%$2#%\') AND parent_id = $1 `,
@@ -229,7 +226,7 @@ app.get("/api/reply/:id/search/:name", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.post("/api/reply", function (req, res) {
+app.post("/api/reply", function(req, res) {
   const { title, body, parent_id, forum_id, gamer_id, gamer_name } = req.body;
 
   db.one(
@@ -254,8 +251,7 @@ app.post("/api/reply", function (req, res) {
     });
 });
 
-
-app.post("/api/post", function (req, res) {
+app.post("/api/post", function(req, res) {
   const { title, body, forum_id, gamer_id, gamer_name } = req.body;
 
   db.one(
@@ -264,7 +260,10 @@ app.post("/api/post", function (req, res) {
     [title, body, forum_id, gamer_id, gamer_name]
   )
     .then(data => {
-      db.any(`SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1 ORDER BY created DESC`, [forum_id])
+      db.any(
+        `SELECT * FROM post WHERE parent_id is NULL AND forum_id= $1 ORDER BY created DESC`,
+        [forum_id]
+      )
         .then(data => {
           db.none(`UPDATE gamer_profile SET totalposts = totalposts+1 where gamer_id = $1`, [gamer_id])
           res.json(data);
@@ -374,12 +373,18 @@ app.post("/api/account/description", function (req, res) {
 
 ///////////////// profile - start //////////////////
 
-app.get("/api/gamer/:id", function (req, res) {
-  db.one(`SELECT gamer_profile.*, gamer.gamer_name, gamer.email FROM gamer_profile
-       INNER JOIN gamer ON gamer.id=$1 WHERE gamer_profile.gamer_id =$1;`, [req.params.id])
+app.get("/api/gamer/:id", function(req, res) {
+  db.one(
+    `SELECT gamer_profile.*, gamer.gamer_name, gamer.email FROM gamer_profile
+       INNER JOIN gamer ON gamer.id=$1 WHERE gamer_profile.gamer_id =$1;`,
+    [req.params.id]
+  )
     .then(profile => {
-      db.any(`SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
-      AND game.id = gamer_favorites.game_id`, [req.params.id])
+      db.any(
+        `SELECT * FROM game, gamer_favorites WHERE  gamer_favorites.gamer_id = $1 
+      AND game.id = gamer_favorites.game_id`,
+        [req.params.id]
+      )
         .then(favs => {
           res.json({ profile: profile, favs: favs });
         })
@@ -388,22 +393,23 @@ app.get("/api/gamer/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
-app.post("/api/newfavourite/", function (req, res) {
-
-
+app.post("/api/newfavourite/", function(req, res) {
   //check if game exists in game table
   db.one(`SELECT * FROM game WHERE igdb_id = $1`, [req.body.igdb])
     .then(data1 => {
-      console.log(data1.id)
+      console.log(data1.id);
 
       // game exists in game table => check if it exists in gamer_favorites
-      db.one(`SELECT * FROM gamer_favorites WHERE game_id = $1 
-      AND gamer_id = $2`, [data1.id, req.body.gamerId])
+      db.one(
+        `SELECT * FROM gamer_favorites WHERE game_id = $1 
+      AND gamer_id = $2`,
+        [data1.id, req.body.gamerId]
+      )
         .then(data2 => {
           //game already exists in gamer_favorites. Returning
-          res.json({ msg: "game is already there" })
-
-        }).catch(error => {
+          res.json({ msg: "game is already there" });
+        })
+        .catch(error => {
           // game doesnt exists in gamer_favorites. Adding
 
           db.one(
@@ -412,20 +418,18 @@ app.post("/api/newfavourite/", function (req, res) {
             [data1.id, req.body.gamerId]
           )
             .then(data3 => {
-              res.json({ msg: "added fav" })
+              res.json({ msg: "added fav" });
             })
             .catch(error => {
               res.json({
                 error: error.message
               });
             });
-
         });
-
     })
     .catch(error => {
       //game doesnt exsits in game table, Adding to game table
-      console.log("doesnt exist")
+      console.log("doesnt exist");
 
       db.one(
         `INSERT INTO game(title, igdb_id)
@@ -439,7 +443,7 @@ app.post("/api/newfavourite/", function (req, res) {
             [data4.id, req.body.gamerId]
           )
             .then(data5 => {
-              res.json({ msg: "added game and fav" })
+              res.json({ msg: "added game and fav" });
             })
             .catch(error => console.log(error.message));
 
@@ -450,9 +454,7 @@ app.post("/api/newfavourite/", function (req, res) {
             error: error.message
           });
         });
-
-    }
-    );
+    });
 });
 
 // gets all GAME favourites per user
@@ -500,23 +502,24 @@ app.get("/api/gamer/post/:id", function (req, res) {
     req.params.id
   ])
     .then(posts => {
-
-
-      db.any(`SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`, [req.params.id])
+      db.any(
+        `SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`,
+        [req.params.id]
+      )
         .then(replies => {
           res.json({ posts: posts, replies: replies });
         })
         .catch(error => console.log(error.message));
-
-
 
       // res.json(data);
     })
     .catch(error => console.log(error.message));
 });
 
-app.get("/api/profile/:username", function (req, res) {
-  db.one(`SELECT * FROM gamer_profile WHERE gamer_name = $1`, [req.params.username])
+app.get("/api/profile/:username", function(req, res) {
+  db.one(`SELECT * FROM gamer_profile WHERE gamer_name = $1`, [
+    req.params.username
+  ])
     .then(data => {
       res.json(data);
     })
@@ -583,12 +586,12 @@ function compare(plainTextPassword, hashedPassword) {
 }
 
 // serialise user into session
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
 // deserialise user from session
-passport.deserializeUser(function (id, done) {
+passport.deserializeUser(function(id, done) {
   getUserById(id).then(user => {
     done(null, user);
   });
@@ -597,7 +600,7 @@ passport.deserializeUser(function (id, done) {
 // configure passport to use local strategy
 // that is use locally stored credentials
 passport.use(
-  new LocalStrategy(function (username, password, done) {
+  new LocalStrategy(function(username, password, done) {
     let _user;
     getUserByUsername(username)
       .then(user => {
@@ -627,8 +630,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // route to log out users
-app.get("/logout", function (req, res) {
-
+app.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
@@ -700,16 +702,17 @@ app.get("/login", function (req, res) {
   res.render("login", { data: "" });
 });
 // route to accept logins
-app.post("/login", passport.authenticate("local", { session: true }), function (req, res) {
+app.post("/login", passport.authenticate("local", { session: true }), function(
+  req,
+  res
+) {
   res.status(200).end();
 });
 
 // register page
-app.get("/signup", function (req, res) {
+app.get("/signup", function(req, res) {
   res.render("signup", {});
 });
-
-
 
 app.post("/signup", (req, res) => {
   const { signupUsername, signupPassword, signupEmail } = req.body;
@@ -728,8 +731,6 @@ app.post("/signup", (req, res) => {
         [signupUsername, hashedPassword, signupEmail]
       )
         .then(data => {
-
-
           db.one(
             `
                   INSERT INTO gamer_profile (gamer_name, gamer_id)
@@ -738,16 +739,15 @@ app.post("/signup", (req, res) => {
             [signupUsername, data.id]
           )
             .then(data2 => {
-
-
               res.status(200).end();
-            }).catch(error => console.log("Gamer_profile error: ", error.message));
-
+            })
+            .catch(error =>
+              console.log("Gamer_profile error: ", error.message)
+            );
         })
         .catch(error => console.log("Gamer error: ", error.message));
     });
 });
-
 
 //Main  GAMES search for specific title
 app.get("/games/:title", (req, res) => {
@@ -759,7 +759,7 @@ app.get("/games/:title", (req, res) => {
           "name-in": gameTitle
         },
         order: "popularity:desc",
-        search: gameTitle,
+        search: gameTitle
         // limit: 50 // Limit to 50 results
       },
       ["*"]
@@ -836,13 +836,14 @@ app.get("/genres/", (req, res) => {
 app.get("/newsApi/:pageNum", (req, res) => {
   const page = req.params.pageNum;
 
-  newsapi.v2.everything({
-    sources: "ign",
-    language: "en",
-    sortBy: "publishedAt",
-    pageSize: 10,
-    page
-  })
+  newsapi.v2
+    .everything({
+      sources: "ign",
+      language: "en",
+      sortBy: "publishedAt",
+      pageSize: 10,
+      page
+    })
     .then(response => {
       res.json(response);
     })
@@ -875,7 +876,7 @@ app.get("/searchNews/:searchTerm/:pageNum", (req, res) => {
 // Fortnite data --
 
 app.get("/api/fortnite/:username", (req, res) => {
-  const username = req.params.username
+  const username = req.params.username;
   var formData = new FormData();
   formData.append("username", username);
 
@@ -886,11 +887,11 @@ app.get("/api/fortnite/:username", (req, res) => {
       Authorization: "49814d647a64a41873378c2c7acd74b1"
     }
   })
-    .then(function (response) {
+    .then(function(response) {
       return response.json();
     })
     .then(result => {
-      console.log(result)
+      console.log(result);
       var formDataStats = new FormData();
 
       formDataStats.append("user_id", result.uid);
@@ -907,11 +908,11 @@ app.get("/api/fortnite/:username", (req, res) => {
           }
         }
       )
-        .then(function (response) {
+        .then(function(response) {
           return response.json();
         })
         .then(result => {
-          console.log(result)
+          console.log(result);
 
           res.json(result);
         });
@@ -926,7 +927,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("*", function (req, res) {
+app.get("*", function(req, res) {
   res.render("index", {
     data: req.user
       ? { data: JSON.stringify({ username: req.user.gamer_name, userId: req.user.id }) }
@@ -936,6 +937,6 @@ app.get("*", function (req, res) {
 
 
 const port = process.env.PORT || 8080;
-app.listen(port, function () {
+app.listen(port, function() {
   console.log(`Listening on port number http://localhost:${port}`);
 });
