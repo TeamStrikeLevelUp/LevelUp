@@ -4,7 +4,8 @@ import {
   fetchGameInfoFromAPI,
   fetchGenreData,
   fetchThemeData,
-  addFavouriteToDB
+  addFavouriteToDB,
+  fetchGameFavourite
 } from "../actions";
 
 const mapStateToProps = reduxState => {
@@ -31,7 +32,8 @@ const mapDispatchToProps = dispatch => {
     },
     addToFavourite: (favInfo) => {
       dispatch(addFavouriteToDB(favInfo))
-    }
+    },
+    fetchGameFavourites: (userId) => { dispatch(fetchGameFavourite(userId)) }
   };
 };
 

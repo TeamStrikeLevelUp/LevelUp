@@ -18,11 +18,14 @@ class TwitchSearch extends React.Component {
     this.addToFavourites = this.addToFavourites.bind(this);
   }
   componentDidMount() {
+
+
     if (this.props.fetchTwitchFavourites !== undefined) {
       if (this.props.userAuthState) {
         this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
       }
     }
+    this.props.fetchTopTwitchers()
   }
 
   handleChange(event) {
@@ -120,6 +123,7 @@ class TwitchSearch extends React.Component {
               frameBorder="2"
               scrolling="yes"
               allowFullScreen="true"
+
             />
           </div>
         </div>
