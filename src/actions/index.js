@@ -78,7 +78,6 @@ export function fetchGameFavourite(gamerId) {
     fetch(`/api/favourites/${gamerId}`)
       .then(response => response.json())
       .then(json => {
-
         dispatch(receiveGameFavourites(json));
       })
       .catch(error => {

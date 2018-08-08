@@ -18,8 +18,8 @@ class DashboardPanels extends React.Component {
             user: userData,
         });
 
-        console.log("userData.userId", userData)
         if (userData) { this.props.setAuthState(userData) };
+
         // Fetch Twitch favourites if not in redux.state
         if (userData && this.props.fetchTwitchFavourite) {
             if (this.props.twitchFavourite.length === 0) {
@@ -34,6 +34,11 @@ class DashboardPanels extends React.Component {
 
         // Gamer rank
         this.gamerRank();
+
+        // Games Info
+        if (userData && this.props.fetchGameFavourite) {
+            this.props.fetchGameFavourite(userData.userId);
+        }
     }
 
     gamerRank() {
@@ -57,6 +62,8 @@ class DashboardPanels extends React.Component {
     render() {
         const { twitchFavourite, gameFavourite } = this.props;
         const { userStats, gamer_rank } = this.state;
+
+        console.log("gameFavourite", gameFavourite)
         return (
             <div className="dashboard__panels">
                 <div className="dashboard__panels--item">
@@ -81,11 +88,20 @@ class DashboardPanels extends React.Component {
                             })
                         }
                     </ol>
+                    <p className="dashboard__panels--text">Twitch users added to Favourites will show up here.</p>
                 </div>
                 <div className="dashboard__panels--item">
-                    <h3 className="dashboard__panels--heading">Forum</h3>
-                    <div className="dashboard__panels--points">50</div>
-                    <p className="dashboard__panels--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+                    <h3 className="dashboard__panels--heading">Favourite Games</h3>
+                    <ol className="dashboard__panels--twitch-list">
+                        {
+                            gameFavourite.map(fav => {
+                                return (
+                                    <li key={fav.twitch_name}>{fav.title}</li>
+                                )
+                            })
+                        }
+                    </ol>
+                    <p className="dashboard__panels--text">Games added to Favourites will show up here.</p>
                 </div>
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Twitch</h3>
