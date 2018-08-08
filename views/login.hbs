@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="static/images/level-up-logo.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="static/styles/views/login.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 </head>
 
@@ -23,15 +24,15 @@
                 <label for="username">username</label> --}}
                 <input placeholder="Username" class="login-form__input" id="username" name="username" value="" /> {{!--
                 <label for="password">password</label> --}}
-                <input placeholder="Password" class="login-form__input" id="password" name="password" type="password" value="" />
+                <input placeholder="Password" class="login-form__input-password" id="password" name="password" type="password" value="" />
                 <button class="login-form__submit" type="submit">Log in</button>
             </form>
             <svg class="landing__svg" version="1.1" x="0px" y="0px" viewBox="0 25 57 33">
                 <path style="fill:#CBD4D8;" d="M45.241,55.471c-1.303,0.022-5.452-0.268-9.314-1.331c-4.514-1.242-10.121-1.237-14.637,0
             c-3.892,1.066-7.521,1.354-9.314,1.331C5.142,55.383,0,48.52,0,41.499v0c0-7.684,6.287-13.972,13.972-13.972h29.274
             C50.93,27.528,57,33.815,57,41.499v0C57,48.52,52.075,55.355,45.241,55.471z" />
-                <line style="fill:none;stroke:#AFB6BB;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="27" y1="31.528" x2="31.632"
-                    y2="31.528" />
+                <line class="controller__top-button" style="fill:none;stroke:#AFB6BB;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;"
+                    x1="27" y1="31.528" x2="31.632" y2="31.528" />
                 <circle class="landing__login button__login" style="fill:#43B05C;" cx="36" cy="41.528" r="3" />
                 <circle style="fill:#DD352E;" cx="50" cy="41.528" r="3" />
                 <circle class="landing__signup button__login" style="fill:#EBBA16;" cx="43" cy="48.528" r="3" />
@@ -49,10 +50,11 @@
                 </g>
                 <g>
                     <a xlink:href="/homepage">
-                        <text class="landing__home" x="43" y="49" style="text-anchor: middle">Enter</text>
+                        <text class="landing__home" x="43" y="49" style="text-anchor: middle">Home</text>
                     </a>
                 </g>
             </svg>
+
         </div>
     </div>
 

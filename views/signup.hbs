@@ -3,21 +3,61 @@
 
 <head>
     <title>Sign up page</title>
+    <link rel="stylesheet" type="text/css" href="static/styles/views/signup.css">
+
 </head>
 
 <body>
-    <div>
-        <form id="signup-form">
-            <label for="signup-username">username</label>
-            <input id="signup-username" name="signup-username" value="" />
-            <label for="signup-password">password</label>
-            <input id="signup-password" name="signup-password" type="password" value="" />
-            <label for="signup-email">email</label>
-            <input id="signup-email" name="signup-email" type="email" value="" />
-            <button type="submit">Register</button>
-        </form>
+    <div class="video-container">
+        <div class="video__overlay"></div>
+        <video class="video" autoPlay muted loop>
+            <source src="../../static/videos/login.mp4" type="video/mp4" />
+        </video>
     </div>
+    <div class="landing">
+        <div class="signup-form__wrapper">
+            <form id="signup-form" class="signup-form__wrapper--form">
+                <input id="signup-username" class="signup-form__input" name="signup-username" value="" placeholder="Username" />
+                <input id="signup-password" class="signup-form__input-password" name="signup-password" type="password" value="" placeholder="Password"
+                />
+                <input id="signup-email" class="signup-form__input-email" name="signup-email" type="email" value="" placeholder="@email"
+                />
+            </form>
+            <svg class="landing__svg" version="1.1" x="0px" y="0px" viewBox="0 25 57 33">
+                <path style="fill:#CBD4D8;" d="M45.241,55.471c-1.303,0.022-5.452-0.268-9.314-1.331c-4.514-1.242-10.121-1.237-14.637,0
+            c-3.892,1.066-7.521,1.354-9.314,1.331C5.142,55.383,0,48.52,0,41.499v0c0-7.684,6.287-13.972,13.972-13.972h29.274
+            C50.93,27.528,57,33.815,57,41.499v0C57,48.52,52.075,55.355,45.241,55.471z" />
+                <line class="controller__top-button" style="fill:none;stroke:#AFB6BB;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;"
+                    x1="27" y1="31.528" x2="31.632" y2="31.528" />
+                <circle class="landing__signup button__signup" style="fill:#43B05C;" cx="36" cy="41.528" r="3" />
+                <circle style="fill:#DD352E;" cx="50" cy="41.528" r="3" />
+                <circle class="landing__home button__signup" style="fill:#EBBA16;" cx="43" cy="48.528" r="3" />
+                <circle class="signup__signup button__signup" style="fill:#366DB6;" cx="43" cy="34.528" r="3" />
+                <polygon style="fill:#38454F;" points="22,38.528 18,38.528 18,34.528 12,34.528 12,38.528 8,38.528 8,44.528 12,44.528 12,48.528 
+            18,48.528 18,44.528 22,44.528 " />
+                <g>
+                    <a xlink:href="/login">
+                        <text class="landing__signup button__signup" x="36" y="42" style="text-anchor: middle">Log In</text>
+                    </a>
+                </g>
+                <g>
+                    <a xlink:href="/signup">
+                        <text class="signup__signup" x="43" y="35" style="text-anchor: middle">Sign Up</text>
+                    </a>
+                </g>
+                <g>
+                    <a xlink:href="/homepage">
+                        <text class="landing__home" x="43" y="49" style="text-anchor: middle">Home</text>
+                    </a>
+                </g>
+            </svg>
+
+        </div>
+    </div>
+
     <script src="/static/client.js"></script>
 </body>
+
+
 
 </html>

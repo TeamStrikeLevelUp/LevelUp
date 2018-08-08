@@ -117,7 +117,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".fortnite {\n  display: flex; }\n\n.fortnite__search {\n  flex: 4; }\n\n.fortnite__title {\n  text-align: center; }\n\n.fortnite__playerlist {\n  flex: 1; }\n", ""]);
+exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100vh;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  position: absolute;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  top: 30%;\n  background-color: royalblue;\n  border-radius: 20%; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n", ""]);
 
 // exports
 
@@ -251,7 +251,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: rgb(19, 39, 39); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -27771,10 +27771,6 @@ var _HomeRoute = __webpack_require__(/*! ../routes/HomeRoute */ "./src/routes/Ho
 
 var _HomeRoute2 = _interopRequireDefault(_HomeRoute);
 
-var _SearchContainer = __webpack_require__(/*! ../containers/SearchContainer */ "./src/containers/SearchContainer.js");
-
-var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
-
 var _NewsContainer = __webpack_require__(/*! ../containers/NewsContainer */ "./src/containers/NewsContainer.js");
 
 var _NewsContainer2 = _interopRequireDefault(_NewsContainer);
@@ -27803,9 +27799,9 @@ var _NewsRoute = __webpack_require__(/*! ../routes/NewsRoute */ "./src/routes/Ne
 
 var _NewsRoute2 = _interopRequireDefault(_NewsRoute);
 
-var _TopGamesRoute = __webpack_require__(/*! ../routes/TopGamesRoute */ "./src/routes/TopGamesRoute.js");
+var _FortniteRoute = __webpack_require__(/*! ../routes/FortniteRoute */ "./src/routes/FortniteRoute.js");
 
-var _TopGamesRoute2 = _interopRequireDefault(_TopGamesRoute);
+var _FortniteRoute2 = _interopRequireDefault(_FortniteRoute);
 
 var _PostsContainer = __webpack_require__(/*! ../containers/PostsContainer */ "./src/containers/PostsContainer.js");
 
@@ -27852,7 +27848,7 @@ var App = function (_React$Component) {
               return _react2.default.createElement(_HomeRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/search", render: function render() {
-              return _react2.default.createElement(_SearchContainer2.default, null);
+              return _react2.default.createElement(_SearchGamesRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/news", render: function render() {
               return _react2.default.createElement(_NewsContainer2.default, null);
@@ -27875,7 +27871,7 @@ var App = function (_React$Component) {
               return _react2.default.createElement(_NewsRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/the-fort", render: function render() {
-              return _react2.default.createElement(_TopGamesRoute2.default, null);
+              return _react2.default.createElement(_FortniteRoute2.default, null);
             } }),
           _react2.default.createElement(_reactRouterDom.Route, { path: "/retroclub", render: function render() {
               return _react2.default.createElement(RetroRoute, null);
@@ -28166,21 +28162,21 @@ var Fortnite = function (_React$Component) {
           { className: "fortnite__search" },
           _react2.default.createElement(
             "div",
-            { className: "fortnite__title" },
+            { className: "fortnite__title-container" },
             _react2.default.createElement(
-              "h2",
-              null,
+              "h1",
+              { className: "fortnite__title" },
               "Welcome to The Fort"
             ),
             _react2.default.createElement(
-              "p",
-              null,
+              "h3",
+              { className: "fortnite__title-tagline" },
               "How Fortified are you?"
             ),
             _react2.default.createElement(
               "h4",
-              null,
-              "Check and compare your scores with the best players around!"
+              { className: "fortnite__title-para" },
+              "Compare your scores with the best players around!"
             )
           ),
           _react2.default.createElement(
@@ -28188,18 +28184,18 @@ var Fortnite = function (_React$Component) {
             { className: "fortnite__option" },
             _react2.default.createElement(
               "form",
-              { className: "", onSubmit: this.handleSubmit },
-              _react2.default.createElement("input", { onChange: this.handleChange, type: "search", value: this.state.searchUser, placeholder: "Search username..." }),
+              { className: "fortnite__option-form", onSubmit: this.handleSubmit },
+              _react2.default.createElement("input", { className: "fortnite__option-input", onChange: this.handleChange, type: "search", value: this.state.searchUser, placeholder: "Search username..." }),
               _react2.default.createElement(
                 "button",
-                null,
+                { className: "fortnite__button" },
                 "Search"
               )
             )
           ),
           _react2.default.createElement(
             "div",
-            { className: "fortnite__userstats" },
+            null,
             _react2.default.createElement(_FortniteStats2.default, { stat: this.props.fortniteData })
           )
         ),
@@ -28294,6 +28290,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteStats(_ref) {
@@ -28307,7 +28307,7 @@ function FortniteStats(_ref) {
     null,
     _react2.default.createElement(
       "li",
-      { key: stat.uid },
+      { className: "fortnite__userstats", key: stat.uid },
       _react2.default.createElement(
         "h3",
         null,
@@ -28320,9 +28320,9 @@ function FortniteStats(_ref) {
       ),
       _react2.default.createElement("img", { src: stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fortnite-low-level.jpeg" }),
       _react2.default.createElement(
-        "h4",
-        null,
-        "Solo Skills"
+        "h2",
+        { className: "fortnite__userstats--titles" },
+        "Solo Stats"
       ),
       _react2.default.createElement(
         "p",
@@ -28333,18 +28333,46 @@ function FortniteStats(_ref) {
       _react2.default.createElement(
         "p",
         null,
-        "Top 10 Finishes: ",
-        stat.stats.placetop10_solo
-      ),
-      _react2.default.createElement(
-        "p",
-        null,
         "Solo Kills: ",
         stat.stats.kills_solo
       ),
       _react2.default.createElement(
-        "h4",
+        "h2",
+        { className: "fortnite__userstats--titles" },
+        "Duo Stats"
+      ),
+      _react2.default.createElement(
+        "p",
         null,
+        "1st Place Finishes: ",
+        stat.stats.placetop1_duo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Duo Kills: ",
+        stat.stats.kills_duo
+      ),
+      _react2.default.createElement(
+        "h2",
+        { className: "fortnite__userstats--titles" },
+        "Squad Stats"
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "1st Place Finishes: ",
+        stat.stats.placetop1_squad
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Squad Kills: ",
+        stat.stats.kills_squad
+      ),
+      _react2.default.createElement(
+        "h2",
+        { className: "fortnite__userstats--titles" },
         "Total Skills"
       ),
       _react2.default.createElement(
@@ -28687,11 +28715,11 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
-
-var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
-
 __webpack_require__(/*! ../../styles/components/header.scss */ "./styles/components/header.scss");
+
+var _NavBarContainer = __webpack_require__(/*! ../containers/NavBarContainer */ "./src/containers/NavBarContainer.js");
+
+var _NavBarContainer2 = _interopRequireDefault(_NavBarContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28707,7 +28735,7 @@ function Header() {
         null,
         "Level Up"
       ),
-      _react2.default.createElement(_HomeNavBar2.default, null)
+      _react2.default.createElement(_NavBarContainer2.default, null)
     )
   );
 }
@@ -28730,6 +28758,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -28742,102 +28772,125 @@ __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function HomeNavBar() {
-  return _react2.default.createElement(
-    "ul",
-    { className: "main-nav" },
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/homepage" },
-        "Home"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/search" },
-        "Search Games"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/news" },
-        "Gaming News"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      null,
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/the-fort" },
-        "The Fort"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/forum" },
-        "Community"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/twitch" },
-        "Twitch"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/dashboard" },
-        "Profile"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        "a",
-        { href: "/login" },
-        "Log In"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        "a",
-        { href: "/signup" },
-        "Sign Up"
-      )
-    ),
-    _react2.default.createElement(
-      "li",
-      { className: "main-nav__item" },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: "/logout" },
-        "Logout"
-      )
-    )
-  );
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HomeNavBar = function (_React$Component) {
+  _inherits(HomeNavBar, _React$Component);
+
+  function HomeNavBar() {
+    _classCallCheck(this, HomeNavBar);
+
+    return _possibleConstructorReturn(this, (HomeNavBar.__proto__ || Object.getPrototypeOf(HomeNavBar)).call(this));
+  }
+
+  _createClass(HomeNavBar, [{
+    key: "render",
+    value: function render() {
+      var userAuthState = this.props.userAuthState;
+
+      return _react2.default.createElement(
+        "ul",
+        { className: "main-nav" },
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/homepage" },
+            "Home"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.NavLink,
+            { activeClassname: "is-active", to: "/search" },
+            "Search Games"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/news" },
+            "Gaming News"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/the-fort" },
+            "The Fort"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/forum" },
+            "Community"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/twitch" },
+            "Twitch"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/dashboard" },
+            "Profile"
+          )
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          !userAuthState ? _react2.default.createElement(
+            "a",
+            { href: "/login" },
+            "Log In"
+          ) : null
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          !userAuthState ? _react2.default.createElement(
+            "a",
+            { href: "/signup" },
+            "Sign Up"
+          ) : null
+        ),
+        _react2.default.createElement(
+          "li",
+          { className: "main-nav__item" },
+          userAuthState ? _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: "/logout" },
+            "Logout"
+          ) : null
+        )
+      );
+    }
+  }]);
+
+  return HomeNavBar;
+}(_react2.default.Component);
 
 exports.default = HomeNavBar;
 
@@ -30656,6 +30709,38 @@ exports.default = HomeContainer;
 
 /***/ }),
 
+/***/ "./src/containers/NavBarContainer.js":
+/*!*******************************************!*\
+  !*** ./src/containers/NavBarContainer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _HomeNavBar = __webpack_require__(/*! ../components/HomeNavBar */ "./src/components/HomeNavBar.js");
+
+var _HomeNavBar2 = _interopRequireDefault(_HomeNavBar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(reduxState) {
+  return {
+    userAuthState: reduxState.authState
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(_HomeNavBar2.default);
+
+/***/ }),
+
 /***/ "./src/containers/NewsContainer.js":
 /*!*****************************************!*\
   !*** ./src/containers/NewsContainer.js ***!
@@ -31248,6 +31333,65 @@ exports.default = HomeRoute;
 
 /***/ }),
 
+/***/ "./src/routes/FortniteRoute.js":
+/*!*************************************!*\
+  !*** ./src/routes/FortniteRoute.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _FortniteContainer = __webpack_require__(/*! ../containers/FortniteContainer */ "./src/containers/FortniteContainer.js");
+
+var _FortniteContainer2 = _interopRequireDefault(_FortniteContainer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopGamesRoute = function (_React$Component) {
+  _inherits(TopGamesRoute, _React$Component);
+
+  function TopGamesRoute() {
+    _classCallCheck(this, TopGamesRoute);
+
+    return _possibleConstructorReturn(this, (TopGamesRoute.__proto__ || Object.getPrototypeOf(TopGamesRoute)).apply(this, arguments));
+  }
+
+  _createClass(TopGamesRoute, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_FortniteContainer2.default, null)
+      );
+    }
+  }]);
+
+  return TopGamesRoute;
+}(_react2.default.Component);
+
+exports.default = TopGamesRoute;
+
+/***/ }),
+
 /***/ "./src/routes/ForumsRoute.js":
 /*!***********************************!*\
   !*** ./src/routes/ForumsRoute.js ***!
@@ -31527,65 +31671,6 @@ var SearchGamesRoute = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = SearchGamesRoute;
-
-/***/ }),
-
-/***/ "./src/routes/TopGamesRoute.js":
-/*!*************************************!*\
-  !*** ./src/routes/TopGamesRoute.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _FortniteContainer = __webpack_require__(/*! ../containers/FortniteContainer */ "./src/containers/FortniteContainer.js");
-
-var _FortniteContainer2 = _interopRequireDefault(_FortniteContainer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TopGamesRoute = function (_React$Component) {
-  _inherits(TopGamesRoute, _React$Component);
-
-  function TopGamesRoute() {
-    _classCallCheck(this, TopGamesRoute);
-
-    return _possibleConstructorReturn(this, (TopGamesRoute.__proto__ || Object.getPrototypeOf(TopGamesRoute)).apply(this, arguments));
-  }
-
-  _createClass(TopGamesRoute, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        null,
-        _react2.default.createElement(_FortniteContainer2.default, null)
-      );
-    }
-  }]);
-
-  return TopGamesRoute;
-}(_react2.default.Component);
-
-exports.default = TopGamesRoute;
 
 /***/ }),
 

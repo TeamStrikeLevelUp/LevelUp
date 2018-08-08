@@ -407,7 +407,7 @@ app.set("view engine", "hbs");
 // });
 
 app.get("/", function (req, res) {
-  res.render("landing", {});
+  res.render("login", {});
 });
 
 app.get("/homepage", function (req, res) {
