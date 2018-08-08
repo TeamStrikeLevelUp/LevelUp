@@ -68,20 +68,11 @@ class TwitchSearch extends React.Component {
   }
 
   render() {
-    // console.log("twitch search string", this.state.twitchQuery);
-    const { fetchTwitchFavourites, twitchFavourite, userAuthState } = this.props;
-    // const favouriteDisplay=twitchFavourite.
 
-
-
+    const { fetchTwitchFavourites, twitchFavourite, userAuthState, topTwitchers } = this.props;
     return (
       <div className="twitch">
-
-
         <div className="twitch__search">
-          {/* <h2 className="twitch__search--title">
-            Find Your Favourite Streamers and Enjoy!
-          </h2> */}
           <form
             onSubmit={this.handleSubmit}
             className="twitch__search--form"
@@ -108,12 +99,15 @@ class TwitchSearch extends React.Component {
             {userAuthState ? <h2>Favourites </h2> : null}
             <ul>
               {twitchFavourite.map(currentFavourite =>
-                <a href="#" className="twitch__anchor"> <li key={currentFavourite.twitch_name} onClick={this.handleClick}>
-                  {currentFavourite.twitch_name}
-                </li></a>)}
+                <a href="#" className="twitch__anchor" key={currentFavourite.twitch_name}>
+                  <li key={currentFavourite.twitch_name} onClick={this.handleClick}>
+                    {currentFavourite.twitch_name}
+                  </li>
+                </a>)}
 
             </ul>
           </form>
+
           <div className="twitch__search--video">
             <iframe
               className="twitch__player"
@@ -129,9 +123,19 @@ class TwitchSearch extends React.Component {
         </div>
         <div>
           <h2 className="twitch__streamers--title">
-            Click below to check out these popular streamers:
+            Top 10 Streams:
           </h2>
-          <ul className="twitch__streamers">
+          <ul>
+            {topTwitchers.map(currentTwitch => {
+              return (<li key={currentTwitch.id}>
+                <img src={currentTwitch.profile_image_url} width="100" />
+                {currentTwitch.display_name}
+              </li>)
+            }
+            )}
+          </ul>
+
+          {/* <ul className="twitch__streamers">
             <li>
               <h4
                 className="twitch__streamers--names"
@@ -222,7 +226,7 @@ class TwitchSearch extends React.Component {
               </h4>
               <p>Focus: Grand Theft Auto</p>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     );

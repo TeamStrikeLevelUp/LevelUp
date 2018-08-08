@@ -24,7 +24,8 @@ const mapStateToProps = reduxState => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchReferenceData: () => {
-      dispatch(fetchGenreData()), dispatch(fetchThemeData());
+      dispatch(fetchGenreData());
+      dispatch(fetchThemeData());
     },
 
     fetchGameInfo: searchGame => {
@@ -33,7 +34,9 @@ const mapDispatchToProps = dispatch => {
     addToFavourite: (favInfo) => {
       dispatch(addFavouriteToDB(favInfo))
     },
-    fetchGameFavourites: (userId) => { dispatch(fetchGameFavourite(userId)) }
+    fetchGameFavourites: (userId) => {
+      dispatch(fetchGameFavourite(userId))
+    }
   };
 };
 
