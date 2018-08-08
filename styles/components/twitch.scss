@@ -1,5 +1,38 @@
 .twitch {
   display: flex;
+  
+  margin-left:10px;
+}
+.twitch__anchor{
+  text-decoration: none;
+  color:whitesmoke;
+  text-align:center;
+  font-size:15px;
+}
+.twitch__search{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+}
+.twitch__search--video{
+  text-align:center;
+}
+.twitch__search--form{
+
+color: 75, 212, 253 ;
+}
+
+.twitch__search--button{
+  height: 50px;
+  margin-top:15px;
+  // font-family: 'Oswald', sans-serif;
+  font-size:20px;
+  font-weight: 400;
+  width:auto;
+  background-color: darkslategrey;
+  color: rgb(75, 212, 253);
+  border-style:none;
+  border-radius:5%;
 }
 
 .twitch__streamers {
@@ -21,10 +54,32 @@
   text-align: center;
 }
 
+
 .twitch__player--hide {
   display: none;
 }
 
 .twitch__search--input {
-  text-align: center;
+
+    font-size: 15px;
+    margin: auto;
+    height: 40px;
+    border-radius: 5%;
+    border: 1px solid rgb(26, 44, 238);
+    background-color: rgb(19, 26, 26);
+    color: white;
+  
+}
+.twitch__button {
+ 
+  height: 50px;
+  margin:15px;
+
+  font-size:20px;
+  font-weight: 400;
+  width:auto;
+  background-color: darkslategrey;
+  color: rgb(75, 212, 253);
+  border-style:none;
+  border-radius:5%;
 }

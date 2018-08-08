@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
@@ -6,9 +7,68 @@ import "../../styles/components/homepage.scss";
 class Homepage extends React.Component {
   constructor() {
     super();
+    this.state={gamer:{},game:{}, forum:{}, choice:{} }
+    this.handleChange=this.handleChange.bind(this);
+    this.voteHandler=this.voteHandler.bind(this)
+  }
+
+  componentDidMount(){
+    fetch(`/api/featured`)
+    .then(response => response.json())
+    .then(json => this.setState({gamer:json.gamer ,game:json.game, forum:json.forum}));
+
+  }
+
+  handleChange(event){
+    
+    const choice={
+      value:event.target.value,
+      title:event.target.id
+    }
+    this.setState({choice})
+  }
+
+  voteHandler(event){
+    event.preventDefault();
+    
+    if(this.state.choice.value){
+      if(this.props.userAuthState){
+
+        const newVote={
+          value: this.state.choice.value,
+          title: this.state.choice.title,
+          gamer_id:this.props.userAuthState.userId,
+         gamer_name:this.props.userAuthState.username
+        }
+
+        fetch("/api/vote", {
+          method: "post",
+          body: JSON.stringify(newVote),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(json => {
+
+          } )
+
+      }
+      else
+       alert("login to vote")
+    }
+    else
+    alert("select a choice to vote")
+  }
+
+  viewHandler(event){
+    event.preventDefault();
   }
 
   render() {
+    
     return (
       <div className="homepage">
         <div className="homepage__main">
@@ -17,13 +77,13 @@ class Homepage extends React.Component {
           <div className="homepage__main--featured">
             <div className="homepage__main--featured--selection">
               <div className="homepage__main--featured--selection--game">
-                <h4>Featured Game: Fortnite</h4>
+                <h4>Featured Game: {this.state.game.title}</h4>
               </div>
               <div className="homepage__main--featured--selection--user">
-                <h4>Featured User: Ahmed1</h4>
+                <h4>Featured User: <Link to={`/profile/${this.state.gamer.gamer_name}`}> {this.state.gamer.gamer_name} </Link>  </h4>
               </div>
               <div className="homepage__main--featured--selection--forum">
-                <h4>Featured Forum: Kingsway</h4>
+                <h4>Featured Forum: <Link to={`/forum/${this.state.forum.id}`}> {this.state.forum.title} </Link>  </h4>
               </div>
               <div className="homepage__main--featured--selection--news">
                 <h4>Featured News: IGN</h4>
@@ -42,7 +102,7 @@ class Homepage extends React.Component {
         </div>
         <div className="homepage__side">
           <div className="homepage__side--poll">
-            <form>
+            <form onChange={this.handleChange}>
               <div>
                 <div>
                   <strong>
@@ -62,8 +122,8 @@ class Homepage extends React.Component {
                 <input type="radio" name="answer" value="6" id="Other" />
                 <label htmlFor="Other">Other</label>
                 <div>
-                  <input type="submit" value=" Vote " />
-                  <input type="submit" value=" View " />
+                  <input onClick={this.voteHandler} value=" Vote " />
+                  <input onClick={this.viewHandler} value=" View " />
                 </div>
               </div>
             </form>
