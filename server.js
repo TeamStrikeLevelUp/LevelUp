@@ -1,16 +1,14 @@
-// //twitch api testing
-// var api = require('twitch-api-v5');
-// api.clientID = 'goetr7q6o8bx0zott538hwdsavlpf8';
-
 
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 const FormData = require("form-data");
+
 //For News page
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
+
 //For Search page
 const igdb = require("igdb-api-node").default;
 const client = igdb("96651c2677f60060f3a91ef002c2a419");
@@ -44,84 +42,53 @@ const db = pgp({
   password: process.env.PASSWORD
 });
 
-//TWITCH TEST
-
-// var request = require('request');
-
-// var headers = {
-//   'Client-ID': 'goetr7q6o8bx0zott538hwdsavlpf8'
-// };
-
-// var options = {
-//   url: 'https://api.twitch.tv/helix/streams?first=20',
-//   headers: headers
-// };
-
-// function callback(error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     console.log(body);
-//     // JSON.parse(body)
-//     // response.body()
-//     // return response.json(body)
-//   }
-// }
-
-// request(options, callback);
-
+//Fetches Top TWITCH Data streams - Twitch channel/user names & photos etc
 app.get("/twitchStreams", (req, res) => {
-  // const username = req.params.username
-  // var formData = new FormData();
-  // formData.append("username", username);
+
   var headers = {
     'Client-ID': 'goetr7q6o8bx0zott538hwdsavlpf8'
   };
-  fetch(`https://api.twitch.tv/helix/streams?first=10`, {
+  fetch(`https://api.twitch.tv/helix/streams?first=10&language=en`, {
     method: "GET",
     headers
   })
-    .then(function (response) {
-      return response.json();
+    .then(response => response.ok
+      ? response.json()
+      : Promise.reject(response)
+    )
+    .then(result => {
+      return (result.data).map(twitchUser => {
+
+        return fetch(`https://api.twitch.tv/helix/users?id=${twitchUser.user_id}`, {
+          method: "GET",
+          headers
+        });
+      })
     })
     .then(result => {
-      console.log(result.data)
-      // result.json()
+      return Promise.all(result);
+      // console.log("twitcher info", result.data);
+
     })
-})
+    .then(results => {
+
+      return results.map(result => result.json());
+    })
+    .then(result => {
+      return Promise.all(result);
+      // console.log("twitcher info", result.data);
+
+    })
+    .then(results => {
+      // console.log("twitcher info", results);
+      res.json(results)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+});
 
 
-
-// api.streams.live("/twitchStreams/", (err, res) => {
-//   console.log("res ", res)
-// })
-//     if (err) {
-
-// let myStreams;
-// function getLiveTwitchStreams() {
-
-
-//   api.streams.live([], (err, res) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log("size ", (res.streams).length);
-//       console.log("stream data ", (res.streams));
-//       // res.json();
-
-
-//     }
-
-//   }
-//   )
-// console.log(datal)
-// console.log(res.streams)
-// console.log(myStreams)
-// }
-// getLiveTwitchStreams()
-// app.get("/twitchStreams", function (req, res) {
-//   const streamers = getLiveTwitchStreams();
-//   res.json(streamers)
-
-// })
 
 
 
@@ -556,6 +523,16 @@ app.get("/api/featured/", function (req, res) {
 
 
 
+app.get("/api/voteresults", function (req, res) {
+  db.any(`SELECT title, COUNT(title) FROM poll GROUP BY title`)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+
+
 app.post("/api/vote", function (req, res) {
   const { title, value, gamer_id, gamer_name } = req.body;
 
@@ -565,13 +542,21 @@ app.post("/api/vote", function (req, res) {
     [value, title, gamer_id, gamer_name]
   )
     .then(data => {
-
+      res.json({ msg: "thank you for voting" })
     })
     .catch(error => {
-      res.json({
-        error: error.message
-      });
+      res.json({ msg: "you already voted" })
     });
+});
+
+
+app.get("/api/top5forums", function (req, res) {
+  db.any(`SELECT post.forum_id, COUNT(post.forum_id), forum.title FROM post, forum 
+  WHERE post.forum_id = forum.id GROUP BY post.forum_id, forum.title ORDER BY count DESC LIMIT 5`)
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
 });
 
 
@@ -891,7 +876,7 @@ app.get("/api/fortnite/:username", (req, res) => {
       return response.json();
     })
     .then(result => {
-      console.log(result);
+      //console.log(result);
       var formDataStats = new FormData();
 
       formDataStats.append("user_id", result.uid);
@@ -912,7 +897,7 @@ app.get("/api/fortnite/:username", (req, res) => {
           return response.json();
         })
         .then(result => {
-          console.log(result);
+          //  console.log(result);
 
           res.json(result);
         });

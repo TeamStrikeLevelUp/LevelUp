@@ -1,18 +1,121 @@
 .fortnite {
   display: flex;
+
+  font-family: 'burbank_big_condensedblack';
 }
 
 .fortnite__search {
+  flex-direction: column;
   flex: 4;
+
+  background-image: url("/static/images/fortnite-cover.jpg");
+  background-size: cover;
+
+  min-height: 100vh;
+
+  border-style: solid;
+  border-right-color: #fafafe;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.fortnite__title-container {
+  position: relative;
+  float: right;
+
+  padding: 15px;
+
+  top: 30%;
+  right: 5%;
 }
 
 .fortnite__title {
+  color: #fafafe;
   text-align: center;
+}
+
+.fortnite__title-tagline {
+  color: #fafafe;
+  text-align: center;
+}
+
+.fortnite__title-para {
+  color: #fafafe;
+  text-align: center;
+}
+
+.fortnite__userstats {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: rgba(0, 0, 255, 0.473);
+  
+  height: 100%;
+  top: 90px;
+  width: 60%;
+}
+
+.fortnite__ul {
+  columns: 2;
+}
+
+.fortnite__userstats--titles {
+  color: #fafafe;
+  margin: 0;
+  padding:0;
+}
+
+.fortnite__userstats--image{
+  border-radius: 50%;
+
+  width: 80%;
+  height: auto;
+}
+
+.fortnite__userstats--stats {
+  margin: 0;
+  padding: 0;
+}
+
+.fortnite__userstats--username {
+  font-size: 170%;
+}
+
+.fortnite__userstats--platform {
+  font-size: 150%;
 }
 
 .fortnite__playerlist {
   flex: 1;
 }
+
+.fortnite__option {
+ padding: 15px;
+}
+
+.fortnite__option-form {
+  position: relative;
+  top: 100px;
+}
+
+.fortnite__option-input {
+    font-size: 20pt;
+}
+
+.fortnite__button {
+position: relative;
+
+  padding: 5px;
+  
+  left: 10px;
+
+  border-radius: 20%;
+}
+
+
 
 
 

@@ -5,12 +5,12 @@ import {
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-  console.log("twitch faves in twitch container", reduxState.twitchFavourite)
 
+  console.log("twitchers in container", reduxState.topTwitchers)
   return {
-
     userAuthState: reduxState.authState,
-    twitchFavourite: reduxState.twitchFavourite
+    twitchFavourite: reduxState.twitchFavourite,
+    topTwitchers: reduxState.topTwitchers
 
   };
 };

@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
+import "../../styles/components/forums.scss";
+import "../../styles/index.scss";
+
 
 class Forums extends React.Component {
   constructor() {
@@ -113,7 +116,7 @@ class Forums extends React.Component {
           let date = String(new Date(post.created)).substring(0, 24)
           return (
             <div key={post.id}>
-              <Link to={`/posts/${post.id}`}>Title: {post.title} - Posted By: {post.gamer_name} - On: {date}</Link>
+              <Link className="forum__links" to={`/posts/${post.id}`}>Title: {post.title} - Posted By: <Link className="profile__links" to={`/profile/${post.gamer_name}`}> {post.gamer_name} </Link> - On: {date}</Link>
             </div>
 
           )

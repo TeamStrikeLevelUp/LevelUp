@@ -17,7 +17,7 @@
   flex-direction: row;
 }
 
-.homepage__main--top10 {
+.homepage__main--top5 {
   display: flex;
 
   width: 60%;
@@ -25,4 +25,8 @@
 
 .homepage__side {
   flex: 1;
+}
+
+.homepage__links{
+  color: gold;
 }

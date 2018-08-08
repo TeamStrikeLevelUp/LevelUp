@@ -7,24 +7,21 @@ body {
   display: none;
 }
 
-.landing {
-  background-color: midnightblue;
-}
-
 .landing__svg {
   position: relative;
   transform: rotate(90deg);
-  width: 700px;
-  bottom: 145px;
+  width: 800px;
+  height: 100%;
+  bottom: 150px;
   right: 150px;
 }
 
-.landing__login {
+.signup__signup {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1.7px;
 }
 
-.button__login:hover {
+.button__signup:hover {
   cursor: pointer;
   opacity: .8;
 }
@@ -48,12 +45,12 @@ body {
   height: 100vh;
 }
 
-.login-form__wrapper {
+.signup-form__wrapper {
   align-self: flex-end;
   position: relative;
 }
 
-.login-form__wrapper--form {
+.signup-form__wrapper--form {
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -64,7 +61,7 @@ body {
   z-index: 4;
 }
 
-.login-form__input {
+.signup-form__input {
   border: none;
   padding: 8px;
   margin-top: 10px;
@@ -73,11 +70,9 @@ body {
   top: 50px;
   transform: rotate(90deg);
   position: relative;
-
- 
 }
 
-.login-form__input-password {
+.signup-form__input-password {
   position: relative;
   border: none;
   transform: rotate(90deg);
@@ -91,13 +86,27 @@ body {
   top: 11px;
 }
 
-.login-form__wrapper {
+.signup-form__input-email {
+  position: relative;
+  border: none;
+  transform: rotate(90deg);
+
+  padding: 8px;
+  margin-top: 10px;
+
+  opacity: .5;
+
+  right: -100px;
+  top: -28px;
+}
+
+.signup-form__wrapper {
   max-width: 100%;
   width: 450px;
   z-index: 5;
 }
 
-.login-form__submit {
+.signup-form__submit {
   padding: 8px;
   display: none;
 }
@@ -112,18 +121,18 @@ body {
     right: 10px;
   }
 
-  .login-form__input {
+  .signup-form__input {
     border: none;
     padding: 8px;
     margin-top: 10px;
     opacity: .5;
-    left: 0;
-    top: 12px;
+    left: -10px;
+    top: -5px;
     transform: rotate(0deg);
     position: relative;
   }
 
-  .login-form__input-password {
+  .signup-form__input-password {
     position: relative;
     border: none;
     transform: rotate(0deg);
@@ -133,8 +142,22 @@ body {
   
     opacity: .5;
   
-    left: 0;
-    top: 11px;
+    left: -10px;
+    top: -12px;
+  }
+
+  .signup-form__input-email {
+    position: relative;
+    border: none;
+    transform: rotate(0deg);
+  
+    padding: 8px;
+    margin-top: 10px;
+  
+    opacity: .5;
+  
+    right: 10px;
+    top: -19px;
   }
 
   .video-container {

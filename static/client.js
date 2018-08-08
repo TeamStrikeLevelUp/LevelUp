@@ -1,31 +1,34 @@
-const signupForm = document.getElementById("signup-form");
+// const signupForm = document.getElementById("signup-form");
 
 // Registration form handler
-if (signupForm) {
-  signupForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+const signupButton = document.querySelectorAll(".signup__signup");
 
-    const signupUsername = document.getElementById("signup-username").value;
-    const signupPassword = document.getElementById("signup-password").value;
-    const signupEmail = document.getElementById("signup-email").value;
+if (signupButton) {
+  for (let i = 0; i < signupButton.length; i++) {
+    signupButton[i].addEventListener("click", function (event) {
+      event.preventDefault();
 
-    fetch("/signup", {
-      method: "POST",
-      body: JSON.stringify({ signupUsername, signupPassword, signupEmail }),
-      credentials: "same-origin",
-      headers: {
-        "content-type": "application/json"
-      }
-    }).then(function (response) {
-      if (response.status == 200) {
-        window.location.pathname = "/login";
-      } else {
-        alert("error");
-      }
+      const signupUsername = document.getElementById("signup-username").value;
+      const signupPassword = document.getElementById("signup-password").value;
+      const signupEmail = document.getElementById("signup-email").value;
+
+      fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({ signupUsername, signupPassword, signupEmail }),
+        credentials: "same-origin",
+        headers: {
+          "content-type": "application/json"
+        }
+      }).then(function (response) {
+        if (response.status == 200) {
+          window.location.pathname = "/login";
+        } else {
+          alert("error");
+        }
+      });
     });
-  });
+  }
 }
-
 
 // Login form handler
 const loginButton = document.querySelectorAll(".landing__login");
