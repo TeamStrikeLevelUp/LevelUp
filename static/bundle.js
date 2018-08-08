@@ -160,7 +160,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    background-color: rgba(53, 94, 114, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 15px; }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 42px;\n    padding-left: 20px; }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
 
 // exports
 
@@ -313,7 +313,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, ":root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, ":root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -30944,22 +30944,65 @@ var DashboardPanels = function (_React$Component) {
     function DashboardPanels(props) {
         _classCallCheck(this, DashboardPanels);
 
-        return _possibleConstructorReturn(this, (DashboardPanels.__proto__ || Object.getPrototypeOf(DashboardPanels)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (DashboardPanels.__proto__ || Object.getPrototypeOf(DashboardPanels)).call(this, props));
+
+        _this.state = {
+            user: "",
+            userStats: "",
+            gamer_rank: ""
+        };
+        _this.gamerRank = _this.gamerRank.bind(_this);
+        return _this;
     }
 
     _createClass(DashboardPanels, [{
         key: "componentDidMount",
         value: function componentDidMount() {
+            var _this2 = this;
+
             var userData = initialUser;
             this.setState({
                 user: userData
             });
+
+            console.log("userData.userId", userData);
             if (userData) {
                 this.props.setAuthState(userData);
             };
-
+            // Fetch Twitch favourites if not in redux.state
             if (userData && this.props.fetchTwitchFavourite) {
-                this.props.fetchTwitchFavourite(userData.userId);
+                if (this.props.twitchFavourite.length === 0) {
+                    this.props.fetchTwitchFavourite(userData.userId);
+                }
+            }
+
+            // Fetch user info
+            fetch("/api/profile/" + userData.username).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                return _this2.setState({ userStats: json });
+            });
+
+            // Gamer rank
+            this.gamerRank();
+        }
+    }, {
+        key: "gamerRank",
+        value: function gamerRank() {
+            var g_level = this.state.userStats.gamer_level;
+            switch (g_level) {
+                case g_level < 10:
+                    this.setState({ gamer_rank: "Noob" });
+                    break;
+                case g_level < 20:
+                    this.setState({ gamer_rank: "Challenger" });
+                    break;
+                case g_level < 30:
+                    this.setState({ gamer_rank: "Champion" });
+                    break;
+                default:
+                    this.setState({ gamer_rank: "Legend" });
+
             }
         }
     }, {
@@ -30967,8 +31010,10 @@ var DashboardPanels = function (_React$Component) {
         value: function render() {
             var _props = this.props,
                 twitchFavourite = _props.twitchFavourite,
-                gameFavourite = _props.gameFavourite,
-                userAuthState = _props.userAuthState;
+                gameFavourite = _props.gameFavourite;
+            var _state = this.state,
+                userStats = _state.userStats,
+                gamer_rank = _state.gamer_rank;
 
             return _react2.default.createElement(
                 "div",
@@ -30979,11 +31024,59 @@ var DashboardPanels = function (_React$Component) {
                     _react2.default.createElement(
                         "h3",
                         { className: "dashboard__panels--heading" },
+                        "Level"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        userStats.gamer_level
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text dashboard__panels--text--large" },
+                        "Your LevelUp rank is ",
+                        _react2.default.createElement(
+                            "strong",
+                            { className: "rank__level" },
+                            gamer_rank
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "This shows your overall rank related with the games you play and your levelUp points."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Total Posts"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        userStats.totalposts
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "This shows the total amount of post in all forums."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
                         "Twitch Favourites"
                     ),
                     _react2.default.createElement(
-                        "ul",
-                        null,
+                        "ol",
+                        { className: "dashboard__panels--twitch-list" },
                         twitchFavourite.map(function (fav) {
                             return _react2.default.createElement(
                                 "li",
@@ -30991,44 +31084,6 @@ var DashboardPanels = function (_React$Component) {
                                 fav.twitch_name
                             );
                         })
-                    )
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "dashboard__panels--item" },
-                    _react2.default.createElement(
-                        "h3",
-                        { className: "dashboard__panels--heading" },
-                        "Total Post"
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "dashboard__panels--points" },
-                        "1750"
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__panels--text" },
-                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-                    )
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "dashboard__panels--item" },
-                    _react2.default.createElement(
-                        "h3",
-                        { className: "dashboard__panels--heading" },
-                        "Messages"
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        { className: "dashboard__panels--points" },
-                        "450"
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__panels--text" },
-                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
                     )
                 ),
                 _react2.default.createElement(
