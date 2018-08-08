@@ -28158,7 +28158,14 @@ var Dashboard = function (_React$Component) {
                         _react2.default.createElement(
                             _reactRouterDom.Switch,
                             null,
-                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', component: _DashboardPanels2.default }),
+                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/dashboard', render: function render() {
+                                    return _react2.default.createElement(_DashboardPanels2.default, {
+                                        twitchFavourite: _this2.props.twitchFavourite,
+                                        fetchTwitchFavourite: _this2.props.fetchTwitchFavourite,
+                                        gameFavourite: _this2.props.gameFavourite,
+                                        userAuthState: _this2.props.userAuthState,
+                                        setAuthState: _this2.props.setAuthState });
+                                } }),
                             _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
                                     return _react2.default.createElement(_DashboardAccount2.default, {
                                         setAuthState: _this2.props.setAuthState,
@@ -30202,11 +30209,11 @@ var TwitchSearch = function (_React$Component) {
               twitchFavourite.map(function (currentFavourite) {
                 return _react2.default.createElement(
                   "a",
-                  { href: "#", className: "twitch__anchor" },
+                  { key: currentFavourite.twitch_name, href: "#", className: "twitch__anchor" },
                   " ",
                   _react2.default.createElement(
                     "li",
-                    { key: currentFavourite.twitch_name, onClick: _this2.handleClick },
+                    { onClick: _this2.handleClick },
                     currentFavourite.twitch_name
                   )
                 );
@@ -30917,132 +30924,176 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function DashboardPanels() {
-    return _react2.default.createElement(
-        "div",
-        { className: "dashboard__panels" },
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Points"
-            ),
-            _react2.default.createElement(
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DashboardPanels = function (_React$Component) {
+    _inherits(DashboardPanels, _React$Component);
+
+    function DashboardPanels(props) {
+        _classCallCheck(this, DashboardPanels);
+
+        return _possibleConstructorReturn(this, (DashboardPanels.__proto__ || Object.getPrototypeOf(DashboardPanels)).call(this, props));
+    }
+
+    _createClass(DashboardPanels, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var userData = initialUser;
+            this.setState({
+                user: userData
+            });
+            if (userData) {
+                this.props.setAuthState(userData);
+            };
+
+            if (userData && this.props.fetchTwitchFavourite) {
+                this.props.fetchTwitchFavourite(userData.userId);
+            }
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                twitchFavourite = _props.twitchFavourite,
+                gameFavourite = _props.gameFavourite,
+                userAuthState = _props.userAuthState;
+
+            return _react2.default.createElement(
                 "div",
-                { className: "dashboard__panels--points" },
-                "250"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Total Post"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "1750"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Messages"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "450"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Forum"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "50"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Twitch"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "340"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        ),
-        _react2.default.createElement(
-            "div",
-            { className: "dashboard__panels--item" },
-            _react2.default.createElement(
-                "h3",
-                { className: "dashboard__panels--heading" },
-                "Video Game"
-            ),
-            _react2.default.createElement(
-                "div",
-                { className: "dashboard__panels--points" },
-                "20"
-            ),
-            _react2.default.createElement(
-                "p",
-                { className: "dashboard__panels--text" },
-                "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
-            )
-        )
-    );
-}
+                { className: "dashboard__panels" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Twitch Favourites"
+                    ),
+                    _react2.default.createElement(
+                        "ul",
+                        null,
+                        twitchFavourite.map(function (fav) {
+                            return _react2.default.createElement(
+                                "li",
+                                { key: fav.twitch_name },
+                                fav.twitch_name
+                            );
+                        })
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Total Post"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "1750"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Messages"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "450"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Forum"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "50"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Twitch"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "340"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "dashboard__panels--item" },
+                    _react2.default.createElement(
+                        "h3",
+                        { className: "dashboard__panels--heading" },
+                        "Video Game"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "dashboard__panels--points" },
+                        "20"
+                    ),
+                    _react2.default.createElement(
+                        "p",
+                        { className: "dashboard__panels--text" },
+                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                    )
+                )
+            );
+        }
+    }]);
+
+    return DashboardPanels;
+}(_react2.default.Component);
 
 exports.default = DashboardPanels;
 
@@ -31076,7 +31127,9 @@ var mapStateToProps = function mapStateToProps(reduxState) {
     return {
         userAuthState: reduxState.authState,
         userDataStore: reduxState.userData,
-        favouriteData: reduxState.favouriteInfo
+        favouriteData: reduxState.favouriteInfo,
+        twitchFavourite: reduxState.twitchFavourite,
+        gameFavourite: reduxState.gameFavourite
 
     };
 };
@@ -31091,6 +31144,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         },
         fetchGamerInfo: function fetchGamerInfo(gamerId) {
             return dispatch((0, _index.fetchGamerInfo)(gamerId));
+        },
+        fetchTwitchFavourite: function fetchTwitchFavourite(userId) {
+            return dispatch((0, _index.fetchTwitchFavourite)(userId));
         }
     };
 };

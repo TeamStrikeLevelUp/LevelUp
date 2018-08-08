@@ -46,7 +46,14 @@ class Dashboard extends React.Component {
                     <div className="dashboard-content-wrapper">
                         <h2 className={welcomeClasses} >Welcome back, {this.state.user.username}</h2>
                         <Switch>
-                            <Route exact path="/dashboard" component={DashboardPanels} />
+                            <Route exact path="/dashboard" render={() => {
+                                return <DashboardPanels
+                                    twitchFavourite={this.props.twitchFavourite}
+                                    fetchTwitchFavourite={this.props.fetchTwitchFavourite}
+                                    gameFavourite={this.props.gameFavourite}
+                                    userAuthState={this.props.userAuthState}
+                                    setAuthState={this.props.setAuthState} />
+                            }} />
                             <Route path="/dashboard/account" render={() => {
                                 return <DashboardAccount
                                     setAuthState={this.props.setAuthState}

@@ -105,7 +105,7 @@ class TwitchSearch extends React.Component {
             {userAuthState ? <h2>Favourites </h2> : null}
             <ul>
               {twitchFavourite.map(currentFavourite =>
-                <a href="#" className="twitch__anchor"> <li key={currentFavourite.twitch_name} onClick={this.handleClick}>
+                <a key={currentFavourite.twitch_name} href="#" className="twitch__anchor"> <li onClick={this.handleClick}>
                   {currentFavourite.twitch_name}
                 </li></a>)}
 
