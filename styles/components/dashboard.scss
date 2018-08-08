@@ -17,7 +17,7 @@
         }
         
         .dashboard__sidebar {
-            padding: 40px;
+            padding: 40px 20px;
             // background-color: rgba(53, 94, 114, 0.5);
             // background-color: rgba(114, 137, 218, .4);
             background-color: rgba(54, 57, 63, 0.8);
@@ -43,6 +43,7 @@
             a {
                 padding: 3px 10px;
                 color: var(--primary-color);
+                display: block;
                 &.is-active {
                     background-color: var(--primary-color);
                     color: #fff;
@@ -95,21 +96,43 @@
         }
 
         .dashboard__panels--item {
+            display: flex;
+            flex-direction: column;
+            
             // background-color: var(--dashboard-secondary-color);
-            background-color: rgba(53, 94, 114, 0.5);
+            background-color: rgba(54, 57, 63, 0.5);
             padding: 20px; 
         }
 
         .dashboard__panels--heading {
-            font-size: 15px
+            font-size: 16px;
+            color: var(--light-grey);
         }
         .dashboard__panels--points{
-            font-size: 42px;
+            font-size: 3rem;
             padding-left: 20px;
+            color: var(--secondary-color);
+        }
+
+        .rank__level {
+            color: var(--primary-color);
         }
         .dashboard__panels--text {
             font-size: 12px;
             padding-left: 20px;
+            margin-top: auto;
+            display: block;
+
+            &.dashboard__panels--text--large {
+                font-size: 14px;
+            }
+        }
+        ol.dashboard__panels--twitch-list {
+            font-size: 14px;
+            padding-left: 20px;
+            li {
+                list-style: decimal;
+            }
         }
     }
 
@@ -187,6 +210,10 @@
 
             &.dashboard__desc--form--visible {
                 display: block;
+            }
+
+            .dashboard__desc--input {
+                width: 100%;
             }
         }
 
