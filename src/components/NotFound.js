@@ -15,7 +15,7 @@ class NotFound extends React.Component {
     console.log("userAuthState:", userAuthState);
     return (
       <div className="notfound">
-        <p className="notfound__message">Sorry username, it's Game Over.</p>
+        <p className="notfound__message">Sorry, it's Game Over.</p>
         <p>404: Page Not Found</p>
         <img
           className="notfound__image"
