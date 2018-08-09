@@ -198,7 +198,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        border-right: 1px solid var(--light-grey);\n        padding-right: 10px;\n        margin-right: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
@@ -28943,9 +28943,7 @@ var ForumLinks = function (_React$Component) {
     value: function fetchTotalPostsInForum(forums) {
       var _this2 = this;
 
-      console.log("1");
       forums.map(function (forum) {
-        console.log("2");
         fetch('/api/post/' + forum.id, {
           method: "get",
           headers: {
@@ -28954,9 +28952,11 @@ var ForumLinks = function (_React$Component) {
         }).then(function (response) {
           return response.json();
         }).then(function (posts) {
-          console.log("3");
-          var post = "totalPost-" + forum.id;
-          _this2.setState(_defineProperty({}, post, posts.length));
+          var _this2$setState;
+
+          var postCount = "totalPost-" + forum.id;
+          var postLast = "postLast-" + forum.id;
+          _this2.setState((_this2$setState = {}, _defineProperty(_this2$setState, postCount, posts.length), _defineProperty(_this2$setState, postLast, posts[posts.length - 1]), _this2$setState));
           return posts.length;
         }).catch(function (error) {
           return console.log("error", error.message);
@@ -28977,6 +28977,7 @@ var ForumLinks = function (_React$Component) {
           'Forums'
         ),
         this.props.forums.map(function (forum, index) {
+          console.log(_this3.state["postLast-" + forum.id]);
           return _react2.default.createElement(
             'div',
             { key: forum.id, className: 'forum' },
@@ -29002,11 +29003,16 @@ var ForumLinks = function (_React$Component) {
                   _this3.state["totalPost-" + forum.id],
                   ' Comments'
                 ),
-                _react2.default.createElement(
+                _this3.state["postLast-" + forum.id] ? _react2.default.createElement(
                   'div',
                   { className: 'forum__latest-post' },
-                  'Latest: Help plz...'
-                )
+                  _react2.default.createElement(
+                    'strong',
+                    { className: 'forum__latest-post--heading' },
+                    'Latest:'
+                  ),
+                  _this3.state["postLast-" + forum.id].title
+                ) : ""
               )
             )
           );

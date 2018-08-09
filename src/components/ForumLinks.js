@@ -19,9 +19,7 @@ class ForumLinks extends React.Component {
   }
 
   fetchTotalPostsInForum(forums) {
-    console.log("1");
     forums.map(forum => {
-      console.log("2");
       fetch(`/api/post/${forum.id}`, {
         method: "get",
         headers: {
@@ -32,10 +30,11 @@ class ForumLinks extends React.Component {
           return response.json();
         })
         .then(posts => {
-          console.log("3");
-          const post = "totalPost-" + forum.id;
+          const postCount = "totalPost-" + forum.id;
+          const postLast = "postLast-" + forum.id;
           this.setState({
-            [post]: posts.length
+            [postCount]: posts.length,
+            [postLast]: posts[posts.length - 1]
           });
           return posts.length;
         })
@@ -49,6 +48,7 @@ class ForumLinks extends React.Component {
       <div className="forums">
         <h4>Forums</h4>
         {this.props.forums.map((forum, index) => {
+          console.log(this.state["postLast-" + forum.id]);
           return (
             <div key={forum.id} className="forum">
               <Link className="forum__link" to={`/forum/${forum.id}`}>
@@ -61,7 +61,9 @@ class ForumLinks extends React.Component {
                       <use xlinkHref="#icon-comments" />
                     </svg>
                     {this.state["totalPost-" + forum.id]} Comments</div>
-                  <div className="forum__latest-post">Latest: Help plz...</div>
+                  {this.state["postLast-" + forum.id]
+                    ? <div className="forum__latest-post"><strong className="forum__latest-post--heading">Latest:</strong>{this.state["postLast-" + forum.id].title}</div>
+                    : ""}
                 </div>
               </Link>
             </div>

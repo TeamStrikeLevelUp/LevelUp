@@ -46,9 +46,6 @@
             line-height: 23px;
 
             .forum__total-post {
-                border-right: 1px solid var(--light-grey);
-                padding-right: 10px;
-                margin-right: 10px;
                 position: relative;
             
                 .icon-comments {
@@ -59,6 +56,18 @@
                     position: absolute;
                     top: 4px;
                     left: -21px;
+                }
+            }
+
+            .forum__latest-post {
+                border-left: 1px solid var(--light-grey);
+                padding-left: 10px;
+                margin-left: 10px;
+                position: relative;
+
+                .forum__latest-post--heading {
+                    color: var(--light-grey);
+                    padding-right: 5px;
                 }
             }
         }
