@@ -141,7 +141,7 @@ class Search extends React.Component {
                 </div>
               </div>
               <div className="search__screenshots">
-                {imagesArr}
+                {/* {imagesArr} */}
               </div>
 
               <br />
