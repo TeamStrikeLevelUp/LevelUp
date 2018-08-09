@@ -144,11 +144,10 @@ class Search extends React.Component {
                 </div>
               </div>
               <div className="search__screenshots">
-                {gameData.map(game => {
+                {gameData.screenshot.map(game => {
                   <Carousel>
-                    <img src={game.screenshot[0]} />
-                    <img src={game.screenshot[1]} />
-                    <img src={game.screenshot[2]} />
+                    <img src={game} />
+
                   </Carousel>
                 })}
 
