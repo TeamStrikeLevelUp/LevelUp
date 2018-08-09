@@ -90,7 +90,9 @@ class DashboardPanels extends React.Component {
                         {
                             twitchFavourite.map(fav => {
                                 return (
-                                    <li key={fav.twitch_name}>{fav.twitch_name}</li>
+                                    <li key={fav.twitch_name}>
+                                        <img src={fav.twitch_image} width="100" />
+                                        {fav.twitch_name}</li>
                                 )
                             })
                         }

@@ -27592,20 +27592,16 @@ exports.fetchGamerInfo = fetchGamerInfo;
 //get top twitchers
 function fetchTopTwitchers() {
   return function (dispatch, getState) {
-
     var searchPath = "/twitchStreams";
-
     fetch(searchPath)
     // .then(response => response.json())
     .then(function (response) {
       return response.ok ? response.json() : Promise.reject(response);
     }).then(function (json) {
       //fetch info for each twitcher
-      console.log("top twitchers in ACTION", json);
       var items = json.map(function (item) {
         return item.data[0];
       });
-      console.log(items);
       dispatch(receiveTopTwitchers(items));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27640,10 +27636,8 @@ function addFavouriteToDB(favObject) {
 }
 
 // Add TWITCH FAVOURITE to database  
-
 function addFavTwitchToDB(favObject) {
   return function (dispatch, getState) {
-
     fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
@@ -30745,11 +30739,7 @@ var Search = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement(
-            "div",
-            { className: "search__screenshots" },
-            imagesArr
-          ),
+          _react2.default.createElement("div", { className: "search__screenshots" }),
           _react2.default.createElement("br", null)
         );
       });
@@ -30868,8 +30858,7 @@ var TwitchSearch = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
 
     _this.state = {
-
-      twitchQuery: "Ninja",
+      twitchQuery: "",
       displayVideo: false
     };
 
@@ -30883,7 +30872,6 @@ var TwitchSearch = function (_React$Component) {
   _createClass(TwitchSearch, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-
       if (this.props.fetchTwitchFavourites !== undefined) {
         if (this.props.userAuthState) {
           this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
@@ -30905,9 +30893,6 @@ var TwitchSearch = function (_React$Component) {
       this.setState({
         displayVideo: true
       });
-      // this.setState({
-      //   twitchQuery: ""
-      // });
     }
   }, {
     key: "handleClick",
@@ -30965,7 +30950,6 @@ var TwitchSearch = function (_React$Component) {
               id: "twitch__input",
               placeholder: "Search streamers",
               value: this.state.twitchQuery
-
             }),
             _react2.default.createElement(
               "button",
@@ -31011,7 +30995,6 @@ var TwitchSearch = function (_React$Component) {
               frameBorder: "2",
               scrolling: "yes",
               allowFullScreen: "true"
-
             })
           )
         ),
@@ -31021,17 +31004,24 @@ var TwitchSearch = function (_React$Component) {
           _react2.default.createElement(
             "h2",
             { className: "twitch__streamers--title" },
-            "Top 10 Streams:"
+            "Top 10 Live Streams"
           ),
           _react2.default.createElement(
             "ul",
             null,
             topTwitchers.map(function (currentTwitch) {
               return _react2.default.createElement(
-                "li",
-                { key: currentTwitch.id },
-                _react2.default.createElement("img", { src: currentTwitch.profile_image_url, width: "100" }),
-                currentTwitch.display_name
+                "a",
+                { href: "#", key: currentTwitch.id
+                },
+                _react2.default.createElement(
+                  "li",
+                  { onClick: _this2.handleClick },
+                  _react2.default.createElement("img", { src: currentTwitch.profile_image_url,
+                    width: "100"
+                  }),
+                  currentTwitch.display_name
+                )
               );
             })
           )
@@ -31717,6 +31707,7 @@ var DashboardPanels = function (_React$Component) {
                             return _react2.default.createElement(
                                 "li",
                                 { key: fav.twitch_name },
+                                _react2.default.createElement("img", { src: fav.twitch_image, width: "100" }),
                                 fav.twitch_name
                             );
                         })
@@ -32173,7 +32164,6 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
@@ -32233,20 +32223,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(reduxState) {
 
-  console.log("twitchers in container", reduxState.topTwitchers);
+  // console.log("twitchers in container", reduxState.topTwitchers)
   return {
     userAuthState: reduxState.authState,
     twitchFavourite: reduxState.twitchFavourite,
     topTwitchers: reduxState.topTwitchers
-
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-
   return {
     addToFavourite: function addToFavourite(favInfo) {
-      dispatch((0, _actions.addFavTwitchToDB)(favInfo)); //This might need to be different
+      dispatch((0, _actions.addFavTwitchToDB)(favInfo));
     },
     fetchTwitchFavourites: function fetchTwitchFavourites(userId) {
       dispatch((0, _actions.fetchTwitchFavourite)(userId));
