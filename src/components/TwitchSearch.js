@@ -1,5 +1,4 @@
 import React from "react";
-
 import "../../styles/components/twitch.scss";
 
 class TwitchSearch extends React.Component {
@@ -17,9 +16,8 @@ class TwitchSearch extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
   }
+
   componentDidMount() {
-
-
     if (this.props.fetchTwitchFavourites !== undefined) {
       if (this.props.userAuthState) {
         this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
@@ -39,9 +37,6 @@ class TwitchSearch extends React.Component {
     this.setState({
       displayVideo: true
     });
-    // this.setState({
-    //   twitchQuery: ""
-    // });
   }
 
   handleClick(event) {
@@ -60,15 +55,12 @@ class TwitchSearch extends React.Component {
       // console.log("twitch info", newFav)
       this.props.addToFavourite(newFav);
       this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
-
     } else {
       alert("Please log in to select favourites")
     }
-
   }
 
   render() {
-
     const { fetchTwitchFavourites, twitchFavourite, userAuthState, topTwitchers } = this.props;
     return (
       <div className="twitch">
@@ -88,12 +80,10 @@ class TwitchSearch extends React.Component {
               id="twitch__input"
               placeholder="Search streamers"
               value={this.state.twitchQuery}
-
             />
             <button id="twitch__submit" className="twitch__button">
               Search
             </button>
-
             <button className="twitch__button" onClick={event => { this.addToFavourites(this.state.twitchQuery) }}>Add to favourites</button>
 
             {userAuthState ? <h2>Favourites </h2> : null}
@@ -105,11 +95,8 @@ class TwitchSearch extends React.Component {
                     {currentFavourite.twitch_name}
                   </li>
                 </a>)}
-
-
             </ul>
           </form>
-
           <div className="twitch__search--video">
             <iframe
               className="twitch__player"
@@ -119,116 +106,28 @@ class TwitchSearch extends React.Component {
               frameBorder="2"
               scrolling="yes"
               allowFullScreen="true"
-
             />
           </div>
         </div>
         <div>
           <h2 className="twitch__streamers--title">
-            Top 10 Streams:
+            Top 10 Live Streams
           </h2>
           <ul>
             {topTwitchers.map(currentTwitch => {
-              return (<li key={currentTwitch.id}>
-                <img src={currentTwitch.profile_image_url} width="100" />
-                {currentTwitch.display_name}
-              </li>)
+              return (
+                <a href="#" key={currentTwitch.id}
+                >
+                  <li onClick={this.handleClick}  >
+                    <img src={currentTwitch.profile_image_url}
+                      width="100"
+                    />
+                    {currentTwitch.display_name}
+                  </li>
+                </a>)
             }
             )}
           </ul>
-
-          {/* <ul className="twitch__streamers">
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                Ninja
-              </h4>
-              <p>Focus: Fortnite</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                Shroud
-              </h4>
-              <p>Focus: Shooters</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                Riot Games
-              </h4>
-              <p>Focus: League of Legends</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                ESL
-              </h4>
-              <p>Focus: Counter Strike</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                TSM_Myth
-              </h4>
-              <p>Focus: Fortnite</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                MHeyhoe91
-              </h4>
-              <p>Focus: FIFA</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                CohhCarnage
-              </h4>
-              <p>Focus: PUBG</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                Asmongold
-              </h4>
-              <p>Focus: World of Warcraft</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                Dendi
-              </h4>
-              <p>Focus: Dota 2</p>
-            </li>
-            <li>
-              <h4
-                className="twitch__streamers--names"
-                onClick={this.handleClick}
-              >
-                Ltzonda
-              </h4>
-              <p>Focus: Grand Theft Auto</p>
-            </li>
-          </ul> */}
         </div>
       </div>
     );

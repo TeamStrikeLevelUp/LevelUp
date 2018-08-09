@@ -160,7 +160,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n        .dashboard .dashboard__nav .dashboard__nav--item a:not(.is-active):hover {\n          background-color: rgba(114, 137, 218, 0.6);\n          color: #fff;\n          opacity: .8; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
 
 // exports
 
@@ -179,7 +179,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100vh;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(0, 0, 255, 0.473);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n", ""]);
+exports.push([module.i, ".fortnite {\n  display: flex;\n  min-height: 100vh;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100%;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: #fafafe;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(214, 214, 255, 0.473);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n\n.playerlist__wrapper {\n  border-style: solid;\n  border-bottom-color: #fafafe;\n  border-left-color: #fafafe;\n  border-right-color: transparent;\n  border-bottom-color: transparent; }\n\n.playerlist__player {\n  padding: 10px; }\n", ""]);
 
 // exports
 
@@ -193,12 +193,13 @@ exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(/*! ../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, ".forum__links {\n  color: gold; }\n\n.profile__links {\n  color: red; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(" + escape(__webpack_require__(/*! ../../static/images/forum-h.jpg */ "./static/images/forum-h.jpg")) + ");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
@@ -217,7 +218,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: var(--dark-grey); }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
+exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: var(--dark-grey); }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0;\n      font-family: 'Press Start 2P', cursive;\n      font-size: 19px; }\n", ""]);
 
 // exports
 
@@ -351,7 +352,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.is-active {\n  background-color: var(--primary-color);\n  color: #fff; }\n", ""]);
 
 // exports
 
@@ -440,6 +441,33 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/url/escape.js":
+/*!***************************************************!*\
+  !*** ./node_modules/css-loader/lib/url/escape.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
 }
 
 
@@ -27593,20 +27621,16 @@ exports.setTwitchStreamer = setTwitchStreamer;
 //get top twitchers
 function fetchTopTwitchers() {
   return function (dispatch, getState) {
-
     var searchPath = "/twitchStreams";
-
     fetch(searchPath)
     // .then(response => response.json())
     .then(function (response) {
       return response.ok ? response.json() : Promise.reject(response);
     }).then(function (json) {
       //fetch info for each twitcher
-      console.log("top twitchers in ACTION", json);
       var items = json.map(function (item) {
         return item.data[0];
       });
-      console.log(items);
       dispatch(receiveTopTwitchers(items));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27641,10 +27665,8 @@ function addFavouriteToDB(favObject) {
 }
 
 // Add TWITCH FAVOURITE to database  
-
 function addFavTwitchToDB(favObject) {
   return function (dispatch, getState) {
-
     fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
@@ -28345,14 +28367,17 @@ var Dashboard = function (_React$Component) {
                                         gameFavourite: _this2.props.gameFavourite,
                                         userAuthState: _this2.props.userAuthState,
                                         setAuthState: _this2.props.setAuthState,
-                                        fetchGameFavourite: _this2.props.fetchGameFavourite });
+                                        fetchGamerInfo: _this2.props.fetchGamerInfo,
+                                        fetchGameFavourite: _this2.props.fetchGameFavourite,
+                                        userDataStore: _this2.props.userDataStore });
                                 } }),
                             _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
                                     return _react2.default.createElement(_DashboardAccount2.default, {
                                         setAuthState: _this2.props.setAuthState,
                                         userAuthState: _this2.props.userAuthState,
                                         fetchGamerInfo: _this2.props.fetchGamerInfo,
-                                        userDataStore: _this2.props.userDataStore });
+                                        userDataStore: _this2.props.userDataStore,
+                                        setUserData: _this2.props.setUserData });
                                 } })
                         )
                     )
@@ -28537,6 +28562,10 @@ var _FortniteUser5 = __webpack_require__(/*! ./FortniteUser3 */ "./src/component
 
 var _FortniteUser6 = _interopRequireDefault(_FortniteUser5);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28580,7 +28609,6 @@ var FortnitePlayerList = function (_React$Component) {
         _this2.setState({
           viniciusAmazing: data
         });
-        console.log(_this2.state.viniciusAmazing);
       });
 
       fetch("/api/fortnite/Terry 5L").then(function (response) {
@@ -28589,13 +28617,11 @@ var FortnitePlayerList = function (_React$Component) {
         _this2.setState({
           terry5L: data
         });
-        console.log(_this2.state.terry5L);
       });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state.ninja);
 
       return _react2.default.createElement(
         "div",
@@ -28642,8 +28668,6 @@ function FortniteStats(_ref) {
   var stat = _ref.stat;
 
   if (!stat.totals) return null;
-  console.log(stat);
-
   return _react2.default.createElement(
     "ul",
     { className: "fortnite__ul" },
@@ -28783,21 +28807,50 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteUser1(_ref) {
   var ninja = _ref.ninja;
 
+
+  if (!ninja.totals) return null;
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "playerlist__wrapper" },
     _react2.default.createElement(
       "li",
-      null,
+      { className: "playerlist__player" },
       _react2.default.createElement(
         "h2",
         null,
         ninja.username
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        ninja.platform.toUpperCase()
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo 1st Places: ",
+        ninja.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        ninja.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        ninja.totals.score
       )
     )
   );
@@ -28825,21 +28878,49 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteUser2(_ref) {
   var viniciusAmazing = _ref.viniciusAmazing;
 
+  if (!viniciusAmazing.totals) return null;
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "playerlist__wrapper" },
     _react2.default.createElement(
       "li",
-      null,
+      { className: "playerlist__player" },
       _react2.default.createElement(
         "h2",
         null,
         viniciusAmazing.username
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        viniciusAmazing.platform.toUpperCase()
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo 1st Places: ",
+        viniciusAmazing.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        viniciusAmazing.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        viniciusAmazing.totals.score
       )
     )
   );
@@ -28867,21 +28948,49 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteUser3(_ref) {
   var terry5L = _ref.terry5L;
 
+  if (!terry5L.totals) return null;
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "playerlist__wrapper" },
     _react2.default.createElement(
       "li",
-      null,
+      { className: "playerlist__player" },
       _react2.default.createElement(
         "h2",
         null,
         terry5L.username
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        terry5L.platform.toUpperCase()
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo 1st Places: ",
+        terry5L.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        terry5L.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        terry5L.totals.score
       )
     )
   );
@@ -28913,7 +29022,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+__webpack_require__(/*! ../../styles/components/forums.scss */ "./styles/components/forums.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28924,27 +29037,102 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ForumLinks = function (_React$Component) {
   _inherits(ForumLinks, _React$Component);
 
-  function ForumLinks() {
+  function ForumLinks(props) {
     _classCallCheck(this, ForumLinks);
 
-    return _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
+    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this, props));
+
+    _this.state = {
+      totalPost: null,
+      forumId: 1
+    };
+    _this.fetchTotalPostsInForum = _this.fetchTotalPostsInForum.bind(_this);
+    return _this;
   }
 
   _createClass(ForumLinks, [{
-    key: "render",
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.forums && nextProps.forums.length && !this.props.forums.length) {
+        this.fetchTotalPostsInForum(nextProps.forums);
+      }
+    }
+  }, {
+    key: 'fetchTotalPostsInForum',
+    value: function fetchTotalPostsInForum(forums) {
+      var _this2 = this;
+
+      forums.map(function (forum) {
+        fetch('/api/post/' + forum.id, {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (posts) {
+          var _this2$setState;
+
+          var postCount = "totalPost-" + forum.id;
+          var postLast = "postLast-" + forum.id;
+          _this2.setState((_this2$setState = {}, _defineProperty(_this2$setState, postCount, posts.length), _defineProperty(_this2$setState, postLast, posts[posts.length - 1]), _this2$setState));
+          return posts.length;
+        }).catch(function (error) {
+          return console.log("error", error.message);
+        });
+      });
+    }
+  }, {
+    key: 'render',
     value: function render() {
+      var _this3 = this;
 
       return _react2.default.createElement(
-        "div",
-        null,
+        'div',
+        { className: 'forums' },
+        _react2.default.createElement(
+          'h4',
+          null,
+          'Forums'
+        ),
         this.props.forums.map(function (forum, index) {
+          console.log(_this3.state["postLast-" + forum.id]);
           return _react2.default.createElement(
-            "div",
-            { key: forum.id },
+            'div',
+            { key: forum.id, className: 'forum' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: "/forum/" + forum.id },
-              forum.title
+              { className: 'forum__link', to: '/forum/' + forum.id },
+              _react2.default.createElement(
+                'div',
+                { className: 'forum__link--text' },
+                forum.title
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'forum__details' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'forum__total-post' },
+                  _react2.default.createElement(
+                    'svg',
+                    { className: 'icon-comments', 'aria-hidden': 'true', focusable: 'false' },
+                    _react2.default.createElement('use', { xlinkHref: '#icon-comments' })
+                  ),
+                  _this3.state["totalPost-" + forum.id],
+                  ' Threads'
+                ),
+                _this3.state["postLast-" + forum.id] ? _react2.default.createElement(
+                  'div',
+                  { className: 'forum__latest-post' },
+                  _react2.default.createElement(
+                    'strong',
+                    { className: 'forum__latest-post--heading' },
+                    'Latest:'
+                  ),
+                  _this3.state["postLast-" + forum.id].title
+                ) : ""
+              )
             )
           );
         })
@@ -29011,14 +29199,13 @@ var Forums = function (_React$Component) {
     return _this;
   }
 
-  _createClass(Forums, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      //   console.log("next",this.props)
-      //   console.log("prev",prevProps)
+  // componentDidUpdate(prevProps) {
+  //   //   console.log("next",this.props)
+  //   //   console.log("prev",prevProps)
 
-    }
-  }, {
+  // }
+
+  _createClass(Forums, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -29100,62 +29287,100 @@ var Forums = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
 
       if (!this.state.forum.id) return null;
 
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "community" },
         _react2.default.createElement(
-          "p",
-          null,
-          "Title: ",
-          this.state.forum.title
-        ),
-        _react2.default.createElement(
-          "p",
-          null,
-          "Category: ",
-          this.state.forum.category
-        ),
-        _react2.default.createElement(
-          "form",
-          null,
-          _react2.default.createElement("input", { placeholder: "search for posts", value: this.state.input, onChange: this.inputHandler }),
+          "header",
+          { className: "community__header" },
           _react2.default.createElement(
-            "button",
-            { onClick: this.searchHandler },
-            " search "
+            "h1",
+            { className: "community__heading" },
+            "Community Forums"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "game-search__form" },
+            _react2.default.createElement("input", {
+              className: "game-search__field",
+              placeholder: "search for posts",
+              value: this.state.input,
+              onChange: this.inputHandler }),
+            _react2.default.createElement(
+              "button",
+              {
+                className: "button button-primary",
+                onClick: this.searchHandler },
+              " Search "
+            )
           )
         ),
-        this.state.posts.map(function (post, index) {
-
-          var date = String(new Date(post.created)).substring(0, 24);
-          return _react2.default.createElement(
-            "div",
-            { key: post.id },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { className: "forum__links", to: "/posts/" + post.id },
-              "Title: ",
-              post.title,
-              " - Posted By: ",
+        _react2.default.createElement(
+          "div",
+          { className: "forums" },
+          _react2.default.createElement(
+            "h4",
+            null,
+            "Thread: ",
+            this.state.forum.title
+          ),
+          _react2.default.createElement(
+            "h5",
+            null,
+            "Category: ",
+            this.state.forum.category
+          ),
+          this.state.posts.map(function (post, index) {
+            var date = String(new Date(post.created)).substring(0, 24);
+            return _react2.default.createElement(
+              "div",
+              { key: post.id, className: "forum" },
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { className: "profile__links", to: "/profile/" + post.gamer_name },
-                " ",
-                post.gamer_name,
-                " "
-              ),
-              " - On: ",
-              date
-            )
-          );
-        }),
+                { className: "forum__link", to: "/posts/" + post.id },
+                _react2.default.createElement(
+                  "div",
+                  { className: "forum__link--text" },
+                  post.title
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "forum__details" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "forum__total-post" },
+                    _react2.default.createElement(
+                      "svg",
+                      { className: "icon-comments", "aria-hidden": "true", focusable: "false" },
+                      _react2.default.createElement("use", { xlinkHref: "#icon-comments" })
+                    ),
+                    _this5.state["totalPost-" + post.id],
+                    " Threads"
+                  )
+                )
+              )
+            );
+          })
+        ),
         _react2.default.createElement(
           "div",
           { style: { display: this.props.userAuthState ? 'none' : '' } },
           " login to post "
+        ),
+        _react2.default.createElement(
+          "form",
+          { style: { display: this.props.userAuthState ? '' : 'none' } },
+          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
+          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.replyHandler },
+            " reply "
+          )
         ),
         _react2.default.createElement(
           "form",
@@ -29215,7 +29440,7 @@ function Header() {
       _react2.default.createElement(
         "h2",
         null,
-        "Level Up"
+        "Leve1Up"
       ),
       _react2.default.createElement(_NavBarContainer2.default, null)
     )
@@ -29281,8 +29506,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/homepage" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/homepage" },
             "Home"
           )
         ),
@@ -29291,7 +29516,7 @@ var HomeNavBar = function (_React$Component) {
           { className: "main-nav__item" },
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { activeClassName: "is active", to: "/search" },
+            { className: "main-nav__item", activeClassName: "is-active", to: "/search" },
             "Search Games"
           )
         ),
@@ -29299,8 +29524,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/news" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/news" },
             "Gaming News"
           )
         ),
@@ -29308,8 +29533,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/the-fort" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/the-fort" },
             "The Fort"
           )
         ),
@@ -29317,8 +29542,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/forum" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/forum" },
             "Community"
           )
         ),
@@ -29326,19 +29551,19 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/twitch" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/twitch" },
             "Twitch"
           )
         ),
         _react2.default.createElement(
           "li",
           { className: "main-nav__item" },
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/dashboard" },
+          !userAuthState ? _react2.default.createElement(
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/dashboard" },
             "Profile"
-          )
+          ) : null
         ),
         _react2.default.createElement(
           "li",
@@ -29362,7 +29587,7 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           userAuthState ? _react2.default.createElement(
-            _reactRouterDom.Link,
+            "a",
             { to: "/logout" },
             "Logout"
           ) : null
@@ -30525,6 +30750,10 @@ __webpack_require__(/*! ../../styles/components/search.scss */ "./styles/compone
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
+var _nukaCarousel = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'nuka-carousel'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _nukaCarousel2 = _interopRequireDefault(_nukaCarousel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30624,6 +30853,7 @@ var Search = function (_React$Component) {
           userAuthState = _props.userAuthState,
           gameFavourite = _props.gameFavourite;
 
+      console.log(gameData);
       var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
         "div",
         { className: "search__result" },
@@ -30732,7 +30962,13 @@ var Search = function (_React$Component) {
           _react2.default.createElement(
             "div",
             { className: "search__screenshots" },
-            imagesArr
+            gameData.screenshot.map(function (game) {
+              _react2.default.createElement(
+                _nukaCarousel2.default,
+                null,
+                _react2.default.createElement("img", { src: game })
+              );
+            })
           ),
           _react2.default.createElement("br", null)
         );
@@ -30867,7 +31103,6 @@ var TwitchSearch = function (_React$Component) {
   _createClass(TwitchSearch, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-
       if (this.props.fetchTwitchFavourites !== undefined) {
         if (this.props.userAuthState) {
           this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
@@ -30889,9 +31124,6 @@ var TwitchSearch = function (_React$Component) {
       this.setState({
         displayVideo: true
       });
-      // this.setState({
-      //   twitchQuery: ""
-      // });
     }
   }, {
     key: "handleClick",
@@ -30949,7 +31181,6 @@ var TwitchSearch = function (_React$Component) {
               id: "twitch__input",
               placeholder: "Search streamers",
               value: this.state.twitchQuery
-
             }),
             _react2.default.createElement(
               "button",
@@ -30995,7 +31226,6 @@ var TwitchSearch = function (_React$Component) {
               frameBorder: "2",
               scrolling: "yes",
               allowFullScreen: "true"
-
             })
           )
         ),
@@ -31005,17 +31235,24 @@ var TwitchSearch = function (_React$Component) {
           _react2.default.createElement(
             "h2",
             { className: "twitch__streamers--title" },
-            "Top 10 Streams:"
+            "Top 10 Live Streams"
           ),
           _react2.default.createElement(
             "ul",
             null,
             topTwitchers.map(function (currentTwitch) {
               return _react2.default.createElement(
-                "li",
-                { key: currentTwitch.id },
-                _react2.default.createElement("img", { src: currentTwitch.profile_image_url, width: "100" }),
-                currentTwitch.display_name
+                "a",
+                { href: "#", key: currentTwitch.id
+                },
+                _react2.default.createElement(
+                  "li",
+                  { onClick: _this2.handleClick },
+                  _react2.default.createElement("img", { src: currentTwitch.profile_image_url,
+                    width: "100"
+                  }),
+                  currentTwitch.display_name
+                )
               );
             })
           )
@@ -31301,6 +31538,8 @@ var DashboardAccount = function (_React$Component) {
             var descClasses = (0, _classnames2.default)('dashboard__desc--form ', {
                 'dashboard__desc--form--visible': this.state.togglerDesc
             });
+
+            // console.log("userDataStore", userDataStore);
             return _react2.default.createElement(
                 'div',
                 { className: 'dashboard__account' },
@@ -31552,7 +31791,8 @@ var DashboardPanels = function (_React$Component) {
         _this.state = {
             user: "",
             userStats: "",
-            gamer_rank: ""
+            gamer_rank: "",
+            gamer_info: ""
         };
         _this.gamerRank = _this.gamerRank.bind(_this);
         return _this;
@@ -31593,6 +31833,13 @@ var DashboardPanels = function (_React$Component) {
             if (userData && this.props.fetchGameFavourite) {
                 this.props.fetchGameFavourite(userData.userId);
             }
+
+            // Fetch user data
+            this.props.fetchGamerInfo(userData.userId).then(function (data) {
+                _this2.setState({
+                    gamer_info: data
+                });
+            });;
         }
     }, {
         key: "gamerRank",
@@ -31618,13 +31865,13 @@ var DashboardPanels = function (_React$Component) {
         value: function render() {
             var _props = this.props,
                 twitchFavourite = _props.twitchFavourite,
-                gameFavourite = _props.gameFavourite;
+                gameFavourite = _props.gameFavourite,
+                userDataStore = _props.userDataStore;
             var _state = this.state,
                 userStats = _state.userStats,
                 gamer_rank = _state.gamer_rank;
 
 
-            console.log("gameFavourite", gameFavourite);
             return _react2.default.createElement(
                 "div",
                 { className: "dashboard__panels" },
@@ -31691,6 +31938,7 @@ var DashboardPanels = function (_React$Component) {
                             return _react2.default.createElement(
                                 "li",
                                 { key: fav.twitch_name },
+                                _react2.default.createElement("img", { src: fav.twitch_image, width: "100" }),
                                 fav.twitch_name
                             );
                         })
@@ -31715,7 +31963,7 @@ var DashboardPanels = function (_React$Component) {
                         gameFavourite.map(function (fav) {
                             return _react2.default.createElement(
                                 "li",
-                                { key: fav.twitch_name },
+                                { key: fav.title },
                                 fav.title
                             );
                         })
@@ -32162,7 +32410,6 @@ var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,
@@ -32222,7 +32469,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(reduxState) {
 
-  console.log("twitchers in container", reduxState.topTwitchers);
+  // console.log("twitchers in container", reduxState.topTwitchers)
   return {
     userAuthState: reduxState.authState,
     twitchFavourite: reduxState.twitchFavourite,
@@ -32233,10 +32480,9 @@ var mapStateToProps = function mapStateToProps(reduxState) {
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-
   return {
     addToFavourite: function addToFavourite(favInfo) {
-      dispatch((0, _actions.addFavTwitchToDB)(favInfo)); //This might need to be different
+      dispatch((0, _actions.addFavTwitchToDB)(favInfo));
     },
     fetchTwitchFavourites: function fetchTwitchFavourites(userId) {
       dispatch((0, _actions.fetchTwitchFavourite)(userId));
@@ -32900,15 +33146,30 @@ var ForumsRoute = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "community" },
         _react2.default.createElement(
-          "form",
-          null,
-          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          "header",
+          { className: "community__header" },
           _react2.default.createElement(
-            "button",
-            { onClick: this.searchHandler },
-            " search "
+            "h1",
+            { className: "community__heading" },
+            "Community Forums"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "game-search__form" },
+            _react2.default.createElement("input", {
+              className: "game-search__field",
+              placeholder: "Search for a game",
+              value: this.state.input,
+              onChange: this.inputHandler }),
+            _react2.default.createElement(
+              "button",
+              {
+                className: "button button-primary",
+                onClick: this.searchHandler },
+              " Search "
+            )
           )
         ),
         _react2.default.createElement(_ForumLinks2.default, { forums: this.state.forums })
@@ -33156,6 +33417,17 @@ var TwitchRoute = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = TwitchRoute;
+
+/***/ }),
+
+/***/ "./static/images/forum-h.jpg":
+/*!***********************************!*\
+  !*** ./static/images/forum-h.jpg ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type.\n(Source code omitted for this binary file)");
 
 /***/ }),
 

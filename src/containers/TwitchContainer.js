@@ -6,7 +6,7 @@ import {
 
 const mapStateToProps = reduxState => {
 
-  console.log("twitchers in container", reduxState.topTwitchers)
+  // console.log("twitchers in container", reduxState.topTwitchers)
   return {
     userAuthState: reduxState.authState,
     twitchFavourite: reduxState.twitchFavourite,
@@ -17,10 +17,9 @@ const mapStateToProps = reduxState => {
 };
 
 const mapDispatchToProps = dispatch => {
-
   return {
     addToFavourite: (favInfo) => {
-      dispatch(addFavTwitchToDB(favInfo)) //This might need to be different
+      dispatch(addFavTwitchToDB(favInfo))
     },
     fetchTwitchFavourites: (userId) => {
       dispatch(fetchTwitchFavourite(userId))

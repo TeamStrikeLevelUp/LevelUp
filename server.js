@@ -475,6 +475,7 @@ app.get("/api/twitchfavourites/:id", function(req, res) {
 });
 
 // adds TWITCH favourite to database
+<<<<<<< HEAD
 app.post("/api/addtwitchfavourite", function(req, res) {
   db.one(
     `INSERT INTO twitch_favorites(twitch_name, gamer_id)
@@ -483,19 +484,55 @@ app.post("/api/addtwitchfavourite", function(req, res) {
   )
     .then(data => {
       res.json({ msg: "added" });
+=======
+app.post("/api/addtwitchfavourite", function (req, res) {
+  var headers = {
+    'Client-ID': 'goetr7q6o8bx0zott538hwdsavlpf8'
+  };
+  fetch(`https://api.twitch.tv/helix/users?login=${req.body.twitchName}`, {
+    method: "GET",
+    headers
+  })
+    .then(response => response.ok
+      ? response.json()
+      : Promise.reject(response)
+    )
+    .then(result => {
+      const twitch_image = result.data[0]["profile_image_url"]
+      return (twitch_image)
     })
-    .catch(error => {
-      res.json({
-        error: error.message
-      });
-    });
+    .then(twitch_image => {
+      //Original insert below
+
+      db.one(
+        `INSERT INTO twitch_favorites(twitch_name, gamer_id,twitch_image)
+          VALUES($1, $2, $3) RETURNING id`,
+        [req.body.twitchName, req.body.gamerId, twitch_image]
+      )
+        .then(data => {
+          res.json({ msg: "added" })
+        })
+        .catch(error => {
+          res.json({
+            error: error.message
+          });
+        })
+>>>>>>> master
+    })
 });
 
+<<<<<<< HEAD
 app.get("/api/gamer/post/:id", function(req, res) {
   db.any(
     `SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`,
     [req.params.id]
   )
+=======
+app.get("/api/gamer/post/:id", function (req, res) {
+  db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
+    req.params.id
+  ])
+>>>>>>> master
     .then(posts => {
       db.any(
         `SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`,
