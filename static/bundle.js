@@ -28907,6 +28907,8 @@ __webpack_require__(/*! ../../styles/components/forums.scss */ "./styles/compone
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -28916,10 +28918,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ForumLinks = function (_React$Component) {
   _inherits(ForumLinks, _React$Component);
 
-  function ForumLinks() {
+  function ForumLinks(props) {
     _classCallCheck(this, ForumLinks);
 
-    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
+    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this, props));
 
     _this.state = {
       totalPost: null,
@@ -28930,36 +28932,42 @@ var ForumLinks = function (_React$Component) {
   }
 
   _createClass(ForumLinks, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.fetchTotalPostsInForum(this.state.forumId);
-    }
-  }, {
-    key: 'postsCounter',
-    value: function postsCounter() {
-      // this.props.totalPost
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.forums && nextProps.forums.length && !this.props.forums.length) {
+        this.fetchTotalPostsInForum(nextProps.forums);
+      }
     }
   }, {
     key: 'fetchTotalPostsInForum',
-    value: function fetchTotalPostsInForum(id) {
-      fetch('/api/post/' + this.state.forumId, {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(function (response) {
-        console.log('response', response);
-        return response.json();
-      }).then(function (json) {
-        console.log('json', json.length);
-        // this.setState({ totalPost: json })
-      }).catch(function (error) {
-        return console.log("error", error.message);
+    value: function fetchTotalPostsInForum(forums) {
+      var _this2 = this;
+
+      console.log("1");
+      forums.map(function (forum) {
+        console.log("2");
+        fetch('/api/post/' + forum.id, {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (posts) {
+          console.log("3");
+          var post = "totalPost-" + forum.id;
+          _this2.setState(_defineProperty({}, post, posts.length));
+          return posts.length;
+        }).catch(function (error) {
+          return console.log("error", error.message);
+        });
       });
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       return _react2.default.createElement(
         'div',
         { className: 'forums' },
@@ -28991,7 +28999,8 @@ var ForumLinks = function (_React$Component) {
                     { className: 'icon-comments', 'aria-hidden': 'true', focusable: 'false' },
                     _react2.default.createElement('use', { xlinkHref: '#icon-comments' })
                   ),
-                  '17 Comments'
+                  _this3.state["totalPost-" + forum.id],
+                  ' Comments'
                 ),
                 _react2.default.createElement(
                   'div',
@@ -29183,7 +29192,6 @@ var Forums = function (_React$Component) {
           )
         ),
         this.state.posts.map(function (post, index) {
-
           var date = String(new Date(post.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",

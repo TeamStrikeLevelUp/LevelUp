@@ -112,7 +112,6 @@ class Forums extends React.Component {
 
 
         {this.state.posts.map((post, index) => {
-
           let date = String(new Date(post.created)).substring(0, 24)
           return (
             <div key={post.id}>

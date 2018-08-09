@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import '../../styles/components/forums.scss';
 
 class ForumLinks extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       totalPost: null,
       forumId: 1
@@ -12,30 +12,36 @@ class ForumLinks extends React.Component {
     this.fetchTotalPostsInForum = this.fetchTotalPostsInForum.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchTotalPostsInForum(this.state.forumId);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.forums && nextProps.forums.length && !this.props.forums.length) {
+      this.fetchTotalPostsInForum(nextProps.forums);
+    }
   }
 
-  postsCounter() {
-    // this.props.totalPost
-  }
+  fetchTotalPostsInForum(forums) {
+    console.log("1");
+    forums.map(forum => {
+      console.log("2");
+      fetch(`/api/post/${forum.id}`, {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(posts => {
+          console.log("3");
+          const post = "totalPost-" + forum.id;
+          this.setState({
+            [post]: posts.length
+          });
+          return posts.length;
+        })
+        .catch(error => console.log("error", error.message))
 
-  fetchTotalPostsInForum(id) {
-    fetch(`/api/post/${this.state.forumId}`, {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json"
-      }
     })
-      .then(function (response) {
-        console.log('response', response)
-        return response.json();
-      })
-      .then(json => {
-        console.log('json', json.length)
-        // this.setState({ totalPost: json })
-      })
-      .catch(error => console.log("error", error.message))
   }
 
   render() {
@@ -54,7 +60,7 @@ class ForumLinks extends React.Component {
                     <svg className="icon-comments" aria-hidden="true" focusable="false">
                       <use xlinkHref="#icon-comments" />
                     </svg>
-                    17 Comments</div>
+                    {this.state["totalPost-" + forum.id]} Comments</div>
                   <div className="forum__latest-post">Latest: Help plz...</div>
                 </div>
               </Link>
