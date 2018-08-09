@@ -198,7 +198,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  position: relative;\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forums__login a {\n    font-size: 12px;\n    color: #fff;\n    position: absolute;\n    right: 40px;\n    top: 10px; }\n    .forums .forums__login a:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .forums .forums__no-posts {\n    font-size: 14px;\n    color: #fff; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.form__thread--heading {\n  font-size: 18px;\n  font-family: 'Open Sans', sans-serif;\n  color: var(--secondary-color); }\n\n.form__thread {\n  display: flex;\n  flex-direction: column;\n  width: 100%; }\n  .form__thread .form__thread--input,\n  .form__thread .form__thread--textarea {\n    width: 100%;\n    padding: 10px;\n    font-size: 14px; }\n  .form__thread .button {\n    margin-top: 10px;\n    margin-left: auto;\n    padding: 13px;\n    width: 120px;\n    font-size: 15px; }\n    .form__thread .button:hover {\n      cursor: pointer;\n      opacity: .8; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
@@ -351,7 +351,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  font-family: 'Open Sans', sans-serif;\n  margin: 0;\n  background-color: var(--primary-color);\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
 
 // exports
 
@@ -28974,7 +28974,6 @@ var ForumLinks = function (_React$Component) {
           'Forums'
         ),
         this.props.forums.map(function (forum, index) {
-          console.log(_this3.state["postLast-" + forum.id]);
           return _react2.default.createElement(
             'div',
             { key: forum.id, className: 'forum' },
@@ -29053,6 +29052,8 @@ __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -29073,6 +29074,7 @@ var Forums = function (_React$Component) {
     _this.titleHandler = _this.titleHandler.bind(_this);
     _this.bodyHandler = _this.bodyHandler.bind(_this);
     _this.replyHandler = _this.replyHandler.bind(_this);
+    _this.fetchTotalPostsInForum = _this.fetchTotalPostsInForum.bind(_this);
 
     return _this;
   }
@@ -29097,7 +29099,44 @@ var Forums = function (_React$Component) {
       fetch("/api/post/" + this.props.match.params.id).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this2.setState({ posts: json });
+        _this2.setState({ posts: json });
+        console.log("this.state.posts.j", json.length);
+        // if (json.length > 0) {
+        return _this2.fetchTotalPostsInForum(json);
+        // }
+      });
+    }
+
+    // componentWillReceiveProps(nextProps) {
+    //   console.log("this.state.posts.length", this.state.posts.length)
+    //   if (this.state.posts.length > 0) {
+    //     this.fetchTotalPostsInForum(this.state.posts.id);
+    //   }
+    // }
+
+  }, {
+    key: "fetchTotalPostsInForum",
+    value: function fetchTotalPostsInForum(posts) {
+      var _this3 = this;
+
+      posts.map(function (post) {
+        console.log("post.id", post.id);
+        fetch("/api/postsbyparent/" + post.id, {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          console.log("response", response);
+          return response.json();
+        }).then(function (posts) {
+          console.log("posts", posts);
+          var postCount = "totalPost-" + post.id;
+          _this3.setState(_defineProperty({}, postCount, posts.length));
+          return posts.length;
+        }).catch(function (error) {
+          return console.log("error", error.message);
+        });
       });
     }
   }, {
@@ -29108,14 +29147,14 @@ var Forums = function (_React$Component) {
   }, {
     key: "searchHandler",
     value: function searchHandler(event) {
-      var _this3 = this;
+      var _this4 = this;
 
       event.preventDefault();
 
       fetch("/api/post/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this3.setState({ posts: json });
+        return _this4.setState({ posts: json });
       });
     }
   }, {
@@ -29131,7 +29170,7 @@ var Forums = function (_React$Component) {
   }, {
     key: "replyHandler",
     value: function replyHandler(event) {
-      var _this4 = this;
+      var _this5 = this;
 
       event.preventDefault();
 
@@ -29157,7 +29196,7 @@ var Forums = function (_React$Component) {
       }).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this4.setState({ posts: json });
+        return _this5.setState({ posts: json });
       });
 
       this.setState({ body: "", title: "" });
@@ -29165,8 +29204,10 @@ var Forums = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
+      console.log("next", this.props.forum);
+      console.log("prev", this.props.posts);
       if (!this.state.forum.id) return null;
 
       return _react2.default.createElement(
@@ -29185,7 +29226,7 @@ var Forums = function (_React$Component) {
             { className: "game-search__form" },
             _react2.default.createElement("input", {
               className: "game-search__field",
-              placeholder: "search for posts",
+              placeholder: "Search for posts",
               value: this.state.input,
               onChange: this.inputHandler }),
             _react2.default.createElement(
@@ -29201,18 +29242,29 @@ var Forums = function (_React$Component) {
           "div",
           { className: "forums" },
           _react2.default.createElement(
-            "h4",
+            "div",
+            { className: "forums__login", style: { display: this.props.userAuthState ? 'none' : '' } },
+            " ",
+            _react2.default.createElement(
+              "a",
+              { href: "/login" },
+              "Login to post"
+            ),
+            " "
+          ),
+          _react2.default.createElement(
+            "h3",
             null,
-            "Thread: ",
+            "Forum: ",
             this.state.forum.title
           ),
           _react2.default.createElement(
-            "h5",
+            "h4",
             null,
             "Category: ",
             this.state.forum.category
           ),
-          this.state.posts.map(function (post, index) {
+          this.state.posts.length ? this.state.posts.map(function (post, index) {
             var date = String(new Date(post.created)).substring(0, 24);
             return _react2.default.createElement(
               "div",
@@ -29236,28 +29288,36 @@ var Forums = function (_React$Component) {
                       { className: "icon-comments", "aria-hidden": "true", focusable: "false" },
                       _react2.default.createElement("use", { xlinkHref: "#icon-comments" })
                     ),
-                    _this5.state["totalPost-" + post.id],
-                    " Threads"
+                    _this6.state["totalPost-" + post.id],
+                    " Posts"
                   )
                 )
               )
             );
-          })
+          }) : _react2.default.createElement(
+            "p",
+            { className: "forums__no-posts" },
+            "No thread on this forum yet :/"
+          )
         ),
         _react2.default.createElement(
           "div",
-          { style: { display: this.props.userAuthState ? 'none' : '' } },
-          " login to post "
-        ),
-        _react2.default.createElement(
-          "form",
           { style: { display: this.props.userAuthState ? '' : 'none' } },
-          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
-          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
           _react2.default.createElement(
-            "button",
-            { onClick: this.replyHandler },
-            " reply "
+            "h5",
+            { className: "form__thread--heading" },
+            "Post a thread"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "form__thread" },
+            _react2.default.createElement("input", { className: "form__thread--input", placeholder: "Thread title", value: this.state.title, onChange: this.titleHandler }),
+            _react2.default.createElement("textarea", { className: "form__thread--textarea", placeholder: "Thread body", value: this.state.body, onChange: this.bodyHandler }),
+            _react2.default.createElement(
+              "button",
+              { className: "button button-primary", onClick: this.replyHandler },
+              " Post "
+            )
           )
         )
       );

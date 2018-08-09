@@ -173,6 +173,12 @@ app.get("/api/parentpost/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.get("/api/postsbyparent/:parentid", function (req, res) {
+  db.manyOrNone(`SELECT * FROM post WHERE parent_id = $1`, [req.params.parentid])
+    .then(data => res.json(data))
+    .catch(error => console.log("/api/postsbyparent/:parentid", error.message));
+});
+
 app.get("/api/reply/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
     .then(data => {
