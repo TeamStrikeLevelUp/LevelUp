@@ -1,9 +1,7 @@
 //get top twitchers
 export function fetchTopTwitchers() {
   return function (dispatch, getState) {
-
     const searchPath = `/twitchStreams`;
-
     fetch(searchPath)
       // .then(response => response.json())
       .then(response => response.ok
@@ -12,9 +10,7 @@ export function fetchTopTwitchers() {
       )
       .then(json => {
         //fetch info for each twitcher
-        console.log("top twitchers in ACTION", json)
         const items = json.map(item => item.data[0])
-        console.log(items)
         dispatch(receiveTopTwitchers(items));
       })
       .catch(error => {
@@ -30,7 +26,6 @@ export function receiveTopTwitchers(twitchApiData) {
     payload: twitchApiData
   };
 }
-
 
 // Add GAME FAVOURITES to database 
 export function addFavouriteToDB(favObject) {
@@ -56,10 +51,8 @@ export function addFavouriteToDB(favObject) {
 }
 
 // Add TWITCH FAVOURITE to database  
-
 export function addFavTwitchToDB(favObject) {
   return function (dispatch, getState) {
-
     fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
