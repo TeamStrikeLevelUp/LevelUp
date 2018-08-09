@@ -75,7 +75,7 @@ class Search extends React.Component {
   }
   render() {
     const { gameData, userAuthState, gameFavourite } = this.props;
-    console.log(gameData);
+    console.log(this.props.gameData);
     const gameDisplay =
       gameData === "No results found" ? <div className="search__result"> <div className="search__details"> {gameData} </div></div> :
         gameData.map(game => {
@@ -143,15 +143,11 @@ class Search extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="search__screenshots">
-                {gameData.screenshot.map(game => {
-                  <Carousel>
-                    <img src={game} />
 
-                  </Carousel>
-                })}
 
-              </div>
+
+
+
 
               <br />
 
