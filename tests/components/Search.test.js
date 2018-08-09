@@ -3,10 +3,20 @@ import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import Search from "../../src/components/Search";
 
+const mockProps = {
+  gameData: [],
+  gameFavourite: [],
+  submitSearch: mockSubmitSearch,
+  fetchGameInfo: mockFetchGameInfo,
+  fetchReferenceData: mockFetchReferenceData
+};
+
 describe("Search", () => {
   it("matches the snapshot", () => {
-    const treew = renderer.create(<Search />).toJSON();
+    const tree = renderer.create(<Search {...mockProps} />).toJSON();
     expect(tree).toMatchSnapshot();
+
+    // TODO: test gameData = "nothing found"
   });
 
   it("captures change input and passes it event handler", () => {
@@ -16,7 +26,7 @@ describe("Search", () => {
       }
     };
     const handleChange = jest.fn();
-    const wrapper = shallow(<Search handleChange={handleChange} />);
+    const wrapper = shallow(<Search {...mockProps} />);
     wrapper.find("input").simulate("change", event);
     expect(handleChange.mock.calls).toEqual([["grand theft auto"]]);
   });
@@ -26,15 +36,14 @@ describe("Search", () => {
       preventDefault: jest.fn()
     };
 
-    const mockSubmitSearch = jest.fn();
-
-    const wrapper = shallow(
-      <Search submitSearch={mockSubmitSearch} searchGame={"fifa"} />
-    );
+    const wrapper = shallow(<Search {...mockProps} />);
 
     wrapper.find("form").simulate("submit", event);
 
-    expect(mockSubmitSearch.mock.calls).toEqual([["fifa"]]);
-    expect(mockSubmitSearch.mock.calls.length).toBe(1);
+    expect(mockProps.mockSubmitSearch.mock.calls).toEqual([["fifa"]]);
+    expect(mockProps.mockSubmitSearch.mock.calls.length).toBe(1);
+
+    // TODO: test fetchReferenceData
+    // TODO: test fetchGameInfo
   });
 });

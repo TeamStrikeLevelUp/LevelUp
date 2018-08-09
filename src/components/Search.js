@@ -16,18 +16,15 @@ class Search extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
   }
 
   componentDidMount() {
     this.props.fetchReferenceData();
     if (this.props.userAuthState) {
       if (this.props.fetchGameFavourites !== undefined) {
-
         this.props.fetchGameFavourites(this.props.userAuthState.userId);
       }
     }
-
   }
   // handleClick(event) {
   //   this.setState({
@@ -44,7 +41,7 @@ class Search extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.fetchGameInfo("/games/" + this.state.searchGame);
-    console.log("/games/" + this.state.searchGame)
+    console.log("/games/" + this.state.searchGame);
     this.setState({
       searchGame: ""
     });
@@ -53,7 +50,7 @@ class Search extends React.Component {
   handleClick() {
     this.setState({
       count: this.state.count + 1
-    })
+    });
   }
 
   addToFavourites(gameId, gameTitle) {
@@ -62,25 +59,35 @@ class Search extends React.Component {
         gamerId: this.props.userAuthState.userId,
         igdb: gameId,
         title: gameTitle
-      }
+      };
 
-      this.props.addToFavourite(newFav)
+      this.props.addToFavourite(newFav);
       this.props.fetchGameFavourites(this.props.userAuthState.userId);
     } else {
-      alert("Please log in to select favourites")
+      alert("Please log in to select favourites");
     }
-
   }
   render() {
     const { gameData, userAuthState, gameFavourite } = this.props;
     const gameDisplay =
-      gameData === "No results found" ? <div className="search__result"> <div className="search__details"> {gameData} </div></div> :
+      gameData === "No results found" ? (
+        <div className="search__result">
+          <div className="search__details">{gameData}</div>
+        </div>
+      ) : (
         gameData.map(game => {
           return (
             <li key={game.igdbId} className="search__result">
               <div className="search__img">
                 <img src={game.cover_img} className="search__img--cover" />
-                <button className="search__details--button" onClick={event => { this.addToFavourites(game.igdbId, game.name) }}>Add to favourites</button>
+                <button
+                  className="search__details--button"
+                  onClick={event => {
+                    this.addToFavourites(game.igdbId, game.name);
+                  }}
+                >
+                  Add to favourites
+                </button>
               </div>
               <div className="search__details">
                 <header className="search__details--name">{game.name}</header>
@@ -95,7 +102,7 @@ class Search extends React.Component {
                         Gamer Rating:
                         <span className="search__rating">
                           {game.user_rating}%
-                          </span>
+                        </span>
                       </header>
                     ) : null}
 
@@ -104,7 +111,7 @@ class Search extends React.Component {
                         Critic Rating:
                         <span className="search__rating">
                           {game.critic_rating}%
-                          </span>
+                        </span>
                       </header>
                     ) : null}
 
@@ -130,36 +137,30 @@ class Search extends React.Component {
                         width="560"
                         height="315"
                         src={game.video + "autoPlay=0"}
-
                         frameBorder="0"
                         allowFullScreen
                         autostart="false"
-
                       />
                     ) : null}
                   </div>
                 </div>
               </div>
-              <div className="search__screenshots">
-                {imagesArr}
-              </div>
+              <div className="search__screenshots">{imagesArr}</div>
 
               <br />
-
             </li>
           );
-        });
-    const displayStatus = userAuthState ? "Welcome Gamer " + userAuthState.userId : "You are not logged in"
+        })
+      );
+    const displayStatus = userAuthState
+      ? "Welcome Gamer " + userAuthState.userId
+      : "You are not logged in";
     return (
-
       <div className="search__body">
         <div className="search">
           {displayStatus}
           <br />
-          <form
-            className="search__form"
-            onSubmit={this.handleSubmit}
-          >
+          <form className="search__form" onSubmit={this.handleSubmit}>
             <input
               onChange={this.handleChange}
               type="search"
@@ -170,18 +171,20 @@ class Search extends React.Component {
               value={this.state.searchGame}
               placeholder="Search games"
             />
-
           </form>
 
           {userAuthState ? <h2>Favourites </h2> : null}
           <ul>
-            {gameFavourite.map(currentFavourite =>
-              <a href="#" className="game__anchor" key={currentFavourite.title}  > <li key={currentFavourite.title}>
-                {/* //onClick={this.handleClick}> */}
+            {gameFavourite.map(currentFavourite => (
+              <a href="#" className="game__anchor" key={currentFavourite.title}>
+                {" "}
+                <li key={currentFavourite.title}>
+                  {/* //onClick={this.handleClick}> */}
 
-                {currentFavourite.title}
-              </li></a>)}
-
+                  {currentFavourite.title}
+                </li>
+              </a>
+            ))}
           </ul>
 
           <br />
