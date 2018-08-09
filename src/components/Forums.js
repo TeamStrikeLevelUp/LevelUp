@@ -127,7 +127,7 @@ class Forums extends React.Component {
       <form style={{display: this.props.userAuthState ? '' : 'none' }}>
       <input placeholder="title" value={this.state.title} onChange={this.titleHandler} />
       <input placeholder="body" value={this.state.body} onChange={this.bodyHandler} />
-      <button onClick={this.replyHandler}> reply </button>
+      <button onClick={this.replyHandler}> Post </button>
       </form>
 
         

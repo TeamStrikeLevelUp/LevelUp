@@ -3,12 +3,12 @@ import React from "react";
 import "../../styles/components/twitch.scss";
 
 class TwitchSearch extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
 
-      twitchQuery: "Ninja",
+      twitchQuery: this.props.twitchStreamer,
       displayVideo: false
     };
 

@@ -27589,6 +27589,7 @@ exports.fetchFortniteStats = fetchFortniteStats;
 exports.setFortniteStats = setFortniteStats;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
+exports.setTwitchStreamer = setTwitchStreamer;
 //get top twitchers
 function fetchTopTwitchers() {
   return function (dispatch, getState) {
@@ -28030,6 +28031,15 @@ function removeDuplicates(newsSearch) {
   }, {});
 
   return Object.values(cleanNewsData);
+}
+
+// set a twitch streamer from a different component
+
+function setTwitchStreamer(streamer) {
+  return {
+    type: "SET_TWITCH_STREAMER",
+    payload: streamer
+  };
 }
 
 /***/ }),
@@ -29155,7 +29165,7 @@ var Forums = function (_React$Component) {
           _react2.default.createElement(
             "button",
             { onClick: this.replyHandler },
-            " reply "
+            " Post "
           )
         )
       );
@@ -29426,6 +29436,8 @@ var Homepage = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      this.props.fetchTopTwitchers();
+
       fetch("/api/featured").then(function (response) {
         return response.json();
       }).then(function (json) {
@@ -29497,12 +29509,23 @@ var Homepage = function (_React$Component) {
       });
     }
   }, {
+    key: "searchTwitch",
+    value: function searchTwitch(event, title) {
+
+      this.props.setTwitchStreamer(title);
+      console.log("title", title);
+      console.log("redux state", this.props.twitchStreamer);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
       var topGames = this.state.topGames;
       shuffle(topGames);
+      var topTwitchers = this.props.topTwitchers;
+      shuffle(topTwitchers);
+      console.log("shuffled", topTwitchers[0]);
       return _react2.default.createElement(
         "div",
         { className: "homepage" },
@@ -29590,7 +29613,22 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Stream: Twitch Streamer"
+                  "Featured Stream: ",
+                  topTwitchers[0] ? _react2.default.createElement(
+                    "p",
+                    { onClick: function onClick(event) {
+                        return _this4.searchTwitch(event, topTwitchers[0].display_name);
+                      } },
+                    " ",
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: "/twitch" },
+                      " ",
+                      topTwitchers[0].display_name,
+                      " "
+                    ),
+                    " "
+                  ) : null
                 )
               )
             )
@@ -29619,7 +29657,7 @@ var Homepage = function (_React$Component) {
                 if (index > 4) return;
                 return _react2.default.createElement(
                   "li",
-                  null,
+                  { key: index },
                   game
                 );
               })
@@ -29755,10 +29793,10 @@ var Homepage = function (_React$Component) {
             { className: "homepage__side--twitter" },
             _react2.default.createElement(
               "a",
-              { "class": "twitter-timeline", href: "https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw" },
+              { className: "twitter-timeline", href: "https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw" },
               "Tweets by UpUpDwnDwn"
             ),
-            _react2.default.createElement("script", { async: true, src: "https://platform.twitter.com/widgets.js", charset: "utf-8" })
+            _react2.default.createElement("script", { async: true, src: "https://platform.twitter.com/widgets.js", charSet: "utf-8" })
           ),
           _react2.default.createElement(
             "div",
@@ -30093,6 +30131,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -30113,24 +30153,104 @@ var Posts = function (_React$Component) {
   _inherits(Posts, _React$Component);
 
   function Posts() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Posts);
 
-    var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Posts.__proto__ || Object.getPrototypeOf(Posts)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       replies: [],
       post: {},
       input: "",
       title: "",
-      body: ""
-    };
+      body: "",
+      editId: 0,
+      editMode: false
+    }, _this.inputHandler = function (event) {
+      _this.setState({ input: event.target.value });
+    }, _this.searchHandler = function (event) {
+      event.preventDefault();
 
-    _this.inputHandler = _this.inputHandler.bind(_this);
-    _this.searchHandler = _this.searchHandler.bind(_this);
-    _this.titleHandler = _this.titleHandler.bind(_this);
-    _this.bodyHandler = _this.bodyHandler.bind(_this);
-    _this.replyHandler = _this.replyHandler.bind(_this);
-    return _this;
+      fetch("/api/reply/" + _this.props.match.params.id + "/search/" + _this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this.setState({ replies: json });
+      });
+    }, _this.titleHandler = function (event) {
+      _this.setState({ title: event.target.value });
+    }, _this.bodyHandler = function (event) {
+      _this.setState({ body: event.target.value });
+    }, _this.replyHandler = function (event) {
+      event.preventDefault();
+
+      if (!_this.props.userAuthState) {
+        alert("login first");
+        return;
+      }
+
+      if (!_this.state.editMode) {
+
+        var newPost = {
+          title: _this.state.title,
+          body: _this.state.body,
+          parent_id: _this.props.match.params.id,
+          forum_id: _this.state.post.forum_id,
+          gamer_id: _this.props.userAuthState.userId,
+          gamer_name: _this.props.userAuthState.username
+        };
+
+        fetch("/api/reply", {
+          method: "post",
+          body: JSON.stringify(newPost),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          return _this.setState({ replies: json });
+        });
+
+        _this.setState({ body: "", title: "" });
+      } else {
+        var editObj = {
+          newTitle: _this.state.title,
+          newBody: _this.state.body,
+          post_id: _this.state.editId,
+          forum_id: _this.state.post.forum_id
+        };
+
+        fetch("/api/post-edit", {
+          method: "POST",
+          body: JSON.stringify(editObj),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          _this.setState({ replies: data });
+        }).catch(function (e) {
+          return e;
+        });
+
+        _this.setState({ editMode: false });
+      }
+    }, _this.editHandler = function (event, reply) {
+      event.preventDefault();
+
+      _this.setState({
+        title: reply.title,
+        body: reply.body,
+        editId: reply.id,
+        editMode: true
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Posts, [{
@@ -30138,85 +30258,28 @@ var Posts = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("/api/reply/" + this.props.match.params.id).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({ replies: json });
+      Promise.all(["/api/reply/" + this.props.match.params.id, "/api/parentpost/" + this.props.match.params.id].map(function (url) {
+        return fetch(url);
+      })).then(function (results) {
+        return Promise.all(results.map(function (res) {
+          return res.ok ? res.json() : Promise.reject(res);
+        }));
+      }).then(function (_ref2) {
+        var _ref3 = _slicedToArray(_ref2, 2),
+            replies = _ref3[0],
+            post = _ref3[1];
+
+        _this2.setState({ replies: replies, post: post, loaded: true });
+      }).catch(function (err) {
+        return console.log(err);
       });
-
-      fetch("/api/parentpost/" + this.props.match.params.id).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({ post: json });
-      });
-    }
-  }, {
-    key: "inputHandler",
-    value: function inputHandler(event) {
-      this.setState({ input: event.target.value });
-    }
-  }, {
-    key: "searchHandler",
-    value: function searchHandler(event) {
-      var _this3 = this;
-
-      event.preventDefault();
-
-      fetch("/api/reply/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this3.setState({ replies: json });
-      });
-    }
-  }, {
-    key: "titleHandler",
-    value: function titleHandler(event) {
-      this.setState({ title: event.target.value });
-    }
-  }, {
-    key: "bodyHandler",
-    value: function bodyHandler(event) {
-      this.setState({ body: event.target.value });
-    }
-  }, {
-    key: "replyHandler",
-    value: function replyHandler(event) {
-      var _this4 = this;
-
-      event.preventDefault();
-
-      if (!this.props.userAuthState) {
-        alert("login first");
-        return;
-      }
-
-      var newPost = {
-        title: this.state.title,
-        body: this.state.body,
-        parent_id: this.props.match.params.id,
-        forum_id: this.state.post.forum_id,
-        gamer_id: this.props.userAuthState.userId,
-        gamer_name: this.props.userAuthState.username
-      };
-
-      fetch("/api/reply", {
-        method: "post",
-        body: JSON.stringify(newPost),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this4.setState({ replies: json });
-      });
-
-      this.setState({ body: "", title: "" });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
+
+      // if (!this.state.loaded) return <Loader />;
 
       if (!this.state.post.id) return null;
       var created = String(new Date(this.state.post.created)).substring(0, 24);
@@ -30247,20 +30310,27 @@ var Posts = function (_React$Component) {
         _react2.default.createElement(
           "h3",
           null,
-          " Posted By: ",
+          "Posted By:",
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { className: "profile__links", to: "/profile/" + this.state.post.gamer_name },
+            {
+              className: "profile__links",
+              to: "/profile/" + this.state.post.gamer_name
+            },
             " ",
             this.state.post.gamer_name,
             " "
           ),
-          "    "
+          " "
         ),
         _react2.default.createElement(
           "form",
           null,
-          _react2.default.createElement("input", { placeholder: "search for replies", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement("input", {
+            placeholder: "search for replies",
+            value: this.state.input,
+            onChange: this.inputHandler
+          }),
           _react2.default.createElement(
             "button",
             { onClick: this.searchHandler },
@@ -30276,8 +30346,9 @@ var Posts = function (_React$Component) {
               "p",
               null,
               "Reply to \"",
-              _this5.state.post.title,
-              "\": "
+              _this3.state.post.title,
+              "\":",
+              " "
             ),
             _react2.default.createElement(
               "p",
@@ -30299,28 +30370,49 @@ var Posts = function (_React$Component) {
             _react2.default.createElement(
               "p",
               null,
-              "Posted by: ",
+              "Posted by:",
+              " ",
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { className: "profile__links", to: "/profile/" + reply.gamer_name },
+                {
+                  className: "profile__links",
+                  to: "/profile/" + reply.gamer_name
+                },
                 " ",
                 reply.gamer_name,
                 " "
               ),
               " "
-            )
+            ),
+            _this3.props.userAuthState ? _this3.props.userAuthState.userId === reply.id ? _react2.default.createElement(
+              "button",
+              { onClick: function onClick(event) {
+                  return _this3.editHandler(event, reply);
+                } },
+              "Edit post"
+            ) : null : null
           );
         }),
         _react2.default.createElement(
           "div",
-          { style: { display: this.props.userAuthState ? 'none' : '' } },
-          " login to post "
+          { style: { display: this.props.userAuthState ? "none" : "" } },
+          " ",
+          "login to post",
+          " "
         ),
         _react2.default.createElement(
           "form",
-          { style: { display: this.props.userAuthState ? '' : 'none' } },
-          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
-          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          { style: { display: this.props.userAuthState ? "" : "none" } },
+          _react2.default.createElement("input", {
+            placeholder: "title",
+            value: this.state.title,
+            onChange: this.titleHandler
+          }),
+          _react2.default.createElement("input", {
+            placeholder: "body",
+            value: this.state.body,
+            onChange: this.bodyHandler
+          }),
           _react2.default.createElement(
             "button",
             { onClick: this.replyHandler },
@@ -30754,14 +30846,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TwitchSearch = function (_React$Component) {
   _inherits(TwitchSearch, _React$Component);
 
-  function TwitchSearch() {
+  function TwitchSearch(props) {
     _classCallCheck(this, TwitchSearch);
 
-    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
+    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this, props));
 
     _this.state = {
 
-      twitchQuery: "Ninja",
+      twitchQuery: _this.props.twitchStreamer,
       displayVideo: false
     };
 
@@ -31867,7 +31959,7 @@ exports.default = HomeContainer;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -31876,15 +31968,30 @@ var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/compone
 
 var _Homepage2 = _interopRequireDefault(_Homepage);
 
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-    return {
-        userAuthState: reduxState.authState
-    };
+  return {
+    userAuthState: reduxState.authState,
+    twitchStreamer: reduxState.twitchStreamer,
+    topTwitchers: reduxState.topTwitchers
+  };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Homepage2.default);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    setTwitchStreamer: function setTwitchStreamer(streamer) {
+      dispatch((0, _actions.setTwitchStreamer)(streamer));
+    },
+    fetchTopTwitchers: function fetchTopTwitchers() {
+      dispatch((0, _actions.fetchTopTwitchers)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Homepage2.default);
 
 /***/ }),
 
@@ -32119,7 +32226,8 @@ var mapStateToProps = function mapStateToProps(reduxState) {
   return {
     userAuthState: reduxState.authState,
     twitchFavourite: reduxState.twitchFavourite,
-    topTwitchers: reduxState.topTwitchers
+    topTwitchers: reduxState.topTwitchers,
+    twitchStreamer: reduxState.twitchStreamer
 
   };
 };
@@ -32409,6 +32517,10 @@ var _topTwitchers = __webpack_require__(/*! ./topTwitchers */ "./src/reducers/to
 
 var _topTwitchers2 = _interopRequireDefault(_topTwitchers);
 
+var _twitchStreamer = __webpack_require__(/*! ./twitchStreamer */ "./src/reducers/twitchStreamer.js");
+
+var _twitchStreamer2 = _interopRequireDefault(_twitchStreamer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
@@ -32421,7 +32533,8 @@ exports.default = (0, _redux.combineReducers)({
   userInfo: _userInfo2.default,
   gameFavourite: _gameFavourite2.default,
   twitchFavourite: _twitchFavourite2.default,
-  topTwitchers: _topTwitchers2.default
+  topTwitchers: _topTwitchers2.default,
+  twitchStreamer: _twitchStreamer2.default
 });
 
 /***/ }),
@@ -32548,6 +32661,35 @@ function twitchFavourite() {
 }
 
 exports.default = twitchFavourite;
+
+/***/ }),
+
+/***/ "./src/reducers/twitchStreamer.js":
+/*!****************************************!*\
+  !*** ./src/reducers/twitchStreamer.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function twitchStreamer() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Shroud";
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "SET_TWITCH_STREAMER":
+      return action.payload;
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = twitchStreamer;
 
 /***/ }),
 

@@ -10,7 +10,8 @@ const mapStateToProps = reduxState => {
   return {
     userAuthState: reduxState.authState,
     twitchFavourite: reduxState.twitchFavourite,
-    topTwitchers: reduxState.topTwitchers
+    topTwitchers: reduxState.topTwitchers,
+    twitchStreamer: reduxState.twitchStreamer
 
   };
 };
