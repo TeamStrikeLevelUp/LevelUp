@@ -7,7 +7,8 @@ class DashboardPanels extends React.Component {
         this.state = {
             user: "",
             userStats: "",
-            gamer_rank: ""
+            gamer_rank: "",
+            gamer_info: ""
         }
         this.gamerRank = this.gamerRank.bind(this);
     }
@@ -39,6 +40,13 @@ class DashboardPanels extends React.Component {
         if (userData && this.props.fetchGameFavourite) {
             this.props.fetchGameFavourite(userData.userId);
         }
+
+        // Fetch user data
+        this.props.fetchGamerInfo(userData.userId).then(data => {
+            this.setState({
+                gamer_info: data
+            });
+        });;
     }
 
     gamerRank() {
@@ -60,10 +68,9 @@ class DashboardPanels extends React.Component {
     }
 
     render() {
-        const { twitchFavourite, gameFavourite } = this.props;
+        const { twitchFavourite, gameFavourite, userDataStore } = this.props;
         const { userStats, gamer_rank } = this.state;
 
-        console.log("gameFavourite", gameFavourite)
         return (
             <div className="dashboard__panels">
                 <div className="dashboard__panels--item">
@@ -96,7 +103,7 @@ class DashboardPanels extends React.Component {
                         {
                             gameFavourite.map(fav => {
                                 return (
-                                    <li key={fav.twitch_name}>{fav.title}</li>
+                                    <li key={fav.title}>{fav.title}</li>
                                 )
                             })
                         }

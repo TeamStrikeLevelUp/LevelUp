@@ -18,19 +18,16 @@ class Forums extends React.Component {
 
   }
 
-  componentDidUpdate(prevProps) {
-    //   console.log("next",this.props)
-    //   console.log("prev",prevProps)
+  // componentDidUpdate(prevProps) {
+  //   //   console.log("next",this.props)
+  //   //   console.log("prev",prevProps)
 
-  }
+  // }
 
   componentDidMount() {
-
-
     fetch(`/api/forum/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(json => this.setState({ forum: json }));
-
 
     fetch(`/api/post/${this.props.match.params.id}`)
       .then(response => response.json())
@@ -96,22 +93,62 @@ class Forums extends React.Component {
     if (!this.state.forum.id) return null
 
     return (
-      <div>
+      <div className="community">
+        <header className="community__header">
+          <h1 className="community__heading">Community Forums</h1>
+          <form className="game-search__form">
+            <input
+              className="game-search__field"
+              placeholder="search for posts"
+              value={this.state.input}
+              onChange={this.inputHandler} />
+            <button
+              className="button button-primary"
+              onClick={this.searchHandler}> Search </button>
+          </form>
+        </header>
+        <div className="forums">
+          <h4>Thread: {this.state.forum.title}</h4>
+          <h5>Category: {this.state.forum.category}</h5>
+          {this.state.posts.map((post, index) => {
+            let date = String(new Date(post.created)).substring(0, 24)
+            return (
+              <div key={post.id} className="forum">
+                <Link className="forum__link" to={`/posts/${post.id}`}>
+                  <div className="forum__link--text">
+                    {post.title}
+                  </div>
+                  <div className="forum__details">
+                    <div className="forum__total-post">
+                      <svg className="icon-comments" aria-hidden="true" focusable="false">
+                        <use xlinkHref="#icon-comments" />
+                      </svg>
+                      {this.state["totalPost-" + post.id]} Threads</div>
+                    {/* <div className="forum__latest-post"><strong className="forum__latest-post--heading">Posted By: </strong><Link className="profile__links" to={`/profile/${post.gamer_name}`}> {post.gamer_name} </Link> - On: {date}</div> */}
+                  </div>
+                </Link>
+              </div>
+            )
+          })
+          }
+        </div>
+        {/* </div>
+      <div> */}
 
 
 
 
-        <p>Title: {this.state.forum.title}</p>
-        <p>Category: {this.state.forum.category}</p>
+        {/* <p>Title: {this.state.forum.title}</p>
+        <p>Category: {this.state.forum.category}</p> */}
 
 
-        <form>
+        {/* <form>
           <input placeholder="search for posts" value={this.state.input} onChange={this.inputHandler} />
           <button onClick={this.searchHandler}> search </button>
-        </form>
+        </form> */}
 
 
-        {this.state.posts.map((post, index) => {
+        {/* {this.state.posts.map((post, index) => {
           let date = String(new Date(post.created)).substring(0, 24)
           return (
             <div key={post.id}>
@@ -119,7 +156,7 @@ class Forums extends React.Component {
             </div>
 
           )
-        })}
+        })} */}
 
         <div style={{ display: this.props.userAuthState ? 'none' : '' }} > login to post </div>
 

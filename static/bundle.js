@@ -28335,14 +28335,17 @@ var Dashboard = function (_React$Component) {
                                         gameFavourite: _this2.props.gameFavourite,
                                         userAuthState: _this2.props.userAuthState,
                                         setAuthState: _this2.props.setAuthState,
-                                        fetchGameFavourite: _this2.props.fetchGameFavourite });
+                                        fetchGamerInfo: _this2.props.fetchGamerInfo,
+                                        fetchGameFavourite: _this2.props.fetchGameFavourite,
+                                        userDataStore: _this2.props.userDataStore });
                                 } }),
                             _react2.default.createElement(_reactRouterDom.Route, { path: '/dashboard/account', render: function render() {
                                     return _react2.default.createElement(_DashboardAccount2.default, {
                                         setAuthState: _this2.props.setAuthState,
                                         userAuthState: _this2.props.userAuthState,
                                         fetchGamerInfo: _this2.props.fetchGamerInfo,
-                                        userDataStore: _this2.props.userDataStore });
+                                        userDataStore: _this2.props.userDataStore,
+                                        setUserData: _this2.props.setUserData });
                                 } })
                         )
                     )
@@ -29001,7 +29004,7 @@ var ForumLinks = function (_React$Component) {
                     _react2.default.createElement('use', { xlinkHref: '#icon-comments' })
                   ),
                   _this3.state["totalPost-" + forum.id],
-                  ' Comments'
+                  ' Threads'
                 ),
                 _this3.state["postLast-" + forum.id] ? _react2.default.createElement(
                   'div',
@@ -29080,14 +29083,13 @@ var Forums = function (_React$Component) {
     return _this;
   }
 
-  _createClass(Forums, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      //   console.log("next",this.props)
-      //   console.log("prev",prevProps)
+  // componentDidUpdate(prevProps) {
+  //   //   console.log("next",this.props)
+  //   //   console.log("prev",prevProps)
 
-    }
-  }, {
+  // }
+
+  _createClass(Forums, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -29169,57 +29171,85 @@ var Forums = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
 
       if (!this.state.forum.id) return null;
 
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "community" },
         _react2.default.createElement(
-          "p",
-          null,
-          "Title: ",
-          this.state.forum.title
-        ),
-        _react2.default.createElement(
-          "p",
-          null,
-          "Category: ",
-          this.state.forum.category
-        ),
-        _react2.default.createElement(
-          "form",
-          null,
-          _react2.default.createElement("input", { placeholder: "search for posts", value: this.state.input, onChange: this.inputHandler }),
+          "header",
+          { className: "community__header" },
           _react2.default.createElement(
-            "button",
-            { onClick: this.searchHandler },
-            " search "
+            "h1",
+            { className: "community__heading" },
+            "Community Forums"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "game-search__form" },
+            _react2.default.createElement("input", {
+              className: "game-search__field",
+              placeholder: "search for posts",
+              value: this.state.input,
+              onChange: this.inputHandler }),
+            _react2.default.createElement(
+              "button",
+              {
+                className: "button button-primary",
+                onClick: this.searchHandler },
+              " Search "
+            )
           )
         ),
-        this.state.posts.map(function (post, index) {
-          var date = String(new Date(post.created)).substring(0, 24);
-          return _react2.default.createElement(
-            "div",
-            { key: post.id },
-            _react2.default.createElement(
-              _reactRouterDom.Link,
-              { className: "forum__links", to: "/posts/" + post.id },
-              "Title: ",
-              post.title,
-              " - Posted By: ",
+        _react2.default.createElement(
+          "div",
+          { className: "forums" },
+          _react2.default.createElement(
+            "h4",
+            null,
+            "Thread: ",
+            this.state.forum.title
+          ),
+          _react2.default.createElement(
+            "h5",
+            null,
+            "Category: ",
+            this.state.forum.category
+          ),
+          this.state.posts.map(function (post, index) {
+            var date = String(new Date(post.created)).substring(0, 24);
+            return _react2.default.createElement(
+              "div",
+              { key: post.id, className: "forum" },
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { className: "profile__links", to: "/profile/" + post.gamer_name },
-                " ",
-                post.gamer_name,
-                " "
-              ),
-              " - On: ",
-              date
-            )
-          );
-        }),
+                { className: "forum__link", to: "/posts/" + post.id },
+                _react2.default.createElement(
+                  "div",
+                  { className: "forum__link--text" },
+                  post.title
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "forum__details" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "forum__total-post" },
+                    _react2.default.createElement(
+                      "svg",
+                      { className: "icon-comments", "aria-hidden": "true", focusable: "false" },
+                      _react2.default.createElement("use", { xlinkHref: "#icon-comments" })
+                    ),
+                    _this5.state["totalPost-" + post.id],
+                    " Threads"
+                  )
+                )
+              )
+            );
+          })
+        ),
         _react2.default.createElement(
           "div",
           { style: { display: this.props.userAuthState ? 'none' : '' } },
@@ -31287,6 +31317,8 @@ var DashboardAccount = function (_React$Component) {
             var descClasses = (0, _classnames2.default)('dashboard__desc--form ', {
                 'dashboard__desc--form--visible': this.state.togglerDesc
             });
+
+            // console.log("userDataStore", userDataStore);
             return _react2.default.createElement(
                 'div',
                 { className: 'dashboard__account' },
@@ -31538,7 +31570,8 @@ var DashboardPanels = function (_React$Component) {
         _this.state = {
             user: "",
             userStats: "",
-            gamer_rank: ""
+            gamer_rank: "",
+            gamer_info: ""
         };
         _this.gamerRank = _this.gamerRank.bind(_this);
         return _this;
@@ -31579,6 +31612,13 @@ var DashboardPanels = function (_React$Component) {
             if (userData && this.props.fetchGameFavourite) {
                 this.props.fetchGameFavourite(userData.userId);
             }
+
+            // Fetch user data
+            this.props.fetchGamerInfo(userData.userId).then(function (data) {
+                _this2.setState({
+                    gamer_info: data
+                });
+            });;
         }
     }, {
         key: "gamerRank",
@@ -31604,13 +31644,13 @@ var DashboardPanels = function (_React$Component) {
         value: function render() {
             var _props = this.props,
                 twitchFavourite = _props.twitchFavourite,
-                gameFavourite = _props.gameFavourite;
+                gameFavourite = _props.gameFavourite,
+                userDataStore = _props.userDataStore;
             var _state = this.state,
                 userStats = _state.userStats,
                 gamer_rank = _state.gamer_rank;
 
 
-            console.log("gameFavourite", gameFavourite);
             return _react2.default.createElement(
                 "div",
                 { className: "dashboard__panels" },
@@ -31701,7 +31741,7 @@ var DashboardPanels = function (_React$Component) {
                         gameFavourite.map(function (fav) {
                             return _react2.default.createElement(
                                 "li",
-                                { key: fav.twitch_name },
+                                { key: fav.title },
                                 fav.title
                             );
                         })

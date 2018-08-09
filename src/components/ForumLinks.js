@@ -60,7 +60,7 @@ class ForumLinks extends React.Component {
                     <svg className="icon-comments" aria-hidden="true" focusable="false">
                       <use xlinkHref="#icon-comments" />
                     </svg>
-                    {this.state["totalPost-" + forum.id]} Comments</div>
+                    {this.state["totalPost-" + forum.id]} Threads</div>
                   {this.state["postLast-" + forum.id]
                     ? <div className="forum__latest-post"><strong className="forum__latest-post--heading">Latest:</strong>{this.state["postLast-" + forum.id].title}</div>
                     : ""}
