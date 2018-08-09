@@ -25,3 +25,8 @@ body {
   background-color: rgb(13, 27, 27);
   color: whitesmoke;
 }
+
+.is-active {
+  background-color: var(--primary-color);
+  color: #fff;
+}

@@ -60,10 +60,11 @@ class DashboardPanels extends React.Component {
     }
 
     render() {
-        const { twitchFavourite, gameFavourite } = this.props;
+        const { twitchFavourite, gameFavourite, userDataStore } = this.props;
         const { userStats, gamer_rank } = this.state;
 
-        console.log("gameFavourite", gameFavourite)
+
+        console.log("store", this.props)
         return (
             <div className="dashboard__panels">
                 <div className="dashboard__panels--item">

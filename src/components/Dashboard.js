@@ -53,7 +53,8 @@ class Dashboard extends React.Component {
                                     gameFavourite={this.props.gameFavourite}
                                     userAuthState={this.props.userAuthState}
                                     setAuthState={this.props.setAuthState}
-                                    fetchGameFavourite={this.props.fetchGameFavourite} />
+                                    fetchGameFavourite={this.props.fetchGameFavourite}
+                                    userDataStore={this.props.userDataStore} />
                             }} />
                             <Route path="/dashboard/account" render={() => {
                                 return <DashboardAccount
