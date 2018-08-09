@@ -20,6 +20,8 @@ class Homepage extends React.Component {
   }
 
   componentDidMount(){
+    this.props.fetchTopTwitchers();
+
     fetch(`/api/featured`)
     .then(response => response.json())
     .then(json => this.setState({gamer:json.gamer ,game:json.game, forum:json.forum}));
@@ -88,9 +90,19 @@ class Homepage extends React.Component {
     });
   }
 
+  searchTwitch(event, title){
+  
+    this.props.setTwitchStreamer(title)
+    console.log("title", title);
+    console.log("redux state", this.props.twitchStreamer)
+  }
+
   render() {
     let topGames=this.state.topGames;
     shuffle(topGames);
+    let topTwitchers= this.props.topTwitchers;
+    shuffle(topTwitchers);
+    console.log("shuffled",topTwitchers[0])
     return (
       <div className="homepage">
         <div className="homepage__main">
@@ -99,7 +111,7 @@ class Homepage extends React.Component {
           <div className="homepage__main--featured">
             <div className="homepage__main--featured--selection">
               <div className="homepage__main--featured--selection--game">
-                <h4><i>Featured Game:</i> {this.state.game.title}</h4>
+                <h4 ><i>Featured Game:</i> {this.state.game.title}</h4>
               </div>
               <div className="homepage__main--featured--selection--user">
                 <h4><i>Featured User:</i> <Link className="homepage__links" to={`/profile/${this.state.gamer.gamer_name}`}> {this.state.gamer.gamer_name} </Link>  </h4>
@@ -109,7 +121,9 @@ class Homepage extends React.Component {
               </div>
               
               <div className="homepage__main--featured--selection--twitch">
-                <h4>Featured Stream: Twitch Streamer</h4>
+                <h4>Featured Stream: {topTwitchers[0] ?
+                   <p onClick={(event)=> this.searchTwitch(event, topTwitchers[0].display_name)}> <Link to="/twitch"> {topTwitchers[0].display_name} </Link> </p> 
+                   : null}</h4>
               </div>
             </div>
           </div>
@@ -121,7 +135,7 @@ class Homepage extends React.Component {
             <ul>
             {topGames.map((game,index)=>{
               if(index>4) return;
-              return(<li>{game}</li>)
+              return(<li key={index}>{game}</li>)
             })}
             </ul>
           </div>
@@ -171,8 +185,8 @@ class Homepage extends React.Component {
           </div>
           <div className="homepage__side--twitter">
 
-          <a class="twitter-timeline" href="https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw">Tweets by UpUpDwnDwn</a> 
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a className="twitter-timeline" href="https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw">Tweets by UpUpDwnDwn</a> 
+          <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
 
           </div>
           <div className="homepage__side--social-links">

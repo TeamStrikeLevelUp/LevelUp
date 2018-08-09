@@ -148,10 +148,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
-/*!***********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
-  \***********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -167,10 +167,10 @@ exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
-/*!**********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
-  \**********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -186,29 +186,30 @@ exports.push([module.i, ".fortnite {\n  display: flex;\n  min-height: 100vh;\n  
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
-  \********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(/*! ../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(" + escape(__webpack_require__(/*! ../../static/images/forum-h.jpg */ "./static/images/forum-h.jpg")) + ");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
-  \********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -224,10 +225,10 @@ exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
-/*!**********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
-  \**********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -243,10 +244,10 @@ exports.push([module.i, ".homepage {\n  display: flex;\n  width: 100%; }\n\n.hom
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
-  \********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -262,10 +263,10 @@ exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
-/*!******************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
-  \******************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -281,10 +282,10 @@ exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
-/*!**********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
-  \**********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -300,10 +301,10 @@ exports.push([module.i, ".notfound {\n  margin: auto;\n  text-align: center;\n  
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
-  \********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -319,10 +320,10 @@ exports.push([module.i, "li {\n  list-style: none; }\n\n.game__anchor {\n  text-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
-/*!********************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
-  \********************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -338,10 +339,10 @@ exports.push([module.i, ".twitch {\n  display: flex;\n  margin-left: 10px; }\n\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -440,6 +441,33 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/url/escape.js":
+/*!***************************************************!*\
+  !*** ./node_modules/css-loader/lib/url/escape.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
 }
 
 
@@ -27589,6 +27617,7 @@ exports.fetchFortniteStats = fetchFortniteStats;
 exports.setFortniteStats = setFortniteStats;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
+exports.setTwitchStreamer = setTwitchStreamer;
 //get top twitchers
 function fetchTopTwitchers() {
   return function (dispatch, getState) {
@@ -28024,6 +28053,15 @@ function removeDuplicates(newsSearch) {
   }, {});
 
   return Object.values(cleanNewsData);
+}
+
+// set a twitch streamer from a different component
+
+function setTwitchStreamer(streamer) {
+  return {
+    type: "SET_TWITCH_STREAMER",
+    payload: streamer
+  };
 }
 
 /***/ }),
@@ -29343,6 +29381,17 @@ var Forums = function (_React$Component) {
             { onClick: this.replyHandler },
             " reply "
           )
+        ),
+        _react2.default.createElement(
+          "form",
+          { style: { display: this.props.userAuthState ? '' : 'none' } },
+          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
+          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          _react2.default.createElement(
+            "button",
+            { onClick: this.replyHandler },
+            " Post "
+          )
         )
       );
     }
@@ -29612,6 +29661,8 @@ var Homepage = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      this.props.fetchTopTwitchers();
+
       fetch("/api/featured").then(function (response) {
         return response.json();
       }).then(function (json) {
@@ -29683,12 +29734,23 @@ var Homepage = function (_React$Component) {
       });
     }
   }, {
+    key: "searchTwitch",
+    value: function searchTwitch(event, title) {
+
+      this.props.setTwitchStreamer(title);
+      console.log("title", title);
+      console.log("redux state", this.props.twitchStreamer);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
 
       var topGames = this.state.topGames;
       shuffle(topGames);
+      var topTwitchers = this.props.topTwitchers;
+      shuffle(topTwitchers);
+      console.log("shuffled", topTwitchers[0]);
       return _react2.default.createElement(
         "div",
         { className: "homepage" },
@@ -29776,7 +29838,22 @@ var Homepage = function (_React$Component) {
                 _react2.default.createElement(
                   "h4",
                   null,
-                  "Featured Stream: Twitch Streamer"
+                  "Featured Stream: ",
+                  topTwitchers[0] ? _react2.default.createElement(
+                    "p",
+                    { onClick: function onClick(event) {
+                        return _this4.searchTwitch(event, topTwitchers[0].display_name);
+                      } },
+                    " ",
+                    _react2.default.createElement(
+                      _reactRouterDom.Link,
+                      { to: "/twitch" },
+                      " ",
+                      topTwitchers[0].display_name,
+                      " "
+                    ),
+                    " "
+                  ) : null
                 )
               )
             )
@@ -29805,7 +29882,7 @@ var Homepage = function (_React$Component) {
                 if (index > 4) return;
                 return _react2.default.createElement(
                   "li",
-                  null,
+                  { key: index },
                   game
                 );
               })
@@ -29941,10 +30018,10 @@ var Homepage = function (_React$Component) {
             { className: "homepage__side--twitter" },
             _react2.default.createElement(
               "a",
-              { "class": "twitter-timeline", href: "https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw" },
+              { className: "twitter-timeline", href: "https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw" },
               "Tweets by UpUpDwnDwn"
             ),
-            _react2.default.createElement("script", { async: true, src: "https://platform.twitter.com/widgets.js", charset: "utf-8" })
+            _react2.default.createElement("script", { async: true, src: "https://platform.twitter.com/widgets.js", charSet: "utf-8" })
           ),
           _react2.default.createElement(
             "div",
@@ -30279,6 +30356,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -30299,24 +30378,104 @@ var Posts = function (_React$Component) {
   _inherits(Posts, _React$Component);
 
   function Posts() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Posts);
 
-    var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Posts.__proto__ || Object.getPrototypeOf(Posts)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       replies: [],
       post: {},
       input: "",
       title: "",
-      body: ""
-    };
+      body: "",
+      editId: 0,
+      editMode: false
+    }, _this.inputHandler = function (event) {
+      _this.setState({ input: event.target.value });
+    }, _this.searchHandler = function (event) {
+      event.preventDefault();
 
-    _this.inputHandler = _this.inputHandler.bind(_this);
-    _this.searchHandler = _this.searchHandler.bind(_this);
-    _this.titleHandler = _this.titleHandler.bind(_this);
-    _this.bodyHandler = _this.bodyHandler.bind(_this);
-    _this.replyHandler = _this.replyHandler.bind(_this);
-    return _this;
+      fetch("/api/reply/" + _this.props.match.params.id + "/search/" + _this.state.input).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this.setState({ replies: json });
+      });
+    }, _this.titleHandler = function (event) {
+      _this.setState({ title: event.target.value });
+    }, _this.bodyHandler = function (event) {
+      _this.setState({ body: event.target.value });
+    }, _this.replyHandler = function (event) {
+      event.preventDefault();
+
+      if (!_this.props.userAuthState) {
+        alert("login first");
+        return;
+      }
+
+      if (!_this.state.editMode) {
+
+        var newPost = {
+          title: _this.state.title,
+          body: _this.state.body,
+          parent_id: _this.props.match.params.id,
+          forum_id: _this.state.post.forum_id,
+          gamer_id: _this.props.userAuthState.userId,
+          gamer_name: _this.props.userAuthState.username
+        };
+
+        fetch("/api/reply", {
+          method: "post",
+          body: JSON.stringify(newPost),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          return _this.setState({ replies: json });
+        });
+
+        _this.setState({ body: "", title: "" });
+      } else {
+        var editObj = {
+          newTitle: _this.state.title,
+          newBody: _this.state.body,
+          post_id: _this.state.editId,
+          forum_id: _this.state.post.forum_id
+        };
+
+        fetch("/api/post-edit", {
+          method: "POST",
+          body: JSON.stringify(editObj),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          _this.setState({ replies: data });
+        }).catch(function (e) {
+          return e;
+        });
+
+        _this.setState({ editMode: false });
+      }
+    }, _this.editHandler = function (event, reply) {
+      event.preventDefault();
+
+      _this.setState({
+        title: reply.title,
+        body: reply.body,
+        editId: reply.id,
+        editMode: true
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Posts, [{
@@ -30324,85 +30483,28 @@ var Posts = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("/api/reply/" + this.props.match.params.id).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({ replies: json });
+      Promise.all(["/api/reply/" + this.props.match.params.id, "/api/parentpost/" + this.props.match.params.id].map(function (url) {
+        return fetch(url);
+      })).then(function (results) {
+        return Promise.all(results.map(function (res) {
+          return res.ok ? res.json() : Promise.reject(res);
+        }));
+      }).then(function (_ref2) {
+        var _ref3 = _slicedToArray(_ref2, 2),
+            replies = _ref3[0],
+            post = _ref3[1];
+
+        _this2.setState({ replies: replies, post: post, loaded: true });
+      }).catch(function (err) {
+        return console.log(err);
       });
-
-      fetch("/api/parentpost/" + this.props.match.params.id).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this2.setState({ post: json });
-      });
-    }
-  }, {
-    key: "inputHandler",
-    value: function inputHandler(event) {
-      this.setState({ input: event.target.value });
-    }
-  }, {
-    key: "searchHandler",
-    value: function searchHandler(event) {
-      var _this3 = this;
-
-      event.preventDefault();
-
-      fetch("/api/reply/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this3.setState({ replies: json });
-      });
-    }
-  }, {
-    key: "titleHandler",
-    value: function titleHandler(event) {
-      this.setState({ title: event.target.value });
-    }
-  }, {
-    key: "bodyHandler",
-    value: function bodyHandler(event) {
-      this.setState({ body: event.target.value });
-    }
-  }, {
-    key: "replyHandler",
-    value: function replyHandler(event) {
-      var _this4 = this;
-
-      event.preventDefault();
-
-      if (!this.props.userAuthState) {
-        alert("login first");
-        return;
-      }
-
-      var newPost = {
-        title: this.state.title,
-        body: this.state.body,
-        parent_id: this.props.match.params.id,
-        forum_id: this.state.post.forum_id,
-        gamer_id: this.props.userAuthState.userId,
-        gamer_name: this.props.userAuthState.username
-      };
-
-      fetch("/api/reply", {
-        method: "post",
-        body: JSON.stringify(newPost),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        return _this4.setState({ replies: json });
-      });
-
-      this.setState({ body: "", title: "" });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
+
+      // if (!this.state.loaded) return <Loader />;
 
       if (!this.state.post.id) return null;
       var created = String(new Date(this.state.post.created)).substring(0, 24);
@@ -30433,20 +30535,27 @@ var Posts = function (_React$Component) {
         _react2.default.createElement(
           "h3",
           null,
-          " Posted By: ",
+          "Posted By:",
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { className: "profile__links", to: "/profile/" + this.state.post.gamer_name },
+            {
+              className: "profile__links",
+              to: "/profile/" + this.state.post.gamer_name
+            },
             " ",
             this.state.post.gamer_name,
             " "
           ),
-          "    "
+          " "
         ),
         _react2.default.createElement(
           "form",
           null,
-          _react2.default.createElement("input", { placeholder: "search for replies", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement("input", {
+            placeholder: "search for replies",
+            value: this.state.input,
+            onChange: this.inputHandler
+          }),
           _react2.default.createElement(
             "button",
             { onClick: this.searchHandler },
@@ -30462,8 +30571,9 @@ var Posts = function (_React$Component) {
               "p",
               null,
               "Reply to \"",
-              _this5.state.post.title,
-              "\": "
+              _this3.state.post.title,
+              "\":",
+              " "
             ),
             _react2.default.createElement(
               "p",
@@ -30485,28 +30595,49 @@ var Posts = function (_React$Component) {
             _react2.default.createElement(
               "p",
               null,
-              "Posted by: ",
+              "Posted by:",
+              " ",
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { className: "profile__links", to: "/profile/" + reply.gamer_name },
+                {
+                  className: "profile__links",
+                  to: "/profile/" + reply.gamer_name
+                },
                 " ",
                 reply.gamer_name,
                 " "
               ),
               " "
-            )
+            ),
+            _this3.props.userAuthState ? _this3.props.userAuthState.userId === reply.id ? _react2.default.createElement(
+              "button",
+              { onClick: function onClick(event) {
+                  return _this3.editHandler(event, reply);
+                } },
+              "Edit post"
+            ) : null : null
           );
         }),
         _react2.default.createElement(
           "div",
-          { style: { display: this.props.userAuthState ? 'none' : '' } },
-          " login to post "
+          { style: { display: this.props.userAuthState ? "none" : "" } },
+          " ",
+          "login to post",
+          " "
         ),
         _react2.default.createElement(
           "form",
-          { style: { display: this.props.userAuthState ? '' : 'none' } },
-          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
-          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          { style: { display: this.props.userAuthState ? "" : "none" } },
+          _react2.default.createElement("input", {
+            placeholder: "title",
+            value: this.state.title,
+            onChange: this.titleHandler
+          }),
+          _react2.default.createElement("input", {
+            placeholder: "body",
+            value: this.state.body,
+            onChange: this.bodyHandler
+          }),
           _react2.default.createElement(
             "button",
             { onClick: this.replyHandler },
@@ -30951,13 +31082,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TwitchSearch = function (_React$Component) {
   _inherits(TwitchSearch, _React$Component);
 
-  function TwitchSearch() {
+  function TwitchSearch(props) {
     _classCallCheck(this, TwitchSearch);
 
-    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this));
+    var _this = _possibleConstructorReturn(this, (TwitchSearch.__proto__ || Object.getPrototypeOf(TwitchSearch)).call(this, props));
 
     _this.state = {
-      twitchQuery: "",
+
+      twitchQuery: _this.props.twitchStreamer,
       displayVideo: false
     };
 
@@ -32075,7 +32207,7 @@ exports.default = HomeContainer;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -32084,15 +32216,30 @@ var _Homepage = __webpack_require__(/*! ../components/Homepage */ "./src/compone
 
 var _Homepage2 = _interopRequireDefault(_Homepage);
 
+var _actions = __webpack_require__(/*! ../actions */ "./src/actions/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(reduxState) {
-    return {
-        userAuthState: reduxState.authState
-    };
+  return {
+    userAuthState: reduxState.authState,
+    twitchStreamer: reduxState.twitchStreamer,
+    topTwitchers: reduxState.topTwitchers
+  };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(_Homepage2.default);
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    setTwitchStreamer: function setTwitchStreamer(streamer) {
+      dispatch((0, _actions.setTwitchStreamer)(streamer));
+    },
+    fetchTopTwitchers: function fetchTopTwitchers() {
+      dispatch((0, _actions.fetchTopTwitchers)());
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Homepage2.default);
 
 /***/ }),
 
@@ -32326,7 +32473,9 @@ var mapStateToProps = function mapStateToProps(reduxState) {
   return {
     userAuthState: reduxState.authState,
     twitchFavourite: reduxState.twitchFavourite,
-    topTwitchers: reduxState.topTwitchers
+    topTwitchers: reduxState.topTwitchers,
+    twitchStreamer: reduxState.twitchStreamer
+
   };
 };
 
@@ -32614,6 +32763,10 @@ var _topTwitchers = __webpack_require__(/*! ./topTwitchers */ "./src/reducers/to
 
 var _topTwitchers2 = _interopRequireDefault(_topTwitchers);
 
+var _twitchStreamer = __webpack_require__(/*! ./twitchStreamer */ "./src/reducers/twitchStreamer.js");
+
+var _twitchStreamer2 = _interopRequireDefault(_twitchStreamer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
@@ -32626,7 +32779,8 @@ exports.default = (0, _redux.combineReducers)({
   userInfo: _userInfo2.default,
   gameFavourite: _gameFavourite2.default,
   twitchFavourite: _twitchFavourite2.default,
-  topTwitchers: _topTwitchers2.default
+  topTwitchers: _topTwitchers2.default,
+  twitchStreamer: _twitchStreamer2.default
 });
 
 /***/ }),
@@ -32753,6 +32907,35 @@ function twitchFavourite() {
 }
 
 exports.default = twitchFavourite;
+
+/***/ }),
+
+/***/ "./src/reducers/twitchStreamer.js":
+/*!****************************************!*\
+  !*** ./src/reducers/twitchStreamer.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function twitchStreamer() {
+  var reduxState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Shroud";
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "SET_TWITCH_STREAMER":
+      return action.payload;
+    default:
+      return reduxState;
+  }
+}
+
+exports.default = twitchStreamer;
 
 /***/ }),
 
@@ -33237,6 +33420,17 @@ exports.default = TwitchRoute;
 
 /***/ }),
 
+/***/ "./static/images/forum-h.jpg":
+/*!***********************************!*\
+  !*** ./static/images/forum-h.jpg ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type.\n(Source code omitted for this binary file)");
+
+/***/ }),
+
 /***/ "./styles/components/dashboard.scss":
 /*!******************************************!*\
   !*** ./styles/components/dashboard.scss ***!
@@ -33245,7 +33439,7 @@ exports.default = TwitchRoute;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33275,7 +33469,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33305,7 +33499,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33335,7 +33529,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33365,7 +33559,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33395,7 +33589,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33425,7 +33619,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33455,7 +33649,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33485,7 +33679,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33515,7 +33709,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33545,7 +33739,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../node_modules/css-loader??ref--5-1!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
+var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
