@@ -179,7 +179,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100vh;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: transparent;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(0, 0, 255, 0.473);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n", ""]);
+exports.push([module.i, ".fortnite {\n  display: flex;\n  min-height: 100vh;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100%;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: #fafafe;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(214, 214, 255, 0.473);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n\n.playerlist__wrapper {\n  border-style: solid;\n  border-bottom-color: #fafafe;\n  border-left-color: #fafafe;\n  border-right-color: transparent;\n  border-bottom-color: transparent; }\n\n.playerlist__player {\n  padding: 10px; }\n", ""]);
 
 // exports
 
@@ -351,7 +351,7 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Ope
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);", ""]);
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: 'burbank_big_condensedblack';\n  src: url(\"/static/fonts/burbank_big_condensed_black-webfont.woff2\") format(\"woff2\"), url(\"/static/fonts/burbank_big_condensed_black-webfont.woff\") format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n:root {\n  --primary-color: #7289da;\n  --secondary-color: #00b0f4;\n  --dark-grey: #202225;\n  --medium-grey: #36393F;\n  --light-grey: #b9bbbe; }\n\n.button__edit {\n  margin-left: 10px;\n  font-size: 9px;\n  border: 1px solid #fff;\n  color: #fff;\n  width: 40px;\n  padding: 2px 3px;\n  border-radius: 4px;\n  display: inline-block; }\n  .button__edit.button__edit--only-icon {\n    margin-left: 0;\n    border: none;\n    width: auto; }\n    .button__edit.button__edit--only-icon:hover {\n      border: none; }\n  .button__edit svg {\n    fill: #fff;\n    width: 11px;\n    height: 11px;\n    margin-right: 4px; }\n  .button__edit:hover {\n    cursor: pointer;\n    border: 1px solid var(--secondary-color);\n    color: var(--secondary-color); }\n    .button__edit:hover svg {\n      fill: var(--secondary-color); }\n\n.button {\n  padding: 7px 10px 5px;\n  font-size: 12px;\n  border: none; }\n  .button.button-primary {\n    color: #fff;\n    background-color: var(--secondary-color); }\n\n* {\n  box-sizing: border-box; }\n\nul, ol {\n  list-style: none;\n  padding: 0;\n  margin: 0; }\n\nli {\n  list-style: none; }\n\nbody {\n  margin: 0;\n  background-color: var(--primary-color);\n  font-family: \"IBM Plex Serif\", serif;\n  /* background: rgb(36, 36, 77); */\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-color: #0d1b1b;\n  color: whitesmoke; }\n\n.is-active {\n  background-color: var(--primary-color);\n  color: #fff; }\n", ""]);
 
 // exports
 
@@ -28524,6 +28524,10 @@ var _FortniteUser5 = __webpack_require__(/*! ./FortniteUser3 */ "./src/component
 
 var _FortniteUser6 = _interopRequireDefault(_FortniteUser5);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28567,7 +28571,6 @@ var FortnitePlayerList = function (_React$Component) {
         _this2.setState({
           viniciusAmazing: data
         });
-        console.log(_this2.state.viniciusAmazing);
       });
 
       fetch("/api/fortnite/Terry 5L").then(function (response) {
@@ -28576,13 +28579,11 @@ var FortnitePlayerList = function (_React$Component) {
         _this2.setState({
           terry5L: data
         });
-        console.log(_this2.state.terry5L);
       });
     }
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state.ninja);
 
       return _react2.default.createElement(
         "div",
@@ -28629,8 +28630,6 @@ function FortniteStats(_ref) {
   var stat = _ref.stat;
 
   if (!stat.totals) return null;
-  console.log(stat);
-
   return _react2.default.createElement(
     "ul",
     { className: "fortnite__ul" },
@@ -28770,21 +28769,50 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteUser1(_ref) {
   var ninja = _ref.ninja;
 
+
+  if (!ninja.totals) return null;
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "playerlist__wrapper" },
     _react2.default.createElement(
       "li",
-      null,
+      { className: "playerlist__player" },
       _react2.default.createElement(
         "h2",
         null,
         ninja.username
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        ninja.platform.toUpperCase()
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo 1st Places: ",
+        ninja.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        ninja.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        ninja.totals.score
       )
     )
   );
@@ -28812,21 +28840,49 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteUser2(_ref) {
   var viniciusAmazing = _ref.viniciusAmazing;
 
+  if (!viniciusAmazing.totals) return null;
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "playerlist__wrapper" },
     _react2.default.createElement(
       "li",
-      null,
+      { className: "playerlist__player" },
       _react2.default.createElement(
         "h2",
         null,
         viniciusAmazing.username
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        viniciusAmazing.platform.toUpperCase()
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo 1st Places: ",
+        viniciusAmazing.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        viniciusAmazing.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        viniciusAmazing.totals.score
       )
     )
   );
@@ -28854,21 +28910,49 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+__webpack_require__(/*! ../../styles/components/fortnite.scss */ "./styles/components/fortnite.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FortniteUser3(_ref) {
   var terry5L = _ref.terry5L;
 
+  if (!terry5L.totals) return null;
   return _react2.default.createElement(
     "ul",
-    null,
+    { className: "playerlist__wrapper" },
     _react2.default.createElement(
       "li",
-      null,
+      { className: "playerlist__player" },
       _react2.default.createElement(
         "h2",
         null,
         terry5L.username
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        terry5L.platform.toUpperCase()
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Solo 1st Places: ",
+        terry5L.stats.placetop1_solo
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Wins: ",
+        terry5L.totals.wins
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        "Total Score: ",
+        terry5L.totals.score
       )
     )
   );
@@ -29373,8 +29457,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/homepage" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/homepage" },
             "Home"
           )
         ),
@@ -29383,7 +29467,7 @@ var HomeNavBar = function (_React$Component) {
           { className: "main-nav__item" },
           _react2.default.createElement(
             _reactRouterDom.NavLink,
-            { activeClassName: "is active", to: "/search" },
+            { className: "main-nav__item", activeClassName: "is-active", to: "/search" },
             "Search Games"
           )
         ),
@@ -29391,8 +29475,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/news" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/news" },
             "Gaming News"
           )
         ),
@@ -29400,8 +29484,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/the-fort" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/the-fort" },
             "The Fort"
           )
         ),
@@ -29409,8 +29493,8 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/forum" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/forum" },
             "Community"
           )
         ),
@@ -29418,19 +29502,19 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/twitch" },
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/twitch" },
             "Twitch"
           )
         ),
         _react2.default.createElement(
           "li",
           { className: "main-nav__item" },
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: "/dashboard" },
+          !userAuthState ? _react2.default.createElement(
+            _reactRouterDom.NavLink,
+            { className: "main-nav__item", activeClassName: "is-active", to: "/dashboard" },
             "Profile"
-          )
+          ) : null
         ),
         _react2.default.createElement(
           "li",
@@ -29454,7 +29538,7 @@ var HomeNavBar = function (_React$Component) {
           "li",
           { className: "main-nav__item" },
           userAuthState ? _react2.default.createElement(
-            _reactRouterDom.Link,
+            "a",
             { to: "/logout" },
             "Logout"
           ) : null
@@ -30535,6 +30619,10 @@ __webpack_require__(/*! ../../styles/components/search.scss */ "./styles/compone
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
+var _nukaCarousel = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'nuka-carousel'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _nukaCarousel2 = _interopRequireDefault(_nukaCarousel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30634,6 +30722,7 @@ var Search = function (_React$Component) {
           userAuthState = _props.userAuthState,
           gameFavourite = _props.gameFavourite;
 
+      console.log(gameData);
       var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
         "div",
         { className: "search__result" },
@@ -30739,7 +30828,17 @@ var Search = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement("div", { className: "search__screenshots" }),
+          _react2.default.createElement(
+            "div",
+            { className: "search__screenshots" },
+            gameData.screenshot.map(function (game) {
+              _react2.default.createElement(
+                _nukaCarousel2.default,
+                null,
+                _react2.default.createElement("img", { src: game })
+              );
+            })
+          ),
           _react2.default.createElement("br", null)
         );
       });

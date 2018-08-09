@@ -1,6 +1,8 @@
 import React from "react";
 import "../../styles/components/search.scss";
 import "../../styles/index.scss";
+
+import Carousel from "nuka-carousel";
 // import SearchGallery from "./SearchGallery";
 
 class Search extends React.Component {
@@ -73,6 +75,7 @@ class Search extends React.Component {
   }
   render() {
     const { gameData, userAuthState, gameFavourite } = this.props;
+    console.log(gameData);
     const gameDisplay =
       gameData === "No results found" ? <div className="search__result"> <div className="search__details"> {gameData} </div></div> :
         gameData.map(game => {
@@ -141,7 +144,13 @@ class Search extends React.Component {
                 </div>
               </div>
               <div className="search__screenshots">
-                {/* {imagesArr} */}
+                {gameData.screenshot.map(game => {
+                  <Carousel>
+                    <img src={game} />
+
+                  </Carousel>
+                })}
+
               </div>
 
               <br />

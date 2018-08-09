@@ -3,6 +3,8 @@ import FortniteUser1 from "./FortniteUser1";
 import FortniteUser2 from "./FortniteUser2";
 import FortniteUser3 from "./FortniteUser3";
 
+import "../../styles/components/fortnite.scss";
+import "../../styles/index.scss";
 
 class FortnitePlayerList extends React.Component {
   constructor() {
@@ -30,7 +32,6 @@ class FortnitePlayerList extends React.Component {
         this.setState({
           viniciusAmazing: data
         })
-        console.log(this.state.viniciusAmazing);
       })
 
     fetch("/api/fortnite/Terry 5L")
@@ -39,11 +40,9 @@ class FortnitePlayerList extends React.Component {
         this.setState({
           terry5L: data
         })
-        console.log(this.state.terry5L);
       })
   }
   render() {
-    console.log(this.state.ninja);
 
     return <div className="playerlist">
 
