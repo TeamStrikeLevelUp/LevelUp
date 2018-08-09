@@ -27474,12 +27474,11 @@ exports.fetchFortniteStats = fetchFortniteStats;
 exports.setFortniteStats = setFortniteStats;
 exports.receiveUserData = receiveUserData;
 exports.fetchGamerInfo = fetchGamerInfo;
-// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for 
+// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for
 
 function addFavouriteToDB(favObject) {
   return function (dispatch, getState) {
-
-    fetch("/api/newfavourite/", {
+    return fetch("/api/newfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
       headers: {
@@ -27489,7 +27488,6 @@ function addFavouriteToDB(favObject) {
       return response.json();
     }).then(function (json) {
       //call action function to select reducer to set redux state value
-
       // dispatch(receiveFavouriteData(favObject));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27497,19 +27495,17 @@ function addFavouriteToDB(favObject) {
   };
 }
 
-// Add TWITCH FAVOURITE to database  
+// Add TWITCH FAVOURITE to database
 
 function addFavTwitchToDB(favObject) {
   return function (dispatch, getState) {
-
-    fetch("/api/addtwitchfavourite/", {
+    return fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
       headers: {
         "Content-Type": "application/json"
       }
     }).then(function (response) {
-
       return response.json();
     }).then(function (json) {
       //call action function to select reducer to set redux state value
@@ -27524,7 +27520,7 @@ function addFavTwitchToDB(favObject) {
 // FETCHES GAME favourites by UserID
 function fetchGameFavourite(gamerId) {
   return function (dispatch, getState) {
-    fetch("/api/favourites/" + gamerId).then(function (response) {
+    return fetch("/api/favourites/" + gamerId).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveGameFavourites(json.body));
@@ -27545,10 +27541,9 @@ function receiveGameFavourites(favouriteData) {
 // FETCHES TWITCH favourites by UserID
 function fetchTwitchFavourite(gamerId) {
   return function (dispatch, getState) {
-    fetch("/api/twitchfavourites/" + gamerId).then(function (response) {
+    return fetch("/api/twitchfavourites/" + gamerId).then(function (response) {
       return response.ok ? response.json() : Promise.reject(response);
     }).then(function (json) {
-
       dispatch(receiveTwitchFavourites(json));
     }).catch(function (error) {
       console.log("Sorry the following error occurred: ", error);
@@ -27569,7 +27564,7 @@ function fetchGenreData() {
   return function (dispatch, getState) {
     var searchPath = "/genres/";
 
-    fetch(searchPath).then(function (response) {
+    return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveGenreData(json.body));
@@ -27583,7 +27578,7 @@ function fetchThemeData() {
   return function (dispatch, getState) {
     var searchPath = "/themes/";
 
-    fetch(searchPath).then(function (response) {
+    return fetch(searchPath).then(function (response) {
       return response.json();
     }).then(function (json) {
       dispatch(receiveThemeData(json.body));
@@ -27731,7 +27726,6 @@ function fetchNewsInfoFromAPI(pageNum) {
 //search NEWS Data based on User input
 function searchNewsAPI(searchTerm, pageNum) {
   return function (dispatch, getState) {
-
     return fetch("/searchNews/" + searchTerm + "/" + pageNum).then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -27863,7 +27857,6 @@ function fetchGamerInfo(gamerId) {
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
-
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
     return newsSearch;
@@ -28617,7 +28610,6 @@ var Forums = function (_React$Component) {
     _this.titleHandler = _this.titleHandler.bind(_this);
     _this.bodyHandler = _this.bodyHandler.bind(_this);
     _this.replyHandler = _this.replyHandler.bind(_this);
-
     return _this;
   }
 
@@ -28626,7 +28618,6 @@ var Forums = function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       //   console.log("next",this.props)
       //   console.log("prev",prevProps)
-
     }
   }, {
     key: "componentDidMount",
@@ -28710,6 +28701,10 @@ var Forums = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var userAuthState = this.props.userAuthState;
+
+
+      console.log("userAuthState", userAuthState);
 
       if (!this.state.forum.id) return null;
 
@@ -28731,7 +28726,11 @@ var Forums = function (_React$Component) {
         _react2.default.createElement(
           "form",
           null,
-          _react2.default.createElement("input", { placeholder: "search for posts", value: this.state.input, onChange: this.inputHandler }),
+          _react2.default.createElement("input", {
+            placeholder: "search for posts",
+            value: this.state.input,
+            onChange: this.inputHandler
+          }),
           _react2.default.createElement(
             "button",
             { onClick: this.searchHandler },
@@ -28739,7 +28738,6 @@ var Forums = function (_React$Component) {
           )
         ),
         this.state.posts.map(function (post, index) {
-
           var date = String(new Date(post.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
@@ -28758,14 +28756,24 @@ var Forums = function (_React$Component) {
         }),
         _react2.default.createElement(
           "div",
-          { style: { display: this.props.userAuthState ? 'none' : '' } },
-          " login to post "
+          { style: { display: this.props.userAuthState ? "none" : "" } },
+          " ",
+          "login to post",
+          " "
         ),
         _react2.default.createElement(
           "form",
-          { style: { display: this.props.userAuthState ? '' : 'none' } },
-          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
-          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          { style: { display: this.props.userAuthState ? "" : "none" } },
+          _react2.default.createElement("input", {
+            placeholder: "title",
+            value: this.state.title,
+            onChange: this.titleHandler
+          }),
+          _react2.default.createElement("input", {
+            placeholder: "body",
+            value: this.state.body,
+            onChange: this.bodyHandler
+          }),
           _react2.default.createElement(
             "button",
             { onClick: this.replyHandler },
@@ -29538,7 +29546,7 @@ var NotFound = function (_React$Component) {
         _react2.default.createElement(
           "p",
           { className: "notfound__message" },
-          "Sorry username, it's Game Over."
+          "Sorry, it's Game Over."
         ),
         _react2.default.createElement(
           "p",
