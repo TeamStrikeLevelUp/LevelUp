@@ -1,7 +1,128 @@
-.forum__links{
-    color: gold;
+.community,
+.forums {
+    max-width: 100%;
+    width: 980px;
+    padding: 10px 40px;
+    margin: 0 auto;
 }
 
-.profile__links{
-    color: red;
+.game-search__form {
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+    .button {
+        padding: 3px 10px;
+        padding: 10px 30px;
+        font-size: 13px;
+        &:hover {
+            cursor: pointer;
+            opacity: .7;
+        }
+    }
+
+    .game-search__field {
+        padding: 0 10px;
+        font-size: 13px;
+    }
 }
+
+.forums {
+    margin-top: 20px;
+    background-color: rgba(54, 57, 63, 0.5);
+    font-family: 'Open Sans', sans-serif;
+
+    .forum {
+        background-color: rgba(185, 187, 190, .3);
+        color: var(--light-grey);
+        padding: 10px 20px;
+        margin-bottom: 12px;
+        &:hover {
+            opacity: .9;
+        }
+        .forum__details {
+            display: flex;
+            justify-content: space-around;
+            font-size: 10px;
+            line-height: 23px;
+
+            .forum__total-post {
+                position: relative;
+            
+                .icon-comments {
+                    fill: var(--light-grey);
+                    
+                    width: 14px;
+                    height: 14px;
+                    position: absolute;
+                    top: 4px;
+                    left: -21px;
+                }
+            }
+
+            .forum__latest-post {
+                border-left: 1px solid var(--light-grey);
+                padding-left: 10px;
+                margin-left: 10px;
+                position: relative;
+
+                .forum__latest-post--heading {
+                    color: var(--light-grey);
+                    padding-right: 5px;
+                }
+            }
+        }
+
+        .forum__link {
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            
+            &:hover {
+                color: var(--primary-color);
+                .icon-comments {
+                    fill: var(--primary-color);
+                }
+            }
+
+            .forum__link--text {
+                font-size: 14px;
+                line-height: 23px;
+            }
+    
+        }
+        
+    }
+}
+
+.community__header {
+    display: flex;
+    justify-content: space-between;
+
+    background-image: url("../../static/images/forum-h.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 100%;
+
+    height: 200px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px 20px 16px 30px;
+
+    .community__heading {
+        color: #fff;
+        font-weight: 700;
+        font-family: 'Open Sans', sans-serif;
+        background-color: rgba(114, 137, 218, 0.8);
+        padding: 9px 24px;
+        height: 65px;
+        font-size: 30px;
+    }
+}
+
+// .forum__links{
+//     color: gold;
+// }
+
+// .profile__links {
+//     color: red;
+// }

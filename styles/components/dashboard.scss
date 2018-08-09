@@ -48,6 +48,11 @@
                     background-color: var(--primary-color);
                     color: #fff;
                 }
+                &:not(.is-active):hover {
+                    background-color: rgba(114, 137, 218, .6);
+                    color: #fff;
+                    opacity: .8;
+                }
             }
 
             &:active,

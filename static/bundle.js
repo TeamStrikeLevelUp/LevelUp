@@ -148,10 +148,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
-/*!*************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
-  \*************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss":
+/*!***********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -160,17 +160,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n        .dashboard .dashboard__nav .dashboard__nav--item a:not(.is-active):hover {\n          background-color: rgba(114, 137, 218, 0.6);\n          color: #fff;\n          opacity: .8; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -186,10 +186,10 @@ exports.push([module.i, ".fortnite {\n  display: flex;\n  font-family: 'burbank_
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -198,17 +198,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".forum__links {\n  color: gold; }\n\n.profile__links {\n  color: red; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -217,17 +217,17 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: var(--dark-grey); }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0; }\n", ""]);
+exports.push([module.i, ".header {\n  padding: 20px;\n  margin: 0;\n  background-color: var(--dark-grey); }\n  .header .header__logo {\n    display: flex;\n    justify-content: space-between; }\n    .header .header__logo h2 {\n      margin: 0;\n      font-family: 'Press Start 2P', cursive;\n      font-size: 19px; }\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -243,10 +243,10 @@ exports.push([module.i, ".homepage {\n  display: flex;\n  width: 100%; }\n\n.hom
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -262,10 +262,10 @@ exports.push([module.i, ".main-nav {\n  font-family: 'Open Sans', sans-serif;\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -281,10 +281,10 @@ exports.push([module.i, "li,\na {\n  list-style: none;\n  text-decoration: none;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
-/*!************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
-  \************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -300,10 +300,10 @@ exports.push([module.i, ".notfound {\n  margin: auto;\n  text-align: center;\n  
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -319,10 +319,10 @@ exports.push([module.i, "li {\n  list-style: none; }\n\n.game__anchor {\n  text-
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
-  \**********************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -338,10 +338,10 @@ exports.push([module.i, ".twitch {\n  display: flex;\n  margin-left: 10px; }\n\n
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/index.scss":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/index.scss ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28903,7 +28903,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+__webpack_require__(/*! ../../styles/components/forums.scss */ "./styles/components/forums.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28914,27 +28918,102 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ForumLinks = function (_React$Component) {
   _inherits(ForumLinks, _React$Component);
 
-  function ForumLinks() {
+  function ForumLinks(props) {
     _classCallCheck(this, ForumLinks);
 
-    return _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this));
+    var _this = _possibleConstructorReturn(this, (ForumLinks.__proto__ || Object.getPrototypeOf(ForumLinks)).call(this, props));
+
+    _this.state = {
+      totalPost: null,
+      forumId: 1
+    };
+    _this.fetchTotalPostsInForum = _this.fetchTotalPostsInForum.bind(_this);
+    return _this;
   }
 
   _createClass(ForumLinks, [{
-    key: "render",
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.forums && nextProps.forums.length && !this.props.forums.length) {
+        this.fetchTotalPostsInForum(nextProps.forums);
+      }
+    }
+  }, {
+    key: 'fetchTotalPostsInForum',
+    value: function fetchTotalPostsInForum(forums) {
+      var _this2 = this;
+
+      forums.map(function (forum) {
+        fetch('/api/post/' + forum.id, {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(function (response) {
+          return response.json();
+        }).then(function (posts) {
+          var _this2$setState;
+
+          var postCount = "totalPost-" + forum.id;
+          var postLast = "postLast-" + forum.id;
+          _this2.setState((_this2$setState = {}, _defineProperty(_this2$setState, postCount, posts.length), _defineProperty(_this2$setState, postLast, posts[posts.length - 1]), _this2$setState));
+          return posts.length;
+        }).catch(function (error) {
+          return console.log("error", error.message);
+        });
+      });
+    }
+  }, {
+    key: 'render',
     value: function render() {
+      var _this3 = this;
 
       return _react2.default.createElement(
-        "div",
-        null,
+        'div',
+        { className: 'forums' },
+        _react2.default.createElement(
+          'h4',
+          null,
+          'Forums'
+        ),
         this.props.forums.map(function (forum, index) {
+          console.log(_this3.state["postLast-" + forum.id]);
           return _react2.default.createElement(
-            "div",
-            { key: forum.id },
+            'div',
+            { key: forum.id, className: 'forum' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: "/forum/" + forum.id },
-              forum.title
+              { className: 'forum__link', to: '/forum/' + forum.id },
+              _react2.default.createElement(
+                'div',
+                { className: 'forum__link--text' },
+                forum.title
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'forum__details' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'forum__total-post' },
+                  _react2.default.createElement(
+                    'svg',
+                    { className: 'icon-comments', 'aria-hidden': 'true', focusable: 'false' },
+                    _react2.default.createElement('use', { xlinkHref: '#icon-comments' })
+                  ),
+                  _this3.state["totalPost-" + forum.id],
+                  ' Comments'
+                ),
+                _this3.state["postLast-" + forum.id] ? _react2.default.createElement(
+                  'div',
+                  { className: 'forum__latest-post' },
+                  _react2.default.createElement(
+                    'strong',
+                    { className: 'forum__latest-post--heading' },
+                    'Latest:'
+                  ),
+                  _this3.state["postLast-" + forum.id].title
+                ) : ""
+              )
             )
           );
         })
@@ -29119,7 +29198,6 @@ var Forums = function (_React$Component) {
           )
         ),
         this.state.posts.map(function (post, index) {
-
           var date = String(new Date(post.created)).substring(0, 24);
           return _react2.default.createElement(
             "div",
@@ -29205,7 +29283,7 @@ function Header() {
       _react2.default.createElement(
         "h2",
         null,
-        "Level Up"
+        "Leve1Up"
       ),
       _react2.default.createElement(_NavBarContainer2.default, null)
     )
@@ -32758,15 +32836,30 @@ var ForumsRoute = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         "div",
-        null,
+        { className: "community" },
         _react2.default.createElement(
-          "form",
-          null,
-          _react2.default.createElement("input", { placeholder: "search for game", value: this.state.input, onChange: this.inputHandler }),
+          "header",
+          { className: "community__header" },
           _react2.default.createElement(
-            "button",
-            { onClick: this.searchHandler },
-            " search "
+            "h1",
+            { className: "community__heading" },
+            "Community Forums"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "game-search__form" },
+            _react2.default.createElement("input", {
+              className: "game-search__field",
+              placeholder: "Search for a game",
+              value: this.state.input,
+              onChange: this.inputHandler }),
+            _react2.default.createElement(
+              "button",
+              {
+                className: "button button-primary",
+                onClick: this.searchHandler },
+              " Search "
+            )
           )
         ),
         _react2.default.createElement(_ForumLinks2.default, { forums: this.state.forums })
@@ -33025,7 +33118,7 @@ exports.default = TwitchRoute;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./dashboard.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/dashboard.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33055,7 +33148,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./fortnite.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/fortnite.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33085,7 +33178,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./forums.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/forums.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33115,7 +33208,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./header.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/header.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33145,7 +33238,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./homepage.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/homepage.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33175,7 +33268,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./navbar.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/navbar.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33205,7 +33298,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./news.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/news.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33235,7 +33328,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33265,7 +33358,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./search.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/search.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33295,7 +33388,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./twitch.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/twitch.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -33325,7 +33418,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
+var content = __webpack_require__(/*! !../node_modules/css-loader??ref--5-1!../node_modules/sass-loader/lib/loader.js!./index.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/index.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

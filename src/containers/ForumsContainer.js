@@ -3,13 +3,13 @@ import Forums from "../components/Forums"
 
 
 const mapStateToProps = (reduxState, ownProps) => {
-    return {
-      match: ownProps.match,
+  return {
+    match: ownProps.match,
     userAuthState: reduxState.authState
-    };
   };
+};
 
 export default connect(
-    mapStateToProps,
-    null
-  )(Forums);
+  mapStateToProps,
+  null
+)(Forums);
