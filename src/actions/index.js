@@ -2,7 +2,6 @@
 export function fetchTopTwitchers() {
   return function(dispatch, getState) {
     const searchPath = `/twitchStreams`;
-
     fetch(searchPath)
       // .then(response => response.json())
       .then(
@@ -10,9 +9,7 @@ export function fetchTopTwitchers() {
       )
       .then(json => {
         //fetch info for each twitcher
-        console.log("top twitchers in ACTION", json);
         const items = json.map(item => item.data[0]);
-        console.log(items);
         dispatch(receiveTopTwitchers(items));
       })
       .catch(error => {
@@ -470,4 +467,13 @@ function removeDuplicates(newsSearch) {
   }, {});
 
   return Object.values(cleanNewsData);
+}
+
+// set a twitch streamer from a different component
+
+export function setTwitchStreamer(streamer) {
+  return {
+    type: "SET_TWITCH_STREAMER",
+    payload: streamer
+  };
 }

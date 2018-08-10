@@ -6,9 +6,9 @@ import { Switch, Link, Route } from "react-router-dom";
 class ForumsRoute extends React.Component {
   constructor() {
     super();
-    this.state = { input:"", forums: [] };
-    this.inputHandler=this.inputHandler.bind(this);
-    this.searchHandler=this.searchHandler.bind(this);
+    this.state = { input: "", forums: [] };
+    this.inputHandler = this.inputHandler.bind(this);
+    this.searchHandler = this.searchHandler.bind(this);
   }
 
   componentDidMount() {
@@ -18,11 +18,11 @@ class ForumsRoute extends React.Component {
   }
 
 
-  inputHandler(event){
-    this.setState({input:event.target.value})
+  inputHandler(event) {
+    this.setState({ input: event.target.value })
   }
 
-  searchHandler(event){
+  searchHandler(event) {
     event.preventDefault();
 
     fetch(`/api/forum/search/${this.state.input}`)
@@ -34,12 +34,21 @@ class ForumsRoute extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
-        <input placeholder="search for game" value={this.state.input} onChange={this.inputHandler} />
-       <button onClick={this.searchHandler}> search </button>
-        </form>
-       
+      <div className="community">
+        <header className="community__header">
+          <h1 className="community__heading">Community Forums</h1>
+          <form className="game-search__form">
+            <input
+              className="game-search__field"
+              placeholder="Search for a game"
+              value={this.state.input}
+              onChange={this.inputHandler} />
+            <button
+              className="button button-primary"
+              onClick={this.searchHandler}> Search </button>
+          </form>
+        </header>
+
         <ForumLinks forums={this.state.forums} />
       </div>
     );

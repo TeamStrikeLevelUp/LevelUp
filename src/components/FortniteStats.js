@@ -4,9 +4,7 @@ import "../../styles/components/fortnite.scss";
 import "../../styles/index.scss";
 
 function FortniteStats({ stat }) {
-  if (!stat.totals) return null
-  console.log(stat);
-
+  if (!stat.totals) return null;
   return (
     <ul className="fortnite__ul">
       <li className="fortnite__userstats" key={stat.uid}>

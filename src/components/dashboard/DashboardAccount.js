@@ -204,6 +204,8 @@ class DashboardAccount extends React.Component {
         const descClasses = cx('dashboard__desc--form ', {
             'dashboard__desc--form--visible': this.state.togglerDesc
         });
+
+        // console.log("userDataStore", userDataStore);
         return (
             <div className="dashboard__account">
                 <div className="dashboard__account--item">

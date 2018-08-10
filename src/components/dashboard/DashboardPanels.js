@@ -7,7 +7,9 @@ class DashboardPanels extends React.Component {
         this.state = {
             user: "",
             userStats: "",
-            gamer_rank: ""
+            gamer_rank: "",
+            gamer_info: "",
+            fortniteUserData: {}
         }
         this.gamerRank = this.gamerRank.bind(this);
     }
@@ -39,6 +41,16 @@ class DashboardPanels extends React.Component {
         if (userData && this.props.fetchGameFavourite) {
             this.props.fetchGameFavourite(userData.userId);
         }
+
+        // Fetch user data && Fortnite data
+        let tempData;
+        this.props.fetchGamerInfo(userData.userId).then(data1 => fetch(`/api/fortnite/${data1.profile.fortnitename}`))
+            .then(response => response.json())
+            .then(data2 => {
+                this.setState({
+                    fortniteUserData: data2
+                })
+            })
     }
 
     gamerRank() {
@@ -60,10 +72,10 @@ class DashboardPanels extends React.Component {
     }
 
     render() {
-        const { twitchFavourite, gameFavourite } = this.props;
-        const { userStats, gamer_rank } = this.state;
 
-        console.log("gameFavourite", gameFavourite)
+        const { twitchFavourite, gameFavourite, userDataStore } = this.props;
+        const { userStats, gamer_rank } = this.state;
+        console.log("fort", this.state.fortniteUserData);
         return (
             <div className="dashboard__panels">
                 <div className="dashboard__panels--item">
@@ -83,7 +95,9 @@ class DashboardPanels extends React.Component {
                         {
                             twitchFavourite.map(fav => {
                                 return (
-                                    <li key={fav.twitch_name}>{fav.twitch_name}</li>
+                                    <li key={fav.twitch_name}>
+                                        <img src={fav.twitch_image} width="100" />
+                                        {fav.twitch_name}</li>
                                 )
                             })
                         }
@@ -96,7 +110,7 @@ class DashboardPanels extends React.Component {
                         {
                             gameFavourite.map(fav => {
                                 return (
-                                    <li key={fav.twitch_name}>{fav.title}</li>
+                                    <li key={fav.title}>{fav.title}</li>
                                 )
                             })
                         }
@@ -104,9 +118,24 @@ class DashboardPanels extends React.Component {
                     <p className="dashboard__panels--text">Games added to Favourites will show up here.</p>
                 </div>
                 <div className="dashboard__panels--item">
-                    <h3 className="dashboard__panels--heading">Twitch</h3>
-                    <div className="dashboard__panels--points">340</div>
-                    <p className="dashboard__panels--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+                    <div className="dashboard__fortnite">
+                        <h3 className="dashboard__panels--heading">Fortnite</h3>
+                        {this.state.fortniteUserData.totals ?
+                            <div className="dashboard__panels--points">
+
+                                <h5 className="dashboard__panels--fortnite-user">{this.state.fortniteUserData.username}</h5>
+                                <h5 className="dashboard__panels--fortnite-platform">{this.state.fortniteUserData.platform.toUpperCase()}</h5>
+                                <h5 className="dashboard__panels--fortnite-platform">{this.state.fortniteUserData.totals.wins > 50 ? "Level: FORTIFIED" : "Level: Bricklayer"}</h5>
+
+
+
+
+                                <p className="dashboard__panels--fortnite-para">Total Wins: {this.state.fortniteUserData.totals.wins}</p>
+                                <p className="dashboard__panels--fortnite-para">Total Kills: {this.state.fortniteUserData.totals.kills}</p>
+                                <p className="dashboard__panels--fortnite-para">Score: {this.state.fortniteUserData.totals.score}</p>
+                            </div> :
+                            null}
+                    </div>
                 </div>
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Video Game</h3>
