@@ -63,7 +63,6 @@ class Posts extends React.Component {
     }
 
     if (!this.state.editMode) {
-
       const newPost = {
         title: this.state.title,
         body: this.state.body,
@@ -117,8 +116,6 @@ class Posts extends React.Component {
 
   editHandler = (event, reply) => {
     event.preventDefault();
-
-
     this.setState({
       title: reply.title,
       body: reply.body,
@@ -140,7 +137,7 @@ class Posts extends React.Component {
   }
 
   render() {
-    console.log("this.state.post", this.state.post);
+    // console.log("this.state.post", this.state.post);
     if (!this.state.post.id) return null
     let created = String(new Date(this.state.post.created)).substring(0, 24);
     const avatarState = "avatar-" + this.state.post.gamer_id;

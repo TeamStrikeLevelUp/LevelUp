@@ -75,7 +75,7 @@ class DashboardPanels extends React.Component {
 
         const { twitchFavourite, gameFavourite, userDataStore } = this.props;
         const { userStats, gamer_rank } = this.state;
-        console.log("fort", this.state.fortniteUserData);
+        // console.log("fort", this.state.fortniteUserData);
         return (
             <div className="dashboard__panels">
                 <div className="dashboard__panels--item">
@@ -91,17 +91,17 @@ class DashboardPanels extends React.Component {
                 </div>
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Twitch Favourites</h3>
-                    <ol className="dashboard__panels--twitch-list">
+                    <ul className="dashboard__panels--twitch-list">
                         {
                             twitchFavourite.map(fav => {
                                 return (
                                     <li key={fav.twitch_name}>
-                                        <img src={fav.twitch_image} width="100" />
+                                        <img src={fav.twitch_image} className="dashboard__panels--twitch-list--img" />
                                         {fav.twitch_name}</li>
                                 )
                             })
                         }
-                    </ol>
+                    </ul>
                     <p className="dashboard__panels--text">Twitch users added to Favourites will show up here.</p>
                 </div>
                 <div className="dashboard__panels--item">
