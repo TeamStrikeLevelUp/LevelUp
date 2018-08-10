@@ -5,59 +5,56 @@ import "../../styles/components/forums.scss";
 
 
 class Posts extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      replies: [],
-      post: {},
-      input: "",
-      title: "",
-      body: "",
-      avatar: ""
-    };
-
-    this.inputHandler = this.inputHandler.bind(this);
-    this.searchHandler = this.searchHandler.bind(this);
-    this.titleHandler = this.titleHandler.bind(this);
-    this.bodyHandler = this.bodyHandler.bind(this);
-    this.replyHandler = this.replyHandler.bind(this);
-    this.fetchAvatar = this.fetchAvatar.bind(this);
-  }
+  state = {
+    replies: [],
+    post: {},
+    input: "",
+    title: "",
+    body: "",
+    editId: 0,
+    editMode: false
+  };
 
   componentDidMount() {
-    fetch(`/api/reply/${this.props.match.params.id}`)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({ replies: json });
-        this.fetchAvatar(json);
+    Promise.all(
+      [
+        `/api/reply/${this.props.match.params.id}`,
+        `/api/parentpost/${this.props.match.params.id}`
+      ].map(url => fetch(url))
+    )
+      .then(results => {
+        return Promise.all(
+          results.map(res => (res.ok ? res.json() : Promise.reject(res)))
+        );
       })
-
-    fetch(`/api/parentpost/${this.props.match.params.id}`)
-      .then(response => response.json())
-      .then(json => this.setState({ post: json }));
+      .then(([replies, post]) => {
+        this.setState({ replies, post, loaded: true });
+        this.fetchAvatar(replies);
+      })
+      .catch(err => console.log(err));
   }
 
-  inputHandler(event) {
+  inputHandler = event => {
     this.setState({ input: event.target.value });
-  }
+  };
 
-  searchHandler(event) {
+  searchHandler = event => {
     event.preventDefault();
 
     fetch(`/api/reply/${this.props.match.params.id}/search/${this.state.input}`)
       .then(response => response.json())
       .then(json => this.setState({ replies: json }));
-  }
+  };
 
-  titleHandler(event) {
+  titleHandler = event => {
     this.setState({ title: event.target.value });
-  }
+  };
 
-  bodyHandler(event) {
+  bodyHandler = event => {
     this.setState({ body: event.target.value });
-  }
+  };
 
-  replyHandler(event) {
+  replyHandler = event => {
     event.preventDefault();
 
     if (!this.props.userAuthState) {
@@ -65,31 +62,72 @@ class Posts extends React.Component {
       return;
     }
 
-    const newPost = {
-      title: this.state.title,
-      body: this.state.body,
-      parent_id: this.props.match.params.id,
-      forum_id: this.state.post.forum_id,
-      gamer_id: this.props.userAuthState.userId,
-      gamer_name: this.props.userAuthState.username
-    };
+    if (!this.state.editMode) {
 
-    fetch("/api/reply", {
-      method: "post",
-      body: JSON.stringify(newPost),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(function (response) {
-        return response.json();
+      const newPost = {
+        title: this.state.title,
+        body: this.state.body,
+        parent_id: this.props.match.params.id,
+        forum_id: this.state.post.forum_id,
+        gamer_id: this.props.userAuthState.userId,
+        gamer_name: this.props.userAuthState.username
+      };
+
+      fetch("/api/reply", {
+        method: "post",
+        body: JSON.stringify(newPost),
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
-      .then(json => this.setState({ replies: json }));
+        .then(function (response) {
+          return response.json();
+        })
+        .then(json => this.setState({ replies: json }));
 
-    this.setState({ body: "", title: "" });
-  }
+      this.setState({ body: "", title: "" });
+    }
+    else {
+      const editObj = {
+        newTitle: this.state.title,
+        newBody: this.state.body,
+        post_id: this.state.editId,
+        forum_id: this.state.post.forum_id
+      }
 
-  fetchAvatar(posts) {
+      fetch("/api/post-edit", {
+        method: "POST",
+        body: JSON.stringify(editObj),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function (response) {
+          return response.json()
+        })
+        .then(data => {
+          this.setState({ replies: data })
+        })
+        .catch(e => e);
+
+      this.setState({ editMode: false })
+
+    }
+  };
+
+  editHandler = (event, reply) => {
+    event.preventDefault();
+
+
+    this.setState({
+      title: reply.title,
+      body: reply.body,
+      editId: reply.id,
+      editMode: true
+    });
+  };
+
+  fetchAvatar = (posts) => {
     posts.map(post => {
       console.log("post.gamer_id", post.gamer_id)
       fetch(`/api/getgameravatar/${post.gamer_id}`)
@@ -152,16 +190,19 @@ class Posts extends React.Component {
                     <h4 className="reply__title">{reply.title}</h4>
                     <span className="reply__date">Date Posted: {date}</span>
                     <p>{reply.body}</p>
-
+                    {this.props.userAuthState ? (
+                      this.props.userAuthState.userId === reply.gamer_id ? (
+                        <button onClick={event => this.editHandler(event, reply)}>
+                          Edit post
+                        </button>
+                      ) : null
+                    ) : null}
                   </div>
                 </div>
               </div>
             )
           })}
         </div>
-
-
-
       </div>
     );
   }
