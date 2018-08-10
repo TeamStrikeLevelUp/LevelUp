@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import "../../styles/components/forums.scss";
 import "../../styles/index.scss";
-
 
 class Forums extends React.Component {
   constructor() {
@@ -15,8 +14,6 @@ class Forums extends React.Component {
     this.bodyHandler = this.bodyHandler.bind(this);
     this.replyHandler = this.replyHandler.bind(this);
     this.fetchTotalPostsInForum = this.fetchTotalPostsInForum.bind(this);
-
-
   }
 
   // componentDidUpdate(prevProps) {
@@ -34,13 +31,11 @@ class Forums extends React.Component {
       .then(response => response.json())
       .then(json => {
         this.setState({ posts: json });
-        console.log("this.state.posts.j", json.length)
+        console.log("this.state.posts.j", json.length);
         // if (json.length > 0) {
         return this.fetchTotalPostsInForum(json);
         // }
       });
-
-
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -59,7 +54,7 @@ class Forums extends React.Component {
           "Content-Type": "application/json"
         }
       })
-        .then(function (response) {
+        .then(function(response) {
           console.log("response", response);
           return response.json();
         })
@@ -71,13 +66,12 @@ class Forums extends React.Component {
           });
           return posts.length;
         })
-        .catch(error => console.log("error", error.message))
-
-    })
+        .catch(error => console.log("error", error.message));
+    });
   }
 
   inputHandler(event) {
-    this.setState({ input: event.target.value })
+    this.setState({ input: event.target.value });
   }
 
   searchHandler(event) {
@@ -89,11 +83,11 @@ class Forums extends React.Component {
   }
 
   titleHandler(event) {
-    this.setState({ title: event.target.value })
+    this.setState({ title: event.target.value });
   }
 
   bodyHandler(event) {
-    this.setState({ body: event.target.value })
+    this.setState({ body: event.target.value });
   }
 
   replyHandler(event) {
@@ -110,7 +104,7 @@ class Forums extends React.Component {
       forum_id: this.state.forum.id,
       gamer_id: this.props.userAuthState.userId,
       gamer_name: this.props.userAuthState.username
-    }
+    };
 
     fetch("/api/post", {
       method: "post",
@@ -119,21 +113,18 @@ class Forums extends React.Component {
         "Content-Type": "application/json"
       }
     })
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
       })
-      .then(json => this.setState({ posts: json }))
+      .then(json => this.setState({ posts: json }));
 
-
-
-    this.setState({ body: "", title: "" })
+    this.setState({ body: "", title: "" });
   }
 
-
   render() {
-    console.log("next", this.props.forum)
-    console.log("prev", this.props.posts)
-    if (!this.state.forum.id) return null
+    // console.log("next", this.props.forum)
+    // console.log("prev", this.props.posts)
+    if (!this.state.forum.id) return null;
 
     return (
       <div className="community">
@@ -144,45 +135,76 @@ class Forums extends React.Component {
               className="game-search__field"
               placeholder="Search for posts"
               value={this.state.input}
-              onChange={this.inputHandler} />
+              onChange={this.inputHandler}
+            />
             <button
               className="button button-primary"
-              onClick={this.searchHandler}> Search </button>
+              onClick={this.searchHandler}
+            >
+              {" "}
+              Search{" "}
+            </button>
           </form>
         </header>
         <div className="forums">
-          <div className="forums__login" style={{ display: this.props.userAuthState ? 'none' : '' }} > <a href="/login">Login to post</a> </div>
+          <div
+            className="forums__login"
+            style={{ display: this.props.userAuthState ? "none" : "" }}
+          >
+            {" "}
+            <a href="/login">Login to post</a>{" "}
+          </div>
           <h3>Forum: {this.state.forum.title}</h3>
           <h4>Category: {this.state.forum.category}</h4>
-          {this.state.posts.length
-            ? this.state.posts.map((post, index) => {
-              let date = String(new Date(post.created)).substring(0, 24)
+          {this.state.posts.length ? (
+            this.state.posts.map((post, index) => {
+              let date = String(new Date(post.created)).substring(0, 24);
               return (
                 <div key={post.id} className="forum">
                   <Link className="forum__link" to={`/posts/${post.id}`}>
-                    <div className="forum__link--text">
-                      {post.title}
-                    </div>
+                    <div className="forum__link--text">{post.title}</div>
                     <div className="forum__details">
                       <div className="forum__total-post">
-                        <svg className="icon-comments" aria-hidden="true" focusable="false">
+                        <svg
+                          className="icon-comments"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
                           <use xlinkHref="#icon-comments" />
                         </svg>
-                        {this.state["totalPost-" + post.id]} Posts</div>
+                        {this.state["totalPost-" + post.id]} Posts
+                      </div>
                     </div>
                   </Link>
                 </div>
-              )
+              );
             })
-            : <p className="forums__no-posts">No thread on this forum yet :/</p>
-          }
+          ) : (
+            <p className="forums__no-posts">No thread on this forum yet :/</p>
+          )}
         </div>
-        <div style={{ display: this.props.userAuthState ? '' : 'none' }}>
+        <div style={{ display: this.props.userAuthState ? "" : "none" }}>
           <h5 className="form__thread--heading">Post a thread</h5>
           <form className="form__thread">
-            <input className="form__thread--input" placeholder="Thread title" value={this.state.title} onChange={this.titleHandler} />
-            <textarea className="form__thread--textarea" placeholder="Thread body" value={this.state.body} onChange={this.bodyHandler} />
-            <button className="button button-primary" onClick={this.replyHandler}> Post </button>
+            <input
+              className="form__thread--input"
+              placeholder="Thread title"
+              value={this.state.title}
+              onChange={this.titleHandler}
+            />
+            <textarea
+              className="form__thread--textarea"
+              placeholder="Thread body"
+              value={this.state.body}
+              onChange={this.bodyHandler}
+            />
+            <button
+              className="button button-primary"
+              onClick={this.replyHandler}
+            >
+              {" "}
+              Post{" "}
+            </button>
           </form>
         </div>
 
