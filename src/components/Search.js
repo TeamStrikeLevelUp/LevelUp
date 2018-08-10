@@ -1,9 +1,7 @@
 import React from "react";
 import "../../styles/components/search.scss";
 import "../../styles/index.scss";
-
-import Carousel from "nuka-carousel";
-// import SearchGallery from "./SearchGallery";
+import SearchGallery from "./SearchGallery";
 
 class Search extends React.Component {
   constructor() {
@@ -11,9 +9,11 @@ class Search extends React.Component {
 
     this.state = {
       searchGame: "",
-      count: 0
+      count: 0,
+      showPopup: false
     };
 
+    this.togglePopup = this.togglePopup.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
@@ -27,6 +27,13 @@ class Search extends React.Component {
         this.props.fetchGameFavourites(this.props.userAuthState.userId);
       }
     }
+  }
+
+  //toggle screenshot popup on and off
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
   // handleClick(event) {
   //   this.setState({
@@ -43,7 +50,6 @@ class Search extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.fetchGameInfo("/games/" + this.state.searchGame);
-    console.log("/games/" + this.state.searchGame);
     this.setState({
       searchGame: ""
     });
@@ -78,83 +84,93 @@ class Search extends React.Component {
           <div className="search__details">{gameData}</div>
         </div>
       ) : (
-        gameData.map(game => {
-          return (
-            <li key={game.igdbId} className="search__result">
-              <div className="search__img">
-                <img src={game.cover_img} className="search__img--cover" />
-                <button
-                  className="search__details--button"
-                  onClick={event => {
-                    this.addToFavourites(game.igdbId, game.name);
-                  }}
-                >
-                  Add to favourites
+          gameData.map(game => {
+            return (
+              <li key={game.igdbId} className="search__result">
+                <div className="search__img">
+                  <img src={game.cover_img} className="search__img--cover" />
+                  <button
+                    className="search__details--button"
+                    onClick={event => {
+                      this.addToFavourites(game.igdbId, game.name);
+                    }}
+                  >
+                    Add to favourites
                 </button>
-              </div>
-              <div className="search__details">
-                <header className="search__details--name">{game.name}</header>
+                </div>
+                <div className="search__details">
+                  <header className="search__details--name">{game.name}</header>
 
-                {game.description !== "" || game.description !== undefined ? (
-                  <p className="search__desc">{game.description}</p>
-                ) : null}
-                <div className="search__box">
-                  <div className="search__info">
-                    {game.user_rating ? (
-                      <header className="search__details--ratings">
-                        Gamer Rating:
+                  {game.description !== "" || game.description !== undefined ? (
+                    <p className="search__desc">{game.description}</p>
+                  ) : null}
+                  <div className="search__box">
+                    <div className="search__info">
+                      {game.user_rating ? (
+                        <header className="search__details--ratings">
+                          Gamer Rating:
                         <span className="search__rating">
-                          {game.user_rating}%
+                            {game.user_rating}%
                         </span>
-                      </header>
-                    ) : null}
+                        </header>
+                      ) : null}
 
-                    {game.critic_rating ? (
-                      <header className="search__details--ratings">
-                        Critic Rating:
+                      {game.critic_rating ? (
+                        <header className="search__details--ratings">
+                          Critic Rating:
                         <span className="search__rating">
-                          {game.critic_rating}%
+                            {game.critic_rating}%
                         </span>
-                      </header>
-                    ) : null}
+                        </header>
+                      ) : null}
 
-                    {game.genres ? (
-                      <header className="search__details--ratings">
-                        Genre:
+                      {game.genres ? (
+                        <header className="search__details--ratings">
+                          Genre:
                         <span className="search__rating">{game.genres}</span>
-                      </header>
-                    ) : null}
+                        </header>
+                      ) : null}
 
-                    {game.themes ? (
-                      <header className="search__details--ratings">
-                        Theme:<span className="search__rating">
-                          {game.themes}
-                        </span>
-                      </header>
-                    ) : null}
-                  </div>
+                      {game.themes ? (
+                        <header className="search__details--ratings">
+                          Theme:<span className="search__rating">
+                            {game.themes}
+                          </span>
+                        </header>
+                      ) : null}
+                    </div>
 
-                  <div className="search__video">
-                    {game.video ? (
-                      <iframe
-                        width="560"
-                        height="315"
-                        src={game.video + "autoPlay=0"}
-                        frameBorder="0"
-                        allowFullScreen
-                        autostart="false"
-                      />
-                    ) : null}
+                    <div className="search__video">
+                      {game.video ? (
+                        <iframe
+                          width="560"
+                          height="315"
+                          src={game.video + "autoPlay=0"}
+                          frameBorder="0"
+                          allowFullScreen
+                          autostart="false"
+                        />
+                      ) : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="search__screenshots">{imagesArr}</div>
-
-              <br />
-            </li>
-          );
-        })
-      );
+                <div className="search__screenshots" >
+                  {game.screenshot ?
+                    game.screenshot.map(currentImg => {
+                      return <img src={currentImg} key={currentImg} width="100" onClick={this.togglePopup} />;
+                    }) :
+                    null}
+                </div>
+                {this.state.showPopup ?
+                  <SearchGallery closePopup={this.togglePopup}
+                    game={gameData} />
+                  : null
+                }
+                <br />
+              </li>
+            );
+          })
+        );
     const displayStatus = userAuthState
       ? "Welcome Gamer " + userAuthState.userId
       : "You are not logged in";
