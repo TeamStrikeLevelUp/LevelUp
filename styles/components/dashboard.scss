@@ -122,14 +122,41 @@
         .rank__level {
             color: var(--primary-color);
         }
-        .dashboard__panels--text {
+        .dashboard__fortnite {
+columns: 2;
+        }
+
+        .dashboard__panels--fortnite-user {
             font-size: 12px;
             padding-left: 20px;
             padding-top: 20px;
             margin-top: auto;
             display: block;
 
-            &.dashboard__panels--text--large {
+            &.dashboard__panels--fortnite-user--large {
+                font-size: 14px;
+            }
+        }
+        .dashboard__panels--fortnite-platform {
+            font-size: 12px;
+            padding-left: 20px;
+            padding-top: 20px;
+            margin-top: auto;
+            display: block;
+
+            &.dashboard__panels--fortnite-platform--large {
+                font-size: 14px;
+            }
+        }
+        .dashboard__panels--fortnite-para {
+            color: #fff;
+            font-size: 12px;
+            padding-left: 20px;
+            padding-top: 20px;
+            margin-top: auto;
+            display: block;
+
+            &.dashboard__panels--fortnite-para--large {
                 font-size: 14px;
             }
         }
