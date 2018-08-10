@@ -312,7 +312,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "li {\n  list-style: none; }\n\n.game__anchor {\n  text-decoration: none;\n  color: whitesmoke;\n  text-align: center;\n  font-size: 15px; }\n\n.search__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.search {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3;\n  margin-left: 10px; }\n\n.search__desc {\n  margin-left: 10px; }\n\n.search__form {\n  margin-left: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12; }\n\n.search__img {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  align-content: center;\n  margin: auto; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__details--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__details--ratings {\n  margin-left: 10px;\n  color: grey; }\n\n.search__rating {\n  color: #4bd4fd; }\n\n.search__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #9270b1;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n\n.search__screenshots {\n  margin-top: 20px;\n  text-align: center; }\n\n.carousel {\n  height: 100%;\n  margin: 0;\n  width: 100%; }\n\n.image-slide {\n  height: 100%;\n  width: 100%; }\n\n.slide-arrow {\n  color: #14B6D4;\n  cursor: pointer;\n  font-size: 2rem;\n  position: fixed;\n  top: 50%; }\n\n.slide-arrow.right {\n  right: 1rem; }\n\n.slide-arrow.left {\n  left: 1rem; }\n", ""]);
+exports.push([module.i, "li {\n  list-style: none; }\n\n.game__anchor {\n  text-decoration: none;\n  color: whitesmoke;\n  text-align: center;\n  font-size: 15px; }\n\n.search__body {\n  display: flex;\n  flex-direction: column;\n  margin: auto;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  color: whitesmoke; }\n\n.search {\n  display: flex;\n  flex-direction: column;\n  background-color: rgba(34, 39, 35, 0.9);\n  margin: auto;\n  color: whitesmoke; }\n\n.search__input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.search__details--name {\n  font-size: 20px;\n  vertical-align: top;\n  color: #cda5f3;\n  margin-left: 10px; }\n\n.search__desc {\n  margin-left: 10px; }\n\n.search__form {\n  margin-left: 10px; }\n\n.search__result {\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  flex: 12; }\n\n.search__img {\n  display: flex;\n  flex-direction: column;\n  text-align: center;\n  align-content: center;\n  margin: auto; }\n\n.search__img--cover {\n  width: auto; }\n\n.search__details--button {\n  height: 50px;\n  margin-top: 15px;\n  font-size: 20px;\n  font-weight: 400;\n  width: auto;\n  background-color: darkslategrey;\n  color: #4bd4fd;\n  border-style: none;\n  border-radius: 5%; }\n\n.search__box {\n  display: flex;\n  flex-direction: row; }\n\n.search__details {\n  flex: 7;\n  display: flex;\n  flex-direction: column; }\n\n.search__info {\n  display: flex;\n  flex-direction: column; }\n\n.search__video {\n  align-content: right;\n  justify-content: right;\n  margin: auto; }\n\n.search__details--ratings {\n  margin-left: 10px;\n  color: grey; }\n\n.search__rating {\n  color: #4bd4fd; }\n\n.search__footer {\n  position: fixed;\n  left: -80px;\n  bottom: 80px;\n  font-size: 15px;\n  color: #9270b1;\n  -ms-transform: rotate(-90deg);\n  /* IE 9 */\n  -webkit-transform: rotate(-90deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(-90deg); }\n\n.search__screenshots {\n  margin-top: 20px;\n  text-align: center; }\n\n/* Popup-------------------------------------------------*/\n.popup {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: rgba(0, 0, 0, 0.1); }\n\n.popup__inner {\n  position: absolute;\n  left: 25%;\n  right: 10%;\n  top: 25%;\n  bottom: 25%;\n  border-radius: 2%;\n  text-align: center; }\n\n.popup__button {\n  position: absolute;\n  top: 5%;\n  right: 5%; }\n\n.prev, .next {\n  cursor: pointer;\n  position: absolute;\n  /*   top: 0; */\n  top: 50%;\n  width: auto;\n  margin-top: -22px;\n  padding: 20px;\n  color: white;\n  font-weight: bold;\n  font-size: 40px;\n  transition: 0.6s ease; }\n\n.next {\n  right: 1%; }\n\n.prev {\n  left: 1%; }\n\n.prev:hover, .next:hover {\n  color: white;\n  background-color: #1a2cee; }\n\n.fade {\n  -webkit-animation-name: fade;\n  -webkit-animation-duration: 1.5s;\n  animation-name: fade;\n  animation-duration: 1.5s; }\n\n@-webkit-keyframes fade {\n  from {\n    opacity: .4; }\n  to {\n    opacity: 1; } }\n\n@keyframes fade {\n  from {\n    opacity: .4; }\n  to {\n    opacity: 1; } }\n", ""]);
 
 // exports
 
@@ -30168,7 +30168,7 @@ var NotFound = function (_React$Component) {
         _react2.default.createElement("img", {
           className: "notfound__image",
           src: "https://media.giphy.com/media/xdnfWJFRpP8Eo/giphy.gif",
-          alt: "car crash"
+          alt: "car\r crash"
         })
       );
     }
@@ -30535,6 +30535,10 @@ __webpack_require__(/*! ../../styles/components/search.scss */ "./styles/compone
 
 __webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
 
+var _SearchGallery = __webpack_require__(/*! ./SearchGallery */ "./src/components/SearchGallery.js");
+
+var _SearchGallery2 = _interopRequireDefault(_SearchGallery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30542,8 +30546,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import SearchGallery from "./SearchGallery";
 
 var Search = function (_React$Component) {
   _inherits(Search, _React$Component);
@@ -30555,9 +30557,11 @@ var Search = function (_React$Component) {
 
     _this.state = {
       searchGame: "",
-      count: 0
+      count: 0,
+      showPopup: false
     };
 
+    _this.togglePopup = _this.togglePopup.bind(_this);
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.addToFavourites = _this.addToFavourites.bind(_this);
@@ -30576,6 +30580,16 @@ var Search = function (_React$Component) {
           this.props.fetchGameFavourites(this.props.userAuthState.userId);
         }
       }
+    }
+
+    //toggle screenshot popup on and off
+
+  }, {
+    key: "togglePopup",
+    value: function togglePopup() {
+      this.setState({
+        showPopup: !this.state.showPopup
+      });
     }
     // handleClick(event) {
     //   this.setState({
@@ -30596,7 +30610,6 @@ var Search = function (_React$Component) {
     value: function handleSubmit(event) {
       event.preventDefault();
       this.props.fetchGameInfo("/games/" + this.state.searchGame);
-      console.log("/games/" + this.state.searchGame);
       this.setState({
         searchGame: ""
       });
@@ -30739,7 +30752,15 @@ var Search = function (_React$Component) {
               )
             )
           ),
-          _react2.default.createElement("div", { className: "search__screenshots" }),
+          _react2.default.createElement(
+            "div",
+            { className: "search__screenshots" },
+            game.screenshot ? game.screenshot.map(function (currentImg) {
+              return _react2.default.createElement("img", { src: currentImg, key: currentImg, width: "100", onClick: _this2.togglePopup });
+            }) : null
+          ),
+          _this2.state.showPopup ? _react2.default.createElement(_SearchGallery2.default, { closePopup: _this2.togglePopup,
+            game: gameData }) : null,
           _react2.default.createElement("br", null)
         );
       });
@@ -30816,6 +30837,118 @@ exports.default = Search;
 //     return <img src={currentImg} key={currentImg} />;
 //   })
 //   : null}
+
+/***/ }),
+
+/***/ "./src/components/SearchGallery.js":
+/*!*****************************************!*\
+  !*** ./src/components/SearchGallery.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(/*! ../../styles/components/search.scss */ "./styles/components/search.scss");
+
+__webpack_require__(/*! ../../styles/index.scss */ "./styles/index.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchGallery = function (_React$Component) {
+  _inherits(SearchGallery, _React$Component);
+
+  function SearchGallery() {
+    _classCallCheck(this, SearchGallery);
+
+    var _this = _possibleConstructorReturn(this, (SearchGallery.__proto__ || Object.getPrototypeOf(SearchGallery)).call(this));
+
+    _this.state = {
+      slideIndex: 0
+    };
+
+    _this.closeGallery = _this.closeGallery.bind(_this);
+    _this.prevSlide = _this.prevSlide.bind(_this);
+    _this.nextSlide = _this.nextSlide.bind(_this);
+    return _this;
+  }
+
+  _createClass(SearchGallery, [{
+    key: "prevSlide",
+    value: function prevSlide() {
+      this.state.slideIndex - 1 === -1 ? this.setState({ slideIndex: this.props.game["0"].screenshot.length - 1 }) : this.setState({ slideIndex: this.state.slideIndex - 1 });
+    }
+  }, {
+    key: "nextSlide",
+    value: function nextSlide() {
+      this.state.slideIndex + 1 >= this.props.game["0"].screenshot.length - 1 ? this.setState({ slideIndex: 0 }) : this.setState({ slideIndex: this.state.slideIndex + 1 });
+    }
+
+    // Click handler for adding amount to order and closing popup
+
+  }, {
+    key: "closeGallery",
+    value: function closeGallery(event) {
+      event.preventDefault();
+      this.props.closePopup();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var game = this.props.game;
+      // console.log(game["0"].screenshot)
+      // const displayImg = <img src={game["0"].screenshot[this.state.slideIndex]} width="900" />
+
+      return _react2.default.createElement(
+        "div",
+        { className: "popup" },
+        _react2.default.createElement(
+          "div",
+          { className: "popup__inner" },
+          _react2.default.createElement("img", { src: game["0"].screenshot[this.state.slideIndex], width: "900" }),
+          _react2.default.createElement(
+            "a",
+            { className: "prev", onClick: this.prevSlide },
+            "\u276E"
+          ),
+          _react2.default.createElement(
+            "a",
+            { className: "next", onClick: this.nextSlide },
+            "\u276F"
+          ),
+          _react2.default.createElement(
+            "button",
+            { className: "popup__button",
+              onClick: this.closeGallery
+            },
+            "X"
+          )
+        )
+      );
+    }
+  }]);
+
+  return SearchGallery;
+}(_react2.default.Component);
+
+exports.default = SearchGallery;
 
 /***/ }),
 

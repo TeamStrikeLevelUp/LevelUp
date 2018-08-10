@@ -1,7 +1,8 @@
 import React from "react";
 import "../../styles/components/search.scss";
 import "../../styles/index.scss";
-// import SearchGallery from "./SearchGallery";
+import SearchGallery from "./SearchGallery";
+
 
 class Search extends React.Component {
   constructor() {
@@ -9,9 +10,11 @@ class Search extends React.Component {
 
     this.state = {
       searchGame: "",
-      count: 0
+      count: 0,
+      showPopup: false
     };
 
+    this.togglePopup = this.togglePopup.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
@@ -27,7 +30,13 @@ class Search extends React.Component {
         this.props.fetchGameFavourites(this.props.userAuthState.userId);
       }
     }
+  }
 
+  //toggle screenshot popup on and off
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
   // handleClick(event) {
   //   this.setState({
@@ -44,7 +53,6 @@ class Search extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.fetchGameInfo("/games/" + this.state.searchGame);
-    console.log("/games/" + this.state.searchGame)
     this.setState({
       searchGame: ""
     });
@@ -140,10 +148,18 @@ class Search extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="search__screenshots">
-                {/* {imagesArr} */}
+              <div className="search__screenshots" >
+                {game.screenshot ?
+                  game.screenshot.map(currentImg => {
+                    return <img src={currentImg} key={currentImg} width="100" onClick={this.togglePopup} />;
+                  }) :
+                  null}
               </div>
-
+              {this.state.showPopup ?
+                <SearchGallery closePopup={this.togglePopup}
+                  game={gameData} />
+                : null
+              }
               <br />
 
             </li>
