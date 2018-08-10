@@ -1,0 +1,148 @@
+.post__container {
+    margin-top: 20px;
+    background-color: rgba(54, 57, 63, 0.5);
+    font-family: 'Open Sans', sans-serif;
+    max-width: 100%;
+    width: 980px;
+    padding: 10px 40px;
+    margin: 0 auto;
+
+    .button {
+        width: 170px;
+    }
+
+    .community__header {
+        height: 80px;
+        .game-search__form {
+            margin-left: auto;
+        }
+    }
+
+    .post__details {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+
+        
+    }
+
+    .topic {
+        color: var(--light-grey);
+    }
+
+    .post__details--icon {
+        width: 70px;
+        border-radius: 50%;
+        &.post__details--icon-big {
+            margin: 0 auto;
+            width: 100px;
+            display: block;
+        }
+    }
+
+    .post__content {
+        display: grid;
+        grid-template-columns: 20% 80%;
+
+        margin-top: 50px;
+
+        @media(min-width: 768px){
+            padding-right: 40px;
+        }
+        .post__content--author {
+            text-align: center;
+            font-size: 13px;
+            .profile__links {
+                color: var(--primary-color);
+                line-height: 40px;
+            
+                &:hover {
+                    opacity: .8;
+                }
+            
+            }
+        }
+    }
+}
+.replies {
+    margin-top: 40px;
+    .replies__heading {
+        color: var(--secondary-color);
+        @media(min-width: 768px){
+            padding: 20px 10% 40px;
+        }
+    }
+    .reply {
+        // background-color: rgba(185, 187, 190, 0.3);
+        @media(min-width: 768px){
+            margin: 40px 10% 20px;
+        }
+        color: var(--light-grey);
+        margin-bottom: 20px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--medium-grey);
+        }
+
+        .reply__content {
+            display: grid;
+            grid-template-columns: 20% 80%;
+            padding-bottom: 20px;
+            .reply__content--author {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                font-size: 12px;
+                .profile__links {
+                    color: var(--primary-color);
+                    line-height: 40px;
+                
+                    &:hover {
+                        opacity: .8;
+                    }
+                
+                }
+                .post__details--icon {
+                    width: 70px;
+                    border-radius: 50%;
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
+
+            .reply__title {
+                color: #fff;
+                margin-bottom: 0;
+            }
+
+            .reply__date {
+                font-size: 13px;
+            }
+        }
+
+        
+
+    }
+}
+
+.login-link {
+    width: 100%;
+    text-align: right;
+    padding-right: 4px;
+    display: block;
+    padding-top: 10px;
+    font-size: 13px;
+
+    a {
+        color: #fff;
+        &:hover {
+            opacity: .8;
+        }
+    }
+}
+
+.post__form--wrapper {
+    @media(min-width: 768px){
+        margin: 0 10%;
+    }
+}

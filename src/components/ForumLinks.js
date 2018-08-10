@@ -48,7 +48,6 @@ class ForumLinks extends React.Component {
       <div className="forums">
         <h4>Forums</h4>
         {this.props.forums.map((forum, index) => {
-          console.log(this.state["postLast-" + forum.id]);
           return (
             <div key={forum.id} className="forum">
               <Link className="forum__link" to={`/forum/${forum.id}`}>
