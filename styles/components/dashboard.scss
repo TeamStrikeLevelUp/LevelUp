@@ -5,7 +5,7 @@
       background-position: center center;
       background-size: cover;
     background-color: var(--dashboard-primary-color);
-    height: 100vh;
+    height: 100%;
 
     .dashboard__container {
         display: grid;
@@ -167,6 +167,33 @@ columns: 2;
                 list-style: decimal;
             }
         }
+
+        ul.dashboard__panels--twitch-list {
+            font-size: 14px;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            height: 180px;
+            overflow: auto;
+            li {
+                margin-bottom: 10px;
+            }
+            
+            .dashboard__panels--twitch-list--img {
+                border-radius: 4px;
+                max-width: 100%;
+                width: 30px;
+                margin-right: 10px;
+            }
+        }
+
+        .dashboard__panels--text {
+            font-size: 12px;
+            margin-top: auto;
+            &.dashboard__panels--text--large {
+                font-size: 14px;
+            }
+        }
+
     }
 
     // Dashboard account

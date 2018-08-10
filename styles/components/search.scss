@@ -16,7 +16,6 @@ li {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  // height:100vh;
   color: whitesmoke;
 }
 
@@ -45,38 +44,34 @@ li {
   margin-left:10px;
 }
 
-
 .search__desc{
   margin-left:10px;
 }
+
 .search__form {
   margin-left: 10px;
 }
 
 .search__result {
-  //one search result list item
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex: 12;
-
-  // background-color: rgb(34, 39, 35);
 }
+
 .search__img {
-display:flex;
-flex-direction: column;
-text-align:center;
-align-content: center;
-margin:auto;
+  display:flex;
+  flex-direction: column;
+  text-align:center;
+  align-content: center;
+  margin:auto;
 }
 .search__img--cover {
    width: auto;
 }
 .search__details--button {
- 
   height: 50px;
   margin-top:15px;
-  // font-family: 'Oswald', sans-serif;
   font-size:20px;
   font-weight: 400;
   width:auto;
@@ -99,7 +94,6 @@ margin:auto;
 .search__info {
   display: flex;
   flex-direction: column;
-  // margin: auto;
 }
 
 .search__video {
@@ -131,39 +125,76 @@ margin:auto;
 .search__screenshots{
   margin-top:20px;
   text-align:center;
-
 }
 
-
-// gallery stuff - NOT WORKING grr
-
-// html, body, #container, 
-.carousel {
-	height:100%;
-	margin: 0;
-	width: 100%;
+/* Popup-------------------------------------------------*/
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.1),
+  // margin: auto;
+}
+.popup__inner {
+  position: absolute;
+  left:25%;
+  right: 10%;
+  top: 25%;
+  bottom: 25%;
+  border-radius: 2%;
+  text-align: center;
 }
 
-$theme-blue: #14B6D4;
-
-.image-slide {
-	height: 100%;
-	width: 100%;
-	// transition: background-image .3s ease-in-out;
+.popup__button{
+  position:absolute;
+  top:5%;
+  right: 5%;
 }
 
-.slide-arrow {
-	color: $theme-blue;
-	cursor: pointer;
-	font-size: 2rem;
-	position: fixed;
-	top: 50%;
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+/*   top: 0; */
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
 }
 
-.slide-arrow.right {
-	right: 1rem;
+.next {
+  right: 1%;
 }
 
-.slide-arrow.left {
-	left: 1rem;
+.prev {
+  left: 1%;
 }
+
+.prev:hover, .next:hover {
+	color: white;
+  background-color: rgb(26, 44, 238);
+}
+
+ .fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+} 
