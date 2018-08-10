@@ -17,6 +17,8 @@ class Homepage extends React.Component {
     this.handleChange=this.handleChange.bind(this);
     this.voteHandler=this.voteHandler.bind(this)
     this.viewHandler=this.viewHandler.bind(this)
+    this.searchGame=this.searchGame.bind(this)
+    this.searchListGame=this.searchListGame.bind(this);
   }
 
   componentDidMount(){
@@ -93,8 +95,15 @@ class Homepage extends React.Component {
   searchTwitch(event, title){
   
     this.props.setTwitchStreamer(title)
-    console.log("title", title);
-    console.log("redux state", this.props.twitchStreamer)
+    
+  }
+
+  searchGame(){
+    this.props.searchClickedGame(this.state.game.title)
+  }
+
+  searchListGame(event, title){
+    this.props.searchClickedGame(title)
   }
 
   render() {
@@ -103,6 +112,7 @@ class Homepage extends React.Component {
     let topTwitchers= this.props.topTwitchers;
     shuffle(topTwitchers);
     console.log("shuffled",topTwitchers[0])
+
     return (
       <div className="homepage">
         <div className="homepage__main">
@@ -111,7 +121,7 @@ class Homepage extends React.Component {
           <div className="homepage__main--featured">
             <div className="homepage__main--featured--selection">
               <div className="homepage__main--featured--selection--game">
-                <h4 ><i>Featured Game:</i> {this.state.game.title}</h4>
+                <h4 onClick={this.searchGame} ><i>Featured Game:</i> <Link to="/search"> {this.state.game.title} </Link> </h4>
               </div>
               <div className="homepage__main--featured--selection--user">
                 <h4><i>Featured User:</i> <Link className="homepage__links" to={`/profile/${this.state.gamer.gamer_name}`}> {this.state.gamer.gamer_name} </Link>  </h4>
@@ -127,15 +137,13 @@ class Homepage extends React.Component {
               </div>
             </div>
           </div>
-          <div className="homepage__main--upcoming-releases">
-            <h4>LIST OF UPCOMING RELEASES WITH LINKS/TRAILER ONCLICK</h4>
-          </div>
+          
           <div className="homepage__main--top5">
             <h4>Top 5 Games</h4>
             <ul>
             {topGames.map((game,index)=>{
               if(index>4) return;
-              return(<li key={index}>{game}</li>)
+              return(<li onClick={(event) => this.searchListGame(event, game)} key={index}> <Link to="/search"> {game} </Link> </li>)
             })}
             </ul>
           </div>
@@ -144,7 +152,7 @@ class Homepage extends React.Component {
             <ul>
             {this.state.topForum.map(forum=>{
               
-              return(<li><Link className="homepage__links"  to={`/forum/${forum.forum_id}`}> {forum.title} </Link> </li>)
+              return(<li key={forum.id}><Link className="homepage__links"  to={`/forum/${forum.forum_id}`}> {forum.title} </Link> </li>)
             })}
             </ul>
           </div>
