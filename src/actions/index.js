@@ -1,21 +1,18 @@
-<<<<<<< HEAD
 //get top twitchers
 export function fetchTopTwitchers() {
-  return function (dispatch, getState) {
-
+  return function(dispatch, getState) {
     const searchPath = `/twitchStreams`;
 
     fetch(searchPath)
       // .then(response => response.json())
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
+      .then(
+        response => (response.ok ? response.json() : Promise.reject(response))
       )
       .then(json => {
         //fetch info for each twitcher
-        console.log("top twitchers in ACTION", json)
-        const items = json.map(item => item.data[0])
-        console.log(items)
+        console.log("top twitchers in ACTION", json);
+        const items = json.map(item => item.data[0]);
+        console.log(items);
         dispatch(receiveTopTwitchers(items));
       })
       .catch(error => {
@@ -31,12 +28,8 @@ export function receiveTopTwitchers(twitchApiData) {
     payload: twitchApiData
   };
 }
-=======
-// Adding FAVOURITES to database - need to update - currently only ONE favourite catered for
->>>>>>> 404/testing
 
-
-// Add GAME FAVOURITES to database 
+// Add GAME FAVOURITES to database
 export function addFavouriteToDB(favObject) {
   return function(dispatch, getState) {
     return fetch("/api/newfavourite/", {
@@ -50,12 +43,8 @@ export function addFavouriteToDB(favObject) {
         return response.json();
       })
       .then(json => {
-<<<<<<< HEAD
-
-=======
         //call action function to select reducer to set redux state value
         // dispatch(receiveFavouriteData(favObject));
->>>>>>> 404/testing
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
@@ -140,9 +129,8 @@ export function fetchGenreData() {
     const searchPath = `/genres/`;
     fetch(searchPath)
       // .then(response => response.json())
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
+      .then(
+        response => (response.ok ? response.json() : Promise.reject(response))
       )
       .then(json => {
         dispatch(receiveGenreData(json.body));
@@ -159,9 +147,8 @@ export function fetchThemeData() {
     const searchPath = `/themes/`;
 
     fetch(searchPath)
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
+      .then(
+        response => (response.ok ? response.json() : Promise.reject(response))
       )
       // .then(response => response.json())
       .then(json => {
@@ -175,20 +162,21 @@ export function fetchThemeData() {
 //Main GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
   return function(dispatch, getState) {
-    return fetch(searchPath)
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
-      )
-      // .then(response =>  response.json()  )
-      .then(json => {
-        // console.log((json.body).length, " results")
+    return (
+      fetch(searchPath)
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        // .then(response =>  response.json()  )
+        .then(json => {
+          // console.log((json.body).length, " results")
 
-        dispatch(setGameData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+          dispatch(setGameData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 
