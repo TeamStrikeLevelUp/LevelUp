@@ -45,7 +45,7 @@ class Fortnite extends React.Component {
           <div className="fortnite__option">
             <form className="fortnite__option-form" onSubmit={this.handleSubmit}>
               <input className="fortnite__option-input" onChange={this.handleChange} type="search" value={this.state.searchUser} placeholder="Search username..." />
-              <button className="fortnite__button">Search</button>
+              <button className="button__edit">Search</button>
             </form>
           </div>
           <div>

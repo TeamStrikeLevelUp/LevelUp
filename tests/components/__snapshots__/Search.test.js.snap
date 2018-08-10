@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search matches the snapshot 1`] = `
+<div
+  className="search__body"
+>
+  <div
+    className="search"
+  >
+    You are not logged in
+    <br />
+    <form
+      className="search__form"
+      onSubmit={[Function]}
+    >
+      <input
+        alt="Game Search"
+        autoComplete="off"
+        className="search__input"
+        onChange={[Function]}
+        placeholder="Search games"
+        results="0"
+        type="search"
+        value=""
+      />
+    </form>
+    <ul />
+    <br />
+    <ul
+      className="search__wrapper"
+    />
+    <footer
+      className="search__footer"
+    >
+      Powered by IGDB.com API
+    </footer>
+  </div>
+</div>
+`;

@@ -1,6 +1,8 @@
 .fortnite {
   display: flex;
 
+  min-height: 100vh;
+
   font-family: 'burbank_big_condensedblack';
 }
 
@@ -11,12 +13,12 @@
   background-image: url("/static/images/fortnite-cover.jpg");
   background-size: cover;
 
-  min-height: 100vh;
+  min-height: 100%;
 
   border-style: solid;
   border-right-color: #fafafe;
   border-left-color: transparent;
-  border-top-color: transparent;
+  border-top-color: #fafafe;
   border-bottom-color: transparent;
 }
 
@@ -38,11 +40,13 @@
 .fortnite__title-tagline {
   color: #fafafe;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .fortnite__title-para {
   color: #fafafe;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .fortnite__userstats {
@@ -51,7 +55,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  background-color: rgba(0, 0, 255, 0.473);
+  background-color: rgba(13, 27, 27, 0.5);
   
   height: 100%;
   top: 90px;
@@ -96,23 +100,49 @@
  padding: 15px;
 }
 
+.fortnite__userstats--stats {
+  font-family: 'Open Sans', sans-serif;
+font-size: 80%; }
+
 .fortnite__option-form {
   position: relative;
   top: 100px;
 }
 
 .fortnite__option-input {
-    font-size: 20pt;
-}
+  font-size: 15px;
+  margin: auto;
+  height: 40px;
+  border-radius: 5%;
+  border: 1px solid rgb(26, 44, 238);
+  background-color: rgb(19, 26, 26);
+  color: white;}
 
 .fortnite__button {
-position: relative;
+  position: relative;
 
   padding: 5px;
   
   left: 10px;
 
   border-radius: 20%;
+}
+
+.playerlist__wrapper {
+  border-style: solid;
+  border-bottom-color: #fafafe;
+  border-left-color: #fafafe;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.playerlist__player {
+  padding: 10px;
+}
+
+.playlist__player--stats {
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 

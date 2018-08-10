@@ -12,16 +12,22 @@ li {
 
 body {
 
+  font-family: 'Open Sans', sans-serif;
+
   //what should we put here?
 
   
   margin: 0;
   background-color: var(--primary-color);
-  font-family: "IBM Plex Serif", serif;
   /* background: rgb(36, 36, 77); */
   // background-image: url("/static/images/background2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgb(13, 27, 27);
   color: whitesmoke;
+}
+
+.is-active {
+  background-color: var(--primary-color);
+  color: #fff;
 }

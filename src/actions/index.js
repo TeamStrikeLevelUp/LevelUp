@@ -1,21 +1,25 @@
 //get top twitchers
 export function fetchTopTwitchers() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/twitchStreams`;
-    fetch(searchPath)
-      // .then(response => response.json())
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
-      )
-      .then(json => {
-        //fetch info for each twitcher
-        const items = json.map(item => item.data[0])
-        dispatch(receiveTopTwitchers(items));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+
+    return (
+      fetch(searchPath)
+        // .then(response => response.json())
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        .then(json => {
+          //fetch info for each twitcher
+          console.log("top twitchers in ACTION", json);
+          const items = json.map(item => item.data[0]);
+          console.log(items);
+          dispatch(receiveTopTwitchers(items));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 
@@ -27,41 +31,41 @@ export function receiveTopTwitchers(twitchApiData) {
   };
 }
 
-// Add GAME FAVOURITES to database 
+// Add GAME FAVOURITES to database
 export function addFavouriteToDB(favObject) {
-  return function (dispatch, getState) {
-
-    fetch("/api/newfavourite/", {
+  return function(dispatch, getState) {
+    return fetch("/api/newfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
       headers: {
         "Content-Type": "application/json"
       }
     })
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
       })
       .then(json => {
-
+        //call action function to select reducer to set redux state value
+        // dispatch(receiveFavouriteData(favObject));
       })
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
       });
-  }
+  };
 }
 
-// Add TWITCH FAVOURITE to database  
+// Add TWITCH FAVOURITE to database
+
 export function addFavTwitchToDB(favObject) {
-  return function (dispatch, getState) {
-    fetch("/api/addtwitchfavourite/", {
+  return function(dispatch, getState) {
+    return fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
       headers: {
         "Content-Type": "application/json"
       }
     })
-      .then(function (response) {
-
+      .then(function(response) {
         return response.json();
       })
       .then(json => {
@@ -72,13 +76,13 @@ export function addFavTwitchToDB(favObject) {
       .catch(error => {
         console.log("Sorry the following error occurred: ", error);
       });
-  }
+  };
 }
 
 // FETCHES GAME favourites by UserID
 export function fetchGameFavourite(gamerId) {
-  return function (dispatch, getState) {
-    fetch(`/api/favourites/${gamerId}`)
+  return function(dispatch, getState) {
+    return fetch(`/api/favourites/${gamerId}`)
       .then(response => response.json())
       .then(json => {
         dispatch(receiveGameFavourites(json));
@@ -99,11 +103,10 @@ export function receiveGameFavourites(favouriteData) {
 
 // FETCHES TWITCH favourites by UserID
 export function fetchTwitchFavourite(gamerId) {
-  return function (dispatch, getState) {
-    fetch(`/api/twitchfavourites/${gamerId}`)
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
+  return function(dispatch, getState) {
+    return fetch(`/api/twitchfavourites/${gamerId}`)
+      .then(
+        response => (response.ok ? response.json() : Promise.reject(response))
       )
       .then(json => {
         dispatch(receiveTwitchFavourites(json));
@@ -124,59 +127,62 @@ export function receiveTwitchFavourites(favouriteData) {
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/genres/`;
-    fetch(searchPath)
-      // .then(response => response.json())
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
-      )
-      .then(json => {
-        dispatch(receiveGenreData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+    return (
+      fetch(searchPath)
+        // .then(response => response.json())
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        .then(json => {
+          dispatch(receiveGenreData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/themes/`;
 
-    fetch(searchPath)
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
-      )
-      // .then(response => response.json())
-      .then(json => {
-        dispatch(receiveThemeData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+    return (
+      fetch(searchPath)
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        // .then(response => response.json())
+        .then(json => {
+          dispatch(receiveThemeData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 //Main GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
-  return function (dispatch, getState) {
-    return fetch(searchPath)
-      .then(response => response.ok
-        ? response.json()
-        : Promise.reject(response)
-      )
-      // .then(response =>  response.json()  )
-      .then(json => {
-        // console.log((json.body).length, " results")
+  return function(dispatch, getState) {
+    return (
+      fetch(searchPath)
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        // .then(response =>  response.json()  )
+        .then(json => {
+          // console.log((json.body).length, " results")
 
-        dispatch(setGameData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      })
+          dispatch(setGameData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 
@@ -200,7 +206,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -263,7 +269,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-            screenshotObject["cloudinary_id"]
+              screenshotObject["cloudinary_id"]
           );
         });
 
@@ -289,7 +295,6 @@ export function setGameData(gameData) {
   };
 }
 
-
 //function to call Reducer and set game data in redux.state
 export function receiveGameData(gameData) {
   return {
@@ -300,7 +305,7 @@ export function receiveGameData(gameData) {
 
 //Main NEWS Data fetch - calls helper function to sanitise data
 export function fetchNewsInfoFromAPI(pageNum) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/newsApi/${pageNum}`)
       .then(response => response.json())
       .then(json => {
@@ -315,8 +320,7 @@ export function fetchNewsInfoFromAPI(pageNum) {
 
 //search NEWS Data based on User input
 export function searchNewsAPI(searchTerm, pageNum) {
-  return function (dispatch, getState) {
-
+  return function(dispatch, getState) {
     return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
@@ -337,7 +341,7 @@ export function receiveNewsData(newsData) {
 }
 
 export function setNewsData(newsData) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     let myNewsData = [];
 
     newsData.map(newsObject => {
@@ -368,7 +372,6 @@ export function setNewsData(newsData) {
     });
 
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
-
   };
 }
 
@@ -391,7 +394,7 @@ function formatTime(date) {
   } else {
     displayTime = `${days !== 0 ? days + "d " : ""}${
       hours !== 0 ? hours + "h " : ""
-      }${minutes !== 0 ? minutes + "m " : ""}`;
+    }${minutes !== 0 ? minutes + "m " : ""}`;
   }
 
   return displayTime;
@@ -407,17 +410,17 @@ export function receiveAuthState(auth) {
 
 // fetch to grab fortnite user statistics
 export function fetchFortniteStats(username) {
-  console.log("fortnite username", username)
-  return function (dispatch, getState) {
+  console.log("fortnite username", username);
+  return function(dispatch, getState) {
     return fetch(`/api/fortnite/${username}`)
       .then(response => response.json())
       .then(data => {
-        dispatch(setFortniteStats(data))
+        dispatch(setFortniteStats(data));
       })
       .catch(e => {
-        alert("Sorry, we could not find your Fortnite data", e)
-      })
-  }
+        alert("Sorry, we could not find your Fortnite data", e);
+      });
+  };
 }
 
 // set fortnite data into redux state
@@ -427,7 +430,6 @@ export function setFortniteStats(userData) {
     payload: userData
   };
 }
-
 
 //function to call Reducer and set user data in redux.state
 export function receiveUserData(userData) {
@@ -439,7 +441,7 @@ export function receiveUserData(userData) {
 
 export function fetchGamerInfo(gamerId) {
   //fetch gamer_profile
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/api/gamer/${gamerId}`)
       .then(response => response.json())
       .then(gamerData => {
@@ -449,13 +451,12 @@ export function fetchGamerInfo(gamerId) {
       .catch(error => {
         console.log("Error occurred: ", error);
       });
-  }
+  };
 }
 
 // API data coming out contains duplicates-remove those with the same title OR same description
 
 function removeDuplicates(newsSearch) {
-
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
     return newsSearch;
@@ -475,4 +476,13 @@ function removeDuplicates(newsSearch) {
   }, {});
 
   return Object.values(cleanNewsData);
+}
+
+// set a twitch streamer from a different component
+
+export function setTwitchStreamer(streamer) {
+  return {
+    type: "SET_TWITCH_STREAMER",
+    payload: streamer
+  };
 }
