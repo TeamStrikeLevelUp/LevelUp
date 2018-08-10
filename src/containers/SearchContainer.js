@@ -9,8 +9,6 @@ import {
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-
-
   return {
     gameData: reduxState.gameInfo,
     themeData: reduxState.themeInfo,

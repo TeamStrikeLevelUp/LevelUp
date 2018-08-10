@@ -9,6 +9,7 @@ import userInfo from "./userInfo";
 import gameFavourite from "./gameFavourite";
 import twitchFavourite from "./twitchFavourite";
 import topTwitchers from "./topTwitchers";
+import twitchStreamer from "./twitchStreamer";
 
 export default combineReducers({
   gameInfo,
@@ -20,5 +21,6 @@ export default combineReducers({
   userInfo,
   gameFavourite,
   twitchFavourite,
-  topTwitchers
+  topTwitchers,
+  twitchStreamer
 });

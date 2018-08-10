@@ -20,12 +20,14 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "file-loader": "^1.1.11",
     "form-data": "^2.3.2",
     "hbs": "^4.0.1",
     "igdb-api-node": "^3.1.7",
     "newsapi": "^2.3.0",
     "node-fetch": "^2.2.0",
     "nodemon": "^1.18.3",
+    "nuka-carousel": "^4.3.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg-promise": "^8.4.5",
@@ -40,13 +42,15 @@
     "redux-thunk": "^2.3.0",
     "shuffle-array": "^1.0.1",
     "twitch-api": "^0.5.0",
-    "twitch-api-v5": "^2.0.4"
+    "twitch-api-v5": "^2.0.4",
+    "url-loader": "^1.0.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.2",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-require-ignore": "^0.1.1",
     "babel-preset-env": "^1.7.0",
@@ -56,8 +60,12 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^6.5.2",
     "jest": "^23.4.2",
+<<<<<<< HEAD
     "jest-fetch-mock": "^1.6.5",
     "node-sass": "^4.9.2",
+=======
+    "node-sass": "^4.9.3",
+>>>>>>> master
     "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-mock-store": "^1.5.3",
@@ -72,6 +80,7 @@
       "babel-preset-env"
     ],
     "plugins": [
+      "transform-class-properties",
       "transform-object-rest-spread"
     ],
     "env": {

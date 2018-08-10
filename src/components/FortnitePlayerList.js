@@ -3,6 +3,8 @@ import FortniteUser1 from "./FortniteUser1";
 import FortniteUser2 from "./FortniteUser2";
 import FortniteUser3 from "./FortniteUser3";
 
+import "../../styles/components/fortnite.scss";
+import "../../styles/index.scss";
 
 class FortnitePlayerList extends React.Component {
   constructor() {
@@ -16,34 +18,25 @@ class FortnitePlayerList extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/api/fortnite/ninja")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          ninja: data
-        })
+    Promise.all(
+      [
+        "/api/fortnite/ninja",
+        "/api/fortnite/ViniciusAmazing",
+        "/api/fortnite/Terry 5L"
+      ].map(url => fetch(url))
+    )
+      .then(results => {
+        return Promise.all(
+          results.map(res => (res.ok ? res.json() : Promise.reject(res)))
+        );
       })
-
-    fetch("/api/fortnite/ViniciusAmazing")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          viniciusAmazing: data
-        })
-        console.log(this.state.viniciusAmazing);
+      .then(([ninja, viniciusAmazing, terry5L]) => {
+        this.setState({ ninja, viniciusAmazing, terry5L });
       })
-
-    fetch("/api/fortnite/Terry 5L")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          terry5L: data
-        })
-        console.log(this.state.terry5L);
-      })
+      .catch(err => console.log(err));
   }
+
   render() {
-    console.log(this.state.ninja);
 
     return <div className="playerlist">
 

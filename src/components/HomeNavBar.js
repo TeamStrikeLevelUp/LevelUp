@@ -13,27 +13,28 @@ class HomeNavBar extends React.Component {
 
       <ul className="main-nav">
         <li className="main-nav__item">
-          <Link to="/homepage">Home</Link>
+          <NavLink className="main-nav__item" activeClassName="is-active" to="/homepage">Home</NavLink>
         </li>
         <li className="main-nav__item">
-          <NavLink activeClassName="is active" to="/search">Search Games</NavLink>
+          <NavLink className="main-nav__item" activeClassName="is-active" to="/search">Search Games</NavLink>
         </li>
         <li className="main-nav__item">
-          <Link to="/news">Gaming News</Link>
-        </li>
-
-        <li className="main-nav__item">
-          <Link to="/the-fort">The Fort</Link>
+          <NavLink className="main-nav__item" activeClassName="is-active" to="/news">Gaming News</NavLink>
         </li>
 
         <li className="main-nav__item">
-          <Link to="/forum">Community</Link>
+          <NavLink className="main-nav__item" activeClassName="is-active" to="/the-fort">The Fort</NavLink>
+        </li>
+
+        <li className="main-nav__item">
+          <NavLink className="main-nav__item" activeClassName="is-active" to="/forum">Community</NavLink>
         </li>
         <li className="main-nav__item">
-          <Link to="/twitch">Twitch</Link>
+          <NavLink className="main-nav__item" activeClassName="is-active" to="/twitch">Twitch</NavLink>
         </li>
         <li className="main-nav__item">
-          <Link to="/dashboard">Profile</Link>
+          {userAuthState ?
+            <NavLink className="main-nav__item" activeClassName="is-active" to="/dashboard">Profile</NavLink> : null}
         </li>
 
         <li className="main-nav__item">
@@ -46,7 +47,7 @@ class HomeNavBar extends React.Component {
         </li>
         <li className="main-nav__item">
           {userAuthState ?
-            <Link to="/logout">Logout</Link> : null}
+            <a to="/logout">Logout</a> : null}
         </li>
       </ul>
     );
