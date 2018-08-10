@@ -475,16 +475,6 @@ app.get("/api/twitchfavourites/:id", function(req, res) {
 });
 
 // adds TWITCH favourite to database
-<<<<<<< HEAD
-app.post("/api/addtwitchfavourite", function(req, res) {
-  db.one(
-    `INSERT INTO twitch_favorites(twitch_name, gamer_id)
-          VALUES($1, $2) RETURNING id`,
-    [req.body.twitchName, req.body.gamerId]
-  )
-    .then(data => {
-      res.json({ msg: "added" });
-=======
 app.post("/api/addtwitchfavourite", function (req, res) {
   var headers = {
     'Client-ID': 'goetr7q6o8bx0zott538hwdsavlpf8'
@@ -517,22 +507,13 @@ app.post("/api/addtwitchfavourite", function (req, res) {
             error: error.message
           });
         })
->>>>>>> master
     })
 });
 
-<<<<<<< HEAD
-app.get("/api/gamer/post/:id", function(req, res) {
-  db.any(
-    `SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`,
-    [req.params.id]
-  )
-=======
 app.get("/api/gamer/post/:id", function (req, res) {
   db.any(`SELECT * FROM post WHERE parent_id is null AND gamer_id = $1 ORDER BY created DESC`, [
     req.params.id
   ])
->>>>>>> master
     .then(posts => {
       db.any(
         `SELECT * FROM post WHERE parent_id IS NOT NULL AND gamer_id = $1 ORDER BY created DESC`,
