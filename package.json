@@ -60,12 +60,8 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "fetch-mock": "^6.5.2",
     "jest": "^23.4.2",
-<<<<<<< HEAD
     "jest-fetch-mock": "^1.6.5",
     "node-sass": "^4.9.2",
-=======
-    "node-sass": "^4.9.3",
->>>>>>> master
     "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-mock-store": "^1.5.3",
