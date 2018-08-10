@@ -1,6 +1,6 @@
 //get top twitchers
 export function fetchTopTwitchers() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/twitchStreams`;
 
     return (
@@ -33,7 +33,7 @@ export function receiveTopTwitchers(twitchApiData) {
 
 // Add GAME FAVOURITES to database
 export function addFavouriteToDB(favObject) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch("/api/newfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
@@ -41,7 +41,7 @@ export function addFavouriteToDB(favObject) {
         "Content-Type": "application/json"
       }
     })
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
       .then(json => {
@@ -57,7 +57,7 @@ export function addFavouriteToDB(favObject) {
 // Add TWITCH FAVOURITE to database
 
 export function addFavTwitchToDB(favObject) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
@@ -65,7 +65,7 @@ export function addFavTwitchToDB(favObject) {
         "Content-Type": "application/json"
       }
     })
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
       .then(json => {
@@ -81,7 +81,7 @@ export function addFavTwitchToDB(favObject) {
 
 // FETCHES GAME favourites by UserID
 export function fetchGameFavourite(gamerId) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/api/favourites/${gamerId}`)
       .then(response => response.json())
       .then(json => {
@@ -103,7 +103,7 @@ export function receiveGameFavourites(favouriteData) {
 
 // FETCHES TWITCH favourites by UserID
 export function fetchTwitchFavourite(gamerId) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/api/twitchfavourites/${gamerId}`)
       .then(
         response => (response.ok ? response.json() : Promise.reject(response))
@@ -127,7 +127,7 @@ export function receiveTwitchFavourites(favouriteData) {
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/genres/`;
     return (
       fetch(searchPath)
@@ -147,7 +147,7 @@ export function fetchGenreData() {
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     const searchPath = `/themes/`;
 
     return (
@@ -167,7 +167,7 @@ export function fetchThemeData() {
 }
 //Main GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return (
       fetch(searchPath)
         .then(
@@ -206,7 +206,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -269,7 +269,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-              screenshotObject["cloudinary_id"]
+            screenshotObject["cloudinary_id"]
           );
         });
 
@@ -303,10 +303,25 @@ export function receiveGameData(gameData) {
   };
 }
 
-//Main NEWS Data fetch - calls helper function to sanitise data
+// REAL NEWS Data fetch - calls helper function to sanitise data
+// export function fetchNewsInfoFromAPI(pageNum) {
+//   return function(dispatch, getState) {
+//     return fetch(`/newsApi/${pageNum}`)
+//       .then(response => response.json())
+//       .then(json => {
+//         // console.log("fetch news ", json.articles);
+//         dispatch(setNewsData(json.articles));
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//   };
+// }
+
+//FAKE NEWS Data fetch - for use during DEMO only
 export function fetchNewsInfoFromAPI(pageNum) {
-  return function(dispatch, getState) {
-    return fetch(`/newsApi/${pageNum}`)
+  return function (dispatch, getState) {
+    return fetch(`/static/news${pageNum}.json`)
       .then(response => response.json())
       .then(json => {
         // console.log("fetch news ", json.articles);
@@ -320,7 +335,7 @@ export function fetchNewsInfoFromAPI(pageNum) {
 
 //search NEWS Data based on User input
 export function searchNewsAPI(searchTerm, pageNum) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
@@ -341,7 +356,7 @@ export function receiveNewsData(newsData) {
 }
 
 export function setNewsData(newsData) {
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     let myNewsData = [];
 
     newsData.map(newsObject => {
@@ -394,7 +409,7 @@ function formatTime(date) {
   } else {
     displayTime = `${days !== 0 ? days + "d " : ""}${
       hours !== 0 ? hours + "h " : ""
-    }${minutes !== 0 ? minutes + "m " : ""}`;
+      }${minutes !== 0 ? minutes + "m " : ""}`;
   }
 
   return displayTime;
@@ -411,7 +426,7 @@ export function receiveAuthState(auth) {
 // fetch to grab fortnite user statistics
 export function fetchFortniteStats(username) {
   console.log("fortnite username", username);
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/api/fortnite/${username}`)
       .then(response => response.json())
       .then(data => {
@@ -441,7 +456,7 @@ export function receiveUserData(userData) {
 
 export function fetchGamerInfo(gamerId) {
   //fetch gamer_profile
-  return function(dispatch, getState) {
+  return function (dispatch, getState) {
     return fetch(`/api/gamer/${gamerId}`)
       .then(response => response.json())
       .then(gamerData => {
