@@ -198,7 +198,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  position: relative;\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forums__login a {\n    font-size: 12px;\n    color: #fff;\n    position: absolute;\n    right: 40px;\n    top: 10px; }\n    .forums .forums__login a:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .forums .forums__no-posts {\n    font-size: 14px;\n    color: #fff; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.form__thread--heading {\n  font-size: 18px;\n  font-family: 'Open Sans', sans-serif;\n  color: var(--secondary-color); }\n\n.form__thread {\n  display: flex;\n  flex-direction: column;\n  width: 100%; }\n  .form__thread .form__thread--input,\n  .form__thread .form__thread--textarea {\n    width: 100%;\n    padding: 10px;\n    font-size: 14px; }\n  .form__thread .button {\n    margin-top: 10px;\n    margin-left: auto;\n    padding: 13px;\n    width: 120px;\n    font-size: 15px; }\n    .form__thread .button:hover {\n      cursor: pointer;\n      opacity: .8; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
+exports.push([module.i, ".community,\n.forums {\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n\n.game-search__form {\n  display: flex;\n  justify-content: flex-end;\n  height: 40px; }\n  .game-search__form .button {\n    padding: 3px 10px;\n    padding: 10px 30px;\n    font-size: 13px; }\n    .game-search__form .button:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .game-search__form .game-search__field {\n    padding: 0 10px;\n    font-size: 13px; }\n\n.forums {\n  position: relative;\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif; }\n  .forums .forums__login a {\n    font-size: 12px;\n    color: #fff;\n    position: absolute;\n    right: 40px;\n    top: 10px; }\n    .forums .forums__login a:hover {\n      cursor: pointer;\n      opacity: .7; }\n  .forums .forums__no-posts {\n    font-size: 14px;\n    color: #fff; }\n  .forums .forum {\n    background-color: rgba(185, 187, 190, 0.3);\n    color: var(--light-grey);\n    padding: 10px 20px;\n    margin-bottom: 12px; }\n    .forums .forum:hover {\n      opacity: .9; }\n    .forums .forum .forum__details {\n      display: flex;\n      justify-content: space-around;\n      font-size: 10px;\n      line-height: 23px; }\n      .forums .forum .forum__details .forum__total-post {\n        position: relative; }\n        .forums .forum .forum__details .forum__total-post .icon-comments {\n          fill: var(--light-grey);\n          width: 14px;\n          height: 14px;\n          position: absolute;\n          top: 4px;\n          left: -21px; }\n      .forums .forum .forum__details .forum__latest-post {\n        border-left: 1px solid var(--light-grey);\n        padding-left: 10px;\n        margin-left: 10px;\n        position: relative; }\n        .forums .forum .forum__details .forum__latest-post .forum__latest-post--heading {\n          color: var(--light-grey);\n          padding-right: 5px; }\n    .forums .forum .forum__link {\n      display: flex;\n      justify-content: space-between;\n      color: #fff; }\n      .forums .forum .forum__link:hover {\n        color: var(--primary-color); }\n        .forums .forum .forum__link:hover .icon-comments {\n          fill: var(--primary-color); }\n      .forums .forum .forum__link .forum__link--text {\n        font-size: 14px;\n        line-height: 23px; }\n\n.form__thread--heading {\n  margin-bottom: 15px;\n  font-size: 18px;\n  font-family: 'Open Sans', sans-serif;\n  color: var(--secondary-color); }\n\n.form__thread {\n  display: flex;\n  flex-direction: column;\n  width: 100%; }\n  .form__thread .form__thread--input,\n  .form__thread .form__thread--textarea {\n    width: 100%;\n    padding: 10px;\n    font-size: 14px; }\n  .form__thread .button {\n    margin-top: 10px;\n    margin-left: auto;\n    padding: 13px;\n    width: 120px;\n    font-size: 15px; }\n    .form__thread .button:hover {\n      cursor: pointer;\n      opacity: .8; }\n\n.community__header {\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"../../static/images/forum-h.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: 0% 100%;\n  height: 200px;\n  width: 100%;\n  margin-top: 20px;\n  padding: 16px 20px 16px 30px; }\n  .community__header .community__heading {\n    color: #fff;\n    font-weight: 700;\n    font-family: 'Open Sans', sans-serif;\n    background-color: rgba(114, 137, 218, 0.8);\n    padding: 9px 24px;\n    height: 65px;\n    font-size: 30px; }\n", ""]);
 
 // exports
 
@@ -294,6 +294,25 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 // module
 exports.push([module.i, ".notfound {\n  margin: auto;\n  text-align: center;\n  width: 100%; }\n\n.notfound__image {\n  text-align: center; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/posts.scss":
+/*!*******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/sass-loader/lib/loader.js!./styles/components/posts.scss ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".post__container {\n  margin-top: 20px;\n  background-color: rgba(54, 57, 63, 0.5);\n  font-family: 'Open Sans', sans-serif;\n  max-width: 100%;\n  width: 980px;\n  padding: 10px 40px;\n  margin: 0 auto; }\n  .post__container .button {\n    width: 170px; }\n  .post__container .community__header {\n    height: 80px; }\n    .post__container .community__header .game-search__form {\n      margin-left: auto; }\n  .post__container .post__details {\n    display: flex;\n    justify-content: space-between;\n    font-size: 13px; }\n  .post__container .topic {\n    color: var(--light-grey); }\n  .post__container .post__details--icon {\n    width: 70px;\n    border-radius: 50%; }\n    .post__container .post__details--icon.post__details--icon-big {\n      margin: 0 auto;\n      width: 100px;\n      display: block; }\n  .post__container .post__content {\n    display: grid;\n    grid-template-columns: 20% 80%;\n    margin-top: 50px; }\n    @media (min-width: 768px) {\n      .post__container .post__content {\n        padding-right: 40px; } }\n    .post__container .post__content .post__content--author {\n      text-align: center;\n      font-size: 13px; }\n      .post__container .post__content .post__content--author .profile__links {\n        color: var(--primary-color);\n        line-height: 40px; }\n        .post__container .post__content .post__content--author .profile__links:hover {\n          opacity: .8; }\n\n.replies {\n  margin-top: 40px; }\n  .replies .replies__heading {\n    color: var(--secondary-color); }\n    @media (min-width: 768px) {\n      .replies .replies__heading {\n        padding: 20px 10% 40px; } }\n  .replies .reply {\n    color: var(--light-grey);\n    margin-bottom: 20px; }\n    @media (min-width: 768px) {\n      .replies .reply {\n        margin: 40px 10% 20px; } }\n    .replies .reply:not(:last-child) {\n      border-bottom: 1px solid var(--medium-grey); }\n    .replies .reply .reply__content {\n      display: grid;\n      grid-template-columns: 20% 80%;\n      padding-bottom: 20px; }\n      .replies .reply .reply__content .reply__content--author {\n        display: flex;\n        flex-direction: column;\n        text-align: center;\n        font-size: 12px; }\n        .replies .reply .reply__content .reply__content--author .profile__links {\n          color: var(--primary-color);\n          line-height: 40px; }\n          .replies .reply .reply__content .reply__content--author .profile__links:hover {\n            opacity: .8; }\n        .replies .reply .reply__content .reply__content--author .post__details--icon {\n          width: 70px;\n          border-radius: 50%;\n          margin: 0 auto;\n          display: block; }\n      .replies .reply .reply__content .reply__title {\n        color: #fff;\n        margin-bottom: 0; }\n      .replies .reply .reply__content .reply__date {\n        font-size: 13px; }\n\n.login-link {\n  width: 100%;\n  text-align: right;\n  padding-right: 4px;\n  display: block;\n  padding-top: 10px;\n  font-size: 13px; }\n  .login-link a {\n    color: #fff; }\n    .login-link a:hover {\n      opacity: .8; }\n\n@media (min-width: 768px) {\n  .post__form--wrapper {\n    margin: 0 10%; } }\n", ""]);
 
 // exports
 
@@ -30263,7 +30282,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+__webpack_require__(/*! ../../styles/components/posts.scss */ "./styles/components/posts.scss");
+
+__webpack_require__(/*! ../../styles/components/forums.scss */ "./styles/components/forums.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -30284,7 +30309,8 @@ var Posts = function (_React$Component) {
       post: {},
       input: "",
       title: "",
-      body: ""
+      body: "",
+      avatar: ""
     };
 
     _this.inputHandler = _this.inputHandler.bind(_this);
@@ -30292,56 +30318,58 @@ var Posts = function (_React$Component) {
     _this.titleHandler = _this.titleHandler.bind(_this);
     _this.bodyHandler = _this.bodyHandler.bind(_this);
     _this.replyHandler = _this.replyHandler.bind(_this);
+    _this.fetchAvatar = _this.fetchAvatar.bind(_this);
     return _this;
   }
 
   _createClass(Posts, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("/api/reply/" + this.props.match.params.id).then(function (response) {
+      fetch('/api/reply/' + this.props.match.params.id).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this2.setState({ replies: json });
+        _this2.setState({ replies: json });
+        _this2.fetchAvatar(json);
       });
 
-      fetch("/api/parentpost/" + this.props.match.params.id).then(function (response) {
+      fetch('/api/parentpost/' + this.props.match.params.id).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({ post: json });
       });
     }
   }, {
-    key: "inputHandler",
+    key: 'inputHandler',
     value: function inputHandler(event) {
       this.setState({ input: event.target.value });
     }
   }, {
-    key: "searchHandler",
+    key: 'searchHandler',
     value: function searchHandler(event) {
       var _this3 = this;
 
       event.preventDefault();
 
-      fetch("/api/reply/" + this.props.match.params.id + "/search/" + this.state.input).then(function (response) {
+      fetch('/api/reply/' + this.props.match.params.id + '/search/' + this.state.input).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this3.setState({ replies: json });
       });
     }
   }, {
-    key: "titleHandler",
+    key: 'titleHandler',
     value: function titleHandler(event) {
       this.setState({ title: event.target.value });
     }
   }, {
-    key: "bodyHandler",
+    key: 'bodyHandler',
     value: function bodyHandler(event) {
       this.setState({ body: event.target.value });
     }
   }, {
-    key: "replyHandler",
+    key: 'replyHandler',
     value: function replyHandler(event) {
       var _this4 = this;
 
@@ -30376,118 +30404,175 @@ var Posts = function (_React$Component) {
       this.setState({ body: "", title: "" });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: 'fetchAvatar',
+    value: function fetchAvatar(posts) {
       var _this5 = this;
 
+      posts.map(function (post) {
+        console.log("post.gamer_id", post.gamer_id);
+        fetch('/api/getgameravatar/' + post.gamer_id).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          var avatar = "avatar-" + post.gamer_id;
+          _this5.setState(_defineProperty({}, avatar, json.avatar));
+        });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this6 = this;
+
+      console.log("this.state.post", this.state.post);
       if (!this.state.post.id) return null;
       var created = String(new Date(this.state.post.created)).substring(0, 24);
+      var avatarState = "avatar-" + this.state.post.gamer_id;
       return _react2.default.createElement(
-        "div",
-        null,
+        'div',
+        { className: 'post__container' },
         _react2.default.createElement(
-          "h3",
-          null,
-          " Topic: ",
-          this.state.post.title,
-          " "
-        ),
-        _react2.default.createElement(
-          "h3",
-          null,
-          " ",
-          this.state.post.body,
-          " "
-        ),
-        _react2.default.createElement(
-          "h3",
-          null,
-          " Date Posted: ",
-          created,
-          " "
-        ),
-        _react2.default.createElement(
-          "h3",
-          null,
-          " Posted By: ",
+          'header',
+          { className: 'community__header' },
           _react2.default.createElement(
-            _reactRouterDom.Link,
-            { className: "profile__links", to: "/profile/" + this.state.post.gamer_name },
-            " ",
-            this.state.post.gamer_name,
-            " "
-          ),
-          "    "
-        ),
-        _react2.default.createElement(
-          "form",
-          null,
-          _react2.default.createElement("input", { placeholder: "search for replies", value: this.state.input, onChange: this.inputHandler }),
-          _react2.default.createElement(
-            "button",
-            { onClick: this.searchHandler },
-            " search "
-          )
-        ),
-        this.state.replies.map(function (reply) {
-          var date = String(new Date(reply.created)).substring(0, 24);
-          return _react2.default.createElement(
-            "div",
-            { key: reply.id },
+            'form',
+            { className: 'game-search__form' },
+            _react2.default.createElement('input', { className: 'game-search__field', placeholder: 'Search for replies', value: this.state.input, onChange: this.inputHandler }),
             _react2.default.createElement(
-              "p",
-              null,
-              "Reply to \"",
-              _this5.state.post.title,
-              "\": "
-            ),
-            _react2.default.createElement(
-              "p",
-              null,
-              "Title: ",
-              reply.title
-            ),
-            _react2.default.createElement(
-              "p",
-              null,
-              reply.body
-            ),
-            _react2.default.createElement(
-              "p",
-              null,
-              "Date Posted: ",
-              date
-            ),
-            _react2.default.createElement(
-              "p",
-              null,
-              "Posted by: ",
-              _react2.default.createElement(
-                _reactRouterDom.Link,
-                { className: "profile__links", to: "/profile/" + reply.gamer_name },
-                " ",
-                reply.gamer_name,
-                " "
-              ),
-              " "
+              'button',
+              { className: 'button button-primary', onClick: this.searchHandler },
+              ' Search '
             )
-          );
-        }),
-        _react2.default.createElement(
-          "div",
-          { style: { display: this.props.userAuthState ? 'none' : '' } },
-          " login to post "
+          )
         ),
         _react2.default.createElement(
-          "form",
-          { style: { display: this.props.userAuthState ? '' : 'none' } },
-          _react2.default.createElement("input", { placeholder: "title", value: this.state.title, onChange: this.titleHandler }),
-          _react2.default.createElement("input", { placeholder: "body", value: this.state.body, onChange: this.bodyHandler }),
+          'div',
+          { className: 'login-link', style: { display: this.props.userAuthState ? 'none' : '' } },
+          ' ',
           _react2.default.createElement(
-            "button",
-            { onClick: this.replyHandler },
-            " reply "
+            'a',
+            { href: '/login' },
+            'Login to post'
+          ),
+          ' '
+        ),
+        _react2.default.createElement(
+          'h1',
+          null,
+          _react2.default.createElement(
+            'span',
+            { className: 'topic' },
+            'Topic:'
+          ),
+          ' ',
+          this.state.post.title,
+          ' '
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'post__details' },
+          _react2.default.createElement(
+            'div',
+            null,
+            ' Date Posted: ',
+            created,
+            ' '
           )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'post__content' },
+          _react2.default.createElement(
+            'div',
+            { className: 'post__content--author' },
+            _react2.default.createElement('img', { className: 'post__details--icon post__details--icon-big', src: this.state[avatarState], alt: '' }),
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { className: 'profile__links', to: '/profile/' + this.state.post.gamer_name },
+              ' ',
+              this.state.post.gamer_name,
+              ' '
+            )
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            ' ',
+            this.state.post.body,
+            ' '
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'post__form--wrapper', style: { display: this.props.userAuthState ? '' : 'none' } },
+          _react2.default.createElement(
+            'h5',
+            { className: 'form__thread--heading' },
+            'Post a comment'
+          ),
+          _react2.default.createElement(
+            'form',
+            { className: 'form__thread' },
+            _react2.default.createElement('input', { className: 'form__thread--input', placeholder: 'Comment title', value: this.state.title, onChange: this.titleHandler }),
+            _react2.default.createElement('textarea', { className: 'form__thread--textarea', placeholder: 'Write your comment here', value: this.state.body, onChange: this.bodyHandler }),
+            _react2.default.createElement(
+              'button',
+              { className: 'button button-primary', onClick: this.replyHandler },
+              ' Post a comment '
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'replies' },
+          _react2.default.createElement(
+            'h3',
+            { className: 'replies__heading' },
+            this.state.replies.length,
+            ' comments: '
+          ),
+          this.state.replies.map(function (reply) {
+            var date = String(new Date(reply.created)).substring(0, 24);
+            return _react2.default.createElement(
+              'div',
+              { className: 'reply', key: reply.id },
+              _react2.default.createElement(
+                'div',
+                { className: 'reply__content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'reply__content--author' },
+                  _react2.default.createElement('img', { className: 'post__details--icon', src: _this6.state["avatar-" + reply.gamer_id], alt: '' }),
+                  _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { className: 'profile__links', to: '/profile/' + reply.gamer_name },
+                    ' ',
+                    reply.gamer_name,
+                    ' '
+                  )
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(
+                    'h4',
+                    { className: 'reply__title' },
+                    reply.title
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'reply__date' },
+                    'Date Posted: ',
+                    date
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    reply.body
+                  )
+                )
+              )
+            );
+          })
         )
       );
     }
@@ -33417,6 +33502,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./notfound.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/notfound.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./styles/components/posts.scss":
+/*!**************************************!*\
+  !*** ./styles/components/posts.scss ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/sass-loader/lib/loader.js!./posts.scss */ "./node_modules/css-loader/index.js?!./node_modules/sass-loader/lib/loader.js!./styles/components/posts.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

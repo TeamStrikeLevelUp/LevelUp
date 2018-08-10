@@ -179,8 +179,14 @@ app.get("/api/postsbyparent/:parentid", function (req, res) {
     .catch(error => console.log("/api/postsbyparent/:parentid", error.message));
 });
 
+app.get("/api/getgameravatar/:gamer_id", function (req, res) {
+  db.oneOrNone(`SELECT avatar FROM gamer_profile WHERE gamer_id = $1`, [req.params.gamer_id])
+    .then(data => res.json(data))
+    .catch(error => console.log("/api/getgameravatar", error.message));
+});
+
 app.get("/api/reply/:id", function (req, res) {
-  db.any(`SELECT * FROM post WHERE parent_id = $1`, [req.params.id])
+  db.any(`SELECT * FROM post WHERE parent_id = $1 ORDER BY created ASC`, [req.params.id])
     .then(data => {
       res.json(data);
     })
