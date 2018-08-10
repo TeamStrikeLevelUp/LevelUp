@@ -34,7 +34,7 @@ class HomeNavBar extends React.Component {
         </li>
         <li className="main-nav__item">
           {userAuthState ?
-            <NavLink className="main-nav__item" activeClassName="is-active" to="/dashboard">Profile</NavLink> : null}
+            <NavLink className="main-nav__item" activeClassName="is-active" to="/dashboard">Dashboard</NavLink> : null}
         </li>
 
         <li className="main-nav__item">
@@ -47,7 +47,7 @@ class HomeNavBar extends React.Component {
         </li>
         <li className="main-nav__item">
           {userAuthState ?
-            <a to="/logout">Logout</a> : null}
+            <a href="/logout">Logout</a> : null}
         </li>
       </ul>
     );

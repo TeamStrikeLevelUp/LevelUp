@@ -1,9 +1,9 @@
 .dashboard {
     font-family: 'Open Sans', sans-serif;
     background-image: url("/static/images/background2.jpg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     background-color: var(--dashboard-primary-color);
     height: 100%;
 
@@ -90,204 +90,204 @@
 
 // Dashboard panels
 .dashboard__panels {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 40px;
 
-        @media(min-width: 992px) {
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 2fr 2fr;
-        }
-
-        .dashboard__panels--item {
-            display: flex;
-            flex-direction: column;
-            
-            // background-color: var(--dashboard-secondary-color);
-            background-color: rgba(54, 57, 63, 0.5);
-            padding: 20px; 
-        }
-
-        .dashboard__panels--heading {
-            font-size: 16px;
-            color: var(--light-grey);
-        }
-        .dashboard__panels--points{
-            font-size: 3rem;
-            padding-left: 20px;
-            color: var(--secondary-color);
-        }
-
-        .rank__level {
-            color: var(--primary-color);
-        }
-        .dashboard__fortnite {
-columns: 2;
-        }
-
-        .dashboard__panels--fortnite-user {
-            font-size: 12px;
-            padding-left: 20px;
-            padding-top: 20px;
-            margin-top: auto;
-            display: block;
-
-            &.dashboard__panels--fortnite-user--large {
-                font-size: 14px;
-            }
-        }
-        .dashboard__panels--fortnite-platform {
-            font-size: 12px;
-            padding-left: 20px;
-            padding-top: 20px;
-            margin-top: auto;
-            display: block;
-
-            &.dashboard__panels--fortnite-platform--large {
-                font-size: 14px;
-            }
-        }
-        .dashboard__panels--fortnite-para {
-            color: #fff;
-            font-size: 12px;
-            padding-left: 20px;
-            padding-top: 20px;
-            margin-top: auto;
-            display: block;
-
-            &.dashboard__panels--fortnite-para--large {
-                font-size: 14px;
-            }
-        }
-        ol.dashboard__panels--twitch-list {
-            font-size: 14px;
-            padding-left: 20px;
-            li {
-                list-style: decimal;
-            }
-        }
-
-        ul.dashboard__panels--twitch-list {
-            font-size: 14px;
-            padding-left: 20px;
-            margin-bottom: 20px;
-            height: 180px;
-            overflow: auto;
-            li {
-                margin-bottom: 10px;
-            }
-            
-            .dashboard__panels--twitch-list--img {
-                border-radius: 4px;
-                max-width: 100%;
-                width: 30px;
-                margin-right: 10px;
-            }
-        }
-
-        .dashboard__panels--text {
-            font-size: 12px;
-            margin-top: auto;
-            &.dashboard__panels--text--large {
-                font-size: 14px;
-            }
-        }
-
+    @media(min-width: 992px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 2fr 2fr;
     }
+
+    .dashboard__panels--item {
+        display: flex;
+        flex-direction: column;
+        
+        // background-color: var(--dashboard-secondary-color);
+        background-color: rgba(54, 57, 63, 0.5);
+        padding: 20px; 
+    }
+
+    .dashboard__panels--heading {
+        font-size: 16px;
+        color: var(--light-grey);
+    }
+    .dashboard__panels--points{
+        font-size: 3rem;
+        padding-left: 20px;
+        color: var(--secondary-color);
+    }
+
+    .rank__level {
+        color: var(--primary-color);
+    }
+    .dashboard__fortnite {
+        columns: 2;
+    }
+
+    .dashboard__panels--fortnite-user {
+        font-size: 12px;
+        padding-left: 20px;
+        padding-top: 20px;
+        margin-top: auto;
+        display: block;
+
+        &.dashboard__panels--fortnite-user--large {
+            font-size: 14px;
+        }
+    }
+    .dashboard__panels--fortnite-platform {
+        font-size: 12px;
+        padding-left: 20px;
+        padding-top: 20px;
+        margin-top: auto;
+        display: block;
+
+        &.dashboard__panels--fortnite-platform--large {
+            font-size: 14px;
+        }
+    }
+    .dashboard__panels--fortnite-para {
+        color: #fff;
+        font-size: 12px;
+        padding-left: 20px;
+        padding-top: 20px;
+        margin-top: auto;
+        display: block;
+
+        &.dashboard__panels--fortnite-para--large {
+            font-size: 14px;
+        }
+    }
+    ol.dashboard__panels--twitch-list {
+        font-size: 14px;
+        padding-left: 20px;
+        li {
+            list-style: decimal;
+        }
+    }
+
+    ul.dashboard__panels--twitch-list {
+        font-size: 14px;
+        padding-left: 20px;
+        margin-bottom: 20px;
+        height: 180px;
+        overflow: auto;
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard__panels--twitch-list--img {
+            border-radius: 4px;
+            max-width: 100%;
+            width: 30px;
+            margin-right: 10px;
+        }
+    }
+
+    .dashboard__panels--text {
+        font-size: 12px;
+        margin-top: auto;
+        &.dashboard__panels--text--large {
+            font-size: 14px;
+        }
+    }
+
+}
 
     // Dashboard account
-    .dashboard__account {
-        // background-color: var(--primary-color);
-        // background-color: rgba(114, 137, 218, .4);
-        background-color: rgba(54, 57, 63, 0.8);
-        padding: 20px;
+.dashboard__account {
+    // background-color: var(--primary-color);
+    // background-color: rgba(114, 137, 218, .4);
+    background-color: rgba(54, 57, 63, 0.8);
+    padding: 20px;
 
-        .dashboard__input {
-            // display: block;
-            padding: 5px 0px 2px;
-            margin-top: 7px;
+    .dashboard__input {
+        // display: block;
+        padding: 5px 0px 2px;
+        margin-top: 7px;
+        margin-bottom: 20px;
+        width: 220px;
+    }
+
+    .dashboard__avatar {
+            position: relative;
+        .dashboard__avatar--image {
+            width: 150px;
+            max-width: 100%;
+            border-radius: 50%;
+            display: block;
             margin-bottom: 20px;
-            width: 220px;
         }
-
-        .dashboard__avatar {
-                position: relative;
-            .dashboard__avatar--image {
-                width: 150px;
-                max-width: 100%;
-                border-radius: 50%;
-                display: block;
-                margin-bottom: 20px;
-            }
-            .dashboard__avatar--toggle {
-                font-size: 11px;
-                margin-bottom: 5px;
-                position: absolute;
-                top: -5px;
-                left: 140px;
-            
-                &:hover {
-                    cursor: pointer;
-                    opacity: .8;
-                }
-            }
-            .dashboard__avatar--form {
-                display: none;
-
-                &.dashboard__avatar--form--visible {
-                    display: block;
-                }
+        .dashboard__avatar--toggle {
+            font-size: 11px;
+            margin-bottom: 5px;
+            position: absolute;
+            top: -5px;
+            left: 140px;
+        
+            &:hover {
+                cursor: pointer;
+                opacity: .8;
             }
         }
-
-        .dashboard__fortnite {
-            .dashboard__fortnite--form {
-                display: none;
-
-                &.dashboard__fortnite--form--visible {
-                    display: block;
-                }
-            }
-        }
-
-
-        .dashboard__email--form {
+        .dashboard__avatar--form {
             display: none;
 
-            &.dashboard__email--form--visible {
+            &.dashboard__avatar--form--visible {
                 display: block;
             }
-        }
-
-            .dashboard__account--text {
-                margin-bottom: 8px;
-                font-size: 15px;
-            }
-
-        .dashboard__desc--form {
-            display: none;
-
-            &.dashboard__desc--form--visible {
-                display: block;
-            }
-
-            .dashboard__desc--input {
-                width: 100%;
-            }
-        }
-
-        .dashboard__account--boxes {
-            display: flex;
-            flex-direction: column;
-            @media(min-width: 768px) {
-                display: grid;
-                grid-template-columns: 25% 70%;
-                grid-template-rows: 100%;
-            }
-        }
-
-        .dashboard__account--name {
-            text-transform: capitalize;
         }
     }
+
+    .dashboard__fortnite {
+        .dashboard__fortnite--form {
+            display: none;
+
+            &.dashboard__fortnite--form--visible {
+                display: block;
+            }
+        }
+    }
+
+
+    .dashboard__email--form {
+        display: none;
+
+        &.dashboard__email--form--visible {
+            display: block;
+        }
+    }
+
+    .dashboard__account--text {
+        margin-bottom: 8px;
+        font-size: 15px;
+    }
+
+    .dashboard__desc--form {
+        display: none;
+
+        &.dashboard__desc--form--visible {
+            display: block;
+        }
+
+        .dashboard__desc--input {
+            width: 100%;
+        }
+    }
+
+    .dashboard__account--boxes {
+        display: flex;
+        flex-direction: column;
+        @media(min-width: 768px) {
+            display: grid;
+            grid-template-columns: 25% 70%;
+            grid-template-rows: 100%;
+        }
+    }
+
+    .dashboard__account--name {
+        text-transform: capitalize;
+    }
+}
