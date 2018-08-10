@@ -160,7 +160,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n        .dashboard .dashboard__nav .dashboard__nav--item a:not(.is-active):hover {\n          background-color: rgba(114, 137, 218, 0.6);\n          color: #fff;\n          opacity: .8; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__panels--text {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--text.dashboard__panels--text--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
+exports.push([module.i, ".dashboard {\n  font-family: 'Open Sans', sans-serif;\n  background-image: url(\"/static/images/background2.jpg\");\n  background-repeat: no-repeat;\n  background-position: center center;\n  background-size: cover;\n  background-color: var(--dashboard-primary-color);\n  height: 100vh; }\n  .dashboard .dashboard__container {\n    display: grid;\n    grid-template-columns: 100%;\n    height: 100%; }\n    @media (min-width: 992px) {\n      .dashboard .dashboard__container {\n        grid-template-columns: 200px auto; } }\n    .dashboard .dashboard__container .dashboard__sidebar {\n      padding: 40px 20px;\n      background-color: rgba(54, 57, 63, 0.8); }\n  .dashboard .dashboard__nav {\n    display: flex;\n    justify-content: flex-start;\n    flex-direction: column;\n    height: 100%;\n    padding-left: 0; }\n    .dashboard .dashboard__nav .dashboard__nav--item {\n      font-size: 15px;\n      color: #fff;\n      padding: 10px 0;\n      width: 100%; }\n      .dashboard .dashboard__nav .dashboard__nav--item:hover a {\n        color: var(--primary-color); }\n      .dashboard .dashboard__nav .dashboard__nav--item a {\n        padding: 3px 10px;\n        color: var(--primary-color);\n        display: block; }\n        .dashboard .dashboard__nav .dashboard__nav--item a.is-active {\n          background-color: var(--primary-color);\n          color: #fff; }\n        .dashboard .dashboard__nav .dashboard__nav--item a:not(.is-active):hover {\n          background-color: rgba(114, 137, 218, 0.6);\n          color: #fff;\n          opacity: .8; }\n      .dashboard .dashboard__nav .dashboard__nav--item:active, .dashboard .dashboard__nav .dashboard__nav--item:visited {\n        color: #fff; }\n  .dashboard .dashboard__profile {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .dashboard .dashboard__profile .dashboard__profile--image {\n      border-radius: 50%;\n      max-width: 70px;\n      width: 70px; }\n    .dashboard .dashboard__profile .dashboard__profile--name {\n      text-transform: capitalize;\n      font-size: 13px;\n      margin-top: 20px;\n      margin-bottom: 20px; }\n  .dashboard .dashboard-content-wrapper {\n    padding: 40px; }\n\n.dashboard__panels {\n  display: grid;\n  grid-template-columns: 1fr;\n  grid-template-rows: auto;\n  grid-gap: 40px; }\n  @media (min-width: 992px) {\n    .dashboard__panels {\n      grid-template-columns: 1fr 1fr 1fr;\n      grid-template-rows: 2fr 2fr; } }\n  .dashboard__panels .dashboard__panels--item {\n    display: flex;\n    flex-direction: column;\n    background-color: rgba(54, 57, 63, 0.5);\n    padding: 20px; }\n  .dashboard__panels .dashboard__panels--heading {\n    font-size: 16px;\n    color: var(--light-grey); }\n  .dashboard__panels .dashboard__panels--points {\n    font-size: 3rem;\n    padding-left: 20px;\n    color: var(--secondary-color); }\n  .dashboard__panels .rank__level {\n    color: var(--primary-color); }\n  .dashboard__panels .dashboard__fortnite {\n    columns: 2; }\n  .dashboard__panels .dashboard__panels--fortnite-user {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--fortnite-user.dashboard__panels--fortnite-user--large {\n      font-size: 14px; }\n  .dashboard__panels .dashboard__panels--fortnite-platform {\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--fortnite-platform.dashboard__panels--fortnite-platform--large {\n      font-size: 14px; }\n  .dashboard__panels .dashboard__panels--fortnite-para {\n    color: #fff;\n    font-size: 12px;\n    padding-left: 20px;\n    padding-top: 20px;\n    margin-top: auto;\n    display: block; }\n    .dashboard__panels .dashboard__panels--fortnite-para.dashboard__panels--fortnite-para--large {\n      font-size: 14px; }\n  .dashboard__panels ol.dashboard__panels--twitch-list {\n    font-size: 14px;\n    padding-left: 20px; }\n    .dashboard__panels ol.dashboard__panels--twitch-list li {\n      list-style: decimal; }\n\n.dashboard__account {\n  background-color: rgba(54, 57, 63, 0.8);\n  padding: 20px; }\n  .dashboard__account .dashboard__input {\n    padding: 5px 0px 2px;\n    margin-top: 7px;\n    margin-bottom: 20px;\n    width: 220px; }\n  .dashboard__account .dashboard__avatar {\n    position: relative; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--image {\n      width: 150px;\n      max-width: 100%;\n      border-radius: 50%;\n      display: block;\n      margin-bottom: 20px; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--toggle {\n      font-size: 11px;\n      margin-bottom: 5px;\n      position: absolute;\n      top: -5px;\n      left: 140px; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--toggle:hover {\n        cursor: pointer;\n        opacity: .8; }\n    .dashboard__account .dashboard__avatar .dashboard__avatar--form {\n      display: none; }\n      .dashboard__account .dashboard__avatar .dashboard__avatar--form.dashboard__avatar--form--visible {\n        display: block; }\n  .dashboard__account .dashboard__fortnite .dashboard__fortnite--form {\n    display: none; }\n    .dashboard__account .dashboard__fortnite .dashboard__fortnite--form.dashboard__fortnite--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__email--form {\n    display: none; }\n    .dashboard__account .dashboard__email--form.dashboard__email--form--visible {\n      display: block; }\n  .dashboard__account .dashboard__account--text {\n    margin-bottom: 8px;\n    font-size: 15px; }\n  .dashboard__account .dashboard__desc--form {\n    display: none; }\n    .dashboard__account .dashboard__desc--form.dashboard__desc--form--visible {\n      display: block; }\n    .dashboard__account .dashboard__desc--form .dashboard__desc--input {\n      width: 100%; }\n  .dashboard__account .dashboard__account--boxes {\n    display: flex;\n    flex-direction: column; }\n    @media (min-width: 768px) {\n      .dashboard__account .dashboard__account--boxes {\n        display: grid;\n        grid-template-columns: 25% 70%;\n        grid-template-rows: 100%; } }\n  .dashboard__account .dashboard__account--name {\n    text-transform: capitalize; }\n", ""]);
 
 // exports
 
@@ -179,7 +179,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".fortnite {\n  display: flex;\n  min-height: 100vh;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100%;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: #fafafe;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(214, 214, 255, 0.473);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 20pt; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n\n.playerlist__wrapper {\n  border-style: solid;\n  border-bottom-color: #fafafe;\n  border-left-color: #fafafe;\n  border-right-color: transparent;\n  border-bottom-color: transparent; }\n\n.playerlist__player {\n  padding: 10px; }\n", ""]);
+exports.push([module.i, ".fortnite {\n  display: flex;\n  min-height: 100vh;\n  font-family: 'burbank_big_condensedblack'; }\n\n.fortnite__search {\n  flex-direction: column;\n  flex: 4;\n  background-image: url(\"/static/images/fortnite-cover.jpg\");\n  background-size: cover;\n  min-height: 100%;\n  border-style: solid;\n  border-right-color: #fafafe;\n  border-left-color: transparent;\n  border-top-color: #fafafe;\n  border-bottom-color: transparent; }\n\n.fortnite__title-container {\n  position: relative;\n  float: right;\n  padding: 15px;\n  top: 30%;\n  right: 5%; }\n\n.fortnite__title {\n  color: #fafafe;\n  text-align: center; }\n\n.fortnite__title-tagline {\n  color: #fafafe;\n  text-align: center;\n  font-family: 'Open Sans', sans-serif; }\n\n.fortnite__title-para {\n  color: #fafafe;\n  text-align: center;\n  font-family: 'Open Sans', sans-serif; }\n\n.fortnite__userstats {\n  display: flex;\n  padding: 10px;\n  flex-direction: column;\n  align-items: center;\n  position: relative;\n  background-color: rgba(13, 27, 27, 0.5);\n  height: 100%;\n  top: 90px;\n  width: 60%; }\n\n.fortnite__ul {\n  columns: 2; }\n\n.fortnite__userstats--titles {\n  color: #fafafe;\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--image {\n  border-radius: 50%;\n  width: 80%;\n  height: auto; }\n\n.fortnite__userstats--stats {\n  margin: 0;\n  padding: 0; }\n\n.fortnite__userstats--username {\n  font-size: 170%; }\n\n.fortnite__userstats--platform {\n  font-size: 150%; }\n\n.fortnite__playerlist {\n  flex: 1; }\n\n.fortnite__option {\n  padding: 15px; }\n\n.fortnite__userstats--stats {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 80%; }\n\n.fortnite__option-form {\n  position: relative;\n  top: 100px; }\n\n.fortnite__option-input {\n  font-size: 15px;\n  margin: auto;\n  height: 40px;\n  border-radius: 5%;\n  border: 1px solid #1a2cee;\n  background-color: #131a1a;\n  color: white; }\n\n.fortnite__button {\n  position: relative;\n  padding: 5px;\n  left: 10px;\n  border-radius: 20%; }\n\n.playerlist__wrapper {\n  border-style: solid;\n  border-bottom-color: #fafafe;\n  border-left-color: #fafafe;\n  border-right-color: transparent;\n  border-bottom-color: transparent; }\n\n.playerlist__player {\n  padding: 10px; }\n\n.playlist__player--stats {\n  font-family: 'Open Sans', sans-serif; }\n", ""]);
 
 // exports
 
@@ -33318,7 +33318,7 @@ var Fortnite = function (_React$Component) {
               _react2.default.createElement("input", { className: "fortnite__option-input", onChange: this.handleChange, type: "search", value: this.state.searchUser, placeholder: "Search username..." }),
               _react2.default.createElement(
                 "button",
-                { className: "fortnite__button" },
+                { className: "button__edit" },
                 "Search"
               )
             )
@@ -33358,6 +33358,8 @@ exports.default = Fortnite;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -33410,28 +33412,21 @@ var FortnitePlayerList = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("/api/fortnite/ninja").then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.setState({
-          ninja: data
-        });
-      });
+      Promise.all(["/api/fortnite/ninja", "/api/fortnite/ViniciusAmazing", "/api/fortnite/Terry 5L"].map(function (url) {
+        return fetch(url);
+      })).then(function (results) {
+        return Promise.all(results.map(function (res) {
+          return res.ok ? res.json() : Promise.reject(res);
+        }));
+      }).then(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 3),
+            ninja = _ref2[0],
+            viniciusAmazing = _ref2[1],
+            terry5L = _ref2[2];
 
-      fetch("/api/fortnite/ViniciusAmazing").then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.setState({
-          viniciusAmazing: data
-        });
-      });
-
-      fetch("/api/fortnite/Terry 5L").then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.setState({
-          terry5L: data
-        });
+        _this2.setState({ ninja: ninja, viniciusAmazing: viniciusAmazing, terry5L: terry5L });
+      }).catch(function (err) {
+        return console.log(err);
       });
     }
   }, {
@@ -33651,19 +33646,19 @@ function FortniteUser1(_ref) {
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "playlist__player--stats" },
         "Solo 1st Places: ",
         ninja.stats.placetop1_solo
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "playlist__player--stats" },
         "Total Wins: ",
         ninja.totals.wins
       ),
       _react2.default.createElement(
         "p",
-        null,
+        { className: "playlist__player--stats" },
         "Total Score: ",
         ninja.totals.score
       )
@@ -34374,7 +34369,7 @@ var HomeNavBar = function (_React$Component) {
         _react2.default.createElement(
           "li",
           { className: "main-nav__item" },
-          !userAuthState ? _react2.default.createElement(
+          userAuthState ? _react2.default.createElement(
             _reactRouterDom.NavLink,
             { className: "main-nav__item", activeClassName: "is-active", to: "/dashboard" },
             "Profile"
@@ -35668,7 +35663,7 @@ var Search = function (_React$Component) {
           userAuthState = _props.userAuthState,
           gameFavourite = _props.gameFavourite;
 
-      console.log(gameData);
+      console.log(this.props.gameData);
       var gameDisplay = gameData === "No results found" ? _react2.default.createElement(
         "div",
         { className: "search__result" },
@@ -35773,17 +35768,6 @@ var Search = function (_React$Component) {
                 }) : null
               )
             )
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "search__screenshots" },
-            gameData.screenshot.map(function (game) {
-              _react2.default.createElement(
-                _nukaCarousel2.default,
-                null,
-                _react2.default.createElement("img", { src: game })
-              );
-            })
           ),
           _react2.default.createElement("br", null)
         );
@@ -36607,7 +36591,8 @@ var DashboardPanels = function (_React$Component) {
             user: "",
             userStats: "",
             gamer_rank: "",
-            gamer_info: ""
+            gamer_info: "",
+            fortniteUserData: {}
         };
         _this.gamerRank = _this.gamerRank.bind(_this);
         return _this;
@@ -36649,12 +36634,17 @@ var DashboardPanels = function (_React$Component) {
                 this.props.fetchGameFavourite(userData.userId);
             }
 
-            // Fetch user data
-            this.props.fetchGamerInfo(userData.userId).then(function (data) {
+            // Fetch user data && Fortnite data
+            var tempData = void 0;
+            this.props.fetchGamerInfo(userData.userId).then(function (data1) {
+                return fetch("/api/fortnite/" + data1.profile.fortnitename);
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data2) {
                 _this2.setState({
-                    gamer_info: data
+                    fortniteUserData: data2
                 });
-            });;
+            });
         }
     }, {
         key: "gamerRank",
@@ -36686,7 +36676,7 @@ var DashboardPanels = function (_React$Component) {
                 userStats = _state.userStats,
                 gamer_rank = _state.gamer_rank;
 
-
+            console.log("fort", this.state.fortniteUserData);
             return _react2.default.createElement(
                 "div",
                 { className: "dashboard__panels" },
@@ -36793,19 +36783,50 @@ var DashboardPanels = function (_React$Component) {
                     "div",
                     { className: "dashboard__panels--item" },
                     _react2.default.createElement(
-                        "h3",
-                        { className: "dashboard__panels--heading" },
-                        "Twitch"
-                    ),
-                    _react2.default.createElement(
                         "div",
-                        { className: "dashboard__panels--points" },
-                        "340"
-                    ),
-                    _react2.default.createElement(
-                        "p",
-                        { className: "dashboard__panels--text" },
-                        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                        { className: "dashboard__fortnite" },
+                        _react2.default.createElement(
+                            "h3",
+                            { className: "dashboard__panels--heading" },
+                            "Fortnite"
+                        ),
+                        this.state.fortniteUserData.totals ? _react2.default.createElement(
+                            "div",
+                            { className: "dashboard__panels--points" },
+                            _react2.default.createElement(
+                                "h5",
+                                { className: "dashboard__panels--fortnite-user" },
+                                this.state.fortniteUserData.username
+                            ),
+                            _react2.default.createElement(
+                                "h5",
+                                { className: "dashboard__panels--fortnite-platform" },
+                                this.state.fortniteUserData.platform.toUpperCase()
+                            ),
+                            _react2.default.createElement(
+                                "h5",
+                                { className: "dashboard__panels--fortnite-platform" },
+                                this.state.fortniteUserData.totals.wins > 50 ? "Level: FORTIFIED" : "Level: Bricklayer"
+                            ),
+                            _react2.default.createElement(
+                                "p",
+                                { className: "dashboard__panels--fortnite-para" },
+                                "Total Wins: ",
+                                this.state.fortniteUserData.totals.wins
+                            ),
+                            _react2.default.createElement(
+                                "p",
+                                { className: "dashboard__panels--fortnite-para" },
+                                "Total Kills: ",
+                                this.state.fortniteUserData.totals.kills
+                            ),
+                            _react2.default.createElement(
+                                "p",
+                                { className: "dashboard__panels--fortnite-para" },
+                                "Score: ",
+                                this.state.fortniteUserData.totals.score
+                            )
+                        ) : null
                     )
                 ),
                 _react2.default.createElement(

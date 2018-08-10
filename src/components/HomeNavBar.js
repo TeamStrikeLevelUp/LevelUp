@@ -33,7 +33,7 @@ class HomeNavBar extends React.Component {
           <NavLink className="main-nav__item" activeClassName="is-active" to="/twitch">Twitch</NavLink>
         </li>
         <li className="main-nav__item">
-          {!userAuthState ?
+          {userAuthState ?
             <NavLink className="main-nav__item" activeClassName="is-active" to="/dashboard">Profile</NavLink> : null}
         </li>
 
