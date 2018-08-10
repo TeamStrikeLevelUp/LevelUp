@@ -192,7 +192,7 @@ class Posts extends React.Component {
                     <p>{reply.body}</p>
                     {this.props.userAuthState ? (
                       this.props.userAuthState.userId === reply.gamer_id ? (
-                        <button onClick={event => this.editHandler(event, reply)}>
+                        <button className="button button-edit" onClick={event => this.editHandler(event, reply)}>
                           Edit post
                         </button>
                       ) : null
