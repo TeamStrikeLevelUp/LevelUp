@@ -2,19 +2,24 @@
 export function fetchTopTwitchers() {
   return function(dispatch, getState) {
     const searchPath = `/twitchStreams`;
-    fetch(searchPath)
-      // .then(response => response.json())
-      .then(
-        response => (response.ok ? response.json() : Promise.reject(response))
-      )
-      .then(json => {
-        //fetch info for each twitcher
-        const items = json.map(item => item.data[0]);
-        dispatch(receiveTopTwitchers(items));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+
+    return (
+      fetch(searchPath)
+        // .then(response => response.json())
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        .then(json => {
+          //fetch info for each twitcher
+          console.log("top twitchers in ACTION", json);
+          const items = json.map(item => item.data[0]);
+          console.log(items);
+          dispatch(receiveTopTwitchers(items));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 
@@ -124,17 +129,19 @@ export function receiveTwitchFavourites(favouriteData) {
 export function fetchGenreData() {
   return function(dispatch, getState) {
     const searchPath = `/genres/`;
-    fetch(searchPath)
-      // .then(response => response.json())
-      .then(
-        response => (response.ok ? response.json() : Promise.reject(response))
-      )
-      .then(json => {
-        dispatch(receiveGenreData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+    return (
+      fetch(searchPath)
+        // .then(response => response.json())
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        .then(json => {
+          dispatch(receiveGenreData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 
@@ -143,17 +150,19 @@ export function fetchThemeData() {
   return function(dispatch, getState) {
     const searchPath = `/themes/`;
 
-    fetch(searchPath)
-      .then(
-        response => (response.ok ? response.json() : Promise.reject(response))
-      )
-      // .then(response => response.json())
-      .then(json => {
-        dispatch(receiveThemeData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
+    return (
+      fetch(searchPath)
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        // .then(response => response.json())
+        .then(json => {
+          dispatch(receiveThemeData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
 //Main GAME Data fetch - calls helper function to sanitise data
