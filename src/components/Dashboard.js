@@ -55,7 +55,12 @@ class Dashboard extends React.Component {
                                     setAuthState={this.props.setAuthState}
                                     fetchGamerInfo={this.props.fetchGamerInfo}
                                     fetchGameFavourite={this.props.fetchGameFavourite}
-                                    userDataStore={this.props.userDataStore} />
+                                    userDataStore={this.props.userDataStore}
+                                    gameToSearch={this.props.gameToSearch}
+                                    searchClickedGame={this.props.searchClickedGame}
+                                    twitchStreamer={this.props.twitchStreamer}
+                                    setTwitchStreamer={this.props.setTwitchStreamer}
+                                    />
                             }} />
                             <Route path="/dashboard/account" render={() => {
                                 return <DashboardAccount

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class DashboardPanels extends React.Component {
     constructor(props) {
@@ -12,6 +13,8 @@ class DashboardPanels extends React.Component {
             fortniteUserData: {}
         }
         this.gamerRank = this.gamerRank.bind(this);
+        this.searchGame = this.searchGame.bind(this);
+        this.searchTwitch = this.searchTwitch.bind(this)
     }
 
     componentDidMount() {
@@ -71,6 +74,15 @@ class DashboardPanels extends React.Component {
         }
     }
 
+    searchGame(event,title){
+        this.props.searchClickedGame(title)
+    }
+
+    searchTwitch(event, title){
+        console.log("title: ",title)
+        this.props.setTwitchStreamer(title)     
+      }
+
     render() {
 
         const { twitchFavourite, gameFavourite, userDataStore } = this.props;
@@ -95,9 +107,12 @@ class DashboardPanels extends React.Component {
                         {
                             twitchFavourite.map(fav => {
                                 return (
-                                    <li key={fav.twitch_name}>
-                                        <img src={fav.twitch_image} className="dashboard__panels--twitch-list--img" />
-                                        {fav.twitch_name}</li>
+                                    <li  key={fav.twitch_name}>
+                                     <Link to="/twitch"> 
+                                        <img src={fav.twitch_image} className="dashboard__panels--twitch-list--img"
+                                        onClick={(event)=> this.searchTwitch(event, fav.twitch_name)} />
+                                         </Link>
+                                       {fav.twitch_name}  </li>
                                 )
                             })
                         }
@@ -110,7 +125,8 @@ class DashboardPanels extends React.Component {
                         {
                             gameFavourite.map(fav => {
                                 return (
-                                    <li key={fav.title}>{fav.title}</li>
+                                    <li onClick={(event)=> this.searchGame(event, fav.title)}
+                                     key={fav.title}> <Link to="/search"> {fav.title} </Link> </li>
                                 )
                             })
                         }
