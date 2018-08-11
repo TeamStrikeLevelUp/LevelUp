@@ -18,6 +18,7 @@ class Search extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addToFavourites = this.addToFavourites.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.startUpSearch = this.startUpSearch.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +28,7 @@ class Search extends React.Component {
         this.props.fetchGameFavourites(this.props.userAuthState.userId);
       }
     }
+    this.startUpSearch();
   }
 
   //toggle screenshot popup on and off
@@ -49,7 +51,7 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.fetchGameInfo("/games/" + this.state.searchGame);
+    this.props.fetchGameInfo("/games/" + this.state.searchGame.toLowerCase());
     this.setState({
       searchGame: ""
     });
@@ -75,9 +77,14 @@ class Search extends React.Component {
       alert("Please log in to select favourites");
     }
   }
+
+  startUpSearch(){
+    this.props.fetchGameInfo("/games/" + this.props.gameToSearch.toLowerCase());
+    this.props.searchClickedGame("")
+  }
+
   render() {
     const { gameData, userAuthState, gameFavourite } = this.props;
-    console.log(this.props.gameData);
     const gameDisplay =
       gameData === "No results found" ? (
         <div className="search__result">
