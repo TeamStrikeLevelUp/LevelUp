@@ -6,7 +6,6 @@ class TwitchSearch extends React.Component {
     super(props);
 
     this.state = {
-
       twitchQuery: this.props.twitchStreamer,
       displayVideo: false
     };
@@ -23,7 +22,7 @@ class TwitchSearch extends React.Component {
         this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
       }
     }
-    this.props.fetchTopTwitchers()
+    this.props.fetchTopTwitchers();
   }
 
   handleChange(event) {
@@ -51,17 +50,22 @@ class TwitchSearch extends React.Component {
       const newFav = {
         gamerId: this.props.userAuthState.userId,
         twitchName: twitchStream
-      }
+      };
       // console.log("twitch info", newFav)
       this.props.addToFavourite(newFav);
       this.props.fetchTwitchFavourites(this.props.userAuthState.userId);
     } else {
-      alert("Please log in to select favourites")
+      alert("Please log in to select favourites");
     }
   }
 
   render() {
-    const { fetchTwitchFavourites, twitchFavourite, userAuthState, topTwitchers } = this.props;
+    const {
+      fetchTwitchFavourites,
+      twitchFavourite,
+      userAuthState,
+      topTwitchers
+    } = this.props;
     return (
       <div className="twitch">
         <div className="twitch__search">
@@ -84,17 +88,31 @@ class TwitchSearch extends React.Component {
             <button id="twitch__submit" className="twitch__button">
               Search
             </button>
-            <button className="twitch__button" onClick={event => { this.addToFavourites(this.state.twitchQuery) }}>Add to favourites</button>
+            <button
+              className="twitch__button"
+              onClick={event => {
+                this.addToFavourites(this.state.twitchQuery);
+              }}
+            >
+              Add to favourites
+            </button>
 
             {userAuthState ? <h2>Favourites </h2> : null}
             <ul>
-              {twitchFavourite.map(currentFavourite =>
-
-                <a href="#" className="twitch__anchor" key={currentFavourite.twitch_name}>
-                  <li key={currentFavourite.twitch_name} onClick={this.handleClick}>
+              {twitchFavourite.map(currentFavourite => (
+                <a
+                  href="#"
+                  className="twitch__anchor"
+                  key={currentFavourite.twitch_name}
+                >
+                  <li
+                    key={currentFavourite.twitch_name}
+                    onClick={this.handleClick}
+                  >
                     {currentFavourite.twitch_name}
                   </li>
-                </a>)}
+                </a>
+              ))}
             </ul>
           </form>
           <div className="twitch__search--video">
@@ -110,23 +128,18 @@ class TwitchSearch extends React.Component {
           </div>
         </div>
         <div>
-          <h2 className="twitch__streamers--title">
-            Top 10 Live Streams
-          </h2>
+          <h2 className="twitch__streamers--title">Top 10 Live Streams</h2>
           <ul>
             {topTwitchers.map(currentTwitch => {
               return (
-                <a href="#" key={currentTwitch.id}
-                >
-                  <li onClick={this.handleClick}  >
-                    <img src={currentTwitch.profile_image_url}
-                      width="100"
-                    />
+                <a href="#" key={currentTwitch.id}>
+                  <li onClick={this.handleClick}>
+                    <img src={currentTwitch.profile_image_url} width="100" />
                     {currentTwitch.display_name}
                   </li>
-                </a>)
-            }
-            )}
+                </a>
+              );
+            })}
           </ul>
         </div>
       </div>

@@ -1,6 +1,6 @@
 //get top twitchers
 export function fetchTopTwitchers() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/twitchStreams`;
 
     return (
@@ -11,9 +11,7 @@ export function fetchTopTwitchers() {
         )
         .then(json => {
           //fetch info for each twitcher
-          console.log("top twitchers in ACTION", json);
           const items = json.map(item => item.data[0]);
-          console.log(items);
           dispatch(receiveTopTwitchers(items));
         })
         .catch(error => {
@@ -33,7 +31,7 @@ export function receiveTopTwitchers(twitchApiData) {
 
 // Add GAME FAVOURITES to database
 export function addFavouriteToDB(favObject) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch("/api/newfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
@@ -41,7 +39,7 @@ export function addFavouriteToDB(favObject) {
         "Content-Type": "application/json"
       }
     })
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
       })
       .then(json => {
@@ -57,7 +55,7 @@ export function addFavouriteToDB(favObject) {
 // Add TWITCH FAVOURITE to database
 
 export function addFavTwitchToDB(favObject) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch("/api/addtwitchfavourite/", {
       method: "post",
       body: JSON.stringify(favObject),
@@ -65,7 +63,7 @@ export function addFavTwitchToDB(favObject) {
         "Content-Type": "application/json"
       }
     })
-      .then(function (response) {
+      .then(function(response) {
         return response.json();
       })
       .then(json => {
@@ -81,7 +79,7 @@ export function addFavTwitchToDB(favObject) {
 
 // FETCHES GAME favourites by UserID
 export function fetchGameFavourite(gamerId) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/api/favourites/${gamerId}`)
       .then(response => response.json())
       .then(json => {
@@ -103,7 +101,7 @@ export function receiveGameFavourites(favouriteData) {
 
 // FETCHES TWITCH favourites by UserID
 export function fetchTwitchFavourite(gamerId) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/api/twitchfavourites/${gamerId}`)
       .then(
         response => (response.ok ? response.json() : Promise.reject(response))
@@ -127,7 +125,7 @@ export function receiveTwitchFavourites(favouriteData) {
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchGenreData() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/genres/`;
     return (
       fetch(searchPath)
@@ -147,7 +145,7 @@ export function fetchGenreData() {
 
 // Genre & Themes are retrieved via separate fetches
 export function fetchThemeData() {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     const searchPath = `/themes/`;
 
     return (
@@ -165,24 +163,45 @@ export function fetchThemeData() {
     );
   };
 }
-//Main GAME Data fetch - calls helper function to sanitise data
-export function fetchGameInfoFromAPI(searchPath) {
-  return function (dispatch, getState) {
-    return (
-      fetch(searchPath)
-        .then(
-          response => (response.ok ? response.json() : Promise.reject(response))
-        )
-        // .then(response =>  response.json()  )
-        .then(json => {
-          // console.log((json.body).length, " results")
 
-          dispatch(setGameData(json.body));
-        })
-        .catch(error => {
-          console.log("Sorry the following error occurred: ", error);
-        })
-    );
+// //REAL GAME Data fetch - calls helper function to sanitise data
+// export function fetchGameInfoFromAPI(searchPath) {
+//   return function (dispatch, getState) {
+//     return (
+//       fetch(searchPath)
+//         .then(
+//           response => (response.ok ? response.json() : Promise.reject(response))
+//         )
+//         // .then(response =>  response.json()  )
+//         .then(json => {
+//           // console.log((json.body).length, " results")
+//           dispatch(setGameData(json.body));
+//         })
+//         .catch(error => {
+//           console.log("Sorry the following error occurred: ", error);
+//         })
+//     );
+//   };
+// }
+
+//FAKE GAME Data fetch - calls helper function to sanitise data
+export function fetchGameInfoFromAPI(searchPath) {
+  return function(dispatch, getState) {
+    // return (
+    fetch(`/static/zelda.json`)
+      .then(
+        response => (response.ok ? response.json() : Promise.reject(response))
+      )
+      // .then(response =>  response.json()  )
+      .then(json => {
+        // console.log((json.body).length, " results")
+
+        dispatch(setGameData(json.body));
+      })
+      .catch(error => {
+        console.log("Sorry the following error occurred: ", error);
+      });
+    // );
   };
 }
 
@@ -206,7 +225,7 @@ export function receiveThemeData(themeData) {
 //{igdbId:<gameID>,cover_img:<cover pic>,name:game Title,description,genres:[genres ],themes:[themes],user_rating:number,critic_rating:number,screenshot:[array of imgs]}
 
 export function setGameData(gameData) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     let myGameData = [];
 
     gameData.map(gameObject => {
@@ -269,7 +288,7 @@ export function setGameData(gameData) {
         gameObject.screenshots.map(screenshotObject => {
           screenArray.push(
             "https://images.igdb.com/igdb/image/upload/t_screenshot_big/" +
-            screenshotObject["cloudinary_id"]
+              screenshotObject["cloudinary_id"]
           );
         });
 
@@ -305,7 +324,7 @@ export function receiveGameData(gameData) {
 
 // REAL NEWS Data fetch - calls helper function to sanitise data
 // export function fetchNewsInfoFromAPI(pageNum) {
-//   return function(dispatch, getState) {
+//   return function (dispatch, getState) {
 //     return fetch(`/newsApi/${pageNum}`)
 //       .then(response => response.json())
 //       .then(json => {
@@ -320,7 +339,7 @@ export function receiveGameData(gameData) {
 
 //FAKE NEWS Data fetch - for use during DEMO only
 export function fetchNewsInfoFromAPI(pageNum) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/static/news${pageNum}.json`)
       .then(response => response.json())
       .then(json => {
@@ -335,7 +354,7 @@ export function fetchNewsInfoFromAPI(pageNum) {
 
 //search NEWS Data based on User input
 export function searchNewsAPI(searchTerm, pageNum) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/searchNews/${searchTerm}/${pageNum}`)
       .then(response => response.json())
       .then(json => {
@@ -356,7 +375,7 @@ export function receiveNewsData(newsData) {
 }
 
 export function setNewsData(newsData) {
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     let myNewsData = [];
 
     newsData.map(newsObject => {
@@ -371,13 +390,9 @@ export function setNewsData(newsData) {
         myNewsObject["author"] = newsObject.author;
       }
       myNewsObject["description"] = newsObject.description;
-
       myNewsObject["date"] = formatTime(newsObject.publishedAt);
-
       myNewsObject["title"] = newsObject.title;
-
       myNewsObject["url"] = newsObject.url;
-
       if (newsObject.urlToImage) {
         if (!newsObject.urlToImage.includes("placeholder")) {
           myNewsObject["image"] = newsObject.urlToImage;
@@ -385,7 +400,6 @@ export function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
   };
 }
@@ -401,7 +415,6 @@ function formatTime(date) {
   const minutes = Math.floor(((diff % 86400000) % 3600000) / 60000);
 
   //If the data is more than 1 day old, then just display the number of days
-
   if (days >= 1) {
     displayTime = days + "d ";
   } else if (hours === 24) {
@@ -409,9 +422,8 @@ function formatTime(date) {
   } else {
     displayTime = `${days !== 0 ? days + "d " : ""}${
       hours !== 0 ? hours + "h " : ""
-      }${minutes !== 0 ? minutes + "m " : ""}`;
+    }${minutes !== 0 ? minutes + "m " : ""}`;
   }
-
   return displayTime;
 }
 
@@ -426,7 +438,7 @@ export function receiveAuthState(auth) {
 // fetch to grab fortnite user statistics
 export function fetchFortniteStats(username) {
   console.log("fortnite username", username);
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/api/fortnite/${username}`)
       .then(response => response.json())
       .then(data => {
@@ -456,7 +468,7 @@ export function receiveUserData(userData) {
 
 export function fetchGamerInfo(gamerId) {
   //fetch gamer_profile
-  return function (dispatch, getState) {
+  return function(dispatch, getState) {
     return fetch(`/api/gamer/${gamerId}`)
       .then(response => response.json())
       .then(gamerData => {
@@ -469,8 +481,7 @@ export function fetchGamerInfo(gamerId) {
   };
 }
 
-// API data coming out contains duplicates-remove those with the same title OR same description
-
+// API data contains duplicates-remove those with the same title OR same description
 function removeDuplicates(newsSearch) {
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
@@ -494,7 +505,6 @@ function removeDuplicates(newsSearch) {
 }
 
 // set a twitch streamer from a different component
-
 export function setTwitchStreamer(streamer) {
   return {
     type: "SET_TWITCH_STREAMER",

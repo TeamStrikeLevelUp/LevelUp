@@ -1,11 +1,11 @@
-li {
+.search__list .search__result {
   list-style: none;
 }
-.game__anchor{
+.game__anchor {
   text-decoration: none;
-  color:whitesmoke;
-  text-align:center;
-  font-size:15px;
+  color: whitesmoke;
+  text-align: center;
+  font-size: 15px;
 }
 
 .search__body {
@@ -41,11 +41,11 @@ li {
   font-size: 20px;
   vertical-align: top;
   color: rgb(205, 165, 243);
-  margin-left:10px;
+  margin-left: 10px;
 }
 
-.search__desc{
-  margin-left:10px;
+.search__desc {
+  margin-left: 10px;
 }
 
 .search__form {
@@ -60,25 +60,25 @@ li {
 }
 
 .search__img {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  text-align:center;
+  text-align: center;
   align-content: center;
-  margin:auto;
+  margin: auto;
 }
 .search__img--cover {
-   width: auto;
+  width: auto;
 }
 .search__details--button {
   height: 50px;
-  margin-top:15px;
-  font-size:20px;
+  margin-top: 15px;
+  font-size: 20px;
   font-weight: 400;
-  width:auto;
+  width: auto;
   background-color: darkslategrey;
   color: rgb(75, 212, 253);
-  border-style:none;
-  border-radius:5%;
+  border-style: none;
+  border-radius: 5%;
 }
 
 .search__box {
@@ -103,7 +103,7 @@ li {
 }
 
 .search__details--ratings {
-  margin-left:10px;
+  margin-left: 10px;
   color: grey;
 }
 
@@ -122,9 +122,9 @@ li {
   transform: rotate(-90deg);
 }
 
-.search__screenshots{
-  margin-top:20px;
-  text-align:center;
+.search__screenshots {
+  margin-top: 20px;
+  text-align: center;
 }
 
 /* Popup-------------------------------------------------*/
@@ -136,12 +136,12 @@ li {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.1),
+  background-color: rgba(0, 0, 0, 0.1);
   // margin: auto;
 }
 .popup__inner {
   position: absolute;
-  left:25%;
+  left: 25%;
   right: 10%;
   top: 25%;
   bottom: 25%;
@@ -149,16 +149,17 @@ li {
   text-align: center;
 }
 
-.popup__button{
-  position:absolute;
-  top:5%;
+.popup__button {
+  position: absolute;
+  top: 5%;
   right: 5%;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
-/*   top: 0; */
+  /*   top: 0; */
   top: 50%;
   width: auto;
   margin-top: -22px;
@@ -177,12 +178,13 @@ li {
   left: 1%;
 }
 
-.prev:hover, .next:hover {
-	color: white;
+.prev:hover,
+.next:hover {
+  color: white;
   background-color: rgb(26, 44, 238);
 }
 
- .fade {
+.fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
@@ -190,11 +192,19 @@ li {
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-} 
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}

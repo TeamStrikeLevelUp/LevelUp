@@ -23,7 +23,7 @@
 }
 
 .news__form {
-  margin-left: 10px;
+  margin-left: 14px;
 }
 
 .news__input {
@@ -36,7 +36,7 @@
 }
 
 .news__title {
-  font-size: 12px;
+  font-size: 15px;
   vertical-align: top;
   color:var(--primary-color);
   margin-top:5px;
@@ -45,12 +45,12 @@
 
 .news__author {
   color: grey;
-  font-size: 8px;
+  font-size: 10px;
   
 }
 .news__date {
   color: rgba(211, 211, 211, 0.623);
-  font-size: 8px;
+  font-size: 10px;
   // text-align:left;
   margin-bottom:5px;
   // border-bottom:1px solid darkslategrey;
@@ -60,7 +60,7 @@
   margin-top:5px;
   // text-align: left;
   color: whitesmoke;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .news__pages{
