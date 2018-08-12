@@ -11,9 +11,7 @@ export function fetchTopTwitchers() {
         )
         .then(json => {
           //fetch info for each twitcher
-          console.log("top twitchers in ACTION", json);
           const items = json.map(item => item.data[0]);
-          console.log(items);
           dispatch(receiveTopTwitchers(items));
         })
         .catch(error => {
@@ -165,7 +163,8 @@ export function fetchThemeData() {
     );
   };
 }
-//Main GAME Data fetch - calls helper function to sanitise data
+
+// //REAL GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
   return function(dispatch, getState) {
     return (
@@ -176,7 +175,6 @@ export function fetchGameInfoFromAPI(searchPath) {
         // .then(response =>  response.json()  )
         .then(json => {
           // console.log((json.body).length, " results")
-
           dispatch(setGameData(json.body));
         })
         .catch(error => {
@@ -185,6 +183,27 @@ export function fetchGameInfoFromAPI(searchPath) {
     );
   };
 }
+
+//FAKE GAME Data fetch - calls helper function to sanitise data
+// export function fetchGameInfoFromAPI(searchPath) {
+//   return function(dispatch, getState) {
+//     // return (
+//     fetch(`/static/zelda.json`)
+//       .then(
+//         response => (response.ok ? response.json() : Promise.reject(response))
+//       )
+//       // .then(response =>  response.json()  )
+//       .then(json => {
+//         // console.log((json.body).length, " results")
+
+//         dispatch(setGameData(json.body));
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//     // );
+//   };
+// }
 
 //function to call Reducer and set Genre data in redux.state
 export function receiveGenreData(genreData) {
@@ -303,10 +322,25 @@ export function receiveGameData(gameData) {
   };
 }
 
-//Main NEWS Data fetch - calls helper function to sanitise data
+// REAL NEWS Data fetch - calls helper function to sanitise data
+// export function fetchNewsInfoFromAPI(pageNum) {
+//   return function (dispatch, getState) {
+//     return fetch(`/newsApi/${pageNum}`)
+//       .then(response => response.json())
+//       .then(json => {
+//         // console.log("fetch news ", json.articles);
+//         dispatch(setNewsData(json.articles));
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//   };
+// }
+
+//FAKE NEWS Data fetch - for use during DEMO only
 export function fetchNewsInfoFromAPI(pageNum) {
   return function(dispatch, getState) {
-    return fetch(`/newsApi/${pageNum}`)
+    return fetch(`/static/news${pageNum}.json`)
       .then(response => response.json())
       .then(json => {
         // console.log("fetch news ", json.articles);
@@ -356,13 +390,9 @@ export function setNewsData(newsData) {
         myNewsObject["author"] = newsObject.author;
       }
       myNewsObject["description"] = newsObject.description;
-
       myNewsObject["date"] = formatTime(newsObject.publishedAt);
-
       myNewsObject["title"] = newsObject.title;
-
       myNewsObject["url"] = newsObject.url;
-
       if (newsObject.urlToImage) {
         if (!newsObject.urlToImage.includes("placeholder")) {
           myNewsObject["image"] = newsObject.urlToImage;
@@ -370,7 +400,6 @@ export function setNewsData(newsData) {
       }
       myNewsData.push(myNewsObject);
     });
-
     dispatch(receiveNewsData(removeDuplicates(myNewsData)));
   };
 }
@@ -386,7 +415,6 @@ function formatTime(date) {
   const minutes = Math.floor(((diff % 86400000) % 3600000) / 60000);
 
   //If the data is more than 1 day old, then just display the number of days
-
   if (days >= 1) {
     displayTime = days + "d ";
   } else if (hours === 24) {
@@ -396,7 +424,6 @@ function formatTime(date) {
       hours !== 0 ? hours + "h " : ""
     }${minutes !== 0 ? minutes + "m " : ""}`;
   }
-
   return displayTime;
 }
 
@@ -454,8 +481,7 @@ export function fetchGamerInfo(gamerId) {
   };
 }
 
-// API data coming out contains duplicates-remove those with the same title OR same description
-
+// API data contains duplicates-remove those with the same title OR same description
 function removeDuplicates(newsSearch) {
   if (newsSearch.length === 0) {
     newsSearch = "No results found";
