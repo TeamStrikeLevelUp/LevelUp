@@ -161,6 +161,17 @@ app.get("/api/post/:id/search/:name", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+
+// Get gamer's posts
+app.get("/api/userposts/:id", function (req, res) {
+  db.manyOrNone(`SELECT * FROM post WHERE gamer_id = $1 ORDER BY created DESC`, [req.params.id])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+// Get posts that are parent (thread)
 app.get("/api/parentpost/:id", function (req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
@@ -169,6 +180,7 @@ app.get("/api/parentpost/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+// Get posts that are replies of a parent post
 app.get("/api/postsbyparent/:parentid", function (req, res) {
   db.manyOrNone(`SELECT * FROM post WHERE parent_id = $1`, [
     req.params.parentid
@@ -177,6 +189,7 @@ app.get("/api/postsbyparent/:parentid", function (req, res) {
     .catch(error => console.log("/api/postsbyparent/:parentid", error.message));
 });
 
+// Get user's avatar
 app.get("/api/getgameravatar/:gamer_id", function (req, res) {
   db.oneOrNone(`SELECT avatar FROM gamer_profile WHERE gamer_id = $1`, [
     req.params.gamer_id
@@ -194,6 +207,8 @@ app.get("/api/reply/:id", function (req, res) {
     })
     .catch(error => console.log(error.message));
 });
+
+
 
 app.get("/api/reply/:id/search/:name", function (req, res) {
   db.any(

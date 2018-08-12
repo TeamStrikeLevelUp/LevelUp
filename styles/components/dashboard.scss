@@ -193,7 +193,23 @@
             font-size: 14px;
         }
     }
+    
+    .dashboard__panels--latest-posts-list {
+        height: 170px;
+        overflow: auto;
+        margin-bottom: 15px;
+        .dashboard__panels--latest-posts-item {
+            margin-bottom: 7px;
 
+            a {
+                color: #fff;
+
+                &:hover {
+                    color: var(--secondary-color);
+                }
+            }
+        }
+    }
 }
 
     // Dashboard account
