@@ -5,7 +5,8 @@ import {
   fetchGenreData,
   fetchThemeData,
   addFavouriteToDB,
-  fetchGameFavourite
+  fetchGameFavourite,
+  searchClickedGame
 } from "../actions";
 
 const mapStateToProps = reduxState => {
@@ -14,8 +15,8 @@ const mapStateToProps = reduxState => {
     themeData: reduxState.themeInfo,
     genreData: reduxState.genreInfo,
     userAuthState: reduxState.authState,
-    gameFavourite: reduxState.gameFavourite
-
+    gameFavourite: reduxState.gameFavourite,
+    gameToSearch: reduxState.gameToSearch
   };
 };
 
@@ -34,6 +35,9 @@ const mapDispatchToProps = dispatch => {
     },
     fetchGameFavourites: (userId) => {
       dispatch(fetchGameFavourite(userId))
+    },
+    searchClickedGame: (game) => {
+      dispatch(searchClickedGame(game))
     }
   };
 };

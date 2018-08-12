@@ -504,10 +504,20 @@ function removeDuplicates(newsSearch) {
   return Object.values(cleanNewsData);
 }
 
-// set a twitch streamer from a different component
+// set a twitch streamer from a different component than Twitch
+
 export function setTwitchStreamer(streamer) {
   return {
     type: "SET_TWITCH_STREAMER",
     payload: streamer
+  };
+}
+
+// search a game from a different component than Search
+
+export function searchClickedGame(game) {
+  return {
+    type: "SEARCH_CLICKED_GAME",
+    payload: game
   };
 }
