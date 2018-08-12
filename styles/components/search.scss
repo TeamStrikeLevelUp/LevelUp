@@ -129,12 +129,14 @@
   }
 
   .search__video {
-    align-content: right; //argh help!
-    justify-content: right;
+    // align-content: right;
+    // justify-content: right;
     margin: auto;
     width: 560;
     height: 315;
     // frameBorder:"0;
+    // width: auto;
+    // height: auto;
   }
 
   .search__box {
