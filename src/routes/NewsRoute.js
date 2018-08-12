@@ -1,10 +1,11 @@
 import React from "react";
+import NewsContainer from "../containers/NewsContainer";
 
 class NewsRoute extends React.Component {
   render() {
     return (
       <div>
-        <h2>Sheila: place news container here</h2>
+        <NewsContainer />
       </div>
     );
   }

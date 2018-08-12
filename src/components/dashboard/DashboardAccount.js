@@ -54,6 +54,7 @@ class DashboardAccount extends React.Component {
 
     // Avatar
     togglerAvatarHandler() {
+
         this.setState({
             togglerAvatar: !this.state.togglerAvatar
         })
@@ -92,6 +93,7 @@ class DashboardAccount extends React.Component {
 
     // Fortnite username
     togglerFortniteHandler() {
+        document.querySelector('.dashboard__fortnite--input').value = document.querySelector('.dashboard__fortnite--username').innerHTML;
         this.setState({
             togglerFortnite: !this.state.togglerFortnite
         })
@@ -130,6 +132,7 @@ class DashboardAccount extends React.Component {
 
     // Email 
     togglerEmailHandler() {
+        document.querySelector('.dashboard__email--input').value = document.querySelector('.dashboard__fortnite--email').innerHTML;
         this.setState({
             togglerEmail: !this.state.togglerEmail
         })
@@ -166,6 +169,7 @@ class DashboardAccount extends React.Component {
     }
     // Description  
     togglerDescHandler() {
+        document.querySelector('.dashboard__desc--input').value = document.querySelector('.dashboard__desc').innerHTML;
         this.setState({
             togglerDesc: !this.state.togglerDesc
         })
@@ -259,7 +263,9 @@ class DashboardAccount extends React.Component {
                                 <div className="dashboard__fortnite dashboard__account--text">
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerFortniteHandler}>
                                         <strong>Fortnite Name: </strong>
-                                        {this.props.userAuthState.fortniteName ? this.props.userAuthState.fortniteName : this.state.gamer_info.profile.fortnitename}
+                                        <span className="dashboard__fortnite--username">
+                                            {this.props.userAuthState.fortniteName ? this.props.userAuthState.fortniteName : this.state.gamer_info.profile.fortnitename}
+                                        </span>
                                         <div className="button__edit">
                                             <svg aria-hidden="true" focusable="false">
                                                 <use xlinkHref="#button-edit" />
@@ -284,7 +290,10 @@ class DashboardAccount extends React.Component {
                                 <div className="dashboard__account--email dashboard__account--text">
 
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerEmailHandler}>
-                                        <strong>Email: </strong>{this.props.userAuthState.email ? this.props.userAuthState.email : this.state.gamer_info.profile.email}
+                                        <strong>Email: </strong>
+                                        <span className="dashboard__fortnite--email">
+                                            {this.props.userAuthState.email ? this.props.userAuthState.email : this.state.gamer_info.profile.email}
+                                        </span>
                                         <div className="button__edit">
                                             <svg aria-hidden="true" focusable="false">
                                                 <use xlinkHref="#button-edit" />
@@ -308,7 +317,10 @@ class DashboardAccount extends React.Component {
                                 {/* Description */}
                                 <div className="dashboard__account--desc dashboard__account--text">
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerDescHandler}>
-                                        <strong>Description: </strong>{this.props.userAuthState.description ? this.props.userAuthState.description : this.state.gamer_info.profile.description}
+                                        <strong>Description: </strong>
+                                        <span className="dashboard__desc">
+                                            {this.props.userAuthState.description ? this.props.userAuthState.description : this.state.gamer_info.profile.description}
+                                        </span>
                                         <div className="button__edit">
                                             <svg aria-hidden="true" focusable="false">
                                                 <use xlinkHref="#button-edit" />

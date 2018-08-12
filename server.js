@@ -807,9 +807,12 @@ app.get("/games/:title", (req, res) => {
       {
         filters: {
           "name-in": gameTitle
+          // eq: gameTitle
+          // search: gameTitle
         },
-        order: "popularity:desc",
-        search: gameTitle
+        // order: "relevance",
+        order: "popularity:desc"
+        // ,        search: gameTitle
         // limit: 50 // Limit to 50 results
       },
       ["*"]
@@ -824,14 +827,14 @@ app.get("/games/:title", (req, res) => {
     });
 });
 
-//NOT CURRENTLY USED in game - utility to search for game details
+//This search is executed when a favourite is clicked on due to the search limitations of the API not finding the game by exact title
 app.get("/gameid/:id", (req, res) => {
   const gameTitle = req.params.id;
   client
     .games({
       ids: [gameTitle],
       order: "release_dates.date:asc",
-      fields: "id,name,summary,cover.url,rating,aggregated_rating,cover", // Return all fields
+      fields: "*", // Return all fields
       limit: 5, // Currentlyl imited to 5 results
       offset: 15 // Index offset for results
     })

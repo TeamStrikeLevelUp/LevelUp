@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import DashboardPanels from './dashboard/DashboardPanels';
 import DashboardAccount from './dashboard/DashboardAccount';
+import DashboardRetro from './dashboard/DashboardRetro';
 import cx from 'classnames';
 import '../../styles/components/dashboard.scss';
 
@@ -48,6 +49,7 @@ class Dashboard extends React.Component {
                         <ul className="dashboard__nav">
                             <li className="dashboard__nav--item"><NavLink exact activeClassName="is-active" to="/dashboard">Dashboard</NavLink></li>
                             <li className="dashboard__nav--item"><NavLink activeClassName="is-active" to="/dashboard/account">Account</NavLink></li>
+                            <li className="dashboard__nav--item"><NavLink activeClassName="is-active" to="/dashboard/retro-zone">Retro Zone</NavLink></li>
                         </ul>
                     </div>
                     <div className="dashboard-content-wrapper">
@@ -62,7 +64,12 @@ class Dashboard extends React.Component {
                                     setAuthState={this.props.setAuthState}
                                     fetchGamerInfo={this.props.fetchGamerInfo}
                                     fetchGameFavourite={this.props.fetchGameFavourite}
-                                    userDataStore={this.props.userDataStore} />
+                                    userDataStore={this.props.userDataStore}
+                                    gameToSearch={this.props.gameToSearch}
+                                    searchClickedGame={this.props.searchClickedGame}
+                                    twitchStreamer={this.props.twitchStreamer}
+                                    setTwitchStreamer={this.props.setTwitchStreamer}
+                                />
                             }} />
                             <Route path="/dashboard/account" render={() => {
                                 return <DashboardAccount
@@ -71,6 +78,9 @@ class Dashboard extends React.Component {
                                     fetchGamerInfo={this.props.fetchGamerInfo}
                                     userDataStore={this.props.userDataStore}
                                     setUserData={this.props.setUserData} />
+                            }} />
+                            <Route path="/dashboard/retro-zone" render={() => {
+                                return <DashboardRetro />
                             }} />
                         </Switch>
                     </div>

@@ -122,6 +122,7 @@ class Posts extends React.Component {
       editId: reply.id,
       editMode: true
     });
+    window.scrollTo(75, 75);
   };
 
   fetchAvatar = (posts) => {

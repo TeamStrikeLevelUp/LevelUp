@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class DashboardPanels extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             user: "",
@@ -11,20 +11,26 @@ class DashboardPanels extends React.Component {
             gamer_rank: "",
             gamer_info: "",
             fortniteUserData: {},
-            userPosts: []
-        }
+            userPosts: [],
+            posts: [],
+            replies: []
+        };
         this.gamerRank = this.gamerRank.bind(this);
         this.fetchUserInfo = this.fetchUserInfo.bind(this);
         this.fetchUserPosts = this.fetchUserPosts.bind(this);
+        this.searchGame = this.searchGame.bind(this);
+        this.searchTwitch = this.searchTwitch.bind(this);
     }
 
     componentDidMount() {
         const userData = initialUser;
         this.setState({
-            user: userData,
+            user: userData
         });
 
-        if (userData) { this.props.setAuthState(userData) };
+        if (userData) {
+            this.props.setAuthState(userData);
+        }
 
         // Fetch Twitch favourites if not in redux.state
         if (userData && this.props.fetchTwitchFavourite) {
@@ -37,23 +43,33 @@ class DashboardPanels extends React.Component {
         this.fetchUserInfo(userData);
         this.fetchUserPosts(userData);
 
+        // fetch user posts
+        fetch(`/api/gamer/post/${userData.userId}`)
+            .then(response => response.json())
+            .then(json => {
+
+                this.setState({ posts: json.posts, replies: json.replies });
+            });
+
+        // Gamer rank
+        this.gamerRank();
 
         // Games Info
         if (userData && this.props.fetchGameFavourite) {
             this.props.fetchGameFavourite(userData.userId);
         }
 
-        this.gamerRank();
-
         // Fetch user data && Fortnite data
-        //     let tempData;
-        //     this.props.fetchGamerInfo(userData.userId).then(data1 => fetch(`/api/fortnite/${data1.profile.fortnitename}`))
-        //         .then(response => response.json())
-        //         .then(data2 => {
-        //             this.setState({
-        //                 fortniteUserData: data2
-        //             })
-        //         })
+        let tempData;
+        this.props
+            .fetchGamerInfo(userData.userId)
+            .then(data1 => fetch(`/api/fortnite/${data1.profile.fortnitename}`))
+            .then(response => response.json())
+            .then(data2 => {
+                this.setState({
+                    fortniteUserData: data2
+                });
+            });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -92,26 +108,47 @@ class DashboardPanels extends React.Component {
         }
     }
 
-    render() {
+    searchGame(event, title) {
+        this.props.searchClickedGame(title);
+    }
 
-        const { twitchFavourite, gameFavourite } = this.props;
+    searchTwitch(event, title) {
+        console.log("title: ", title);
+        this.props.setTwitchStreamer(title);
+    }
+
+    render() {
+        const { twitchFavourite, gameFavourite, userDataStore } = this.props;
         const { userStats, gamer_rank, userPosts } = this.state;
+        // console.log("fort", this.state.fortniteUserData);
 
         return (
             <div className="dashboard__panels">
                 {/* Level */}
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Level</h3>
-                    <div className="dashboard__panels--points">{userStats.gamer_level}</div>
-                    <p className="dashboard__panels--text dashboard__panels--text--large">Your LevelUp rank is <strong className="rank__level">{gamer_rank}</strong></p>
-                    <p className="dashboard__panels--text">This shows your overall rank related with the games you play and your levelUp points.</p>
+                    <div className="dashboard__panels--points">
+                        {userStats.gamer_level}
+                    </div>
+                    <p className="dashboard__panels--text dashboard__panels--text--large">
+                        Your LevelUp rank is{" "}
+                        <strong className="rank__level">{gamer_rank}</strong>
+                    </p>
+                    <p className="dashboard__panels--text">
+                        This shows your overall rank related with the games you play and
+                        your levelUp points.
+          </p>
                 </div>
 
                 {/* Total posts */}
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Total Posts</h3>
-                    <div className="dashboard__panels--points">{userStats.totalposts}</div>
-                    <p className="dashboard__panels--text">This shows the total amount of post in all forums.</p>
+                    <div className="dashboard__panels--points">
+                        {userStats.totalposts}
+                    </div>
+                    <p className="dashboard__panels--text">
+                        This shows the total amount of post in all forums.
+          </p>
                 </div>
 
                 {/* Last posts */}
@@ -141,6 +178,36 @@ class DashboardPanels extends React.Component {
                 {/* Fortnite */}
                 <div className="dashboard__panels--item">
                     <div className="dashboard__fortnite">
+                        <h3 className="dashboard__panels--heading">Fortnite</h3>
+                        {this.state.fortniteUserData.totals ? (
+                            <div className="dashboard__panels--points">
+                                <h5 className="dashboard__panels--fortnite-user">
+                                    {this.state.fortniteUserData.username}
+                                </h5>
+                                <h5 className="dashboard__panels--fortnite-platform">
+                                    {this.state.fortniteUserData.platform.toUpperCase()}
+                                </h5>
+                                <h5 className="dashboard__panels--fortnite-platform">
+                                    {this.state.fortniteUserData.totals.wins > 50
+                                        ? "Level: FORTIFIED"
+                                        : "Level: Bricklayer"}
+                                </h5>
+
+                                <p className="dashboard__panels--fortnite-para">
+                                    Total Wins: {this.state.fortniteUserData.totals.wins}
+                                </p>
+                                <p className="dashboard__panels--fortnite-para">
+                                    Total Kills: {this.state.fortniteUserData.totals.kills}
+                                </p>
+                                <p className="dashboard__panels--fortnite-para">
+                                    Score: {this.state.fortniteUserData.totals.score}
+                                </p>
+                            </div>
+                        ) : <h5 className="dashboard__panels--fortnite-platform">Enter your Fortnite username in the account section to see your Fortnite stats right here!</h5>}
+                    </div>
+                </div>
+                {/* <div className="dashboard__panels--item">
+                    <div className="dashboard__fortnite">
                         <h3 className="dashboard__panels--heading">Fortnite Stats</h3>
                         {this.state.fortniteUserData.totals ?
                             <div className="dashboard__panels--points">
@@ -158,41 +225,77 @@ class DashboardPanels extends React.Component {
                             </div> :
                             null}
                     </div>
-                </div>
+                </div> */}
 
                 {/* Twitch Favs */}
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Twitch Favourites Players</h3>
                     <ul className="dashboard__panels--twitch-list">
-                        {
-                            twitchFavourite.map(fav => {
-                                return (
-                                    <li key={fav.twitch_name}>
-                                        <img src={fav.twitch_image} className="dashboard__panels--twitch-list--img" />
-                                        {fav.twitch_name}</li>
-                                )
-                            })
-                        }
+                        {twitchFavourite.map(fav => {
+                            return (
+                                <li key={fav.twitch_name}>
+                                    <Link to="/twitch">
+                                        <img
+                                            src={fav.twitch_image}
+                                            className="dashboard__panels--twitch-list--img"
+                                            onClick={event =>
+                                                this.searchTwitch(event, fav.twitch_name)
+                                            }
+                                        />
+                                    </Link>
+                                    {fav.twitch_name}{" "}
+                                </li>
+                            );
+                        })}
                     </ul>
-                    <p className="dashboard__panels--text">Twitch users added to Favourites will show up here.</p>
+                    <p className="dashboard__panels--text">
+                        Twitch users added to Favourites will show up here.
+          </p>
                 </div>
 
                 {/* Fav games */}
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Favourite Games</h3>
                     <ol className="dashboard__panels--twitch-list">
-                        {
-                            gameFavourite.map(fav => {
-                                return (
-                                    <li key={fav.title}>{fav.title}</li>
-                                )
-                            })
-                        }
+                        {gameFavourite.map(fav => {
+                            return (
+                                <li
+                                    onClick={event => this.searchGame(event, fav.title)}
+                                    key={fav.title}
+                                >
+                                    {" "}
+                                    <Link to="/search"> {fav.title} </Link>{" "}
+                                </li>
+                            );
+                        })}
                     </ol>
-                    <p className="dashboard__panels--text">Games added to Favourites will show up here.</p>
+                    <p className="dashboard__panels--text">
+                        Games added to Favourites will show up here.
+                    </p>
+                </div>
+
+                <div className="dashboard__panels--item">
+                    <h3 className="dashboard__panels--heading">Latest Posts</h3>
+                    {/* <div className="dashboard__panels--points" /> */}
+
+                    <div className="dashboard__panels--text">
+                        {this.state.posts.map((post, index) => {
+                            if (index > 2) return null;
+                            return <p key={post.id}> <Link to={`/posts/${post.id}`}> {post.title} </Link> </p>;
+                        })}
+                    </div>
+
+                    <h3 className="dashboard__panels--heading">Latest Replies</h3>
+
+                    <div className="dashboard__panels--text">
+                        {this.state.replies.map((reply, index) => {
+                            if (index > 2) return null;
+                            return <p key={reply.id}> <Link to={`/posts/${reply.parent_id}`}> {reply.title} </Link> </p>;
+                        })}
+                    </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 

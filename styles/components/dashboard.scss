@@ -164,7 +164,15 @@
         font-size: 14px;
         padding-left: 20px;
         li {
+            color: #fff;
             list-style: decimal;
+            a {
+                color: #fff;
+
+                &:hover {
+                    color: var(--secondary-color);
+                }
+            }
         }
     }
 
