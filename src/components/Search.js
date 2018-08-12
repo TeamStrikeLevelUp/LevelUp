@@ -24,7 +24,7 @@ class Search extends React.Component {
     if (this.props.userAuthState) {
       if (this.props.fetchGameFavourites !== undefined) {
         this.props.fetchGameFavourites(this.props.userAuthState.userId);
-        console.log(this.props.gameFavourite);
+        // console.log(this.props.gameFavourite);
       }
     }
   }
@@ -36,6 +36,7 @@ class Search extends React.Component {
     });
   }
 
+  //fetches game ID when a user clicks on a favourite (because API won't return title reliably)
   handleClick(event) {
     this.setState(
       {
@@ -53,8 +54,9 @@ class Search extends React.Component {
     });
   }
 
+  //Search for game based on user's typed input
   handleSubmit(event) {
-    // event.preventDefault();
+    event.preventDefault();
     this.props.fetchGameInfo("/games/" + this.state.searchGame.toLowerCase());
     this.setState({
       searchGame: ""
@@ -72,12 +74,13 @@ class Search extends React.Component {
       this.props.addToFavourite(newFav);
       this.props.fetchGameFavourites(this.props.userAuthState.userId);
     } else {
-      alert("Please log in to select favourites");
+      alert("Please log in to select favourites"); //Change to message on screen
     }
   }
+
   render() {
     const { gameData, userAuthState, gameFavourite } = this.props;
-    // console.log(this.props.gameData);
+
     const gameDisplay =
       gameData === "No results found" ? (
         <div className="search__result">
@@ -87,7 +90,10 @@ class Search extends React.Component {
         gameData.map(game => {
           return (
             <li key={game.igdbId} className="search__result">
-              <div className="search__img">
+              <header className="search__details--name">{game.name}</header>
+
+              {/* <div className="search__result" > */}
+              <div className="search__LHS">
                 <img src={game.cover_img} className="search__img--cover" />
                 <button
                   className="search__details--button"
@@ -98,9 +104,9 @@ class Search extends React.Component {
                   Add to favourites
                 </button>
               </div>
-              <div className="search__details">
-                <header className="search__details--name">{game.name}</header>
 
+              <div className="search__RHS">
+                {/* <div className="search__details"> */}
                 {game.description !== "" || game.description !== undefined ? (
                   <p className="search__desc">{game.description}</p>
                 ) : null}
@@ -139,19 +145,17 @@ class Search extends React.Component {
                     ) : null}
                   </div>
 
-                  <div className="search__video">
-                    {game.video ? (
-                      <iframe
-                        width="560"
-                        height="315"
-                        src={game.video + "autoPlay=0"}
-                        frameBorder="0"
-                        allowFullScreen
-                        autostart="false"
-                      />
-                    ) : null}
-                  </div>
+                  {game.video ? (
+                    <iframe
+                      className="search__video"
+                      src={game.video + "autoPlay=0"}
+                      allowFullScreen
+                      autostart="false"
+                    />
+                  ) : null}
                 </div>
+
+                {/* </div> */}
               </div>
               <div className="search__screenshots">
                 {game.screenshot
@@ -170,20 +174,26 @@ class Search extends React.Component {
               {this.state.showPopup ? (
                 <SearchGallery closePopup={this.togglePopup} game={gameData} />
               ) : null}
-              <br />
+              {/* </div> */}
             </li>
+            // {/* </div> */}
           );
         })
       );
-    const displayStatus = userAuthState
-      ? "You are logged in as " + userAuthState.username
-      : "You are not logged in";
+    const displayStatus = userAuthState ? (
+      <div>
+        <img src={userAuthState.avatar} className="search__avatar" />
+        <p>{userAuthState.username} </p>
+      </div>
+    ) : (
+      "You are not logged in"
+    );
 
     return (
       <div className="search__body">
-        <div className="search">
+        {/* <div className="search"> */}
+        <div className="search__side">
           {displayStatus}
-          <br />
           <form className="search__form" onSubmit={this.handleSubmit}>
             <input
               onChange={this.handleChange}
@@ -206,6 +216,7 @@ class Search extends React.Component {
                 key={currentFavourite.igdb_id}
               >
                 <li
+                  className="search__list"
                   onClick={this.handleClick}
                   key={currentFavourite.title}
                   value={currentFavourite.igdb_id}
@@ -215,11 +226,10 @@ class Search extends React.Component {
               </a>
             ))}
           </ul>
-
-          <br />
-          <ul className="search__wrapper">{gameDisplay}</ul>
-          <footer className="search__footer">Powered by IGDB.com API</footer>
         </div>
+        <ul className="search__wrapper">{gameDisplay}</ul>
+        <footer className="search__footer">Powered by IGDB.com API</footer>
+        {/* </div> */}
       </div>
     );
   }

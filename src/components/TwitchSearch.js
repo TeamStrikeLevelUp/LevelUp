@@ -6,8 +6,8 @@ class TwitchSearch extends React.Component {
     super(props);
 
     this.state = {
-      twitchQuery: this.props.twitchStreamer,
-      displayVideo: false
+      twitchQuery: this.props.twitchStreamer
+      // displayVideo: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,14 +34,14 @@ class TwitchSearch extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
-      displayVideo: true
+      // displayVideo: true
     });
   }
 
   handleClick(event) {
     this.setState({
-      twitchQuery: event.target.innerText,
-      displayVideo: true
+      twitchQuery: event.target.innerText
+      // displayVideo: true
     });
   }
 
@@ -66,13 +66,13 @@ class TwitchSearch extends React.Component {
       userAuthState,
       topTwitchers
     } = this.props;
+
     return (
       <div className="twitch">
         <div className="twitch__search">
           <form
             onSubmit={this.handleSubmit}
             className="twitch__search--form"
-            id="twitch__form"
             action=""
           >
             <input
@@ -81,13 +81,10 @@ class TwitchSearch extends React.Component {
               type="text"
               name="twitch__input"
               alt="Twitch Search"
-              id="twitch__input"
               placeholder="Search streamers"
               value={this.state.twitchQuery}
             />
-            <button id="twitch__submit" className="twitch__button">
-              Search
-            </button>
+            <button className="twitch__button">Search</button>
             <button
               className="twitch__button"
               onClick={event => {

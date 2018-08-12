@@ -165,45 +165,45 @@ export function fetchThemeData() {
 }
 
 // //REAL GAME Data fetch - calls helper function to sanitise data
-// export function fetchGameInfoFromAPI(searchPath) {
-//   return function (dispatch, getState) {
-//     return (
-//       fetch(searchPath)
-//         .then(
-//           response => (response.ok ? response.json() : Promise.reject(response))
-//         )
-//         // .then(response =>  response.json()  )
-//         .then(json => {
-//           // console.log((json.body).length, " results")
-//           dispatch(setGameData(json.body));
-//         })
-//         .catch(error => {
-//           console.log("Sorry the following error occurred: ", error);
-//         })
-//     );
-//   };
-// }
-
-//FAKE GAME Data fetch - calls helper function to sanitise data
 export function fetchGameInfoFromAPI(searchPath) {
   return function(dispatch, getState) {
-    // return (
-    fetch(`/static/zelda.json`)
-      .then(
-        response => (response.ok ? response.json() : Promise.reject(response))
-      )
-      // .then(response =>  response.json()  )
-      .then(json => {
-        // console.log((json.body).length, " results")
-
-        dispatch(setGameData(json.body));
-      })
-      .catch(error => {
-        console.log("Sorry the following error occurred: ", error);
-      });
-    // );
+    return (
+      fetch(searchPath)
+        .then(
+          response => (response.ok ? response.json() : Promise.reject(response))
+        )
+        // .then(response =>  response.json()  )
+        .then(json => {
+          // console.log((json.body).length, " results")
+          dispatch(setGameData(json.body));
+        })
+        .catch(error => {
+          console.log("Sorry the following error occurred: ", error);
+        })
+    );
   };
 }
+
+//FAKE GAME Data fetch - calls helper function to sanitise data
+// export function fetchGameInfoFromAPI(searchPath) {
+//   return function(dispatch, getState) {
+//     // return (
+//     fetch(`/static/zelda.json`)
+//       .then(
+//         response => (response.ok ? response.json() : Promise.reject(response))
+//       )
+//       // .then(response =>  response.json()  )
+//       .then(json => {
+//         // console.log((json.body).length, " results")
+
+//         dispatch(setGameData(json.body));
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//     // );
+//   };
+// }
 
 //function to call Reducer and set Genre data in redux.state
 export function receiveGenreData(genreData) {
