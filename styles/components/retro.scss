@@ -1,0 +1,107 @@
+.retro__wrapper {
+display: flex;
+flex-direction: column;
+
+text-align: center;
+align-items: center;
+
+border-style: dashed;
+border-color: whitesmoke;
+border-left-color: transparent;
+border-bottom-color: transparent;
+border-right-color: transparent;
+}
+
+.retro__headings {
+  font-family: 'Press Start 2P', cursive;
+  color: whitesmoke;
+}
+
+.retro__area {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
+}
+
+.retro__game-title {
+  font-family: 'Press Start 2P', cursive;
+
+}
+
+.retro__pacman {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  border-style: dashed;
+  border-width: 30px;
+  border-color: #00b0f4;
+  border-right-color: transparent;
+  border-left-color: transparent;
+
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+}
+
+.pacman__gif {
+  width: 25%;
+  padding: 5px;
+
+  animation-name: logo-spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.retro__street-fighter {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  border-style: dashed;
+  border-width: 30px;
+  border-color: #00b0f4;
+  border-right-color: transparent;
+  border-left-color: transparent;
+
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+}
+
+.retro__super-mario {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  border-style: dashed;
+  border-width: 30px;
+  border-color: #00b0f4;
+  border-right-color: transparent;
+  border-left-color: transparent;
+
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+}
+
+.mario__gif {
+  width: 30%;
+}
+
+

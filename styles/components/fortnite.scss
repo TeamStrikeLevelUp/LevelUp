@@ -63,6 +63,7 @@
 }
 
 .fortnite__ul {
+  padding: 10px;
   columns: 2;
 }
 
@@ -118,17 +119,20 @@ font-size: 80%; }
   background-color: rgb(19, 26, 26);
   color: white;}
 
+
 .fortnite__button {
-  position: relative;
+  margin: 5px;
+}
 
-  padding: 5px;
-  
-  left: 10px;
+.fortnite__button:hover {
 
-  border-radius: 20%;
+  cursor: pointer;
+ 
 }
 
 .playerlist__wrapper {
+background-color: #29a7db;
+
   border-style: solid;
   border-bottom-color: #fafafe;
   border-left-color: #fafafe;
@@ -142,9 +146,12 @@ font-size: 80%; }
 
 .playlist__player--stats {
   font-family: 'Open Sans', sans-serif;
-
 }
 
+.hover:hover {
+cursor: pointer;
+color: red;
+}
 
 
 

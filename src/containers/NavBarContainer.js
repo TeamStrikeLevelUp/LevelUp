@@ -4,6 +4,7 @@ import HomeNavBar from "../components/HomeNavBar";
 const mapStateToProps = reduxState => {
   return {
     userAuthState: reduxState.authState,
+    introTrigger: reduxState.introTrigger
   };
 };
 
