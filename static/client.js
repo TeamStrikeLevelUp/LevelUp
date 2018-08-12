@@ -11,6 +11,7 @@ function fetchLogin() {
     }
   }).then(function (response) {
     if (response.status === 200) {
+      // console.log("document.referrer", document.referrer)
       window.location.pathname = "/dashboard";
     } else {
       alert("invalid username or password");

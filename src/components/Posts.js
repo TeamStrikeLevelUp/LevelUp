@@ -127,7 +127,6 @@ class Posts extends React.Component {
 
   fetchAvatar = (posts) => {
     posts.map(post => {
-      console.log("post.gamer_id", post.gamer_id)
       fetch(`/api/getgameravatar/${post.gamer_id}`)
         .then(response => response.json())
         .then(json => {
