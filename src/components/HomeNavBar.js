@@ -61,7 +61,7 @@ class HomeNavBar extends React.Component {
         </li>
         <li className="main-nav__item">
           {userAuthState ?
-            <a to="/logout">Logout</a> : null}
+            <a href="/logout">Logout</a> : null}
         </li>
       </ul>
     );

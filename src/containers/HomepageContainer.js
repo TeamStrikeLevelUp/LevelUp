@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Homepage from "../components/Homepage"
-import { setTwitchStreamer, fetchTopTwitchers, triggerIntro } from "../actions";
+import { setTwitchStreamer, fetchTopTwitchers, searchClickedGame, triggerIntro } from "../actions";
 
 
 const mapStateToProps = (reduxState) => {
@@ -8,7 +8,8 @@ const mapStateToProps = (reduxState) => {
     userAuthState: reduxState.authState,
     twitchStreamer: reduxState.twitchStreamer,
     topTwitchers: reduxState.topTwitchers,
-    introTrigger: reduxState.introTrigger
+    introTrigger: reduxState.introTrigger,
+    gameToSearch: reduxState.gameToSearch
   };
 };
 
@@ -20,7 +21,10 @@ const mapDispatchToProps = dispatch => {
     setTwitchStreamer: (streamer) => {
       dispatch(setTwitchStreamer(streamer))
     },
-    fetchTopTwitchers: () => { dispatch(fetchTopTwitchers()) }
+    fetchTopTwitchers: () => { dispatch(fetchTopTwitchers()) },
+    searchClickedGame: (game) => {
+      dispatch(searchClickedGame(game))
+    }
   };
 };
 

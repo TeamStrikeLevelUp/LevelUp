@@ -82,7 +82,7 @@ class News extends React.Component {
           return (
             <div className={cn} key={news.title}>
               <li className="news__list">
-                <a href={news.url} target="blank">
+                <a href={news.url} className="news__anchor" target="blank">
                   {news.image ? (
                     <img
                       src={news.image}
