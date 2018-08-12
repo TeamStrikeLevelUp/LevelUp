@@ -72,8 +72,8 @@ class DashboardPanels extends React.Component {
     }
 
     gamerRank() {
-        // const g_level = this.state.userStats.gamer_level;
         const g_level = this.state.userStats.totalposts;
+        console.log(this.state.userStats.totalposts)
         switch (g_level) {
             case g_level < 10:
                 this.setState({ gamer_rank: "Noob" });
@@ -87,6 +87,7 @@ class DashboardPanels extends React.Component {
             default:
                 this.setState({ gamer_rank: "Legend" });
         }
+
     }
 
     searchGame(event, title) {
@@ -197,7 +198,7 @@ class DashboardPanels extends React.Component {
                                     Score: {this.state.fortniteUserData.totals.score}
                                 </p>
                             </div>
-                        ) : null}
+                        ) : <h5 className="dashboard__panels--fortnite-platform">Enter your Fortnite username in the account section to see your Fortnite stats right here!</h5>}
                     </div>
                 </div>
                 <div className="dashboard__panels--item">

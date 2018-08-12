@@ -38,11 +38,21 @@ hr {
   box-shadow: 0 0 10px 1px #f5f5f5;
   margin: 9px;
 
+  width: 20%;
+  color: #f5f5f5;
+
   transform: rotate(90deg)
 }
 
 .homepage__main--featured {
   text-align: center;
+}
+
+.featured__wrapper {
+  background-color: rgba(54, 57, 63, 0.5);
+
+  width: 85%;
+
 }
 
 .homepage__main--featured-title {
@@ -55,8 +65,7 @@ hr {
   padding: 15px;
   margin: 0;
 
-  background-color: #7189db;
-}
+  background-color: rgba(114, 137, 218, 0.5);}
 
 .homepage__main--featured--selection {
   display: flex;
@@ -72,7 +81,7 @@ hr {
 
   padding: 15px;
 
-  background-color: #00b0f4;
+  background-color: rgba(54, 57, 63, 0.5);
 }
 
 .homepage__main--top5 {
@@ -99,12 +108,12 @@ hr {
     border-color: #f5f5f5;
     font-size: 14px;
     color: #f5f5f5;
-  background-color: #7289da;
+    background-color: rgba(114, 137, 218, 0.5);
  }
 
  .homepage__main--tour:hover {
 cursor: pointer;
-border-color: red;
+border-color: gold;
  }
 
 .homepage__side {
@@ -112,7 +121,7 @@ border-color: red;
 }
 
 .homepage__side--poll {
- background-color: #7289da;
+  background-color: rgba(114, 137, 218, 0.5);
 
 padding: 1px;
 

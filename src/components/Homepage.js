@@ -121,51 +121,53 @@ class Homepage extends React.Component {
           <div>
             <button onClick={() => this.props.triggerIntro()} className="homepage__main--tour">Take a Tour of Level Up</button>
           </div>
-          <div className="homepage__main--featured">
-            <h3 className="homepage__main--featured-title"> Today's Featured Content </h3>
-            <div className="homepage__main--featured--selection">
-              <div className="homepage__main--featured--selection--game">
-                <h4 onClick={this.searchGame} ><i>Featured Game</i></h4>
-                <h4> <Link className="homepage__links" to="/search"> {this.state.game.title} </Link> </h4>
-              </div>
-              <hr className="vertical__rule" />
-              <div className="homepage__main--featured--selection--user">
-                <h4><i>Featured User</i> </h4>
-                <h4><Link className="homepage__links" to={`/profile/${this.state.gamer.gamer_name}`}> {this.state.gamer.gamer_name} </Link>  </h4>
-              </div>
-              <hr className="vertical__rule" />
-              <div className="homepage__main--featured--selection--forum">
-                <h4><i>Featured Forum</i> </h4>
-                <h4><Link className="homepage__links" to={`/forum/${this.state.forum.id}`}> {this.state.forum.title} </Link>  </h4>
-              </div>
-              <hr className="vertical__rule" />
-              <div className="homepage__main--featured--selection--twitch">
-                <h4><i>Featured Stream</i></h4>
-                <h4 className="homepage__links">{topTwitchers[0] ?
-                  <p onClick={(event) => this.searchTwitch(event, topTwitchers[0].display_name)}> <Link className="homepage__links" to="/twitch"> {topTwitchers[0].display_name} </Link> </p>
-                  : null}</h4>
+          <div className="featured__wrapper">
+            <div className="homepage__main--featured">
+              <h3 className="homepage__main--featured-title"> Today's Featured Content </h3>
+              <div className="homepage__main--featured--selection">
+                <div className="homepage__main--featured--selection--game">
+                  <h4 onClick={this.searchGame} ><i>Featured Game</i></h4>
+                  <h4> <Link className="homepage__links" to="/search"> {this.state.game.title} </Link> </h4>
+                </div>
+                <hr className="vertical__rule" />
+                <div className="homepage__main--featured--selection--user">
+                  <h4><i>Featured User</i> </h4>
+                  <h4><Link className="homepage__links" to={`/profile/${this.state.gamer.gamer_name}`}> {this.state.gamer.gamer_name} </Link>  </h4>
+                </div>
+                <hr className="vertical__rule" />
+                <div className="homepage__main--featured--selection--forum">
+                  <h4><i>Featured Forum</i> </h4>
+                  <h4><Link className="homepage__links" to={`/forum/${this.state.forum.id}`}> {this.state.forum.title} </Link>  </h4>
+                </div>
+                <hr className="vertical__rule" />
+                <div className="homepage__main--featured--selection--twitch">
+                  <h4><i>Featured Stream</i></h4>
+                  <h4 className="homepage__links">{topTwitchers[0] ?
+                    <p onClick={(event) => this.searchTwitch(event, topTwitchers[0].display_name)}> <Link className="homepage__links" to="/twitch"> {topTwitchers[0].display_name} </Link> </p>
+                    : null}</h4>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="homepage__main--top5">
-            <div className="homepage__main--top5-games">
-              <h4>Top 5 Games <hr /></h4>
-              <ul>
-                {topGames.map((game, index) => {
-                  if (index > 4) return;
-                  return (<li onClick={(event) => this.searchListGame(event, game)} key={index}> <Link className="homepage__links" to="/search"> {game} </Link> </li>)
-                })}
-              </ul>
-            </div>
-            <div className="homepage__main--top5-forums">
-              <h4> Top 5 Active Forums <hr /></h4>
-              <ul>
-                {this.state.topForum.map(forum => {
+            <div className="homepage__main--top5">
+              <div className="homepage__main--top5-games">
+                <h4>Top 5 Games <hr /></h4>
+                <ul>
+                  {topGames.map((game, index) => {
+                    if (index > 4) return;
+                    return (<li onClick={(event) => this.searchListGame(event, game)} key={index}> <Link className="homepage__links" to="/search"> {game} </Link> </li>)
+                  })}
+                </ul>
+              </div>
+              <div className="homepage__main--top5-forums">
+                <h4> Top 5 Active Forums <hr /></h4>
+                <ul>
+                  {this.state.topForum.map(forum => {
 
-                  return (<li key={forum.id}><Link className="homepage__links" to={`/forum/${forum.forum_id}`}> {forum.title} </Link> </li>)
-                })}
-              </ul>
+                    return (<li key={forum.id}><Link className="homepage__links" to={`/forum/${forum.forum_id}`}> {forum.title} </Link> </li>)
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
