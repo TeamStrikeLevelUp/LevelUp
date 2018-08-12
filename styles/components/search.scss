@@ -15,7 +15,8 @@
   flex-direction: column;
   text-align: center;
   height: 100vh;
-  padding-left: 0;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: rgba(54, 57, 63, 0.8);
   margin-right: 40px;
   color: whitesmoke;
@@ -29,7 +30,7 @@
 
   .search__input {
     font-size: 15px;
-    margin: 10px;
+    // margin: 10px;
     height: 40px;
     border-radius: 5%;
     border: 1px solid rgb(26, 44, 238);
@@ -39,12 +40,16 @@
 
   .search__list .search__result {
     list-style: none;
+    margin-left: 10px;
+    padding-left: 10px;
   }
 
   .game__anchor {
     text-decoration: none;
     color: whitesmoke;
-    text-align: center;
+    text-align: left;
+    margin-left: 10px;
+    padding-left: 10px;
     font-size: 15px;
   }
 }
