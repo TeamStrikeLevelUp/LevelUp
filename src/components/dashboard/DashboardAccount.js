@@ -80,8 +80,11 @@ class DashboardAccount extends React.Component {
                 this.setState({
                     togglerAvatar: !this.state.togglerAvatar
                 })
-                // TODO: Add avatar to redux.state for autoreload icon
-                window.location.reload();
+                this.props.setAuthState(
+                    Object.assign(this.props.userAuthState, {
+                        "avatar": this.state.selectedFile
+                    })
+                );
             }
 
         });
@@ -115,8 +118,11 @@ class DashboardAccount extends React.Component {
                 this.setState({
                     togglerFortnite: !this.state.togglerFortnite
                 })
-                // TODO: Add fortniteName to redux.state for autoreload icon
-                window.location.reload();
+                this.props.setAuthState(
+                    Object.assign(this.props.userAuthState, {
+                        "fortniteName": this.state.fortniteName
+                    })
+                );
             }
 
         });
@@ -149,9 +155,11 @@ class DashboardAccount extends React.Component {
             if (response.status === 200) {
                 this.setState({
                     togglerEmail: !this.state.togglerEmail
-                })
-                // TODO: Add email to redux.state for autoreload icon
-                window.location.reload();
+                });
+                this.props.setAuthState(
+                    Object.assign(this.props.userAuthState, {
+                        "email": this.state.email
+                    }));
             }
 
         });
@@ -184,8 +192,11 @@ class DashboardAccount extends React.Component {
                 this.setState({
                     togglerDesc: !this.state.togglerDesc
                 })
-                // TODO: Add desc to redux.state for autoreload icon
-                window.location.reload();
+
+                this.props.setAuthState(
+                    Object.assign(this.props.userAuthState, {
+                        "description": this.state.desc
+                    }));
             }
 
         });
@@ -216,7 +227,7 @@ class DashboardAccount extends React.Component {
                                 <div className="dashboard__avatar">
                                     <img
                                         className="dashboard__avatar--image"
-                                        src={this.state.gamer_info.profile.avatar}
+                                        src={this.props.userAuthState.avatar ? this.props.userAuthState.avatar : this.props.state.avatar}
                                         alt="{this.state.gamer_info.profile.gamer_name}" />
                                     <div className="dashboard__avatar--toggle" onClick={this.togglerAvatarHandler}>
                                         <div className="button__edit">
@@ -248,7 +259,7 @@ class DashboardAccount extends React.Component {
                                 <div className="dashboard__fortnite dashboard__account--text">
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerFortniteHandler}>
                                         <strong>Fortnite Name: </strong>
-                                        {this.state.gamer_info.profile.fortnitename}
+                                        {this.props.userAuthState.fortniteName ? this.props.userAuthState.fortniteName : this.state.gamer_info.profile.fortnitename}
                                         <div className="button__edit">
                                             <svg aria-hidden="true" focusable="false">
                                                 <use xlinkHref="#button-edit" />
@@ -273,7 +284,7 @@ class DashboardAccount extends React.Component {
                                 <div className="dashboard__account--email dashboard__account--text">
 
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerEmailHandler}>
-                                        <strong>Email: </strong>{this.state.gamer_info.profile.email}
+                                        <strong>Email: </strong>{this.props.userAuthState.email ? this.props.userAuthState.email : this.state.gamer_info.profile.email}
                                         <div className="button__edit">
                                             <svg aria-hidden="true" focusable="false">
                                                 <use xlinkHref="#button-edit" />
@@ -297,7 +308,7 @@ class DashboardAccount extends React.Component {
                                 {/* Description */}
                                 <div className="dashboard__account--desc dashboard__account--text">
                                     <div className="dashboard__fortnite--toggle" onClick={this.togglerDescHandler}>
-                                        <strong>Description: </strong>{this.state.gamer_info.profile.description}
+                                        <strong>Description: </strong>{this.props.userAuthState.description ? this.props.userAuthState.description : this.state.gamer_info.profile.description}
                                         <div className="button__edit">
                                             <svg aria-hidden="true" focusable="false">
                                                 <use xlinkHref="#button-edit" />

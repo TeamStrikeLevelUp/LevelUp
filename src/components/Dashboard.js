@@ -9,7 +9,8 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {}
+            user: {},
+            welcome: true
         };
     }
 
@@ -20,18 +21,26 @@ class Dashboard extends React.Component {
             user: userData,
         });
         if (userData) { this.props.setAuthState(userData) };
+
+        setTimeout(function () {
+            this.setState({
+                welcome: false
+            });
+            // document.querySelector('.dashboard__welcome').style.display = "none";
+        }.bind(this), 5000)
     }
 
     render() {
         const welcomeClasses = cx('dashboard__welcome', {
-            "dashboard__welcome--visible": this.state.welcome
+            "fadeOut": !this.state.welcome,
+            "animated": !this.state.welcome
         })
         return (
             <div className="dashboard">
                 <div className="dashboard__container">
                     <div className="dashboard__sidebar">
                         <div className="dashboard__profile">
-                            <img className="dashboard__profile--image" src={this.state.user.avatar ? this.state.user.avatar : "../../static/images/user.jpg"} alt="" />
+                            <img className="dashboard__profile--image" src={this.props.userAuthState ? this.props.userAuthState.avatar : this.state.user.avatar} alt="" />
                             <div className="dashboard__profile--name">
                                 {this.state.user.username}
                             </div>
