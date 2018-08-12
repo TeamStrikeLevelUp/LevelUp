@@ -1,4 +1,4 @@
-//get top twitchers
+// //REAL API CALL to fetch top twitchers from twitch API
 export function fetchTopTwitchers() {
   return function(dispatch, getState) {
     const searchPath = `/twitchStreams`;
@@ -20,6 +20,29 @@ export function fetchTopTwitchers() {
     );
   };
 }
+
+//FAKE API CALL - Demo purposes only
+// export function fetchTopTwitchers() {
+//   return function(dispatch, getState) {
+//     const searchPath = `/static/twitchStreams.json`;
+
+//     return (
+//       fetch(searchPath)
+//         // .then(response => response.json())
+//         .then(
+//           response => (response.ok ? response.json() : Promise.reject(response))
+//         )
+//         .then(json => {
+//           //fetch info for each twitcher
+//           const items = json.map(item => item.data[0]);
+//           dispatch(receiveTopTwitchers(items));
+//         })
+//         .catch(error => {
+//           console.log("Sorry the following error occurred: ", error);
+//         })
+//     );
+//   };
+// }
 
 //function to call Reducer and set FAVOURITE data in redux.state
 export function receiveTopTwitchers(twitchApiData) {
@@ -323,24 +346,9 @@ export function receiveGameData(gameData) {
 }
 
 // REAL NEWS Data fetch - calls helper function to sanitise data
-// export function fetchNewsInfoFromAPI(pageNum) {
-//   return function (dispatch, getState) {
-//     return fetch(`/newsApi/${pageNum}`)
-//       .then(response => response.json())
-//       .then(json => {
-//         // console.log("fetch news ", json.articles);
-//         dispatch(setNewsData(json.articles));
-//       })
-//       .catch(error => {
-//         console.log("Sorry the following error occurred: ", error);
-//       });
-//   };
-// }
-
-//FAKE NEWS Data fetch - for use during DEMO only
 export function fetchNewsInfoFromAPI(pageNum) {
   return function(dispatch, getState) {
-    return fetch(`/static/news${pageNum}.json`)
+    return fetch(`/newsApi/${pageNum}`)
       .then(response => response.json())
       .then(json => {
         // console.log("fetch news ", json.articles);
@@ -351,6 +359,21 @@ export function fetchNewsInfoFromAPI(pageNum) {
       });
   };
 }
+
+//FAKE NEWS Data fetch - for use during DEMO only
+// export function fetchNewsInfoFromAPI(pageNum) {
+//   return function(dispatch, getState) {
+//     return fetch(`/static/news${pageNum}.json`)
+//       .then(response => response.json())
+//       .then(json => {
+//         // console.log("fetch news ", json.articles);
+//         dispatch(setNewsData(json.articles));
+//       })
+//       .catch(error => {
+//         console.log("Sorry the following error occurred: ", error);
+//       });
+//   };
+// }
 
 //search NEWS Data based on User input
 export function searchNewsAPI(searchTerm, pageNum) {

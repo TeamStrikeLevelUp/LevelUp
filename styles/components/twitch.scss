@@ -1,85 +1,73 @@
-.twitch {
-  display: flex;
-  
-  margin-left:10px;
-}
-.twitch__anchor{
-  text-decoration: none;
-  color:whitesmoke;
-  text-align:center;
-  font-size:15px;
-}
-.twitch__search{
+.twitch__body {
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  justify-content: space-between;
+  margin: auto;
+  background-image: url("/static/images/background2.jpg");
+  background-repeat: repeat-y;
+  background-position-x: center;
+  background-size: cover;
+  color: whitesmoke;
+  width: 100%;
 }
-.twitch__search--video{
-  text-align:center;
-}
-.twitch__search--form{
 
-color: 75, 212, 253 ;
-}
-
-.twitch__search--button{
+.twitch__button {
   height: 50px;
-  margin-top:15px;
-  // font-family: 'Oswald', sans-serif;
-  font-size:20px;
+  margin: 15px;
+  font-size: 20px;
   font-weight: 400;
-  width:auto;
+  width: auto;
   background-color: darkslategrey;
-  color: rgb(75, 212, 253);
-  border-style:none;
-  border-radius:5%;
+  color: var(--secondary-color);
+  border-style: none;
+  border-radius: 5%;
+}
+
+.twitch__anchor {
+  text-decoration: none;
+  color: whitesmoke;
+  text-align: right;
+  font-size: 15px;
+}
+.twitch__search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.twitch__video {
+  margin: 30px 10px 10px 0px;
+}
+.twitch__player {
+  text-align: right;
+  height: 650px;
+  width: 750px;
+  // frameborder: "2";
+  // scrolling: "yes";
+}
+.twitch__search--form {
+  color: 75, 212, 253;
 }
 
 .twitch__streamers {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  text-align: right;
+  height: 100%;
+  margin: 10px 0px 10px 10px;
+  background-color: rgba(54, 57, 63, 0.5);
+}
+.twitch_streamers--image {
+  width: 55px;
+  margin: 10px;
 }
 
-.twitch__search--title {
-  text-align: center;
-}
-
-.twitch__streamers--title {
-  text-align: center;
-}
-
-.twitch__player {
-  display: block;
-
-  text-align: center;
-}
-
-
-.twitch__player--hide {
-  display: none;
-}
-
-.twitch__search--input {
-
-    font-size: 15px;
-    margin: auto;
-    height: 40px;
-    border-radius: 5%;
-    border: 1px solid rgb(26, 44, 238);
-    background-color: rgb(19, 26, 26);
-    color: white;
-  
-}
-.twitch__button {
- 
-  height: 50px;
-  margin:15px;
-
-  font-size:20px;
-  font-weight: 400;
-  width:auto;
-  background-color: darkslategrey;
-  color: rgb(75, 212, 253);
-  border-style:none;
-  border-radius:5%;
-}
+// .twitch__search--input {
+//   font-size: 15px;
+//   margin: auto;
+//   height: 40px;
+//   border-radius: 5%;
+//   border: 1px solid rgb(26, 44, 238);
+//   background-color: rgb(19, 26, 26);
+//   color: white;
+// }

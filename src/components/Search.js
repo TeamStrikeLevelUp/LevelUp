@@ -59,7 +59,9 @@ class Search extends React.Component {
   //Search for game based on user's typed input
   handleSubmit(event) {
     event.preventDefault();
-    this.props.fetchGameInfo("/games/" + this.state.searchGame.replace(/[^\w\s]/gi, '').toLowerCase());
+    this.props.fetchGameInfo(
+      "/games/" + this.state.searchGame.replace(/[^\w\s]/gi, "").toLowerCase()
+    );
     this.setState({
       searchGame: ""
     });
@@ -80,9 +82,11 @@ class Search extends React.Component {
     }
   }
 
-  startUpSearch(){
-    this.props.fetchGameInfo("/games/" + this.props.gameToSearch.replace(/[^\w\s]/gi, '').toLowerCase());
-    this.props.searchClickedGame("")
+  startUpSearch() {
+    this.props.fetchGameInfo(
+      "/games/" + this.props.gameToSearch.replace(/[^\w\s]/gi, "").toLowerCase()
+    );
+    this.props.searchClickedGame("");
   }
 
   render() {
@@ -213,7 +217,7 @@ class Search extends React.Component {
             />
           </form>
 
-          {userAuthState ? <h2>Favourites </h2> : null}
+          {userAuthState ? <h3>Favourites </h3> : null}
           <ul>
             {gameFavourite.map(currentFavourite => (
               <a
