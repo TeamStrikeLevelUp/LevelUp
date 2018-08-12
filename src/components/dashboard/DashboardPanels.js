@@ -56,19 +56,20 @@ class DashboardPanels extends React.Component {
     gamerRank() {
         const g_level = this.state.userStats.gamer_level;
         switch (g_level) {
-            case g_level < 10:
+            case g_level <= 10:
                 this.setState({ gamer_rank: "Noob" });
                 break;
-            case g_level < 20:
+            case g_level > 10 && g_level <= 20:
                 this.setState({ gamer_rank: "Challenger" });
                 break;
-            case g_level < 30:
+            case g_level > 20 && g_level <= 30:
                 this.setState({ gamer_rank: "Champion" });
                 break;
             default:
                 this.setState({ gamer_rank: "Legend" });
 
         }
+
     }
 
     render() {
@@ -82,7 +83,7 @@ class DashboardPanels extends React.Component {
                     <h3 className="dashboard__panels--heading">Level</h3>
                     <div className="dashboard__panels--points">{userStats.gamer_level}</div>
                     <p className="dashboard__panels--text dashboard__panels--text--large">Your LevelUp rank is <strong className="rank__level">{gamer_rank}</strong></p>
-                    <p className="dashboard__panels--text">This shows your overall rank related with the games you play and your levelUp points.</p>
+                    <p className="dashboard__panels--text">The more active you are in the community, the higher your score will be. Acheive higher scores to increase your Level Up rank!</p>
                 </div>
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Total Posts</h3>
