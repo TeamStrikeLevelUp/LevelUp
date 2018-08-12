@@ -10,7 +10,7 @@ class Homepage extends React.Component {
     super();
     this.state={gamer:{},game:{}, forum:{}, choice:{}, voteResults:[], viewMode:false, topForum:[],
     topGames:[
-      "The Elder Scrolls V: Skyrim","Fallout 4","Grand Theft Auto V","Fortnite", "The Witcher 3: Wild Hunt",
+      "The Elder Scrolls 5: Skyrim","Fallout 4","Grand Theft Auto 5","Fortnite", "The Witcher 3: Wild Hunt",
       "No Man's Sky","Octopath Traveler","Monster Hunter: World","The Legend of Zelda: Breath of the Wild","Persona 5"
     ]
   }
