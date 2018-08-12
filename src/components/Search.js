@@ -59,7 +59,7 @@ class Search extends React.Component {
   //Search for game based on user's typed input
   handleSubmit(event) {
     event.preventDefault();
-    this.props.fetchGameInfo("/games/" + this.state.searchGame.toLowerCase());
+    this.props.fetchGameInfo("/games/" + this.state.searchGame.replace(/[^\w\s]/gi, '').toLowerCase());
     this.setState({
       searchGame: ""
     });
@@ -80,9 +80,9 @@ class Search extends React.Component {
     }
   }
 
-  startUpSearch() {
-    this.props.fetchGameInfo("/games/" + this.props.gameToSearch.toLowerCase());
-    this.props.searchClickedGame("");
+  startUpSearch(){
+    this.props.fetchGameInfo("/games/" + this.props.gameToSearch.replace(/[^\w\s]/gi, '').toLowerCase());
+    this.props.searchClickedGame("")
   }
 
   render() {

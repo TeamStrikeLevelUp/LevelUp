@@ -13,6 +13,7 @@ import FortniteRoute from "../routes/FortniteRoute";
 import PostsContainer from "../containers/PostsContainer";
 import ForumsContainer from "../containers/ForumsContainer";
 import Profile from "../components/Profile";
+import ProfileContainer from "../containers/ProfileContainer";
 import NotFoundContainer from "../containers/NotFoundContainer";
 
 import "../../styles/index.scss";
@@ -37,7 +38,7 @@ class App extends React.Component {
           <Route path="/news" render={() => <NewsRoute />} />
           <Route path="/the-fort" render={() => <FortniteRoute />} />
           <Route path="/retroclub" render={() => <RetroRoute />} />
-          <Route path="/profile/:id" component={Profile} />
+          <Route path="/profile/:id" component={ProfileContainer} />
           <Route component={NotFoundContainer} />
         </Switch>
       </div>
