@@ -42,4 +42,10 @@
         color: #fff;
         background-color: var(--secondary-color);
     }
+
+    &.button-edit {
+        width: 80px;
+        color: #fff;
+        background-color: var(--primary-color);
+    }
 }
