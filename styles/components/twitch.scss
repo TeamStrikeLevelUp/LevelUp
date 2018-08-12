@@ -40,7 +40,7 @@
 .twitch__player {
   text-align: right;
   height: 650px;
-  width: 750px;
+  width: 1000px;
   // frameborder: "2";
   // scrolling: "yes";
 }
@@ -54,7 +54,7 @@
   flex-wrap: wrap;
   text-align: right;
   height: 100%;
-  margin: 10px 0px 10px 10px;
+  margin: 10px 20px 10px 10px;
   background-color: rgba(54, 57, 63, 0.5);
 }
 .twitch_streamers--image {
@@ -62,12 +62,13 @@
   margin: 10px;
 }
 
-// .twitch__search--input {
-//   font-size: 15px;
-//   margin: auto;
-//   height: 40px;
-//   border-radius: 5%;
-//   border: 1px solid rgb(26, 44, 238);
-//   background-color: rgb(19, 26, 26);
-//   color: white;
-// }
+.twitch__footer {
+  position: fixed;
+  left: -70px;
+  bottom: 80px;
+  font-size: 15px;
+  color: rgb(146, 112, 177);
+  -ms-transform: rotate(-90deg); /* IE 9 */
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}

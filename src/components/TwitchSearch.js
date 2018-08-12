@@ -142,7 +142,7 @@ class TwitchSearch extends React.Component {
         </div>
 
         <div className="twitch__streamers">
-          <h3 className="twitch__streamers--title">Top 10 Live Streams</h3>
+          <h3 className="twitch__streamers--title">Top 5 Live Streams</h3>
 
           <ul>
             {topTwitchers.map(currentTwitch => {
@@ -160,6 +160,7 @@ class TwitchSearch extends React.Component {
             })}
           </ul>
         </div>
+        <footer className="twitch__footer">Powered by Twitch API</footer>
         {/* </div> */}
       </div>
     );
