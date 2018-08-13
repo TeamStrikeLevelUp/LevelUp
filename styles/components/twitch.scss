@@ -26,7 +26,7 @@
 .twitch__anchor {
   text-decoration: none;
   color: whitesmoke;
-  text-align: right;
+  vertical-align: middle;
   font-size: 15px;
 }
 .twitch__search {
@@ -38,7 +38,7 @@
   margin: 30px 10px 10px 0px;
 }
 .twitch__player {
-  text-align: right;
+  // text-align: right;
   height: 650px;
   width: 800px;
   // frameborder: "2";
@@ -49,17 +49,24 @@
 }
 
 .twitch__streamers {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  text-align: right;
+  display: inline-block;
+  // flex-direction: column;
+  // flex-wrap: wrap;
+  // align-content: center;
+  text-align: center;
+  vertical-align: middle;
   height: 100%;
   margin: 10px 20px 10px 10px;
   background-color: rgba(54, 57, 63, 0.5);
 }
 .twitch_streamers--image {
-  width: 55px;
-  margin: 10px;
+  width: 60px;
+  // margin: 10px;
+}
+
+.twitch__list {
+  // align-content: center;
+  vertical-align: middle;
 }
 
 .twitch__footer {

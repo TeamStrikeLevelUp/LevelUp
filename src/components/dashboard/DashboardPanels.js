@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 class DashboardPanels extends React.Component {
     constructor(props) {
@@ -46,7 +46,6 @@ class DashboardPanels extends React.Component {
         fetch(`/api/gamer/post/${userData.userId}`)
             .then(response => response.json())
             .then(json => {
-
                 this.setState({ posts: json.posts, replies: json.replies });
             });
 
@@ -72,7 +71,7 @@ class DashboardPanels extends React.Component {
 
     gamerRank() {
         const g_level = this.state.userStats.totalposts;
-        console.log(this.state.userStats.totalposts)
+        console.log(this.state.userStats.totalposts);
 
         if (g_level < 10) {
             return "Noob";
