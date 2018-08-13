@@ -287,6 +287,51 @@ app.post("/api/post-edit", function(req, res) {
     .catch(error => console.log(error.message));
 });
 
+app.post("/api/postreport/:id", function(req, res) {
+  const { selectId } = req.body;
+  const review = "review";
+  db.one(`UPDATE post SET admin_status = $1 WHERE id = $2;`, [review, selectId])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/reviewposts", function(req, res) {
+  db.any(
+    "SELECT body, post.id, post.title, gamer.gamer_name, forum.title AS forum_title FROM post, gamer, forum WHERE admin_status = 'review' AND post.gamer_id = gamer.id AND post.forum_id = forum.id;"
+  )
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.post("/api/review-delete/:id", function(req, res) {
+  const { id } = req.body;
+  const deletedPost = "this post was deleted by a moderator";
+  const deletedStatus = "delete";
+  db.one(`UPDATE post SET body = $1, admin_status = $2 WHERE id = $3;`, [
+    deletedPost,
+    deletedStatus,
+    id
+  ])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/deletedposts", function(req, res) {
+  db.any(
+    "SELECT body, post.id, post.title, gamer.gamer_name, forum.title AS forum_title FROM post, gamer, forum WHERE admin_status = 'delete' AND post.gamer_id = gamer.id AND post.forum_id = forum.id;"
+  )
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
 ///////////////// Forum - end //////////////////
 
 ///////////////// Account Updates - Starts /////////////////
