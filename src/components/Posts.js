@@ -127,7 +127,6 @@ class Posts extends React.Component {
 
   fetchAvatar = (posts) => {
     posts.map(post => {
-      console.log("post.gamer_id", post.gamer_id)
       fetch(`/api/getgameravatar/${post.gamer_id}`)
         .then(response => response.json())
         .then(json => {
@@ -190,7 +189,7 @@ class Posts extends React.Component {
                     <p>{reply.body}</p>
                     {this.props.userAuthState ? (
                       this.props.userAuthState.userId === reply.gamer_id ? (
-                        <button onClick={event => this.editHandler(event, reply)}>
+                        <button className="button button-edit" onClick={event => this.editHandler(event, reply)}>
                           Edit post
                         </button>
                       ) : null
