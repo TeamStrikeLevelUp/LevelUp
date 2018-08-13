@@ -75,7 +75,7 @@ class Search extends React.Component {
   }
 
   addToFavourites(gameId, gameTitle) {
-    if (this.props.userAuthState) {
+    if (this.props.userAuthState.userId) {
       const newFav = {
         gamerId: this.props.userAuthState.userId,
         igdb: gameId,
