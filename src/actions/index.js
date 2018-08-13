@@ -544,6 +544,16 @@ export function triggerIntro() {
     payload: true
   }
 }
+
+// Trigger intro tour off
+
+export function tourOff() {
+  return {
+    type: "TRIGGER_INTRO",
+    payload: false
+  }
+}
+
 // search a game from a different component than Search
 
 export function searchClickedGame(game) {
