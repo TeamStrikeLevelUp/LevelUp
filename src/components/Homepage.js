@@ -56,7 +56,7 @@ class Homepage extends React.Component {
     event.preventDefault();
 
     if (this.state.choice.value) {
-      if (this.props.userAuthState) {
+      if (this.props.userAuthState.userId) {
 
         const newVote = {
           value: this.state.choice.value,

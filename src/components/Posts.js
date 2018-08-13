@@ -57,7 +57,7 @@ class Posts extends React.Component {
   replyHandler = event => {
     event.preventDefault();
 
-    if (!this.props.userAuthState) {
+    if (!this.props.userAuthState.userId) {
       alert("login first");
       return;
     }
@@ -149,7 +149,7 @@ class Posts extends React.Component {
             <button className="button button-primary" onClick={this.searchHandler}> Search </button>
           </form>
         </header>
-        <div className="login-link" style={{ display: this.props.userAuthState ? 'none' : '' }} > <a href="/login">Login to post</a> </div>
+        <div className="login-link" style={{ display: this.props.userAuthState.userId ? 'none' : '' }} > <a href="/login">Login to post</a> </div>
         <h1><span className="topic">Topic:</span> {this.state.post.title} </h1>
         <div className="post__details">
           <div> Date Posted: {created} </div>
@@ -163,7 +163,7 @@ class Posts extends React.Component {
           <p> {this.state.post.body} </p>
         </div>
 
-        <div className="post__form--wrapper" style={{ display: this.props.userAuthState ? '' : 'none' }}>
+        <div className="post__form--wrapper" style={{ display: this.props.userAuthState.userId ? '' : 'none' }}>
           <h5 className="form__thread--heading">Post a comment</h5>
           <form className="form__thread">
             <input className="form__thread--input" placeholder="Comment title" value={this.state.title} onChange={this.titleHandler} />
