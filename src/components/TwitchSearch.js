@@ -7,7 +7,6 @@ class TwitchSearch extends React.Component {
 
     this.state = {
       twitchQuery: this.props.twitchStreamer
-      // displayVideo: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,15 +37,15 @@ class TwitchSearch extends React.Component {
     });
   }
 
-  handleClick(event) {
+  handleClick(streamer) {
     this.setState({
-      twitchQuery: event.target.innerText
+      twitchQuery: streamer
       // displayVideo: true
     });
   }
 
   addToFavourites(twitchStream) {
-    if (this.props.userAuthState) {
+    if (this.props.userAuthState.userId) {
       const newFav = {
         gamerId: this.props.userAuthState.userId,
         twitchName: twitchStream
@@ -148,12 +147,19 @@ class TwitchSearch extends React.Component {
             {topTwitchers.map(currentTwitch => {
               return (
                 <a href="#" key={currentTwitch.id} className="twitch__anchor">
-                  <li onClick={this.handleClick} className="twitch__list">
-                    {currentTwitch.display_name}
+                  <li
+                    onClick={event => {
+                      this.handleClick(currentTwitch.display_name);
+                    }}
+                    className="twitch__list"
+                  >
                     <img
                       className="twitch_streamers--image"
                       src={currentTwitch.profile_image_url}
                     />
+                    <p className="twitch_streamers--name">
+                      {currentTwitch.display_name}
+                    </p>
                   </li>
                 </a>
               );
