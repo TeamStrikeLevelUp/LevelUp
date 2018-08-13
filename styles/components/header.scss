@@ -2,6 +2,12 @@
   padding: 20px;
   margin: 0;
 
+  border-style: solid;
+  border-color: whitesmoke;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+
   background-color: var(--dark-grey);
 
   .header__logo {

@@ -45,7 +45,7 @@ class Fortnite extends React.Component {
           <div className="fortnite__option">
             <form className="fortnite__option-form" onSubmit={this.handleSubmit}>
               <input className="fortnite__option-input" onChange={this.handleChange} type="search" value={this.state.searchUser} placeholder="Search username..." />
-              <button className="button__edit">Search</button>
+              <button className="fortnite__button button button-primary">Search</button>
             </form>
           </div>
           <div>
@@ -53,7 +53,7 @@ class Fortnite extends React.Component {
           </div>
         </div>
         <div className="fortnite__playerlist">
-          <FortnitePlayerList />
+          <FortnitePlayerList fetchFortniteStats={this.props.fetchFortniteStats} />
         </div>
       </div>
     );

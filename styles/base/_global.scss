@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
 ul, ol {
   list-style: none;
   padding: 0;
@@ -25,9 +28,4 @@ body {
   background-size: cover;
   background-color: rgb(13, 27, 27);
   color: whitesmoke;
-}
-
-.is-active {
-  background-color: var(--primary-color);
-  color: #fff;
 }

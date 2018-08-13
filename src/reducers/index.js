@@ -10,6 +10,8 @@ import gameFavourite from "./gameFavourite";
 import twitchFavourite from "./twitchFavourite";
 import topTwitchers from "./topTwitchers";
 import twitchStreamer from "./twitchStreamer";
+import introTrigger from "./introTrigger";
+import gameToSearch from "./gameToSearch";
 
 export default combineReducers({
   gameInfo,
@@ -22,5 +24,7 @@ export default combineReducers({
   gameFavourite,
   twitchFavourite,
   topTwitchers,
-  twitchStreamer
+  twitchStreamer,
+  introTrigger,
+  gameToSearch
 });

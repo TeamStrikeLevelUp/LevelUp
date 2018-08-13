@@ -13,10 +13,18 @@
      a {
       color: #fff;
       font-size: 14px;
+      padding-bottom: 5px;
+      text-decoration: none;
 
-      &:hover {
+      &:hover, 
+      &.is-active {
+        border-bottom: 2px solid var(--secondary-color);
         color: var(--secondary-color);
       }
      }
   }
+}
+
+.homepage-tour {
+  color: black;
 }
