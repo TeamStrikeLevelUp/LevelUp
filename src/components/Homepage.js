@@ -119,7 +119,7 @@ class Homepage extends React.Component {
         <div className="homepage__main">
           <h2 className="homepage__main--title">Welcome to Level Up <hr /></h2>
           <div>
-            <button onClick={() => this.props.triggerIntro()} className="homepage__main--tour">Take a Tour of Level Up</button>
+            <button onBlur={() => this.props.handleBlur()} onClick={() => this.props.triggerIntro()} className="homepage__main--tour">Take a Tour of Level Up</button>
           </div>
           <div className="featured__wrapper">
             <div className="homepage__main--featured">

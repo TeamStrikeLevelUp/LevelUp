@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import HomeNavBar from "../components/HomeNavBar";
+import { tourOff } from "../actions";
 
 const mapStateToProps = reduxState => {
   return {
@@ -8,10 +9,16 @@ const mapStateToProps = reduxState => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    handleBlur: () => dispatch(tourOff())
+  }
+}
+
 
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
   null,
   {
     // https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux

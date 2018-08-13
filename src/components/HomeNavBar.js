@@ -23,7 +23,8 @@ class HomeNavBar extends React.Component {
     // intro tour starter function
     this.intro();
     return (
-      <ul className="main-nav">
+
+      <ul onBlur={() => this.props.handleBlur()} className="main-nav">
         <li className="main-nav__item">
           <NavLink
             data-tooltipClass="animated tada homepage-tour"
