@@ -16,12 +16,6 @@ class Forums extends React.Component {
     this.fetchTotalPostsInForum = this.fetchTotalPostsInForum.bind(this);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   //   console.log("next",this.props)
-  //   //   console.log("prev",prevProps)
-
-  // }
-
   componentDidMount() {
     fetch(`/api/forum/${this.props.match.params.id}`)
       .then(response => response.json())
@@ -31,35 +25,24 @@ class Forums extends React.Component {
       .then(response => response.json())
       .then(json => {
         this.setState({ posts: json });
-        console.log("this.state.posts.j", json.length);
         // if (json.length > 0) {
         return this.fetchTotalPostsInForum(json);
         // }
       });
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   console.log("this.state.posts.length", this.state.posts.length)
-  //   if (this.state.posts.length > 0) {
-  //     this.fetchTotalPostsInForum(this.state.posts.id);
-  //   }
-  // }
-
   fetchTotalPostsInForum(posts) {
     posts.map(post => {
-      console.log("post.id", post.id);
       fetch(`/api/postsbyparent/${post.id}`, {
         method: "get",
         headers: {
           "Content-Type": "application/json"
         }
       })
-        .then(function(response) {
-          console.log("response", response);
+        .then(function (response) {
           return response.json();
         })
         .then(posts => {
-          console.log("posts", posts);
           const postCount = "totalPost-" + post.id;
           this.setState({
             [postCount]: posts.length
@@ -113,7 +96,7 @@ class Forums extends React.Component {
         "Content-Type": "application/json"
       }
     })
-      .then(function(response) {
+      .then(function (response) {
         return response.json();
       })
       .then(json => this.setState({ posts: json }));
@@ -122,8 +105,6 @@ class Forums extends React.Component {
   }
 
   render() {
-    // console.log("next", this.props.forum)
-    // console.log("prev", this.props.posts)
     if (!this.state.forum.id) return null;
 
     return (
@@ -180,8 +161,8 @@ class Forums extends React.Component {
               );
             })
           ) : (
-            <p className="forums__no-posts">No thread on this forum yet :/</p>
-          )}
+              <p className="forums__no-posts">No thread on this forum yet :/</p>
+            )}
         </div>
         <div style={{ display: this.props.userAuthState ? "" : "none" }}>
           <h5 className="form__thread--heading">Post a thread</h5>
