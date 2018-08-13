@@ -5,12 +5,14 @@ import "../../styles/index.scss";
 
 function FortniteStats({ stat }) {
   if (!stat.totals) return null;
+  console.log(stat.totals.hoursplayed)
   return (
     <ul className="fortnite__ul">
       <li className="fortnite__userstats" key={stat.uid}>
         <h3 className="fortnite__userstats--username">{stat.username}</h3>
         <h5 className="fortnite__userstats--platform">{stat.platform.toUpperCase()}</h5>
-        <img className="fortnite__userstats--image" src={stat.stats.hoursplayed >= 250 ? "/static/images/fortnite-high-level.jpeg" : "/static/images/fort-normal.jpg"} />
+        <img className="fortnite__userstats--image" src={stat.totals.hoursplayed >= 250 ? "/static/images/fortnite-good2__gif.gif" : "/static/images/fortnite-bad__gif.gif"} />
+        <br />
         <br />
         <h2 className="fortnite__userstats--titles">Solo Stats</h2>
         <p className="fortnite__userstats--stats">1st Place Finishes: {stat.stats.placetop1_solo}</p>

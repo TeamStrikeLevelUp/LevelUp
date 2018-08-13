@@ -155,9 +155,11 @@
         padding-top: 20px;
         margin-top: auto;
         display: block;
+        color: var(--primary-color);
 
         &.dashboard__panels--fortnite-para--large {
             font-size: 14px;
+            color: var(--primary-color);
         }
     }
     ol.dashboard__panels--twitch-list {

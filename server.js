@@ -19,8 +19,17 @@ const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 
-const getEmptyUser = () => {
-  data: JSON.stringify({ username: null, userId: null });
+const getUser = (req) => {
+  const user = req.user ? {
+    username: req.user.gamer_name,
+    userId: req.user.id
+  }
+    :
+    { username: null, userId: null };
+
+  return {
+    data: JSON.stringify(user)
+  };
 };
 
 app.use(bodyParser.json());
@@ -162,6 +171,7 @@ app.get("/api/post/:id/search/:name", function (req, res) {
 });
 
 
+
 // Get gamer's posts
 app.get("/api/userposts/:id", function (req, res) {
   db.manyOrNone(`SELECT * FROM post WHERE gamer_id = $1 ORDER BY created DESC`, [req.params.id])
@@ -172,6 +182,7 @@ app.get("/api/userposts/:id", function (req, res) {
 });
 
 // Get posts that are parent (thread)
+
 app.get("/api/parentpost/:id", function (req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
@@ -207,8 +218,6 @@ app.get("/api/reply/:id", function (req, res) {
     })
     .catch(error => console.log(error.message));
 });
-
-
 
 app.get("/api/reply/:id/search/:name", function (req, res) {
   db.any(
@@ -694,7 +703,7 @@ app.get("/dashboard", isLoggedIn, function (req, res) {
         })
       });
     } else {
-      res.render("index", getEmptyUser());
+      res.render("index", getUser(req));
     }
   });
 });
@@ -710,7 +719,7 @@ app.get("/dashboard/account", isLoggedIn, function (req, res) {
           })
         });
       } else {
-        res.render("index", getEmptyUser());
+        res.render("index", getUser(req));
       }
     })
     .catch(error => console.log(error.message));
@@ -723,16 +732,7 @@ app.set("view engine", "hbs");
 // });
 
 app.get("/", function (req, res) {
-  if (req.user) {
-    res.render("index", {
-      data: JSON.stringify({
-        username: req.user.gamer_name,
-        userId: req.user.id
-      })
-    });
-  } else {
-    res.render("index", getEmptyUser());
-  }
+  res.render("index", getUser(req));
 });
 
 app.get("/homepage", function (req, res) {
@@ -744,12 +744,12 @@ app.get("/homepage", function (req, res) {
       })
     });
   } else {
-    res.render("index", getEmptyUser());
+    res.render("index", getUser(req));
   }
 });
 
 app.get("/login", function (req, res) {
-  res.render("login", getEmptyUser());
+  res.render("login", getUser(req));
 });
 // route to accept logins
 app.post("/login", passport.authenticate("local", { session: true }), function (
@@ -761,7 +761,7 @@ app.post("/login", passport.authenticate("local", { session: true }), function (
 
 // register page
 app.get("/signup", function (req, res) {
-  res.render("signup", getEmptyUser());
+  res.render("signup", getUser(req));
 });
 
 app.post("/signup", (req, res) => {
@@ -835,7 +835,7 @@ app.get("/gameid/:id", (req, res) => {
       ids: [gameTitle],
       order: "release_dates.date:asc",
       fields: "*", // Return all fields
-      limit: 5, // Currentlyl imited to 5 results
+      limit: 5, // Currently limited to 5 results
       offset: 15 // Index offset for results
     })
     .then(response => {
@@ -937,7 +937,7 @@ app.get("/api/fortnite/:username", (req, res) => {
     method: "POST",
     body: formData,
     headers: {
-      Authorization: "49814d647a64a41873378c2c7acd74b1"
+      Authorization: "4e989a71073c48d9c63e5ccf8551495e"
     }
   })
     .then(function (response) {
@@ -957,7 +957,7 @@ app.get("/api/fortnite/:username", (req, res) => {
           method: "POST",
           body: formDataStats,
           headers: {
-            Authorization: "49814d647a64a41873378c2c7acd74b1"
+            Authorization: "4e989a71073c48d9c63e5ccf8551495e"
           }
         }
       )
@@ -981,16 +981,7 @@ app.use((req, res, next) => {
 });
 
 app.get("*", function (req, res) {
-  res.render("index", {
-    data: req.user
-      ? {
-        data: JSON.stringify({
-          username: req.user.gamer_name,
-          userId: req.user.id
-        })
-      }
-      : getEmptyUser()
-  });
+  res.render("index", getUser(req));
 });
 
 const port = process.env.PORT || 8080;
