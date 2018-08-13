@@ -119,11 +119,11 @@ class Posts extends React.Component {
       editId: reply.id,
       editMode: true
     });
+    window.scrollTo(75, 75);
   };
 
   fetchAvatar = posts => {
     posts.map(post => {
-      console.log("post.gamer_id", post.gamer_id);
       fetch(`/api/getgameravatar/${post.gamer_id}`)
         .then(response => response.json())
         .then(json => {
@@ -264,6 +264,7 @@ class Posts extends React.Component {
                     {this.props.userAuthState ? (
                       this.props.userAuthState.userId === reply.gamer_id ? (
                         <button
+                          className="button button-edit"
                           onClick={event => this.editHandler(event, reply)}
                         >
                           Edit post

@@ -12,6 +12,7 @@ import rootReducer from "./reducers";
 
 const store = createStore(
   rootReducer,
+  { authState: initialUser },
   composeWithDevTools(applyMiddleware(thunkMiddleware))
 ); //Redux chrome extension :)
 

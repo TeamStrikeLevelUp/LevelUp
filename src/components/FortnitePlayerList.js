@@ -41,14 +41,14 @@ class FortnitePlayerList extends React.Component {
     return <div className="playerlist">
 
 
-      <FortniteUser1 ninja={this.state.ninja} />
+      <FortniteUser1 fetchFortniteStats={this.props.fetchFortniteStats} ninja={this.state.ninja} />
 
 
 
-      <FortniteUser2 viniciusAmazing={this.state.viniciusAmazing} />
+      <FortniteUser2 fetchFortniteStats={this.props.fetchFortniteStats} viniciusAmazing={this.state.viniciusAmazing} />
 
 
-      <FortniteUser3 terry5L={this.state.terry5L} />
+      <FortniteUser3 fetchFortniteStats={this.props.fetchFortniteStats} terry5L={this.state.terry5L} />
     </div>
   }
 }

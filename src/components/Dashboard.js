@@ -1,9 +1,10 @@
 import React from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
-import DashboardPanels from "./dashboard/DashboardPanels";
-import DashboardAccount from "./dashboard/DashboardAccount";
 import AdminDashboardPanels from "./dashboard/AdminDashboardPanels";
 import AdminDashboardAccount from "./dashboard/AdminDashboardAccount";
+import DashboardPanels from "./dashboard/DashboardPanels";
+import DashboardAccount from "./dashboard/DashboardAccount";
+import DashboardRetro from "./dashboard/DashboardRetro";
 import cx from "classnames";
 import "../../styles/components/dashboard.scss";
 
@@ -11,7 +12,8 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
+      user: {},
+      welcome: true
     };
   }
 
@@ -24,13 +26,22 @@ class Dashboard extends React.Component {
     if (userData) {
       this.props.setAuthState(userData);
     }
+
+    setTimeout(
+      function() {
+        this.setState({
+          welcome: false
+        });
+        // document.querySelector('.dashboard__welcome').style.display = "none";
+      }.bind(this),
+      5000
+    );
   }
 
   render() {
-    console.log("this.state.user:", this.state.user);
-    console.log("userAuthState:", this.props.userAuthState);
     const welcomeClasses = cx("dashboard__welcome", {
-      "dashboard__welcome--visible": this.state.welcome
+      fadeOut: !this.state.welcome,
+      animated: !this.state.welcome
     });
     if (this.state.user.username === "admin") {
       return (
@@ -41,9 +52,9 @@ class Dashboard extends React.Component {
                 <img
                   className="dashboard__profile--image"
                   src={
-                    this.state.user.avatar
-                      ? this.state.user.avatar
-                      : "../../static/images/user.jpg"
+                    this.props.userAuthState
+                      ? this.props.userAuthState.avatar
+                      : this.state.user.avatar
                   }
                   alt=""
                 />
@@ -75,14 +86,8 @@ class Dashboard extends React.Component {
                   render={() => {
                     return (
                       <AdminDashboardPanels
-                        twitchFavourite={this.props.twitchFavourite}
-                        fetchTwitchFavourite={this.props.fetchTwitchFavourite}
-                        gameFavourite={this.props.gameFavourite}
-                        userAuthState={this.props.userAuthState}
                         setAuthState={this.props.setAuthState}
-                        fetchGamerInfo={this.props.fetchGamerInfo}
-                        fetchGameFavourite={this.props.fetchGameFavourite}
-                        userDataStore={this.props.userDataStore}
+                        userAuthState={this.props.userAuthState}
                       />
                     );
                   }}
@@ -94,9 +99,6 @@ class Dashboard extends React.Component {
                       <AdminDashboardAccount
                         setAuthState={this.props.setAuthState}
                         userAuthState={this.props.userAuthState}
-                        fetchGamerInfo={this.props.fetchGamerInfo}
-                        userDataStore={this.props.userDataStore}
-                        setUserData={this.props.setUserData}
                       />
                     );
                   }}
@@ -136,6 +138,14 @@ class Dashboard extends React.Component {
                     Account
                   </NavLink>
                 </li>
+                <li className="dashboard__nav--item">
+                  <NavLink
+                    activeClassName="is-active"
+                    to="/dashboard/retro-zone"
+                  >
+                    Retro Zone
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <div className="dashboard-content-wrapper">
@@ -173,6 +183,12 @@ class Dashboard extends React.Component {
                         setUserData={this.props.setUserData}
                       />
                     );
+                  }}
+                />
+                <Route
+                  path="/dashboard/retro-zone"
+                  render={() => {
+                    return <DashboardRetro />;
                   }}
                 />
               </Switch>
