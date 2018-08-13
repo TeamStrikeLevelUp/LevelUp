@@ -1,17 +1,40 @@
 .main-nav {
   font-family: 'Open Sans', sans-serif;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
   margin: 0;
   padding: 0;
 
-  .main-nav__item {
+  display: none;
+
+  @media(max-width: 991px){
+    &.main-nav__open {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 80px;
+
+        li {
+          margin-bottom: 18px;
+          a {
+            color: #fff;
+            font-size: 19px;
+
+            &:hover {
+              color: var(--secondary-color)
+            }
+          }
+        }
+      }
+    }
+
+  @media(min-width: 992px){
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .main-nav__item {
       margin-left: 20px;
      a {
-      color: #fff;
+      color: var(--dark-grey);
       font-size: 14px;
       padding-bottom: 5px;
       text-decoration: none;
@@ -23,8 +46,82 @@
       }
      }
   }
+  }
 }
 
+@media(max-width: 991px){
+  .main-nav__wrapper {
+    position: relative;
+
+    &.main-nav__open {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 176, 244, .9);
+      position: absolute;
+      top: 0;
+      left: 0;
+      .main-nav__toggler{
+        top: 23px;
+        right: 23px;
+      }
+    }
+  }
+}
+
+$toggler-width: 35px;
+$toggler-bar-height: 4px;
+$toggler-color: #fff;
+$toggler-color-hover: var(--secondary-color);
+
+.main-nav__toggler{
+  width: 35px;
+  height: 23px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &:hover {
+    cursor: pointer;
+    .main-nav__toggler--bar {
+      background-color: $toggler-color-hover;
+
+      &:before {
+        background-color: $toggler-color-hover;
+      }
+      &:after {
+        background-color: $toggler-color-hover;
+      }
+    }
+  }
+
+  @media(min-width: 992px){
+    display: none;
+  }
+
+  .main-nav__toggler--bar {
+    height: $toggler-bar-height;
+    width: $toggler-width;
+    background-color: $toggler-color;
+
+    &:before {
+      content: "";
+      height: $toggler-bar-height;
+      width: $toggler-width;
+      top: 9px;
+      background-color: $toggler-color;
+      position: absolute;
+    }
+    &:after {
+      content: "";
+      height: $toggler-bar-height;
+      width: $toggler-width;
+      top: 18px;
+      background-color: $toggler-color;
+      position: absolute;
+    }
+
+  }
+}
 .homepage-tour {
   color: black;
 }
