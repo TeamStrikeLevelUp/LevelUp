@@ -243,7 +243,7 @@ app.post("/api/reply", function (req, res) {
       db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
         .then(data => {
           db.none(
-            `UPDATE gamer_profile SET totalposts = totalposts+2 where gamer_id = $1`,
+            `UPDATE gamer_profile SET totalposts = totalposts+1 where gamer_id = $1`,
             [gamer_id]
           );
           res.json(data);

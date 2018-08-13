@@ -12,13 +12,15 @@ class DashboardPanels extends React.Component {
             fortniteUserData: {},
             userPosts: [],
             posts: [],
-            replies: []
+            replies: [],
+            level:0
         };
         this.gamerRank = this.gamerRank.bind(this);
         this.fetchUserInfo = this.fetchUserInfo.bind(this);
         this.fetchUserPosts = this.fetchUserPosts.bind(this);
         this.searchGame = this.searchGame.bind(this);
         this.searchTwitch = this.searchTwitch.bind(this);
+        this.gamerLevel = this.gamerLevel.bind(this)
     }
 
     componentDidMount() {
@@ -30,6 +32,7 @@ class DashboardPanels extends React.Component {
         if (userData) {
             this.props.setAuthState(userData);
         }
+        
 
         // Fetch Twitch favourites if not in redux.state
         if (userData && this.props.fetchTwitchFavourite) {
@@ -96,6 +99,7 @@ class DashboardPanels extends React.Component {
         fetch(`/api/profile/${userData.username}`)
             .then(response => response.json())
             .then(json => {
+                this.gamerLevel(json.totalposts);
                 this.setState({ userStats: json })
             });
     }
@@ -112,14 +116,26 @@ class DashboardPanels extends React.Component {
 
 
 
+
     searchGame(event, title) {
         this.props.searchClickedGame(title);
     }
 
-    searchTwitch(event, title) {
-        console.log("title: ", title);
-        this.props.setTwitchStreamer(title);
-    }
+
+gamerLevel(totalposts){
+    
+    let level= parseInt(totalposts/5);
+    if(level >100)
+      level=100
+    this.setState({level})
+  }
+
+  searchTwitch(event, title) {
+    console.log("title: ", title);
+    this.props.setTwitchStreamer(title);
+}
+
+
 
     render() {
         const { twitchFavourite, gameFavourite, userDataStore } = this.props;
@@ -132,7 +148,7 @@ class DashboardPanels extends React.Component {
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Level</h3>
                     <div className="dashboard__panels--points">
-                        {userStats.gamer_level}
+                        {this.state.level}
                     </div>
                     <p className="dashboard__panels--text dashboard__panels--text--large">
                         Your LevelUp rank is{" "}
@@ -141,7 +157,7 @@ class DashboardPanels extends React.Component {
                     <p className="dashboard__panels--text">
                         This shows your overall rank related with the games you play and
                         your levelUp points.
-          </p>
+              </p>
                 </div>
 
                 {/* Total posts */}
@@ -279,6 +295,7 @@ class DashboardPanels extends React.Component {
         );
     }
 }
+
 
 
 
