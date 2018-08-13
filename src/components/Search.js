@@ -49,6 +49,13 @@ class Search extends React.Component {
     //
   }
 
+  startUpSearch() {
+    this.props.fetchGameInfo(
+      "/games/" + this.props.gameToSearch.replace(/[^\w\s]/gi, "").toLowerCase()
+    );
+    this.props.searchClickedGame("");
+  }
+
   handleChange(event) {
     event.preventDefault();
     this.setState({
@@ -80,13 +87,6 @@ class Search extends React.Component {
     } else {
       alert("Please log in to select favourites"); //Change to message on screen
     }
-  }
-
-  startUpSearch() {
-    this.props.fetchGameInfo(
-      "/games/" + this.props.gameToSearch.replace(/[^\w\s]/gi, "").toLowerCase()
-    );
-    this.props.searchClickedGame("");
   }
 
   render() {
