@@ -50,7 +50,7 @@ app.get("/twitchStreams", (req, res) => {
   var headers = {
     "Client-ID": "goetr7q6o8bx0zott538hwdsavlpf8"
   };
-  fetch(`https://api.twitch.tv/helix/streams?first=10&language=en`, {
+  fetch(`https://api.twitch.tv/helix/streams?first=5&language=en`, {
     method: "GET",
     headers
   })
