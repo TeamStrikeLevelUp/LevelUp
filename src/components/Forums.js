@@ -76,7 +76,7 @@ class Forums extends React.Component {
   replyHandler(event) {
     event.preventDefault();
 
-    if (!this.props.userAuthState) {
+    if (!this.props.userAuthState.userId) {
       alert("login first");
       return;
     }
@@ -130,7 +130,7 @@ class Forums extends React.Component {
         <div className="forums">
           <div
             className="forums__login"
-            style={{ display: this.props.userAuthState ? "none" : "" }}
+            style={{ display: this.props.userAuthState.userId ? "none" : "" }}
           >
             {" "}
             <a href="/login">Login to post</a>{" "}
@@ -164,7 +164,7 @@ class Forums extends React.Component {
               <p className="forums__no-posts">No thread on this forum yet :/</p>
             )}
         </div>
-        <div style={{ display: this.props.userAuthState ? "" : "none" }}>
+        <div style={{ display: this.props.userAuthState.userId ? "" : "none" }}>
           <h5 className="form__thread--heading">Post a thread</h5>
           <form className="form__thread">
             <input

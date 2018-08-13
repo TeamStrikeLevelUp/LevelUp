@@ -20,8 +20,17 @@ const cookieParser = require("cookie-parser");
 const expressSession = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
 
-const getEmptyUser = () => {
-  data: JSON.stringify({ username: null, userId: null });
+const getUser = req => {
+  const user = req.user
+    ? {
+        username: req.user.gamer_name,
+        userId: req.user.id
+      }
+    : { username: null, userId: null };
+
+  return {
+    data: JSON.stringify(user)
+  };
 };
 
 app.use(bodyParser.json());
@@ -235,7 +244,7 @@ app.post("/api/reply", function(req, res) {
       db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
         .then(data => {
           db.none(
-            `UPDATE gamer_profile SET totalposts = totalposts+2 where gamer_id = $1`,
+            `UPDATE gamer_profile SET totalposts = totalposts+1 where gamer_id = $1`,
             [gamer_id]
           );
           res.json(data);
@@ -299,6 +308,51 @@ app.post("/api/post-edit", function(req, res) {
           res.json(data);
         })
         .catch(error => console.log(error.message));
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.post("/api/postreport/:id", function(req, res) {
+  const { selectId } = req.body;
+  const review = "review";
+  db.one(`UPDATE post SET admin_status = $1 WHERE id = $2;`, [review, selectId])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/reviewposts", function(req, res) {
+  db.any(
+    "SELECT body, post.id, post.title, gamer.gamer_name, forum.title AS forum_title FROM post, gamer, forum WHERE admin_status = 'review' AND post.gamer_id = gamer.id AND post.forum_id = forum.id;"
+  )
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.post("/api/review-delete/:id", function(req, res) {
+  const { id } = req.body;
+  const deletedPost = "this post was deleted by a moderator";
+  const deletedStatus = "delete";
+  db.one(`UPDATE post SET body = $1, admin_status = $2 WHERE id = $3;`, [
+    deletedPost,
+    deletedStatus,
+    id
+  ])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/deletedposts", function(req, res) {
+  db.any(
+    "SELECT body, post.id, post.title, gamer.gamer_name, forum.title AS forum_title FROM post, gamer, forum WHERE admin_status = 'delete' AND post.gamer_id = gamer.id AND post.forum_id = forum.id;"
+  )
+    .then(data => {
+      res.json(data);
     })
     .catch(error => console.log(error.message));
 });
@@ -695,7 +749,7 @@ app.get("/dashboard", isLoggedIn, function(req, res) {
         })
       });
     } else {
-      res.render("index", getEmptyUser());
+      res.render("index", getUser(req));
     }
   });
 });
@@ -711,7 +765,7 @@ app.get("/dashboard/account", isLoggedIn, function(req, res) {
           })
         });
       } else {
-        res.render("index", getEmptyUser());
+        res.render("index", getUser(req));
       }
     })
     .catch(error => console.log(error.message));
@@ -724,16 +778,7 @@ app.set("view engine", "hbs");
 // });
 
 app.get("/", function(req, res) {
-  if (req.user) {
-    res.render("index", {
-      data: JSON.stringify({
-        username: req.user.gamer_name,
-        userId: req.user.id
-      })
-    });
-  } else {
-    res.render("index", getEmptyUser());
-  }
+  res.render("index", getUser(req));
 });
 
 app.get("/homepage", function(req, res) {
@@ -745,12 +790,12 @@ app.get("/homepage", function(req, res) {
       })
     });
   } else {
-    res.render("index", getEmptyUser());
+    res.render("index", getUser(req));
   }
 });
 
 app.get("/login", function(req, res) {
-  res.render("login", getEmptyUser());
+  res.render("login", getUser(req));
 });
 // route to accept logins
 app.post("/login", passport.authenticate("local", { session: true }), function(
@@ -762,7 +807,7 @@ app.post("/login", passport.authenticate("local", { session: true }), function(
 
 // register page
 app.get("/signup", function(req, res) {
-  res.render("signup", getEmptyUser());
+  res.render("signup", getUser(req));
 });
 
 app.post("/signup", (req, res) => {
@@ -830,7 +875,7 @@ app.get("/gameid/:id", (req, res) => {
       ids: [gameTitle],
       order: "release_dates.date:asc",
       fields: "*", // Return all fields
-      limit: 5, // Currentlyl imited to 5 results
+      limit: 5, // Currently limited to 5 results
       offset: 15 // Index offset for results
     })
     .then(response => {
@@ -969,16 +1014,7 @@ app.use((req, res, next) => {
 });
 
 app.get("*", function(req, res) {
-  res.render("index", {
-    data: req.user
-      ? {
-          data: JSON.stringify({
-            username: req.user.gamer_name,
-            userId: req.user.id
-          })
-        }
-      : getEmptyUser()
-  });
+  res.render("index", getUser(req));
 });
 
 const port = process.env.PORT || 8080;

@@ -1,3 +1,9 @@
+.profile--image {
+    border-radius: 50%;
+    max-width: 150px;
+    width: 150px;
+}
+
 .dashboard {
     font-family: 'Open Sans', sans-serif;
     background-image: url("/static/images/background2.jpg");
@@ -155,9 +161,11 @@
         padding-top: 20px;
         margin-top: auto;
         display: block;
+        color: var(--primary-color);
 
         &.dashboard__panels--fortnite-para--large {
             font-size: 14px;
+            color: var(--primary-color);
         }
     }
     ol.dashboard__panels--twitch-list {

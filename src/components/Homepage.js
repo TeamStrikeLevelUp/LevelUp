@@ -5,15 +5,19 @@ let shuffle = require("shuffle-array");
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
 
+let topGames=[];
+let topTwitchers=[]
+
 class Homepage extends React.Component {
   constructor() {
     super();
     this.state = {
-      gamer: {}, game: {}, forum: {}, choice: {}, voteResults: [], viewMode: false, topForum: [],
+      gamer: {}, game: {}, forum: {}, choice: {}, voteResults: [], viewMode: false, topForum: [], resultsMode:false,
       topGames: [
         "The Elder Scrolls 5: Skyrim", "Fallout 4", "Grand Theft Auto 5", "Fortnite", "The Witcher 3: Wild Hunt",
         "No Man's Sky", "Octopath Traveler", "Monster Hunter: World", "The Legend of Zelda: Breath of the Wild", "Persona 5"
-      ]
+      ],
+      topTwitchers:["Reckful", "dakotaz", "CohhCarnage", "partypokerTV", "twitchrivals_tw"]
     }
     this.handleChange = this.handleChange.bind(this);
     this.voteHandler = this.voteHandler.bind(this)
@@ -23,7 +27,11 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchTopTwitchers();
+    topGames=this.state.topGames;
+    shuffle(topGames);
+    topTwitchers=this.state.topTwitchers;
+    shuffle(topTwitchers);
+
 
     fetch(`/api/featured`)
       .then(response => response.json())
@@ -48,7 +56,7 @@ class Homepage extends React.Component {
     event.preventDefault();
 
     if (this.state.choice.value) {
-      if (this.props.userAuthState) {
+      if (this.props.userAuthState.userId) {
 
         const newVote = {
           value: this.state.choice.value,
@@ -91,6 +99,8 @@ class Homepage extends React.Component {
         json.forEach(vote => count = count + parseInt(vote.count))
         this.setState({ voteResults: json, totalVotes: count, viewMode: true });
       });
+
+      this.setState({resultsMode: !this.state.resultsMode})
   }
 
   searchTwitch(event, title) {
@@ -108,18 +118,14 @@ class Homepage extends React.Component {
   }
 
   render() {
-    let topGames = this.state.topGames;
-    shuffle(topGames);
-    let topTwitchers = this.props.topTwitchers;
-    shuffle(topTwitchers);
-    console.log("shuffled", topTwitchers[0])
-    console.log("intro", this.props.introTrigger)
+
+    // console.log("intro", this.props.introTrigger)
     return (
       <div className="homepage">
         <div className="homepage__main">
           <h2 className="homepage__main--title">Welcome to Level Up <hr /></h2>
           <div>
-            <button onClick={() => this.props.triggerIntro()} className="homepage__main--tour">Take a Tour of Level Up</button>
+            <button onBlur={() => this.props.handleBlur()} onClick={() => this.props.triggerIntro()} className="homepage__main--tour">Take a Tour of Level Up</button>
           </div>
           <div className="featured__wrapper">
             <div className="homepage__main--featured">
@@ -143,7 +149,7 @@ class Homepage extends React.Component {
                 <div className="homepage__main--featured--selection--twitch">
                   <h4><i>Featured Stream</i></h4>
                   <h4 className="homepage__links">{topTwitchers[0] ?
-                    <p onClick={(event) => this.searchTwitch(event, topTwitchers[0].display_name)}> <Link className="homepage__links" to="/twitch"> {topTwitchers[0].display_name} </Link> </p>
+                    <p onClick={(event) => this.searchTwitch(event, topTwitchers[0].display_name)}> <Link className="homepage__links" to="/twitch"> {topTwitchers[0]} </Link> </p>
                     : null}</h4>
                 </div>
               </div>
@@ -182,7 +188,7 @@ class Homepage extends React.Component {
                   </strong>
                 </div>
                 <br />
-                <div className="homepage__side--poll-answers">
+                <div className="homepage__side--poll-answers"   style={{ display: this.state.resultsMode ? 'none' : '' }}>
                   <input type="radio" name="answer" value="1" id="PC" />
                   <label htmlFor="PC">PC</label>
                   <input type="radio" name="answer" value="2" id="PS4" />
@@ -196,16 +202,17 @@ class Homepage extends React.Component {
                   <input type="radio" name="answer" value="6" id="Other" />
                   <label htmlFor="Other">Other</label>
                 </div>
-                <div>
-                  <button className="homepage__button button-primary button" onClick={this.voteHandler} >Vote  </button>
-                  <button className="button-primary button" onClick={this.viewHandler} >View </button>
-                </div>
-                <div style={{ display: this.state.viewMode ? '' : 'none' }}>
+                <div style={{ display: this.state.resultsMode ? '' : 'none' }}>
                   <p>Number of Voters: {this.state.totalVotes} </p>
                   {this.state.voteResults.map(vote => {
-                    return <p key={vote.title}> {vote.title} got %{(vote.count / this.state.totalVotes) * 100} </p>
+                    return <p key={vote.title}> {vote.title} got {(vote.count / this.state.totalVotes) * 100}% </p>
                   })}
                 </div>
+                <div>
+                  <button className="homepage__button button-primary button" onClick={this.voteHandler} >Vote  </button>
+                  <button className="button-primary button" onClick={this.viewHandler} >{this.state.resultsMode ? "View Poll" : "View Results"} </button>
+                </div>
+
               </div>
             </form>
           </div>
