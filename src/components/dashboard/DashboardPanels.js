@@ -9,7 +9,6 @@ class DashboardPanels extends React.Component {
         this.state = {
             user: "",
             userStats: "",
-            gamer_rank: "",
             gamer_info: "",
             fortniteUserData: {},
             posts: [],
@@ -50,9 +49,6 @@ class DashboardPanels extends React.Component {
                 this.setState({ posts: json.posts, replies: json.replies });
             });
 
-        // Gamer rank
-        this.gamerRank();
-
         // Games Info
         if (userData && this.props.fetchGameFavourite) {
             this.props.fetchGameFavourite(userData.userId);
@@ -65,29 +61,27 @@ class DashboardPanels extends React.Component {
             .then(data1 => fetch(`/api/fortnite/${data1.profile.fortnitename}`))
             .then(response => response.json())
             .then(data2 => {
-                this.setState({
-                    fortniteUserData: data2
-                });
+                if (data2.username != "NulL") {
+                    this.setState({
+                        fortniteUserData: data2
+                    });
+                }
             });
     }
 
     gamerRank() {
         const g_level = this.state.userStats.totalposts;
         console.log(this.state.userStats.totalposts)
-        switch (g_level) {
-            case g_level < 10:
-                this.setState({ gamer_rank: "Noob" });
-                break;
-            case g_level < 20:
-                this.setState({ gamer_rank: "Challenger" });
-                break;
-            case g_level < 30:
-                this.setState({ gamer_rank: "Champion" });
-                break;
-            default:
-                this.setState({ gamer_rank: "Legend" });
-        }
 
+        if (g_level < 10) {
+            return "Noob";
+        } else if (g_level < 20) {
+            return "Challenger";
+        } else if (g_level < 30) {
+            return "Champion";
+        } else {
+            return "Legend";
+        }
     }
 
     searchGame(event, title) {
@@ -101,7 +95,7 @@ class DashboardPanels extends React.Component {
 
     render() {
         const { twitchFavourite, gameFavourite, userDataStore } = this.props;
-        const { userStats, gamer_rank } = this.state;
+        const { userStats } = this.state;
         // console.log("fort", this.state.fortniteUserData);
         return (
             <div className="dashboard__panels">
@@ -112,7 +106,7 @@ class DashboardPanels extends React.Component {
                     </div>
                     <p className="dashboard__panels--text dashboard__panels--text--large">
                         Your LevelUp rank is{" "}
-                        <strong className="rank__level">{gamer_rank}</strong>
+                        <strong className="rank__level">{this.gamerRank()}</strong>
                     </p>
                     <p className="dashboard__panels--text">
                         This shows your overall rank related with the games you play and
@@ -172,10 +166,10 @@ class DashboardPanels extends React.Component {
           </p>
                 </div>
                 <div className="dashboard__panels--item">
-                    <div className="dashboard__fortnite">
+                    <div>
                         <h3 className="dashboard__panels--heading">Fortnite</h3>
                         {this.state.fortniteUserData.totals ? (
-                            <div className="dashboard__panels--points">
+                            <div className="dashboard__fortnite">
                                 <h5 className="dashboard__panels--fortnite-user">
                                     {this.state.fortniteUserData.username}
                                 </h5>
@@ -198,7 +192,7 @@ class DashboardPanels extends React.Component {
                                     Score: {this.state.fortniteUserData.totals.score}
                                 </p>
                             </div>
-                        ) : <h5 className="dashboard__panels--fortnite-platform">Enter your Fortnite username in the account section to see your Fortnite stats right here!</h5>}
+                        ) : <h5 className="dashboard__panels--text">Enter your Fortnite username in the account section to see your Fortnite stats right here!</h5>}
                     </div>
                 </div>
                 <div className="dashboard__panels--item">

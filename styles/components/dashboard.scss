@@ -132,9 +132,11 @@ columns: 2;
             padding-top: 20px;
             margin-top: auto;
             display: block;
+            color: var(--primary-color);
 
             &.dashboard__panels--fortnite-user--large {
                 font-size: 14px;
+                color: var(--primary-color);
             }
         }
         .dashboard__panels--fortnite-platform {
@@ -143,9 +145,11 @@ columns: 2;
             padding-top: 20px;
             margin-top: auto;
             display: block;
+            color: var(--primary-color);
 
             &.dashboard__panels--fortnite-platform--large {
                 font-size: 14px;
+                color: var(--primary-color);
             }
         }
         .dashboard__panels--fortnite-para {

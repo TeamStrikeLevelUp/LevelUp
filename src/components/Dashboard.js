@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
                             <li className="dashboard__nav--item"><NavLink exact activeClassName="is-active" to="/dashboard">Dashboard</NavLink></li>
                             <li className="dashboard__nav--item"><NavLink activeClassName="is-active" to="/dashboard/account">Account</NavLink></li>
                             <li className="dashboard__nav--item"><NavLink activeClassName="is-active" to="/dashboard/retro-zone">Retro Zone</NavLink></li>
-                            <li className="dashboard__nav--item">Favorites</li>
+
                         </ul>
                     </div>
                     <div className="dashboard-content-wrapper">
@@ -61,7 +61,7 @@ class Dashboard extends React.Component {
                                     searchClickedGame={this.props.searchClickedGame}
                                     twitchStreamer={this.props.twitchStreamer}
                                     setTwitchStreamer={this.props.setTwitchStreamer}
-                                    />
+                                />
                             }} />
                             <Route path="/dashboard/account" render={() => {
                                 return <DashboardAccount

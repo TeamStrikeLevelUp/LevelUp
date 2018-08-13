@@ -47,20 +47,20 @@ class HomeNavBar extends React.Component {
           <NavLink data-tooltipClass="animated zoomIn homepage-tour" data-step="6" data-intro="Not sure whether to buy that latest game? Decide by seeing them in action, live, played around the world on Twitch here." className="main-nav__item" activeClassName="is-active" to="/twitch">Twitch</NavLink>
         </li>
         <li className="main-nav__item">
-          {userAuthState ?
+          {userAuthState.userId ?
             <NavLink className="main-nav__item" activeClassName="is-active" to="/dashboard">Dashboard</NavLink> : null}
         </li>
 
         <li className="main-nav__item">
-          {!userAuthState ?
+          {!userAuthState.userId ?
             <a href="/login">Log In</a> : null}
         </li>
         <li className="main-nav__item">
-          {!userAuthState ?
+          {!userAuthState.userId ?
             <a data-tooltipClass="animated infinite pulse homepage-tour" data-step="7" data-intro="Liked what you saw? What are you waiting for! Sign up here and start levelling up!" href="/signup">Sign Up</a> : null}
         </li>
         <li className="main-nav__item">
-          {userAuthState ?
+          {userAuthState.userId ?
             <a href="/logout">Logout</a> : null}
         </li>
       </ul>
