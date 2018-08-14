@@ -52,7 +52,7 @@ class HomeNavBar extends React.Component {
               data-intro="Check out our homepage to find the hottest content on the site today."
               className="main-nav__item"
               activeClassName="is-active"
-              to="/homepage"
+              to="/homepage" onClick={this.mainNavHandler}
             >
               Home
           </NavLink>
@@ -65,7 +65,7 @@ class HomeNavBar extends React.Component {
               data-intro="Search for your favourite games here. You'll find ratings, trailers and much more."
               className="main-nav__item"
               activeClassName="is-active"
-              to="/search"
+              to="/search" onClick={this.mainNavHandler}
             >
               Search Games
           </NavLink>
@@ -77,7 +77,7 @@ class HomeNavBar extends React.Component {
               data-intro="Wondering whats trending in the industry? Check out the latest news right here."
               className="main-nav__item"
               activeClassName="is-active"
-              to="/news"
+              to="/news" onClick={this.mainNavHandler}
             >
               Level Up News
           </NavLink>
@@ -90,7 +90,7 @@ class HomeNavBar extends React.Component {
               data-intro="Fancy yourself decent at the world's most popular game? Compare your skills with the best of the rest in The Fort."
               className="main-nav__item"
               activeClassName="is-active"
-              to="/the-fort"
+              to="/the-fort" onClick={this.mainNavHandler}
             >
               The Fort
           </NavLink>
@@ -103,7 +103,7 @@ class HomeNavBar extends React.Component {
               data-intro="See what the Level Up community is talking about in our forums. Find the latest tips, secrets, and opinions straight from our vibrant community."
               className="main-nav__item"
               activeClassName="is-active"
-              to="/forum"
+              to="/forum" onClick={this.mainNavHandler}
             >
               Community
           </NavLink>
@@ -115,7 +115,7 @@ class HomeNavBar extends React.Component {
               data-intro="Not sure whether to buy that latest game? Decide by seeing them in action, live, played around the world on Twitch here."
               className="main-nav__item"
               activeClassName="is-active"
-              to="/twitch"
+              to="/twitch" onClick={this.mainNavHandler}
             >
               Twitch
           </NavLink>
@@ -125,14 +125,14 @@ class HomeNavBar extends React.Component {
               <NavLink
                 className="main-nav__item"
                 activeClassName="is-active"
-                to="/dashboard"
+                to="/dashboard" onClick={this.mainNavHandler}
               >
                 Dashboard
             </NavLink>
             ) : null}
           </li>
 
-          <li className="main-nav__item">
+          <li className="main-nav__item" onClick={this.mainNavHandler}>
             {!userAuthState.userId ? <a href="/login">Log In</a> : null}
           </li>
           <li className="main-nav__item">
@@ -141,13 +141,13 @@ class HomeNavBar extends React.Component {
                 data-tooltipClass="animated infinite pulse homepage-tour"
                 data-step="7"
                 data-intro="Liked what you saw? What are you waiting for! Sign up here and start levelling up!"
-                href="/signup"
+                href="/signup" onClick={this.mainNavHandler}
               >
                 Sign Up
             </a>
             ) : null}
           </li>
-          <li className="main-nav__item">
+          <li className="main-nav__item" onClick={this.mainNavHandler}>
             {userAuthState.userId ? <a href="/logout">Logout</a> : null}
           </li>
         </ul>

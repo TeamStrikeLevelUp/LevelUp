@@ -59,6 +59,7 @@ $toggler-open-color-hover: var(--dark-grey);
 @media(max-width: 991px){
   .main-nav__wrapper {
     position: relative;
+    z-index: 9;
 
     &.main-nav__open {
       width: 100%;
