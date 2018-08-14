@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 let shuffle = require("shuffle-array");
-
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
 
 let topGames = [];
-let topTwitchers = [];
 
 class Homepage extends React.Component {
   constructor() {
@@ -50,10 +48,9 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchTopTwitchers(); // fetch current streamers online atm
-    this.props.fetchTopTwitchers(); //hold 5 in state
-    console.log("top twitchers", topTwitchers);
-    shuffle(topTwitchers);
+    if (this.props.fetchTopTwitchers !== undefined) {
+      this.props.fetchTopTwitchers();
+    }
 
     topGames = this.state.topGames;
     shuffle(topGames);
@@ -136,8 +133,10 @@ class Homepage extends React.Component {
   }
 
   render() {
-    const { userAuthState } = this.props;
-    // console.log("rnd twitch", topTwitchers[0][display_name]);
+    const { userAuthState, topTwitchers } = this.props;
+
+    //get a random number from 1 to 5 to display a random current twitch streamer
+    const rndTwitch = Math.floor(Math.random() * 5);
 
     return (
       <div className="homepage">
@@ -153,15 +152,15 @@ class Homepage extends React.Component {
           <div className="homepage__featured--game">
             <h4 onClick={this.searchGame}>Game</h4>
             <h4>
-              <Link className="homepage__links" to="/search">
+              {/* <Link className="homepage__links" to="/search">
                 {this.state.game.title}
-                <br />
+              </Link> */}
+              <br />
 
-                <img
-                  src="//images.igdb.com/igdb/image/upload/t_cover_big/f9jvrf3nwdgdil287sla"
-                  className="search__img--cover"
-                />
-              </Link>
+              <img
+                src="//images.igdb.com/igdb/image/upload/t_cover_big/f9jvrf3nwdgdil287sla"
+                className="search__img--cover"
+              />
             </h4>
           </div>
 
@@ -197,21 +196,30 @@ class Homepage extends React.Component {
           <div className="homepage__featured--twitch">
             <h4>Stream</h4>
             <h4 className="homepage__links">
-              {topTwitchers[0] ? (
-                <p
-                  onClick={event =>
-                    this.searchTwitch(event, topTwitchers[0].display_name)
-                  }
-                >
-                  {" "}
-                  <br /> <br />
-                  <img src="../static/images/twitch.png" width="200" />
-                  <Link className="homepage__links" to="/twitch">
-                    {" "}
-                    {topTwitchers[0]}{" "}
-                  </Link>{" "}
-                </p>
-              ) : null}
+              {topTwitchers
+                ? topTwitchers.map((currentTwitch, index) => {
+                    if (index === rndTwitch) {
+                      return (
+                        <p
+                          className="twitch_streamers--name"
+                          key={currentTwitch.id}
+                          onClick={event =>
+                            this.searchTwitch(event, currentTwitch.display_name)
+                          }
+                        >
+                          <img
+                            className="twitch_streamers--image"
+                            src={currentTwitch.profile_image_url}
+                          />
+
+                          <Link className="homepage__links" to="/twitch">
+                            {currentTwitch.display_name}
+                          </Link>
+                        </p>
+                      );
+                    }
+                  })
+                : null}
             </h4>
           </div>
 
@@ -305,25 +313,6 @@ class Homepage extends React.Component {
             </ul>
           </div>
         </div>
-        {/* <div className="homepage__side"> */}
-
-        {/* <div className="homepage__side--twitter">
-            <a
-              className="twitter-timeline"
-              data-height="500"
-              data-theme="dark"
-              data-link-color="#FAB81E"
-              href="https://twitter.com/UpUpDwnDwn?ref_src=twsrc%5Etfw"
-            >
-              Tweets by UpUpDwnDwn
-            </a>
-            <script
-              async
-              src="https://platform.twitter.com/widgets.js"
-              charSet="utf-8"
-            />
-          </div> */}
-        {/* </div> */}
       </div>
     );
   }

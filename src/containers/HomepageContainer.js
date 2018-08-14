@@ -9,7 +9,6 @@ import {
 } from "../actions";
 
 const mapStateToProps = reduxState => {
-  console.log("topTwitchers in HomepageContainer", reduxState.topTwitchers);
   return {
     userAuthState: reduxState.authState,
     twitchStreamer: reduxState.twitchStreamer,
