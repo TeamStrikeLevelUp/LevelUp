@@ -24,6 +24,7 @@ class HomeNavBar extends React.Component {
   }
 
   mainNavHandler() {
+    document.body.classList.toggle('nav-open');
     this.setState({
       mainNavOpen: !this.state.mainNavOpen
     });
