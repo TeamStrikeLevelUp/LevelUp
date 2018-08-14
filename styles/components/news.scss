@@ -219,12 +219,12 @@
 
   .news__footer {
     position: fixed;
-    left: -80px;
+    right: -80px;
     bottom: 80px;
     font-size: 15px;
     color: rgb(125, 96, 153);
-    -ms-transform: rotate(-90deg); /* IE 9 */
-    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-    transform: rotate(-90deg);
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
   }
 }
