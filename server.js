@@ -625,7 +625,7 @@ app.get("/api/profile/:username", function(req, res) {
 
 app.get("/api/featured/", function(req, res) {
   db.one(
-    `SELECT gamer_name, gamer_id FROM gamer_profile ORDER BY RANDOM() LIMIT 1`
+    `SELECT gamer_name, gamer_id,avatar FROM gamer_profile ORDER BY RANDOM() LIMIT 1`
   )
     .then(gamer => {
       db.one(`SELECT title, igdb_id FROM game ORDER BY RANDOM() LIMIT 1`)
