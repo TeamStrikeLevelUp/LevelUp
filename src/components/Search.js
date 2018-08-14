@@ -74,12 +74,13 @@ class Search extends React.Component {
     });
   }
 
-  addToFavourites(gameId, gameTitle) {
+  addToFavourites(gameId, gameTitle, gameImage) {
     if (this.props.userAuthState.userId) {
       const newFav = {
         gamerId: this.props.userAuthState.userId,
         igdb: gameId,
-        title: gameTitle
+        title: gameTitle,
+        cover: gameImage
       };
 
       this.props.addToFavourite(newFav);
@@ -108,7 +109,11 @@ class Search extends React.Component {
                 <button
                   className="search__details--button"
                   onClick={event => {
-                    this.addToFavourites(game.igdbId, game.name);
+                    this.addToFavourites(
+                      game.igdbId,
+                      game.name,
+                      game.cover_img
+                    );
                   }}
                 >
                   Add to favourites

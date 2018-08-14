@@ -505,9 +505,9 @@ app.post("/api/newfavourite/", function (req, res) {
       console.log("doesnt exist");
 
       db.one(
-        `INSERT INTO game(title, igdb_id)
-                VALUES($1, $2) RETURNING id`,
-        [req.body.title, req.body.igdb]
+        `INSERT INTO game(title, igdb_id,cover)
+                VALUES($1, $2,$3) RETURNING id`,
+        [req.body.title, req.body.igdb, req.body.cover]
       )
         .then(data4 => {
           db.one(
