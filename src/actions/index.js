@@ -54,6 +54,7 @@ export function receiveTopTwitchers(twitchApiData) {
 
 // Add GAME FAVOURITES to database
 export function addFavouriteToDB(favObject) {
+  console.log("fav to db index", favObject);
   return function(dispatch, getState) {
     return fetch("/api/newfavourite/", {
       method: "post",
@@ -78,6 +79,7 @@ export function addFavouriteToDB(favObject) {
 // Add TWITCH FAVOURITE to database
 
 export function addFavTwitchToDB(favObject) {
+  console.log(favObject);
   return function(dispatch, getState) {
     return fetch("/api/addtwitchfavourite/", {
       method: "post",
@@ -197,7 +199,7 @@ export function fetchGameInfoFromAPI(searchPath) {
         )
         // .then(response =>  response.json()  )
         .then(json => {
-          // console.log((json.body).length, " results")
+          // console.log(json.body, " results");
           dispatch(setGameData(json.body));
         })
         .catch(error => {
@@ -551,7 +553,7 @@ export function tourOff() {
   return {
     type: "TRIGGER_INTRO",
     payload: false
-  }
+  };
 }
 
 // search a game from a different component than Search

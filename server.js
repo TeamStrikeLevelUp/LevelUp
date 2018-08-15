@@ -347,7 +347,37 @@ app.post("/api/review-delete/:id", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+
+app.post("/api/review-clear/:id", function (req, res) {
+  const { id } = req.body;
+  const clearedStatus = "clear";
+  db.one(`UPDATE post SET admin_status = $1 WHERE id = $2;`, [
+    clearedStatus,
+    id
+  ])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.post("/api/review-block/:id", function (req, res) {
+  const { id } = req.body;
+  const resetPassword = "admin";
+  const blocked = "blocked";
+  db.one(`UPDATE gamer SET password_hash = $1, status = $2 WHERE id = $3;`, [
+    resetPassword,
+    blocked,
+    id
+  ])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
 app.get("/api/deletedposts", function (req, res) {
+>>>>>>> master
   db.any(
     "SELECT body, post.id, post.title, gamer.gamer_name, forum.title AS forum_title FROM post, gamer, forum WHERE admin_status = 'delete' AND post.gamer_id = gamer.id AND post.forum_id = forum.id;"
   )
@@ -505,9 +535,9 @@ app.post("/api/newfavourite/", function (req, res) {
       console.log("doesnt exist");
 
       db.one(
-        `INSERT INTO game(title, igdb_id)
-                VALUES($1, $2) RETURNING id`,
-        [req.body.title, req.body.igdb]
+        `INSERT INTO game(title, igdb_id,cover)
+                VALUES($1, $2,$3) RETURNING id`,
+        [req.body.title, req.body.igdb, req.body.cover]
       )
         .then(data4 => {
           db.one(
@@ -625,7 +655,7 @@ app.get("/api/profile/:username", function (req, res) {
 
 app.get("/api/featured/", function (req, res) {
   db.one(
-    `SELECT gamer_name, gamer_id FROM gamer_profile ORDER BY RANDOM() LIMIT 1`
+    `SELECT gamer_name, gamer_id,avatar FROM gamer_profile ORDER BY RANDOM() LIMIT 1`
   )
     .then(gamer => {
       db.one(`SELECT title, igdb_id FROM game ORDER BY RANDOM() LIMIT 1`)
