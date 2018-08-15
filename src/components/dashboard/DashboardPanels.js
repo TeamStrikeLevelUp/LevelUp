@@ -180,10 +180,11 @@ gamerLevel(totalposts){
                                 userPosts.length > 0
                                     ? userPosts.map(post => {
                                         return (
-                                            <li className="dashboard__panels--latest-posts-item" key={post.title}>
+                                            <li className="dashboard__panels--latest-posts-item" key={post.id}>
                                                 <Link to={"/posts/" + post.id}>
-                                                    <div style={{ fontSize: 9 + "px" }}>{post.created}</div>
-                                                    {post.title}
+                                                
+                                                    <div>{post.body.substring(0,25)}</div>
+                                                    
                                                 </Link>
                                             </li>
                                         )

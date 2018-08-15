@@ -27,6 +27,7 @@ class Posts extends React.Component {
         );
       })
       .then(([replies, post]) => {
+        
         this.setState({ replies, post, loaded: true });
         this.fetchAvatar(replies);
       })
@@ -201,12 +202,12 @@ class Posts extends React.Component {
         <div className="post__form--wrapper" style={{ display: this.props.userAuthState.userId ? '' : 'none' }}>
           <h5 className="form__thread--heading">Post a comment</h5>
           <form className="form__thread">
-            <input
+            {/* <input
               className="form__thread--input"
               placeholder="Comment title"
               value={this.state.title}
               onChange={this.titleHandler}
-            />
+            /> */}
             <textarea
               className="form__thread--textarea"
               placeholder="Write your comment here"
