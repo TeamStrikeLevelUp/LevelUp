@@ -2,8 +2,11 @@
 .forums {
     max-width: 100%;
     width: 980px;
-    padding: 10px 40px;
+    padding: 10px 20px;
     margin: 0 auto;
+    @media(min-width: 768px){
+        padding: 10px 40px;
+    }
 }
 
 .game-search__form {
@@ -11,7 +14,6 @@
     justify-content: flex-end;
     height: 40px;
     .button {
-        padding: 3px 10px;
         padding: 10px 30px;
         font-size: 13px;
         &:hover {
@@ -62,6 +64,8 @@
             justify-content: space-around;
             font-size: 10px;
             line-height: 23px;
+            min-width: 50px;
+            margin-left: 30px;
 
             .forum__total-post {
                 position: relative;
@@ -82,6 +86,11 @@
                 padding-left: 10px;
                 margin-left: 10px;
                 position: relative;
+                display: none;
+
+                @media(min-width: 768px){
+                    display: block;
+                }
 
                 .forum__latest-post--heading {
                     color: var(--light-grey);
@@ -149,7 +158,7 @@
 .community__header {
     display: flex;
     justify-content: space-between;
-
+    flex-direction: column;
     background-image: url("../../static/images/forum-h.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -160,13 +169,17 @@
     margin-top: 20px;
     padding: 16px 20px 16px 30px;
 
+    @media(min-width: 768px) {
+        flex-direction: row;
+    }
+
     .community__heading {
         color: #fff;
         font-weight: 700;
         font-family: 'Open Sans', sans-serif;
         background-color: rgba(114, 137, 218, 0.8);
         padding: 9px 24px;
-        height: 65px;
+        // height: 65px;
         font-size: 30px;
     }
 }

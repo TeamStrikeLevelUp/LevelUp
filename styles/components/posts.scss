@@ -8,7 +8,11 @@
     margin: 0 auto;
 
     .button {
-        width: 170px;
+        width: 100px;
+
+        @media(min-width: 768px){
+            width: 170px;
+        }
     }
 
     .community__header {
@@ -31,8 +35,13 @@
     }
 
     .post__details--icon {
-        width: 70px;
+        width: 30px;
         border-radius: 50%;
+
+        @media(min-width: 480px){
+            width: 70px;
+        }
+
         &.post__details--icon-big {
             margin: 0 auto;
             width: 100px;
@@ -42,12 +51,13 @@
 
     .post__content {
         display: grid;
-        grid-template-columns: 20% 80%;
+        grid-template-columns: 100%;
 
         margin-top: 50px;
 
         @media(min-width: 768px){
             padding-right: 40px;
+            grid-template-columns: 20% 80%;
         }
         .post__content--author {
             text-align: center;
@@ -93,6 +103,9 @@
                 flex-direction: column;
                 text-align: center;
                 font-size: 12px;
+                @media(max-width: 480px){
+                    margin-right: 10px;
+                }
                 .profile__links {
                     color: var(--primary-color);
                     line-height: 40px;
@@ -144,5 +157,20 @@
 .post__form--wrapper {
     @media(min-width: 768px){
         margin: 0 10%;
+    }
+}
+
+.button-report {
+    &:hover {
+        cursor: pointer;
+        opacity: .8;
+    }
+}
+
+.topic__heading {
+    font-size: 24px;
+
+    @media(min-width: 768px){
+        font-size: 32px;
     }
 }
