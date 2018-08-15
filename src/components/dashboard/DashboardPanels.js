@@ -13,7 +13,7 @@ class DashboardPanels extends React.Component {
             userPosts: [],
             posts: [],
             replies: [],
-            level:0
+            level: 0
         };
         this.gamerRank = this.gamerRank.bind(this);
         this.fetchUserInfo = this.fetchUserInfo.bind(this);
@@ -32,7 +32,7 @@ class DashboardPanels extends React.Component {
         if (userData) {
             this.props.setAuthState(userData);
         }
-        
+
 
         // Fetch Twitch favourites if not in redux.state
         if (userData && this.props.fetchTwitchFavourite) {
@@ -122,25 +122,24 @@ class DashboardPanels extends React.Component {
     }
 
 
-gamerLevel(totalposts){
-    
-    let level= parseInt(totalposts/5);
-    if(level >100)
-      level=100
-    this.setState({level})
-  }
+    gamerLevel(totalposts) {
 
-  searchTwitch(event, title) {
-    console.log("title: ", title);
-    this.props.setTwitchStreamer(title);
-}
+        let level = parseInt(totalposts / 5);
+        if (level > 100)
+            level = 100
+        this.setState({ level })
+    }
+
+    searchTwitch(event, title) {
+        console.log("title: ", title);
+        this.props.setTwitchStreamer(title);
+    }
 
 
 
     render() {
         const { twitchFavourite, gameFavourite, userDataStore } = this.props;
         const { userStats, userPosts } = this.state;
-        // console.log("fort", this.state.fortniteUserData);
 
         return (
             <div className="dashboard__panels">
@@ -192,29 +191,8 @@ gamerLevel(totalposts){
                             }
                         </ul>
                     </div>
-                    <p className="dashboard__panels--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
+                    <p className="dashboard__panels--text">Check here to see your recent activity within the community.</p>
                 </div>
-                {/* <div className="dashboard__panels--item">
-                    <div className="dashboard__fortnite">
-                        <h3 className="dashboard__panels--heading">Fortnite Stats</h3>
-                        {this.state.fortniteUserData.totals ?
-                            <div className="dashboard__panels--points">
-
-                                <h5 className="dashboard__panels--fortnite-user">{this.state.fortniteUserData.username}</h5>
-                                <h5 className="dashboard__panels--fortnite-platform">{this.state.fortniteUserData.platform.toUpperCase()}</h5>
-                                <h5 className="dashboard__panels--fortnite-platform">{this.state.fortniteUserData.totals.wins > 50 ? "Level: FORTIFIED" : "Level: Bricklayer"}</h5>
-
-
-
-
-                                <p className="dashboard__panels--fortnite-para">Total Wins: {this.state.fortniteUserData.totals.wins}</p>
-                                <p className="dashboard__panels--fortnite-para">Total Kills: {this.state.fortniteUserData.totals.kills}</p>
-                                <p className="dashboard__panels--fortnite-para">Score: {this.state.fortniteUserData.totals.score}</p>
-                            </div> :
-                            null}
-                    </div>
-                </div> */}
-
                 {/* Twitch Favs */}
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Twitch Favourites Players</h3>
@@ -273,9 +251,9 @@ gamerLevel(totalposts){
                                     {this.state.fortniteUserData.platform.toUpperCase()}
                                 </h5>
                                 <h5 className="dashboard__panels--fortnite-platform">
-                                    {this.state.fortniteUserData.totals.wins > 50
-                                        ? "Level: FORTIFIED"
-                                        : "Level: Bricklayer"}
+                                    {this.state.fortniteUserData.totals.wins > 10
+                                        ? "Fort Level: FORTIFIED"
+                                        : "Fort Level: ROOKIE"}
                                 </h5>
 
                                 <p className="dashboard__panels--fortnite-para">

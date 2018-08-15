@@ -26,5 +26,51 @@
 }
 
 .homepage-tour {
-  color: black;
+  color: whitesmoke;
+  background-color: rgba(54, 57, 63, 0.5);
+}
+
+.introjs-nextbutton {
+  color: rgba(54, 57, 63, 0.5);
+
+}
+
+.introjs-prevbutton {
+  color: rgba(54, 57, 63, 0.5);
+
+}
+
+.introjs-button {
+  margin-left: 10px;
+  font-size: 9px;
+  font-weight: bolder;
+  border: 1px solid #fff;
+  color:    var(--secondary-color);
+
+  width: 40px;
+  padding: 2px 3px;
+  border-radius: 4px;
+  display: inline-block;
+
+
+}
+
+
+  .introjs-helperNumberLayer {
+    box-sizing: content-box;
+    position: absolute;
+    z-index: 9999998;
+
+    background: rgba(54, 57, 63, 0.5);
+
+    border: 1px solid #777;
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 4px;
+    box-shadow: 0 2px 15px rgba(0,0,0,.4);
+
+    transition: all .3s ease-out;
+}
+
+.introjs-helperLayer {
+  background: rgba(54, 57, 63, 0.5);
 }

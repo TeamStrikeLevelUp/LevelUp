@@ -16,12 +16,16 @@
     </div>
     <div class="landing">
         <div class="signup-form__wrapper">
-            <form id="signup-form" class="signup-form__wrapper--form">
-                <input id="signup-username" class="signup-form__input" name="signup-username" value="" placeholder="Username" />
-                <input id="signup-password" class="signup-form__input-password" name="signup-password" type="password" value="" placeholder="Password"
+            <form id="signup-form" class="signup-form__wrapper--form" onsubmit="return formValidation()">
+                <input id="signup-username" class="signup-form__input" name="signup-username" value="" placeholder="Username" minlength="8"
                 />
+                <input id="signup-password" class="signup-form__input-password" name="signup-password" type="password" value="" placeholder="Password"
+                    minlength="8" />
                 <input id="signup-email" class="signup-form__input-email" name="signup-email" type="email" value="" placeholder="@email"
                 />
+                <div class="email-error">Email input incorrect</div>
+                <div class="username-error">Username input incorrect</div>
+                <div class="password-error">Password input incorrect</div>
                 <button style="display: none;" class="signup-form__submit" type="submit">Log in</button>
             </form>
             <svg class="landing__svg" version="1.1" x="0px" y="0px" viewBox="0 25 57 33">

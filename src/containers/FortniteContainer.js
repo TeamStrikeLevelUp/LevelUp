@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Fortnite from "../components/Fortnite";
+import Fortnite from "../components/fortnite/Fortnite";
 import { fetchFortniteStats, setFortniteStats } from "../actions"
 
 const mapStateToProps = reduxState => {

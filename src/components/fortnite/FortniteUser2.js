@@ -1,7 +1,7 @@
 import React from "react";
 
-import "../../styles/components/fortnite.scss";
-import "../../styles/index.scss";
+import "../../../styles/components/fortnite.scss";
+import "../../../styles/index.scss";
 
 class FortniteUser2 extends React.Component {
   constructor() {

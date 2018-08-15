@@ -3,8 +3,8 @@ import FortniteUser1 from "./FortniteUser1";
 import FortniteUser2 from "./FortniteUser2";
 import FortniteUser3 from "./FortniteUser3";
 
-import "../../styles/components/fortnite.scss";
-import "../../styles/index.scss";
+import "../../../styles/components/fortnite.scss";
+import "../../../styles/index.scss";
 
 class FortnitePlayerList extends React.Component {
   constructor() {

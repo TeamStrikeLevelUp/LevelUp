@@ -19,25 +19,81 @@ function fetchLogin() {
   });
 }
 
+function validateEmail(email) {
+  let validate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return validate.test(String(email).toLowerCase());
+}
+
+// username validation function
+function validateUsername(username) {
+  let valid = false;
+  if (username.length > 3) {
+    valid = true
+  }
+  return valid;
+}
+
+function validatePassword(password) {
+  let valid = false;
+  if (password.length > 3) {
+    valid = true
+  }
+  return valid;
+}
+
 function fetchSignup() {
   const signupUsername = document.getElementById("signup-username").value;
   const signupPassword = document.getElementById("signup-password").value;
   const signupEmail = document.getElementById("signup-email").value;
 
-  fetch("/signup", {
-    method: "POST",
-    body: JSON.stringify({ signupUsername, signupPassword, signupEmail }),
-    credentials: "same-origin",
-    headers: {
-      "content-type": "application/json"
-    }
-  }).then(function (response) {
-    if (response.status == 200) {
-      window.location.pathname = "/login";
+  if (signupEmail && validateEmail(signupEmail)) {
+
+    if (validateUsername(signupUsername)) {
+
+      if (validatePassword(signupPassword)) {
+
+        fetch("/signup", {
+          method: "POST",
+          body: JSON.stringify({ signupUsername, signupPassword, signupEmail }),
+          credentials: "same-origin",
+          headers: {
+            "content-type": "application/json"
+          }
+        }).then(function (response) {
+          if (response.status == 200) {
+            window.location.pathname = "/login";
+          } else if ((response.status == 401)) {
+            // alert("error");
+            // user already exist
+          } else if ((response.status == 500)) {
+            // alert("error");
+            // Server error
+          }
+        });
+
+      } else {
+        document.querySelector('.password-error').classList.add('visible');
+        setTimeout(function () {
+          document.querySelector('.password-error').classList.remove('visible');
+        }, 5000)
+      }
+
     } else {
-      alert("error");
+      document.querySelector('.username-error').classList.add('visible');
+      setTimeout(function () {
+        document.querySelector('.username-error').classList.remove('visible');
+      }, 5000)
     }
-  });
+
+  } else {
+    document.querySelector('.email-error').classList.add('visible');
+    setTimeout(function () {
+      document.querySelector('.email-error').classList.remove('visible');
+    }, 5000)
+  }
+
+
+
 }
 
 // Registration form handler
@@ -73,6 +129,23 @@ if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
     fetchLogin();
+  })
+
+}
+
+// Signup validation
+function formValidation() {
+  const form = document.querySelectorAll("#signup__form");
+  const username = document.querySelectorAll("#signup-username").value;
+  const password = document.querySelectorAll("#signup-password").value;
+  const email = document.querySelectorAll("#signup-email").value;
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+
+
+
   })
 
 }

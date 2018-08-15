@@ -35,14 +35,16 @@
   flex-wrap: wrap;
 }
 .twitch__video {
-  margin: 30px 10px 10px 0px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
 }
 .twitch__player {
-  // text-align: right;
-  height: 650px;
-  width: 800px;
-  // frameborder: "2";
-  // scrolling: "yes";
+
+  height: 100%;
+  width: 100%;
+
 }
 .twitch__search--form {
   color: 75, 212, 253;

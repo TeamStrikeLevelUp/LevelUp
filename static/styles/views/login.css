@@ -69,8 +69,8 @@ body {
   padding: 8px;
   margin-top: 10px;
   opacity: .5;
-  left: 190px;
-  top: 50px;
+  left: 126px;
+  top: 119px;
   transform: rotate(90deg);
   position: relative;
 
@@ -87,8 +87,8 @@ body {
 
   opacity: .5;
 
-  left: 140px;
-  top: 11px;
+  left: 70px;
+  top: 80px;
 }
 
 .login-form__wrapper {

@@ -5,19 +5,19 @@ let shuffle = require("shuffle-array");
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
 
-let topGames=[];
-let topTwitchers=[]
+let topGames = [];
+let topTwitchers = []
 
 class Homepage extends React.Component {
   constructor() {
     super();
     this.state = {
-      gamer: {}, game: {}, forum: {}, choice: {}, voteResults: [], viewMode: false, topForum: [], resultsMode:false,
+      gamer: {}, game: {}, forum: {}, choice: {}, voteResults: [], viewMode: false, topForum: [], resultsMode: false,
       topGames: [
         "The Elder Scrolls 5: Skyrim", "Fallout 4", "Grand Theft Auto 5", "Fortnite", "The Witcher 3: Wild Hunt",
         "No Man's Sky", "Octopath Traveler", "Monster Hunter: World", "The Legend of Zelda: Breath of the Wild", "Persona 5"
       ],
-      topTwitchers:["Reckful", "dakotaz", "CohhCarnage", "partypokerTV", "twitchrivals_tw"]
+      topTwitchers: ["Reckful", "dakotaz", "CohhCarnage", "partypokerTV", "twitchrivals_tw"]
     }
     this.handleChange = this.handleChange.bind(this);
     this.voteHandler = this.voteHandler.bind(this)
@@ -27,9 +27,9 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    topGames=this.state.topGames;
+    topGames = this.state.topGames;
     shuffle(topGames);
-    topTwitchers=this.state.topTwitchers;
+    topTwitchers = this.state.topTwitchers;
     shuffle(topTwitchers);
 
 
@@ -100,7 +100,7 @@ class Homepage extends React.Component {
         this.setState({ voteResults: json, totalVotes: count, viewMode: true });
       });
 
-      this.setState({resultsMode: !this.state.resultsMode})
+    this.setState({ resultsMode: !this.state.resultsMode })
   }
 
   searchTwitch(event, title) {
@@ -119,7 +119,6 @@ class Homepage extends React.Component {
 
   render() {
 
-    // console.log("intro", this.props.introTrigger)
     return (
       <div className="homepage">
         <div className="homepage__main">
@@ -188,7 +187,7 @@ class Homepage extends React.Component {
                   </strong>
                 </div>
                 <br />
-                <div className="homepage__side--poll-answers"   style={{ display: this.state.resultsMode ? 'none' : '' }}>
+                <div className="homepage__side--poll-answers" style={{ display: this.state.resultsMode ? 'none' : '' }}>
                   <input type="radio" name="answer" value="1" id="PC" />
                   <label htmlFor="PC">PC</label>
                   <input type="radio" name="answer" value="2" id="PS4" />

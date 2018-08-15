@@ -2,8 +2,8 @@ import React from "react";
 import FortniteStats from "./FortniteStats";
 import FortnitePlayerList from "./FortnitePlayerList";
 
-import "../../styles/components/fortnite.scss";
-import "../../styles/index.scss";
+import "../../../styles/components/fortnite.scss";
+import "../../../styles/index.scss";
 
 class Fortnite extends React.Component {
   constructor() {
