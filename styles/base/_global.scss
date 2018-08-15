@@ -32,4 +32,10 @@ body {
   &.nav-open {
     overflow: hidden;
   }
+
+  @media(min-width: 992px){
+    &.nav-open {
+      overflow: auto;
+    }
+  }
 }
