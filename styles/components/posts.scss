@@ -103,9 +103,6 @@
                 flex-direction: column;
                 text-align: center;
                 font-size: 12px;
-                @media(max-width: 480px){
-                    margin-right: 10px;
-                }
                 .profile__links {
                     color: var(--primary-color);
                     line-height: 40px;
@@ -116,10 +113,13 @@
                 
                 }
                 .post__details--icon {
-                    width: 70px;
+                    width: 40px;
                     border-radius: 50%;
                     margin: 0 auto;
                     display: block;
+                    @media(min-width: 480px){
+                        width: 70px;
+                    }
                 }
             }
 
