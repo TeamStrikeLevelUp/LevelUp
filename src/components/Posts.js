@@ -271,9 +271,10 @@ class Posts extends React.Component {
                         </button>
                       ) : (
                         <button
+                          className="button button-edit"
                           onClick={event => this.reportHandler(event, reply)}
                         >
-                          Report post
+                          Report comment
                         </button>
                       )
                     ) : null}

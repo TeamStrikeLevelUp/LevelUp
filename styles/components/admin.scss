@@ -1,0 +1,5 @@
+.review__post {
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--medium-grey);
+  }
+}
