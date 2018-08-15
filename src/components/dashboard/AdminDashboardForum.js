@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 
+
 class AdminDashboardForum extends React.Component {
   constructor() {
     super();
@@ -82,9 +83,10 @@ class AdminDashboardForum extends React.Component {
           <h3 className="dashboard__account--heading">Create Forum</h3>
           <div className="dashboard__account--boxes">
             <div className="dashboard__account--box">
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit} className="form__thread">
                 <input
                   placeholder="forum name"
+                  className="form__thread--input"
                   value={this.state.forumName}
                   onChange={this.forumNameHandler}
                   required
@@ -105,7 +107,7 @@ class AdminDashboardForum extends React.Component {
                     </select>
                   </div>
                 ) : null}
-                <button>Create Forum</button>
+                <button className="button button-primary">Create Forum</button>
               </form>
             </div>
           </div>

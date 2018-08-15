@@ -9,6 +9,8 @@ import DashboardRetro from "./dashboard/DashboardRetro";
 import cx from "classnames";
 import "../../styles/components/dashboard.scss";
 import "../../styles/components/admin.scss";
+import "../../styles/components/posts.scss";
+import "../../styles/components/forums.scss";
 
 class Dashboard extends React.Component {
   constructor(props) {
