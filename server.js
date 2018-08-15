@@ -377,7 +377,6 @@ app.post("/api/review-block/:id", function (req, res) {
 });
 
 app.get("/api/deletedposts", function (req, res) {
->>>>>>> master
   db.any(
     "SELECT body, post.id, post.title, gamer.gamer_name, forum.title AS forum_title FROM post, gamer, forum WHERE admin_status = 'delete' AND post.gamer_id = gamer.id AND post.forum_id = forum.id;"
   )
