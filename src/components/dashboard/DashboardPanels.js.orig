@@ -2,42 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class DashboardPanels extends React.Component {
-<<<<<<< HEAD
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      user: "",
-      userStats: "",
-      gamer_info: "",
-      fortniteUserData: {},
-      userPosts: [],
-      posts: [],
-      replies: []
-    };
-    this.gamerRank = this.gamerRank.bind(this);
-    this.fetchUserInfo = this.fetchUserInfo.bind(this);
-    this.fetchUserPosts = this.fetchUserPosts.bind(this);
-    this.searchGame = this.searchGame.bind(this);
-    this.searchTwitch = this.searchTwitch.bind(this);
-  }
-
-  componentDidMount() {
-    const userData = initialUser;
-    this.setState({
-      user: userData
-    });
-
-    if (userData) {
-      this.props.setAuthState(userData);
-    }
-
-    // Fetch Twitch favourites if not in redux.state
-    if (userData && this.props.fetchTwitchFavourite) {
-      if (this.props.twitchFavourite.length === 0) {
-        this.props.fetchTwitchFavourite(userData.userId);
-      }
-=======
     constructor(props) {
         super(props);
 
@@ -106,21 +70,18 @@ class DashboardPanels extends React.Component {
                     });
                 }
             });
->>>>>>> da797c06627fd03b77ece3abe88d01b11a1145c4
     }
 
     // Fetch user info
     this.fetchUserInfo(userData);
     this.fetchUserPosts(userData);
 
-<<<<<<< HEAD
     // fetch user posts
     fetch(`/api/gamer/post/${userData.userId}`)
       .then(response => response.json())
       .then(json => {
         this.setState({ posts: json.posts, replies: json.replies });
       });
-=======
     fetchUserInfo(userData) {
         fetch(`/api/profile/${userData.username}`)
             .then(response => response.json())
@@ -129,14 +90,12 @@ class DashboardPanels extends React.Component {
                 this.setState({ userStats: json })
             });
     }
->>>>>>> da797c06627fd03b77ece3abe88d01b11a1145c4
 
     // Games Info
     if (userData && this.props.fetchGameFavourite) {
       this.props.fetchGameFavourite(userData.userId);
     }
 
-<<<<<<< HEAD
     // Fetch user data && Fortnite data
     let tempData;
     this.props
@@ -192,7 +151,6 @@ class DashboardPanels extends React.Component {
 
   searchGame(event, title) {
     this.props.searchClickedGame(title);
-=======
 
 
 
@@ -209,36 +167,11 @@ gamerLevel(totalposts){
     if(level >100)
       level=100
     this.setState({level})
->>>>>>> da797c06627fd03b77ece3abe88d01b11a1145c4
   }
 
   searchTwitch(event, title) {
     console.log("title: ", title);
     this.props.setTwitchStreamer(title);
-<<<<<<< HEAD
-  }
-
-  render() {
-    const { twitchFavourite, gameFavourite, userDataStore } = this.props;
-    const { userStats, userPosts } = this.state;
-    // console.log("fort", this.state.fortniteUserData);
-
-    return (
-      <div className="dashboard__panels">
-        {/* Level */}
-        <div className="dashboard__panels--item">
-          <h3 className="dashboard__panels--heading">Level</h3>
-          <div className="dashboard__panels--points">
-            {userStats.gamer_level}
-          </div>
-          <p className="dashboard__panels--text dashboard__panels--text--large">
-            Your LevelUp rank is{" "}
-            <strong className="rank__level">{this.gamerRank()}</strong>
-          </p>
-          <p className="dashboard__panels--text">
-            This shows your overall rank related with the games you play and
-            your levelUp points.
-=======
 }
 
 
@@ -274,7 +207,6 @@ gamerLevel(totalposts){
                     </div>
                     <p className="dashboard__panels--text">
                         This shows the total amount of post in all forums.
->>>>>>> da797c06627fd03b77ece3abe88d01b11a1145c4
           </p>
         </div>
 
@@ -497,10 +429,7 @@ gamerLevel(totalposts){
   }
 }
 
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> da797c06627fd03b77ece3abe88d01b11a1145c4
 export default DashboardPanels;

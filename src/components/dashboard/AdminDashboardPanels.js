@@ -1,4 +1,6 @@
 import React from "react";
+// import "../../../styles/components/admin.scss";
+// import "../../../styles/components/dashboard.scss";
 
 class AdminDashboardPanels extends React.Component {
   constructor(props) {
@@ -39,7 +41,33 @@ class AdminDashboardPanels extends React.Component {
       .then(data => {
         res.json(data);
       })
-      .then()
+      .then(
+        fetch("/api/reviewposts")
+          .then(response => response.json())
+          .then(json => this.setState({ posts: json }))
+      )
+      .catch(e => e);
+  }
+
+  clearHandler(event, post) {
+    const reviewClear = {
+      id: post.id
+    };
+    fetch(`/api/review-clear/${post.id}`, {
+      method: "post",
+      body: JSON.stringify(reviewClear),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(data => {
+        res.json(data);
+      })
+      .then(
+        fetch("/api/reviewposts")
+          .then(response => response.json())
+          .then(json => this.setState({ posts: json }))
+      )
       .catch(e => e);
   }
 
@@ -49,30 +77,46 @@ class AdminDashboardPanels extends React.Component {
       return (
         <div className="dashboard__account">
           <div className="dashboard__account--item">
-            <h3 className="dashboard__account--heading">Review</h3>
+            <h3 className="dashboard__account--heading">Posts to Moderate</h3>
             <div className="dashboard__account--boxes">
               <div className="dashboard__account--box">
-                {Object.keys(this.state.posts).map(post => {
-                  return (
-                    <div>
-                      <p>
-                        {this.state.posts[post].title}:{" "}
-                        {this.state.posts[post].body}
-                      </p>
-                      <p>
-                        posted by {this.state.posts[post].gamer_name} in{" "}
-                        {this.state.posts[post].forum_title}
-                      </p>
-                      <button
-                        onClick={event =>
-                          this.deleteHandler(event, this.state.posts[post])
-                        }
-                      >
-                        Delete Post
-                      </button>
-                    </div>
-                  );
-                })}
+                <div className="dashboard__panels--points">
+                  {this.state.posts.length}
+                </div>
+                <div className="review__posts">
+                  {Object.keys(this.state.posts).map(post => {
+                    return (
+                      <div key={this.state.posts[post].id}>
+                        <div className="review__post">
+                          <p>
+                            {this.state.posts[post].title}:{" "}
+                            {this.state.posts[post].body}
+                          </p>
+                          <p>
+                            posted by {this.state.posts[post].gamer_name} in{" "}
+                            {this.state.posts[post].forum_title}
+                          </p>
+                        </div>
+                        <button
+                          className="button button-edit"
+                          onClick={event =>
+                            this.deleteHandler(event, this.state.posts[post])
+                          }
+                        >
+                          Delete
+                        </button>
+                        <button
+                          className="button button-edit"
+                          onClick={event =>
+                            this.clearHandler(event, this.state.posts[post])
+                          }
+                        >
+                          No Issue
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
