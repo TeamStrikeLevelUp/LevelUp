@@ -28,4 +28,8 @@ body {
   background-size: cover;
   background-color: rgb(13, 27, 27);
   color: whitesmoke;
+
+  &.nav-open {
+    overflow: hidden;
+  }
 }

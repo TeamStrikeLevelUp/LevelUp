@@ -40,7 +40,7 @@
 .twitch__player {
   // text-align: right;
   height: 650px;
-  width: 1000px;
+  width: 800px;
   // frameborder: "2";
   // scrolling: "yes";
 }
@@ -71,11 +71,11 @@
 
 .twitch__footer {
   position: fixed;
-  left: -70px;
+  right: -70px;
   bottom: 80px;
   font-size: 15px;
   color: rgb(146, 112, 177);
-  -ms-transform: rotate(-90deg); /* IE 9 */
-  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
-  transform: rotate(-90deg);
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
 }

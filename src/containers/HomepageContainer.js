@@ -1,9 +1,14 @@
 import { connect } from "react-redux";
-import Homepage from "../components/Homepage"
-import { setTwitchStreamer, fetchTopTwitchers, searchClickedGame, triggerIntro } from "../actions";
+import Homepage from "../components/Homepage";
+import {
+  tourOff,
+  setTwitchStreamer,
+  fetchTopTwitchers,
+  searchClickedGame,
+  triggerIntro
+} from "../actions";
 
-
-const mapStateToProps = (reduxState) => {
+const mapStateToProps = reduxState => {
   return {
     userAuthState: reduxState.authState,
     twitchStreamer: reduxState.twitchStreamer,
@@ -16,15 +21,18 @@ const mapStateToProps = (reduxState) => {
 const mapDispatchToProps = dispatch => {
   return {
     triggerIntro: () => {
-      dispatch(triggerIntro())
+      dispatch(triggerIntro());
     },
-    setTwitchStreamer: (streamer) => {
-      dispatch(setTwitchStreamer(streamer))
+    setTwitchStreamer: streamer => {
+      dispatch(setTwitchStreamer(streamer));
     },
-    fetchTopTwitchers: () => { dispatch(fetchTopTwitchers()) },
-    searchClickedGame: (game) => {
-      dispatch(searchClickedGame(game))
-    }
+    fetchTopTwitchers: () => {
+      dispatch(fetchTopTwitchers());
+    },
+    searchClickedGame: game => {
+      dispatch(searchClickedGame(game));
+    },
+    handleBlur: () => dispatch(tourOff())
   };
 };
 

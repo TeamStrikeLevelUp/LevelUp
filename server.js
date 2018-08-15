@@ -1,3 +1,4 @@
+const dotenv = require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -6,11 +7,11 @@ const FormData = require("form-data");
 
 //For News page
 const NewsAPI = require("newsapi");
-const newsapi = new NewsAPI("167aa74e22a045b58d8d8af7cb8effe8");
+const newsapi = new NewsAPI(process.env.NEWSAPI_KEY);
 
 //For Search page
 const igdb = require("igdb-api-node").default;
-const client = igdb("96651c2677f60060f3a91ef002c2a419");
+const client = igdb(process.env.IGDB_KEY);
 const pgp = require("pg-promise")();
 
 const bcrypt = require("bcrypt");
@@ -57,7 +58,7 @@ const db = pgp({
 //Fetches Top TWITCH Data streams - Twitch channel/user names & photos etc
 app.get("/twitchStreams", (req, res) => {
   var headers = {
-    "Client-ID": "goetr7q6o8bx0zott538hwdsavlpf8"
+    "Client-ID": process.env.TWITCH_KEY
   };
   fetch(`https://api.twitch.tv/helix/streams?first=5&language=en`, {
     method: "GET",
@@ -183,7 +184,6 @@ app.get("/api/userposts/:id", function(req, res) {
 });
 
 // Get posts that are parent (thread)
-
 app.get("/api/parentpost/:id", function(req, res) {
   db.one(`SELECT * FROM post WHERE id = $1`, [req.params.id])
     .then(data => {
@@ -244,7 +244,7 @@ app.post("/api/reply", function(req, res) {
       db.any(`SELECT * FROM post WHERE parent_id = $1`, [parent_id])
         .then(data => {
           db.none(
-            `UPDATE gamer_profile SET totalposts = totalposts+2 where gamer_id = $1`,
+            `UPDATE gamer_profile SET totalposts = totalposts+1 where gamer_id = $1`,
             [gamer_id]
           );
           res.json(data);
@@ -533,9 +533,9 @@ app.post("/api/newfavourite/", function(req, res) {
       console.log("doesnt exist");
 
       db.one(
-        `INSERT INTO game(title, igdb_id)
-                VALUES($1, $2) RETURNING id`,
-        [req.body.title, req.body.igdb]
+        `INSERT INTO game(title, igdb_id,cover)
+                VALUES($1, $2,$3) RETURNING id`,
+        [req.body.title, req.body.igdb, req.body.cover]
       )
         .then(data4 => {
           db.one(
@@ -585,7 +585,7 @@ app.get("/api/twitchfavourites/:id", function(req, res) {
 // adds TWITCH favourite to database
 app.post("/api/addtwitchfavourite", function(req, res) {
   var headers = {
-    "Client-ID": "goetr7q6o8bx0zott538hwdsavlpf8"
+    "Client-ID": process.env.TWITCH_KEY
   };
   fetch(`https://api.twitch.tv/helix/users?login=${req.body.twitchName}`, {
     method: "GET",
@@ -653,7 +653,7 @@ app.get("/api/profile/:username", function(req, res) {
 
 app.get("/api/featured/", function(req, res) {
   db.one(
-    `SELECT gamer_name, gamer_id FROM gamer_profile ORDER BY RANDOM() LIMIT 1`
+    `SELECT gamer_name, gamer_id,avatar FROM gamer_profile ORDER BY RANDOM() LIMIT 1`
   )
     .then(gamer => {
       db.one(`SELECT title, igdb_id FROM game ORDER BY RANDOM() LIMIT 1`)
@@ -881,19 +881,13 @@ app.get("/games/:title", (req, res) => {
       {
         filters: {
           "name-in": gameTitle
-          // eq: gameTitle
-          // search: gameTitle
         },
-        // order: "relevance",
+
         order: "popularity:desc"
-        // ,        search: gameTitle
-        // limit: 50 // Limit to 50 results
       },
       ["*"]
     )
     .then(response => {
-      // response.body contains the parsed JSON response to this query
-      // displayData(res, response);
       res.json(response);
     })
     .catch(error => {
@@ -913,7 +907,6 @@ app.get("/gameid/:id", (req, res) => {
       offset: 15 // Index offset for results
     })
     .then(response => {
-      // displayData(res, response);
       res.json(response);
     })
     .catch(error => {
@@ -930,7 +923,6 @@ app.get("/themes/", (req, res) => {
       limit: 50 // Limit to 50 results
     })
     .then(response => {
-      // displayData(res, response);
       res.json(response);
     })
     .catch(error => {
@@ -948,16 +940,11 @@ app.get("/genres/", (req, res) => {
     .then(response => {
       // response.body contains the parsed JSON response to this query
       res.json(response);
-      // displayData(res, response);
     })
     .catch(error => {
       console.log("You have 2 lives remaining ", error);
     });
 });
-
-// function displayData(res, data) {
-//   res.json(data);
-// }
 
 //Main general NEWS search for latest Gaming/tech articles
 app.get("/newsApi/:pageNum", (req, res) => {
@@ -1011,7 +998,7 @@ app.get("/api/fortnite/:username", (req, res) => {
     method: "POST",
     body: formData,
     headers: {
-      Authorization: "4e989a71073c48d9c63e5ccf8551495e"
+      Authorization: process.env.FORTNITE_KEY
     }
   })
     .then(function(response) {
@@ -1031,7 +1018,7 @@ app.get("/api/fortnite/:username", (req, res) => {
           method: "POST",
           body: formDataStats,
           headers: {
-            Authorization: "4e989a71073c48d9c63e5ccf8551495e"
+            Authorization: process.env.FORTNITE_KEY
           }
         }
       )

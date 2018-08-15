@@ -1,175 +1,204 @@
 .homepage {
   display: flex;
-
+  flex-direction: column;
   width: 100%;
+
+  margin: auto;
+  // background-image: url("/static/images/background2.jpg");
+  background-image: url("/static/images/fortnite-background3.jpg");
+  background-repeat: repeat-y;
+  background-position-x: center;
+  background-size: cover;
 }
 
 .homepage__main {
-  display: flex;
-  flex: 4;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: (4, 1fr 1fr 1fr 1fr);
+  // grid-auto-rows: minmax(100px, auto);
+  grid-gap: 10px;
+}
 
+.homepage__side {
+  flex: 1;
   text-align: center;
-  align-items: center;
-
-  border-style: solid;
-  border-right-color: #f5f5f5;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
+  // background-color: rgba(54, 57, 63, 0.7);
 }
 
 .homepage__main--title {
-  font-family: 'Press Start 2P', cursive;
-  
-
-  padding: 10px;
-  margin: 10px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 30px;
+  // padding: 10px;
+  margin-top: 10px;
+  color: var(--primary-color);
 }
 
-hr {
-  border: 0;
-  box-shadow: 0 0 10px 1px #f5f5f5;
-  margin: 9px;
-}
-
-.vertical__rule {
-  border: 0;
-  box-shadow: 0 0 10px 1px #f5f5f5;
-  margin: 9px;
-
-  width: 20%;
-  color: #f5f5f5;
-
-  transform: rotate(90deg)
-}
-
-.homepage__main--featured {
-  text-align: center;
-}
-
-.featured__wrapper {
-  background-color: rgba(54, 57, 63, 0.5);
-
-  width: 85%;
-
-}
-
-.homepage__main--featured-title {
-  border-style: solid;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: #f5f5f5;
-  border-bottom-color: #f5f5f5;
+.homepage__main--top5 {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-evenly;
 
   padding: 15px;
   margin: 0;
 
-  background-color: rgba(114, 137, 218, 0.5);}
-
-.homepage__main--featured--selection {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-
-  border-style: solid;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
-  border-bottom-color: #f5f5f5;
-
-  padding: 15px;
-
-  background-color: rgba(54, 57, 63, 0.5);
-}
-
-.homepage__main--top5 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-
-  padding: 10px;
-
-  border-style: solid;
-  border-bottom-color: #f5f5f5;
-  border-left-color: transparent;
-  border-top-color: transparent;
-  border-right-color: transparent;
+  background-color: rgba(54, 57, 63, 0.7);
 }
 
 .homepage__main--tour {
-  width: 80%;
-    text-align: center;
-    padding: 15px;
-    margin: 8px;
-    border-radius: 50%;
-    border-width: 7px;
-    border-color: #f5f5f5;
-    font-size: 14px;
-    color: #f5f5f5;
-    background-color: rgba(114, 137, 218, 0.5);
- }
-
- .homepage__main--tour:hover {
-cursor: pointer;
-border-color: gold;
- }
-
-.homepage__side {
-  flex: 1;
+  display: inline-block;
+  height: 50px;
+  // margin: auto;
+  font-size: 20px;
+  font-weight: 400;
+  width: auto;
+  background-color: darkslategrey;
+  color: rgb(75, 212, 253);
+  border-style: none;
+  border-radius: 5%;
 }
 
 .homepage__side--poll {
-  background-color: rgba(114, 137, 218, 0.5);
-
-padding: 1px;
-
+  background-color: rgba(54, 57, 63, 0.7);
+  padding: 1px;
 }
 
 .poll__heading {
   text-align: center;
   font-weight: bold;
 
-  border-style: dashed;
-  border-color: #f5f5f5;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
-
   padding: 10px;
   margin: 0;
-
 }
-
 
 .homepage__side--poll-question {
   font-weight: bolder;
-
-  border-style: dashed;
-  border-color: #f5f5f5;
-  border-right-color: transparent;
-  border-left-color: transparent;
-  border-top-color: transparent;
 
   padding: 7px;
   margin: 0;
 }
 
 .homepage__side--poll-answers {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: row;
 }
 
 .homepage__links {
-  color: gold;
+  color: var(--secondary-color);
 }
 
-.homepage__side--twitter {
-  width: 100%;
-  height: 50%;
+// @media (min-width: 768px) {
+// .homepage {
+//   display: flex;
+//   flex-direction: row;
+
+//   width: 100%;
+// }
+
+// .homepage__main {
+//   display: flex;
+//   flex: 4;
+//   flex-direction: column;
+
+//   text-align: center;
+//   align-items: center;
+// }
+
+.homepage__featured {
+  // display: flex;
+  // flex: 12;
+  // flex-direction: row;
+  // justify-content: space-apart;
+  // text-align: left;
+  // // align-items: center;
+  // margin: 15px;
+  // padding: 15px;
+  // // background-color: rgba(54, 57, 63, 0.7);
+  // color: whitesmoke;
 }
 
-.homepage__button {
-  margin: 5px;
+.homepage__featured--game {
+  grid-column: 1;
+  grid-row: 1/3;
+  text-align: left;
+
+  background-color: rgba(54, 57, 63, 0.7);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px;
+  text-align: center;
+  height: auto;
+}
+.homepage__featured--user {
+  // grid-column: 2;
+  grid-row: 1;
+  background-color: rgba(54, 57, 63, 0.7);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px;
+  text-align: center;
+  height: auto;
+}
+.homepage__featured--forum {
+  // grid-column: 3;
+  grid-row: 1;
+  background-color: rgba(54, 57, 63, 0.7);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px;
+  text-align: center;
+}
+.homepage__featured--twitch {
+  // grid-column: 4;
+  grid-row: 1;
+  background-color: rgba(54, 57, 63, 0.7);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px;
+  text-align: center;
+}
+.homepage__topgames {
+  // grid-column: 3;
+  grid-row: 2/4;
+  background-color: rgba(54, 57, 63, 0.7);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px;
+  text-align: center;
+}
+.homepage__topforums {
+  // grid-column: 4;
+  grid-row: 2/5;
+  background-color: rgba(54, 57, 63, 0.7);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px;
+  text-align: center;
+}
+
+.homepage__main--tour:hover {
+  cursor: pointer;
+  border-color: var(--secondary-color);
+}
+
+.poll__heading {
+  text-align: center;
+  font-weight: bold;
+
+  padding: 10px;
+  margin: 0;
+}
+
+.homepage__side--poll-question {
+  font-weight: bolder;
+
+  padding: 7px;
+  margin: 0;
+}
+
+.homepage__side--poll-answers {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage__links {
+  color: var(--secondary-color);
 }
