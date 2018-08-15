@@ -79,7 +79,7 @@ class Posts extends React.Component {
           "Content-Type": "application/json"
         }
       })
-        .then(function(response) {
+        .then(function (response) {
           return response.json();
         })
         .then(json => this.setState({ replies: json }));
@@ -100,7 +100,7 @@ class Posts extends React.Component {
           "Content-Type": "application/json"
         }
       })
-        .then(function(response) {
+        .then(function (response) {
           return response.json();
         })
         .then(data => {
@@ -176,7 +176,7 @@ class Posts extends React.Component {
           </form>
         </header>
         <div className="login-link" style={{ display: this.props.userAuthState.userId ? 'none' : '' }} > <a href="/login">Login to post</a> </div>
-        <h1><span className="topic">Topic:</span> {this.state.post.title} </h1>
+        <h1 className="topic__heading"><span className="topic">Topic:</span> {this.state.post.title} </h1>
         <div className="post__details">
           <div> Date Posted: {created} </div>
           {/* <div> Posted By:     </div> */}
@@ -260,12 +260,13 @@ class Posts extends React.Component {
                           Edit post
                         </button>
                       ) : (
-                        <button
-                          onClick={event => this.reportHandler(event, reply)}
-                        >
-                          Report post
+                          <button
+                            className="button button-edit button-report"
+                            onClick={event => this.reportHandler(event, reply)}
+                          >
+                            Report comment
                         </button>
-                      )
+                        )
                     ) : null}
                   </div>
                 </div>

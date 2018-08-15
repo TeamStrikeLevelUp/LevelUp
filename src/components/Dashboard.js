@@ -8,6 +8,7 @@ import DashboardAccount from "./dashboard/DashboardAccount";
 import DashboardRetro from "./dashboard/DashboardRetro";
 import cx from "classnames";
 import "../../styles/components/dashboard.scss";
+import "../../styles/components/admin.scss";
 
 class Dashboard extends React.Component {
   constructor(props) {
