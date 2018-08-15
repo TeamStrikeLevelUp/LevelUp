@@ -4,7 +4,7 @@ let shuffle = require("shuffle-array");
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
 
-
+let topGames = [];
 class Homepage extends React.Component {
   constructor() {
     super();
@@ -146,7 +146,7 @@ class Homepage extends React.Component {
         >
           Tour Leve1UP
         </button>
-        <div className="homepage__main--title">Featured</div>
+        {/* <div className="homepage__main--title">Featured</div> */}
         <div className="homepage__main">
           <div className="homepage__featured--game">
             <h4 onClick={this.searchGame}>Game</h4>
