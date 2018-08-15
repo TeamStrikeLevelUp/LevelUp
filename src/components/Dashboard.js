@@ -2,6 +2,7 @@ import React from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 import AdminDashboardPanels from "./dashboard/AdminDashboardPanels";
 import AdminDashboardAccount from "./dashboard/AdminDashboardAccount";
+import AdminDashboardForum from "./dashboard/AdminDashboardForum";
 import DashboardPanels from "./dashboard/DashboardPanels";
 import DashboardAccount from "./dashboard/DashboardAccount";
 import DashboardRetro from "./dashboard/DashboardRetro";
@@ -74,6 +75,11 @@ class Dashboard extends React.Component {
                     History
                   </NavLink>
                 </li>
+                <li className="dashboard__nav--item">
+                  <NavLink activeClassName="is-active" to="/dashboard/createforum">
+                    Create Forum
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <div className="dashboard-content-wrapper">
@@ -98,6 +104,17 @@ class Dashboard extends React.Component {
                   render={() => {
                     return (
                       <AdminDashboardAccount
+                        setAuthState={this.props.setAuthState}
+                        userAuthState={this.props.userAuthState}
+                      />
+                    );
+                  }}
+                />
+                 <Route
+                  path="/dashboard/createforum"
+                  render={() => {
+                    return (
+                      <AdminDashboardForum
                         setAuthState={this.props.setAuthState}
                         userAuthState={this.props.userAuthState}
                       />

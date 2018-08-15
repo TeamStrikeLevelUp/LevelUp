@@ -33,6 +33,7 @@ class DashboardPanels extends React.Component {
       this.props.setAuthState(userData);
     }
 
+    
 
     // Fetch Twitch favourites if not in redux.state
     if (userData && this.props.fetchTwitchFavourite) {
@@ -87,6 +88,8 @@ class DashboardPanels extends React.Component {
     if (userData && this.props.fetchGameFavourite) {
       this.props.fetchGameFavourite(userData.userId);
     }
+
+    console.log("user data", userData)
 
   }
 
@@ -181,75 +184,33 @@ class DashboardPanels extends React.Component {
           <p className="dashboard__panels--text">
             This shows the total amount of post in all forums.
           </p>
-        </div>
+                </div>
 
-        {/* Last posts */}
-        <div className="dashboard__panels--item">
-          <h3 className="dashboard__panels--heading">Last 5 posts</h3>
-          <div className="dashboard__panels--latest-post">
-            <ul className="dashboard__panels--latest-posts-list">
-              {userPosts.length > 0
-                ? userPosts.map(post => {
-                  return (
-                    <li
-                      className="dashboard__panels--latest-posts-item"
-                      key={post.title}
-                    >
-                      <Link to={"/posts/" + post.id}>
-                        <div style={{ fontSize: 9 + "px" }}>
-                          {post.created}
-                        </div>
-                        {post.title}
-                      </Link>
-                    </li>
-                  );
-                })
-                : ""}
-            </ul>
-          </div>
-          <p className="dashboard__panels--text">
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis.
-          </p>
-        </div>
-
-        {/* Fortnite */}
-        {/* <div className="dashboard__panels--item">
-          <div className="dashboard__fortnite">
-            <h3 className="dashboard__panels--heading">Fortnite</h3>
-            {this.state.fortniteUserData.totals ? (
-              <div className="dashboard__panels--points">
-                <h5 className="dashboard__panels--fortnite-user">
-                  {this.state.fortniteUserData.username}
-                </h5>
-                <h5 className="dashboard__panels--fortnite-platform">
-                  {this.state.fortniteUserData.platform.toUpperCase()}
-                </h5>
-                <h5 className="dashboard__panels--fortnite-platform">
-                  {this.state.fortniteUserData.totals.wins > 50
-                    ? "Level: FORTIFIED"
-                    : "Level: Bricklayer"}
-                </h5>
-
-                <p className="dashboard__panels--fortnite-para">
-                  Total Wins: {this.state.fortniteUserData.totals.wins}
-                </p>
-                <p className="dashboard__panels--fortnite-para">
-                  Total Kills: {this.state.fortniteUserData.totals.kills}
-                </p>
-                <p className="dashboard__panels--fortnite-para">
-                  Score: {this.state.fortniteUserData.totals.score}
-                </p>
-              </div>
-            ) : (
-                <h5 className="dashboard__panels--fortnite-platform">
-                  Enter your Fortnite username in the account section to see your
-                  Fortnite stats right here!
-              </h5>
-              )}
-          </div>
-        </div> */}
-        {/* <div className="dashboard__panels--item">
+                {/* Last posts */}
+                <div className="dashboard__panels--item">
+                    <h3 className="dashboard__panels--heading">Last 5 posts</h3>
+                    <div className="dashboard__panels--latest-post">
+                        <ul className="dashboard__panels--latest-posts-list">
+                            {
+                                userPosts.length > 0
+                                    ? userPosts.map(post => {
+                                        return (
+                                            <li className="dashboard__panels--latest-posts-item" key={post.id}>
+                                                <Link to={"/posts/" + post.id}>
+                                                
+                                                    <div>{post.body.substring(0,25)}</div>
+                                                    
+                                                </Link>
+                                            </li>
+                                        )
+                                    })
+                                    : ""
+                            }
+                        </ul>
+                    </div>
+                    <p className="dashboard__panels--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
+                </div>
+                {/* <div className="dashboard__panels--item">
                     <div className="dashboard__fortnite">
                         <h3 className="dashboard__panels--heading">Fortnite Stats</h3>
                         {this.state.fortniteUserData.totals ?
@@ -355,39 +316,7 @@ class DashboardPanels extends React.Component {
               )}
           </div>
         </div>
-        <div className="dashboard__panels--item">
-          <h3 className="dashboard__panels--heading">Latest Posts</h3>
-          {/* <div className="dashboard__panels--points" /> */}
 
-          <div className="dashboard__panels--text">
-            {this.state.posts.map((post, index) => {
-              if (index > 2) return null;
-              return (
-                <p key={post.id}>
-                  {" "}
-                  <Link to={`/posts/${post.id}`}> {post.title} </Link>{" "}
-                </p>
-              );
-            })}
-          </div>
-
-          <h3 className="dashboard__panels--heading">Latest Replies</h3>
-
-          <div className="dashboard__panels--text">
-            {this.state.replies.map((reply, index) => {
-              if (index > 2) return null;
-              return (
-                <p key={reply.id}>
-                  {" "}
-                  <Link to={`/posts/${reply.parent_id}`}>
-                    {" "}
-                    {reply.title}{" "}
-                  </Link>{" "}
-                </p>
-              );
-            })}
-          </div>
-        </div>
       </div>
     );
   }
