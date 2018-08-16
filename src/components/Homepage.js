@@ -4,7 +4,9 @@ let shuffle = require("shuffle-array");
 import "../../styles/index.scss";
 import "../../styles/components/homepage.scss";
 
-let topGames = [];
+let topGames = [0];
+const rndTwitch = Math.floor(Math.random() * 5);
+
 class Homepage extends React.Component {
   constructor() {
     super();
@@ -18,16 +20,15 @@ class Homepage extends React.Component {
       topForum: [],
       resultsMode: false,
       topGames: [
-        "The Elder Scrolls 5: Skyrim",
-        "Fallout 4",
-        "Grand Theft Auto 5",
-        "Fortnite",
-        "The Witcher 3: Wild Hunt",
-        "No Man's Sky",
-        "Octopath Traveler",
-        "Monster Hunter: World",
-        "The Legend of Zelda: Breath of the Wild",
-        "Persona 5"
+        { title: "The Elder Scrolls 5: Skyrim", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/yakiwtuy29tu0atooopm" },
+        { title: "Fallout 4", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/vfyzvftuigeslbhueeht" },
+        { title: "Grand Theft Auto 5", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/t0zqmqhdcxppyol3mtlg" },
+        { title: "Fortnite", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/lcy8csmxbak1hnx9kwqg" },
+        { title: "The Witcher 3: Wild Hunt", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/tri1c6vbydeosoqajwt1" },
+        { title: "Octopath Traveler", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/uzotmisl1zf1jtnemkba" },
+        { title: "Monster Hunter: World", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/fxgwm1nnyexhvauqv0ds" },
+        { title: "The Legend of Zelda: Breath of the Wild", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/mievpzb9rbzzenmznvnr" },
+        { title: "Persona 5", img: "https://images.igdb.com/igdb/image/upload/t_cover_big/lmoq34uqexxr9ky6axfk" }
       ]
       // topTwitchers:{}
       // ],
@@ -124,7 +125,7 @@ class Homepage extends React.Component {
   }
 
   searchGame() {
-    this.props.searchClickedGame(this.state.game.title);
+    this.props.searchClickedGame(topGames[0].title);
   }
 
   searchListGame(event, title) {
@@ -135,7 +136,7 @@ class Homepage extends React.Component {
     const { userAuthState, topTwitchers } = this.props;
 
     //get a random number from 1 to 5 to display a random current twitch streamer
-    const rndTwitch = Math.floor(Math.random() * 5);
+
 
     return (
       <div className="homepage">
@@ -149,22 +150,22 @@ class Homepage extends React.Component {
         {/* <div className="homepage__main--title">Featured</div> */}
         <div className="homepage__main">
           <div className="homepage__featured--game">
-            <h4 onClick={this.searchGame}>Game</h4>
+            <h4 >Featured Game</h4>
             <h4>
-              {/* <Link className="homepage__links" to="/search">
-                {this.state.game.title}
-              </Link> */}
+              <Link onClick={this.searchGame} className="homepage__links" to="/search">
+                {topGames[0].title}
+              </Link>
               <br />
 
               <img
-                src="//images.igdb.com/igdb/image/upload/t_cover_big/f9jvrf3nwdgdil287sla"
+                src={topGames[0].img}
                 className="search__img--cover"
               />
             </h4>
           </div>
 
           <div className="homepage__featured--user">
-            <h4>User</h4>
+            <h4>Featured Gamer</h4>
             <h4>
               <Link
                 className="homepage__links"
@@ -179,7 +180,7 @@ class Homepage extends React.Component {
           </div>
 
           <div className="homepage__featured--forum">
-            <h4>Forum</h4>
+            <h4>Featured Forum</h4>
             <h4>
               <Link
                 className="homepage__links"
@@ -193,7 +194,7 @@ class Homepage extends React.Component {
           </div>
 
           <div className="homepage__featured--twitch">
-            <h4>Stream</h4>
+            <h4>Featured Stream</h4>
             <h4 className="homepage__links">
               {topTwitchers
                 ? topTwitchers.map((currentTwitch, index) => {
@@ -280,13 +281,13 @@ class Homepage extends React.Component {
                 if (index > 4) return;
                 return (
                   <li
-                    onClick={event => this.searchListGame(event, game)}
+                    onClick={event => this.searchListGame(event, game.title)}
                     key={index}
                   >
                     {" "}
                     <Link className="homepage__links" to="/search">
                       {" "}
-                      {game}{" "}
+                      {game.title}{" "}
                     </Link>{" "}
                   </li>
                 );

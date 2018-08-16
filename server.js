@@ -386,6 +386,32 @@ app.get("/api/deletedposts", function (req, res) {
     .catch(error => console.log(error.message));
 });
 
+
+
+
+app.post("/api/newforum", function(req, res) {
+  const { title, gameId, category, mp, gamerId, gamerName} = req.body;
+
+  db.one(`INSERT INTO forum (title, game_Id, category) VALUES ($1, $2, $3) RETURNING id`, [
+    title,
+    gameId,
+    category
+  ])
+    .then(data => {
+      if(mp){
+        db.none(`INSERT INTO post (id, title, forum_id, gamer_id, body, gamer_name) 
+        VALUES (0, 'Looking for a group', $1, $2, 'reply to this post to raid with a group', $3 )`,
+      [data.id,
+      gamerId,
+      gamerName]
+      )}
+    })
+    .catch(error => console.log(error.message));
+  
+});
+
+
+
 ///////////////// Forum - end //////////////////
 
 ///////////////// Account Updates - Starts /////////////////
@@ -642,6 +668,14 @@ app.get("/api/profile/:username", function (req, res) {
   db.one(`SELECT * FROM gamer_profile WHERE gamer_name = $1`, [
     req.params.username
   ])
+    .then(data => {
+      res.json(data);
+    })
+    .catch(error => console.log(error.message));
+});
+
+app.get("/api/allgames/", function(req, res) {
+  db.any(`SELECT * FROM game`)
     .then(data => {
       res.json(data);
     })

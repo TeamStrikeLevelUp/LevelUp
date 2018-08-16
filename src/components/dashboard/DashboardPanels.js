@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+let level = 0;
+
 class DashboardPanels extends React.Component {
     constructor(props) {
         super(props);
@@ -32,6 +34,7 @@ class DashboardPanels extends React.Component {
         if (userData) {
             this.props.setAuthState(userData);
         }
+
 
 
         // Fetch Twitch favourites if not in redux.state
@@ -88,6 +91,8 @@ class DashboardPanels extends React.Component {
             this.props.fetchGameFavourite(userData.userId);
         }
 
+        console.log("user data", userData)
+
     }
 
     gamerRank() {
@@ -104,19 +109,20 @@ class DashboardPanels extends React.Component {
             return "Legend";
         }
     }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps) {
-            // Gamer rank
-            const level = this.state.userStats.gamer_level;
-            this.gamerRank(level);
-        }
+    // componentWillReceiveProps(nextProps) {
+    //   if (nextProps) {
+    //     // Gamer rank
+    //     const level = this.state.userStats.gamer_level;
+    //     this.gamerRank(level);
+    //   }
+    // }
 
-    }
     fetchUserInfo(userData) {
         fetch(`/api/profile/${userData.username}`)
             .then(response => response.json())
             .then(json => {
                 this.setState({ userStats: json });
+                console.log("fetchhh")
             });
     }
 
@@ -134,36 +140,28 @@ class DashboardPanels extends React.Component {
     }
 
 
-
-    searchGame(event, title) {
-        this.props.searchClickedGame(title);
-    }
-
-
     gamerLevel(totalposts) {
 
         let level = parseInt(totalposts / 5);
         if (level > 100)
             level = 100
         this.setState({ level })
+        console.log("totalposts", totalposts)
     }
 
     searchTwitch(event, title) {
-        console.log("title: ", title);
         this.props.setTwitchStreamer(title);
     }
 
 
 
-
-
-
     render() {
-        console.log("userdata", this.state.user)
-
-
         const { twitchFavourite, gameFavourite, userDataStore } = this.props;
         const { userStats, userPosts } = this.state;
+        // console.log("fort", this.state.fortniteUserData);
+        level = parseInt(userStats.totalposts / 5);
+        if (level > 100)
+            level = 100
 
         return (
             <div className="dashboard__panels">
@@ -171,7 +169,7 @@ class DashboardPanels extends React.Component {
                 <div className="dashboard__panels--item">
                     <h3 className="dashboard__panels--heading">Level</h3>
                     <div className="dashboard__panels--points">
-                        {this.state.level}
+                        {level}
                     </div>
                     <p className="dashboard__panels--text dashboard__panels--text--large">
                         Your LevelUp rank is{" "}
@@ -203,10 +201,11 @@ class DashboardPanels extends React.Component {
                                 userPosts.length > 0
                                     ? userPosts.map(post => {
                                         return (
-                                            <li className="dashboard__panels--latest-posts-item" key={post.title}>
+                                            <li className="dashboard__panels--latest-posts-item" key={post.id}>
                                                 <Link to={"/posts/" + post.id}>
-                                                    <div style={{ fontSize: 9 + "px" }}>{post.created}</div>
-                                                    {post.title}
+
+                                                    <div>{post.body.substring(0, 25)}</div>
+
                                                 </Link>
                                             </li>
                                         )
@@ -215,11 +214,34 @@ class DashboardPanels extends React.Component {
                             }
                         </ul>
                     </div>
-                    <p className="dashboard__panels--text">Check here to see your recent activity within the community.</p>
+                    <p className="dashboard__panels--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
                 </div>
+                {/* <div className="dashboard__panels--item">
+                    <div className="dashboard__fortnite">
+                        <h3 className="dashboard__panels--heading">Fortnite Stats</h3>
+                        {this.state.fortniteUserData.totals ?
+                            <div className="dashboard__panels--points">
+
+                                <h5 className="dashboard__panels--fortnite-user">{this.state.fortniteUserData.username}</h5>
+                                <h5 className="dashboard__panels--fortnite-platform">{this.state.fortniteUserData.platform.toUpperCase()}</h5>
+                                <h5 className="dashboard__panels--fortnite-platform">{this.state.fortniteUserData.totals.wins > 50 ? "Level: FORTIFIED" : "Level: Bricklayer"}</h5>
+
+
+
+
+                                <p className="dashboard__panels--fortnite-para">Total Wins: {this.state.fortniteUserData.totals.wins}</p>
+                                <p className="dashboard__panels--fortnite-para">Total Kills: {this.state.fortniteUserData.totals.kills}</p>
+                                <p className="dashboard__panels--fortnite-para">Score: {this.state.fortniteUserData.totals.score}</p>
+                            </div> :
+                            null}
+                    </div>
+                </div> */}
+
                 {/* Twitch Favs */}
                 <div className="dashboard__panels--item">
-                    <h3 className="dashboard__panels--heading">Twitch Favourites Players</h3>
+                    <h3 className="dashboard__panels--heading">
+                        Twitch Favourites Players
+          </h3>
                     <ul className="dashboard__panels--twitch-list">
                         {twitchFavourite.map(fav => {
                             return (
@@ -261,8 +283,10 @@ class DashboardPanels extends React.Component {
                     </ol>
                     <p className="dashboard__panels--text">
                         Games added to Favourites will show up here.
-                    </p>
+          </p>
                 </div>
+
+
                 <div className="dashboard__panels--item">
                     <div>
                         <h3 className="dashboard__panels--heading">Fortnite</h3>
@@ -275,9 +299,9 @@ class DashboardPanels extends React.Component {
                                     {this.state.fortniteUserData.platform.toUpperCase()}
                                 </h5>
                                 <h5 className="dashboard__panels--fortnite-platform">
-                                    {this.state.fortniteUserData.totals.wins > 10
-                                        ? "Fort Level: FORTIFIED"
-                                        : "Fort Level: ROOKIE"}
+                                    {this.state.fortniteUserData.totals.wins > 50
+                                        ? "Level: FORTIFIED"
+                                        : "Level: Bricklayer"}
                                 </h5>
 
                                 <p className="dashboard__panels--fortnite-para">
@@ -290,12 +314,17 @@ class DashboardPanels extends React.Component {
                                     Score: {this.state.fortniteUserData.totals.score}
                                 </p>
                             </div>
-                        ) : <h5 className="dashboard__panels--text">Enter your Fortnite username in the account section to see your Fortnite stats right here!</h5>}
+                        ) : (
+                                <h5 className="dashboard__panels--text">
+                                    Enter your Fortnite username in the account section to see your
+                                    Fortnite stats right here!
+              </h5>
+                            )}
                     </div>
                 </div>
-            </div >
+
+            </div>
         );
     }
 }
-
 export default DashboardPanels;
