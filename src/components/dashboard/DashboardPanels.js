@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+let level=0;
+
 class DashboardPanels extends React.Component {
   constructor(props) {
     super(props);
@@ -107,19 +109,20 @@ class DashboardPanels extends React.Component {
       return "Legend";
     }
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps) {
-      // Gamer rank
-      const level = this.state.userStats.gamer_level;
-      this.gamerRank(level);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps) {
+  //     // Gamer rank
+  //     const level = this.state.userStats.gamer_level;
+  //     this.gamerRank(level);
+  //   }
+  // }
 
   fetchUserInfo(userData) {
     fetch(`/api/profile/${userData.username}`)
       .then(response => response.json())
       .then(json => {
         this.setState({ userStats: json });
+        console.log("fetchhh")
       });
   }
 
@@ -143,10 +146,10 @@ class DashboardPanels extends React.Component {
     if (level > 100)
       level = 100
     this.setState({ level })
+    console.log("totalposts", totalposts)
   }
 
   searchTwitch(event, title) {
-    console.log("title: ", title);
     this.props.setTwitchStreamer(title);
   }
 
@@ -156,6 +159,9 @@ class DashboardPanels extends React.Component {
     const { twitchFavourite, gameFavourite, userDataStore } = this.props;
     const { userStats, userPosts } = this.state;
     // console.log("fort", this.state.fortniteUserData);
+    level = parseInt(userStats.totalposts / 5);
+    if (level > 100)
+      level = 100
 
     return (
       <div className="dashboard__panels">
@@ -163,7 +169,7 @@ class DashboardPanels extends React.Component {
         <div className="dashboard__panels--item">
           <h3 className="dashboard__panels--heading">Level</h3>
           <div className="dashboard__panels--points">
-            {this.state.level}
+            {level}
           </div>
           <p className="dashboard__panels--text dashboard__panels--text--large">
             Your LevelUp rank is{" "}
