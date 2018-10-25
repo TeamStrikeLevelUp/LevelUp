@@ -214,7 +214,7 @@ class DashboardPanels extends React.Component {
                             }
                         </ul>
                     </div>
-                    <p className="dashboard__panels--text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
+                    <p className="dashboard__panels--text">See your recent activity right here.</p>
                 </div>
                 {/* <div className="dashboard__panels--item">
                     <div className="dashboard__fortnite">
