@@ -1,0 +1,121 @@
+CREATE TABLE gamer (
+    id serial PRIMARY KEY,
+    gamer_name varchar(50) NOT NULL UNIQUE,
+    password_hash varchar(72) NOT NULL,
+    email varchar(254) NOT NULL UNIQUE
+);
+CREATE TABLE game (
+    id serial PRIMARY KEY,
+    title varchar(200),
+    igdb_id int NOT NULL UNIQUE,
+    cover TEXT
+);
+
+CREATE TABLE gamer_favorites (
+    id serial PRIMARY KEY,
+    game_id int,
+    gamer_id int,
+    FOREIGN KEY (game_id) REFERENCES game (id)
+);
+CREATE TABLE gamer_profile (
+    id serial PRIMARY KEY,
+    gamer_id int NOT NULL,
+    gamer_name varchar(50),
+    description text,
+    avatar varchar (250) DEFAULT 'http://www.w3sh.com/wordpress/wp-content/uploads/2011/04/facebook-geek-avatar.jpg',
+    totalPosts int DEFAULT 0,
+    gamer_level int DEFAULT 1,
+    fortniteId varchar(50),
+    fortniteName varchar(50),
+    steamId varchar(50),
+    twitchId varchar(50),
+    FOREIGN KEY (gamer_id) REFERENCES gamer (id)
+);
+
+
+
+CREATE TABLE forum (
+    id serial PRIMARY KEY,
+    title varchar (100) ,
+    game_id int UNIQUE,
+    category varchar(50) DEFAULT 'uncategorized',
+    FOREIGN key (game_id) REFERENCES game (id)
+);
+CREATE TABLE post (
+    id serial PRIMARY KEY,
+    title varchar (200),
+    forum_id int NOT NULL,
+    gamer_id int NOT NULL,
+    gamer_name varchar(50),
+    body text,
+    created timestamp DEFAULT now(),
+    parent_id int,
+    admin_status VARCHAR(6),
+    FOREIGN KEY (gamer_id) REFERENCES gamer(id),
+    FOREIGN KEY (forum_id) REFERENCES forum(id)
+  );
+
+
+CREATE TABLE twitch_favorites (
+id serial PRIMARY KEY,
+twitch_name varchar(50) NOT NULL,
+gamer_id int NOT NULL,
+UNIQUE (twitch_name, gamer_id),
+twitch_image text,
+FOREIGN KEY  (gamer_id) references gamer (id)
+);
+
+
+CREATE TABLE poll(
+id serial NOT NULL PRIMARY KEY,
+value int NOT NULL,
+title text NOT NULL,
+gamer_id int NOT NULL UNIQUE,
+gamer_name varchar(100) NOT NULL,
+FOREIGN KEY  (gamer_id) REFERENCES gamer (id)
+);
+
+
+
+
+INSERT INTO gamer (gamer_name, password_hash, email) VALUES ('ahmed1', '$2b$12$qgFkMY.3xxv.NpxdxJKzUuS22zvPGWCas1gcEq9YNzMvjaXV8MAUy', 'ahmed@mail.com' );
+INSERT INTO gamer (gamer_name, password_hash, email) VALUES ('ralph1', '$2b$12$qgFkMY.3xxv.NpxdxJKzUuS22zvPGWCas1gcEq9YNzMvjaXV8MAUy', 'ralph@mail.com' );
+INSERT INTO game (title, igdb_id) VALUES ('The Adventures of Robin Hood', 2301);
+INSERT INTO game (title, igdb_id) VALUES ('Kingsway', 27712);
+INSERT INTO gamer_favorites (game_id,gamer_id) VALUES (1,1);
+INSERT INTO gamer_favorites (game_id,gamer_id) VALUES (1,2);
+INSERT INTO gamer_favorites (game_id,gamer_id) VALUES (2,2);
+
+INSERT INTO forum (title, game_id, category) VALUES ('The Adventures of Robin Hood', 1, 'games');
+INSERT INTO forum (title, game_id, category) VALUES ('Kingsway', 2, 'games');
+INSERT INTO post (title, forum_id, gamer_id, gamer_name, body) VALUES ('helpp', 1, 1, 'ahmed1', 'how do u play?');
+INSERT INTO post (title, forum_id, gamer_id, gamer_name, body) VALUES ('opinion', 1, 1, 'ahmed1', 'game sucks');
+
+INSERT INTO post (title, forum_id, gamer_id, gamer_name, body, parent_id) VALUES ('just quit', 1, 2, 'ralph1', 'ur not worthy', 1);
+
+INSERT INTO post (title, forum_id, gamer_id, gamer_name, body) VALUES ('woww', 2, 2, 'ralph1', 'amazing game. what do u gamerz think?');
+
+
+INSERT INTO gamer_profile (gamer_id, gamer_name, description, avatar, totalposts, gamer_level, twitchid)
+VALUES (1, 'ahmed1', 'best playa eva', 'https://orig00.deviantart.net/f8ca/f/2011/333/a/3/gamer_avatar_by_thebiggeorgy-d4hqcdg.jpg' ,10, 60, 'gotaga' );
+
+INSERT INTO gamer_profile (gamer_id, gamer_name, description, avatar, totalposts, gamer_level, twitchid)
+VALUES (2, 'ralph1', 'getting there', 'https://pre00.deviantart.net/751f/th/pre/i/2014/030/7/a/gamer_character_avatar_by_josheck-d74d9p4.jpg' ,5, 15, 'jukes' );
+
+INSERT INTO game (title, igdb_id) VALUES ('Fortnite' , 1905);
+INSERT INTO game (title, igdb_id) VALUES ('Final Fantasy VII' , 427);
+INSERT INTO game (title, igdb_id) VALUES ('Street Fighter IV' , 884);
+INSERT INTO game (title, igdb_id) VALUES ('Mortal Kombat Trilogy' , 4121);
+INSERT INTO game (title, igdb_id) VALUES ('Metal Gear Solid 3: Snake Eater' , 379);
+
+
+INSERT INTO forum (title, game_id, category) VALUES ('Fortnite', 3, 'games');
+INSERT INTO forum (title, game_id, category) VALUES ('Final Fantasy VII', 4, 'games');
+INSERT INTO forum (title, game_id, category) VALUES ('Street Fighter IV', 5, 'games');
+INSERT INTO forum (title, game_id, category) VALUES ('Mortal Kombat Trilogy', 6, 'games');
+INSERT INTO forum (title, game_id, category) VALUES ('Metal Gear Solid 3: Snake Eater', 7, 'games');
+INSERT INTO forum (title) values ('Other');
+
+
+
+
